@@ -1,0 +1,49 @@
+{
+ "_doc": {
+  "step": "step_5_logs",
+  "title": "第 5 步 任务日志取证（T5）",
+  "source": "openLiBing 任务日志导出/分页接口",
+  "criteria": "对每个失败任务导出整份日志落 job_logs/，并按关键字扫描错误行",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-09 15:06:59",
+  "component": "HPCKit",
+  "pipeline": "hmpi",
+  "date": "2026-11-06"
+ },
+ "results": [
+  {
+   "route": "log",
+   "key": "HPCKit|hmpi",
+   "pipeline": "hmpi",
+   "rn": 210,
+   "st": "11-06 01:01",
+   "rid": "9c42f33ef29645839271036fce5cfe60",
+   "jobId": "52332eeed4bb46beb6dafb03d2aa1730",
+   "jobName": "Test_hmpi",
+   "fallback": true,
+   "stepErrMsgs": [
+    "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+   ],
+   "jobErrMsg": "步骤Test_hmpi执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "logFile": "job_logs/07_hmpi_210_Test_hmpi.log",
+   "logBytes": 16562,
+   "logLines": 144,
+   "download": "export",
+   "truncated": false,
+   "excerpt": null,
+   "errorLines": [
+    "L138: [2026/11/06 01:11:47.479 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+    "L139: [2026/11/06 01:11:47.479 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'",
+    "L140: [2026/11/06 01:11:47.479 GMT+08:00] [ERROR] git clone test_cases code fail",
+    "L142: [2026/11/06 01:11:47.649 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed",
+    "L144: [2026/11/06 01:11:53.246 GMT+08:00] Finished: FAILURE"
+   ]
+  }
+ ],
+ "errors": [],
+ "counts": {
+  "tasks": 1,
+  "logFiles": 1,
+  "errorLines": 5
+ }
+}

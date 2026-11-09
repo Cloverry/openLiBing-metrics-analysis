@@ -1,0 +1,76 @@
+{
+  "date_range": {
+    "start": "",
+    "end": "",
+    "_comment": "分析区间。每日跑数：留空字符串则取「前一个工作日」单日区间（自动向前跳过周末与法定节假日；周一跑取上周五，节后首日跑取节前最后一个工作日），不支持多日累计；夜间统计仅统计区间内工作日（服务端口径）。显式填写 start/end 时以配置为准（脚本直接按该区间筛选，不经 AI）"
+  },
+  "products": [],
+  "_products_comment": "产品范围。留空数组 [] = 全部产品（产品清单与 projectId 由看板一级汇总接口自动发现）；指定一个或多个写成 [\"MindStudio\"] 或 [\"MindStudio\", \"Ascend-CANN\"]",
+  "project_id_map": {
+    "_comment": "可选兜底。产品 -> projectId 优先从一级汇总接口自动发现（记录自带 projectId），此处映射仅在发现失败时兜底",
+    "MindStudio": "300037",
+    "Ascend-CANN": "300057",
+    "boostkit": "300059",
+    "SgLang": "300134"
+  },
+  "analysis_policy": {
+    "_comment": "按产品的口径例外。always_analyze=不论看板 versionAvail 是否已达 1，都纳入该产品的全部流水线，并按采集到的执行记录重算可用度（重算值覆盖归档层流水线级与产品级比率；归档只存数值，不存黄/绿/红灯色）；scheduled_only=只采集定时任务运行（displayTitle 含 (scheduled)），含 PR 的运行一律不采集、不归档、不做根因分析；日可用口径=当天存在成功的定时运行才算当天可用，否则分析当天全部失败的定时运行",
+    "always_analyze": ["vllm-ascend"],
+    "scheduled_only": ["vllm-ascend"]
+  },
+  "workday_overrides": {
+    "_comment": "工作日筛查兜底（优先级最高）。自动从 timor.tech 拉取法定节假日与调休安排（周末补班算工作日、法定假不算）；API 不可达时回退周一~五 + 此处配置。holidays=额外放假日期，extra_workdays=调休补班日期，格式 yyyy-mm-dd",
+    "holidays": [],
+    "extra_workdays": []
+  },
+  "chrome": {
+    "_comment": "浏览器自举（采集前的脚本化打开浏览器）。run_pipeline 先探测 debug_port，不通则自动拉起 chrome_path（留空=自动探测 Chrome/Edge）并使用 user_data_dir 这个 profile（留空=默认 Chrome 用户目录，复用日常登录态；若该 profile 已被未开调试端口的 Chrome 占用，需先完全退出 Chrome）。start_url=自动打开时导航到的看板页",
+    "debug_port": 9222,
+    "chrome_path": "",
+    "user_data_dir": "",
+    "start_url": "https://www.openlibing.com/apps/eCDashboard",
+    "tab_url_substring": "openlibing",
+    "request_timeout_ms": 300000,
+    "inter_request_delay_ms": 250,
+    "batch_size": 15,
+    "request_concurrency": 4
+  },
+  "collect": {
+    "t1_page_size": 100,
+    "nightly_detail_page_size": 10,
+    "n2_page_size": 100,
+    "t5_log_limit": 300,
+    "t6_page_size": 100,
+    "case_log_concurrency": 8,
+    "case_log_timeout_ms": 60000,
+    "max_error_rows_per_case": 60,
+    "max_error_msg_chars": 600,
+    "big_file_threshold_bytes": 4000000,
+    "export_poll_timeout_ms": 180000,
+    "export_download_timeout_ms": 600000,
+    "job_log_max_error_lines": 60,
+    "excerpt_threshold_bytes": 5000000,
+    "excerpt_head_lines": 100,
+    "excerpt_error_max_lines": 3000,
+    "excerpt_tail_lines": 1500,
+    "log_download_concurrency": 4
+  },
+  "cache": {
+    "_comment": "增量采集缓存。enabled=true 时，上一次已取证的运行（构建列表/用例日志/全量日志/解析结果）直接复用，仅补抓上次之后的新运行；运行日期在本次分析区间外的缓存条目自动剔除；复用前校准运行状态（重试/重跑导致状态或结束时间变更的条目自动重抓）。--fresh 可跳过复用强制全量重抓（重抓结果仍会写回缓存）",
+    "enabled": true,
+    "path": "cache/collection.json"
+  },
+  "agent": {
+    "profile": "agent/analysis_profile.json",
+    "task_doc": "agent/agent_task.md"
+  },
+  "github": {
+    "_comment": "GitHub API 鉴权（platform=github 流水线的运行日志下载：GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs，302→zip）。classic PAT 勾选 public_repo 即可；仅本地保存，不写入任何报告。concurrency=并发采集的运行数（含 API 调用与 blob 下载）",
+    "token": "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",
+    "api_base": "https://api.github.com",
+    "concurrency": 6,
+    "repos": {
+      "vllm-ascend": "vllm-project/vllm-ascend"
+    }
+  }
+}

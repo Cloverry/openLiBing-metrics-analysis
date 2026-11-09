@@ -1,0 +1,121 @@
+{
+ "route": "github",
+ "key": "SgLang|nightly-test-npu.yml",
+ "rn": 2086,
+ "rid": "42088175169",
+ "st": "11-06 02:50",
+ "runId": 42088175169,
+ "repo": "sgl-project/sglang",
+ "displayTitle": "ci run",
+ "event": "pull_request",
+ "status": "FAILED",
+ "duration": 27.92,
+ "runStatus": {
+  "status": "completed",
+  "conclusion": "failure",
+  "updatedAt": "2026-11-05T19:18:46Z",
+  "attempt": 1
+ },
+ "_v": 2,
+ "mode": "perjob",
+ "why": "失败 job 1 个（≤5，逐 job 精取）",
+ "totalJobs": 15,
+ "failedJobs": [
+  {
+   "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+   "id": 127458874017,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ ],
+ "cancelledJobs": [],
+ "jobs": [
+  {
+   "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+   "id": 127458874017,
+   "conclusion": "failure",
+   "startedAt": "2026-11-05T18:51:21Z",
+   "completedAt": "2026-11-05T19:18:44Z",
+   "logFile": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test_registe~6b37f9.txt",
+   "logBytes": 1037402,
+   "logLines": 6325,
+   "errorLines": [
+    "L679: Traceback (most recent call last):",
+    "L2625: 2026-11-06 03:14:36.540596 WARN [881-881][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+    "L2626: 2026-11-06 03:14:36.540726 WARN [888-888][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+    "L2628: 2026-11-06 03:14:36.541321 WARN [884-884][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+    "L2629: 2026-11-06 03:14:36.541543 WARN [882-882][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+    "L2641: 2026-11-06 03:14:36.545215 WARN [885-885][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+    "L2650: 2026-11-06 03:14:36.545901 WARN [890-890][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+    "L2658: 2026-11-06 03:14:36.546183 WARN [886-886][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+    "L2666: 2026-11-06 03:14:36.546563 WARN [893-893][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+    "L2668: 2026-11-06 03:14:36.546606 WARN [894-894][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+    "L5712: 2026-11-06 03:14:59.357917 ERROR [1180-1180][HYBM hybm_big_mem_entry.cpp:102 hybm_alloc_local_memory] allocate slice with size: 21474836480, mType: 2 failed: -6",
+    "L5713: 2026-11-06 03:14:59.357924 ERROR [1180-1180][SMEM smem_bm_entry.cpp:117 AllocDramMem] alloc local host mem failed, size: 21474836480",
+    "L5714: 2026-11-06 03:14:59.357929 ERROR [1180-1180][SMEM smem_bm_entry.cpp:187 Initialize] alloc dram mem failed, result: -1",
+    "L5718: 2026-11-06 03:14:59.365119 ERROR [1172-1172][HYBM hybm_vmm_based_segment.cpp:201 MallocFromHost] Try HalMemCreate failed ret:6 device:0 spend time: size:21474836480",
+    "L5719: 2026-11-06 03:14:59.365125 ERROR [1172-1172][HYBM hybm_vmm_based_segment.cpp:281 AllocLocalMemory] Assert ret == BM_OK, HalMemCreate failed: 6 segType:1 devId:0 size:21474836480",
+    "L5720: 2026-11-06 03:14:59.365131 ERROR [1172-1172][HYBM hybm_entity_default.cpp:218 AllocLocalMemory] segment allocate slice with size: 21474836480 failed: -6",
+    "L5721: 2026-11-06 03:14:59.365134 ERROR [1172-1172][HYBM hybm_big_mem_entry.cpp:102 hybm_alloc_local_memory] allocate slice with size: 21474836480, mType: 2 failed: -6",
+    "L5722: 2026-11-06 03:14:59.365140 ERROR [1172-1172][SMEM smem_bm_entry.cpp:117 AllocDramMem] alloc local host mem failed, size: 21474836480",
+    "L5723: 2026-11-06 03:14:59.365144 ERROR [1172-1172][SMEM smem_bm_entry.cpp:187 Initialize] alloc dram mem failed, result: -1",
+    "L5729: 2026-11-06 03:14:59.393251 ERROR [1174-1174][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1",
+    "L5730: 2026-11-06 03:14:59.393264 ERROR [1174-1174][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed",
+    "L5731: 2026-11-06 03:14:59.393273 ERROR [1174-1174][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm",
+    "L5732: 2026-11-06 03:14:59.393284 ERROR [1174-1174][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed",
+    "L5736: 2026-11-06 03:14:59.408436 ERROR [1180-1180][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1",
+    "L5737: 2026-11-06 03:14:59.408450 ERROR [1180-1180][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed",
+    "L5738: 2026-11-06 03:14:59.408460 ERROR [1180-1180][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm",
+    "L5739: 2026-11-06 03:14:59.408470 ERROR [1180-1180][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed",
+    "L5743: 2026-11-06 03:14:59.415699 ERROR [1172-1172][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1",
+    "L5744: 2026-11-06 03:14:59.415711 ERROR [1172-1172][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed",
+    "L5745: 2026-11-06 03:14:59.415720 ERROR [1172-1172][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm",
+    "L5746: 2026-11-06 03:14:59.415731 ERROR [1172-1172][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed",
+    "L5751: 2026-11-06 03:14:59.470008 ERROR [1186-1186][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1",
+    "L5752: 2026-11-06 03:14:59.470022 ERROR [1186-1186][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed",
+    "L5753: 2026-11-06 03:14:59.470031 ERROR [1186-1186][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm",
+    "L5754: 2026-11-06 03:14:59.470039 ERROR [1186-1186][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed",
+    "L5757: 2026-11-06 03:14:59.473486 ERROR [1176-1176][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1",
+    "L5758: 2026-11-06 03:14:59.473497 ERROR [1176-1176][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed",
+    "L5759: 2026-11-06 03:14:59.473504 ERROR [1176-1176][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm",
+    "L5760: 2026-11-06 03:14:59.473513 ERROR [1176-1176][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed",
+    "L5767: 2026-11-06 03:14:59.554694 ERROR [1177-1177][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+    "L5768: 2026-11-06 03:14:59.554771 ERROR [1177-1177][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+    "L5769: 2026-11-06 03:14:59.554778 ERROR [1177-1177][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+    "L5772: Traceback (most recent call last):",
+    "L5804: 2026-11-06 03:14:59.569802 ERROR [1179-1179][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+    "L5805: [2026-11-06 03:14:59 DP5 PP0 TP5 EP5] Scheduler hit an exception: Traceback (most recent call last):",
+    "L5851: 2026-11-06 03:14:59.569959 ERROR [1179-1179][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+    "L5852: 2026-11-06 03:14:59.569974 ERROR [1179-1179][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+    "L5855: Traceback (most recent call last):",
+    "L5881: [2026-11-06 03:14:59 DP7 PP0 TP7 EP7] Scheduler hit an exception: Traceback (most recent call last):",
+    "L5929: Traceback (most recent call last):",
+    "L5940: Traceback (most recent call last):",
+    "L5956: Traceback (most recent call last):",
+    "L6105: Traceback (most recent call last):",
+    "L6115: Traceback (most recent call last):",
+    "L6142: Traceback (most recent call last):",
+    "L6226: ##[error]Error: failed to run script step:",
+    "L6227: ✗ exit code: 1",
+    "L6243: Traceback (most recent call last):",
+    "L6251: ##[error]Process completed with exit code 1.",
+    "L6252: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ],
+   "isTestJob": true,
+   "testResults": null
+  }
+ ],
+ "missing": [],
+ "systemLogs": [],
+ "ghComplete": true
+}

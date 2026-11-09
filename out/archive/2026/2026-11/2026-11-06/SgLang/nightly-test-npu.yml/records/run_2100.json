@@ -1,0 +1,132 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-09 15:07:00",
+    "component": "SgLang",
+    "pipeline": "nightly-test-npu.yml",
+    "date": "2026-11-06",
+    "recordId": "SgLang|nightly-test-npu.yml#2100"
+  },
+  "recordId": "SgLang|nightly-test-npu.yml#2100",
+  "date": "2026-11-06",
+  "component": "SgLang",
+  "pipeline": "nightly-test-npu.yml",
+  "pipelineName": "nightly-test-npu.yml",
+  "platform": "github",
+  "buildNumber": 2100,
+  "pipelineRunId": "42220260407",
+  "status": "FAILED",
+  "failedTaskType": null,
+  "startedAt": "2026-11-06T20:46:40",
+  "endedAt": "2026-11-06T20:46:42",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-06T20:46:42",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0,
+    "bsRate": null,
+    "dims": [
+      "va"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42220260407",
+    "detail": "https://github.com/sgl-project/sglang/actions/runs/42220260407",
+    "github": "https://github.com/sgl-project/sglang/actions/runs/42220260407"
+  },
+  "tasks": [
+    {
+      "jobName": "set-image-config",
+      "type": "log",
+      "platform": "github",
+      "logFile": null,
+      "errorLines": [],
+      "download": "github-404",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "evidenceNote": "运行平台侧日志未留存（404），证据不完整；定性依据 jobs 元数据（conclusion/时长/失败步骤）"
+    },
+    {
+      "jobName": "check-all-jobs",
+      "type": "log",
+      "platform": "github",
+      "logFile": null,
+      "errorLines": [],
+      "download": "github-404",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "evidenceNote": "运行平台侧日志未留存（404），证据不完整；定性依据 jobs 元数据（conclusion/时长/失败步骤）"
+    }
+  ],
+  "cases": [],
+  "errorMessages": [],
+  "evidence": {
+    "files": [],
+    "missing": [
+      "check-all-jobs",
+      "set-image-config"
+    ],
+    "github": {
+      "runId": 42220260407,
+      "repo": "sgl-project/sglang",
+      "displayTitle": "ci run",
+      "mode": "perjob",
+      "totalJobs": 15,
+      "failedJobs": [],
+      "missing": [
+        {
+          "job": "set-image-config",
+          "id": 127900239233,
+          "status": "404_not_retained"
+        },
+        {
+          "job": "check-all-jobs",
+          "id": 127900249627,
+          "status": "404_not_retained"
+        }
+      ],
+      "complete": true
+    }
+  },
+  "counts": {
+    "tasks": 2,
+    "testTasks": 0,
+    "logTasks": 2,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+  },
+  "verdict": {
+    "category": "evidence_missing",
+    "text": "证据缺失",
+    "confidence": 0.1,
+    "level": "低",
+    "basis": [
+      "全部失败任务均无日志落盘",
+      "运行平台侧日志未留存（404），证据不完整；定性依据 jobs 元数据（conclusion/时长/失败步骤）",
+      "运行平台侧日志未留存（404），证据不完整；定性依据 jobs 元数据（conclusion/时长/失败步骤）",
+      "基线 0.30",
+      "任务 set-image-config 无任何证据 −0.20",
+      "任务 check-all-jobs 无任何证据 −0.20"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "rootCause": "两个任务（set-image-config、check-all-jobs）的运行平台侧日志均未留存（接口返回 404），归档内无任务日志与用例明细，只能依据作业元数据判断为运行平台侧失败，具体原因无法确认。",
+    "advice": "补齐该流水线作业日志采集与留存，并在 404 时保存作业元数据快照；日志可用后再分析，本条证据不完整、置信度低。",
+    "cites": [],
+    "updatedAt": "2026-11-09 15:07:00",
+    "source": "agent"
+  }
+}

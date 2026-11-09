@@ -1,0 +1,1196 @@
+﻿2026-11-05T19:49:09.3663479Z Current runner version: '2.338.0'
+2026-11-05T19:49:09.3669606Z Runner name: 'linux-amd64-cpu-4-zxvvv-runner-k2gvb'
+2026-11-05T19:49:09.3670469Z Runner group name: 'Default'
+2026-11-05T19:49:09.3671548Z Machine name: 'linux-amd64-cpu-4-zxvvv-runner-k2gvb'
+2026-11-05T19:49:09.3674444Z ##[group]GITHUB_TOKEN Permissions
+2026-11-05T19:49:09.3676804Z Contents: read
+2026-11-05T19:49:09.3677324Z Metadata: read
+2026-11-05T19:49:09.3677864Z Packages: read
+2026-11-05T19:49:09.3678416Z ##[endgroup]
+2026-11-05T19:49:09.3680667Z Secret source: Actions
+2026-11-05T19:49:09.3681679Z Cache mode: write
+2026-11-05T19:49:09.3682745Z Runner is running behind proxy server 'http://squid-cache.squid.svc.cluster.local:3128' for all HTTP requests.
+2026-11-05T19:49:09.3684138Z Runner is running behind proxy server 'http://squid-cache.squid.svc.cluster.local:3128' for all HTTPS requests.
+2026-11-05T19:49:09.3685097Z Prepare workflow directory
+2026-11-05T19:49:09.4631947Z Prepare all required actions
+2026-11-05T19:49:09.4678968Z Getting action download info
+2026-11-05T19:49:10.4585404Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-05T19:49:14.2460006Z Uses: sgl-project/sglang/.github/workflows/nightly-test-npu-e2e-multi-node.yml@refs/heads/main (e838360ffd706c1a45a390e30d4c9f01c56bf81c)
+2026-11-05T19:49:14.2464892Z ##[group] Inputs
+2026-11-05T19:49:14.2465498Z   runner: linux-amd64-cpu-4
+2026-11-05T19:49:14.2465931Z   test_type: accuracy
+2026-11-05T19:49:14.2466342Z   test_config_name: glm_5_2_w8a8_2p2d_32p_pcp_gpqa
+2026-11-05T19:49:14.2467420Z   prefill_size: 2
+2026-11-05T19:49:14.2467815Z   decode_size: 2
+2026-11-05T19:49:14.2468182Z   router_size: 1
+2026-11-05T19:49:14.2468552Z   node_size: 0
+2026-11-05T19:49:14.2469129Z   test_case: test/registered/npu/accuracy/glm5_2/test_npu_glm_5_2_w8a8_2p2d_32p_pcp_gpqa.py
+2026-11-05T19:49:14.2470138Z   image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:main-cann9.1.0-a3
+2026-11-05T19:49:14.2471365Z   install_sglang_from_source: false
+2026-11-05T19:49:14.2471978Z   prefill_decode_deployment: separation
+2026-11-05T19:49:14.2472462Z   transformers_version: 
+2026-11-05T19:49:14.2473124Z   run_start_metadata: {"branch_label": "main", "workflow_name": "Nightly Test (NPU)", "create_time": "20261106-0008"}
+2026-11-05T19:49:14.2473814Z ##[endgroup]
+2026-11-05T19:49:14.2474587Z Complete job name: multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_pcp_gpqa
+2026-11-05T19:49:14.3281297Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-05T19:49:14.3285091Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-05T19:49:14.3286075Z ##[endgroup]
+2026-11-05T19:49:14.5774644Z (node:107) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-05T19:49:14.5775603Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-05T19:49:14.5987337Z (node:107) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-05T19:49:29.8740113Z (node:107) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-05T19:49:30.8810812Z ##[group]Run pip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple jinja2
+2026-11-05T19:49:30.8812617Z [36;1mpip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple jinja2[0m
+2026-11-05T19:49:30.8813904Z [36;1mpip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple psutil[0m
+2026-11-05T19:49:30.8814887Z [36;1m# Install kubernetes[0m
+2026-11-05T19:49:30.8815841Z [36;1mpip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple kubernetes[0m
+2026-11-05T19:49:30.8816846Z [36;1mcp $KUBECTL /usr/local/sbin/[0m
+2026-11-05T19:49:30.8821624Z shell: sh -e {0}
+2026-11-05T19:49:30.8822231Z ##[endgroup]
+2026-11-05T19:49:30.8982705Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-05T19:49:30.8984750Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-05T19:49:30.8985460Z ##[endgroup]
+2026-11-05T19:49:31.1625946Z (node:229) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-05T19:49:31.1862404Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-05T19:49:31.1863739Z (node:229) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-05T19:49:31.2546896Z (node:229) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-05T19:49:32.0726686Z Looking in indexes: https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+2026-11-05T19:49:32.0727723Z Requirement already satisfied: jinja2 in /usr/local/python3.11.13/lib/python3.11/site-packages (3.1.6)
+2026-11-05T19:49:32.0734762Z Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from jinja2) (3.0.3)
+2026-11-05T19:49:32.3908669Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-11-05T19:49:32.5344021Z 
+2026-11-05T19:49:32.5344508Z [notice] A new release of pip is available: 25.3 -> 26.3
+2026-11-05T19:49:32.5345128Z [notice] To update, run: pip install --upgrade pip
+2026-11-05T19:49:32.9513591Z Looking in indexes: https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+2026-11-05T19:49:32.9514567Z Requirement already satisfied: psutil in /usr/local/python3.11.13/lib/python3.11/site-packages (6.0.0)
+2026-11-05T19:49:33.2627095Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-11-05T19:49:33.2664815Z 
+2026-11-05T19:49:33.2665043Z [notice] A new release of pip is available: 25.3 -> 26.3
+2026-11-05T19:49:33.2665725Z [notice] To update, run: pip install --upgrade pip
+2026-11-05T19:49:33.6667364Z Looking in indexes: https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+2026-11-05T19:49:33.7931023Z Collecting kubernetes
+2026-11-05T19:49:33.7970308Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/8a/de/ac1904ac7fb651426e5698f56a268669a1ca3d63378629bacbf057b25e75/kubernetes-37.0.1-py2.py3-none-any.whl (7.5 MB)
+2026-11-05T19:49:33.8751674Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.5/7.5 MB 97.5 MB/s  0:00:00
+2026-11-05T19:49:33.9154898Z Collecting certifi>=2026.7.22 (from kubernetes)
+2026-11-05T19:49:33.9176558Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/32/d1/a3652fe2c19134d0d15922177821d863cbd7e842d53a21bbe7e8e3a1b5ac/certifi-2026.10.23-py3-none-any.whl (135 kB)
+2026-11-05T19:49:33.9242646Z Requirement already satisfied: python-dateutil>=2.8.2 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (2.9.0.post0)
+2026-11-05T19:49:34.0730030Z Collecting pydantic>=2.13.5 (from kubernetes)
+2026-11-05T19:49:34.0752984Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/97/01/c71a71258b58659c72504e5fd65b451f6e36e34dc931d0b237ded213c814/pydantic-2.14.2-py3-none-any.whl (490 kB)
+2026-11-05T19:49:34.0879660Z Requirement already satisfied: PyYAML>=6.0.3 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (6.0.3)
+2026-11-05T19:49:34.3913213Z Collecting websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 (from kubernetes)
+2026-11-05T19:49:34.3934456Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/d5/d2/cc4dc1271e464942db7ee278baae2daa99ee77cb2af744025c04da585a3e/websocket_client-1.9.2-py3-none-any.whl (95 kB)
+2026-11-05T19:49:34.4010225Z Requirement already satisfied: requests in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (2.32.5)
+2026-11-05T19:49:34.4692336Z Collecting requests-oauthlib (from kubernetes)
+2026-11-05T19:49:34.4710541Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/3b/5d/63d4ae3b9daea098d5d6f5da83984853c1bbacd5dc826764b249fe119d24/requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+2026-11-05T19:49:34.4922131Z Collecting typing-extensions>=4.16.0 (from kubernetes)
+2026-11-05T19:49:34.4942238Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-11-05T19:49:34.5240611Z Collecting urllib3<3.0.0,>=2.8.0 (from kubernetes)
+2026-11-05T19:49:34.5259714Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/92/9d/c4e665119135114480843e7ab388fa94d8480650450e6f8e26b70d323a4c/urllib3-2.8.0-py3-none-any.whl (135 kB)
+2026-11-05T19:49:34.5958861Z Collecting durationpy>=0.11 (from kubernetes)
+2026-11-05T19:49:34.5976687Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/e6/c4/ebdf7837bc4ef6fd98cfb013c28855bb358467bf86c1af011bbc21e21df0/durationpy-0.11-py3-none-any.whl (4.1 kB)
+2026-11-05T19:49:35.2934849Z Collecting aiohttp<4.0.0,>=3.14.3 (from kubernetes)
+2026-11-05T19:49:35.2972103Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/42/74/2a2b22953de15c6c8a80debf26db3047e4e8a5a5db6dd7c2c6c01eec0605/aiohttp-3.14.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.9 MB)
+2026-11-05T19:49:35.3289257Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.9/1.9 MB 72.3 MB/s  0:00:00
+2026-11-05T19:49:35.4077023Z Collecting aiohttp-retry>=2.9.1 (from kubernetes)
+2026-11-05T19:49:35.4096305Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/1a/99/84ba7273339d0f3dfa57901b846489d2e5c2cd731470167757f1935fffbd/aiohttp_retry-2.9.1-py3-none-any.whl (10.0 kB)
+2026-11-05T19:49:35.4162059Z Requirement already satisfied: aiohappyeyeballs>=2.5.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.14.3->kubernetes) (2.6.1)
+2026-11-05T19:49:35.4164565Z Requirement already satisfied: aiosignal>=1.4.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.14.3->kubernetes) (1.4.0)
+2026-11-05T19:49:35.4168481Z Requirement already satisfied: attrs>=17.3.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.14.3->kubernetes) (25.4.0)
+2026-11-05T19:49:35.4172201Z Requirement already satisfied: frozenlist>=1.1.1 in /usr/local/python3.11.13/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.14.3->kubernetes) (1.8.0)
+2026-11-05T19:49:35.4174876Z Requirement already satisfied: multidict<8.0,>=4.5 in /usr/local/python3.11.13/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.14.3->kubernetes) (6.7.0)
+2026-11-05T19:49:35.4178935Z Requirement already satisfied: propcache>=0.2.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.14.3->kubernetes) (0.4.1)
+2026-11-05T19:49:35.7463257Z Collecting yarl<2.0,>=1.25.1 (from aiohttp<4.0.0,>=3.14.3->kubernetes)
+2026-11-05T19:49:35.7485660Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/95/0c/a71501bbc1a674ff72c4d6c2b75f4d9a5af819f5244c3a7558080a8802c5/yarl-1.25.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (117 kB)
+2026-11-05T19:49:35.7638864Z Requirement already satisfied: idna>=2.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from yarl<2.0,>=1.25.1->aiohttp<4.0.0,>=3.14.3->kubernetes) (3.11)
+2026-11-05T19:49:35.7735478Z Requirement already satisfied: annotated-types>=0.6.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from pydantic>=2.13.5->kubernetes) (0.7.0)
+2026-11-05T19:49:36.6850013Z Collecting pydantic-core==2.50.2 (from pydantic>=2.13.5->kubernetes)
+2026-11-05T19:49:36.6851625Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/70/7d/22bd04c22adae266ae5e99e4c34bd882daf6c93c35bda2f9674421c1e7c3/pydantic_core-2.50.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.2 MB)
+2026-11-05T19:49:36.7054509Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 80.4 MB/s  0:00:00
+2026-11-05T19:49:36.7216098Z Collecting typing-inspection>=0.4.4 (from pydantic>=2.13.5->kubernetes)
+2026-11-05T19:49:36.7235539Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/de/0c/ea2544850a7c135e15033a5c7a8e7211136184b7ae63e2239d557c2b3019/typing_inspection-0.4.5-py3-none-any.whl (14 kB)
+2026-11-05T19:49:36.7323873Z Requirement already satisfied: six>=1.5 in /usr/local/python3.11.13/lib/python3.11/site-packages (from python-dateutil>=2.8.2->kubernetes) (1.17.0)
+2026-11-05T19:49:36.7396608Z Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/python3.11.13/lib/python3.11/site-packages (from requests->kubernetes) (3.4.4)
+2026-11-05T19:49:36.7638679Z Collecting oauthlib>=3.0.0 (from requests-oauthlib->kubernetes)
+2026-11-05T19:49:36.7658617Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/df/ef/3b8adde1b32a6f540758bff734d3442c621734c83708e5f02b0ba2f43b84/oauthlib-4.0.1-py3-none-any.whl (161 kB)
+2026-11-05T19:49:37.1476789Z Installing collected packages: durationpy, yarl, websocket-client, urllib3, typing-extensions, oauthlib, certifi, typing-inspection, pydantic-core, requests-oauthlib, pydantic, aiohttp, aiohttp-retry, kubernetes
+2026-11-05T19:49:37.1579603Z   Attempting uninstall: yarl
+2026-11-05T19:49:37.1647883Z     Found existing installation: yarl 1.22.0
+2026-11-05T19:49:37.1678797Z     Uninstalling yarl-1.22.0:
+2026-11-05T19:49:37.1724764Z       Successfully uninstalled yarl-1.22.0
+2026-11-05T19:49:37.2631451Z   Attempting uninstall: urllib3
+2026-11-05T19:49:37.2666288Z     Found existing installation: urllib3 2.5.0
+2026-11-05T19:49:37.2706262Z     Uninstalling urllib3-2.5.0:
+2026-11-05T19:49:37.2812941Z       Successfully uninstalled urllib3-2.5.0
+2026-11-05T19:49:37.3544090Z   Attempting uninstall: typing-extensions
+2026-11-05T19:49:37.3582157Z     Found existing installation: typing_extensions 4.15.0
+2026-11-05T19:49:37.3595569Z     Uninstalling typing_extensions-4.15.0:
+2026-11-05T19:49:37.6369576Z       Successfully uninstalled typing_extensions-4.15.0
+2026-11-05T19:49:37.7418993Z   Attempting uninstall: certifi
+2026-11-05T19:49:37.7455653Z     Found existing installation: certifi 2025.10.5
+2026-11-05T19:49:37.7506823Z     Uninstalling certifi-2025.10.5:
+2026-11-05T19:49:37.7507197Z       Successfully uninstalled certifi-2025.10.5
+2026-11-05T19:49:37.7597023Z   Attempting uninstall: typing-inspection
+2026-11-05T19:49:37.7636986Z     Found existing installation: typing-inspection 0.4.2
+2026-11-05T19:49:37.7653366Z     Uninstalling typing-inspection-0.4.2:
+2026-11-05T19:49:37.7678796Z       Successfully uninstalled typing-inspection-0.4.2
+2026-11-05T19:49:37.7783280Z   Attempting uninstall: pydantic-core
+2026-11-05T19:49:37.7825860Z     Found existing installation: pydantic_core 2.41.5
+2026-11-05T19:49:37.7845151Z     Uninstalling pydantic_core-2.41.5:
+2026-11-05T19:49:37.7899622Z       Successfully uninstalled pydantic_core-2.41.5
+2026-11-05T19:49:37.8611489Z   Attempting uninstall: pydantic
+2026-11-05T19:49:37.8658718Z     Found existing installation: pydantic 2.12.4
+2026-11-05T19:49:37.8744480Z     Uninstalling pydantic-2.12.4:
+2026-11-05T19:49:37.8974439Z       Successfully uninstalled pydantic-2.12.4
+2026-11-05T19:49:38.1675209Z   Attempting uninstall: aiohttp
+2026-11-05T19:49:38.1712400Z     Found existing installation: aiohttp 3.13.2
+2026-11-05T19:49:38.1781487Z     Uninstalling aiohttp-3.13.2:
+2026-11-05T19:49:38.1965466Z       Successfully uninstalled aiohttp-3.13.2
+2026-11-05T19:49:44.3154482Z 
+2026-11-05T19:49:44.3238038Z ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+2026-11-05T19:49:44.3239653Z vllm 0.8.5.post1+empty requires xgrammar==0.1.18; platform_machine == "x86_64" or platform_machine == "aarch64", but you have xgrammar 0.1.25 which is incompatible.
+2026-11-05T19:49:44.3241989Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-11-05T19:49:44.3244424Z Successfully installed aiohttp-3.14.5 aiohttp-retry-2.9.1 certifi-2026.10.23 durationpy-0.11 kubernetes-37.0.1 oauthlib-4.0.1 pydantic-2.14.2 pydantic-core-2.50.2 requests-oauthlib-2.0.0 typing-extensions-4.16.0 typing-inspection-0.4.5 urllib3-2.8.0 websocket-client-1.9.2 yarl-1.25.1
+2026-11-05T19:49:44.3282146Z 
+2026-11-05T19:49:44.3282488Z [notice] A new release of pip is available: 25.3 -> 26.3
+2026-11-05T19:49:44.3282919Z [notice] To update, run: pip install --upgrade pip
+2026-11-05T19:49:45.2441276Z ##[group]Run actions/checkout@v4
+2026-11-05T19:49:45.2441642Z with:
+2026-11-05T19:49:45.2441887Z   repository: sgl-project/sglang
+2026-11-05T19:49:45.2445792Z   token: ***
+2026-11-05T19:49:45.2446031Z   ssh-strict: true
+2026-11-05T19:49:45.2446262Z   ssh-user: git
+2026-11-05T19:49:45.2446507Z   persist-credentials: true
+2026-11-05T19:49:45.2446771Z   clean: true
+2026-11-05T19:49:45.2447020Z   sparse-checkout-cone-mode: true
+2026-11-05T19:49:45.2447311Z   fetch-depth: 1
+2026-11-05T19:49:45.2447534Z   fetch-tags: false
+2026-11-05T19:49:45.2447767Z   show-progress: true
+2026-11-05T19:49:45.2448001Z   lfs: false
+2026-11-05T19:49:45.2448237Z   submodules: false
+2026-11-05T19:49:45.2448474Z   set-safe-directory: true
+2026-11-05T19:49:45.2448823Z   allow-unsafe-pr-checkout: false
+2026-11-05T19:49:45.2449193Z ##[endgroup]
+2026-11-05T19:49:45.2515345Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-05T19:49:45.2516320Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-05T19:49:45.2516714Z ##[endgroup]
+2026-11-05T19:49:45.4854075Z (node:270) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-05T19:49:45.4854873Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-05T19:49:45.5080970Z (node:270) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-05T19:49:45.5592369Z (node:270) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-05T19:49:46.9371158Z Syncing repository: sgl-project/sglang
+2026-11-05T19:49:46.9372861Z ##[group]Getting Git version info
+2026-11-05T19:49:46.9373207Z Working directory is '/__w/sglang/sglang'
+2026-11-05T19:49:46.9373718Z [command]/usr/bin/git version
+2026-11-05T19:49:46.9374003Z git version 2.34.1
+2026-11-05T19:49:46.9374881Z ##[endgroup]
+2026-11-05T19:49:46.9378542Z Copying '/root/.gitconfig' to '/__w/_temp/390537cb-dc04-45d9-9475-546bdd071acb/.gitconfig'
+2026-11-05T19:49:46.9379301Z Temporarily overriding HOME='/__w/_temp/390537cb-dc04-45d9-9475-546bdd071acb' before making global git config changes
+2026-11-05T19:49:46.9380111Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-05T19:49:46.9380696Z [command]/usr/bin/git config --global --add safe.directory /__w/sglang/sglang
+2026-11-05T19:49:46.9407211Z Deleting the contents of '/__w/sglang/sglang'
+2026-11-05T19:49:46.9411455Z ##[group]Initializing the repository
+2026-11-05T19:49:46.9415623Z [command]/usr/bin/git init /__w/sglang/sglang
+2026-11-05T19:49:46.9442009Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-05T19:49:46.9442598Z hint: is subject to change. To configure the initial branch name to use in all
+2026-11-05T19:49:46.9443171Z hint: of your new repositories, which will suppress this warning, call:
+2026-11-05T19:49:46.9443582Z hint: 
+2026-11-05T19:49:46.9443861Z hint: 	git config --global init.defaultBranch <name>
+2026-11-05T19:49:46.9444177Z hint: 
+2026-11-05T19:49:46.9444648Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-05T19:49:46.9445179Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-05T19:49:46.9445569Z hint: 
+2026-11-05T19:49:46.9445810Z hint: 	git branch -m <name>
+2026-11-05T19:49:46.9453776Z Initialized empty Git repository in /__w/sglang/sglang/.git/
+2026-11-05T19:49:46.9461677Z [command]/usr/bin/git remote add origin https://github.com/sgl-project/sglang
+2026-11-05T19:49:46.9491666Z ##[endgroup]
+2026-11-05T19:49:46.9492065Z ##[group]Disabling automatic garbage collection
+2026-11-05T19:49:46.9495006Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-05T19:49:46.9518534Z ##[endgroup]
+2026-11-05T19:49:46.9518897Z ##[group]Setting up auth
+2026-11-05T19:49:46.9525274Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-05T19:49:46.9553210Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-05T19:49:46.9830466Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-05T19:49:46.9861578Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-05T19:49:47.0139482Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-05T19:49:47.0169245Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-05T19:49:47.0438706Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-05T19:49:47.0478665Z ##[endgroup]
+2026-11-05T19:49:47.0479056Z ##[group]Fetching the repository
+2026-11-05T19:49:47.0487065Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +e838360ffd706c1a45a390e30d4c9f01c56bf81c:refs/remotes/origin/main
+2026-11-05T19:49:47.5315249Z warning: redirecting to http://git-cdn-service.git-cdn.svc.cluster.local:8000/sgl-project/sglang.git/
+2026-11-05T19:49:52.4746424Z From http://git-cdn-service.git-cdn.svc.cluster.local:8000/sgl-project/sglang
+2026-11-05T19:49:52.4747113Z  * [new ref]         e838360ffd706c1a45a390e30d4c9f01c56bf81c -> origin/main
+2026-11-05T19:49:52.4764400Z ##[endgroup]
+2026-11-05T19:49:52.4764824Z ##[group]Determining the checkout info
+2026-11-05T19:49:52.4765698Z ##[endgroup]
+2026-11-05T19:49:52.4773550Z [command]/usr/bin/git sparse-checkout disable
+2026-11-05T19:49:52.4817123Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-05T19:49:52.4842223Z ##[group]Checking out the ref
+2026-11-05T19:49:52.4845011Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-05T19:49:53.2713478Z Switched to a new branch 'main'
+2026-11-05T19:49:53.2713940Z Branch 'main' set up to track remote branch 'main' from 'origin'.
+2026-11-05T19:49:53.2741484Z ##[endgroup]
+2026-11-05T19:49:53.2780580Z [command]/usr/bin/git log -1 --format=%H
+2026-11-05T19:49:53.2803916Z e838360ffd706c1a45a390e30d4c9f01c56bf81c
+2026-11-05T19:49:53.8283897Z ##[group]Run # copy source code to shared-disk
+2026-11-05T19:49:53.8284467Z [36;1m# copy source code to shared-disk[0m
+2026-11-05T19:49:53.8284886Z [36;1m# Append run_id to isolate concurrent runs sharing the same PVC.[0m
+2026-11-05T19:49:53.8285287Z [36;1mcurrent_path=$(pwd)[0m
+2026-11-05T19:49:53.8285617Z [36;1mtarget_path=/root/.cache/tests/sglang-42061473997[0m
+2026-11-05T19:49:53.8285976Z [36;1mrm -rf ${target_path}[0m
+2026-11-05T19:49:53.8286262Z [36;1mmkdir -p ${target_path}[0m
+2026-11-05T19:49:53.8286575Z [36;1mcp -r ${current_path}/* ${target_path}/[0m
+2026-11-05T19:49:53.8287003Z shell: sh -e {0}
+2026-11-05T19:49:53.8287235Z ##[endgroup]
+2026-11-05T19:49:53.8374788Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-05T19:49:53.8375779Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-05T19:49:53.8376115Z ##[endgroup]
+2026-11-05T19:49:54.0731927Z (node:321) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-05T19:49:54.0732732Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-05T19:49:54.0958992Z (node:321) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-05T19:49:54.1531003Z (node:321) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-05T19:51:13.0053026Z ##[group]Run cd ${ASCEND_E2E_TEST_CONFIG_PATH}
+2026-11-05T19:51:13.0053450Z [36;1mcd ${ASCEND_E2E_TEST_CONFIG_PATH}[0m
+2026-11-05T19:51:13.0053915Z [36;1mkubectl delete -f ./k8s_multi_pd_*.yaml --ignore-not-found=true || true[0m
+2026-11-05T19:51:13.0054340Z [36;1m[0m
+2026-11-05T19:51:13.0054581Z [36;1mpod_name_prefix="${KUBE_JOB_NAME}-"[0m
+2026-11-05T19:51:13.0055024Z [36;1mecho "kube name space: $NAMESPACE, pod name prefix: ${pod_name_prefix}"[0m
+2026-11-05T19:51:13.0055455Z [36;1mwhile true; do[0m
+2026-11-05T19:51:13.0055844Z [36;1m  if kubectl get po -A -n $NAMESPACE | grep -q "${pod_name_prefix}"; then[0m
+2026-11-05T19:51:13.0056345Z [36;1m    echo "Found exist sglang job, sleeping for 30 seconds..."[0m
+2026-11-05T19:51:13.0056720Z [36;1m    sleep 30[0m
+2026-11-05T19:51:13.0057205Z [36;1m    kubectl get pods | grep "${pod_name_prefix}" | awk '{print $1}' | xargs kubectl delete pod -n $NAMESPACE || true[0m
+2026-11-05T19:51:13.0057730Z [36;1m  else[0m
+2026-11-05T19:51:13.0058070Z [36;1m    echo "No sglang job exist, start test case..."[0m
+2026-11-05T19:51:13.0058404Z [36;1m    break[0m
+2026-11-05T19:51:13.0058631Z [36;1m  fi[0m
+2026-11-05T19:51:13.0058839Z [36;1mdone[0m
+2026-11-05T19:51:13.0059174Z shell: sh -e {0}
+2026-11-05T19:51:13.0059399Z ##[endgroup]
+2026-11-05T19:51:13.0158362Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-05T19:51:13.0159400Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-05T19:51:13.0159732Z ##[endgroup]
+2026-11-05T19:51:13.2554207Z (node:407) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-05T19:51:13.2555014Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-05T19:51:13.2793014Z (node:407) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-05T19:51:13.3385425Z (node:407) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-05T19:51:13.8299042Z error: the path "./k8s_multi_pd_*.yaml" does not exist
+2026-11-05T19:51:13.8315011Z kube name space: sgl-project, pod name prefix: ascend-42061473997-
+2026-11-05T19:51:14.0918292Z No sglang job exist, start test case...
+2026-11-05T19:51:14.8631588Z ##[group]Run # sglang_source_relative_path is shared-disk path
+2026-11-05T19:51:14.8632423Z [36;1m# sglang_source_relative_path is shared-disk path[0m
+2026-11-05T19:51:14.8632929Z [36;1m# Append run_id so concurrent runs do not overwrite each other on the shared PVC.[0m
+2026-11-05T19:51:14.8633463Z [36;1msglang_source_relative_path=tests/sglang-42061473997[0m
+2026-11-05T19:51:14.8633940Z [36;1msglang_source_path=/root/.cache/${sglang_source_relative_path}[0m
+2026-11-05T19:51:14.8634388Z [36;1mecho "Source code path: ${sglang_source_path}"[0m
+2026-11-05T19:51:14.8634719Z [36;1m[0m
+2026-11-05T19:51:14.8635143Z [36;1mtest_case="test/registered/npu/accuracy/glm5_2/test_npu_glm_5_2_w8a8_2p2d_32p_pcp_gpqa.py"[0m
+2026-11-05T19:51:14.8635707Z [36;1mif [ ! -f "${sglang_source_path}/${test_case}" ]; then[0m
+2026-11-05T19:51:14.8636173Z [36;1m  echo "The testcase does not exit: ${sglang_source_path}/${test_case}"[0m
+2026-11-05T19:51:14.8636578Z [36;1m  exit 1[0m
+2026-11-05T19:51:14.8636842Z [36;1mfi[0m
+2026-11-05T19:51:14.8637046Z [36;1m[0m
+2026-11-05T19:51:14.8637272Z [36;1m# prepare for output data[0m
+2026-11-05T19:51:14.8637561Z [36;1mtc_name=${test_case##*/}[0m
+2026-11-05T19:51:14.8637892Z [36;1mtc_name=${tc_name%.*}[0m
+2026-11-05T19:51:14.8638150Z [36;1m[0m
+2026-11-05T19:51:14.8638429Z [36;1m# Provided automatically by the GitHub server.[0m
+2026-11-05T19:51:14.8638855Z [36;1m# run_id is the unique identifier for the workflow run,[0m
+2026-11-05T19:51:14.8639375Z [36;1m# attempt represents the re‑run attempt count of the job.[0m
+2026-11-05T19:51:14.8639767Z [36;1mrun_id=42061473997[0m
+2026-11-05T19:51:14.8640051Z [36;1mrun_attempt=1[0m
+2026-11-05T19:51:14.8640292Z [36;1m[0m
+2026-11-05T19:51:14.8640646Z [36;1m# Parse run metadata (branch_label / workflow_name / create_time)[0m
+2026-11-05T19:51:14.8641433Z [36;1m# from run_start_metadata JSON input using GitHub fromJson expression, same as partitions input.[0m
+2026-11-05T19:51:14.8642079Z [36;1mbranch_label=$(echo "main" | tr '/:' '--')[0m
+2026-11-05T19:51:14.8642698Z [36;1mworkflow_name=$(echo "Nightly Test (NPU)" | tr ' ' '_' | tr -d '()')[0m
+2026-11-05T19:51:14.8643179Z [36;1mcreate_time="20261106-0008"[0m
+2026-11-05T19:51:14.8643753Z [36;1mif [ -z "${create_time}" ]; then create_time=$(date -u -d '+8 hours' +%Y%m%d-%H%M); fi[0m
+2026-11-05T19:51:14.8644583Z [36;1m# Append the image tag to the workflow-name segment so that runs with[0m
+2026-11-05T19:51:14.8645101Z [36;1m# different images (CANN 9.0.0/9.1.0, a3/a5) persist into distinct,[0m
+2026-11-05T19:51:14.8645538Z [36;1m# image-tagged output/log directories.[0m
+2026-11-05T19:51:14.8646217Z [36;1mimage_label=$(echo "swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:main-cann9.1.0-a3" | sed 's#.*[/:]##')[0m
+2026-11-05T19:51:14.8646925Z [36;1mworkflow_name="${workflow_name}--${image_label}"[0m
+2026-11-05T19:51:14.8647268Z [36;1m[0m
+2026-11-05T19:51:14.8647602Z [36;1m# Print persistence‑directory‑prefix variables[0m
+2026-11-05T19:51:14.8648382Z [36;1mecho "Persistence prefix: run_id=${run_id} run_attempt=${run_attempt} branch_label=${branch_label} workflow_name=${workflow_name} create_time=${create_time}"[0m
+2026-11-05T19:51:14.8649082Z [36;1m[0m
+2026-11-05T19:51:14.8649674Z [36;1msglang_test_results_output_path=/root/.cache/tests/output/${branch_label}-${create_time}-${run_id}-${run_attempt}/${workflow_name}/accuracy/${tc_name}[0m
+2026-11-05T19:51:14.8650405Z [36;1mmkdir -p ${sglang_test_results_output_path}[0m
+2026-11-05T19:51:14.8650837Z [36;1mecho "Metrics file path: ${sglang_test_results_output_path}"[0m
+2026-11-05T19:51:14.8651351Z [36;1m[0m
+2026-11-05T19:51:14.8651670Z [36;1mprefill_decode_deployment="separation"[0m
+2026-11-05T19:51:14.8651994Z [36;1mkube_job_type=""[0m
+2026-11-05T19:51:14.8652329Z [36;1mif [ "$prefill_decode_deployment" = "separation" ];then[0m
+2026-11-05T19:51:14.8652718Z [36;1m  kube_job_type=multi-pd-separation[0m
+2026-11-05T19:51:14.8653321Z [36;1melif [ "$prefill_decode_deployment" = "mix" ];then[0m
+2026-11-05T19:51:14.8653691Z [36;1m  kube_job_type=multi-pd-mix[0m
+2026-11-05T19:51:14.8654087Z [36;1melse[0m
+2026-11-05T19:51:14.8654423Z [36;1m  echo "Unsupported deployment type: ${prefill_decode_deployment}"[0m
+2026-11-05T19:51:14.8654832Z [36;1m  exit 1[0m
+2026-11-05T19:51:14.8655046Z [36;1mfi[0m
+2026-11-05T19:51:14.8655247Z [36;1m[0m
+2026-11-05T19:51:14.8655467Z [36;1mtransformers_version=""[0m
+2026-11-05T19:51:14.8655770Z [36;1mcd ${ASCEND_E2E_TEST_CONFIG_PATH}[0m
+2026-11-05T19:51:14.8656103Z [36;1mCMD="python3 -u run_npu_e2e_test.py \[0m
+2026-11-05T19:51:14.8656414Z [36;1m  --env ci \[0m
+2026-11-05T19:51:14.8656918Z [36;1m  --image swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:main-cann9.1.0-a3 \[0m
+2026-11-05T19:51:14.8657577Z [36;1m  --sglang-source-relative-path ${sglang_source_relative_path} \[0m
+2026-11-05T19:51:14.8658079Z [36;1m  --metrics-data-file ${sglang_test_results_output_path} \[0m
+2026-11-05T19:51:14.8658465Z [36;1m  --test-case ${test_case} \[0m
+2026-11-05T19:51:14.8658775Z [36;1m  --kube-name-space ${NAMESPACE} \[0m
+2026-11-05T19:51:14.8659106Z [36;1m  --kube-job-type ${kube_job_type} \[0m
+2026-11-05T19:51:14.8659462Z [36;1m  --kube-job-name-prefix ${KUBE_JOB_NAME} \[0m
+2026-11-05T19:51:14.8659805Z [36;1m  --run-id 42061473997"[0m
+2026-11-05T19:51:14.8660182Z [36;1m[0m
+2026-11-05T19:51:14.8660476Z [36;1mif [ "$prefill_decode_deployment" = "separation" ];then[0m
+2026-11-05T19:51:14.8660841Z [36;1m  CMD="${CMD} \[0m
+2026-11-05T19:51:14.8661104Z [36;1m    --prefill-size 2 \[0m
+2026-11-05T19:51:14.8661632Z [36;1m    --decode-size 2 \[0m
+2026-11-05T19:51:14.8661908Z [36;1m    --router-size 1"[0m
+2026-11-05T19:51:14.8662232Z [36;1melif [ "$prefill_decode_deployment" = "mix" ];then[0m
+2026-11-05T19:51:14.8662586Z [36;1m  CMD="${CMD} --node-size 0"[0m
+2026-11-05T19:51:14.8662863Z [36;1melse[0m
+2026-11-05T19:51:14.8663218Z [36;1m  echo "Unsupported deployment type: ${prefill_decode_deployment}"[0m
+2026-11-05T19:51:14.8663624Z [36;1m  exit 1[0m
+2026-11-05T19:51:14.8663846Z [36;1mfi[0m
+2026-11-05T19:51:14.8664066Z [36;1m[0m
+2026-11-05T19:51:14.8664381Z [36;1mif [ "$SGLANG_IS_IN_CI" = "true" ] || [ "$SGLANG_IS_IN_CI" = "True" ];then[0m
+2026-11-05T19:51:14.8664795Z [36;1m  echo "Run test in ci."[0m
+2026-11-05T19:51:14.8665087Z [36;1m  CMD="${CMD} --sglang-is-in-ci"[0m
+2026-11-05T19:51:14.8665375Z [36;1mfi[0m
+2026-11-05T19:51:14.8665608Z [36;1m[0m
+2026-11-05T19:51:14.8665836Z [36;1minstall_sglang_from_source="false"[0m
+2026-11-05T19:51:14.8666314Z [36;1mif [ "$install_sglang_from_source" = "true" ] || [ "$install_sglang_from_source" = "True" ];then[0m
+2026-11-05T19:51:14.8666808Z [36;1m  echo "Install sglang from source."[0m
+2026-11-05T19:51:14.8667162Z [36;1m  CMD="${CMD} --install-sglang-from-source"[0m
+2026-11-05T19:51:14.8667567Z [36;1m  commit_id=e838360ffd706c1a45a390e30d4c9f01c56bf81c[0m
+2026-11-05T19:51:14.8668096Z [36;1m  echo "commit id: ${commit_id}" > "$(dirname "${sglang_test_results_output_path}")/commit_id"[0m
+2026-11-05T19:51:14.8668545Z [36;1melse[0m
+2026-11-05T19:51:14.8669085Z [36;1m  echo "Use sglang from image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:main-cann9.1.0-a3"[0m
+2026-11-05T19:51:14.8669669Z [36;1mfi[0m
+2026-11-05T19:51:14.8669871Z [36;1m[0m
+2026-11-05T19:51:14.8670120Z [36;1mif [ "$transformers_version" != "" ];then[0m
+2026-11-05T19:51:14.8670517Z [36;1m  CMD="${CMD} --transformers-version ${transformers_version}"[0m
+2026-11-05T19:51:14.8670893Z [36;1melse[0m
+2026-11-05T19:51:14.8671261Z [36;1m  echo "Use default transformers version in image."[0m
+2026-11-05T19:51:14.8671713Z [36;1mfi[0m
+2026-11-05T19:51:14.8671919Z [36;1m[0m
+2026-11-05T19:51:14.8672138Z [36;1mecho "Run command: ${CMD}"[0m
+2026-11-05T19:51:14.8672417Z [36;1meval "${CMD}"[0m
+2026-11-05T19:51:14.8672793Z shell: sh -e {0}
+2026-11-05T19:51:14.8673021Z ##[endgroup]
+2026-11-05T19:51:14.8758877Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-05T19:51:14.8759866Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-05T19:51:14.8760334Z ##[endgroup]
+2026-11-05T19:51:15.1132689Z (node:488) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-05T19:51:15.1133498Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-05T19:51:15.1366210Z (node:488) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-05T19:51:15.1925593Z (node:488) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-05T19:51:15.9061709Z Source code path: /root/.cache/tests/sglang-42061473997
+2026-11-05T19:51:15.9151922Z Persistence prefix: run_id=42061473997 run_attempt=1 branch_label=main workflow_name=Nightly_Test_NPU--main-cann9.1.0-a3 create_time=20261106-0008
+2026-11-05T19:51:15.9259211Z Metrics file path: /root/.cache/tests/output/main-20261106-0008-42061473997-1/Nightly_Test_NPU--main-cann9.1.0-a3/accuracy/test_npu_glm_5_2_w8a8_2p2d_32p_pcp_gpqa
+2026-11-05T19:51:15.9260021Z Run test in ci.
+2026-11-05T19:51:15.9260534Z Use sglang from image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:main-cann9.1.0-a3
+2026-11-05T19:51:15.9261125Z Use default transformers version in image.
+2026-11-05T19:51:15.9263945Z Run command: python3 -u run_npu_e2e_test.py   --env ci   --image swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:main-cann9.1.0-a3   --sglang-source-relative-path tests/sglang-42061473997   --metrics-data-file /root/.cache/tests/output/main-20261106-0008-42061473997-1/Nightly_Test_NPU--main-cann9.1.0-a3/accuracy/test_npu_glm_5_2_w8a8_2p2d_32p_pcp_gpqa   --test-case test/registered/npu/accuracy/glm5_2/test_npu_glm_5_2_w8a8_2p2d_32p_pcp_gpqa.py   --kube-name-space sgl-project   --kube-job-type multi-pd-separation   --kube-job-name-prefix ascend-42061473997   --run-id 42061473997     --prefill-size 2     --decode-size 2     --router-size 1 --sglang-is-in-ci
+2026-11-05T19:51:16.1858637Z 2026-11-05 19:51:16,184 - INFO - KUBE_CONFIG: /root/.cache/.cache/kb.yaml
+2026-11-05T19:51:16.8584697Z 2026-11-05 19:51:16,857 - INFO - Apply k8s yaml... KUBE_NAME_SPACE:sgl-project, KUBE_CONFIG_MAP:sglang-configmap-fde3a294jhhu610y, KUBE_JOB_TYPE:multi-pd-separation, KUBE_YAML_FILE:k8s_multi_pd_separation_fde3a294jhhu610y.yaml
+2026-11-05T19:51:16.8744259Z 2026-11-05 19:51:16,873 - INFO - Pod YAML written to k8s_multi_pd_separation_fde3a294jhhu610y.yaml
+2026-11-05T19:51:16.9198371Z 2026-11-05 19:51:16,918 - INFO - ConfigMap sglang-configmap-fde3a294jhhu610y is created
+2026-11-05T19:51:16.9797147Z 2026-11-05 19:51:16,978 - INFO - Volcano job ascend-42061473997-fde3a294jhhu610y is created
+2026-11-05T19:51:16.9797794Z 2026-11-05 19:51:16,978 - INFO - Waiting all pods to running...
+2026-11-05T19:51:17.0774056Z 2026-11-05 19:51:17,076 - INFO - No sglang pod, waiting...
+2026-11-05T19:51:22.1576317Z 2026-11-05 19:51:22,156 - INFO - Pod: ascend-42061473997-fde3a294jhhu610y-sglang-decode-0, status: Pending
+2026-11-05T19:51:27.3366644Z 2026-11-05 19:51:27,335 - INFO - Pod: ascend-42061473997-fde3a294jhhu610y-sglang-decode-0, status: Pending
+2026-11-05T19:51:32.4116969Z 2026-11-05 19:51:32,410 - INFO - Pod: ascend-42061473997-fde3a294jhhu610y-sglang-decode-0, status: Running
+2026-11-05T19:51:32.4117744Z 2026-11-05 19:51:32,410 - INFO - Pod: ascend-42061473997-fde3a294jhhu610y-sglang-decode-1, status: Running
+2026-11-05T19:51:32.4118449Z 2026-11-05 19:51:32,410 - INFO - Pod: ascend-42061473997-fde3a294jhhu610y-sglang-prefill-0, status: Running
+2026-11-05T19:51:32.4119166Z 2026-11-05 19:51:32,410 - INFO - Pod: ascend-42061473997-fde3a294jhhu610y-sglang-prefill-1, status: Running
+2026-11-05T19:51:32.4121944Z 2026-11-05 19:51:32,410 - INFO - Pod: ascend-42061473997-fde3a294jhhu610y-sglang-router-0, status: Running
+2026-11-05T19:51:32.4122752Z 2026-11-05 19:51:32,410 - INFO - All sglang Pod is Running !
+2026-11-05T19:51:32.4307488Z 2026-11-05 19:51:32,429 - INFO - ConfigMap sglang-configmap-fde3a294jhhu610y already exists. Updating...
+2026-11-05T19:51:32.4406681Z 2026-11-05 19:51:32,439 - INFO - ConfigMap sglang-configmap-fde3a294jhhu610y updated successfully.
+2026-11-05T19:51:32.4408935Z 2026-11-05 19:51:32,439 - INFO - api_version='v1' binary_data=None data={'ascend-42061473997-fde3a294jhhu610y-sglang-decode-0': '172.22.3.138', 'ascend-42061473997-fde3a294jhhu610y-sglang-decode-1': '172.22.3.154', 'ascend-42061473997-fde3a294jhhu610y-sglang-prefill-0': '172.22.3.166', 'ascend-42061473997-fde3a294jhhu610y-sglang-prefill-1': '172.22.3.71', 'ascend-42061473997-fde3a294jhhu610y-sglang-router-0': '172.22.3.160'} immutable=None kind='ConfigMap' metadata={'annotations': None,
+2026-11-05T19:51:32.4411038Z  'creation_timestamp': datetime.datetime(2026, 11, 5, 19, 51, 16, tzinfo=TzInfo(0)),
+2026-11-05T19:51:32.4411640Z  'deletion_grace_period_seconds': None,
+2026-11-05T19:51:32.4412056Z  'deletion_timestamp': None,
+2026-11-05T19:51:32.4412320Z  'finalizers': None,
+2026-11-05T19:51:32.4412565Z  'generate_name': None,
+2026-11-05T19:51:32.4412829Z  'generation': None,
+2026-11-05T19:51:32.4413203Z  'labels': None,
+2026-11-05T19:51:32.4413563Z  'managed_fields': None,
+2026-11-05T19:51:32.4413920Z  'name': 'sglang-configmap-fde3a294jhhu610y',
+2026-11-05T19:51:32.4414251Z  'namespace': 'sgl-project',
+2026-11-05T19:51:32.4414525Z  'owner_references': None,
+2026-11-05T19:51:32.4414784Z  'resource_version': '482538353',
+2026-11-05T19:51:32.4415048Z  'self_link': None,
+2026-11-05T19:51:32.4415309Z  'uid': 'd034e52b-0342-46ee-b380-f59d9c46b91c'}
+2026-11-05T19:51:32.4415873Z 2026-11-05 19:51:32,440 - INFO - Starting to monitor logs for Pod: ascend-42061473997-fde3a294jhhu610y-sglang-router-0
+2026-11-05T19:51:32.5338618Z NPU info:
+2026-11-05T19:51:32.5339336Z /root/sglang/python/sglang/test/ascend/e2e/run_npu_testcase.sh: line 14: npu-smi: command not found
+2026-11-05T19:51:32.5339958Z ===== Install kubernetes - Begin =====
+2026-11-05T19:51:32.5340282Z Install kubernetes locally.
+2026-11-05T19:51:32.5340567Z Looking in links: /tmp/kubernetes/
+2026-11-05T19:51:32.5340968Z Processing /tmp/kubernetes/kubernetes-35.0.0-py2.py3-none-any.whl
+2026-11-05T19:51:32.5341859Z Requirement already satisfied: certifi>=14.05.14 in /usr/local/python3.12.13/lib/python3.12/site-packages (from kubernetes) (2026.7.22)
+2026-11-05T19:51:32.5342747Z Requirement already satisfied: six>=1.9.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from kubernetes) (1.17.0)
+2026-11-05T19:51:32.5343639Z Requirement already satisfied: python-dateutil>=2.5.3 in /usr/local/python3.12.13/lib/python3.12/site-packages (from kubernetes) (4.0.0)
+2026-11-05T19:51:32.5344528Z Requirement already satisfied: pyyaml>=5.4.1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from kubernetes) (6.0.1)
+2026-11-05T19:51:32.5345284Z Processing /tmp/kubernetes/websocket_client-1.9.0-py3-none-any.whl (from kubernetes)
+2026-11-05T19:51:32.5346030Z Requirement already satisfied: requests in /usr/local/python3.12.13/lib/python3.12/site-packages (from kubernetes) (2.34.2)
+2026-11-05T19:51:32.5346778Z Processing /tmp/kubernetes/requests_oauthlib-2.0.0-py2.py3-none-any.whl (from kubernetes)
+2026-11-05T19:51:32.5347567Z Requirement already satisfied: urllib3!=2.6.0,>=1.24.2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from kubernetes) (2.7.0)
+2026-11-05T19:51:32.5348324Z Processing /tmp/kubernetes/durationpy-0.10-py3-none-any.whl (from kubernetes)
+2026-11-05T19:51:32.5349104Z Requirement already satisfied: tzdata in /usr/local/python3.12.13/lib/python3.12/site-packages (from python-dateutil>=2.5.3->kubernetes) (2026.6)
+2026-11-05T19:51:32.5350109Z Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from requests->kubernetes) (3.4.9)
+2026-11-05T19:51:32.5351452Z Requirement already satisfied: idna<4,>=2.5 in /usr/local/python3.12.13/lib/python3.12/site-packages (from requests->kubernetes) (3.18)
+2026-11-05T19:51:32.5352436Z Processing /tmp/kubernetes/oauthlib-3.3.1-py3-none-any.whl (from requests-oauthlib->kubernetes)
+2026-11-05T19:51:32.5353174Z Installing collected packages: durationpy, websocket-client, oauthlib, requests-oauthlib, kubernetes
+2026-11-05T19:51:32.5353588Z 
+2026-11-05T19:51:32.5353988Z Successfully installed durationpy-0.10 kubernetes-35.0.0 oauthlib-3.3.1 requests-oauthlib-2.0.0 websocket-client-1.9.0
+2026-11-05T19:51:32.5355835Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-11-05T19:51:32.5357253Z ===== Install kubernetes - End =====
+2026-11-05T19:51:32.5357578Z Transformers version for sglang:  5.19.0
+2026-11-05T19:51:32.5357869Z performance
+2026-11-05T19:51:32.5358091Z vm.swappiness = 0
+2026-11-05T19:51:32.5358332Z kernel.numa_balancing = 0
+2026-11-05T19:51:32.5358607Z kernel.sched_migration_cost_ns = 50000
+2026-11-05T19:51:32.5358901Z ASCEND_VISIBLE_DEVICES=
+2026-11-05T19:51:32.5359152Z Use sglang from docker image
+2026-11-05T19:51:35.4693991Z can not use command: npu-smi info
+2026-11-05T19:51:38.6807441Z Running test case test/registered/npu/accuracy/glm5_2/test_npu_glm_5_2_w8a8_2p2d_32p_pcp_gpqa.py
+2026-11-05T19:51:38.6982966Z Log path: /root/.cache/tests/logs/log/main-20261106-0008-42061473997-1/Nightly_Test_NPU--main-cann9.1.0-a3/test_npu_glm_5_2_w8a8_2p2d_32p_pcp_gpqa/ascend-42061473997-fde3a294jhhu610y-sglang-router-0
+2026-11-05T19:51:41.4119092Z can not use command: npu-smi info
+2026-11-05T19:51:48.9690482Z 2026-11-06 03:51:48,965 - INFO - get env NAMESPACE = sgl-project
+2026-11-05T19:51:48.9691126Z 2026-11-06 03:51:48,965 - INFO - get env KUBE_CONFIG_MAP = sglang-configmap-fde3a294jhhu610y
+2026-11-05T19:51:48.9702252Z 2026-11-06 03:51:48,966 - INFO - The nic name matched is enp23s0f3
+2026-11-05T19:51:48.9702726Z 2026-11-06 03:51:48,967 - INFO - PYTHON_FOR_TEST_TOOL: python3
+2026-11-05T19:51:48.9846536Z 2026-11-06 03:51:48,982 - INFO - PYTHON_FOR_TEST_TOOL: python3
+2026-11-05T19:51:48.9898640Z 2026-11-06 03:51:48,987 - INFO - get env LANGUAGE = en_US:en
+2026-11-05T19:51:50.5762385Z 2026-11-06 03:51:50,573 - INFO - get env TORCHINDUCTOR_CACHE_DIR = /root/.cache/sglang/inductor
+2026-11-05T19:51:51.2458513Z 2026-11-06 03:51:51,242 - INFO - get env LD_LIBRARY_PATH = /usr/local/Ascend/extra-ops/vendors/custom_transformer/op_api/lib:/usr/local/Ascend/cann-9.1.0/opp/vendors/custom_transformer/op_api/lib/:/usr/local/Ascend/cann-9.1.0/opp/vendors/customize/op_api/lib/:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/cann-9.1.0/lib64:/usr/local/Ascend/cann-9.1.0/lib64/plugin/opskernel:/usr/local/Ascend/cann-9.1.0/lib64/plugin/nnengine:/usr/local/Ascend/cann-9.1.0/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64:/usr/local/lib:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/python3.12.13/lib:
+2026-11-05T19:51:54.2572977Z 2026-11-06 03:51:54,248 - INFO - get env PATH = /usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/bin:/usr/local/Ascend/cann-9.1.0/bin:/usr/local/Ascend/cann-9.1.0/tools/ccec_compiler/bin:/usr/local/Ascend/cann-9.1.0/tools/profiler/bin:/usr/local/Ascend/cann-9.1.0/tools/ascend_system_advisor/asys:/usr/local/Ascend/cann-9.1.0/tools/show_kernel_debug_data:/usr/local/Ascend/cann-9.1.0/tools/msobjdump:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/bin:/usr/local/Ascend/ascend-toolkit/latest/bin:/usr/local/Ascend/ascend-toolkit/latest/compiler/ccec_compiler/bin:/usr/local/Ascend/ascend-toolkit/latest/tools/ccec_compiler/bin:/usr/local/python3.12.13/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+2026-11-05T19:51:54.2669554Z 2026-11-06 03:51:54,264 - INFO - get env TRITON_CACHE_DIR = /root/.cache/sglang/triton
+2026-11-05T19:51:55.0380627Z 2026-11-06 03:51:55,035 - INFO - get env ASCEND_CUSTOM_OPP_PATH = /usr/local/Ascend/extra-ops/vendors/custom_transformer/:/usr/local/Ascend/cann-9.1.0/opp/vendors/custom_transformer:/usr/local/Ascend/cann-9.1.0/opp/vendors/customize:
+2026-11-05T19:51:55.6863566Z 2026-11-06 03:51:55,683 - INFO - get env HOSTNAME = ascend-42061473997-fde3a294jhhu610y-sglang-router-0
+2026-11-05T19:51:55.7333701Z 2026-11-06 03:51:55,730 - INFO - get env POD_IP = 172.22.3.160
+2026-11-05T19:51:55.7334229Z 2026-11-06 03:51:55,731 - INFO - Init 172.22.3.160 cls.role='router'!
+2026-11-05T19:51:55.7354190Z 2026-11-06 03:51:55,731 - INFO - The current node is router, skip this function start_pd_server.
+2026-11-05T19:51:55.7354741Z 2026-11-06 03:51:55,731 - INFO - Starting router in thread...
+2026-11-05T19:51:55.7355180Z 2026-11-06 03:51:55,731 - INFO - launch_router start ......
+2026-11-05T19:51:55.7355754Z 2026-11-06 03:51:55,731 - INFO - Waiting for router to be ready at http://172.22.3.160:6677/health
+2026-11-05T19:51:55.7356401Z 2026-11-06 03:51:55,731 - INFO - Waiting for the server to start at http://172.22.3.160:6677/health...
+2026-11-05T19:51:55.9133263Z 2026-11-06 03:51:55,911 - INFO - get env KUBECONFIG = /root/.cache/.cache/kb.yaml
+2026-11-05T19:51:56.1380326Z 2026-11-06 03:51:56,135 - INFO - Discovered 8 worker nodes (prefill: 4, decode: 4)
+2026-11-05T19:51:56.1997515Z 2026-11-06 03:51:56,197 - INFO - Successfully queried ConfigMap sglang-configmap-fde3a294jhhu610y in namespace sgl-project
+2026-11-05T19:51:56.2077969Z 2026-11-06 03:51:56,199 - INFO - Retrieved ConfigMap data: {'ascend-42061473997-fde3a294jhhu610y-sglang-decode-0': '172.22.3.138', 'ascend-42061473997-fde3a294jhhu610y-sglang-decode-1': '172.22.3.154', 'ascend-42061473997-fde3a294jhhu610y-sglang-prefill-0': '172.22.3.166', 'ascend-42061473997-fde3a294jhhu610y-sglang-prefill-1': '172.22.3.71', 'ascend-42061473997-fde3a294jhhu610y-sglang-router-0': '172.22.3.160'}
+2026-11-05T19:51:56.2080052Z 2026-11-06 03:51:56,199 - INFO - ConfigMap monitoring complete: prefill_url=['172.22.3.166:8000'], decode_url=['172.22.3.138:8000'], bootstrap_ports=['8995'], node_ip_list=['172.22.3.138', '172.22.3.166']
+2026-11-05T19:59:41.2403360Z 2026-11-06 03:59:41,229 - INFO - Node 172.22.3.138:8000 is ready
+2026-11-05T19:59:41.2404037Z 2026-11-06 03:59:41,230 - INFO - Waiting for 1 more nodes to be ready...
+2026-11-05T19:59:56.2338401Z 2026-11-06 03:59:56,231 - INFO - Node 172.22.3.166:8000 is ready
+2026-11-05T19:59:56.2338936Z 2026-11-06 03:59:56,231 - INFO - All 2 nodes' ports are ready!
+2026-11-05T19:59:56.2340443Z 2026-11-06 03:59:56,231 - INFO - Starting router with command: python3 -u -m sglang_router.launch_router --host 0.0.0.0 --port 6677 --pd-disaggregation --policy cache_aware --policy round_robin --request-timeout-secs 7200 --disable-health-check --disable-circuit-breaker --prefill http://172.22.3.166:8000 8995 --decode http://172.22.3.138:8000
+2026-11-05T19:59:56.2363042Z 2026-11-06 03:59:56,232 - INFO - Router process started with PID: 373
+2026-11-05T19:59:56.2364096Z /usr/local/python3.12.13/lib/python3.12/subprocess.py:1127: ResourceWarning: subprocess 373 is still running
+2026-11-05T19:59:56.2364661Z   _warn("subprocess %s is still running" % self.pid,
+2026-11-05T19:59:57.0599460Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::server[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/server.rs[0m[2m:[0m[2m794:[0m Starting router on 0.0.0.0:6677 | mode: PrefillDecode { prefill_urls: [("http://172.22.3.166:8000", Some(8995))], decode_urls: ["http://172.22.3.138:8000"], prefill_policy: None, decode_policy: None } | policy: RoundRobin | max_payload: 512MB
+2026-11-05T19:59:57.0932818Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::app_context[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/app_context.rs[0m[2m:[0m[2m412:[0m Tokenizer path is not provided, will load from worker on the fly
+2026-11-05T19:59:57.0969840Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::data_connector::factory[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/data_connector/factory.rs[0m[2m:[0m[2m51:[0m Initializing data connector: Memory
+2026-11-05T19:59:57.0971517Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::mcp::manager[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/mcp/manager.rs[0m[2m:[0m[2m90:[0m No static MCP servers connected
+2026-11-05T19:59:57.1075664Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::server[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/server.rs[0m[2m:[0m[2m833:[0m Initializing workers for routing mode: PrefillDecode { prefill_urls: [("http://172.22.3.166:8000", Some(8995))], decode_urls: ["http://172.22.3.138:8000"], prefill_policy: None, decode_policy: None }
+2026-11-05T19:59:57.1077502Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::server[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/server.rs[0m[2m:[0m[2m851:[0m Worker initialization job submitted (will complete in background)
+2026-11-05T19:59:57.1078908Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::server[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/server.rs[0m[2m:[0m[2m863:[0m No MCP config provided, skipping MCP server initialization
+2026-11-05T19:59:57.1080209Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::server[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/server.rs[0m[2m:[0m[2m875:[0m Workers initialized: 0 total, 0 healthy
+2026-11-05T19:59:57.1081879Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::routers::router_manager[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/routers/router_manager.rs[0m[2m:[0m[2m169:[0m Initializing RouterManager in single-router mode
+2026-11-05T19:59:57.1083458Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::routers::router_manager[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/routers/router_manager.rs[0m[2m:[0m[2m177:[0m Created single router with ID: http-pd
+2026-11-05T19:59:57.1103489Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::routers::router_manager[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/routers/router_manager.rs[0m[2m:[0m[2m216:[0m Set default router to http-pd
+2026-11-05T19:59:57.1104939Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::server[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/server.rs[0m[2m:[0m[2m892:[0m Global health checks disabled via CLI/config; skipping health checker
+2026-11-05T19:59:57.1106368Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::core::worker_manager[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/core/worker_manager.rs[0m[2m:[0m[2m350:[0m Starting load monitoring with interval: 30s
+2026-11-05T19:59:57.1107789Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::server[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/server.rs[0m[2m:[0m[2m907:[0m Rate limiting is disabled (max_concurrent_requests = -1)
+2026-11-05T19:59:57.1109043Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::server[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/server.rs[0m[2m:[0m[2m985:[0m Router ready | workers: []
+2026-11-05T19:59:57.1134384Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m197:[0m Workflow started [3minstance_id[0m[2m=[0m9b44667c-3eb4-4b81-a426-d795bed3e73b [3mdefinition_id[0m[2m=[0mlocal_worker_registration
+2026-11-05T19:59:57.1136765Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m197:[0m Workflow started [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mdefinition_id[0m[2m=[0mlocal_worker_registration
+2026-11-05T19:59:57.1160140Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3mattempt[0m[2m=[0m1
+2026-11-05T19:59:57.1162415Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m9b44667c-3eb4-4b81-a426-d795bed3e73b [3mstep_id[0m[2m=[0mdetect_connection_mode [3mattempt[0m[2m=[0m1
+2026-11-05T19:59:57.1164064Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::server[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/server.rs[0m[2m:[0m[2m1018:[0m Starting server on 0.0.0.0:6677
+2026-11-05T19:59:57.1290761Z [2m2026-11-05 19:59:57[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m247:[0m Step retrying [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3mattempt[0m[2m=[0m2 [3mdelay_ms[0m[2m=[0m1000
+2026-11-05T19:59:57.1307207Z [2m2026-11-05 19:59:57[0m [33m WARN[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m233:[0m Step failed [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3merror[0m[2m=[0m"Step failed: detect_connection_mode - Both HTTP and gRPC health checks failed for http://172.22.3.166:8000: HTTP: Health check failed: HTTP status server error (503 Service Unavailable) for url (http://172.22.3.166:8000/health), gRPC: gRPC failed (tried SGLang and vLLM): gRPC health check failed: status: 'Unknown error', self: \"h2 protocol error: http2 error\"" [3mwill_retry[0m[2m=[0mtrue
+2026-11-05T19:59:58.1237981Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m220:[0m Step succeeded [3minstance_id[0m[2m=[0m9b44667c-3eb4-4b81-a426-d795bed3e73b [3mstep_id[0m[2m=[0mdetect_connection_mode [3mduration_ms[0m[2m=[0m1011
+2026-11-05T19:59:58.1240270Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m9b44667c-3eb4-4b81-a426-d795bed3e73b [3mstep_id[0m[2m=[0mdiscover_metadata [3mattempt[0m[2m=[0m1
+2026-11-05T19:59:58.1290781Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3mattempt[0m[2m=[0m2
+2026-11-05T19:59:58.1333594Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m247:[0m Step retrying [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3mattempt[0m[2m=[0m3 [3mdelay_ms[0m[2m=[0m2000
+2026-11-05T19:59:58.1337519Z [2m2026-11-05 19:59:58[0m [33m WARN[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m233:[0m Step failed [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3merror[0m[2m=[0m"Step failed: detect_connection_mode - Both HTTP and gRPC health checks failed for http://172.22.3.166:8000: HTTP: Health check failed: HTTP status server error (503 Service Unavailable) for url (http://172.22.3.166:8000/health), gRPC: gRPC failed (tried SGLang and vLLM): gRPC health check failed: status: 'Unknown error', self: \"h2 protocol error: http2 error\"" [3mwill_retry[0m[2m=[0mtrue
+2026-11-05T19:59:58.1788212Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m220:[0m Step succeeded [3minstance_id[0m[2m=[0m9b44667c-3eb4-4b81-a426-d795bed3e73b [3mstep_id[0m[2m=[0mdiscover_metadata [3mduration_ms[0m[2m=[0m55
+2026-11-05T19:59:58.1791664Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m9b44667c-3eb4-4b81-a426-d795bed3e73b [3mstep_id[0m[2m=[0mdiscover_dp_info [3mattempt[0m[2m=[0m1
+2026-11-05T19:59:58.1795864Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m220:[0m Step succeeded [3minstance_id[0m[2m=[0m9b44667c-3eb4-4b81-a426-d795bed3e73b [3mstep_id[0m[2m=[0mdiscover_dp_info [3mduration_ms[0m[2m=[0m0
+2026-11-05T19:59:58.1900174Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m9b44667c-3eb4-4b81-a426-d795bed3e73b [3mstep_id[0m[2m=[0mcreate_worker [3mattempt[0m[2m=[0m1
+2026-11-05T19:59:58.1902498Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m220:[0m Step succeeded [3minstance_id[0m[2m=[0m9b44667c-3eb4-4b81-a426-d795bed3e73b [3mstep_id[0m[2m=[0mcreate_worker [3mduration_ms[0m[2m=[0m0
+2026-11-05T19:59:58.1904608Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m9b44667c-3eb4-4b81-a426-d795bed3e73b [3mstep_id[0m[2m=[0mregister_workers [3mattempt[0m[2m=[0m1
+2026-11-05T19:59:58.1906727Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m220:[0m Step succeeded [3minstance_id[0m[2m=[0m9b44667c-3eb4-4b81-a426-d795bed3e73b [3mstep_id[0m[2m=[0mregister_workers [3mduration_ms[0m[2m=[0m2
+2026-11-05T19:59:58.1908628Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::core::steps::worker::shared::activate[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/core/steps/worker/shared/activate.rs[0m[2m:[0m[2m31:[0m Activated 1 worker(s) (marked as healthy)
+2026-11-05T19:59:58.1910471Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::tokenizer::registry[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/tokenizer/registry.rs[0m[2m:[0m[2m121:[0m Loading tokenizer 'glm-5.2-w8a8' from source: /root/.cache/modelscope/hub/models/Eco-Tech/GLM-5.2-w8a8
+2026-11-05T19:59:58.1912364Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::policies::registry[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/policies/registry.rs[0m[2m:[0m[2m89:[0m Assigning policy round_robin to new model glm-5.2-w8a8
+2026-11-05T19:59:58.1914607Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m220:[0m Step succeeded [3minstance_id[0m[2m=[0m9b44667c-3eb4-4b81-a426-d795bed3e73b [3mstep_id[0m[2m=[0mactivate_workers [3mduration_ms[0m[2m=[0m0
+2026-11-05T19:59:58.1916864Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m9b44667c-3eb4-4b81-a426-d795bed3e73b [3mstep_id[0m[2m=[0mactivate_workers [3mattempt[0m[2m=[0m1
+2026-11-05T19:59:58.1918953Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m9b44667c-3eb4-4b81-a426-d795bed3e73b [3mstep_id[0m[2m=[0mupdate_policies [3mattempt[0m[2m=[0m1
+2026-11-05T19:59:58.1921131Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m220:[0m Step succeeded [3minstance_id[0m[2m=[0m9b44667c-3eb4-4b81-a426-d795bed3e73b [3mstep_id[0m[2m=[0mupdate_policies [3mduration_ms[0m[2m=[0m0
+2026-11-05T19:59:58.8588581Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::tokenizer::registry[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/tokenizer/registry.rs[0m[2m:[0m[2m141:[0m Successfully registered tokenizer 'glm-5.2-w8a8' with id: 17383b9c-853c-453a-9fb7-50b84d6097d4
+2026-11-05T19:59:58.8590677Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m9b44667c-3eb4-4b81-a426-d795bed3e73b [3mstep_id[0m[2m=[0mregister_tokenizer [3mattempt[0m[2m=[0m1
+2026-11-05T19:59:58.8592932Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m259:[0m Workflow completed [3minstance_id[0m[2m=[0m9b44667c-3eb4-4b81-a426-d795bed3e73b [3mduration_ms[0m[2m=[0m1747
+2026-11-05T19:59:58.8595016Z [2m2026-11-05 19:59:58[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m220:[0m Step succeeded [3minstance_id[0m[2m=[0m9b44667c-3eb4-4b81-a426-d795bed3e73b [3mstep_id[0m[2m=[0mregister_tokenizer [3mduration_ms[0m[2m=[0m676
+2026-11-05T20:00:00.1354212Z [2m2026-11-05 20:00:00[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3mattempt[0m[2m=[0m3
+2026-11-05T20:00:00.1434050Z [2m2026-11-05 20:00:00[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m247:[0m Step retrying [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3mattempt[0m[2m=[0m4 [3mdelay_ms[0m[2m=[0m3000
+2026-11-05T20:00:00.1437990Z [2m2026-11-05 20:00:00[0m [33m WARN[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m233:[0m Step failed [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3merror[0m[2m=[0m"Step failed: detect_connection_mode - Both HTTP and gRPC health checks failed for http://172.22.3.166:8000: HTTP: Health check failed: HTTP status server error (503 Service Unavailable) for url (http://172.22.3.166:8000/health), gRPC: gRPC failed (tried SGLang and vLLM): gRPC health check failed: status: 'Unknown error', self: \"h2 protocol error: http2 error\"" [3mwill_retry[0m[2m=[0mtrue
+2026-11-05T20:00:03.1412128Z [2m2026-11-05 20:00:03[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3mattempt[0m[2m=[0m4
+2026-11-05T20:00:03.1450889Z [2m2026-11-05 20:00:03[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m247:[0m Step retrying [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3mattempt[0m[2m=[0m5 [3mdelay_ms[0m[2m=[0m4000
+2026-11-05T20:00:03.1454949Z [2m2026-11-05 20:00:03[0m [33m WARN[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m233:[0m Step failed [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3merror[0m[2m=[0m"Step failed: detect_connection_mode - Both HTTP and gRPC health checks failed for http://172.22.3.166:8000: HTTP: Health check failed: HTTP status server error (503 Service Unavailable) for url (http://172.22.3.166:8000/health), gRPC: gRPC failed (tried SGLang and vLLM): gRPC health check failed: status: 'Unknown error', self: \"h2 protocol error: http2 error\"" [3mwill_retry[0m[2m=[0mtrue
+2026-11-05T20:00:05.8227696Z [2m2026-11-05 20:00:05[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mGET [3muri[0m[2m=[0m/health [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"req-paLAQaBC5Fj7mkiy972ogVSj"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:00:05.8230737Z [2m2026-11-05 20:00:05[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mGET [3muri[0m[2m=[0m/health [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"req-paLAQaBC5Fj7mkiy972ogVSj" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m136[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:00:05.8264449Z 2026-11-06 04:00:05,824 - INFO - Server http://172.22.3.160:6677/health is ready!
+2026-11-05T20:00:05.8265048Z 2026-11-06 04:00:05,824 - INFO - Waiting 120 seconds for the server to fully initialize...
+2026-11-05T20:00:07.1456924Z [2m2026-11-05 20:00:07[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3mattempt[0m[2m=[0m5
+2026-11-05T20:00:07.1494461Z [2m2026-11-05 20:00:07[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m247:[0m Step retrying [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3mattempt[0m[2m=[0m6 [3mdelay_ms[0m[2m=[0m5000
+2026-11-05T20:00:07.1498267Z [2m2026-11-05 20:00:07[0m [33m WARN[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m233:[0m Step failed [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3merror[0m[2m=[0m"Step failed: detect_connection_mode - Both HTTP and gRPC health checks failed for http://172.22.3.166:8000: HTTP: Health check failed: HTTP status server error (503 Service Unavailable) for url (http://172.22.3.166:8000/health), gRPC: gRPC failed (tried SGLang and vLLM): gRPC health check failed: status: 'Unknown error', self: \"h2 protocol error: http2 error\"" [3mwill_retry[0m[2m=[0mtrue
+2026-11-05T20:00:12.1511946Z [2m2026-11-05 20:00:12[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3mattempt[0m[2m=[0m6
+2026-11-05T20:00:12.1571100Z [2m2026-11-05 20:00:12[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m247:[0m Step retrying [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3mattempt[0m[2m=[0m7 [3mdelay_ms[0m[2m=[0m5000
+2026-11-05T20:00:12.1575504Z [2m2026-11-05 20:00:12[0m [33m WARN[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m233:[0m Step failed [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3merror[0m[2m=[0m"Step failed: detect_connection_mode - Both HTTP and gRPC health checks failed for http://172.22.3.166:8000: HTTP: Health check failed: HTTP status server error (503 Service Unavailable) for url (http://172.22.3.166:8000/health), gRPC: gRPC failed (tried SGLang and vLLM): gRPC health check failed: status: 'Unknown error', self: \"h2 protocol error: http2 error\"" [3mwill_retry[0m[2m=[0mtrue
+2026-11-05T20:00:17.1583241Z [2m2026-11-05 20:00:17[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3mattempt[0m[2m=[0m7
+2026-11-05T20:00:18.1616791Z [2m2026-11-05 20:00:18[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m220:[0m Step succeeded [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdetect_connection_mode [3mduration_ms[0m[2m=[0m1003
+2026-11-05T20:00:18.1619076Z [2m2026-11-05 20:00:18[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdiscover_metadata [3mattempt[0m[2m=[0m1
+2026-11-05T20:00:18.1841793Z [2m2026-11-05 20:00:18[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m220:[0m Step succeeded [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdiscover_metadata [3mduration_ms[0m[2m=[0m22
+2026-11-05T20:00:18.1843939Z [2m2026-11-05 20:00:18[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdiscover_dp_info [3mattempt[0m[2m=[0m1
+2026-11-05T20:00:18.1846051Z [2m2026-11-05 20:00:18[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m220:[0m Step succeeded [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mdiscover_dp_info [3mduration_ms[0m[2m=[0m0
+2026-11-05T20:00:18.1848176Z [2m2026-11-05 20:00:18[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m220:[0m Step succeeded [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mcreate_worker [3mduration_ms[0m[2m=[0m0
+2026-11-05T20:00:18.1850260Z [2m2026-11-05 20:00:18[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mregister_workers [3mattempt[0m[2m=[0m1
+2026-11-05T20:00:18.1852933Z [2m2026-11-05 20:00:18[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mcreate_worker [3mattempt[0m[2m=[0m1
+2026-11-05T20:00:18.1855192Z [2m2026-11-05 20:00:18[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m220:[0m Step succeeded [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mregister_workers [3mduration_ms[0m[2m=[0m0
+2026-11-05T20:00:18.1857084Z [2m2026-11-05 20:00:18[0m [32m INFO[0m [2msmg::core::steps::worker::shared::activate[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/core/steps/worker/shared/activate.rs[0m[2m:[0m[2m31:[0m Activated 1 worker(s) (marked as healthy)
+2026-11-05T20:00:18.1859020Z [2m2026-11-05 20:00:18[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mregister_tokenizer [3mattempt[0m[2m=[0m1
+2026-11-05T20:00:18.1861145Z [2m2026-11-05 20:00:18[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m220:[0m Step succeeded [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mregister_tokenizer [3mduration_ms[0m[2m=[0m0
+2026-11-05T20:00:18.1864429Z [2m2026-11-05 20:00:18[0m [33m WARN[0m [2msmg::core::steps::worker::shared::update_policies[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/core/steps/worker/shared/update_policies.rs[0m[2m:[0m[2m62:[0m Model glm-5.2-w8a8 has conflicting tp_size: prefill=Some("8"), decode=Some("32")
+2026-11-05T20:00:18.1866919Z [2m2026-11-05 20:00:18[0m [33m WARN[0m [2msmg::core::steps::worker::shared::update_policies[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/core/steps/worker/shared/update_policies.rs[0m[2m:[0m[2m62:[0m Model glm-5.2-w8a8 has conflicting load_balance_method: prefill=Some("follow_bootstrap_room"), decode=Some("round_robin")
+2026-11-05T20:00:18.1869131Z [2m2026-11-05 20:00:18[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mactivate_workers [3mattempt[0m[2m=[0m1
+2026-11-05T20:00:18.1871318Z [2m2026-11-05 20:00:18[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m208:[0m Step started [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mupdate_policies [3mattempt[0m[2m=[0m1
+2026-11-05T20:00:18.1873498Z [2m2026-11-05 20:00:18[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m220:[0m Step succeeded [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mactivate_workers [3mduration_ms[0m[2m=[0m0
+2026-11-05T20:00:18.1875616Z [2m2026-11-05 20:00:18[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m220:[0m Step succeeded [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mstep_id[0m[2m=[0mupdate_policies [3mduration_ms[0m[2m=[0m0
+2026-11-05T20:00:18.1877639Z [2m2026-11-05 20:00:18[0m [32m INFO[0m [2msmg::workflow::event[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/workflow/event.rs[0m[2m:[0m[2m259:[0m Workflow completed [3minstance_id[0m[2m=[0m597135bc-2bcf-4bc3-adfa-72df3fbf2fff [3mduration_ms[0m[2m=[0m21073
+2026-11-05T20:02:05.8273507Z [CI Test Method] TestNPUGLM5_2_W8A8_2P2D_PCP_GPQA.test_npu_glm_5_2_w8a8_2p2d_pcp_gpqa
+2026-11-05T20:02:05.8291877Z 2026-11-06 04:02:05,825 - INFO - get env SGLANG_TEST_MAX_RETRY = 0
+2026-11-05T20:02:05.8293100Z 2026-11-06 04:02:05,825 - INFO - [retry-budget] TestNPUGLM5_2_W8A8_2P2D_PCP_GPQA: max_retries=1 (class override: True), datasets=['gpqa_diamond'], threshold baseline=0.912
+2026-11-05T20:02:05.8294653Z 2026-11-06 04:02:05,825 - INFO - get env METRICS_DATA_FILE = /root/.cache/tests/output/main-20261106-0008-42061473997-1/Nightly_Test_NPU--main-cann9.1.0-a3/accuracy/test_npu_glm_5_2_w8a8_2p2d_32p_pcp_gpqa
+2026-11-05T20:02:05.8296012Z 2026-11-06 04:02:05,825 - INFO - The metrics result file: /root/.cache/tests/output/main-20261106-0008-42061473997-1/Nightly_Test_NPU--main-cann9.1.0-a3/accuracy/test_npu_glm_5_2_w8a8_2p2d_32p_pcp_gpqa
+2026-11-05T20:02:05.8297019Z 2026-11-06 04:02:05,826 - INFO - Generated evalscope script: /tmp/evalscope_run_GLM-5.2-w8a8_gpqa_diamond.py
+2026-11-05T20:02:07.5993634Z evalscope found in the system python, reuse it instead of installing.
+2026-11-05T20:02:19.4705171Z 2026-11-06 04:02:19,467 - INFO - Command: test_env_evalscope/bin/python /tmp/evalscope_run_GLM-5.2-w8a8_gpqa_diamond.py
+2026-11-05T20:02:19.4728366Z 2026-11-06 04:02:19,469 - INFO - run_evalscope spawned: pid=578 pgid=578 cmd=test_env_evalscope/bin/python /tmp/evalscope_run_GLM-5.2-w8a8_gpqa_diamond.py
+2026-11-05T20:02:20.8008065Z 2026-11-06 04:02:20 - evalscope - [33mWARNING[0m: Deprecated: The `timeout` parameter is deprecated and will be removed in v2.0.0. Use `generation_config.timeout` instead.[0m
+2026-11-05T20:02:20.8009317Z 2026-11-06 04:02:20 - evalscope - [33mWARNING[0m: Deprecated: The `stream` parameter is deprecated and will be removed in v2.0.0. Use `generation_config.stream` instead.[0m
+2026-11-05T20:02:20.8010288Z 2026-11-06 04:02:20 - evalscope - [32mINFO[0m: Args: Task config is provided with TaskConfig type.[0m
+2026-11-05T20:02:22.9428192Z 2026-11-06 04:02:22,940 - triton.tools.get_ascend_devices - WARNING: can not use command: npu-smi info
+2026-11-05T20:02:24.5592576Z 2026-11-06 04:02:24,556 - torch_npu.env - INFO: get env ASCEND_HOME_PATH = /usr/local/Ascend/cann-9.1.0
+2026-11-05T20:02:25.0812653Z 2026-11-06 04:02:25 - evalscope - [32mINFO[0m: Running with native backend[0m
+2026-11-05T20:02:25.4183257Z 2026-11-06 04:02:25 - evalscope - [32mINFO[0m: Dump task config to /root/.cache/tests/output/main-20261106-0008-42061473997-1/Nightly_Test_NPU--main-cann9.1.0-a3/accuracy/test_npu_glm_5_2_w8a8_2p2d_32p_pcp_gpqa/20261106_040225/configs/task_config.yaml[0m
+2026-11-05T20:02:25.4379790Z 2026-11-06 04:02:25 - evalscope - [32mINFO[0m: {
+2026-11-05T20:02:25.4380158Z     "model_id": "GLM-5.2-w8a8",
+2026-11-05T20:02:25.4380420Z     "model_args": {},
+2026-11-05T20:02:25.4380658Z     "model_task": "text_generation",
+2026-11-05T20:02:25.4380983Z     "chat_template": null,
+2026-11-05T20:02:25.4381421Z     "datasets": [
+2026-11-05T20:02:25.4381653Z         "gpqa_diamond"
+2026-11-05T20:02:25.4381882Z     ],
+2026-11-05T20:02:25.4382099Z     "dataset_args": {
+2026-11-05T20:02:25.4382337Z         "gpqa_diamond": {
+2026-11-05T20:02:25.4382591Z             "filters": {
+2026-11-05T20:02:25.4382844Z                 "remove_until": "</think>"
+2026-11-05T20:02:25.4383139Z             },
+2026-11-05T20:02:25.4384179Z             "system_prompt": "Your response should be in the following format:\nExplanation: {your explanation for your final answer}\nExact Answer: {your succinct, final answer}\nConfidence: {your confidence score between 0% and 100% for your answer}."
+2026-11-05T20:02:25.4385164Z         }
+2026-11-05T20:02:25.4385368Z     },
+2026-11-05T20:02:25.4385634Z     "dataset_dir": "/root/.cache/modelscope/hub/datasets",
+2026-11-05T20:02:25.4385987Z     "dataset_hub": "modelscope",
+2026-11-05T20:02:25.4386253Z     "repeats": 1,
+2026-11-05T20:02:25.4386491Z     "eval_type": "openai_api",
+2026-11-05T20:02:25.4386768Z     "eval_backend": "Native",
+2026-11-05T20:02:25.4387028Z     "eval_config": null,
+2026-11-05T20:02:25.4387266Z     "limit": 100000,
+2026-11-05T20:02:25.4387500Z     "eval_batch_size": 32,
+2026-11-05T20:02:25.4387746Z     "use_cache": null,
+2026-11-05T20:02:25.4387985Z     "rerun_review": false,
+2026-11-05T20:02:25.4389131Z     "work_dir": "/root/.cache/tests/output/main-20261106-0008-42061473997-1/Nightly_Test_NPU--main-cann9.1.0-a3/accuracy/test_npu_glm_5_2_w8a8_2p2d_32p_pcp_gpqa/20261106_040225",
+2026-11-05T20:02:25.4390017Z     "no_timestamp": false,
+2026-11-05T20:02:25.4390290Z     "enable_progress_tracker": false,
+2026-11-05T20:02:25.4390578Z     "ignore_errors": false,
+2026-11-05T20:02:25.4390835Z     "debug": false,
+2026-11-05T20:02:25.4391064Z     "dry_run": false,
+2026-11-05T20:02:25.4391450Z     "seed": 42,
+2026-11-05T20:02:25.4391771Z     "api_url": "http://172.22.3.160:6677/v1/chat/completions",
+2026-11-05T20:02:25.4392133Z     "api_key": "**********",
+2026-11-05T20:02:25.4392395Z     "timeout": 60000.0,
+2026-11-05T20:02:25.4392653Z     "stream": true,
+2026-11-05T20:02:25.4392865Z     "judge": {
+2026-11-05T20:02:25.4393080Z         "strategy": "auto",
+2026-11-05T20:02:25.4393325Z         "models": [],
+2026-11-05T20:02:25.4393545Z         "contract": {
+2026-11-05T20:02:25.4393822Z             "system_prompt": null,
+2026-11-05T20:02:25.4394123Z             "prompt_template": null,
+2026-11-05T20:02:25.4394405Z             "score_mapping": null,
+2026-11-05T20:02:25.4394702Z             "score_type": "pattern"
+2026-11-05T20:02:25.4394962Z         },
+2026-11-05T20:02:25.4395165Z         "repeats": 1,
+2026-11-05T20:02:25.4395401Z         "position_swap": "auto",
+2026-11-05T20:02:25.4395671Z         "aggregation": "mean",
+2026-11-05T20:02:25.4395932Z         "min_valid_judges": 1
+2026-11-05T20:02:25.4396175Z     },
+2026-11-05T20:02:25.4396380Z     "analysis_report": false,
+2026-11-05T20:02:25.4396642Z     "collect_perf": true,
+2026-11-05T20:02:25.4396904Z     "use_sandbox": false,
+2026-11-05T20:02:25.4397164Z     "sandbox_type": "docker",
+2026-11-05T20:02:25.4397433Z     "sandbox_manager_config": {},
+2026-11-05T20:02:25.4397711Z     "evalscope_version": "1.14.1",
+2026-11-05T20:02:25.4397991Z     "model": "GLM-5.2-w8a8",
+2026-11-05T20:02:25.4398247Z     "generation_config": {
+2026-11-05T20:02:25.4398497Z         "timeout": 60000.0,
+2026-11-05T20:02:25.4398745Z         "batch_size": 32,
+2026-11-05T20:02:25.4398982Z         "stream": true,
+2026-11-05T20:02:25.4399228Z         "max_tokens": 131072,
+2026-11-05T20:02:25.4399482Z         "top_p": 0.95,
+2026-11-05T20:02:25.4399716Z         "temperature": 1.0
+2026-11-05T20:02:25.4399949Z     },
+2026-11-05T20:02:25.4400149Z     "sandbox": {
+2026-11-05T20:02:25.4400377Z         "enabled": false,
+2026-11-05T20:02:25.4400619Z         "engine": "docker",
+2026-11-05T20:02:25.4400869Z         "default_config": {},
+2026-11-05T20:02:25.4401128Z         "manager_config": {},
+2026-11-05T20:02:25.4401554Z         "pool_size": null
+2026-11-05T20:02:25.4401788Z     },
+2026-11-05T20:02:25.4401992Z     "agent_config": null
+2026-11-05T20:02:25.4402302Z }[0m
+2026-11-05T20:02:25.4422152Z Running[eval]:   0%|          | 0/1 [00:00<?, ?benchmark/s]
+2026-11-05T20:02:25.4422942Z 2026-11-06 04:02:25 - evalscope - [32mINFO[0m: Start loading benchmark dataset: gpqa_diamond[0m
+2026-11-05T20:02:25.6055038Z Running[eval]:   0%|          | 0/1 [00:00<?, ?benchmark/s]
+2026-11-05T20:02:25.6094744Z Processing records:   0%|          | 0/198 [00:00<?, ?it/s][A
+2026-11-05T20:02:25.6095379Z Processing records: 100%|██████████| 198/198 [00:00<00:00, 47898.96it/s]
+2026-11-05T20:02:25.6158184Z 2026-11-06 04:02:25 - evalscope - [33mWARNING[0m: gpqa_diamond: 198 samples to evaluate (1 subset, --limit=100000 per subset). Remove `--limit` for a formal evaluation.[0m
+2026-11-05T20:02:25.6178816Z Running[eval]:   0%|          | 0/1 [00:00<?, ?benchmark/s]
+2026-11-05T20:02:25.6179435Z 2026-11-06 04:02:25 - evalscope - [32mINFO[0m: Subsets of gpqa_diamond: ['default'][0m
+2026-11-05T20:02:25.6268178Z Running[eval]:   0%|          | 0/1 [00:00<?, ?benchmark/s]
+2026-11-05T20:02:25.6285723Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:00<?, ?it/s][A
+2026-11-05T20:02:25.6286347Z [A2026-11-06 04:02:25 - evalscope - [32mINFO[0m: Loading model for prediction...[0m
+2026-11-05T20:02:25.6287224Z Running[eval]:   0%|          | 0/1 [00:00<?, ?benchmark/s]
+2026-11-05T20:02:25.6306306Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:00<?, ?it/s][A
+2026-11-05T20:02:25.6308235Z [A2026-11-06 04:02:25 - evalscope - [32mINFO[0m: Creating model GLM-5.2-w8a8 with eval_type=openai_api base_url=http://172.22.3.160:6677/v1/chat/completions, config={'timeout': 60000.0, 'retries': 5, 'retry_interval': 10, 'batch_size': 32, 'stream': True, 'max_tokens': 131072, 'top_p': 0.95, 'temperature': 1.0, 'anthropic_cache_strategy': 'evaluation'}, model_args={}[0m
+2026-11-05T20:02:25.6309624Z Running[eval]:   0%|          | 0/1 [00:00<?, ?benchmark/s]
+2026-11-05T20:02:25.9515505Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:00<?, ?it/s][A
+2026-11-05T20:02:25.9516181Z [A2026-11-06 04:02:25 - evalscope - [32mINFO[0m: Model loaded successfully.[0m
+2026-11-05T20:02:25.9516678Z Running[eval]:   0%|          | 0/1 [00:00<?, ?benchmark/s]
+2026-11-05T20:02:26.2806461Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:00<?, ?it/s][A2026-11-06 04:02:26,278 - torch_npu.env - INFO: get env PATH = /usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/bin:/usr/local/Ascend/cann-9.1.0/bin:/usr/local/Ascend/cann-9.1.0/tools/ccec_compiler/bin:/usr/local/Ascend/cann-9.1.0/tools/profiler/bin:/usr/local/Ascend/cann-9.1.0/tools/ascend_system_advisor/asys:/usr/local/Ascend/cann-9.1.0/tools/show_kernel_debug_data:/usr/local/Ascend/cann-9.1.0/tools/msobjdump:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/bin:/usr/local/Ascend/ascend-toolkit/latest/bin:/usr/local/Ascend/ascend-toolkit/latest/compiler/ccec_compiler/bin:/usr/local/Ascend/ascend-toolkit/latest/tools/ccec_compiler/bin:/usr/local/python3.12.13/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+2026-11-05T20:02:26.3086596Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-iGQu64UVqwBRL5Yq9XEvPkBT"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.3153560Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-Yg0Nh10uCXzDfY0ECDlvxii1"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.3181065Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-EBL0wRnYFYFhctHzWhpDrekm"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.3205823Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-5NDPRoh9u243bEQxDlDwFvXk"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.3208597Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-q5MI6yerHhw3O4Evn3BRSiOs"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.3212131Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-wp5B8IZp9yTf8TAYVZbkHrFJ"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.3217341Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-93a119R5u016FshGxHYckoZg"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.3222871Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-SxjDlIlQxMd1qTr3cJqeSXLH"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.3226808Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-rKzBrMIxrbGDNKr1YvQWdeec"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.3231140Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-k8N8G8LCSEhJPOJCSf2VLgf5"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.3234304Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-2PWZA6XT9A4eaZ0mYk16vmUl"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.3237112Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-hinGdf0i37Ad9LYAFP2Of7F6"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.3239887Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-7lMQcmnEPJfAfPejUPn8Sgj5"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.3254810Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-LYKV5xXCiWYAOwzToGzvgyZt"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.3257719Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-CI5EJdZK5QUArWYk1WPMxwh3"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.3279488Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-86dl3FrKz54hDYF87TVbjE7J"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.3283090Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-Sm2WbZh4oVXQPgilWTJJVUbn"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.3285987Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-11tzwKyvDbPKkGiqKiXGUnMN"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.3288775Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-Iy0oH6IdGhDtTqtEy4MUqRLm"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.4064013Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-F68E0G2J3S7ho39dwJThN3mC"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.4066896Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-bzemCXKFv0B9eqRlMFm9HJaw"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.4069701Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-gjfHIt5gHJeUkodYtT2IhRgW"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.4090259Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-wNhtc837KflWOfgEmpBnGUsX"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.4093305Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-vMH6ihR0cEeaUrHds3Nm85tt"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.4096298Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-Nh1iYQPSANRqUMjKS5YE521N"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.4099090Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-2xfrxAqtXCK0dKcGFDTPynD0"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.4102016Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-z6lzPfvvkxLMRrhx5yoP4Rpi"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.4104889Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-LazjIydNkcLza6OjTfMOJYok"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.4107699Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-k7Qb8b739DcK0ZfPY94Qx8mJ"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.4110484Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-KOxEPmB8jBHTU5t8sz3uYb2z"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.4113403Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-nD2QcrSYlqceNC8h2z5inFUy"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:26.4116235Z [2m2026-11-05 20:02:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-YySwWg8jl4U6OyYPmgsMEjqJ"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:38.8305809Z [2m2026-11-05 20:02:38[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-SxjDlIlQxMd1qTr3cJqeSXLH" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m12503925[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:02:38.8309396Z [2m2026-11-05 20:02:38[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-Sm2WbZh4oVXQPgilWTJJVUbn" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m12497812[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:02:38.8312833Z [2m2026-11-05 20:02:38[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-k7Qb8b739DcK0ZfPY94Qx8mJ" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m12418019[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:02:38.8316177Z [2m2026-11-05 20:02:38[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-YySwWg8jl4U6OyYPmgsMEjqJ" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m12420619[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:02:38.8319130Z [A2026-11-06 04:02:38 - evalscope - [33mWARNING[0m: Attempt 1 / 5 failed: Decode transfer failed for request rank=28 decode_req.req.rid='fca4dd5c1f4c4704948c27d462cca4e6' decode_req.req.bootstrap_room=6198030215936146774 with exception KVTransferError(bootstrap_room=6198030215936146774): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:02:38.8320593Z Running[eval]:   0%|          | 0/1 [00:13<?, ?benchmark/s]
+2026-11-05T20:02:38.8321084Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:13<?, ?it/s][A
+2026-11-05T20:02:38.8322905Z [A2026-11-06 04:02:38 - evalscope - [33mWARNING[0m: Attempt 1 / 5 failed: Decode transfer failed for request rank=28 decode_req.req.rid='3118dd2d11f04ee1a10766912736c5a9' decode_req.req.bootstrap_room=6798605644400462700 with exception KVTransferError(bootstrap_room=6798605644400462700): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:02:38.8324400Z Running[eval]:   0%|          | 0/1 [00:13<?, ?benchmark/s]
+2026-11-05T20:02:38.8324887Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:13<?, ?it/s][A
+2026-11-05T20:02:38.8326581Z [A2026-11-06 04:02:38 - evalscope - [33mWARNING[0m: Attempt 1 / 5 failed: Decode transfer failed for request rank=28 decode_req.req.rid='515599c7e5354ae39a6b5d0e9c48e1b9' decode_req.req.bootstrap_room=2727052795166120410 with exception KVTransferError(bootstrap_room=2727052795166120410): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:02:38.8327981Z Running[eval]:   0%|          | 0/1 [00:13<?, ?benchmark/s]
+2026-11-05T20:02:38.8328457Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:13<?, ?it/s][A
+2026-11-05T20:02:38.8330147Z [A2026-11-06 04:02:38 - evalscope - [33mWARNING[0m: Attempt 1 / 5 failed: Decode transfer failed for request rank=28 decode_req.req.rid='9cbb11b7c5554b8b9e334592e946abb5' decode_req.req.bootstrap_room=1358836839720914179 with exception KVTransferError(bootstrap_room=1358836839720914179): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:02:38.8331702Z Running[eval]:   0%|          | 0/1 [00:13<?, ?benchmark/s]
+2026-11-05T20:02:47.1936537Z [2m2026-11-05 20:02:47[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-iGQu64UVqwBRL5Yq9XEvPkBT" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m20884526[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:02:48.8361963Z [2m2026-11-05 20:02:48[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-QpmPChL5GvwwpQbzOcvm222B"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:48.8364978Z [2m2026-11-05 20:02:48[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-9gA1ZwuXgDQERSRxvbRaR1ZH"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:48.8390266Z [2m2026-11-05 20:02:48[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-Jl9iQ4IozYdSyQsqiM3IaNaX"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:48.8393171Z [2m2026-11-05 20:02:48[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-uDfXzBJxDEhOTBm8MjY7Rnl5"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:02:49.6412861Z [2m2026-11-05 20:02:49[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-EBL0wRnYFYFhctHzWhpDrekm" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m23322591[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:01.7399422Z [2m2026-11-05 20:03:01[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-Yg0Nh10uCXzDfY0ECDlvxii1" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m35423937[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:01.9151245Z [2m2026-11-05 20:03:01[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-Iy0oH6IdGhDtTqtEy4MUqRLm" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m35549274[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:01.9155087Z [2m2026-11-05 20:03:01[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-KOxEPmB8jBHTU5t8sz3uYb2z" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m35470417[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:01.9158491Z [2m2026-11-05 20:03:01[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-nD2QcrSYlqceNC8h2z5inFUy" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m35470566[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:01.9161879Z [2m2026-11-05 20:03:01[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-93a119R5u016FshGxHYckoZg" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m35562682[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:01.9165212Z [2m2026-11-05 20:03:01[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-F68E0G2J3S7ho39dwJThN3mC" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m35478288[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:01.9168455Z [2m2026-11-05 20:03:01[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-86dl3FrKz54hDYF87TVbjE7J" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m35557921[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:01.9171805Z [2m2026-11-05 20:03:01[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-CI5EJdZK5QUArWYk1WPMxwh3" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m35560171[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:04.0564037Z [2m2026-11-05 20:03:04[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-5NDPRoh9u243bEQxDlDwFvXk" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m37737146[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:09.9769987Z [2m2026-11-05 20:03:09[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-q5MI6yerHhw3O4Evn3BRSiOs" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m43656326[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:09.9789527Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:13<?, ?it/s][A
+2026-11-05T20:03:09.9791604Z [A2026-11-06 04:03:09 - evalscope - [33mWARNING[0m: Attempt 1 / 5 failed: Decode transfer failed for request rank=8 decode_req.req.rid='7b25e9f40cf34a91b1f1f3a501671768' decode_req.req.bootstrap_room=897865113195448302 with exception KVTransferError(bootstrap_room=897865113195448302): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:03:09.9793068Z Running[eval]:   0%|          | 0/1 [00:44<?, ?benchmark/s]
+2026-11-05T20:03:12.1538096Z [2m2026-11-05 20:03:12[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-rKzBrMIxrbGDNKr1YvQWdeec" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m45832373[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:12.1577002Z [2m2026-11-05 20:03:12[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-wp5B8IZp9yTf8TAYVZbkHrFJ" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m45833115[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:12.1580100Z [2m2026-11-05 20:03:12[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-bzemCXKFv0B9eqRlMFm9HJaw" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m45747991[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:12.1581983Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:44<?, ?it/s][A
+2026-11-05T20:03:12.1583734Z [A2026-11-06 04:03:12 - evalscope - [33mWARNING[0m: Attempt 1 / 5 failed: Decode transfer failed for request rank=16 decode_req.req.rid='cf0a859f3dc647d696cca01e2e00a714' decode_req.req.bootstrap_room=1579366964188941849 with exception KVTransferError(bootstrap_room=1579366964188941849): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:03:12.1585263Z Running[eval]:   0%|          | 0/1 [00:46<?, ?benchmark/s]
+2026-11-05T20:03:12.1614448Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:46<?, ?it/s][A
+2026-11-05T20:03:12.1616191Z [A2026-11-06 04:03:12 - evalscope - [33mWARNING[0m: Attempt 1 / 5 failed: Decode transfer failed for request rank=8 decode_req.req.rid='0412e9281c3442aa8c684fdcc7042544' decode_req.req.bootstrap_room=2839454635874400767 with exception KVTransferError(bootstrap_room=2839454635874400767): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:03:12.1617616Z Running[eval]:   0%|          | 0/1 [00:46<?, ?benchmark/s]
+2026-11-05T20:03:12.1618100Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:46<?, ?it/s][A
+2026-11-05T20:03:12.1619793Z [A2026-11-06 04:03:12 - evalscope - [33mWARNING[0m: Attempt 1 / 5 failed: Decode transfer failed for request rank=16 decode_req.req.rid='f37726d93a2e46618fa9fac71ae1152c' decode_req.req.bootstrap_room=6793620826924596891 with exception KVTransferError(bootstrap_room=6793620826924596891): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:03:12.1621316Z Running[eval]:   0%|          | 0/1 [00:46<?, ?benchmark/s]
+2026-11-05T20:03:12.2311390Z [2m2026-11-05 20:03:12[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-hinGdf0i37Ad9LYAFP2Of7F6" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m45908857[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:12.2335617Z [2m2026-11-05 20:03:12[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-gjfHIt5gHJeUkodYtT2IhRgW" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m45825084[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:12.2338890Z [2m2026-11-05 20:03:12[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-wNhtc837KflWOfgEmpBnGUsX" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m45825115[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:12.2342275Z [2m2026-11-05 20:03:12[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-Nh1iYQPSANRqUMjKS5YE521N" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m45825472[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:12.2345583Z [2m2026-11-05 20:03:12[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-uDfXzBJxDEhOTBm8MjY7Rnl5" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m23395885[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:12.2356165Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:46<?, ?it/s][A
+2026-11-05T20:03:12.2358284Z [A2026-11-06 04:03:12 - evalscope - [33mWARNING[0m: Attempt 1 / 5 failed: Decode transfer failed for request rank=8 decode_req.req.rid='3c4679c0a94541a291825c9dc9f61523' decode_req.req.bootstrap_room=185733917208872868 with exception KVTransferError(bootstrap_room=185733917208872868): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:03:12.2359843Z Running[eval]:   0%|          | 0/1 [00:46<?, ?benchmark/s]
+2026-11-05T20:03:12.2424095Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:46<?, ?it/s][A
+2026-11-05T20:03:12.2426018Z [A2026-11-06 04:03:12 - evalscope - [33mWARNING[0m: Attempt 1 / 5 failed: Decode transfer failed for request rank=16 decode_req.req.rid='3dd4f65f90e14c9b86dd18a0a4431df4' decode_req.req.bootstrap_room=1200343161758299815 with exception KVTransferError(bootstrap_room=1200343161758299815): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:03:12.2427426Z Running[eval]:   0%|          | 0/1 [00:46<?, ?benchmark/s]
+2026-11-05T20:03:12.2427910Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:46<?, ?it/s][A
+2026-11-05T20:03:12.2429571Z [A2026-11-06 04:03:12 - evalscope - [33mWARNING[0m: Attempt 1 / 5 failed: Decode transfer failed for request rank=8 decode_req.req.rid='6259fca8cbb145c3a09103a8cee011cb' decode_req.req.bootstrap_room=483602206513239995 with exception KVTransferError(bootstrap_room=483602206513239995): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:03:12.2430960Z Running[eval]:   0%|          | 0/1 [00:46<?, ?benchmark/s]
+2026-11-05T20:03:12.2431549Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:46<?, ?it/s][A
+2026-11-05T20:03:12.2433410Z [A2026-11-06 04:03:12 - evalscope - [33mWARNING[0m: Attempt 1 / 5 failed: Decode transfer failed for request rank=16 decode_req.req.rid='0ec91303a6594514844ce7e4475e9a98' decode_req.req.bootstrap_room=7912220760335171676 with exception KVTransferError(bootstrap_room=7912220760335171676): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:03:12.2434957Z Running[eval]:   0%|          | 0/1 [00:46<?, ?benchmark/s]
+2026-11-05T20:03:12.2435486Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:46<?, ?it/s][A
+2026-11-05T20:03:12.2437160Z [A2026-11-06 04:03:12 - evalscope - [33mWARNING[0m: Attempt 2 / 5 failed: Decode transfer failed for request rank=8 decode_req.req.rid='5c5d1a17fc4141da8f238f12e6bf252b' decode_req.req.bootstrap_room=3929993142013802108 with exception KVTransferError(bootstrap_room=3929993142013802108): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:03:12.2438573Z Running[eval]:   0%|          | 0/1 [00:46<?, ?benchmark/s]
+2026-11-05T20:03:16.9957412Z [2m2026-11-05 20:03:16[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-2PWZA6XT9A4eaZ0mYk16vmUl" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m50665869[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:16.9963418Z [2m2026-11-05 20:03:16[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-11tzwKyvDbPKkGiqKiXGUnMN" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m50661126[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:16.9969023Z [2m2026-11-05 20:03:16[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-k8N8G8LCSEhJPOJCSf2VLgf5" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m50666949[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:16.9974630Z [2m2026-11-05 20:03:16[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-vMH6ihR0cEeaUrHds3Nm85tt" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m50582376[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:16.9980239Z [2m2026-11-05 20:03:16[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-LYKV5xXCiWYAOwzToGzvgyZt" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m50665125[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:17.1134393Z [2m2026-11-05 20:03:17[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-2xfrxAqtXCK0dKcGFDTPynD0" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m50706158[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:17.1138197Z [2m2026-11-05 20:03:17[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-z6lzPfvvkxLMRrhx5yoP4Rpi" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m50706113[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:17.1141769Z [2m2026-11-05 20:03:17[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-7lMQcmnEPJfAfPejUPn8Sgj5" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m50790411[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:17.1222633Z [2m2026-11-05 20:03:17[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-LazjIydNkcLza6OjTfMOJYok" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m50706982[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:19.9816630Z [2m2026-11-05 20:03:19[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-vxyVeHFMIFrxv8uFNJkLILEc"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:20.6047168Z [2m2026-11-05 20:03:20[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-vxyVeHFMIFrxv8uFNJkLILEc" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m622921[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:20.6071662Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:46<?, ?it/s][A
+2026-11-05T20:03:20.6073835Z [A2026-11-06 04:03:20 - evalscope - [33mWARNING[0m: Attempt 2 / 5 failed: Decode transfer failed for request rank=16 decode_req.req.rid='31db9a5db2074e75be0fdb43cbffca86' decode_req.req.bootstrap_room=640094463112096535 with exception KVTransferError(bootstrap_room=640094463112096535): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:03:20.6075681Z Running[eval]:   0%|          | 0/1 [00:55<?, ?benchmark/s]
+2026-11-05T20:03:22.1637109Z [2m2026-11-05 20:03:22[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-CrADzFyIbWXaoV4QnknYpz7e"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:22.1642914Z [2m2026-11-05 20:03:22[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-DEEsO9HFy5XhCb3YGDJQ5OdT"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:22.1719199Z [2m2026-11-05 20:03:22[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-5meq8ki8oOXAa1OakL11FQzQ"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:22.2459276Z [2m2026-11-05 20:03:22[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-Q4H3QaoQdu74uJyG8R3uZiar"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:22.2510391Z [2m2026-11-05 20:03:22[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-XCK9EmnCKNmGmt2rlMAdJ9kc"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:22.2516179Z [2m2026-11-05 20:03:22[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-kajeUdK09YehFCOoHepumYAv"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:22.2521898Z [2m2026-11-05 20:03:22[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-z5P37sPnGKnT9wxhtofgskDq"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:22.2527529Z [2m2026-11-05 20:03:22[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-r7w8QGfPt9WTHpdhdFEV6ttc"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:22.9635356Z [2m2026-11-05 20:03:22[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-5meq8ki8oOXAa1OakL11FQzQ" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m799265[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:22.9657136Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:54<?, ?it/s][A
+2026-11-05T20:03:22.9658829Z [A2026-11-06 04:03:22 - evalscope - [33mWARNING[0m: Attempt 2 / 5 failed: Decode transfer failed for request rank=28 decode_req.req.rid='62713123f2dd46458aff84b18fad261e' decode_req.req.bootstrap_room=6271753956190774129 with exception KVTransferError(bootstrap_room=6271753956190774129): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:03:22.9660274Z Running[eval]:   0%|          | 0/1 [00:57<?, ?benchmark/s]
+2026-11-05T20:03:22.9821962Z [2m2026-11-05 20:03:22[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-z5P37sPnGKnT9wxhtofgskDq" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m731409[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:22.9825471Z [2m2026-11-05 20:03:22[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-r7w8QGfPt9WTHpdhdFEV6ttc" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m730929[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:22.9827511Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:57<?, ?it/s][A
+2026-11-05T20:03:22.9829268Z [A2026-11-06 04:03:22 - evalscope - [33mWARNING[0m: Attempt 2 / 5 failed: Decode transfer failed for request rank=16 decode_req.req.rid='6393e6a8e8ea44ecae0031696916e89b' decode_req.req.bootstrap_room=4795437631321429734 with exception KVTransferError(bootstrap_room=4795437631321429734): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:03:22.9830843Z Running[eval]:   0%|          | 0/1 [00:57<?, ?benchmark/s]
+2026-11-05T20:03:22.9831558Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:57<?, ?it/s][A
+2026-11-05T20:03:22.9833995Z [A2026-11-06 04:03:22 - evalscope - [33mWARNING[0m: Attempt 3 / 5 failed: Decode transfer failed for request rank=8 decode_req.req.rid='29641f954efd48529f40ae0ec52f0631' decode_req.req.bootstrap_room=7719975005218696481 with exception KVTransferError(bootstrap_room=7719975005218696481): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:03:22.9835532Z Running[eval]:   0%|          | 0/1 [00:57<?, ?benchmark/s]
+2026-11-05T20:03:25.9833298Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [00:57<?, ?it/s][A
+2026-11-05T20:03:25.9834186Z [A2026-11-06 04:03:25 - evalscope - [32mINFO[0m: Evaluating[gpqa_diamond]   0%| 0/198 [Elapsed: 01:00 < Remaining: ?, ?it/s][0m
+2026-11-05T20:03:25.9834860Z Running[eval]:   0%|          | 0/1 [01:00<?, ?benchmark/s]
+2026-11-05T20:03:30.6087486Z [2m2026-11-05 20:03:30[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-T5Y9pnVblbvaB0rsEevHjmiH"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:32.9678083Z [2m2026-11-05 20:03:32[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-HNVPNeGpAfpH6bJDakdAPnME"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:32.9810601Z [2m2026-11-05 20:03:32[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-1gdMxsUiK99rMeFG7BP1Tp47"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:32.9837180Z [2m2026-11-05 20:03:32[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-yTEJ27to1DT5tfYqQfaaZImi"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:33.6616897Z [2m2026-11-05 20:03:33[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-1gdMxsUiK99rMeFG7BP1Tp47" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m679721[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:33.6674287Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [01:00<?, ?it/s][A
+2026-11-05T20:03:33.6676206Z [A2026-11-06 04:03:33 - evalscope - [33mWARNING[0m: Attempt 3 / 5 failed: Decode transfer failed for request rank=28 decode_req.req.rid='f6df6295cabc4022bad2009deda6806f' decode_req.req.bootstrap_room=5956187947208133967 with exception KVTransferError(bootstrap_room=5956187947208133967): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:03:33.6677705Z Running[eval]:   0%|          | 0/1 [01:08<?, ?benchmark/s]
+2026-11-05T20:03:33.7432320Z [2m2026-11-05 20:03:33[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-CrADzFyIbWXaoV4QnknYpz7e" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m11576515[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:33.9910800Z Evaluating[gpqa_diamond]:   0%|          | 0/198 [01:08<?, ?it/s][A
+2026-11-05T20:03:33.9939772Z [2m2026-11-05 20:03:33[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-GQFH4JVNhxxTKbO0vuArjy0P"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:36.1698834Z [2m2026-11-05 20:03:36[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-9gA1ZwuXgDQERSRxvbRaR1ZH" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m47331736[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:36.8663799Z [2m2026-11-05 20:03:36[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-Jl9iQ4IozYdSyQsqiM3IaNaX" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m47994059[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:37.0270189Z Evaluating[gpqa_diamond]:   1%|          | 1/198 [01:08<3:44:27, 68.36s/it][A
+2026-11-05T20:03:37.0272466Z [2m2026-11-05 20:03:36[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-hLGvW6sHBu8nxUUWat2eq8hG"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:37.0275378Z [2m2026-11-05 20:03:36[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-KVhEvzMsoLjvEuIRE7QcFJCG"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:37.7721965Z [2m2026-11-05 20:03:37[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-hLGvW6sHBu8nxUUWat2eq8hG" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m774353[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:37.7745264Z Evaluating[gpqa_diamond]:   1%|          | 2/198 [01:11<1:37:43, 29.92s/it][A
+2026-11-05T20:03:37.7747063Z [A2026-11-06 04:03:37 - evalscope - [33mWARNING[0m: Attempt 1 / 5 failed: Decode transfer failed for request rank=8 decode_req.req.rid='8cd6f1cb13f349e5a6782dc45fdddfb3' decode_req.req.bootstrap_room=1914734279055727385 with exception KVTransferError(bootstrap_room=1914734279055727385): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:03:37.7748503Z Running[eval]:   0%|          | 0/1 [01:12<?, ?benchmark/s]
+2026-11-05T20:03:43.6738318Z [2m2026-11-05 20:03:43[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-v0cT5OuXAn3ewVfe6Pns7UXP"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:44.2727522Z [2m2026-11-05 20:03:44[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-v0cT5OuXAn3ewVfe6Pns7UXP" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m592698[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:44.2729421Z Evaluating[gpqa_diamond]:   2%|▏         | 3/198 [01:12<1:37:13, 29.92s/it][A
+2026-11-05T20:03:44.2731330Z [A2026-11-06 04:03:44 - evalscope - [33mWARNING[0m: Attempt 4 / 5 failed: Decode transfer failed for request rank=16 decode_req.req.rid='6a76bfd070ef415baf82ac18daf7408d' decode_req.req.bootstrap_room=3531657104585486829 with exception KVTransferError(bootstrap_room=3531657104585486829): Failed to get kvcache from prefill instance, it might be dead. Retrying...[0m
+2026-11-05T20:03:44.2732877Z Running[eval]:   0%|          | 0/1 [01:18<?, ?benchmark/s]
+2026-11-05T20:03:47.7756722Z [2m2026-11-05 20:03:47[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-pfRgfRtJ4APmLIPkeBimjlKS"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:53.1891004Z [2m2026-11-05 20:03:53[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-Q4H3QaoQdu74uJyG8R3uZiar" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m30943062[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:54.0037750Z Evaluating[gpqa_diamond]:   2%|▏         | 3/198 [01:18<1:37:13, 29.92s/it][A
+2026-11-05T20:03:54.0064911Z [2m2026-11-05 20:03:54[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-dtgepTXXN7D6MchxqiRxJPv9"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:54.3150681Z [2m2026-11-05 20:03:54[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-KATsyW5tvcFk5KQHz2lt3ALr"[1m}[0m[2m:[0m [2msmg::request[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m310:[0m started processing request
+2026-11-05T20:03:55.1134989Z [2m2026-11-05 20:03:55[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-KATsyW5tvcFk5KQHz2lt3ALr" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m843122[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:03:56.0154136Z Evaluating[gpqa_diamond]:   2%|▏         | 4/198 [01:28<53:19, 16.49s/it]  [A
+2026-11-05T20:03:56.0155949Z [A2026-11-06 04:03:56 - evalscope - [31mERROR[0m: Processing item in subset='default' failed: Decode transfer failed for request rank=28 decode_req.req.rid='273ce2f758ce42ee82f9f8f94a9f9672' decode_req.req.bootstrap_room=9070864865868023790 with exception KVTransferError(bootstrap_room=9070864865868023790): Failed to get kvcache from prefill instance, it might be dead
+2026-11-05T20:03:56.0157487Z Traceback:
+2026-11-05T20:03:56.0157733Z Traceback (most recent call last):
+2026-11-05T20:03:56.0158390Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/utils/function_utils.py", line 256, in run_in_threads_with_progress
+2026-11-05T20:03:56.0159053Z     result = fut.result()
+2026-11-05T20:03:56.0159307Z              ^^^^^^^^^^^^
+2026-11-05T20:03:56.0159726Z   File "/usr/local/python3.12.13/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+2026-11-05T20:03:56.0160206Z     return self.__get_result()
+2026-11-05T20:03:56.0160467Z            ^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:03:56.0160919Z   File "/usr/local/python3.12.13/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+2026-11-05T20:03:56.0161593Z     raise self._exception
+2026-11-05T20:03:56.0162043Z   File "/usr/local/python3.12.13/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+2026-11-05T20:03:56.0162547Z     result = self.fn(*self.args, **self.kwargs)
+2026-11-05T20:03:56.0162864Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:03:56.0163480Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/utils/function_utils.py", line 211, in _worker_with_loop_cleanup
+2026-11-05T20:03:56.0164096Z     return worker(item)
+2026-11-05T20:03:56.0164329Z            ^^^^^^^^^^^^
+2026-11-05T20:03:56.0164817Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/evaluator/evaluator.py", line 339, in worker
+2026-11-05T20:03:56.0165458Z     return self._process_work_item(item, context.model_prediction_dir)
+2026-11-05T20:03:56.0165875Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:03:56.0166598Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/evaluator/evaluator.py", line 383, in _process_work_item
+2026-11-05T20:03:56.0167437Z     task_state = self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+2026-11-05T20:03:56.0168002Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:03:56.0168607Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/evaluator/evaluator.py", line 524, in _predict_sample
+2026-11-05T20:03:56.0169414Z     task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+2026-11-05T20:03:56.0170004Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:03:56.0171057Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 576, in run_inference
+2026-11-05T20:03:56.0172069Z     result = self._on_inference(model, sample)
+2026-11-05T20:03:56.0172389Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:03:56.0173051Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 463, in _on_inference
+2026-11-05T20:03:56.0173814Z     model_output = model.generate(input=sample.input, tools=sample.tools)
+2026-11-05T20:03:56.0174250Z                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:03:56.0174814Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/api/model/model.py", line 202, in generate
+2026-11-05T20:03:56.0175359Z     output = self.api.generate(
+2026-11-05T20:03:56.0175631Z              ^^^^^^^^^^^^^^^^^^
+2026-11-05T20:03:56.0176224Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/models/openai_compatible.py", line 163, in generate
+2026-11-05T20:03:56.0176813Z     completion, ttft = retry_call(
+2026-11-05T20:03:56.0177097Z                        ^^^^^^^^^^^
+2026-11-05T20:03:56.0177623Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/utils/function_utils.py", line 90, in retry_call
+2026-11-05T20:03:56.0178178Z     return func(*args, **kwargs)
+2026-11-05T20:03:56.0178442Z            ^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:03:56.0179017Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/models/openai_compatible.py", line 161, in _create_and_collect
+2026-11-05T20:03:56.0179733Z     return collect_stream_response(raw_completion, request_start=t_start)
+2026-11-05T20:03:56.0180175Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:03:56.0180801Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/models/utils/openai.py", line 900, in collect_stream_response
+2026-11-05T20:03:56.0181532Z     for chunk in response_stream:
+2026-11-05T20:03:56.0181814Z                  ^^^^^^^^^^^^^^^
+2026-11-05T20:03:56.0182277Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/openai/_streaming.py", line 46, in __iter__
+2026-11-05T20:03:56.0182779Z     for item in self._iterator:
+2026-11-05T20:03:56.0183036Z                 ^^^^^^^^^^^^^^
+2026-11-05T20:03:56.0183503Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/openai/_streaming.py", line 91, in __stream__
+2026-11-05T20:03:56.0183995Z     raise APIError(
+2026-11-05T20:03:56.0185108Z openai.APIError: Decode transfer failed for request rank=28 decode_req.req.rid='273ce2f758ce42ee82f9f8f94a9f9672' decode_req.req.bootstrap_room=9070864865868023790 with exception KVTransferError(bootstrap_room=9070864865868023790): Failed to get kvcache from prefill instance, it might be dead
+2026-11-05T20:03:56.0186391Z [0m
+2026-11-05T20:03:56.0186649Z Running[eval]:   0%|          | 0/1 [01:30<?, ?benchmark/s]
+2026-11-05T20:03:56.0187191Z Evaluating[gpqa_diamond]:   2%|▏         | 4/198 [01:30<53:19, 16.49s/it][A
+2026-11-05T20:03:56.0187739Z Evaluating[gpqa_diamond]:   3%|▎         | 5/198 [01:30<38:38, 12.01s/it][A
+2026-11-05T20:03:56.0188533Z [A2026-11-06 04:03:56 - evalscope - [32mINFO[0m: Evaluating[gpqa_diamond]   3%| 5/198 [Elapsed: 01:30 < Remaining: 38:38, 12.01s/it][0m
+2026-11-05T20:03:56.0189165Z Running[eval]:   0%|          | 0/1 [01:30<?, ?benchmark/s]
+2026-11-05T20:03:56.0189668Z Evaluating[gpqa_diamond]:   3%|▎         | 5/198 [01:30<38:38, 12.01s/it][A
+2026-11-05T20:03:56.0190207Z Evaluating[gpqa_diamond]:   3%|▎         | 5/198 [01:30<58:08, 18.08s/it]
+2026-11-05T20:04:06.9559068Z [2m2026-11-05 20:04:06[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-T5Y9pnVblbvaB0rsEevHjmiH" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m36347133[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:04:26.3272025Z [2m2026-11-05 20:04:26[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-pfRgfRtJ4APmLIPkeBimjlKS" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m38548078[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:04:37.7484918Z [2m2026-11-05 20:04:37[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-yTEJ27to1DT5tfYqQfaaZImi" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m64763919[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:04:38.5035104Z [2m2026-11-05 20:04:38[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-DEEsO9HFy5XhCb3YGDJQ5OdT" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m76339779[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:04:59.1309106Z [2m2026-11-05 20:04:59[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-HNVPNeGpAfpH6bJDakdAPnME" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m86158718[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:05:21.1555529Z [2m2026-11-05 20:05:21[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-kajeUdK09YehFCOoHepumYAv" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m118903884[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:05:25.6379456Z [2m2026-11-05 20:05:25[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-dtgepTXXN7D6MchxqiRxJPv9" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m91631868[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:06:00.6884772Z [2m2026-11-05 20:06:00[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-GQFH4JVNhxxTKbO0vuArjy0P" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m146694834[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:08:16.0102064Z [2m2026-11-05 20:08:16[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-QpmPChL5GvwwpQbzOcvm222B" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m327172323[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:16:38.6204907Z [2m2026-11-05 20:16:38[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-XCK9EmnCKNmGmt2rlMAdJ9kc" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m796373506[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:17:19.5896560Z [2m2026-11-05 20:17:19[0m [32m INFO[0m [1mhttp_request[0m[1m{[0m[3mmethod[0m[2m=[0mPOST [3muri[0m[2m=[0m/v1/chat/completions [3mversion[0m[2m=[0mHTTP/1.1 [3mmodule[0m[2m=[0m"smg" [3mrequest_id[0m[2m=[0m"chatcmpl-KVhEvzMsoLjvEuIRE7QcFJCG" [3mstatus_code[0m[2m=[0m200 [3mlatency[0m[2m=[0m822589384[1m}[0m[2m:[0m [2msmg::response[0m[2m:[0m [2m/home/runner/work/sglang/sglang/src/middleware.rs[0m[2m:[0m[2m359:[0m finished processing request
+2026-11-05T20:51:22.4539097Z 2026-11-06 04:51:22 - evalscope - [32mINFO[0m: Running[eval]   0%| 0/1 [Elapsed: 48:57 < Remaining: ?, ?benchmark/s][0m
+2026-11-05T20:51:22.4539765Z Running[eval]:   0%|          | 0/1 [48:57<?, ?benchmark/s]
+2026-11-05T20:51:22.4540320Z Running[eval]:   0%|          | 0/1 [48:57<?, ?benchmark/s]
+2026-11-05T20:51:22.4540675Z Traceback (most recent call last):
+2026-11-05T20:51:22.4541094Z   File "/tmp/evalscope_run_GLM-5.2-w8a8_gpqa_diamond.py", line 31, in <module>
+2026-11-05T20:51:22.4541807Z     run_task(task_cfg=task_cfg)
+2026-11-05T20:51:22.4542288Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/run.py", line 37, in run_task
+2026-11-05T20:51:22.4542790Z     return run_single_task(task_cfg)
+2026-11-05T20:51:22.4543072Z            ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:51:22.4543598Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/run.py", line 52, in run_single_task
+2026-11-05T20:51:22.4544157Z     result = evaluate_model(task_cfg, outputs)
+2026-11-05T20:51:22.4544493Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:51:22.4544995Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/run.py", line 227, in evaluate_model
+2026-11-05T20:51:22.4545512Z     res_dict = evaluator.eval()
+2026-11-05T20:51:22.4545774Z                ^^^^^^^^^^^^^^^^
+2026-11-05T20:51:22.4546271Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/evaluator/evaluator.py", line 216, in eval
+2026-11-05T20:51:22.4546841Z     results_by_subset = self._run_pool(context)
+2026-11-05T20:51:22.4547163Z                         ^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:51:22.4547718Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/evaluator/evaluator.py", line 354, in _run_pool
+2026-11-05T20:51:22.4548286Z     run_in_threads_with_progress(
+2026-11-05T20:51:22.4548892Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/utils/function_utils.py", line 263, in run_in_threads_with_progress
+2026-11-05T20:51:22.4549556Z     on_error(items[item_index], error)  # may re-raise
+2026-11-05T20:51:22.4549883Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:51:22.4550484Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/evaluator/evaluator.py", line 352, in on_error
+2026-11-05T20:51:22.4551099Z     raise exc
+2026-11-05T20:51:22.4551816Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/utils/function_utils.py", line 256, in run_in_threads_with_progress
+2026-11-05T20:51:22.4552677Z     result = fut.result()
+2026-11-05T20:51:22.4552956Z              ^^^^^^^^^^^^
+2026-11-05T20:51:22.4553623Z   File "/usr/local/python3.12.13/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+2026-11-05T20:51:22.4554091Z     return self.__get_result()
+2026-11-05T20:51:22.4554345Z            ^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:51:22.4555216Z   File "/usr/local/python3.12.13/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+2026-11-05T20:51:22.4555868Z     raise self._exception
+2026-11-05T20:51:22.4556291Z   File "/usr/local/python3.12.13/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+2026-11-05T20:51:22.4556777Z     result = self.fn(*self.args, **self.kwargs)
+2026-11-05T20:51:22.4557095Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:51:22.4557735Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/utils/function_utils.py", line 211, in _worker_with_loop_cleanup
+2026-11-05T20:51:22.4558344Z     return worker(item)
+2026-11-05T20:51:22.4558579Z            ^^^^^^^^^^^^
+2026-11-05T20:51:22.4559056Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/evaluator/evaluator.py", line 339, in worker
+2026-11-05T20:51:22.4559687Z     return self._process_work_item(item, context.model_prediction_dir)
+2026-11-05T20:51:22.4560172Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:51:22.4560781Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/evaluator/evaluator.py", line 383, in _process_work_item
+2026-11-05T20:51:22.4561767Z     task_state = self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+2026-11-05T20:51:22.4562331Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:51:22.4562934Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/evaluator/evaluator.py", line 524, in _predict_sample
+2026-11-05T20:51:22.4563749Z     task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+2026-11-05T20:51:22.4564346Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:51:22.4565083Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 576, in run_inference
+2026-11-05T20:51:22.4565780Z     result = self._on_inference(model, sample)
+2026-11-05T20:51:22.4566106Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:51:22.4566750Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 463, in _on_inference
+2026-11-05T20:51:22.4567520Z     model_output = model.generate(input=sample.input, tools=sample.tools)
+2026-11-05T20:51:22.4567951Z                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:51:22.4568511Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/api/model/model.py", line 202, in generate
+2026-11-05T20:51:22.4569056Z     output = self.api.generate(
+2026-11-05T20:51:22.4569320Z              ^^^^^^^^^^^^^^^^^^
+2026-11-05T20:51:22.4569846Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/models/openai_compatible.py", line 163, in generate
+2026-11-05T20:51:22.4570498Z     completion, ttft = retry_call(
+2026-11-05T20:51:22.4570779Z                        ^^^^^^^^^^^
+2026-11-05T20:51:22.4571430Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/utils/function_utils.py", line 90, in retry_call
+2026-11-05T20:51:22.4571987Z     return func(*args, **kwargs)
+2026-11-05T20:51:22.4572256Z            ^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:51:22.4572823Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/models/openai_compatible.py", line 161, in _create_and_collect
+2026-11-05T20:51:22.4573529Z     return collect_stream_response(raw_completion, request_start=t_start)
+2026-11-05T20:51:22.4573965Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:51:22.4574614Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/evalscope/models/utils/openai.py", line 900, in collect_stream_response
+2026-11-05T20:51:22.4575230Z     for chunk in response_stream:
+2026-11-05T20:51:22.4575657Z                  ^^^^^^^^^^^^^^^
+2026-11-05T20:51:22.4576130Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/openai/_streaming.py", line 46, in __iter__
+2026-11-05T20:51:22.4576772Z     for item in self._iterator:
+2026-11-05T20:51:22.4577038Z                 ^^^^^^^^^^^^^^
+2026-11-05T20:51:22.4577504Z   File "/usr/local/python3.12.13/lib/python3.12/site-packages/openai/_streaming.py", line 91, in __stream__
+2026-11-05T20:51:22.4578002Z     raise APIError(
+2026-11-05T20:51:22.4579142Z openai.APIError: Decode transfer failed for request rank=28 decode_req.req.rid='273ce2f758ce42ee82f9f8f94a9f9672' decode_req.req.bootstrap_room=9070864865868023790 with exception KVTransferError(bootstrap_room=9070864865868023790): Failed to get kvcache from prefill instance, it might be dead
+2026-11-05T20:51:22.4744182Z [ERROR] 2026-11-06-04:51:22 (PID:579, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception
+2026-11-05T20:51:23.8720302Z 2026-11-06 04:51:23,865 - INFO - run_evalscope finished: pid=578 returncode=1
+2026-11-05T20:51:23.8720906Z 2026-11-06 04:51:23,865 - INFO - process group pgid=578 already gone
+2026-11-05T20:51:23.8721518Z 2026-11-06 04:51:23,865 - ERROR - Command failed with return code: 1
+2026-11-05T20:51:23.8722422Z 2026-11-06 04:51:23,865 - ERROR - Error executing command: Command 'test_env_evalscope/bin/python /tmp/evalscope_run_GLM-5.2-w8a8_gpqa_diamond.py' returned non-zero exit status 1.
+2026-11-05T20:51:23.8723197Z 2026-11-06 04:51:23,865 - INFO - process group pgid=578 already gone
+2026-11-05T20:51:23.8732870Z Traceback (most recent call last):
+2026-11-05T20:51:23.8733752Z   File "/sgl-workspace/sglang/python/sglang/srt/utils/common.py", line 3829, in retry
+2026-11-05T20:51:23.8734455Z     return fn()
+2026-11-05T20:51:23.8734697Z            ^^^^
+2026-11-05T20:51:23.8735404Z   File "/sgl-workspace/sglang/python/sglang/test/test_utils.py", line 2503, in <lambda>
+2026-11-05T20:51:23.8736426Z     lambda: super(CustomTestCase, self)._callTestMethod(method),
+2026-11-05T20:51:23.8737124Z             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:51:23.8738007Z   File "/usr/local/python3.12.13/lib/python3.12/unittest/case.py", line 589, in _callTestMethod
+2026-11-05T20:51:23.8738551Z     if method() is not None:
+2026-11-05T20:51:23.8738805Z        ^^^^^^^^
+2026-11-05T20:51:23.8739411Z   File "/root/sglang/test/registered/npu/accuracy/glm5_2/test_npu_glm_5_2_w8a8_2p2d_32p_pcp_gpqa.py", line 235, in test_npu_glm_5_2_w8a8_2p2d_pcp_gpqa
+2026-11-05T20:51:23.8740120Z     self.run_accuracy()
+2026-11-05T20:51:23.8740633Z   File "/sgl-workspace/sglang/python/sglang/test/ascend/e2e/test_npu_multi_node_utils.py", line 414, in wrapper
+2026-11-05T20:51:23.8741284Z     return func(self, *args, **kwargs)
+2026-11-05T20:51:23.8741603Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:51:23.8742127Z   File "/sgl-workspace/sglang/python/sglang/test/ascend/e2e/test_npu_accuracy_utils.py", line 704, in run_accuracy
+2026-11-05T20:51:23.8742760Z     run_evalscope_with_retry(self, self.host, self.port, model_name)
+2026-11-05T20:51:23.8743427Z   File "/sgl-workspace/sglang/python/sglang/test/ascend/e2e/test_npu_accuracy_utils.py", line 325, in run_evalscope_with_retry
+2026-11-05T20:51:23.8744022Z     metrics = run_evalscope(
+2026-11-05T20:51:23.8744283Z               ^^^^^^^^^^^^^^
+2026-11-05T20:51:23.8744789Z   File "/sgl-workspace/sglang/python/sglang/test/ascend/e2e/test_npu_accuracy_utils.py", line 206, in run_evalscope
+2026-11-05T20:51:23.8745427Z     raise subprocess.CalledProcessError(process.returncode, cmd)
+2026-11-05T20:51:23.8746211Z subprocess.CalledProcessError: Command 'test_env_evalscope/bin/python /tmp/evalscope_run_GLM-5.2-w8a8_gpqa_diamond.py' returned non-zero exit status 1.
+2026-11-05T20:51:23.8746886Z E
+2026-11-05T20:51:23.8747124Z ======================================================================
+2026-11-05T20:51:23.8747813Z ERROR: test_npu_glm_5_2_w8a8_2p2d_pcp_gpqa (__main__.TestNPUGLM5_2_W8A8_2P2D_PCP_GPQA.test_npu_glm_5_2_w8a8_2p2d_pcp_gpqa)
+2026-11-05T20:51:23.8748862Z Run NPU accuracy test for GLM-5.2-w8a8 PD separation 2p2d with PCP on gpqa_diamond
+2026-11-05T20:51:23.8749474Z ----------------------------------------------------------------------
+2026-11-05T20:51:23.8749878Z Traceback (most recent call last):
+2026-11-05T20:51:23.8750394Z   File "/sgl-workspace/sglang/python/sglang/srt/utils/common.py", line 3829, in retry
+2026-11-05T20:51:23.8750828Z     return fn()
+2026-11-05T20:51:23.8751048Z            ^^^^
+2026-11-05T20:51:23.8751650Z   File "/sgl-workspace/sglang/python/sglang/test/test_utils.py", line 2503, in <lambda>
+2026-11-05T20:51:23.8752381Z     lambda: super(CustomTestCase, self)._callTestMethod(method),
+2026-11-05T20:51:23.8753079Z             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:51:23.8753862Z   File "/usr/local/python3.12.13/lib/python3.12/unittest/case.py", line 589, in _callTestMethod
+2026-11-05T20:51:23.8754495Z     if method() is not None:
+2026-11-05T20:51:23.8754739Z        ^^^^^^^^
+2026-11-05T20:51:23.8755331Z   File "/root/sglang/test/registered/npu/accuracy/glm5_2/test_npu_glm_5_2_w8a8_2p2d_32p_pcp_gpqa.py", line 235, in test_npu_glm_5_2_w8a8_2p2d_pcp_gpqa
+2026-11-05T20:51:23.8755971Z     self.run_accuracy()
+2026-11-05T20:51:23.8756456Z   File "/sgl-workspace/sglang/python/sglang/test/ascend/e2e/test_npu_multi_node_utils.py", line 414, in wrapper
+2026-11-05T20:51:23.8757002Z     return func(self, *args, **kwargs)
+2026-11-05T20:51:23.8757276Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05T20:51:23.8757789Z   File "/sgl-workspace/sglang/python/sglang/test/ascend/e2e/test_npu_accuracy_utils.py", line 704, in run_accuracy
+2026-11-05T20:51:23.8758415Z     run_evalscope_with_retry(self, self.host, self.port, model_name)
+2026-11-05T20:51:23.8759088Z   File "/sgl-workspace/sglang/python/sglang/test/ascend/e2e/test_npu_accuracy_utils.py", line 325, in run_evalscope_with_retry
+2026-11-05T20:51:23.8759675Z     metrics = run_evalscope(
+2026-11-05T20:51:23.8759930Z               ^^^^^^^^^^^^^^
+2026-11-05T20:51:23.8760493Z   File "/sgl-workspace/sglang/python/sglang/test/ascend/e2e/test_npu_accuracy_utils.py", line 206, in run_evalscope
+2026-11-05T20:51:23.8761128Z     raise subprocess.CalledProcessError(process.returncode, cmd)
+2026-11-05T20:51:23.8762027Z subprocess.CalledProcessError: Command 'test_env_evalscope/bin/python /tmp/evalscope_run_GLM-5.2-w8a8_gpqa_diamond.py' returned non-zero exit status 1.
+2026-11-05T20:51:23.8762620Z 
+2026-11-05T20:51:23.8762810Z During handling of the above exception, another exception occurred:
+2026-11-05T20:51:23.8763103Z 
+2026-11-05T20:51:23.8763212Z Traceback (most recent call last):
+2026-11-05T20:51:23.8763676Z   File "/sgl-workspace/sglang/python/sglang/test/test_utils.py", line 2502, in _callTestMethod
+2026-11-05T20:51:23.8764131Z     retry(
+2026-11-05T20:51:23.8764497Z   File "/sgl-workspace/sglang/python/sglang/srt/utils/common.py", line 3844, in retry
+2026-11-05T20:51:23.8765014Z     raise Exception(f"retry() exceed maximum number of retries.")
+2026-11-05T20:51:23.8765431Z Exception: retry() exceed maximum number of retries.
+2026-11-05T20:51:23.8765673Z 
+2026-11-05T20:51:23.8765829Z ----------------------------------------------------------------------
+2026-11-05T20:51:23.8766187Z Ran 1 test in 3574.882s
+2026-11-05T20:51:23.8766542Z 2026-11-05 20:51:23,875 - INFO - Detected complete test completion pattern!
+2026-11-05T20:51:23.8766839Z 
+2026-11-05T20:51:23.8766936Z FAILED (errors=1)
+2026-11-05T20:51:23.9071593Z 2026-11-05 20:51:23,902 - ERROR - Test case failed: test/registered/npu/accuracy/glm5_2/test_npu_glm_5_2_w8a8_2p2d_32p_pcp_gpqa.py
+2026-11-05T20:51:23.9072232Z Traceback (most recent call last):
+2026-11-05T20:51:23.9072754Z   File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 737, in run_npu_e2e_test_case
+2026-11-05T20:51:23.9073287Z     monitor_pod_logs(
+2026-11-05T20:51:23.9073746Z   File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 491, in monitor_pod_logs
+2026-11-05T20:51:23.9074299Z     raise Exception("The test result was FAILED!")
+2026-11-05T20:51:23.9074932Z Exception: The test result was FAILED!
+2026-11-05T20:51:23.9107300Z 2026-11-05 20:51:23,909 - WARNING - Metrics log file not found: /root/.cache/tests/output/main-20261106-0008-42061473997-1/Nightly_Test_NPU--main-cann9.1.0-a3/accuracy/test_npu_glm_5_2_w8a8_2p2d_32p_pcp_gpqa/test_output.log
+2026-11-05T20:51:23.9240607Z 2026-11-05 20:51:23,916 - INFO - Metrics JSON written to /root/.cache/tests/output/main-20261106-0008-42061473997-1/Nightly_Test_NPU--main-cann9.1.0-a3/accuracy/test_npu_glm_5_2_w8a8_2p2d_32p_pcp_gpqa/metrics.json
+2026-11-05T20:51:23.9492137Z ConfigMap sglang-configmap-fde3a294jhhu610y is deleted.
+2026-11-05T20:51:23.9822282Z 2026-11-05 20:51:23,981 - INFO - Deleted job ascend-42061473997-fde3a294jhhu610y
+2026-11-05T20:51:23.9824955Z 2026-11-05 20:51:23,981 - INFO - Response status: {'conditions': [{'lastTransitionTime': '2026-11-05T19:51:16Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-05T19:51:18Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-05T19:51:20Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-05T19:51:27Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-05T19:51:27Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-05T19:51:29Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-05T19:51:31Z', 'status': 'Running'}], 'minAvailable': 5, 'running': 5, 'state': {'lastTransitionTime': '2026-11-05T19:51:31Z', 'phase': 'Running'}, 'taskStatusCount': {'sglang-decode': {'phase': {'Running': 2}}, 'sglang-prefill': {'phase': {'Running': 2}}, 'sglang-router': {'phase': {'Running': 1}}}}
+2026-11-05T20:51:23.9837400Z Traceback (most recent call last):
+2026-11-05T20:51:23.9837955Z   File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 933, in <module>
+2026-11-05T20:51:23.9839692Z     run_npu_e2e_test_case(
+2026-11-05T20:51:23.9840269Z   File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 737, in run_npu_e2e_test_case
+2026-11-05T20:51:23.9840799Z     monitor_pod_logs(
+2026-11-05T20:51:23.9841384Z   File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 491, in monitor_pod_logs
+2026-11-05T20:51:23.9841952Z     raise Exception("The test result was FAILED!")
+2026-11-05T20:51:23.9842284Z Exception: The test result was FAILED!
+2026-11-05T20:51:24.1349362Z ##[error]Error: failed to run script step:
+  ✗ exit code: 1
+  → your script exited with a non-zero code; please check your script for errors
+------------------------------------------------------------
+Last output:
+  2026-11-05 20:51:23,902 - ERROR - Test case failed: test/registered/npu/accuracy/glm5_2/test_npu_glm_5_2_w8a8_2p2d_32p_pcp_gpqa.py
+  Traceback (most recent call last):
+    File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 737, in run_npu_e2e_test_case
+      monitor_pod_logs(
+    File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 491, in monitor_pod_logs
+      raise Exception("The test result was FAILED!")
+  Exception: The test result was FAILED!
+  2026-11-05 20:51:23,909 - WARNING - Metrics log file not found: /root/.cache/tests/output/main-20261106-0008-42061473997-1/Nightly_Test_NPU--main-cann9.1.0-a3/accuracy/test_npu_glm_5_2_w8a8_2p2d_32p_pcp_gpqa/test_output.log
+  2026-11-05 20:51:23,916 - INFO - Metrics JSON written to /root/.cache/tests/output/main-20261106-0008-42061473997-1/Nightly_Test_NPU--main-cann9.1.0-a3/accuracy/test_npu_glm_5_2_w8a8_2p2d_32p_pcp_gpqa/metrics.json
+  ConfigMap sglang-configmap-fde3a294jhhu610y is deleted.
+  2026-11-05 20:51:23,981 - INFO - Deleted job ascend-42061473997-fde3a294jhhu610y
+  2026-11-05 20:51:23,981 - INFO - Response status: {'conditions': [{'lastTransitionTime': '2026-11-05T19:51:16Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-05T19:51:18Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-05T19:51:20Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-05T19:51:27Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-05T19:51:27Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-05T19:51:29Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-05T19:51:31Z', 'status': 'Running'}], 'minAvailable': 5, 'running': 5, 'state': {'lastTransitionTime': '2026-11-05T19:51:31Z', 'phase': 'Running'}, 'taskStatusCount': {'sglang-decode': {'phase': {'Running': 2}}, 'sglang-prefill': {'phase': {'Running': 2}}, 'sglang-router': {'phase': {'Running': 1}}}}
+  Traceback (most recent call last):
+    File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 933, in <module>
+      run_npu_e2e_test_case(
+    File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 737, in run_npu_e2e_test_case
+      monitor_pod_logs(
+    File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 491, in monitor_pod_logs
+      raise Exception("The test result was FAILED!")
+  Exception: The test result was FAILED!
+2026-11-05T20:51:24.1368034Z ##[error]Process completed with exit code 1.
+2026-11-05T20:51:24.1554782Z ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.
+2026-11-05T20:51:24.2177761Z ##[group]Run cd ${ASCEND_E2E_TEST_CONFIG_PATH}
+2026-11-05T20:51:24.2178211Z [36;1mcd ${ASCEND_E2E_TEST_CONFIG_PATH}[0m
+2026-11-05T20:51:24.2178623Z [36;1mkubectl get pods -n $NAMESPACE | grep $KUBE_JOB_NAME[0m
+2026-11-05T20:51:24.2179132Z [36;1mkubectl delete -f ./k8s_multi_pd_*.yaml --ignore-not-found=true || true[0m
+2026-11-05T20:51:24.2179546Z [36;1m[0m
+2026-11-05T20:51:24.2179796Z [36;1mpod_name_prefix="${KUBE_JOB_NAME}-"[0m
+2026-11-05T20:51:24.2180326Z [36;1mecho "kube name space: $NAMESPACE, pod name prefix: ${pod_name_prefix}"[0m
+2026-11-05T20:51:24.2180745Z [36;1mwhile true; do[0m
+2026-11-05T20:51:24.2181117Z [36;1m  if kubectl get po -A -n $NAMESPACE | grep -q "${pod_name_prefix}"; then[0m
+2026-11-05T20:51:24.2181796Z [36;1m    echo "Found exist sglang job, sleeping for 30 seconds..."[0m
+2026-11-05T20:51:24.2182172Z [36;1m    sleep 30[0m
+2026-11-05T20:51:24.2182700Z [36;1m    kubectl get pods | grep "${pod_name_prefix}" | awk '{print $1}' | xargs kubectl delete pod -n $NAMESPACE || true[0m
+2026-11-05T20:51:24.2183232Z [36;1m  else[0m
+2026-11-05T20:51:24.2183510Z [36;1m    echo "No sglang job exist, start test case..."[0m
+2026-11-05T20:51:24.2183839Z [36;1m    break[0m
+2026-11-05T20:51:24.2184060Z [36;1m  fi[0m
+2026-11-05T20:51:24.2184271Z [36;1mdone[0m
+2026-11-05T20:51:24.2184602Z [36;1m# Cleanup the run-scoped source code directory on the shared PVC.[0m
+2026-11-05T20:51:24.2185084Z [36;1mrm -rf /root/.cache/tests/sglang-42061473997 || true[0m
+2026-11-05T20:51:24.2185543Z shell: sh -e {0}
+2026-11-05T20:51:24.2185773Z ##[endgroup]
+2026-11-05T20:51:24.2295764Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-05T20:51:24.2296728Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-05T20:51:24.2297055Z ##[endgroup]
+2026-11-05T20:51:24.4778298Z (node:816) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-05T20:51:24.4779608Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-05T20:51:24.5010299Z (node:816) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-05T20:51:24.5534822Z (node:816) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-05T20:51:25.2511846Z ascend-42061473997-fde3a294jhhu610y-sglang-decode-0    1/1     Terminating   0          60m
+2026-11-05T20:51:25.2512676Z ascend-42061473997-fde3a294jhhu610y-sglang-decode-1    1/1     Terminating   0          60m
+2026-11-05T20:51:25.2513368Z ascend-42061473997-fde3a294jhhu610y-sglang-prefill-0   1/1     Terminating   0          60m
+2026-11-05T20:51:25.2514062Z ascend-42061473997-fde3a294jhhu610y-sglang-prefill-1   1/1     Terminating   0          60m
+2026-11-05T20:51:25.2514752Z ascend-42061473997-fde3a294jhhu610y-sglang-router-0    1/1     Terminating   0          60m
+2026-11-05T20:51:25.2840566Z error: the path "./k8s_multi_pd_*.yaml" does not exist
+2026-11-05T20:51:25.2863158Z kube name space: sgl-project, pod name prefix: ascend-42061473997-
+2026-11-05T20:51:25.5904985Z Found exist sglang job, sleeping for 30 seconds...
+2026-11-05T20:51:55.8466499Z error: resource(s) were provided, but no name was specified
+2026-11-05T20:51:56.2003767Z Found exist sglang job, sleeping for 30 seconds...
+2026-11-05T20:52:26.3576472Z error: resource(s) were provided, but no name was specified
+2026-11-05T20:52:26.6443650Z Found exist sglang job, sleeping for 30 seconds...
+2026-11-05T20:52:56.8134358Z error: resource(s) were provided, but no name was specified
+2026-11-05T20:52:57.1334814Z Found exist sglang job, sleeping for 30 seconds...
+2026-11-05T20:53:27.3043150Z error: resource(s) were provided, but no name was specified
+2026-11-05T20:53:27.6483331Z Found exist sglang job, sleeping for 30 seconds...
+2026-11-05T20:53:57.8208324Z error: resource(s) were provided, but no name was specified
+2026-11-05T20:53:58.1683730Z No sglang job exist, start test case...
+2026-11-05T20:54:38.4607014Z Post job cleanup.
+2026-11-05T20:54:38.4652631Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-05T20:54:38.4654336Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-05T20:54:38.4654894Z ##[endgroup]
+2026-11-05T20:54:38.7067764Z (node:947) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-05T20:54:38.7068532Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-05T20:54:38.7296808Z (node:947) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-05T20:54:38.7841613Z (node:947) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-05T20:54:39.4104320Z [command]/usr/bin/git version
+2026-11-05T20:54:39.4146980Z git version 2.34.1
+2026-11-05T20:54:39.4175638Z Copying '/root/.gitconfig' to '/__w/_temp/fa55b7cb-d606-459a-8147-cc616d930186/.gitconfig'
+2026-11-05T20:54:39.4183061Z Temporarily overriding HOME='/__w/_temp/fa55b7cb-d606-459a-8147-cc616d930186' before making global git config changes
+2026-11-05T20:54:39.4183915Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-05T20:54:39.4186862Z [command]/usr/bin/git config --global --add safe.directory /__w/sglang/sglang
+2026-11-05T20:54:39.4219171Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-05T20:54:39.4249142Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-05T20:54:39.4538230Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-05T20:54:39.4561006Z http.https://github.com/.extraheader
+2026-11-05T20:54:39.4569576Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-05T20:54:39.4602033Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-05T20:54:39.4893979Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-05T20:54:39.4922530Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-05T20:54:40.5059363Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-05T20:54:40.5060345Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-05T20:54:40.5060683Z ##[endgroup]
+2026-11-05T20:54:40.7419448Z (node:1075) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-05T20:54:40.7420266Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-05T20:54:40.7649422Z (node:1075) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-05T20:54:40.8936125Z Cleaning up orphan processes
+2026-11-05T20:54:40.9032027Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

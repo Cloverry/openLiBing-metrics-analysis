@@ -1,0 +1,77 @@
+{
+ "route": "github",
+ "key": "SgLang|nightly-test-npu.yml",
+ "rn": 2096,
+ "rid": "42208857568",
+ "st": "11-06 19:15",
+ "runId": 42208857568,
+ "repo": "sgl-project/sglang",
+ "displayTitle": "[Test][NPU] overlap-schedule validation: GLM5/Kimi/DSV4 case reconfig + TEMP nightly scoping",
+ "event": "pull_request",
+ "status": "FAILED",
+ "duration": 17.45,
+ "runStatus": {
+  "status": "completed",
+  "conclusion": "cancelled",
+  "updatedAt": "2026-11-06T11:32:39Z",
+  "attempt": 1
+ },
+ "_v": 2,
+ "mode": "perjob",
+ "why": "失败 job 1 个（≤5，逐 job 精取）",
+ "totalJobs": 15,
+ "failedJobs": [
+  {
+   "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+   "id": 127862479647,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ ],
+ "cancelledJobs": [
+  {
+   "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+   "id": 127862479723
+  },
+  {
+   "name": "check-all-jobs",
+   "id": 127869418340
+  }
+ ],
+ "jobs": [
+  {
+   "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+   "id": 127862479647,
+   "conclusion": "failure",
+   "startedAt": "2026-11-06T11:16:13Z",
+   "completedAt": "2026-11-06T11:27:51Z",
+   "logFile": "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf-16-npu-a3.txt",
+   "logBytes": 930102,
+   "logLines": 5324,
+   "errorLines": [
+    "L1996: [2026-11-06 11:20:37] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+    "L4211: [2026-11-06 11:25:27] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+    "L5134: Traceback (most recent call last):",
+    "L5157: Traceback (most recent call last):",
+    "L5176: Traceback (most recent call last):",
+    "L5268: ##[error]Error: failed to run script step:",
+    "L5269: ✗ exit code: 255",
+    "L5293: ##[error]Process completed with exit code 1.",
+    "L5294: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ ],
+ "missing": [],
+ "systemLogs": [],
+ "ghComplete": true
+}

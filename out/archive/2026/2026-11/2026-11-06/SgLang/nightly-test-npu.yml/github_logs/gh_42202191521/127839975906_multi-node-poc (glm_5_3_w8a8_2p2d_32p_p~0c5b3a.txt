@@ -1,0 +1,937 @@
+﻿2026-11-06T10:23:09.8632345Z Current runner version: '2.338.0'
+2026-11-06T10:23:09.8638364Z Runner name: 'linux-amd64-cpu-test-8-gg85b-runner-wgznz'
+2026-11-06T10:23:09.8639213Z Runner group name: 'Default'
+2026-11-06T10:23:09.8640116Z Machine name: 'linux-amd64-cpu-test-8-gg85b-runner-wgznz'
+2026-11-06T10:23:09.8643122Z ##[group]GITHUB_TOKEN Permissions
+2026-11-06T10:23:09.8645388Z Contents: read
+2026-11-06T10:23:09.8645926Z Metadata: read
+2026-11-06T10:23:09.8646417Z Packages: read
+2026-11-06T10:23:09.8647016Z ##[endgroup]
+2026-11-06T10:23:09.8649293Z Secret source: None
+2026-11-06T10:23:09.8650136Z Cache mode: write
+2026-11-06T10:23:09.8651354Z Runner is running behind proxy server 'http://squid-cache.squid.svc.cluster.local:3128' for all HTTP requests.
+2026-11-06T10:23:09.8652756Z Runner is running behind proxy server 'http://squid-cache.squid.svc.cluster.local:3128' for all HTTPS requests.
+2026-11-06T10:23:09.8653742Z Prepare workflow directory
+2026-11-06T10:23:09.9464108Z Prepare all required actions
+2026-11-06T10:23:09.9511720Z Getting action download info
+2026-11-06T10:23:12.7386139Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-06T10:23:17.3703031Z Uses: sgl-project/sglang/.github/workflows/nightly-test-npu-e2e-multi-node.yml@refs/pull/48807/merge (51c203833c0264b407002a27f07ddc23b46660bb)
+2026-11-06T10:23:17.3708152Z ##[group] Inputs
+2026-11-06T10:23:17.3708662Z   runner: linux-amd64-cpu-test-8
+2026-11-06T10:23:17.3709182Z   test_type: accuracy
+2026-11-06T10:23:17.3709676Z   test_config_name: glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa
+2026-11-06T10:23:17.3710753Z   prefill_size: 2
+2026-11-06T10:23:17.3711162Z   decode_size: 2
+2026-11-06T10:23:17.3711778Z   router_size: 1
+2026-11-06T10:23:17.3712125Z   node_size: 0
+2026-11-06T10:23:17.3712747Z   test_case: test/registered/npu/accuracy/glm5_3/test_npu_glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa.py
+2026-11-06T10:23:17.3713632Z   image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:main-cann9.1.0-a3
+2026-11-06T10:23:17.3714824Z   install_sglang_from_source: false
+2026-11-06T10:23:17.3715301Z   prefill_decode_deployment: separation
+2026-11-06T10:23:17.3715740Z   transformers_version: 
+2026-11-06T10:23:17.3716515Z   run_start_metadata: {"branch_label": "pllimax-test-glm53eplbgpqa", "workflow_name": "Nightly Test (NPU)", "create_time": "20261106-1822"}
+2026-11-06T10:23:17.3717316Z ##[endgroup]
+2026-11-06T10:23:17.3718175Z Complete job name: multi-node-poc (glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_3... / glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa
+2026-11-06T10:23:17.4514661Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T10:23:17.4518517Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T10:23:17.4519593Z ##[endgroup]
+2026-11-06T10:23:17.7189634Z (node:105) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T10:23:17.7191370Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T10:23:17.7399440Z (node:105) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T10:32:50.0345663Z (node:105) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-06T10:32:51.1398215Z ##[group]Run pip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple jinja2
+2026-11-06T10:32:51.1399053Z [36;1mpip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple jinja2[0m
+2026-11-06T10:32:51.1399689Z [36;1mpip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple psutil[0m
+2026-11-06T10:32:51.1400148Z [36;1m# Install kubernetes[0m
+2026-11-06T10:32:51.1400610Z [36;1mpip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple kubernetes[0m
+2026-11-06T10:32:51.1401458Z [36;1mcp $KUBECTL /usr/local/sbin/[0m
+2026-11-06T10:32:51.1404675Z shell: sh -e {0}
+2026-11-06T10:32:51.1404948Z ##[endgroup]
+2026-11-06T10:32:51.1593724Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T10:32:51.1594831Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T10:32:51.1595165Z ##[endgroup]
+2026-11-06T10:32:51.4032629Z (node:309) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T10:32:51.4261863Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T10:32:51.4263058Z (node:309) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T10:32:51.4752910Z (node:309) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-06T10:32:52.0703990Z Looking in indexes: https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+2026-11-06T10:32:52.0704976Z Requirement already satisfied: jinja2 in /usr/local/python3.11.13/lib/python3.11/site-packages (3.1.6)
+2026-11-06T10:32:52.0715047Z Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from jinja2) (3.0.3)
+2026-11-06T10:32:52.3810561Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-11-06T10:32:52.5254122Z 
+2026-11-06T10:32:52.5254604Z [notice] A new release of pip is available: 25.3 -> 26.3
+2026-11-06T10:32:52.5255186Z [notice] To update, run: pip install --upgrade pip
+2026-11-06T10:32:52.9068859Z Looking in indexes: https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+2026-11-06T10:32:52.9071539Z Requirement already satisfied: psutil in /usr/local/python3.11.13/lib/python3.11/site-packages (6.0.0)
+2026-11-06T10:32:53.2098049Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-11-06T10:32:53.2135333Z 
+2026-11-06T10:32:53.2135548Z [notice] A new release of pip is available: 25.3 -> 26.3
+2026-11-06T10:32:53.2135985Z [notice] To update, run: pip install --upgrade pip
+2026-11-06T10:32:53.6089309Z Looking in indexes: https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+2026-11-06T10:32:54.4205682Z Collecting kubernetes
+2026-11-06T10:32:54.4796435Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/c8/9e/bb4b445924591c09e6451da66274ee4afd3acb783f15c17c3623b9a4824a/kubernetes-37.0.2-py2.py3-none-any.whl (7.5 MB)
+2026-11-06T10:32:55.6285237Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.5/7.5 MB 7.7 MB/s  0:00:01
+2026-11-06T10:32:55.6504565Z Requirement already satisfied: certifi>=2024.7.4 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (2025.10.5)
+2026-11-06T10:32:55.6633352Z Collecting python-dateutil>=3.0.0 (from kubernetes)
+2026-11-06T10:32:55.7152680Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/2f/a9/52b89563d154433d79b51ed1eb4842bf7334cb2696891a7fe135618853d7/python_dateutil-4.0.0-py3-none-any.whl (92 kB)
+2026-11-06T10:32:56.3084905Z Collecting pydantic>=2.14.2 (from kubernetes)
+2026-11-06T10:32:56.3167970Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/97/01/c71a71258b58659c72504e5fd65b451f6e36e34dc931d0b237ded213c814/pydantic-2.14.2-py3-none-any.whl (490 kB)
+2026-11-06T10:32:56.3639531Z Requirement already satisfied: PyYAML>=6.0.3 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (6.0.3)
+2026-11-06T10:32:56.5219720Z Collecting websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 (from kubernetes)
+2026-11-06T10:32:56.5280986Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/d5/d2/cc4dc1271e464942db7ee278baae2daa99ee77cb2af744025c04da585a3e/websocket_client-1.9.2-py3-none-any.whl (95 kB)
+2026-11-06T10:32:56.5372177Z Requirement already satisfied: requests in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (2.32.5)
+2026-11-06T10:32:56.6224319Z Collecting requests-oauthlib (from kubernetes)
+2026-11-06T10:32:56.6287578Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/3b/5d/63d4ae3b9daea098d5d6f5da83984853c1bbacd5dc826764b249fe119d24/requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+2026-11-06T10:32:56.6514397Z Collecting oauthlib>=4.0.0 (from kubernetes)
+2026-11-06T10:32:56.7193102Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/df/ef/3b8adde1b32a6f540758bff734d3442c621734c83708e5f02b0ba2f43b84/oauthlib-4.0.1-py3-none-any.whl (161 kB)
+2026-11-06T10:32:57.0155418Z Collecting typing-extensions>=4.16.0 (from kubernetes)
+2026-11-06T10:32:57.0223720Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-11-06T10:32:57.0591040Z Collecting urllib3<3.0.0,>=2.8.0 (from kubernetes)
+2026-11-06T10:32:57.0592671Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/92/9d/c4e665119135114480843e7ab388fa94d8480650450e6f8e26b70d323a4c/urllib3-2.8.0-py3-none-any.whl (135 kB)
+2026-11-06T10:32:57.1262734Z Collecting durationpy>=0.11 (from kubernetes)
+2026-11-06T10:32:57.1319954Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/e6/c4/ebdf7837bc4ef6fd98cfb013c28855bb358467bf86c1af011bbc21e21df0/durationpy-0.11-py3-none-any.whl (4.1 kB)
+2026-11-06T10:32:57.8008815Z Collecting aiohttp<4.0.0,>=3.14.5 (from kubernetes)
+2026-11-06T10:32:57.8067783Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/42/74/2a2b22953de15c6c8a80debf26db3047e4e8a5a5db6dd7c2c6c01eec0605/aiohttp-3.14.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.9 MB)
+2026-11-06T10:32:57.8352284Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.9/1.9 MB 75.2 MB/s  0:00:00
+2026-11-06T10:32:57.9324390Z Collecting aiohttp-retry>=2.9.1 (from kubernetes)
+2026-11-06T10:32:57.9381964Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/1a/99/84ba7273339d0f3dfa57901b846489d2e5c2cd731470167757f1935fffbd/aiohttp_retry-2.9.1-py3-none-any.whl (10.0 kB)
+2026-11-06T10:32:57.9454068Z Requirement already satisfied: aiohappyeyeballs>=2.5.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.14.5->kubernetes) (2.6.1)
+2026-11-06T10:32:57.9456490Z Requirement already satisfied: aiosignal>=1.4.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.14.5->kubernetes) (1.4.0)
+2026-11-06T10:32:57.9460222Z Requirement already satisfied: attrs>=17.3.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.14.5->kubernetes) (25.4.0)
+2026-11-06T10:32:57.9463890Z Requirement already satisfied: frozenlist>=1.1.1 in /usr/local/python3.11.13/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.14.5->kubernetes) (1.8.0)
+2026-11-06T10:32:57.9468838Z Requirement already satisfied: multidict<8.0,>=4.5 in /usr/local/python3.11.13/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.14.5->kubernetes) (6.7.0)
+2026-11-06T10:32:57.9471819Z Requirement already satisfied: propcache>=0.2.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.14.5->kubernetes) (0.4.1)
+2026-11-06T10:32:58.2847513Z Collecting yarl<2.0,>=1.25.1 (from aiohttp<4.0.0,>=3.14.5->kubernetes)
+2026-11-06T10:32:58.2937609Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/95/0c/a71501bbc1a674ff72c4d6c2b75f4d9a5af819f5244c3a7558080a8802c5/yarl-1.25.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (117 kB)
+2026-11-06T10:32:58.3094447Z Requirement already satisfied: idna>=2.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from yarl<2.0,>=1.25.1->aiohttp<4.0.0,>=3.14.5->kubernetes) (3.11)
+2026-11-06T10:32:58.3206624Z Requirement already satisfied: annotated-types>=0.6.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from pydantic>=2.14.2->kubernetes) (0.7.0)
+2026-11-06T10:32:59.2481927Z Collecting pydantic-core==2.50.2 (from pydantic>=2.14.2->kubernetes)
+2026-11-06T10:32:59.2546268Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/70/7d/22bd04c22adae266ae5e99e4c34bd882daf6c93c35bda2f9674421c1e7c3/pydantic_core-2.50.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.2 MB)
+2026-11-06T10:32:59.2896483Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 73.0 MB/s  0:00:00
+2026-11-06T10:32:59.3010292Z Collecting typing-inspection>=0.4.4 (from pydantic>=2.14.2->kubernetes)
+2026-11-06T10:32:59.3036370Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/de/0c/ea2544850a7c135e15033a5c7a8e7211136184b7ae63e2239d557c2b3019/typing_inspection-0.4.5-py3-none-any.whl (14 kB)
+2026-11-06T10:32:59.3119583Z Requirement already satisfied: tzdata in /usr/local/python3.11.13/lib/python3.11/site-packages (from python-dateutil>=3.0.0->kubernetes) (2025.2)
+2026-11-06T10:32:59.3195433Z Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/python3.11.13/lib/python3.11/site-packages (from requests->kubernetes) (3.4.4)
+2026-11-06T10:32:59.6917027Z Installing collected packages: durationpy, yarl, websocket-client, urllib3, typing-extensions, python-dateutil, oauthlib, typing-inspection, pydantic-core, requests-oauthlib, pydantic, aiohttp, aiohttp-retry, kubernetes
+2026-11-06T10:32:59.6999395Z   Attempting uninstall: yarl
+2026-11-06T10:32:59.7058755Z     Found existing installation: yarl 1.22.0
+2026-11-06T10:32:59.7088816Z     Uninstalling yarl-1.22.0:
+2026-11-06T10:32:59.7129160Z       Successfully uninstalled yarl-1.22.0
+2026-11-06T10:32:59.8011643Z   Attempting uninstall: urllib3
+2026-11-06T10:32:59.8045974Z     Found existing installation: urllib3 2.5.0
+2026-11-06T10:32:59.8082687Z     Uninstalling urllib3-2.5.0:
+2026-11-06T10:32:59.8166295Z       Successfully uninstalled urllib3-2.5.0
+2026-11-06T10:32:59.8869755Z   Attempting uninstall: typing-extensions
+2026-11-06T10:32:59.8908247Z     Found existing installation: typing_extensions 4.15.0
+2026-11-06T10:32:59.8920500Z     Uninstalling typing_extensions-4.15.0:
+2026-11-06T10:33:00.1444028Z       Successfully uninstalled typing_extensions-4.15.0
+2026-11-06T10:33:00.1707374Z   Attempting uninstall: python-dateutil
+2026-11-06T10:33:00.1748283Z     Found existing installation: python-dateutil 2.9.0.post0
+2026-11-06T10:33:00.1775093Z     Uninstalling python-dateutil-2.9.0.post0:
+2026-11-06T10:33:00.1828457Z       Successfully uninstalled python-dateutil-2.9.0.post0
+2026-11-06T10:33:00.3014609Z   Attempting uninstall: typing-inspection
+2026-11-06T10:33:00.3049126Z     Found existing installation: typing-inspection 0.4.2
+2026-11-06T10:33:00.3063802Z     Uninstalling typing-inspection-0.4.2:
+2026-11-06T10:33:00.3093258Z       Successfully uninstalled typing-inspection-0.4.2
+2026-11-06T10:33:00.3186794Z   Attempting uninstall: pydantic-core
+2026-11-06T10:33:00.3227559Z     Found existing installation: pydantic_core 2.41.5
+2026-11-06T10:33:00.3241749Z     Uninstalling pydantic_core-2.41.5:
+2026-11-06T10:33:00.3286132Z       Successfully uninstalled pydantic_core-2.41.5
+2026-11-06T10:33:00.3951556Z   Attempting uninstall: pydantic
+2026-11-06T10:33:00.4021014Z     Found existing installation: pydantic 2.12.4
+2026-11-06T10:33:00.4084675Z     Uninstalling pydantic-2.12.4:
+2026-11-06T10:33:00.4282912Z       Successfully uninstalled pydantic-2.12.4
+2026-11-06T10:33:00.6879704Z   Attempting uninstall: aiohttp
+2026-11-06T10:33:00.6919474Z     Found existing installation: aiohttp 3.13.2
+2026-11-06T10:33:00.6970780Z     Uninstalling aiohttp-3.13.2:
+2026-11-06T10:33:00.7126837Z       Successfully uninstalled aiohttp-3.13.2
+2026-11-06T10:33:06.6381139Z 
+2026-11-06T10:33:06.6462842Z ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+2026-11-06T10:33:06.6464803Z vllm 0.8.5.post1+empty requires xgrammar==0.1.18; platform_machine == "x86_64" or platform_machine == "aarch64", but you have xgrammar 0.1.25 which is incompatible.
+2026-11-06T10:33:06.6468259Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-11-06T10:33:06.6472667Z Successfully installed aiohttp-3.14.5 aiohttp-retry-2.9.1 durationpy-0.11 kubernetes-37.0.2 oauthlib-4.0.1 pydantic-2.14.2 pydantic-core-2.50.2 python-dateutil-4.0.0 requests-oauthlib-2.0.0 typing-extensions-4.16.0 typing-inspection-0.4.5 urllib3-2.8.0 websocket-client-1.9.2 yarl-1.25.1
+2026-11-06T10:33:06.6549907Z 
+2026-11-06T10:33:06.6550502Z [notice] A new release of pip is available: 25.3 -> 26.3
+2026-11-06T10:33:06.6550977Z [notice] To update, run: pip install --upgrade pip
+2026-11-06T10:33:07.7179914Z ##[group]Run actions/checkout@v4
+2026-11-06T10:33:07.7180251Z with:
+2026-11-06T10:33:07.7180484Z   repository: sgl-project/sglang
+2026-11-06T10:33:07.7183372Z   token: ***
+2026-11-06T10:33:07.7183624Z   ssh-strict: true
+2026-11-06T10:33:07.7183870Z   ssh-user: git
+2026-11-06T10:33:07.7184126Z   persist-credentials: true
+2026-11-06T10:33:07.7184406Z   clean: true
+2026-11-06T10:33:07.7184661Z   sparse-checkout-cone-mode: true
+2026-11-06T10:33:07.7184961Z   fetch-depth: 1
+2026-11-06T10:33:07.7185192Z   fetch-tags: false
+2026-11-06T10:33:07.7185436Z   show-progress: true
+2026-11-06T10:33:07.7185667Z   lfs: false
+2026-11-06T10:33:07.7185877Z   submodules: false
+2026-11-06T10:33:07.7186111Z   set-safe-directory: true
+2026-11-06T10:33:07.7186396Z   allow-unsafe-pr-checkout: false
+2026-11-06T10:33:07.7186672Z ##[endgroup]
+2026-11-06T10:33:07.7262190Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T10:33:07.7263658Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T10:33:07.7264324Z ##[endgroup]
+2026-11-06T10:33:07.9635290Z (node:351) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T10:33:07.9636103Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T10:33:07.9862199Z (node:351) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T10:33:08.0529428Z (node:351) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-06T10:33:08.5226308Z Syncing repository: sgl-project/sglang
+2026-11-06T10:33:08.5227733Z ##[group]Getting Git version info
+2026-11-06T10:33:08.5228223Z Working directory is '/__w/sglang/sglang'
+2026-11-06T10:33:08.5228780Z [command]/usr/bin/git version
+2026-11-06T10:33:08.5229102Z git version 2.34.1
+2026-11-06T10:33:08.5230042Z ##[endgroup]
+2026-11-06T10:33:08.5234298Z Copying '/root/.gitconfig' to '/__w/_temp/28592a7b-cfcc-4bef-bf33-2d24b0e6547c/.gitconfig'
+2026-11-06T10:33:08.5235061Z Temporarily overriding HOME='/__w/_temp/28592a7b-cfcc-4bef-bf33-2d24b0e6547c' before making global git config changes
+2026-11-06T10:33:08.5235777Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-06T10:33:08.5236364Z [command]/usr/bin/git config --global --add safe.directory /__w/sglang/sglang
+2026-11-06T10:33:08.5286319Z Deleting the contents of '/__w/sglang/sglang'
+2026-11-06T10:33:08.5287460Z ##[group]Initializing the repository
+2026-11-06T10:33:08.5287870Z [command]/usr/bin/git init /__w/sglang/sglang
+2026-11-06T10:33:08.5288441Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-06T10:33:08.5289019Z hint: is subject to change. To configure the initial branch name to use in all
+2026-11-06T10:33:08.5289582Z hint: of your new repositories, which will suppress this warning, call:
+2026-11-06T10:33:08.5289982Z hint: 
+2026-11-06T10:33:08.5290286Z hint: 	git config --global init.defaultBranch <name>
+2026-11-06T10:33:08.5290629Z hint: 
+2026-11-06T10:33:08.5290962Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-06T10:33:08.5291647Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-06T10:33:08.5292053Z hint: 
+2026-11-06T10:33:08.5292292Z hint: 	git branch -m <name>
+2026-11-06T10:33:08.5292645Z Initialized empty Git repository in /__w/sglang/sglang/.git/
+2026-11-06T10:33:08.5293523Z [command]/usr/bin/git remote add origin https://github.com/sgl-project/sglang
+2026-11-06T10:33:08.5313829Z ##[endgroup]
+2026-11-06T10:33:08.5314234Z ##[group]Disabling automatic garbage collection
+2026-11-06T10:33:08.5317929Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-06T10:33:08.5340766Z ##[endgroup]
+2026-11-06T10:33:08.5341151Z ##[group]Setting up auth
+2026-11-06T10:33:08.5347519Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-06T10:33:08.5374617Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-06T10:33:08.5625864Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-06T10:33:08.5651040Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-06T10:33:08.5895221Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-06T10:33:08.5920309Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-06T10:33:08.6165704Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-06T10:33:08.6195496Z ##[endgroup]
+2026-11-06T10:33:08.6203491Z ##[group]Fetching the repository
+2026-11-06T10:33:08.6204343Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +51c203833c0264b407002a27f07ddc23b46660bb:refs/remotes/pull/48807/merge
+2026-11-06T10:33:09.1456683Z warning: redirecting to http://git-cdn-service.git-cdn.svc.cluster.local:8000/sgl-project/sglang.git/
+2026-11-06T10:33:17.9044626Z From http://git-cdn-service.git-cdn.svc.cluster.local:8000/sgl-project/sglang
+2026-11-06T10:33:17.9045332Z  * [new ref]         51c203833c0264b407002a27f07ddc23b46660bb -> pull/48807/merge
+2026-11-06T10:33:17.9061332Z ##[endgroup]
+2026-11-06T10:33:17.9061756Z ##[group]Determining the checkout info
+2026-11-06T10:33:17.9063003Z ##[endgroup]
+2026-11-06T10:33:17.9068056Z [command]/usr/bin/git sparse-checkout disable
+2026-11-06T10:33:17.9106382Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-06T10:33:17.9166504Z ##[group]Checking out the ref
+2026-11-06T10:33:17.9169318Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/48807/merge
+2026-11-06T10:33:18.6777945Z Note: switching to 'refs/remotes/pull/48807/merge'.
+2026-11-06T10:33:18.6778305Z 
+2026-11-06T10:33:18.6778537Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-11-06T10:33:18.6779051Z changes and commit them, and you can discard any commits you make in this
+2026-11-06T10:33:18.6779564Z state without impacting any branches by switching back to a branch.
+2026-11-06T10:33:18.6780276Z 
+2026-11-06T10:33:18.6780475Z If you want to create a new branch to retain commits you create, you may
+2026-11-06T10:33:18.6780973Z do so (now or later) by using -c with the switch command. Example:
+2026-11-06T10:33:18.6781369Z 
+2026-11-06T10:33:18.6781505Z   git switch -c <new-branch-name>
+2026-11-06T10:33:18.6781692Z 
+2026-11-06T10:33:18.6781825Z Or undo this operation with:
+2026-11-06T10:33:18.6781994Z 
+2026-11-06T10:33:18.6782098Z   git switch -
+2026-11-06T10:33:18.6782244Z 
+2026-11-06T10:33:18.6782469Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-11-06T10:33:18.6782795Z 
+2026-11-06T10:33:18.6783171Z HEAD is now at 51c2038 Merge b26204ed5c74a90b1484d3e417df8e0a582b8ebd into 2fd45ed82fe07ec64ef7f4d2dbd9071b0eb01763
+2026-11-06T10:33:18.6797259Z ##[endgroup]
+2026-11-06T10:33:18.6832572Z [command]/usr/bin/git log -1 --format=%H
+2026-11-06T10:33:18.6854880Z 51c203833c0264b407002a27f07ddc23b46660bb
+2026-11-06T10:33:19.3006519Z ##[group]Run # copy source code to shared-disk
+2026-11-06T10:33:19.3006938Z [36;1m# copy source code to shared-disk[0m
+2026-11-06T10:33:19.3007358Z [36;1m# Append run_id to isolate concurrent runs sharing the same PVC.[0m
+2026-11-06T10:33:19.3007778Z [36;1mcurrent_path=$(pwd)[0m
+2026-11-06T10:33:19.3008139Z [36;1mtarget_path=/root/.cache/tests/sglang-42202191521[0m
+2026-11-06T10:33:19.3008597Z [36;1mrm -rf ${target_path}[0m
+2026-11-06T10:33:19.3008896Z [36;1mmkdir -p ${target_path}[0m
+2026-11-06T10:33:19.3009231Z [36;1mcp -r ${current_path}/* ${target_path}/[0m
+2026-11-06T10:33:19.3009664Z shell: sh -e {0}
+2026-11-06T10:33:19.3009895Z ##[endgroup]
+2026-11-06T10:33:19.3106235Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T10:33:19.3107200Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T10:33:19.3107543Z ##[endgroup]
+2026-11-06T10:33:19.5459752Z (node:402) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T10:33:19.5460600Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T10:33:19.5687927Z (node:402) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T10:33:19.6213922Z (node:402) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-06T10:34:57.4590115Z ##[group]Run cd ${ASCEND_E2E_TEST_CONFIG_PATH}
+2026-11-06T10:34:57.4590555Z [36;1mcd ${ASCEND_E2E_TEST_CONFIG_PATH}[0m
+2026-11-06T10:34:57.4591034Z [36;1mkubectl delete -f ./k8s_multi_pd_*.yaml --ignore-not-found=true || true[0m
+2026-11-06T10:34:57.4591690Z [36;1m[0m
+2026-11-06T10:34:57.4591968Z [36;1mpod_name_prefix="${KUBE_JOB_NAME}-"[0m
+2026-11-06T10:34:57.4592447Z [36;1mecho "kube name space: $NAMESPACE, pod name prefix: ${pod_name_prefix}"[0m
+2026-11-06T10:34:57.4592929Z [36;1mwhile true; do[0m
+2026-11-06T10:34:57.4593335Z [36;1m  if kubectl get po -A -n $NAMESPACE | grep -q "${pod_name_prefix}"; then[0m
+2026-11-06T10:34:57.4593871Z [36;1m    echo "Found exist sglang job, sleeping for 30 seconds..."[0m
+2026-11-06T10:34:57.4594273Z [36;1m    sleep 30[0m
+2026-11-06T10:34:57.4594790Z [36;1m    kubectl get pods | grep "${pod_name_prefix}" | awk '{print $1}' | xargs kubectl delete pod -n $NAMESPACE || true[0m
+2026-11-06T10:34:57.4595337Z [36;1m  else[0m
+2026-11-06T10:34:57.4595706Z [36;1m    echo "No sglang job exist, start test case..."[0m
+2026-11-06T10:34:57.4596070Z [36;1m    break[0m
+2026-11-06T10:34:57.4596315Z [36;1m  fi[0m
+2026-11-06T10:34:57.4596539Z [36;1mdone[0m
+2026-11-06T10:34:57.4596901Z shell: sh -e {0}
+2026-11-06T10:34:57.4597151Z ##[endgroup]
+2026-11-06T10:34:57.4961017Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T10:34:57.4962289Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T10:34:57.4962825Z ##[endgroup]
+2026-11-06T10:34:57.7541716Z (node:483) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T10:34:57.7542464Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T10:34:57.7769706Z (node:483) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T10:34:57.8309405Z (node:483) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-06T10:34:58.2513175Z error: the path "./k8s_multi_pd_*.yaml" does not exist
+2026-11-06T10:34:58.2522244Z kube name space: sgl-project, pod name prefix: ascend-42202191521-
+2026-11-06T10:34:58.6912516Z No sglang job exist, start test case...
+2026-11-06T10:34:59.6713120Z ##[group]Run # sglang_source_relative_path is shared-disk path
+2026-11-06T10:34:59.6713776Z [36;1m# sglang_source_relative_path is shared-disk path[0m
+2026-11-06T10:34:59.6714288Z [36;1m# Append run_id so concurrent runs do not overwrite each other on the shared PVC.[0m
+2026-11-06T10:34:59.6714836Z [36;1msglang_source_relative_path=tests/sglang-42202191521[0m
+2026-11-06T10:34:59.6715309Z [36;1msglang_source_path=/root/.cache/${sglang_source_relative_path}[0m
+2026-11-06T10:34:59.6715761Z [36;1mecho "Source code path: ${sglang_source_path}"[0m
+2026-11-06T10:34:59.6716086Z [36;1m[0m
+2026-11-06T10:34:59.6716532Z [36;1mtest_case="test/registered/npu/accuracy/glm5_3/test_npu_glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa.py"[0m
+2026-11-06T10:34:59.6717119Z [36;1mif [ ! -f "${sglang_source_path}/${test_case}" ]; then[0m
+2026-11-06T10:34:59.6717589Z [36;1m  echo "The testcase does not exit: ${sglang_source_path}/${test_case}"[0m
+2026-11-06T10:34:59.6718012Z [36;1m  exit 1[0m
+2026-11-06T10:34:59.6718266Z [36;1mfi[0m
+2026-11-06T10:34:59.6718470Z [36;1m[0m
+2026-11-06T10:34:59.6718688Z [36;1m# prepare for output data[0m
+2026-11-06T10:34:59.6718982Z [36;1mtc_name=${test_case##*/}[0m
+2026-11-06T10:34:59.6719263Z [36;1mtc_name=${tc_name%.*}[0m
+2026-11-06T10:34:59.6719514Z [36;1m[0m
+2026-11-06T10:34:59.6719783Z [36;1m# Provided automatically by the GitHub server.[0m
+2026-11-06T10:34:59.6720294Z [36;1m# run_id is the unique identifier for the workflow run,[0m
+2026-11-06T10:34:59.6720794Z [36;1m# attempt represents the re‑run attempt count of the job.[0m
+2026-11-06T10:34:59.6721275Z [36;1mrun_id=42202191521[0m
+2026-11-06T10:34:59.6721595Z [36;1mrun_attempt=1[0m
+2026-11-06T10:34:59.6721834Z [36;1m[0m
+2026-11-06T10:34:59.6722154Z [36;1m# Parse run metadata (branch_label / workflow_name / create_time)[0m
+2026-11-06T10:34:59.6722765Z [36;1m# from run_start_metadata JSON input using GitHub fromJson expression, same as partitions input.[0m
+2026-11-06T10:34:59.6723405Z [36;1mbranch_label=$(echo "pllimax-test-glm53eplbgpqa" | tr '/:' '--')[0m
+2026-11-06T10:34:59.6723935Z [36;1mworkflow_name=$(echo "Nightly Test (NPU)" | tr ' ' '_' | tr -d '()')[0m
+2026-11-06T10:34:59.6724351Z [36;1mcreate_time="20261106-1822"[0m
+2026-11-06T10:34:59.6724783Z [36;1mif [ -z "${create_time}" ]; then create_time=$(date -u -d '+8 hours' +%Y%m%d-%H%M); fi[0m
+2026-11-06T10:34:59.6725339Z [36;1m# Append the image tag to the workflow-name segment so that runs with[0m
+2026-11-06T10:34:59.6725853Z [36;1m# different images (CANN 9.0.0/9.1.0, a3/a5) persist into distinct,[0m
+2026-11-06T10:34:59.6726288Z [36;1m# image-tagged output/log directories.[0m
+2026-11-06T10:34:59.6726967Z [36;1mimage_label=$(echo "swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:main-cann9.1.0-a3" | sed 's#.*[/:]##')[0m
+2026-11-06T10:34:59.6727885Z [36;1mworkflow_name="${workflow_name}--${image_label}"[0m
+2026-11-06T10:34:59.6728257Z [36;1m[0m
+2026-11-06T10:34:59.6728967Z [36;1m# Print persistence‑directory‑prefix variables[0m
+2026-11-06T10:34:59.6729734Z [36;1mecho "Persistence prefix: run_id=${run_id} run_attempt=${run_attempt} branch_label=${branch_label} workflow_name=${workflow_name} create_time=${create_time}"[0m
+2026-11-06T10:34:59.6730514Z [36;1m[0m
+2026-11-06T10:34:59.6731115Z [36;1msglang_test_results_output_path=/root/.cache/tests/output/${branch_label}-${create_time}-${run_id}-${run_attempt}/${workflow_name}/accuracy/${tc_name}[0m
+2026-11-06T10:34:59.6731995Z [36;1mmkdir -p ${sglang_test_results_output_path}[0m
+2026-11-06T10:34:59.6732421Z [36;1mecho "Metrics file path: ${sglang_test_results_output_path}"[0m
+2026-11-06T10:34:59.6732785Z [36;1m[0m
+2026-11-06T10:34:59.6733037Z [36;1mprefill_decode_deployment="separation"[0m
+2026-11-06T10:34:59.6733365Z [36;1mkube_job_type=""[0m
+2026-11-06T10:34:59.6733696Z [36;1mif [ "$prefill_decode_deployment" = "separation" ];then[0m
+2026-11-06T10:34:59.6734093Z [36;1m  kube_job_type=multi-pd-separation[0m
+2026-11-06T10:34:59.6734642Z [36;1melif [ "$prefill_decode_deployment" = "mix" ];then[0m
+2026-11-06T10:34:59.6735020Z [36;1m  kube_job_type=multi-pd-mix[0m
+2026-11-06T10:34:59.6735307Z [36;1melse[0m
+2026-11-06T10:34:59.6735640Z [36;1m  echo "Unsupported deployment type: ${prefill_decode_deployment}"[0m
+2026-11-06T10:34:59.6736026Z [36;1m  exit 1[0m
+2026-11-06T10:34:59.6736239Z [36;1mfi[0m
+2026-11-06T10:34:59.6736431Z [36;1m[0m
+2026-11-06T10:34:59.6736646Z [36;1mtransformers_version=""[0m
+2026-11-06T10:34:59.6736942Z [36;1mcd ${ASCEND_E2E_TEST_CONFIG_PATH}[0m
+2026-11-06T10:34:59.6737272Z [36;1mCMD="python3 -u run_npu_e2e_test.py \[0m
+2026-11-06T10:34:59.6737588Z [36;1m  --env ci \[0m
+2026-11-06T10:34:59.6738099Z [36;1m  --image swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:main-cann9.1.0-a3 \[0m
+2026-11-06T10:34:59.6738760Z [36;1m  --sglang-source-relative-path ${sglang_source_relative_path} \[0m
+2026-11-06T10:34:59.6739259Z [36;1m  --metrics-data-file ${sglang_test_results_output_path} \[0m
+2026-11-06T10:34:59.6739651Z [36;1m  --test-case ${test_case} \[0m
+2026-11-06T10:34:59.6740019Z [36;1m  --kube-name-space ${NAMESPACE} \[0m
+2026-11-06T10:34:59.6740354Z [36;1m  --kube-job-type ${kube_job_type} \[0m
+2026-11-06T10:34:59.6740714Z [36;1m  --kube-job-name-prefix ${KUBE_JOB_NAME} \[0m
+2026-11-06T10:34:59.6741046Z [36;1m  --run-id 42202191521"[0m
+2026-11-06T10:34:59.6741468Z [36;1m[0m
+2026-11-06T10:34:59.6741798Z [36;1mif [ "$prefill_decode_deployment" = "separation" ];then[0m
+2026-11-06T10:34:59.6742156Z [36;1m  CMD="${CMD} \[0m
+2026-11-06T10:34:59.6742417Z [36;1m    --prefill-size 2 \[0m
+2026-11-06T10:34:59.6742699Z [36;1m    --decode-size 2 \[0m
+2026-11-06T10:34:59.6742972Z [36;1m    --router-size 1"[0m
+2026-11-06T10:34:59.6743296Z [36;1melif [ "$prefill_decode_deployment" = "mix" ];then[0m
+2026-11-06T10:34:59.6743645Z [36;1m  CMD="${CMD} --node-size 0"[0m
+2026-11-06T10:34:59.6743923Z [36;1melse[0m
+2026-11-06T10:34:59.6744278Z [36;1m  echo "Unsupported deployment type: ${prefill_decode_deployment}"[0m
+2026-11-06T10:34:59.6744671Z [36;1m  exit 1[0m
+2026-11-06T10:34:59.6744896Z [36;1mfi[0m
+2026-11-06T10:34:59.6745095Z [36;1m[0m
+2026-11-06T10:34:59.6745403Z [36;1mif [ "$SGLANG_IS_IN_CI" = "true" ] || [ "$SGLANG_IS_IN_CI" = "True" ];then[0m
+2026-11-06T10:34:59.6745805Z [36;1m  echo "Run test in ci."[0m
+2026-11-06T10:34:59.6746098Z [36;1m  CMD="${CMD} --sglang-is-in-ci"[0m
+2026-11-06T10:34:59.6746380Z [36;1mfi[0m
+2026-11-06T10:34:59.6746577Z [36;1m[0m
+2026-11-06T10:34:59.6746800Z [36;1minstall_sglang_from_source="false"[0m
+2026-11-06T10:34:59.6747284Z [36;1mif [ "$install_sglang_from_source" = "true" ] || [ "$install_sglang_from_source" = "True" ];then[0m
+2026-11-06T10:34:59.6747772Z [36;1m  echo "Install sglang from source."[0m
+2026-11-06T10:34:59.6748123Z [36;1m  CMD="${CMD} --install-sglang-from-source"[0m
+2026-11-06T10:34:59.6748515Z [36;1m  commit_id=51c203833c0264b407002a27f07ddc23b46660bb[0m
+2026-11-06T10:34:59.6749206Z [36;1m  echo "commit id: ${commit_id}" > "$(dirname "${sglang_test_results_output_path}")/commit_id"[0m
+2026-11-06T10:34:59.6749655Z [36;1melse[0m
+2026-11-06T10:34:59.6750279Z [36;1m  echo "Use sglang from image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:main-cann9.1.0-a3"[0m
+2026-11-06T10:34:59.6750874Z [36;1mfi[0m
+2026-11-06T10:34:59.6751068Z [36;1m[0m
+2026-11-06T10:34:59.6751453Z [36;1mif [ "$transformers_version" != "" ];then[0m
+2026-11-06T10:34:59.6751892Z [36;1m  CMD="${CMD} --transformers-version ${transformers_version}"[0m
+2026-11-06T10:34:59.6752265Z [36;1melse[0m
+2026-11-06T10:34:59.6752550Z [36;1m  echo "Use default transformers version in image."[0m
+2026-11-06T10:34:59.6752916Z [36;1mfi[0m
+2026-11-06T10:34:59.6753123Z [36;1m[0m
+2026-11-06T10:34:59.6753481Z [36;1mecho "Run command: ${CMD}"[0m
+2026-11-06T10:34:59.6753919Z [36;1meval "${CMD}"[0m
+2026-11-06T10:34:59.6754388Z shell: sh -e {0}
+2026-11-06T10:34:59.6754625Z ##[endgroup]
+2026-11-06T10:34:59.6907318Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T10:34:59.6909085Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T10:34:59.6909619Z ##[endgroup]
+2026-11-06T10:34:59.9318697Z (node:565) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T10:34:59.9319513Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T10:34:59.9546795Z (node:565) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T10:35:00.0052469Z (node:565) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-06T10:35:00.4768150Z Source code path: /root/.cache/tests/sglang-42202191521
+2026-11-06T10:35:00.4851521Z Persistence prefix: run_id=42202191521 run_attempt=1 branch_label=pllimax-test-glm53eplbgpqa workflow_name=Nightly_Test_NPU--main-cann9.1.0-a3 create_time=20261106-1822
+2026-11-06T10:35:00.5001117Z Metrics file path: /root/.cache/tests/output/pllimax-test-glm53eplbgpqa-20261106-1822-42202191521-1/Nightly_Test_NPU--main-cann9.1.0-a3/accuracy/test_npu_glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa
+2026-11-06T10:35:00.5002265Z Run test in ci.
+2026-11-06T10:35:00.5002786Z Use sglang from image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:main-cann9.1.0-a3
+2026-11-06T10:35:00.5003385Z Use default transformers version in image.
+2026-11-06T10:35:00.5006149Z Run command: python3 -u run_npu_e2e_test.py   --env ci   --image swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:main-cann9.1.0-a3   --sglang-source-relative-path tests/sglang-42202191521   --metrics-data-file /root/.cache/tests/output/pllimax-test-glm53eplbgpqa-20261106-1822-42202191521-1/Nightly_Test_NPU--main-cann9.1.0-a3/accuracy/test_npu_glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa   --test-case test/registered/npu/accuracy/glm5_3/test_npu_glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa.py   --kube-name-space sgl-project   --kube-job-type multi-pd-separation   --kube-job-name-prefix ascend-42202191521   --run-id 42202191521     --prefill-size 2     --decode-size 2     --router-size 1 --sglang-is-in-ci
+2026-11-06T10:35:00.7486948Z 2026-11-06 10:35:00,747 - INFO - KUBE_CONFIG: /root/.cache/.cache/kb.yaml
+2026-11-06T10:35:01.3928183Z 2026-11-06 10:35:01,391 - INFO - Apply k8s yaml... KUBE_NAME_SPACE:sgl-project, KUBE_CONFIG_MAP:sglang-configmap-87c666243vnyksd4, KUBE_JOB_TYPE:multi-pd-separation, KUBE_YAML_FILE:k8s_multi_pd_separation_87c666243vnyksd4.yaml
+2026-11-06T10:35:01.4085085Z 2026-11-06 10:35:01,407 - INFO - Pod YAML written to k8s_multi_pd_separation_87c666243vnyksd4.yaml
+2026-11-06T10:35:01.4571151Z 2026-11-06 10:35:01,456 - INFO - ConfigMap sglang-configmap-87c666243vnyksd4 is created
+2026-11-06T10:35:01.5220459Z 2026-11-06 10:35:01,521 - INFO - Volcano job ascend-42202191521-87c666243vnyksd4 is created
+2026-11-06T10:35:01.5221065Z 2026-11-06 10:35:01,521 - INFO - Waiting all pods to running...
+2026-11-06T10:35:01.5541734Z 2026-11-06 10:35:01,553 - INFO - No sglang pod, waiting...
+2026-11-06T10:35:06.6248594Z 2026-11-06 10:35:06,623 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:35:11.6444381Z 2026-11-06 10:35:11,643 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:35:16.6755936Z 2026-11-06 10:35:16,674 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:35:21.7449899Z 2026-11-06 10:35:21,744 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:35:26.7695431Z 2026-11-06 10:35:26,768 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:35:31.7885834Z 2026-11-06 10:35:31,787 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:35:36.8396634Z 2026-11-06 10:35:36,838 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:35:41.8576620Z 2026-11-06 10:35:41,856 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:35:46.9060809Z 2026-11-06 10:35:46,905 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:35:51.9915148Z 2026-11-06 10:35:51,990 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:35:57.0549084Z 2026-11-06 10:35:57,054 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:36:02.0744367Z 2026-11-06 10:36:02,073 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:36:07.1078074Z 2026-11-06 10:36:07,106 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:36:12.1264119Z 2026-11-06 10:36:12,125 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:36:17.1441891Z 2026-11-06 10:36:17,143 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:36:22.1638554Z 2026-11-06 10:36:22,162 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:36:27.2222003Z 2026-11-06 10:36:27,221 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:36:32.2668380Z 2026-11-06 10:36:32,265 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:36:37.3380262Z 2026-11-06 10:36:37,337 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:36:42.4109353Z 2026-11-06 10:36:42,410 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:36:47.4860447Z 2026-11-06 10:36:47,485 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:36:52.5666691Z 2026-11-06 10:36:52,565 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:36:57.6364146Z 2026-11-06 10:36:57,635 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:37:02.6655871Z 2026-11-06 10:37:02,664 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:37:07.6890713Z 2026-11-06 10:37:07,688 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:37:12.7079345Z 2026-11-06 10:37:12,706 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:37:17.7262396Z 2026-11-06 10:37:17,725 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:37:22.8384612Z 2026-11-06 10:37:22,837 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:37:27.8759666Z 2026-11-06 10:37:27,875 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:37:32.9499559Z 2026-11-06 10:37:32,949 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:37:37.9812407Z 2026-11-06 10:37:37,980 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:37:42.9997253Z 2026-11-06 10:37:42,998 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:37:48.0183907Z 2026-11-06 10:37:48,017 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:37:53.0369370Z 2026-11-06 10:37:53,036 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:37:58.0554808Z 2026-11-06 10:37:58,054 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:38:03.0949027Z 2026-11-06 10:38:03,093 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:38:08.1534587Z 2026-11-06 10:38:08,152 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:38:13.2082176Z 2026-11-06 10:38:13,207 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:38:18.2265227Z 2026-11-06 10:38:18,225 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:38:23.2470401Z 2026-11-06 10:38:23,246 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:38:28.2657747Z 2026-11-06 10:38:28,264 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:38:33.2923678Z 2026-11-06 10:38:33,291 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:38:38.3894433Z 2026-11-06 10:38:38,388 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:38:43.4683643Z 2026-11-06 10:38:43,467 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:38:48.4863389Z 2026-11-06 10:38:48,485 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:38:53.6210562Z 2026-11-06 10:38:53,620 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:38:58.6893722Z 2026-11-06 10:38:58,688 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:39:03.8685544Z 2026-11-06 10:39:03,867 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:39:08.9808379Z 2026-11-06 10:39:08,979 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:39:14.0173124Z 2026-11-06 10:39:14,016 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:39:19.0339451Z 2026-11-06 10:39:19,032 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:39:24.0615660Z 2026-11-06 10:39:24,060 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:39:29.0835811Z 2026-11-06 10:39:29,082 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:39:34.0998856Z 2026-11-06 10:39:34,099 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:39:39.1166254Z 2026-11-06 10:39:39,115 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:39:44.1333658Z 2026-11-06 10:39:44,132 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:39:49.1499741Z 2026-11-06 10:39:49,149 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:39:54.1834560Z 2026-11-06 10:39:54,182 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:39:59.2688813Z 2026-11-06 10:39:59,268 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:40:04.3453115Z 2026-11-06 10:40:04,343 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:40:09.3656721Z 2026-11-06 10:40:09,364 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:40:14.4199126Z 2026-11-06 10:40:14,418 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:40:19.5674423Z 2026-11-06 10:40:19,566 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:40:24.5847480Z 2026-11-06 10:40:24,583 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:40:29.6116174Z 2026-11-06 10:40:29,610 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:40:34.6290151Z 2026-11-06 10:40:34,627 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:40:39.6471538Z 2026-11-06 10:40:39,645 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:40:44.6738698Z 2026-11-06 10:40:44,669 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:40:49.6862933Z 2026-11-06 10:40:49,685 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:40:54.7743812Z 2026-11-06 10:40:54,773 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:40:59.7909234Z 2026-11-06 10:40:59,790 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:41:04.8070384Z 2026-11-06 10:41:04,806 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:41:09.8235181Z 2026-11-06 10:41:09,822 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:41:14.9826464Z 2026-11-06 10:41:14,981 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:41:19.9984742Z 2026-11-06 10:41:19,997 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:41:25.1476545Z 2026-11-06 10:41:25,146 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:41:30.1978755Z 2026-11-06 10:41:30,196 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:41:35.2665939Z 2026-11-06 10:41:35,265 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:41:40.2901542Z 2026-11-06 10:41:40,289 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:41:45.3083131Z 2026-11-06 10:41:45,307 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:41:50.3240929Z 2026-11-06 10:41:50,323 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:41:55.3593725Z 2026-11-06 10:41:55,351 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:42:00.3706490Z 2026-11-06 10:42:00,369 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:42:05.3970348Z 2026-11-06 10:42:05,396 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:42:10.4766545Z 2026-11-06 10:42:10,475 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:42:15.5649204Z 2026-11-06 10:42:15,562 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:42:20.6201038Z 2026-11-06 10:42:20,619 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:42:25.6494262Z 2026-11-06 10:42:25,643 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:42:30.8007739Z 2026-11-06 10:42:30,799 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:42:35.8463419Z 2026-11-06 10:42:35,845 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:42:40.8628352Z 2026-11-06 10:42:40,861 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:42:45.8889828Z 2026-11-06 10:42:45,888 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:42:50.9061006Z 2026-11-06 10:42:50,905 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:42:55.9345583Z 2026-11-06 10:42:55,933 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:43:00.9510113Z 2026-11-06 10:43:00,950 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:43:05.9723591Z 2026-11-06 10:43:05,971 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:43:10.9934151Z 2026-11-06 10:43:10,992 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:43:16.0088087Z 2026-11-06 10:43:16,007 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:43:21.0947629Z 2026-11-06 10:43:21,093 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:43:26.1759456Z 2026-11-06 10:43:26,175 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:43:31.1927117Z 2026-11-06 10:43:31,191 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:43:36.2412573Z 2026-11-06 10:43:36,240 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:43:41.2568692Z 2026-11-06 10:43:41,255 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:43:46.2759621Z 2026-11-06 10:43:46,275 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:43:51.3017317Z 2026-11-06 10:43:51,300 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:43:56.3234778Z 2026-11-06 10:43:56,322 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:44:01.3437726Z 2026-11-06 10:44:01,342 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:44:06.3641050Z 2026-11-06 10:44:06,363 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:44:11.3814859Z 2026-11-06 10:44:11,380 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:44:16.4025259Z 2026-11-06 10:44:16,401 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:44:21.4191442Z 2026-11-06 10:44:21,418 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:44:26.4363156Z 2026-11-06 10:44:26,435 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:44:31.4607134Z 2026-11-06 10:44:31,459 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:44:36.4837093Z 2026-11-06 10:44:36,482 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:44:41.5004424Z 2026-11-06 10:44:41,499 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:44:46.5507540Z 2026-11-06 10:44:46,549 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:44:51.5803714Z 2026-11-06 10:44:51,579 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:44:56.5994567Z 2026-11-06 10:44:56,598 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:45:01.6165296Z 2026-11-06 10:45:01,615 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:45:06.6326984Z 2026-11-06 10:45:06,631 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:45:11.6486613Z 2026-11-06 10:45:11,647 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:45:16.6718687Z 2026-11-06 10:45:16,671 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:45:21.6936105Z 2026-11-06 10:45:21,692 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:45:26.7100536Z 2026-11-06 10:45:26,708 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:45:31.7269150Z 2026-11-06 10:45:31,725 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:45:36.7463920Z 2026-11-06 10:45:36,745 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:45:41.8132198Z 2026-11-06 10:45:41,812 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:45:46.9946890Z 2026-11-06 10:45:46,993 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:45:52.0506757Z 2026-11-06 10:45:52,049 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:45:57.1485394Z 2026-11-06 10:45:57,147 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:46:02.1678387Z 2026-11-06 10:46:02,166 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:46:07.1871136Z 2026-11-06 10:46:07,186 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:46:12.2092795Z 2026-11-06 10:46:12,208 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:46:17.2316416Z 2026-11-06 10:46:17,230 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:46:22.3056356Z 2026-11-06 10:46:22,304 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:46:27.4871444Z 2026-11-06 10:46:27,486 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:46:32.5261563Z 2026-11-06 10:46:32,525 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:46:37.5502148Z 2026-11-06 10:46:37,549 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:46:42.6048517Z 2026-11-06 10:46:42,603 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:46:47.6234632Z 2026-11-06 10:46:47,622 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:46:52.6525148Z 2026-11-06 10:46:52,651 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:46:57.7514258Z 2026-11-06 10:46:57,750 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:47:02.7686327Z 2026-11-06 10:47:02,767 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:47:07.7853566Z 2026-11-06 10:47:07,784 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:47:12.8017833Z 2026-11-06 10:47:12,800 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:47:17.8183543Z 2026-11-06 10:47:17,817 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:47:22.8344502Z 2026-11-06 10:47:22,833 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:47:27.8625249Z 2026-11-06 10:47:27,861 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:47:32.8788108Z 2026-11-06 10:47:32,877 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:47:37.9046020Z 2026-11-06 10:47:37,903 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:47:42.9209698Z 2026-11-06 10:47:42,919 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:47:47.9439223Z 2026-11-06 10:47:47,942 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:47:53.0171552Z 2026-11-06 10:47:53,016 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:47:58.0370206Z 2026-11-06 10:47:58,036 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:48:03.0620424Z 2026-11-06 10:48:03,061 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:48:08.1096277Z 2026-11-06 10:48:08,108 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:48:13.1257351Z 2026-11-06 10:48:13,124 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:48:18.1813792Z 2026-11-06 10:48:18,180 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:48:23.2550522Z 2026-11-06 10:48:23,254 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:48:28.2749908Z 2026-11-06 10:48:28,274 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:48:33.2993115Z 2026-11-06 10:48:33,298 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:48:38.3726630Z 2026-11-06 10:48:38,371 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:48:43.4544940Z 2026-11-06 10:48:43,453 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:48:48.4728280Z 2026-11-06 10:48:48,471 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:48:53.4914233Z 2026-11-06 10:48:53,490 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:48:58.5661124Z 2026-11-06 10:48:58,565 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:49:03.6412374Z 2026-11-06 10:49:03,640 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:49:08.6684215Z 2026-11-06 10:49:08,667 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:49:13.7283079Z 2026-11-06 10:49:13,727 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:49:18.7450108Z 2026-11-06 10:49:18,744 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:49:23.8611360Z 2026-11-06 10:49:23,860 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:49:28.9096876Z 2026-11-06 10:49:28,908 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:49:33.9911889Z 2026-11-06 10:49:33,990 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:49:39.0640921Z 2026-11-06 10:49:39,063 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:49:44.1339201Z 2026-11-06 10:49:44,133 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:49:49.1513431Z 2026-11-06 10:49:49,150 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:49:54.1808516Z 2026-11-06 10:49:54,179 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:49:59.2228512Z 2026-11-06 10:49:59,221 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:50:04.2501287Z 2026-11-06 10:50:04,249 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:50:09.2955753Z 2026-11-06 10:50:09,294 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:50:14.3120694Z 2026-11-06 10:50:14,311 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:50:19.3670145Z 2026-11-06 10:50:19,366 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:50:24.3862410Z 2026-11-06 10:50:24,385 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:50:29.4020555Z 2026-11-06 10:50:29,401 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:50:34.4188807Z 2026-11-06 10:50:34,417 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:50:39.5336631Z 2026-11-06 10:50:39,532 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:50:44.5495761Z 2026-11-06 10:50:44,548 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:50:49.5779193Z 2026-11-06 10:50:49,577 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:50:54.5951633Z 2026-11-06 10:50:54,593 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:50:59.6200614Z 2026-11-06 10:50:59,619 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:51:04.6434266Z 2026-11-06 10:51:04,642 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:51:09.6651578Z 2026-11-06 10:51:09,664 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:51:14.6826307Z 2026-11-06 10:51:14,681 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:51:19.7084638Z 2026-11-06 10:51:19,707 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:51:24.7586192Z 2026-11-06 10:51:24,757 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:51:29.7774919Z 2026-11-06 10:51:29,776 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:51:34.7932087Z 2026-11-06 10:51:34,792 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:51:39.8128707Z 2026-11-06 10:51:39,812 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:51:44.8292918Z 2026-11-06 10:51:44,828 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:51:49.8466223Z 2026-11-06 10:51:49,845 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:51:54.8750647Z 2026-11-06 10:51:54,874 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:51:59.8904053Z 2026-11-06 10:51:59,889 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:52:04.9698705Z 2026-11-06 10:52:04,966 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:52:10.0326813Z 2026-11-06 10:52:10,031 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:52:15.1078697Z 2026-11-06 10:52:15,107 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:52:20.1834403Z 2026-11-06 10:52:20,182 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:52:25.2009666Z 2026-11-06 10:52:25,200 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:52:30.4649465Z 2026-11-06 10:52:30,463 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:52:35.5433480Z 2026-11-06 10:52:35,538 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:52:40.5566020Z 2026-11-06 10:52:40,555 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:52:45.6631680Z 2026-11-06 10:52:45,662 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:52:50.7375362Z 2026-11-06 10:52:50,736 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:52:55.8108556Z 2026-11-06 10:52:55,809 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:53:00.8272631Z 2026-11-06 10:53:00,826 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:53:05.8553086Z 2026-11-06 10:53:05,854 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:53:10.9337986Z 2026-11-06 10:53:10,928 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:53:15.9465211Z 2026-11-06 10:53:15,945 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:53:20.9630902Z 2026-11-06 10:53:20,962 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:53:26.0476982Z 2026-11-06 10:53:26,046 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:53:31.0687252Z 2026-11-06 10:53:31,067 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:53:36.0845089Z 2026-11-06 10:53:36,083 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:53:41.1350305Z 2026-11-06 10:53:41,134 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:53:46.1574672Z 2026-11-06 10:53:46,156 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:53:51.2113366Z 2026-11-06 10:53:51,210 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:53:56.2268021Z 2026-11-06 10:53:56,225 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:54:01.2479401Z 2026-11-06 10:54:01,246 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:54:06.2649390Z 2026-11-06 10:54:06,264 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:54:11.2979217Z 2026-11-06 10:54:11,297 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:54:16.3143055Z 2026-11-06 10:54:16,313 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:54:21.3318460Z 2026-11-06 10:54:21,331 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:54:26.3477848Z 2026-11-06 10:54:26,346 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:54:31.3664574Z 2026-11-06 10:54:31,365 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:54:36.3918410Z 2026-11-06 10:54:36,391 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:54:41.4091301Z 2026-11-06 10:54:41,408 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:54:46.4538717Z 2026-11-06 10:54:46,453 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:54:51.4694459Z 2026-11-06 10:54:51,468 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:54:56.4856589Z 2026-11-06 10:54:56,484 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:55:01.5176189Z 2026-11-06 10:55:01,516 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:55:06.5925111Z 2026-11-06 10:55:06,591 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:55:11.6091097Z 2026-11-06 10:55:11,608 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:55:16.6434885Z 2026-11-06 10:55:16,642 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:55:21.7106076Z 2026-11-06 10:55:21,709 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:55:26.7277379Z 2026-11-06 10:55:26,726 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:55:31.7515426Z 2026-11-06 10:55:31,750 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:55:36.7682098Z 2026-11-06 10:55:36,767 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:55:41.7989212Z 2026-11-06 10:55:41,798 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:55:46.8154558Z 2026-11-06 10:55:46,814 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:55:51.8455000Z 2026-11-06 10:55:51,844 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:55:56.9471417Z 2026-11-06 10:55:56,946 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:56:01.9923991Z 2026-11-06 10:56:01,991 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:56:07.0091986Z 2026-11-06 10:56:07,008 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:56:12.1417494Z 2026-11-06 10:56:12,140 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:56:17.1581289Z 2026-11-06 10:56:17,157 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:56:22.1840338Z 2026-11-06 10:56:22,183 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:56:27.2019805Z 2026-11-06 10:56:27,201 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:56:32.2322584Z 2026-11-06 10:56:32,231 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:56:37.2555593Z 2026-11-06 10:56:37,254 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:56:42.2721591Z 2026-11-06 10:56:42,271 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:56:47.2923107Z 2026-11-06 10:56:47,291 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:56:52.3176475Z 2026-11-06 10:56:52,316 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:56:57.3440345Z 2026-11-06 10:56:57,343 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:57:02.3970377Z 2026-11-06 10:57:02,396 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:57:07.4137428Z 2026-11-06 10:57:07,412 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:57:12.5094928Z 2026-11-06 10:57:12,508 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:57:17.5860472Z 2026-11-06 10:57:17,585 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:57:22.6022839Z 2026-11-06 10:57:22,601 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:57:27.6284316Z 2026-11-06 10:57:27,627 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:57:32.7022379Z 2026-11-06 10:57:32,701 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:57:37.7182699Z 2026-11-06 10:57:37,717 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:57:42.7478013Z 2026-11-06 10:57:42,746 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:57:47.7712424Z 2026-11-06 10:57:47,770 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:57:52.7898324Z 2026-11-06 10:57:52,788 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:57:57.8059224Z 2026-11-06 10:57:57,805 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:58:02.9446537Z 2026-11-06 10:58:02,939 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:58:08.0008724Z 2026-11-06 10:58:07,999 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:58:13.0939334Z 2026-11-06 10:58:13,093 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:58:18.1090061Z 2026-11-06 10:58:18,108 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:58:23.1256173Z 2026-11-06 10:58:23,124 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:58:28.1473421Z 2026-11-06 10:58:28,146 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:58:33.1632499Z 2026-11-06 10:58:33,162 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:58:38.1799179Z 2026-11-06 10:58:38,179 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:58:43.2254857Z 2026-11-06 10:58:43,221 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:58:48.2454224Z 2026-11-06 10:58:48,244 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:58:53.3698375Z 2026-11-06 10:58:53,369 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:58:58.4498613Z 2026-11-06 10:58:58,448 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:59:03.4663265Z 2026-11-06 10:59:03,465 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:59:08.4920359Z 2026-11-06 10:59:08,491 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:59:13.5097669Z 2026-11-06 10:59:13,508 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:59:18.5543544Z 2026-11-06 10:59:18,553 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:59:23.5719545Z 2026-11-06 10:59:23,571 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:59:28.5896062Z 2026-11-06 10:59:28,588 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:59:33.6516701Z 2026-11-06 10:59:33,650 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:59:38.7261851Z 2026-11-06 10:59:38,725 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:59:43.7441706Z 2026-11-06 10:59:43,743 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:59:48.7706142Z 2026-11-06 10:59:48,769 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:59:53.7888150Z 2026-11-06 10:59:53,787 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T10:59:58.8139370Z 2026-11-06 10:59:58,813 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T11:00:03.8303179Z 2026-11-06 11:00:03,829 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T11:00:08.8867160Z 2026-11-06 11:00:08,885 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T11:00:13.9029068Z 2026-11-06 11:00:13,902 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T11:00:18.9189574Z 2026-11-06 11:00:18,918 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T11:00:23.9626891Z 2026-11-06 11:00:23,961 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T11:00:28.9844584Z 2026-11-06 11:00:28,983 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T11:00:34.0010894Z 2026-11-06 11:00:34,000 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T11:00:39.0958088Z 2026-11-06 11:00:39,094 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T11:00:44.1108399Z 2026-11-06 11:00:44,110 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T11:00:49.1384007Z 2026-11-06 11:00:49,137 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T11:00:54.1542123Z 2026-11-06 11:00:54,153 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T11:00:59.1888603Z 2026-11-06 11:00:59,187 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T11:01:04.2060349Z 2026-11-06 11:01:04,205 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T11:01:09.2261987Z 2026-11-06 11:01:09,225 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T11:01:14.3000835Z 2026-11-06 11:01:14,299 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T11:01:19.3144440Z 2026-11-06 11:01:19,313 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Pending
+2026-11-06T11:01:24.3432099Z 2026-11-06 11:01:24,342 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Running
+2026-11-06T11:01:24.3433696Z 2026-11-06 11:01:24,342 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-1, status: Running
+2026-11-06T11:01:24.3434436Z 2026-11-06 11:01:24,342 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-prefill-0, status: Pending
+2026-11-06T11:01:29.3712439Z 2026-11-06 11:01:29,370 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Running
+2026-11-06T11:01:29.3713264Z 2026-11-06 11:01:29,370 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-1, status: Running
+2026-11-06T11:01:29.3714021Z 2026-11-06 11:01:29,370 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-prefill-0, status: Pending
+2026-11-06T11:01:34.4256239Z 2026-11-06 11:01:34,424 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-0, status: Running
+2026-11-06T11:01:34.4256988Z 2026-11-06 11:01:34,424 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-decode-1, status: Running
+2026-11-06T11:01:34.4257786Z 2026-11-06 11:01:34,424 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-prefill-0, status: Running
+2026-11-06T11:01:34.4258502Z 2026-11-06 11:01:34,424 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-prefill-1, status: Running
+2026-11-06T11:01:34.4259202Z 2026-11-06 11:01:34,424 - INFO - Pod: ascend-42202191521-87c666243vnyksd4-sglang-router-0, status: Running
+2026-11-06T11:01:34.4259757Z 2026-11-06 11:01:34,424 - INFO - All sglang Pod is Running !
+2026-11-06T11:01:34.4442770Z 2026-11-06 11:01:34,443 - INFO - ConfigMap sglang-configmap-87c666243vnyksd4 already exists. Updating...
+2026-11-06T11:01:34.4540450Z 2026-11-06 11:01:34,453 - INFO - ConfigMap sglang-configmap-87c666243vnyksd4 updated successfully.
+2026-11-06T11:01:34.4543347Z 2026-11-06 11:01:34,453 - INFO - api_version='v1' binary_data=None data={'ascend-42202191521-87c666243vnyksd4-sglang-decode-0': '172.22.3.79', 'ascend-42202191521-87c666243vnyksd4-sglang-decode-1': '172.22.3.166', 'ascend-42202191521-87c666243vnyksd4-sglang-prefill-0': '172.22.3.227', 'ascend-42202191521-87c666243vnyksd4-sglang-prefill-1': '172.22.3.181', 'ascend-42202191521-87c666243vnyksd4-sglang-router-0': '172.22.3.77'} immutable=None kind='ConfigMap' metadata={'annotations': None,
+2026-11-06T11:01:34.4545820Z  'creation_timestamp': datetime.datetime(2026, 11, 6, 10, 35, 1, tzinfo=TzInfo(0)),
+2026-11-06T11:01:34.4546285Z  'deletion_grace_period_seconds': None,
+2026-11-06T11:01:34.4546598Z  'deletion_timestamp': None,
+2026-11-06T11:01:34.4546867Z  'finalizers': None,
+2026-11-06T11:01:34.4547216Z  'generate_name': None,
+2026-11-06T11:01:34.4547472Z  'generation': None,
+2026-11-06T11:01:34.4547714Z  'labels': None,
+2026-11-06T11:01:34.4547944Z  'managed_fields': None,
+2026-11-06T11:01:34.4548245Z  'name': 'sglang-configmap-87c666243vnyksd4',
+2026-11-06T11:01:34.4548579Z  'namespace': 'sgl-project',
+2026-11-06T11:01:34.4548863Z  'owner_references': None,
+2026-11-06T11:01:34.4549139Z  'resource_version': '483203201',
+2026-11-06T11:01:34.4549412Z  'self_link': None,
+2026-11-06T11:01:34.4549682Z  'uid': '21ca5799-0d39-4b91-b1e2-b95f82b61888'}
+2026-11-06T11:01:34.4550450Z 2026-11-06 11:01:34,454 - INFO - Starting to monitor logs for Pod: ascend-42202191521-87c666243vnyksd4-sglang-router-0
+2026-11-06T11:01:34.5558293Z NPU info:
+2026-11-06T11:01:34.5558829Z /root/sglang/python/sglang/test/ascend/e2e/run_npu_testcase.sh: line 14: npu-smi: command not found
+2026-11-06T11:01:34.5559415Z ===== Install kubernetes - Begin =====
+2026-11-06T11:01:34.5559735Z Install kubernetes locally.
+2026-11-06T11:01:34.5560024Z Looking in links: /tmp/kubernetes/
+2026-11-06T11:01:34.5560425Z Processing /tmp/kubernetes/kubernetes-35.0.0-py2.py3-none-any.whl
+2026-11-06T11:01:34.5561142Z Requirement already satisfied: certifi>=14.05.14 in /usr/local/python3.12.13/lib/python3.12/site-packages (from kubernetes) (2026.7.22)
+2026-11-06T11:01:34.5562181Z Requirement already satisfied: six>=1.9.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from kubernetes) (1.17.0)
+2026-11-06T11:01:34.5563098Z Requirement already satisfied: python-dateutil>=2.5.3 in /usr/local/python3.12.13/lib/python3.12/site-packages (from kubernetes) (4.0.0)
+2026-11-06T11:01:34.5564024Z Requirement already satisfied: pyyaml>=5.4.1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from kubernetes) (6.0.1)
+2026-11-06T11:01:34.5564786Z Processing /tmp/kubernetes/websocket_client-1.9.0-py3-none-any.whl (from kubernetes)
+2026-11-06T11:01:34.5565531Z Requirement already satisfied: requests in /usr/local/python3.12.13/lib/python3.12/site-packages (from kubernetes) (2.34.2)
+2026-11-06T11:01:34.5566291Z Processing /tmp/kubernetes/requests_oauthlib-2.0.0-py2.py3-none-any.whl (from kubernetes)
+2026-11-06T11:01:34.5567091Z Requirement already satisfied: urllib3!=2.6.0,>=1.24.2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from kubernetes) (2.7.0)
+2026-11-06T11:01:34.5567910Z Processing /tmp/kubernetes/durationpy-0.10-py3-none-any.whl (from kubernetes)
+2026-11-06T11:01:34.5568715Z Requirement already satisfied: tzdata in /usr/local/python3.12.13/lib/python3.12/site-packages (from python-dateutil>=2.5.3->kubernetes) (2026.6)
+2026-11-06T11:01:34.5569722Z Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from requests->kubernetes) (3.4.9)
+2026-11-06T11:01:34.5570687Z Requirement already satisfied: idna<4,>=2.5 in /usr/local/python3.12.13/lib/python3.12/site-packages (from requests->kubernetes) (3.18)
+2026-11-06T11:01:34.5571626Z Processing /tmp/kubernetes/oauthlib-3.3.1-py3-none-any.whl (from requests-oauthlib->kubernetes)
+2026-11-06T11:01:34.5572353Z Installing collected packages: durationpy, websocket-client, oauthlib, requests-oauthlib, kubernetes
+2026-11-06T11:01:34.5572775Z 
+2026-11-06T11:01:34.5573163Z Successfully installed durationpy-0.10 kubernetes-35.0.0 oauthlib-3.3.1 requests-oauthlib-2.0.0 websocket-client-1.9.0
+2026-11-06T11:01:34.5574882Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-11-06T11:01:34.5576608Z ===== Install kubernetes - End =====
+2026-11-06T11:01:34.5576925Z Transformers version for sglang:  5.19.0
+2026-11-06T11:01:34.5577279Z performance
+2026-11-06T11:01:34.5577497Z vm.swappiness = 0
+2026-11-06T11:01:34.5577740Z kernel.numa_balancing = 0
+2026-11-06T11:01:34.5578021Z kernel.sched_migration_cost_ns = 50000
+2026-11-06T11:01:34.5578319Z ASCEND_VISIBLE_DEVICES=
+2026-11-06T11:01:34.5578577Z Use sglang from docker image
+2026-11-06T11:01:34.5578868Z can not use command: npu-smi info
+2026-11-06T11:01:34.5579371Z Running test case test/registered/npu/accuracy/glm5_3/test_npu_glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa.py
+2026-11-06T11:01:34.5580682Z Log path: /root/.cache/tests/logs/log/pllimax-test-glm53eplbgpqa-20261106-1822-42202191521-1/Nightly_Test_NPU--main-cann9.1.0-a3/test_npu_glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa/ascend-42202191521-87c666243vnyksd4-sglang-router-0
+2026-11-06T11:01:34.6749596Z can not use command: npu-smi info
+2026-11-06T11:01:41.4361017Z 2026-11-06 19:01:41,433 - INFO - get env NAMESPACE = sgl-project
+2026-11-06T11:01:41.4361731Z 2026-11-06 19:01:41,433 - INFO - get env KUBE_CONFIG_MAP = sglang-configmap-87c666243vnyksd4
+2026-11-06T11:01:41.4381663Z 2026-11-06 19:01:41,435 - INFO - The nic name matched is enp23s0f3
+2026-11-06T11:01:41.4382126Z 2026-11-06 19:01:41,436 - INFO - PYTHON_FOR_TEST_TOOL: python3
+2026-11-06T11:01:41.4584431Z 2026-11-06 19:01:41,451 - INFO - PYTHON_FOR_TEST_TOOL: python3
+2026-11-06T11:01:41.4595838Z 2026-11-06 19:01:41,458 - INFO - get env LANGUAGE = en_US:en
+2026-11-06T11:01:42.8717822Z 2026-11-06 19:01:42,868 - INFO - get env TORCHINDUCTOR_CACHE_DIR = /root/.cache/sglang/inductor
+2026-11-06T11:01:43.5724217Z 2026-11-06 19:01:43,569 - INFO - get env LD_LIBRARY_PATH = /usr/local/Ascend/extra-ops/vendors/custom_transformer/op_api/lib:/usr/local/Ascend/cann-9.1.0/opp/vendors/custom_transformer/op_api/lib/:/usr/local/Ascend/cann-9.1.0/opp/vendors/customize/op_api/lib/:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/cann-9.1.0/lib64:/usr/local/Ascend/cann-9.1.0/lib64/plugin/opskernel:/usr/local/Ascend/cann-9.1.0/lib64/plugin/nnengine:/usr/local/Ascend/cann-9.1.0/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64:/usr/local/lib:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/python3.12.13/lib:
+2026-11-06T11:01:46.4713695Z 2026-11-06 19:01:46,468 - INFO - get env PATH = /usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/bin:/usr/local/Ascend/cann-9.1.0/bin:/usr/local/Ascend/cann-9.1.0/tools/ccec_compiler/bin:/usr/local/Ascend/cann-9.1.0/tools/profiler/bin:/usr/local/Ascend/cann-9.1.0/tools/ascend_system_advisor/asys:/usr/local/Ascend/cann-9.1.0/tools/show_kernel_debug_data:/usr/local/Ascend/cann-9.1.0/tools/msobjdump:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/bin:/usr/local/Ascend/ascend-toolkit/latest/bin:/usr/local/Ascend/ascend-toolkit/latest/compiler/ccec_compiler/bin:/usr/local/Ascend/ascend-toolkit/latest/tools/ccec_compiler/bin:/usr/local/python3.12.13/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+2026-11-06T11:01:46.4894668Z 2026-11-06 19:01:46,487 - INFO - get env TRITON_CACHE_DIR = /root/.cache/sglang/triton
+2026-11-06T11:01:47.4107023Z 2026-11-06 19:01:47,408 - INFO - get env ASCEND_CUSTOM_OPP_PATH = /usr/local/Ascend/extra-ops/vendors/custom_transformer/:/usr/local/Ascend/cann-9.1.0/opp/vendors/custom_transformer:/usr/local/Ascend/cann-9.1.0/opp/vendors/customize:
+2026-11-06T11:01:48.1900804Z 2026-11-06 19:01:48,187 - INFO - get env HOSTNAME = ascend-42202191521-87c666243vnyksd4-sglang-router-0
+2026-11-06T11:01:48.2438056Z 2026-11-06 19:01:48,241 - INFO - get env POD_IP = 172.22.3.77
+2026-11-06T11:01:48.2438566Z 2026-11-06 19:01:48,241 - INFO - Init 172.22.3.77 cls.role='router'!
+2026-11-06T11:01:48.2439136Z 2026-11-06 19:01:48,241 - INFO - The current node is router, skip this function start_pd_server.
+2026-11-06T11:01:48.2439684Z 2026-11-06 19:01:48,242 - INFO - Starting router in thread...
+2026-11-06T11:01:48.2472085Z 2026-11-06 19:01:48,242 - INFO - launch_router start ......
+2026-11-06T11:01:48.2473382Z 2026-11-06 19:01:48,242 - INFO - Waiting for router to be ready at http://172.22.3.77:6677/health
+2026-11-06T11:01:48.2474497Z 2026-11-06 19:01:48,242 - INFO - Waiting for the server to start at http://172.22.3.77:6677/health...
+2026-11-06T11:01:48.4196007Z 2026-11-06 19:01:48,417 - INFO - get env KUBECONFIG = /root/.cache/.cache/kb.yaml
+2026-11-06T11:01:48.6333527Z 2026-11-06 19:01:48,631 - INFO - Discovered 4 worker nodes (prefill: 2, decode: 2)
+2026-11-06T11:01:48.6664728Z 2026-11-06 19:01:48,664 - INFO - Successfully queried ConfigMap sglang-configmap-87c666243vnyksd4 in namespace sgl-project
+2026-11-06T11:01:48.6683298Z 2026-11-06 19:01:48,666 - INFO - Retrieved ConfigMap data: {'ascend-42202191521-87c666243vnyksd4-sglang-decode-0': '172.22.3.79', 'ascend-42202191521-87c666243vnyksd4-sglang-decode-1': '172.22.3.166', 'ascend-42202191521-87c666243vnyksd4-sglang-prefill-0': '172.22.3.227', 'ascend-42202191521-87c666243vnyksd4-sglang-prefill-1': '172.22.3.181', 'ascend-42202191521-87c666243vnyksd4-sglang-router-0': '172.22.3.77'}
+2026-11-06T11:01:48.6685439Z 2026-11-06 19:01:48,666 - INFO - ConfigMap monitoring complete: prefill_url=['172.22.3.227:8000'], decode_url=['172.22.3.79:8000'], bootstrap_ports=['8995'], node_ip_list=['172.22.3.79', '172.22.3.227']
+2026-11-06T11:03:09.5377636Z 2026-11-06 11:03:09,536 - ERROR - Pod ascend-42202191521-87c666243vnyksd4-sglang-decode-1 is not running, status: Succeeded
+2026-11-06T11:03:09.5378600Z 2026-11-06 11:03:09,537 - ERROR - Some pods are not running properly. Please check the sglang logs on these pods. Exiting...
+2026-11-06T11:03:09.5843170Z 2026-11-06 11:03:09,582 - ERROR - Test case failed: test/registered/npu/accuracy/glm5_3/test_npu_glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa.py
+2026-11-06T11:03:09.5843863Z Traceback (most recent call last):
+2026-11-06T11:03:09.5844448Z   File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 737, in run_npu_e2e_test_case
+2026-11-06T11:03:09.5845015Z     monitor_pod_logs(
+2026-11-06T11:03:09.5845503Z   File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 489, in monitor_pod_logs
+2026-11-06T11:03:09.5846148Z     raise Exception("Monitoring ended but target pattern was not detected")
+2026-11-06T11:03:09.5846646Z Exception: Monitoring ended but target pattern was not detected
+2026-11-06T11:03:09.6023909Z 2026-11-06 11:03:09,601 - INFO - Metrics JSON written to /root/.cache/tests/output/pllimax-test-glm53eplbgpqa-20261106-1822-42202191521-1/Nightly_Test_NPU--main-cann9.1.0-a3/accuracy/test_npu_glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa/metrics.json
+2026-11-06T11:03:09.6324893Z ConfigMap sglang-configmap-87c666243vnyksd4 is deleted.
+2026-11-06T11:03:09.6759716Z 2026-11-06 11:03:09,675 - INFO - Deleted job ascend-42202191521-87c666243vnyksd4
+2026-11-06T11:03:09.6762917Z 2026-11-06 11:03:09,675 - INFO - Response status: {'conditions': [{'lastTransitionTime': '2026-11-06T10:35:01Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-06T10:35:02Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-06T11:01:14Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-06T11:01:23Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-06T11:01:23Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-06T11:01:23Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-06T11:01:30Z', 'status': 'Running'}, {'lastTransitionTime': '2026-11-06T11:03:09Z', 'status': 'Running'}], 'minAvailable': 5, 'running': 4, 'state': {'lastTransitionTime': '2026-11-06T11:03:09Z', 'phase': 'Running'}, 'succeeded': 1, 'taskStatusCount': {'sglang-decode': {'phase': {'Running': 1, 'Succeeded': 1}}, 'sglang-prefill': {'phase': {'Running': 2}}, 'sglang-router': {'phase': {'Running': 1}}}}
+2026-11-06T11:03:09.6766180Z Traceback (most recent call last):
+2026-11-06T11:03:09.6766699Z   File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 933, in <module>
+2026-11-06T11:03:09.6767214Z     run_npu_e2e_test_case(
+2026-11-06T11:03:09.6767877Z   File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 737, in run_npu_e2e_test_case
+2026-11-06T11:03:09.6768448Z     monitor_pod_logs(
+2026-11-06T11:03:09.6769037Z   File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 489, in monitor_pod_logs
+2026-11-06T11:03:09.6769675Z     raise Exception("Monitoring ended but target pattern was not detected")
+2026-11-06T11:03:09.6770176Z Exception: Monitoring ended but target pattern was not detected
+2026-11-06T11:03:09.7816135Z ##[error]Error: failed to run script step:
+  ✗ exit code: 1
+  → your script exited with a non-zero code; please check your script for errors
+------------------------------------------------------------
+Last output:
+  2026-11-06 11:03:09,537 - ERROR - Some pods are not running properly. Please check the sglang logs on these pods. Exiting...
+  2026-11-06 11:03:09,582 - ERROR - Test case failed: test/registered/npu/accuracy/glm5_3/test_npu_glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa.py
+  Traceback (most recent call last):
+    File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 737, in run_npu_e2e_test_case
+      monitor_pod_logs(
+    File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 489, in monitor_pod_logs
+      raise Exception("Monitoring ended but target pattern was not detected")
+  Exception: Monitoring ended but target pattern was not detected
+  2026-11-06 11:03:09,601 - INFO - Metrics JSON written to /root/.cache/tests/output/pllimax-test-glm53eplbgpqa-20261106-1822-42202191521-1/Nightly_Test_NPU--main-cann9.1.0-a3/accuracy/test_npu_glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa/metrics.json
+  ConfigMap sglang-configmap-87c666243vnyksd4 is deleted.
+  2026-11-06 11:03:09,675 - INFO - Deleted job ascend-42202191521-87c666243vnyksd4
+  2026-11-06 11:03:09,675 - INFO - Response status: {'conditions': [{'lastTransitionTime': '2026-11-06T10:35:01Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-06T10:35:02Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-06T11:01:14Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-06T11:01:23Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-06T11:01:23Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-06T11:01:23Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-06T11:01:30Z', 'status': 'Running'}, {'lastTransitionTime': '2026-11-06T11:03:09Z', 'status': 'Running'}], 'minAvailable': 5, 'running': 4, 'state': {'lastTransitionTime': '2026-11-06T11:03:09Z', 'phase': 'Running'}, 'succeeded': 1, 'taskStatusCount': {'sglang-decode': {'phase': {'Running': 1, 'Succeeded': 1}}, 'sglang-prefill': {'phase': {'Running': 2}}, 'sglang-router': {'phase': {'Running': 1}}}}
+  Traceback (most recent call last):
+    File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 933, in <module>
+      run_npu_e2e_test_case(
+    File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 737, in run_npu_e2e_test_case
+      monitor_pod_logs(
+    File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 489, in monitor_pod_logs
+      raise Exception("Monitoring ended but target pattern was not detected")
+  Exception: Monitoring ended but target pattern was not detected
+2026-11-06T11:03:09.7835302Z ##[error]Process completed with exit code 1.
+2026-11-06T11:03:09.8050339Z ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.
+2026-11-06T11:03:09.8734942Z ##[group]Run cd ${ASCEND_E2E_TEST_CONFIG_PATH}
+2026-11-06T11:03:09.8735351Z [36;1mcd ${ASCEND_E2E_TEST_CONFIG_PATH}[0m
+2026-11-06T11:03:09.8735753Z [36;1mkubectl get pods -n $NAMESPACE | grep $KUBE_JOB_NAME[0m
+2026-11-06T11:03:09.8736274Z [36;1mkubectl delete -f ./k8s_multi_pd_*.yaml --ignore-not-found=true || true[0m
+2026-11-06T11:03:09.8736688Z [36;1m[0m
+2026-11-06T11:03:09.8736934Z [36;1mpod_name_prefix="${KUBE_JOB_NAME}-"[0m
+2026-11-06T11:03:09.8737377Z [36;1mecho "kube name space: $NAMESPACE, pod name prefix: ${pod_name_prefix}"[0m
+2026-11-06T11:03:09.8737808Z [36;1mwhile true; do[0m
+2026-11-06T11:03:09.8738180Z [36;1m  if kubectl get po -A -n $NAMESPACE | grep -q "${pod_name_prefix}"; then[0m
+2026-11-06T11:03:09.8738674Z [36;1m    echo "Found exist sglang job, sleeping for 30 seconds..."[0m
+2026-11-06T11:03:09.8739124Z [36;1m    sleep 30[0m
+2026-11-06T11:03:09.8739666Z [36;1m    kubectl get pods | grep "${pod_name_prefix}" | awk '{print $1}' | xargs kubectl delete pod -n $NAMESPACE || true[0m
+2026-11-06T11:03:09.8740194Z [36;1m  else[0m
+2026-11-06T11:03:09.8740484Z [36;1m    echo "No sglang job exist, start test case..."[0m
+2026-11-06T11:03:09.8740827Z [36;1m    break[0m
+2026-11-06T11:03:09.8741054Z [36;1m  fi[0m
+2026-11-06T11:03:09.8741414Z [36;1mdone[0m
+2026-11-06T11:03:09.8741768Z [36;1m# Cleanup the run-scoped source code directory on the shared PVC.[0m
+2026-11-06T11:03:09.8742246Z [36;1mrm -rf /root/.cache/tests/sglang-42202191521 || true[0m
+2026-11-06T11:03:09.8742714Z shell: sh -e {0}
+2026-11-06T11:03:09.8742957Z ##[endgroup]
+2026-11-06T11:03:09.8833546Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T11:03:09.8834857Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T11:03:09.8835408Z ##[endgroup]
+2026-11-06T11:03:10.1189410Z (node:730) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T11:03:10.1190156Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T11:03:10.1416853Z (node:730) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T11:03:10.2556514Z (node:730) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-06T11:03:10.8539862Z ascend-42202191521-87c666243vnyksd4-sglang-prefill-0   1/1     Terminating   0          28m
+2026-11-06T11:03:10.8540586Z ascend-42202191521-87c666243vnyksd4-sglang-prefill-1   1/1     Terminating   0          28m
+2026-11-06T11:03:10.8541734Z ascend-42202191521-87c666243vnyksd4-sglang-router-0    1/1     Terminating   0          28m
+2026-11-06T11:03:10.8880807Z error: the path "./k8s_multi_pd_*.yaml" does not exist
+2026-11-06T11:03:10.8890882Z kube name space: sgl-project, pod name prefix: ascend-42202191521-
+2026-11-06T11:03:11.1794857Z Found exist sglang job, sleeping for 30 seconds...
+2026-11-06T11:03:41.3359139Z error: resource(s) were provided, but no name was specified
+2026-11-06T11:03:41.6157451Z Found exist sglang job, sleeping for 30 seconds...
+2026-11-06T11:04:11.7835763Z error: resource(s) were provided, but no name was specified
+2026-11-06T11:04:12.0576142Z No sglang job exist, start test case...
+2026-11-06T11:04:58.5305944Z Post job cleanup.
+2026-11-06T11:04:58.5344082Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T11:04:58.5345023Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T11:04:58.5345581Z ##[endgroup]
+2026-11-06T11:04:58.7874436Z (node:864) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T11:04:58.7875254Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T11:04:58.8104158Z (node:864) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T11:04:58.8657368Z (node:864) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-06T11:04:59.4348070Z [command]/usr/bin/git version
+2026-11-06T11:04:59.4411742Z git version 2.34.1
+2026-11-06T11:04:59.4439844Z Copying '/root/.gitconfig' to '/__w/_temp/99638de3-5645-446b-bbab-1dad4ac73de5/.gitconfig'
+2026-11-06T11:04:59.4447703Z Temporarily overriding HOME='/__w/_temp/99638de3-5645-446b-bbab-1dad4ac73de5' before making global git config changes
+2026-11-06T11:04:59.4448522Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-06T11:04:59.4453076Z [command]/usr/bin/git config --global --add safe.directory /__w/sglang/sglang
+2026-11-06T11:04:59.4484747Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-06T11:04:59.4513100Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-06T11:04:59.4787986Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-06T11:04:59.4809069Z http.https://github.com/.extraheader
+2026-11-06T11:04:59.4818239Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-06T11:04:59.4899775Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-06T11:04:59.5112742Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-06T11:04:59.5139925Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-06T11:05:00.7850196Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T11:05:00.7851463Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T11:05:00.7851804Z ##[endgroup]
+2026-11-06T11:05:01.0337521Z (node:992) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T11:05:01.0338266Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T11:05:01.0564262Z (node:992) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T11:05:01.2541507Z Cleaning up orphan processes
+2026-11-06T11:05:01.2628185Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

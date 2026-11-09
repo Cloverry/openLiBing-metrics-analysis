@@ -1,0 +1,22 @@
+{
+ "2_multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test_registered_npu_pe... _ glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms.txt": "2_multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test_~de9f27.txt",
+ "multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test_registered_npu_pe... _ glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms/system.txt": "sys_multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test_~de9f27.txt",
+ "3_multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test_registered_npu_accuracy_glm5_2_test... _ glm_5_2_w8a8_2p2d_32p_pcp_gpqa.txt": "3_multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test_registered_npu_acc~cc387a.txt",
+ "multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test_registered_npu_accuracy_glm5_2_test... _ glm_5_2_w8a8_2p2d_32p_pcp_gpqa/system.txt": "sys_multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test_registered_npu_acc~cc387a.txt",
+ "4_multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test_registered_npu_accuracy_glm5_2_test... _ glm_5_2_w8a8_2p2d_32p_dcp_gpqa.txt": "4_multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test_registered_npu_acc~83db7b.txt",
+ "multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test_registered_npu_accuracy_glm5_2_test... _ glm_5_2_w8a8_2p2d_32p_dcp_gpqa/system.txt": "sys_multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test_registered_npu_acc~83db7b.txt",
+ "5_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa_overlap, 2, 2, 1, test_registered_npu_acc... _ deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa_overlap.txt": "5_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa_overlap, 2, 2, 1, test_r~7420f7.txt",
+ "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa_overlap, 2, 2, 1, test_registered_npu_acc... _ deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa_overlap/system.txt": "sys_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa_overlap, 2, 2, 1, test_r~7420f7.txt",
+ "6_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap, 1, 1, 1, test_registered_npu_a... _ deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap.txt": "6_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap, 1, 1, 1, test~ec30f2.txt",
+ "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap, 1, 1, 1, test_registered_npu_a... _ deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap/system.txt": "sys_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap, 1, 1, 1, test~ec30f2.txt",
+ "7_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap, 1, 1, 1, test... _ deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap.txt": "7_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overl~db0591.txt",
+ "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap, 1, 1, 1, test... _ deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap/system.txt": "sys_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overl~db0591.txt",
+ "8_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt": "8_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
+ "nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3/system.txt": "sys_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
+ "9_nightly-perf-16-npu-a3 _ nightly-perf-16-npu-a3.txt": "9_nightly-perf-16-npu-a3 _ nightly-perf-16-npu-a3.txt",
+ "nightly-perf-16-npu-a3 _ nightly-perf-16-npu-a3/system.txt": "sys_nightly-perf-16-npu-a3 _ nightly-perf-16-npu-a3.txt",
+ "10_nightly-1-npu-a3 _ run (0).txt": "10_nightly-1-npu-a3 _ run (0).txt",
+ "nightly-1-npu-a3 _ run (0)/system.txt": "sys_nightly-1-npu-a3 _ run (0).txt",
+ "19_set-image-config.txt": "19_set-image-config.txt",
+ "set-image-config/system.txt": "sys_set-image-config.txt"
+}

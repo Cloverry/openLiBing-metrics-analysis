@@ -1,0 +1,7 @@
+2026-11-05T23:38:32.5840000Z Job is about to start running on the runner: linux-amd64-cpu-8-hk
+2026-11-05T23:38:32.5670000Z Evaluating setup-vars.if
+2026-11-05T23:38:32.5670000Z Evaluating: success()
+2026-11-05T23:38:32.5670000Z Result: true
+2026-11-05T23:38:32.5730000Z Requested labels: linux-amd64-cpu-8-hk
+2026-11-05T23:38:32.5730000Z Job defined at: vllm-project/vllm-ascend/.github/workflows/schedule_nightly_test_a3.yaml@refs/heads/releases/v0.32.0rc
+2026-11-05T23:38:32.5730000Z Waiting for a runner to pick up this job...

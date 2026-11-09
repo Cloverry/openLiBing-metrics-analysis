@@ -1,0 +1,60 @@
+{
+ "_doc": {
+  "step": "step_4_cases",
+  "title": "第 4 步 测试用例取证（T6）",
+  "source": "openLiBing 测试报告页 + 用例日志下载",
+  "criteria": "取失败任务的失败用例、错误信息、深度学习命中行，并下载用例日志到 case_logs/",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-09 15:06:59",
+  "component": "Triton_Ascend",
+  "pipeline": "Ascend",
+  "date": "2026-11-06"
+ },
+ "results": [
+  {
+   "route": "test",
+   "key": "Triton_Ascend|Ascend",
+   "pipeline": "Ascend",
+   "pipelineName": "Nightly-CI-Version-pipeline_Triton_Ascend",
+   "rn": 104,
+   "st": "11-06 17:00",
+   "projectId": 300130,
+   "pipelineId": "9a4886d40e544cecb7da63c9597490a6",
+   "rid": "9ae1e7dda41c4a78957a5ba09d2e5b3c",
+   "jobId": "2f8ebba6f3024d659e6f27bd51a95b98",
+   "jobName": "Test_Triton_Ascend",
+   "stepIds": [
+    "6e91ceb17fcb4a54b87c3a718fba58f8"
+   ],
+   "steps": [
+    {
+     "id": "6e91ceb17fcb4a54b87c3a718fba58f8",
+     "name": "Test_Triton_Ascend",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "4e406501030d439b87085b5c49d861ed",
+     "jobIdParam": "48c3b7763886441dafd7fdcb5550116f"
+    }
+   ],
+   "jobErrMsg": "步骤Test_Triton_Ascend执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "f8c1f056c697430cab6bbea92d4c406a",
+   "code": 200,
+   "summary": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "passRate": "0.00%"
+   },
+   "failedCases": [],
+   "empty": true
+  }
+ ],
+ "caseErrors": [],
+ "errors": [],
+ "counts": {
+  "tasks": 1,
+  "failedCases": 0,
+  "caseLogs": 0,
+  "caseErrors": 0
+ }
+}

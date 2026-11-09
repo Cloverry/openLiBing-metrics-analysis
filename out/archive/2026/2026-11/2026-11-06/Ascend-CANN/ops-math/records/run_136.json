@@ -1,0 +1,1167 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-09 15:06:59",
+    "component": "Ascend-CANN",
+    "pipeline": "ops-math",
+    "date": "2026-11-06",
+    "recordId": "Ascend-CANN|ops-math#136"
+  },
+  "recordId": "Ascend-CANN|ops-math#136",
+  "date": "2026-11-06",
+  "component": "Ascend-CANN",
+  "pipeline": "ops-math",
+  "pipelineName": "Nightly-CI-Component-pipeline_ops-math",
+  "platform": "codearts",
+  "buildNumber": 136,
+  "pipelineRunId": "5a5246b83f144e66b1244ecbbc0ee412",
+  "status": "FAILED",
+  "failedTaskType": "测试任务",
+  "startedAt": "2026-11-06T02:05:07",
+  "endedAt": "2026-11-06T22:34:45",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-06T22:34:45",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0,
+    "bsRate": 1,
+    "dims": [
+      "va",
+      "bs"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=aa3d520fe64f4071a09178d2d603278e&projectId=300057&pipelineRunId=5a5246b83f144e66b1244ecbbc0ee412",
+    "detail": null,
+    "github": null
+  },
+  "tasks": [
+    {
+      "jobName": "Test_ops-math",
+      "type": "test",
+      "summary": {
+        "total": 330,
+        "passed": 312,
+        "failed": 18,
+        "passRate": "94.55%"
+      },
+      "cases": [
+        {
+          "name": "test_cann_accu_all_aclnnbitwiseandtensor_rl",
+          "state": "failed",
+          "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnBitwiseAndTensor_Accu_RL_2026-11-06-20-42-36-192542/report/aclnnBitwiseAndTensor_Accu_RL_reports_accuracy_2026-11-06-20-42-37.xlsx', error_msg='aclnnBitwiseAndTensor accuracy not passed', raw_output=\"Attri",
+          "beginTime": "2026-11-06 20:41:39",
+          "endTime": "2026-11-06 20:42:32",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_all_aclnnbitwiseandtensor_rl.html",
+          "localLog": "case_logs/case_0071.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 20:43:11.463",
+              "level": "FAIL",
+              "line": 3340,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part13.py::TestAclnnBitwiseAndTensor::test_cann_accu_all_aclnnbitwiseandtensor_rl"
+            }
+          ],
+          "deepHits": []
+        },
+        {
+          "name": "test_cann_accu_aclnntopk_qwen3",
+          "state": "failed",
+          "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnTopK_Accu_qwen3_2026-11-06-21-01-47-841394/report/aclnnTopK_Accu_qwen3_reports_accuracy_2026-11-06-21-01-48.xlsx', error_msg='aclnnTopK accuracy not passed', raw_output=\"AttributeError: 'MessageFactory' ob",
+          "beginTime": "2026-11-06 20:41:39",
+          "endTime": "2026-11-06 20:42:07",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_aclnntopk_qwen3.html",
+          "localLog": "case_logs/case_0072.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 21:02:00.743",
+              "level": "FAIL",
+              "line": 1589,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part26.py::TestAclnnTopK::test_cann_accu_aclnntopk_qwen3"
+            }
+          ],
+          "deepHits": []
+        },
+        {
+          "name": "test_cann_accu_aclnnbitwisenot_o1_related",
+          "state": "failed",
+          "description": "AssertionError: aclnnBitwiseNot算子Accu_O1_related测试失败: aclnnBitwiseNot accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnBitwiseNot_Accu_O1_related_2026-11-06-20-44-24-331922/report/aclnnBitwiseNot_Accu_O1_related_reports_accuracy_2026",
+          "beginTime": "2026-11-06 20:41:39",
+          "endTime": "2026-11-06 20:42:07",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_aclnnbitwisenot_o1_related.html",
+          "localLog": "case_logs/case_0073.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 20:44:37.397",
+              "level": "FAIL",
+              "line": 1693,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part13.py::TestAclnnBitwiseNot::test_cann_accu_aclnnbitwisenot_o1_related"
+            }
+          ],
+          "deepHits": []
+        },
+        {
+          "name": "test_cann_accu_aclnninplacemul_qianwen3",
+          "state": "failed",
+          "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnInplaceMul_ACCU_qianwen3_2026-11-06-21-07-18-609181/report/aclnnInplaceMul_ACCU_qianwen3_reports_accuracy_2026-11-06-21-07-19.xlsx', error_msg='aclnnInplaceMul accuracy not passed', raw_output=\"AttributeEr",
+          "beginTime": "2026-11-06 20:41:39",
+          "endTime": "2026-11-06 20:42:09",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_aclnninplacemul_qianwen3.html",
+          "localLog": "case_logs/case_0074.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 21:07:33.429",
+              "level": "FAIL",
+              "line": 1836,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_aclnninplacemul_qianwen3"
+            }
+          ],
+          "deepHits": []
+        },
+        {
+          "name": "test_cann_accu_aclnninplacemul_o1_related",
+          "state": "failed",
+          "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnInplaceMul_ACCU_O1_related_2026-11-06-21-06-19-316021/report/aclnnInplaceMul_ACCU_O1_related_reports_accuracy_2026-11-06-21-06-20.xlsx', error_msg='aclnnInplaceMul accuracy not passed', raw_output=\"Attribu",
+          "beginTime": "2026-11-06 20:41:39",
+          "endTime": "2026-11-06 20:42:38",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_aclnninplacemul_o1_related.html",
+          "localLog": "case_logs/case_0075.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 21:07:02.735",
+              "level": "FAIL",
+              "line": 3633,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_aclnninplacemul_o1_related"
+            }
+          ],
+          "deepHits": []
+        },
+        {
+          "name": "test_cann_accu_smk_aclnnlinspace",
+          "state": "failed",
+          "description": "AssertionError: aclnnLinspace算子Smoke_Generalization测试失败: aclnnLinspace accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnLinspace_Smoke_2026-11-06-21-00-51-707642/report/aclnnLinspace_Smoke_reports_accuracy_2026-11-06-21-00-52.xlsx', ",
+          "beginTime": "2026-11-06 20:41:39",
+          "endTime": "2026-11-06 20:42:04",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_smk_aclnnlinspace.html",
+          "localLog": "case_logs/case_0076.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 21:01:04.759",
+              "level": "FAIL",
+              "line": 1813,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part20.py::TestAclnnLinspace::test_cann_accu_smk_aclnnlinspace"
+            }
+          ],
+          "deepHits": []
+        },
+        {
+          "name": "test_cann_accu_aclnntopk_pangu",
+          "state": "failed",
+          "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnTopK_Accu_pangu_2026-11-06-21-01-17-303379/report/aclnnTopK_Accu_pangu_reports_accuracy_2026-11-06-21-01-18.xlsx', error_msg='aclnnTopK accuracy not passed', raw_output=\"AttributeError: 'MessageFactory' ob",
+          "beginTime": "2026-11-06 20:41:39",
+          "endTime": "2026-11-06 20:42:09",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_aclnntopk_pangu.html",
+          "localLog": "case_logs/case_0077.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 21:01:32.201",
+              "level": "FAIL",
+              "line": 1643,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part26.py::TestAclnnTopK::test_cann_accu_aclnntopk_pangu"
+            }
+          ],
+          "deepHits": []
+        },
+        {
+          "name": "test_cann_accu_smk_aclnninplacenormal_atk",
+          "state": "failed",
+          "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnInplaceNormal_atk_Perf_2026-11-06-20-47-52-288240/report/aclnnInplaceNormal_atk_Perf_reports_accuracy_2026-11-06-20-47-53.xlsx', error_msg='aclnnInplaceNormal accuracy not passed', raw_output=\"AttributeErr",
+          "beginTime": "2026-11-06 20:41:39",
+          "endTime": "2026-11-06 20:42:10",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_smk_aclnninplacenormal_atk.html",
+          "localLog": "case_logs/case_0078.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 20:48:07.212",
+              "level": "FAIL",
+              "line": 1797,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part20.py::TestAclnnInplaceNormal::test_cann_accu_smk_aclnninplacenormal_atk"
+            }
+          ],
+          "deepHits": []
+        },
+        {
+          "name": "test_cann_accu_smk_aclnninplacerandom_atk",
+          "state": "failed",
+          "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnInplaceRandom_atk_Perf_2026-11-06-20-49-58-530825/report/aclnnInplaceRandom_atk_Perf_reports_accuracy_2026-11-06-20-49-59.xlsx', error_msg='aclnnInplaceRandom accuracy not passed', raw_output=\"AttributeErr",
+          "beginTime": "2026-11-06 20:41:39",
+          "endTime": "2026-11-06 20:42:14",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_smk_aclnninplacerandom_atk.html",
+          "localLog": "case_logs/case_0079.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 20:50:17.674",
+              "level": "FAIL",
+              "line": 2293,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part20.py::TestAclnnInplaceRandom::test_cann_accu_smk_aclnninplacerandom_atk"
+            }
+          ],
+          "deepHits": []
+        },
+        {
+          "name": "test_cann_accu_aclnngtscalar_o1_related",
+          "state": "failed",
+          "description": "AssertionError: aclnnGtScalar功能精度测试(executor)失败: aclnnGtScalar accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnGtScalar_atk_Accu_O1_2026-11-06-21-04-52-351014/report/aclnnGtScalar_atk_Accu_O1_reports_accuracy_2026-11-06-21-04-53.xls",
+          "beginTime": "2026-11-06 20:41:39",
+          "endTime": "2026-11-06 20:42:09",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_aclnngtscalar_o1_related.html",
+          "localLog": "case_logs/case_0080.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 21:05:05.331",
+              "level": "FAIL",
+              "line": 1677,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_aclnngtscalar_o1_related"
+            }
+          ],
+          "deepHits": []
+        },
+        {
+          "name": "test_cann_accu_aclnntopk_o1",
+          "state": "failed",
+          "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnTopK_Accu_O1_2026-11-06-21-02-44-815167/report/aclnnTopK_Accu_O1_reports_accuracy_2026-11-06-21-02-45.xlsx', error_msg='aclnnTopK accuracy not passed', raw_output=\"AttributeError: 'MessageFactory' object h",
+          "beginTime": "2026-11-06 20:41:39",
+          "endTime": "2026-11-06 20:42:07",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_aclnntopk_o1.html",
+          "localLog": "case_logs/case_0081.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 21:02:57.904",
+              "level": "FAIL",
+              "line": 1686,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part26.py::TestAclnnTopK::test_cann_accu_aclnntopk_o1"
+            }
+          ],
+          "deepHits": []
+        },
+        {
+          "name": "test_cann_accu_aclnninplacemul_pangu",
+          "state": "failed",
+          "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnInplaceMul_ACCU_pangu_2026-11-06-21-07-48-818643/report/aclnnInplaceMul_ACCU_pangu_reports_accuracy_2026-11-06-21-07-49.xlsx', error_msg='aclnnInplaceMul accuracy not passed', raw_output=\"AttributeError: '",
+          "beginTime": "2026-11-06 20:41:39",
+          "endTime": "2026-11-06 20:43:02",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_aclnninplacemul_pangu.html",
+          "localLog": "case_logs/case_0082.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 21:08:56.482",
+              "level": "FAIL",
+              "line": 4733,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_aclnninplacemul_pangu"
+            }
+          ],
+          "deepHits": []
+        },
+        {
+          "name": "test_cann_accu_all_aclnnlescalar_rl",
+          "state": "failed",
+          "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnLeScalar_Accu_RL_2026-11-06-21-09-11-974365/report/aclnnLeScalar_Accu_RL_reports_accuracy_2026-11-06-21-09-12.xlsx', error_msg='aclnnLeScalar accuracy not passed', raw_output=\"AttributeError: 'MessageFacto",
+          "beginTime": "2026-11-06 20:41:39",
+          "endTime": "2026-11-06 20:42:11",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_all_aclnnlescalar_rl.html",
+          "localLog": "case_logs/case_0083.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 21:09:29.049",
+              "level": "FAIL",
+              "line": 2091,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_all_aclnnlescalar_rl"
+            }
+          ],
+          "deepHits": []
+        },
+        {
+          "name": "test_cann_accu_all_aclnnbitwiseortensor_rl",
+          "state": "failed",
+          "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnBitwiseOrTensor_Accu_RL_2026-11-06-20-44-52-854531/report/aclnnBitwiseOrTensor_Accu_RL_reports_accuracy_2026-11-06-20-44-53.xlsx', error_msg='aclnnBitwiseOrTensor accuracy not passed', raw_output=\"Attribut",
+          "beginTime": "2026-11-06 20:41:39",
+          "endTime": "2026-11-06 20:43:46",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_all_aclnnbitwiseortensor_rl.html",
+          "localLog": "case_logs/case_0084.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 20:46:43.333",
+              "level": "FAIL",
+              "line": 8571,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part13.py::TestAclnnBitwiseOrTensor::test_cann_accu_all_aclnnbitwiseortensor_rl"
+            }
+          ],
+          "deepHits": []
+        },
+        {
+          "name": "test_cann_accu_smk_aclnntrace_atk",
+          "state": "failed",
+          "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnTrace_Smoke_2026-11-06-21-03-13-775571/report/aclnnTrace_Smoke_reports_accuracy_2026-11-06-21-03-14.xlsx', error_msg='aclnnTrace accuracy not passed', raw_output=\"AttributeError: 'MessageFactory' object ha",
+          "beginTime": "2026-11-06 20:41:39",
+          "endTime": "2026-11-06 20:42:18",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_smk_aclnntrace_atk.html",
+          "localLog": "case_logs/case_0085.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 21:03:36.693",
+              "level": "FAIL",
+              "line": 2393,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part26.py::TestAclnnTrace::test_cann_accu_smk_aclnntrace_atk"
+            }
+          ],
+          "deepHits": []
+        },
+        {
+          "name": "test_cann_accu_smk_aclnninplaceuniform_atk",
+          "state": "failed",
+          "description": "AssertionError: aclnnInplaceUniform算子ACCURACY测试失败: aclnnInplaceUniform accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnInplaceUniform_atk_Perf_2026-11-06-20-51-00-824503/report/aclnnInplaceUniform_atk_Perf_reports_accuracy_2026-11-0",
+          "beginTime": "2026-11-06 20:41:39",
+          "endTime": "2026-11-06 20:42:11",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_smk_aclnninplaceuniform_atk.html",
+          "localLog": "case_logs/case_0086.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 20:51:17.618",
+              "level": "FAIL",
+              "line": 2062,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part20.py::TestAclnnInplaceUniform::test_cann_accu_smk_aclnninplaceuniform_atk"
+            }
+          ],
+          "deepHits": []
+        },
+        {
+          "name": "test_cann_accu_all_aclnngtscalar_qwen3",
+          "state": "failed",
+          "description": "AssertionError: aclnnGtScalar功能精度测试(executor)失败: aclnnGtScalar accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnGtScalar_atk_Accu_qwen3_2026-11-06-21-05-21-906661/report/aclnnGtScalar_atk_Accu_qwen3_reports_accuracy_2026-11-06-21-05-",
+          "beginTime": "2026-11-06 20:41:39",
+          "endTime": "2026-11-06 20:42:09",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_all_aclnngtscalar_qwen3.html",
+          "localLog": "case_logs/case_0087.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 21:05:35.074",
+              "level": "FAIL",
+              "line": 1774,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_all_aclnngtscalar_qwen3"
+            }
+          ],
+          "deepHits": []
+        },
+        {
+          "name": "test_cann_accu_all_aclnnbitwiseandscalar_qwen3",
+          "state": "failed",
+          "description": "AssertionError: aclnnBitwiseAndScalar算子ACCURACY_qwen3测试失败: aclnnBitwiseAndScalar accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnBitwiseAndScalar_Accu_Qwen3_2026-11-06-20-41-52-853654/report/aclnnBitwiseAndScalar_Accu_Qwen3_reports_",
+          "beginTime": "2026-11-06 20:41:39",
+          "endTime": "2026-11-06 20:42:23",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_all_aclnnbitwiseandscalar_qwen3.html",
+          "localLog": "case_logs/case_0088.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 20:42:19.417",
+              "level": "FAIL",
+              "line": 2581,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part13.py::TestAclnnBitwiseAndScalar::test_cann_accu_all_aclnnbitwiseandscalar_qwen3"
+            }
+          ],
+          "deepHits": []
+        }
+      ],
+      "emptyTestResult": false,
+      "stepErrMsgs": []
+    }
+  ],
+  "cases": [
+    {
+      "task": "Test_ops-math",
+      "name": "test_cann_accu_all_aclnnbitwiseandtensor_rl",
+      "state": "failed",
+      "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnBitwiseAndTensor_Accu_RL_2026-11-06-20-42-36-192542/report/aclnnBitwiseAndTensor_Accu_RL_reports_accuracy_2026-11-06-20-42-37.xlsx', error_msg='aclnnBitwiseAndTensor accuracy not passed', raw_output=\"Attri",
+      "beginTime": "2026-11-06 20:41:39",
+      "endTime": "2026-11-06 20:42:32",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_all_aclnnbitwiseandtensor_rl.html",
+      "localLog": "case_logs/case_0071.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 20:43:11.463",
+          "level": "FAIL",
+          "line": 3340,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part13.py::TestAclnnBitwiseAndTensor::test_cann_accu_all_aclnnbitwiseandtensor_rl"
+        }
+      ],
+      "deepHits": []
+    },
+    {
+      "task": "Test_ops-math",
+      "name": "test_cann_accu_aclnntopk_qwen3",
+      "state": "failed",
+      "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnTopK_Accu_qwen3_2026-11-06-21-01-47-841394/report/aclnnTopK_Accu_qwen3_reports_accuracy_2026-11-06-21-01-48.xlsx', error_msg='aclnnTopK accuracy not passed', raw_output=\"AttributeError: 'MessageFactory' ob",
+      "beginTime": "2026-11-06 20:41:39",
+      "endTime": "2026-11-06 20:42:07",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_aclnntopk_qwen3.html",
+      "localLog": "case_logs/case_0072.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 21:02:00.743",
+          "level": "FAIL",
+          "line": 1589,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part26.py::TestAclnnTopK::test_cann_accu_aclnntopk_qwen3"
+        }
+      ],
+      "deepHits": []
+    },
+    {
+      "task": "Test_ops-math",
+      "name": "test_cann_accu_aclnnbitwisenot_o1_related",
+      "state": "failed",
+      "description": "AssertionError: aclnnBitwiseNot算子Accu_O1_related测试失败: aclnnBitwiseNot accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnBitwiseNot_Accu_O1_related_2026-11-06-20-44-24-331922/report/aclnnBitwiseNot_Accu_O1_related_reports_accuracy_2026",
+      "beginTime": "2026-11-06 20:41:39",
+      "endTime": "2026-11-06 20:42:07",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_aclnnbitwisenot_o1_related.html",
+      "localLog": "case_logs/case_0073.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 20:44:37.397",
+          "level": "FAIL",
+          "line": 1693,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part13.py::TestAclnnBitwiseNot::test_cann_accu_aclnnbitwisenot_o1_related"
+        }
+      ],
+      "deepHits": []
+    },
+    {
+      "task": "Test_ops-math",
+      "name": "test_cann_accu_aclnninplacemul_qianwen3",
+      "state": "failed",
+      "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnInplaceMul_ACCU_qianwen3_2026-11-06-21-07-18-609181/report/aclnnInplaceMul_ACCU_qianwen3_reports_accuracy_2026-11-06-21-07-19.xlsx', error_msg='aclnnInplaceMul accuracy not passed', raw_output=\"AttributeEr",
+      "beginTime": "2026-11-06 20:41:39",
+      "endTime": "2026-11-06 20:42:09",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_aclnninplacemul_qianwen3.html",
+      "localLog": "case_logs/case_0074.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 21:07:33.429",
+          "level": "FAIL",
+          "line": 1836,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_aclnninplacemul_qianwen3"
+        }
+      ],
+      "deepHits": []
+    },
+    {
+      "task": "Test_ops-math",
+      "name": "test_cann_accu_aclnninplacemul_o1_related",
+      "state": "failed",
+      "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnInplaceMul_ACCU_O1_related_2026-11-06-21-06-19-316021/report/aclnnInplaceMul_ACCU_O1_related_reports_accuracy_2026-11-06-21-06-20.xlsx', error_msg='aclnnInplaceMul accuracy not passed', raw_output=\"Attribu",
+      "beginTime": "2026-11-06 20:41:39",
+      "endTime": "2026-11-06 20:42:38",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_aclnninplacemul_o1_related.html",
+      "localLog": "case_logs/case_0075.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 21:07:02.735",
+          "level": "FAIL",
+          "line": 3633,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_aclnninplacemul_o1_related"
+        }
+      ],
+      "deepHits": []
+    },
+    {
+      "task": "Test_ops-math",
+      "name": "test_cann_accu_smk_aclnnlinspace",
+      "state": "failed",
+      "description": "AssertionError: aclnnLinspace算子Smoke_Generalization测试失败: aclnnLinspace accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnLinspace_Smoke_2026-11-06-21-00-51-707642/report/aclnnLinspace_Smoke_reports_accuracy_2026-11-06-21-00-52.xlsx', ",
+      "beginTime": "2026-11-06 20:41:39",
+      "endTime": "2026-11-06 20:42:04",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_smk_aclnnlinspace.html",
+      "localLog": "case_logs/case_0076.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 21:01:04.759",
+          "level": "FAIL",
+          "line": 1813,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part20.py::TestAclnnLinspace::test_cann_accu_smk_aclnnlinspace"
+        }
+      ],
+      "deepHits": []
+    },
+    {
+      "task": "Test_ops-math",
+      "name": "test_cann_accu_aclnntopk_pangu",
+      "state": "failed",
+      "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnTopK_Accu_pangu_2026-11-06-21-01-17-303379/report/aclnnTopK_Accu_pangu_reports_accuracy_2026-11-06-21-01-18.xlsx', error_msg='aclnnTopK accuracy not passed', raw_output=\"AttributeError: 'MessageFactory' ob",
+      "beginTime": "2026-11-06 20:41:39",
+      "endTime": "2026-11-06 20:42:09",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_aclnntopk_pangu.html",
+      "localLog": "case_logs/case_0077.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 21:01:32.201",
+          "level": "FAIL",
+          "line": 1643,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part26.py::TestAclnnTopK::test_cann_accu_aclnntopk_pangu"
+        }
+      ],
+      "deepHits": []
+    },
+    {
+      "task": "Test_ops-math",
+      "name": "test_cann_accu_smk_aclnninplacenormal_atk",
+      "state": "failed",
+      "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnInplaceNormal_atk_Perf_2026-11-06-20-47-52-288240/report/aclnnInplaceNormal_atk_Perf_reports_accuracy_2026-11-06-20-47-53.xlsx', error_msg='aclnnInplaceNormal accuracy not passed', raw_output=\"AttributeErr",
+      "beginTime": "2026-11-06 20:41:39",
+      "endTime": "2026-11-06 20:42:10",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_smk_aclnninplacenormal_atk.html",
+      "localLog": "case_logs/case_0078.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 20:48:07.212",
+          "level": "FAIL",
+          "line": 1797,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part20.py::TestAclnnInplaceNormal::test_cann_accu_smk_aclnninplacenormal_atk"
+        }
+      ],
+      "deepHits": []
+    },
+    {
+      "task": "Test_ops-math",
+      "name": "test_cann_accu_smk_aclnninplacerandom_atk",
+      "state": "failed",
+      "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnInplaceRandom_atk_Perf_2026-11-06-20-49-58-530825/report/aclnnInplaceRandom_atk_Perf_reports_accuracy_2026-11-06-20-49-59.xlsx', error_msg='aclnnInplaceRandom accuracy not passed', raw_output=\"AttributeErr",
+      "beginTime": "2026-11-06 20:41:39",
+      "endTime": "2026-11-06 20:42:14",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_smk_aclnninplacerandom_atk.html",
+      "localLog": "case_logs/case_0079.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 20:50:17.674",
+          "level": "FAIL",
+          "line": 2293,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part20.py::TestAclnnInplaceRandom::test_cann_accu_smk_aclnninplacerandom_atk"
+        }
+      ],
+      "deepHits": []
+    },
+    {
+      "task": "Test_ops-math",
+      "name": "test_cann_accu_aclnngtscalar_o1_related",
+      "state": "failed",
+      "description": "AssertionError: aclnnGtScalar功能精度测试(executor)失败: aclnnGtScalar accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnGtScalar_atk_Accu_O1_2026-11-06-21-04-52-351014/report/aclnnGtScalar_atk_Accu_O1_reports_accuracy_2026-11-06-21-04-53.xls",
+      "beginTime": "2026-11-06 20:41:39",
+      "endTime": "2026-11-06 20:42:09",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_aclnngtscalar_o1_related.html",
+      "localLog": "case_logs/case_0080.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 21:05:05.331",
+          "level": "FAIL",
+          "line": 1677,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_aclnngtscalar_o1_related"
+        }
+      ],
+      "deepHits": []
+    },
+    {
+      "task": "Test_ops-math",
+      "name": "test_cann_accu_aclnntopk_o1",
+      "state": "failed",
+      "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnTopK_Accu_O1_2026-11-06-21-02-44-815167/report/aclnnTopK_Accu_O1_reports_accuracy_2026-11-06-21-02-45.xlsx', error_msg='aclnnTopK accuracy not passed', raw_output=\"AttributeError: 'MessageFactory' object h",
+      "beginTime": "2026-11-06 20:41:39",
+      "endTime": "2026-11-06 20:42:07",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_aclnntopk_o1.html",
+      "localLog": "case_logs/case_0081.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 21:02:57.904",
+          "level": "FAIL",
+          "line": 1686,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part26.py::TestAclnnTopK::test_cann_accu_aclnntopk_o1"
+        }
+      ],
+      "deepHits": []
+    },
+    {
+      "task": "Test_ops-math",
+      "name": "test_cann_accu_aclnninplacemul_pangu",
+      "state": "failed",
+      "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnInplaceMul_ACCU_pangu_2026-11-06-21-07-48-818643/report/aclnnInplaceMul_ACCU_pangu_reports_accuracy_2026-11-06-21-07-49.xlsx', error_msg='aclnnInplaceMul accuracy not passed', raw_output=\"AttributeError: '",
+      "beginTime": "2026-11-06 20:41:39",
+      "endTime": "2026-11-06 20:43:02",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_aclnninplacemul_pangu.html",
+      "localLog": "case_logs/case_0082.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 21:08:56.482",
+          "level": "FAIL",
+          "line": 4733,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_aclnninplacemul_pangu"
+        }
+      ],
+      "deepHits": []
+    },
+    {
+      "task": "Test_ops-math",
+      "name": "test_cann_accu_all_aclnnlescalar_rl",
+      "state": "failed",
+      "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnLeScalar_Accu_RL_2026-11-06-21-09-11-974365/report/aclnnLeScalar_Accu_RL_reports_accuracy_2026-11-06-21-09-12.xlsx', error_msg='aclnnLeScalar accuracy not passed', raw_output=\"AttributeError: 'MessageFacto",
+      "beginTime": "2026-11-06 20:41:39",
+      "endTime": "2026-11-06 20:42:11",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_all_aclnnlescalar_rl.html",
+      "localLog": "case_logs/case_0083.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 21:09:29.049",
+          "level": "FAIL",
+          "line": 2091,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_all_aclnnlescalar_rl"
+        }
+      ],
+      "deepHits": []
+    },
+    {
+      "task": "Test_ops-math",
+      "name": "test_cann_accu_all_aclnnbitwiseortensor_rl",
+      "state": "failed",
+      "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnBitwiseOrTensor_Accu_RL_2026-11-06-20-44-52-854531/report/aclnnBitwiseOrTensor_Accu_RL_reports_accuracy_2026-11-06-20-44-53.xlsx', error_msg='aclnnBitwiseOrTensor accuracy not passed', raw_output=\"Attribut",
+      "beginTime": "2026-11-06 20:41:39",
+      "endTime": "2026-11-06 20:43:46",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_all_aclnnbitwiseortensor_rl.html",
+      "localLog": "case_logs/case_0084.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 20:46:43.333",
+          "level": "FAIL",
+          "line": 8571,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part13.py::TestAclnnBitwiseOrTensor::test_cann_accu_all_aclnnbitwiseortensor_rl"
+        }
+      ],
+      "deepHits": []
+    },
+    {
+      "task": "Test_ops-math",
+      "name": "test_cann_accu_smk_aclnntrace_atk",
+      "state": "failed",
+      "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnTrace_Smoke_2026-11-06-21-03-13-775571/report/aclnnTrace_Smoke_reports_accuracy_2026-11-06-21-03-14.xlsx', error_msg='aclnnTrace accuracy not passed', raw_output=\"AttributeError: 'MessageFactory' object ha",
+      "beginTime": "2026-11-06 20:41:39",
+      "endTime": "2026-11-06 20:42:18",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_smk_aclnntrace_atk.html",
+      "localLog": "case_logs/case_0085.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 21:03:36.693",
+          "level": "FAIL",
+          "line": 2393,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part26.py::TestAclnnTrace::test_cann_accu_smk_aclnntrace_atk"
+        }
+      ],
+      "deepHits": []
+    },
+    {
+      "task": "Test_ops-math",
+      "name": "test_cann_accu_smk_aclnninplaceuniform_atk",
+      "state": "failed",
+      "description": "AssertionError: aclnnInplaceUniform算子ACCURACY测试失败: aclnnInplaceUniform accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnInplaceUniform_atk_Perf_2026-11-06-20-51-00-824503/report/aclnnInplaceUniform_atk_Perf_reports_accuracy_2026-11-0",
+      "beginTime": "2026-11-06 20:41:39",
+      "endTime": "2026-11-06 20:42:11",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_smk_aclnninplaceuniform_atk.html",
+      "localLog": "case_logs/case_0086.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 20:51:17.618",
+          "level": "FAIL",
+          "line": 2062,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part20.py::TestAclnnInplaceUniform::test_cann_accu_smk_aclnninplaceuniform_atk"
+        }
+      ],
+      "deepHits": []
+    },
+    {
+      "task": "Test_ops-math",
+      "name": "test_cann_accu_all_aclnngtscalar_qwen3",
+      "state": "failed",
+      "description": "AssertionError: aclnnGtScalar功能精度测试(executor)失败: aclnnGtScalar accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnGtScalar_atk_Accu_qwen3_2026-11-06-21-05-21-906661/report/aclnnGtScalar_atk_Accu_qwen3_reports_accuracy_2026-11-06-21-05-",
+      "beginTime": "2026-11-06 20:41:39",
+      "endTime": "2026-11-06 20:42:09",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_all_aclnngtscalar_qwen3.html",
+      "localLog": "case_logs/case_0087.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 21:05:35.074",
+          "level": "FAIL",
+          "line": 1774,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_all_aclnngtscalar_qwen3"
+        }
+      ],
+      "deepHits": []
+    },
+    {
+      "task": "Test_ops-math",
+      "name": "test_cann_accu_all_aclnnbitwiseandscalar_qwen3",
+      "state": "failed",
+      "description": "AssertionError: aclnnBitwiseAndScalar算子ACCURACY_qwen3测试失败: aclnnBitwiseAndScalar accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnBitwiseAndScalar_Accu_Qwen3_2026-11-06-20-41-52-853654/report/aclnnBitwiseAndScalar_Accu_Qwen3_reports_",
+      "beginTime": "2026-11-06 20:41:39",
+      "endTime": "2026-11-06 20:42:23",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611069150/test_cann_accu_all_aclnnbitwiseandscalar_qwen3.html",
+      "localLog": "case_logs/case_0088.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 20:42:19.417",
+          "level": "FAIL",
+          "line": 2581,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part13.py::TestAclnnBitwiseAndScalar::test_cann_accu_all_aclnnbitwiseandscalar_qwen3"
+        }
+      ],
+      "deepHits": []
+    }
+  ],
+  "errorMessages": [
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_all_aclnnbitwiseandtensor_rl",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "aclnnBitwiseAndTensor accuracy not passed",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_aclnntopk_qwen3",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "aclnnTopK accuracy not passed；AttributeError: 'MessageFactory' ob ...",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_aclnnbitwisenot_o1_related",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "AssertionError: aclnnBitwiseNot算子Accu_O1_related测试失败: aclnnBitwiseNot accuracy not passed",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_aclnninplacemul_qianwen3",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "aclnnInplaceMul accuracy not passed；AttributeEr ...",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_aclnninplacemul_o1_related",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "aclnnInplaceMul accuracy not passed",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_smk_aclnnlinspace",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "AssertionError: aclnnLinspace算子Smoke_Generalization测试失败: aclnnLinspace accuracy not passed",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_aclnntopk_pangu",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "aclnnTopK accuracy not passed；AttributeError: 'MessageFactory' ob ...",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_smk_aclnninplacenormal_atk",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "aclnnInplaceNormal accuracy not passed；AttributeErr ...",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_smk_aclnninplacerandom_atk",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "aclnnInplaceRandom accuracy not passed；AttributeErr ...",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_aclnngtscalar_o1_related",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "AssertionError: aclnnGtScalar功能精度测试(executor)失败: aclnnGtScalar accuracy not passed",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_aclnntopk_o1",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "aclnnTopK accuracy not passed；AttributeError: 'MessageFactory' object h ...",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_aclnninplacemul_pangu",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "aclnnInplaceMul accuracy not passed；AttributeError: ' ...",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_all_aclnnlescalar_rl",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "aclnnLeScalar accuracy not passed；AttributeError: 'MessageFacto ...",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_all_aclnnbitwiseortensor_rl",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "aclnnBitwiseOrTensor accuracy not passed；Attribut ...",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_smk_aclnntrace_atk",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "aclnnTrace accuracy not passed；AttributeError: 'MessageFactory' object ha ...",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_smk_aclnninplaceuniform_atk",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "AssertionError: aclnnInplaceUniform算子ACCURACY测试失败: aclnnInplaceUniform accuracy not passed",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_all_aclnngtscalar_qwen3",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "AssertionError: aclnnGtScalar功能精度测试(executor)失败: aclnnGtScalar accuracy not passed",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_all_aclnnbitwiseandscalar_qwen3",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "AssertionError: aclnnBitwiseAndScalar算子ACCURACY_qwen3测试失败: aclnnBitwiseAndScalar accuracy not passed",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_all_aclnnbitwiseandtensor_rl",
+      "source": "case_logs/case_0071.html",
+      "line": 3340,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part13.py::TestAclnnBitwiseAndTensor::test_cann_accu_all_aclnnbitwiseandtensor_rl",
+      "isSummary": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_aclnntopk_qwen3",
+      "source": "case_logs/case_0072.html",
+      "line": 1589,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part26.py::TestAclnnTopK::test_cann_accu_aclnntopk_qwen3",
+      "isSummary": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_aclnnbitwisenot_o1_related",
+      "source": "case_logs/case_0073.html",
+      "line": 1693,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part13.py::TestAclnnBitwiseNot::test_cann_accu_aclnnbitwisenot_o1_related",
+      "isSummary": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_aclnninplacemul_qianwen3",
+      "source": "case_logs/case_0074.html",
+      "line": 1836,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_aclnninplacemul_qianwen3",
+      "isSummary": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_aclnninplacemul_o1_related",
+      "source": "case_logs/case_0075.html",
+      "line": 3633,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_aclnninplacemul_o1_related",
+      "isSummary": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_smk_aclnnlinspace",
+      "source": "case_logs/case_0076.html",
+      "line": 1813,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part20.py::TestAclnnLinspace::test_cann_accu_smk_aclnnlinspace",
+      "isSummary": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_aclnntopk_pangu",
+      "source": "case_logs/case_0077.html",
+      "line": 1643,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part26.py::TestAclnnTopK::test_cann_accu_aclnntopk_pangu",
+      "isSummary": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_smk_aclnninplacenormal_atk",
+      "source": "case_logs/case_0078.html",
+      "line": 1797,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part20.py::TestAclnnInplaceNormal::test_cann_accu_smk_aclnninplacenormal_atk",
+      "isSummary": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_smk_aclnninplacerandom_atk",
+      "source": "case_logs/case_0079.html",
+      "line": 2293,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part20.py::TestAclnnInplaceRandom::test_cann_accu_smk_aclnninplacerandom_atk",
+      "isSummary": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_aclnngtscalar_o1_related",
+      "source": "case_logs/case_0080.html",
+      "line": 1677,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_aclnngtscalar_o1_related",
+      "isSummary": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_aclnntopk_o1",
+      "source": "case_logs/case_0081.html",
+      "line": 1686,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part26.py::TestAclnnTopK::test_cann_accu_aclnntopk_o1",
+      "isSummary": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_aclnninplacemul_pangu",
+      "source": "case_logs/case_0082.html",
+      "line": 4733,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_aclnninplacemul_pangu",
+      "isSummary": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_all_aclnnlescalar_rl",
+      "source": "case_logs/case_0083.html",
+      "line": 2091,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_all_aclnnlescalar_rl",
+      "isSummary": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_all_aclnnbitwiseortensor_rl",
+      "source": "case_logs/case_0084.html",
+      "line": 8571,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part13.py::TestAclnnBitwiseOrTensor::test_cann_accu_all_aclnnbitwiseortensor_rl",
+      "isSummary": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_smk_aclnntrace_atk",
+      "source": "case_logs/case_0085.html",
+      "line": 2393,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part26.py::TestAclnnTrace::test_cann_accu_smk_aclnntrace_atk",
+      "isSummary": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_smk_aclnninplaceuniform_atk",
+      "source": "case_logs/case_0086.html",
+      "line": 2062,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part20.py::TestAclnnInplaceUniform::test_cann_accu_smk_aclnninplaceuniform_atk",
+      "isSummary": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_all_aclnngtscalar_qwen3",
+      "source": "case_logs/case_0087.html",
+      "line": 1774,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_all_aclnngtscalar_qwen3",
+      "isSummary": true
+    },
+    {
+      "task": "Test_ops-math",
+      "case": "test_cann_accu_all_aclnnbitwiseandscalar_qwen3",
+      "source": "case_logs/case_0088.html",
+      "line": 2581,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part13.py::TestAclnnBitwiseAndScalar::test_cann_accu_all_aclnnbitwiseandscalar_qwen3",
+      "isSummary": true
+    }
+  ],
+  "evidence": {
+    "files": [
+      "case_logs/case_0071.html",
+      "case_logs/case_0072.html",
+      "case_logs/case_0073.html",
+      "case_logs/case_0074.html",
+      "case_logs/case_0075.html",
+      "case_logs/case_0076.html",
+      "case_logs/case_0077.html",
+      "case_logs/case_0078.html",
+      "case_logs/case_0079.html",
+      "case_logs/case_0080.html",
+      "case_logs/case_0081.html",
+      "case_logs/case_0082.html",
+      "case_logs/case_0083.html",
+      "case_logs/case_0084.html",
+      "case_logs/case_0085.html",
+      "case_logs/case_0086.html",
+      "case_logs/case_0087.html",
+      "case_logs/case_0088.html"
+    ],
+    "missing": [],
+    "github": null
+  },
+  "counts": {
+    "tasks": 1,
+    "testTasks": 1,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 18,
+    "errorMessages": 36,
+    "evidenceFiles": 18
+  },
+  "verdict": {
+    "category": "test_failure",
+    "text": "用例失败",
+    "confidence": 0.75,
+    "level": "高",
+    "basis": [
+      "test 任务 Test_ops-math 取到 18 条失败用例、18 条用例级 ERROR/FAIL 消息（无 job 日志，证据来自测试报告/用例日志）",
+      "基线 0.30",
+      "证据文件落盘 18 份 +0.25",
+      "用例级错误消息 18 条 +0.20"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "rootCause": "本次 18 个精度用例全部失败，断言原文为 aclnnBitwiseNot / aclnnLinspace accuracy not passed，算子任务返回 acc_pass_result='Failed'；该运行 test 任务无日志落盘，无法下钻到算子内核实现与比对阈值层面的具体偏差。",
+    "advice": "用同镜像单独复跑 aclnnBitwiseNot、aclnnLinspace 等高失败率算子，导出 atk 精度比对明细（误差分布与阈值设置）；若多算子同时批量失败，优先核对该轮算子库版本与精度基线是否匹配当前 910 环境，并补齐 test 任务日志落盘配置。",
+    "cites": [
+      "records/run_136.json:L79",
+      "records/run_136.json:L112",
+      "records/run_136.json:L57"
+    ],
+    "updatedAt": "2026-11-09 15:07:00",
+    "source": "agent"
+  }
+}

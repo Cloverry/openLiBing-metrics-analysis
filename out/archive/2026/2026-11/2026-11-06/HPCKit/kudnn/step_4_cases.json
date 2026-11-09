@@ -1,0 +1,60 @@
+{
+ "_doc": {
+  "step": "step_4_cases",
+  "title": "第 4 步 测试用例取证（T6）",
+  "source": "openLiBing 测试报告页 + 用例日志下载",
+  "criteria": "取失败任务的失败用例、错误信息、深度学习命中行，并下载用例日志到 case_logs/",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-09 15:06:59",
+  "component": "HPCKit",
+  "pipeline": "kudnn",
+  "date": "2026-11-06"
+ },
+ "results": [
+  {
+   "route": "test",
+   "key": "HPCKit|kudnn",
+   "pipeline": "kudnn",
+   "pipelineName": "Nightly-CI-Component-pipeline_kudnn",
+   "rn": 224,
+   "st": "11-06 03:31",
+   "projectId": 300073,
+   "pipelineId": "ca83efb8c37648db8084e31b1e88b62c",
+   "rid": "b999f6d751f64801844e50b47bf9bd3b",
+   "jobId": "ef833019ca2447c88170b4b84cecf5a6",
+   "jobName": "Test_kudnn",
+   "stepIds": [
+    "e6ee92ed74794a8baff75c57418328a2"
+   ],
+   "steps": [
+    {
+     "id": "e6ee92ed74794a8baff75c57418328a2",
+     "name": "Test_kudnn",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "b7de948290a04b54833fcce582411f3e",
+     "jobIdParam": "c3e0b38ec60143498e2e6f164be6651c"
+    }
+   ],
+   "jobErrMsg": "步骤Test_kudnn执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "055bb68ee7fe46ad88eed61075276a39",
+   "code": 200,
+   "summary": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "passRate": "0.00%"
+   },
+   "failedCases": [],
+   "empty": true
+  }
+ ],
+ "caseErrors": [],
+ "errors": [],
+ "counts": {
+  "tasks": 1,
+  "failedCases": 0,
+  "caseLogs": 0,
+  "caseErrors": 0
+ }
+}

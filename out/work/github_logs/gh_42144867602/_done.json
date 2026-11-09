@@ -1,0 +1,76 @@
+{
+ "route": "github",
+ "key": "SgLang|nightly-test-npu.yml",
+ "rn": 2087,
+ "rid": "42144867602",
+ "st": "11-06 09:35",
+ "runId": 42144867602,
+ "repo": "sgl-project/sglang",
+ "displayTitle": "[Test][NPU] overlap-schedule validation: GLM5/Kimi/DSV4 case reconfig + TEMP nightly scoping",
+ "event": "pull_request",
+ "status": "FAILED",
+ "duration": 35.12,
+ "runStatus": {
+  "status": "completed",
+  "conclusion": "cancelled",
+  "updatedAt": "2026-11-06T02:10:44Z",
+  "attempt": 1
+ },
+ "_v": 2,
+ "mode": "perjob",
+ "why": "失败 job 1 个（≤5，逐 job 精取）",
+ "totalJobs": 15,
+ "failedJobs": [
+  {
+   "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+   "id": 127654937116,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ ],
+ "cancelledJobs": [
+  {
+   "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+   "id": 127654937080
+  },
+  {
+   "name": "check-all-jobs",
+   "id": 127666141101
+  }
+ ],
+ "jobs": [
+  {
+   "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+   "id": 127654937116,
+   "conclusion": "failure",
+   "startedAt": "2026-11-06T01:40:28Z",
+   "completedAt": "2026-11-06T01:51:26Z",
+   "logFile": "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf-16-npu-a3.txt",
+   "logBytes": 875208,
+   "logLines": 4819,
+   "errorLines": [
+    "L1988: [2026-11-06 01:45:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+    "L4629: Traceback (most recent call last):",
+    "L4662: Traceback (most recent call last):",
+    "L4673: Traceback (most recent call last):",
+    "L4763: ##[error]Error: failed to run script step:",
+    "L4764: ✗ exit code: 255",
+    "L4788: ##[error]Process completed with exit code 1.",
+    "L4789: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ ],
+ "missing": [],
+ "systemLogs": [],
+ "ghComplete": true
+}

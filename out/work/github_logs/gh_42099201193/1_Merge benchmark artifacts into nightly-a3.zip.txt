@@ -1,0 +1,90 @@
+﻿2026-11-06T03:23:26.4966355Z Current runner version: '2.338.0'
+2026-11-06T03:23:26.4971337Z Runner name: 'linux-amd64-cpu-8-hk-7mfx2-runner-855vh'
+2026-11-06T03:23:26.4972190Z Runner group name: 'Default'
+2026-11-06T03:23:26.4973123Z Machine name: 'linux-amd64-cpu-8-hk-7mfx2-runner-855vh'
+2026-11-06T03:23:26.4975668Z ##[group]GITHUB_TOKEN Permissions
+2026-11-06T03:23:26.4977799Z Contents: read
+2026-11-06T03:23:26.4978245Z Issues: read
+2026-11-06T03:23:26.4978901Z Metadata: read
+2026-11-06T03:23:26.4979336Z PullRequests: read
+2026-11-06T03:23:26.4979767Z ##[endgroup]
+2026-11-06T03:23:26.4981693Z Secret source: Actions
+2026-11-06T03:23:26.4982666Z Cache mode: write
+2026-11-06T03:23:26.4983655Z Runner is running behind proxy server 'http://squid-cache.squid.svc.cluster.local:3128' for all HTTP requests.
+2026-11-06T03:23:26.4985022Z Runner is running behind proxy server 'http://squid-cache.squid.svc.cluster.local:3128' for all HTTPS requests.
+2026-11-06T03:23:26.4985886Z Prepare workflow directory
+2026-11-06T03:23:26.5501053Z Prepare all required actions
+2026-11-06T03:23:26.5542209Z Getting action download info
+2026-11-06T03:23:27.4519447Z Download action repository 'actions/upload-artifact@v7' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+2026-11-06T03:23:30.0744191Z Complete job name: Merge benchmark artifacts into nightly-a3.zip
+2026-11-06T03:23:30.1792454Z ##[group]Run actions/upload-artifact/merge@v7
+2026-11-06T03:23:30.1793280Z with:
+2026-11-06T03:23:30.1793586Z   name: nightly-a3
+2026-11-06T03:23:30.1793956Z   pattern: nightly-test-benchmark-results-*
+2026-11-06T03:23:30.1794530Z   compression-level: 0
+2026-11-06T03:23:30.1794899Z   delete-merged: true
+2026-11-06T03:23:30.1795187Z   separate-directories: false
+2026-11-06T03:23:30.1795487Z   include-hidden-files: false
+2026-11-06T03:23:30.1796205Z env:
+2026-11-06T03:23:30.1796501Z   ASCEND_LOG_PREFIX: /root/.cache/ascend-logs
+2026-11-06T03:23:30.1796821Z ##[endgroup]
+2026-11-06T03:23:31.1760162Z Found 27 artifact(s)
+2026-11-06T03:23:31.1776156Z Preparing to download the following artifacts:
+2026-11-06T03:23:31.1777002Z - nightly-test-benchmark-results-releases-v0.32.0rc-multi-node-GLM-5.1-W8A8C8-A3_128k_90_50-20261106T032143Z (ID: 13474921301, Size: 4347)
+2026-11-06T03:23:31.1778080Z - nightly-test-benchmark-results-releases-v0.32.0rc-DeepSeek-V4-flash-w8a8-PD-prefix-20261106T025913Z (ID: 13473631750, Size: 35307)
+2026-11-06T03:23:31.1779075Z - nightly-test-benchmark-results-releases-v0.32.0rc-multi-node-GLM-5.2-w8a8-A3-20261106T023946Z (ID: 13472805846, Size: 3690)
+2026-11-06T03:23:31.1780045Z - nightly-test-benchmark-results-releases-v0.32.0rc-DeepSeek-V4-Pro-w4a8-prefix-cache-PD-20261106T014753Z (ID: 13469773368, Size: 37351)
+2026-11-06T03:23:31.1781037Z - nightly-test-benchmark-results-releases-v0.32.0rc-QWEN3_235B_PD_3_5K_1_5k-20261106T013952Z (ID: 13469633670, Size: 95623)
+2026-11-06T03:23:31.1781908Z - nightly-test-benchmark-results-releases-v0.32.0rc-GLM-5.3-W8A8C8-A3-200k-PP-PD-20261106T004708Z (ID: 13468140476, Size: 34759)
+2026-11-06T03:23:31.1782863Z - nightly-test-benchmark-results-releases-v0.32.0rc-Kimi-K3-MRV2-A3-20261106T005809Z (ID: 13466703748, Size: 6988)
+2026-11-06T03:23:32.7248938Z Redirecting to blob download url: https://productionresultssa3.blob.core.windows.net/actions-results/40a567b1-d756-8db2-a6fd-8a8a1aa753cc/workflow-job-run-b1dc5bc7-1d06-5e6d-965f-98d05670ee01/artifacts/36f78b7f8d993d3eb69560cf0e6fd5ba12882f479f317041cd9fb3062eeca382.zip
+2026-11-06T03:23:32.7250591Z Starting download of artifact to: merge-artifactbpR4Sh
+2026-11-06T03:23:32.7305505Z Redirecting to blob download url: https://productionresultssa3.blob.core.windows.net/actions-results/40a567b1-d756-8db2-a6fd-8a8a1aa753cc/workflow-job-run-c2d75072-847f-5a73-a2d5-792f528aa855/artifacts/ad95a89316611ff073102560810f144b4f05e5693f296e9510bcad47bdb80115.zip
+2026-11-06T03:23:32.7306722Z Starting download of artifact to: merge-artifactbpR4Sh
+2026-11-06T03:23:32.7318525Z Redirecting to blob download url: https://productionresultssa3.blob.core.windows.net/actions-results/40a567b1-d756-8db2-a6fd-8a8a1aa753cc/workflow-job-run-7de58d70-631a-53d3-8a59-91f85a0c5ebc/artifacts/77e0a754ff14edacfa1e717b8cf43995616c5229cf77192d9af43b1601066bb7.zip
+2026-11-06T03:23:32.7319805Z Starting download of artifact to: merge-artifactbpR4Sh
+2026-11-06T03:23:32.7361661Z Redirecting to blob download url: https://productionresultssa3.blob.core.windows.net/actions-results/40a567b1-d756-8db2-a6fd-8a8a1aa753cc/workflow-job-run-a3e1bf50-cb6f-5e4f-8919-88518c2849b7/artifacts/6cccd424b1515de3b4989fbcafac04354c130a4c5da7f9d9729d529f50a597fb.zip
+2026-11-06T03:23:32.7362690Z Starting download of artifact to: merge-artifactbpR4Sh
+2026-11-06T03:23:32.7455257Z Redirecting to blob download url: https://productionresultssa3.blob.core.windows.net/actions-results/40a567b1-d756-8db2-a6fd-8a8a1aa753cc/workflow-job-run-cf93ffa7-6353-5868-a2db-8973593b7eff/artifacts/2b83375ac1d2a9472e3b239f1715af5ff78f9978bf5ec006ab7c76a6b2fb4302.zip
+2026-11-06T03:23:32.7456287Z Starting download of artifact to: merge-artifactbpR4Sh
+2026-11-06T03:23:32.8690180Z Redirecting to blob download url: https://productionresultssa3.blob.core.windows.net/actions-results/40a567b1-d756-8db2-a6fd-8a8a1aa753cc/workflow-job-run-277092c0-6574-59e6-9a53-971c57e2abb2/artifacts/7d467045421936886ba0640c323776520c9b80b055990211fa5409b46a6f4f88.zip
+2026-11-06T03:23:32.8692042Z Starting download of artifact to: merge-artifactbpR4Sh
+2026-11-06T03:23:32.8709237Z Redirecting to blob download url: https://productionresultssa3.blob.core.windows.net/actions-results/40a567b1-d756-8db2-a6fd-8a8a1aa753cc/workflow-job-run-f9423c7c-4b44-50e3-9668-4117b1035e21/artifacts/33646a2f759ad9c60947bab0b856046ac3347fe69c9d218bc86a7e0fd17e78b3.zip
+2026-11-06T03:23:32.8710818Z Starting download of artifact to: merge-artifactbpR4Sh
+2026-11-06T03:23:33.5415753Z (node:121) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-06T03:23:33.5416716Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T03:23:33.5593890Z SHA256 digest of downloaded artifact is 14ad22c2e8bfd02a1acd31b1da01f781bc7eb4fa3b7ea45ea55af0b780b253db
+2026-11-06T03:23:33.5594554Z Artifact download completed successfully.
+2026-11-06T03:23:33.6136389Z SHA256 digest of downloaded artifact is 591989082fd448060e672a279ff3384cdd2b7cb452df6b4de65d5dcc062bdb31
+2026-11-06T03:23:33.6136925Z Artifact download completed successfully.
+2026-11-06T03:23:33.6894926Z SHA256 digest of downloaded artifact is 65a03797765c5667a1237a4a198a929c6f191920f45e97a60349801515085bdd
+2026-11-06T03:23:33.6895861Z Artifact download completed successfully.
+2026-11-06T03:23:33.7413617Z SHA256 digest of downloaded artifact is 8c031385e0d109ae2d2f036799292bbf8c61a76e081c4177e1fa118f8617b5a9
+2026-11-06T03:23:33.7414372Z Artifact download completed successfully.
+2026-11-06T03:23:33.7536461Z SHA256 digest of downloaded artifact is e46d876d54f2379ca3dfa0ad5b5a96dedefcde1fac64a088595ac3bf541f6fd5
+2026-11-06T03:23:33.7536987Z Artifact download completed successfully.
+2026-11-06T03:23:33.9691663Z SHA256 digest of downloaded artifact is 548bcde3927b028c229421cfa68dd76b6716a110e12228ee1a4ffa42b5f8fa32
+2026-11-06T03:23:33.9692261Z Artifact download completed successfully.
+2026-11-06T03:23:54.6185877Z SHA256 digest of downloaded artifact is 7497058a483a38b8102bc2662bf1f31222a2727743b6878e594a2779f506e7d7
+2026-11-06T03:23:54.6186614Z Artifact download completed successfully.
+2026-11-06T03:23:54.6237299Z Artifact name is valid!
+2026-11-06T03:23:54.6237694Z Root directory input is valid!
+2026-11-06T03:23:55.4264961Z Uploading artifact: nightly-a3.zip
+2026-11-06T03:23:55.4294962Z Beginning upload of artifact content to blob storage
+2026-11-06T03:23:57.0741017Z Uploaded bytes 217933
+2026-11-06T03:23:57.2861831Z Finished uploading artifact content to blob storage!
+2026-11-06T03:23:57.2862522Z SHA256 digest of uploaded artifact is 2d6612cb9f462a9350934ec2c5feba1a289cd55d62ebb33fa28766fc4d574d12
+2026-11-06T03:23:57.2863180Z Finalizing artifact upload
+2026-11-06T03:23:58.4652253Z Artifact nightly-a3 successfully finalized. Artifact ID 13474891639
+2026-11-06T03:23:58.4653445Z Artifact nightly-a3 has been successfully uploaded! Final size is 217933 bytes. Artifact ID is 13474891639
+2026-11-06T03:23:58.4724782Z Artifact download URL: https://github.com/vllm-project/vllm-ascend/actions/runs/42099201193/artifacts/13474891639
+2026-11-06T03:23:58.4758153Z The 7 artifact(s) have been successfully merged!
+2026-11-06T03:24:00.3721911Z Artifact 'nightly-test-benchmark-results-releases-v0.32.0rc-Kimi-K3-MRV2-A3-20261106T005809Z' (ID: 13466703748) deleted
+2026-11-06T03:24:00.3776290Z Artifact 'nightly-test-benchmark-results-releases-v0.32.0rc-GLM-5.3-W8A8C8-A3-200k-PP-PD-20261106T004708Z' (ID: 13468140476) deleted
+2026-11-06T03:24:00.3848959Z Artifact 'nightly-test-benchmark-results-releases-v0.32.0rc-multi-node-GLM-5.1-W8A8C8-A3_128k_90_50-20261106T032143Z' (ID: 13474921301) deleted
+2026-11-06T03:24:00.4599079Z Artifact 'nightly-test-benchmark-results-releases-v0.32.0rc-multi-node-GLM-5.2-w8a8-A3-20261106T023946Z' (ID: 13472805846) deleted
+2026-11-06T03:24:00.4613777Z Artifact 'nightly-test-benchmark-results-releases-v0.32.0rc-DeepSeek-V4-flash-w8a8-PD-prefix-20261106T025913Z' (ID: 13473631750) deleted
+2026-11-06T03:24:00.5140223Z Artifact 'nightly-test-benchmark-results-releases-v0.32.0rc-DeepSeek-V4-Pro-w4a8-prefix-cache-PD-20261106T014753Z' (ID: 13469773368) deleted
+2026-11-06T03:24:00.5244162Z Artifact 'nightly-test-benchmark-results-releases-v0.32.0rc-QWEN3_235B_PD_3_5K_1_5k-20261106T013952Z' (ID: 13469633670) deleted
+2026-11-06T03:24:00.5244787Z The 7 artifact(s) have been deleted
+2026-11-06T03:24:00.5751002Z Cleaning up orphan processes

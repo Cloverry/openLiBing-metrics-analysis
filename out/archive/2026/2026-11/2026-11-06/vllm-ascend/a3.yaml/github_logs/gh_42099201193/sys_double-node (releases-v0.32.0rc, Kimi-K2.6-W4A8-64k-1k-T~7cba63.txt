@@ -1,0 +1,15 @@
+2026-11-06T01:48:45.5950000Z Evaluating double-node-tests.if
+2026-11-06T01:48:45.5950000Z Evaluating: (always() && (needs.parse-trigger.outputs.run == 'true') && (((needs.build-image.result == 'success') || (needs.build-image.result == 'skipped'))))
+2026-11-06T01:48:45.5950000Z Expanded: (true && ('true' == 'true') && (('skipped' == 'success') || ('skipped' == 'skipped')))
+2026-11-06T01:48:45.5950000Z Result: true
+2026-11-06T01:48:45.5950000Z Evaluating double-node-tests.releases-v0_32_0rc_Kimi-K.e2e.if
+2026-11-06T01:48:45.5950000Z Evaluating: (success() && (inputs.should_run))
+2026-11-06T01:48:45.5950000Z Expanded: (true && true)
+2026-11-06T01:48:45.5950000Z Result: true
+2026-11-06T01:48:45.6050000Z Job is about to start running on the runner: linux-aarch64-a3-800t-0
+2026-11-06T01:48:45.5990000Z Requested labels: linux-aarch64-a3-800t-0
+2026-11-06T01:48:45.5990000Z Job defined at: vllm-project/vllm-ascend/.github/workflows/_e2e_nightly_multi_node.yaml@refs/heads/releases/v0.32.0rc
+2026-11-06T01:48:45.5990000Z Reusable workflow chain:
+2026-11-06T01:48:45.5990000Z vllm-project/vllm-ascend/.github/workflows/schedule_nightly_test_a3.yaml@refs/heads/releases/v0.32.0rc (b04f258fa559d9ee630a20e1112084ae5e270172)
+2026-11-06T01:48:45.5990000Z -> vllm-project/vllm-ascend/.github/workflows/_e2e_nightly_multi_node.yaml@refs/heads/releases/v0.32.0rc (b04f258fa559d9ee630a20e1112084ae5e270172)
+2026-11-06T01:48:45.5990000Z Waiting for a runner to pick up this job...

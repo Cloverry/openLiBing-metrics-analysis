@@ -1,0 +1,245 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-09 15:06:58",
+    "component": "MindStudio",
+    "pipeline": "msot",
+    "date": "2026-11-06",
+    "recordId": "MindStudio|msot#262"
+  },
+  "recordId": "MindStudio|msot#262",
+  "date": "2026-11-06",
+  "component": "MindStudio",
+  "pipeline": "msot",
+  "pipelineName": "Nightly-CI-Component-pipeline_msot",
+  "platform": "codearts",
+  "buildNumber": 262,
+  "pipelineRunId": "1987bc3c2f5d4cebbe0e0e932bff7a70",
+  "status": "CANCELED",
+  "failedTaskType": "测试任务",
+  "startedAt": "2026-11-06T15:32:00",
+  "endedAt": "2026-11-06T17:49:53",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-06T17:49:53",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0,
+    "bsRate": null,
+    "dims": [
+      "va"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=b67d335347fa4646acd3b96d1c55573e&projectId=300037&pipelineRunId=1987bc3c2f5d4cebbe0e0e932bff7a70",
+    "detail": null,
+    "github": null
+  },
+  "tasks": [
+    {
+      "jobName": "Test_msot_nightly_smoke",
+      "type": "test",
+      "summary": {
+        "total": 171,
+        "passed": 169,
+        "failed": 2,
+        "passRate": "98.83%"
+      },
+      "cases": [
+        {
+          "name": "test_msopst_paramType_dynamic_011",
+          "state": "failed",
+          "description": "AssertionError: 多 dynamic 输入运行失败",
+          "beginTime": "2026-11-06 15:39:16",
+          "endTime": "2026-11-06 15:39:19",
+          "logUrl": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db6211202611065268/test_msopst_paramType_dynamic_011.html",
+          "localLog": "case_logs/case_0054.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 07:40:25.969",
+              "level": "FAIL",
+              "line": 529,
+              "loc": "__init__.py:71",
+              "msg": "Test FAILED: testcase/mindstudio/op_tool/msopgen/test_msopgen_dynamic.py::TestMsopgenDynamic::test_msopst_paramType_dynamic_011\nException: AssertionError\nMessage: 多 dynamic 输入运行失败\nassert ('success' in '2026-11-06 07:40:25 (4443) - [error] the path /mnt/share/autotest/mindstudio/autotestproperty/operator_project/lib/addn_case_20261106074025.json does not have permission to read. please check the path permission.' or 'success count: 1' in '2026-11-06 07:40:25 (4443) - [error] the path /mnt/share/autotest/mindstudio/autotestproperty/operator_project/lib/addn_case_20261106074025.json does not have ...[truncated]"
+            },
+            {
+              "time": "2026-11-06 07:40:25.971",
+              "level": "ERROR",
+              "line": 543,
+              "loc": "__init__.py:71",
+              "msg": "Traceback:\ntestcase/mindstudio/op_tool/msopgen/test_msopgen_dynamic.py:123: in test_msopst_paramType_dynamic_011\n assert \"success\" in result.lower() or \"success count: 1\" in result.lower(), \"多 dynamic 输入运行失败\"\nE AssertionError: 多 dynamic 输入运行失败\nE assert ('success' in '2026-11-06 07:40:25 (4443) - [error] the path /mnt/share/autotest/mindstudio/autotestproperty/operator_project/lib/addn_case_20261106074025.json does not have permission to read. please check the path permission.' or 'success count: 1' in '2026-11-06 07:40:25 (4443) - [error] the path /mnt/share/autotest/mindstudio/autotestpropert ...[truncated]"
+            }
+          ],
+          "deepHits": []
+        },
+        {
+          "name": "test_pytorch_to_toolkit_001",
+          "state": "failed",
+          "description": "AssertionError: pytorch_to_toolkit 001 运行失败",
+          "beginTime": "2026-11-06 15:39:16",
+          "endTime": "2026-11-06 15:39:20",
+          "logUrl": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db6211202611065268/test_pytorch_to_toolkit_001.html",
+          "localLog": "case_logs/case_0055.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-06 07:41:04.584",
+              "level": "FAIL",
+              "line": 658,
+              "loc": "__init__.py:71",
+              "msg": "Test FAILED: testcase/mindstudio/op_tool/msopgen/test_msopgen_gen_basic.py::TestMsopgenGenBasic::test_pytorch_to_toolkit_001\nException: AssertionError\nMessage: pytorch_to_toolkit 001 运行失败\nassert ('success' in '-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.' or 'success count: 1' in '-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\\n2026-11-06 07:41:04 (7023) - [error] ...[truncated]"
+            },
+            {
+              "time": "2026-11-06 07:41:04.585",
+              "level": "ERROR",
+              "line": 672,
+              "loc": "__init__.py:71",
+              "msg": "Traceback:\ntestcase/mindstudio/op_tool/msopgen/test_msopgen_gen_basic.py:136: in test_pytorch_to_toolkit_001\n assert \"success\" in result_run.lower() or \"success count: 1\" in result_run.lower(), (\nE AssertionError: pytorch_to_toolkit 001 运行失败\nE assert ('success' in '-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.' or 'success count: 1' in '-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such ...[truncated]"
+            }
+          ],
+          "deepHits": []
+        }
+      ],
+      "emptyTestResult": false,
+      "stepErrMsgs": []
+    }
+  ],
+  "cases": [
+    {
+      "task": "Test_msot_nightly_smoke",
+      "name": "test_msopst_paramType_dynamic_011",
+      "state": "failed",
+      "description": "AssertionError: 多 dynamic 输入运行失败",
+      "beginTime": "2026-11-06 15:39:16",
+      "endTime": "2026-11-06 15:39:19",
+      "logUrl": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db6211202611065268/test_msopst_paramType_dynamic_011.html",
+      "localLog": "case_logs/case_0054.html",
+      "errorCount": 2,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 07:40:25.969",
+          "level": "FAIL",
+          "line": 529,
+          "loc": "__init__.py:71",
+          "msg": "Test FAILED: testcase/mindstudio/op_tool/msopgen/test_msopgen_dynamic.py::TestMsopgenDynamic::test_msopst_paramType_dynamic_011\nException: AssertionError\nMessage: 多 dynamic 输入运行失败\nassert ('success' in '2026-11-06 07:40:25 (4443) - [error] the path /mnt/share/autotest/mindstudio/autotestproperty/operator_project/lib/addn_case_20261106074025.json does not have permission to read. please check the path permission.' or 'success count: 1' in '2026-11-06 07:40:25 (4443) - [error] the path /mnt/share/autotest/mindstudio/autotestproperty/operator_project/lib/addn_case_20261106074025.json does not have ...[truncated]"
+        },
+        {
+          "time": "2026-11-06 07:40:25.971",
+          "level": "ERROR",
+          "line": 543,
+          "loc": "__init__.py:71",
+          "msg": "Traceback:\ntestcase/mindstudio/op_tool/msopgen/test_msopgen_dynamic.py:123: in test_msopst_paramType_dynamic_011\n assert \"success\" in result.lower() or \"success count: 1\" in result.lower(), \"多 dynamic 输入运行失败\"\nE AssertionError: 多 dynamic 输入运行失败\nE assert ('success' in '2026-11-06 07:40:25 (4443) - [error] the path /mnt/share/autotest/mindstudio/autotestproperty/operator_project/lib/addn_case_20261106074025.json does not have permission to read. please check the path permission.' or 'success count: 1' in '2026-11-06 07:40:25 (4443) - [error] the path /mnt/share/autotest/mindstudio/autotestpropert ...[truncated]"
+        }
+      ],
+      "deepHits": []
+    },
+    {
+      "task": "Test_msot_nightly_smoke",
+      "name": "test_pytorch_to_toolkit_001",
+      "state": "failed",
+      "description": "AssertionError: pytorch_to_toolkit 001 运行失败",
+      "beginTime": "2026-11-06 15:39:16",
+      "endTime": "2026-11-06 15:39:20",
+      "logUrl": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db6211202611065268/test_pytorch_to_toolkit_001.html",
+      "localLog": "case_logs/case_0055.html",
+      "errorCount": 2,
+      "errorMessages": [
+        {
+          "time": "2026-11-06 07:41:04.584",
+          "level": "FAIL",
+          "line": 658,
+          "loc": "__init__.py:71",
+          "msg": "Test FAILED: testcase/mindstudio/op_tool/msopgen/test_msopgen_gen_basic.py::TestMsopgenGenBasic::test_pytorch_to_toolkit_001\nException: AssertionError\nMessage: pytorch_to_toolkit 001 运行失败\nassert ('success' in '-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.' or 'success count: 1' in '-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\\n2026-11-06 07:41:04 (7023) - [error] ...[truncated]"
+        },
+        {
+          "time": "2026-11-06 07:41:04.585",
+          "level": "ERROR",
+          "line": 672,
+          "loc": "__init__.py:71",
+          "msg": "Traceback:\ntestcase/mindstudio/op_tool/msopgen/test_msopgen_gen_basic.py:136: in test_pytorch_to_toolkit_001\n assert \"success\" in result_run.lower() or \"success count: 1\" in result_run.lower(), (\nE AssertionError: pytorch_to_toolkit 001 运行失败\nE assert ('success' in '-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.' or 'success count: 1' in '-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such ...[truncated]"
+        }
+      ],
+      "deepHits": []
+    }
+  ],
+  "errorMessages": [
+    {
+      "task": "Test_msot_nightly_smoke",
+      "case": "test_msopst_paramType_dynamic_011",
+      "source": "case_logs/case_0054.html",
+      "line": 529,
+      "level": "FAIL",
+      "text": "Test FAILED: testcase/mindstudio/op_tool/msopgen/test_msopgen_dynamic.py::TestMsopgenDynamic::test_msopst_paramType_dynamic_011\nException: AssertionError\nMessage: 多 dynamic 输入运行失败\nassert ('success' in '2026-11-06 07:40:25 (4443) - [error] the path /mnt/share/autotest/mindstudio/autotestproperty/operator_project/lib/addn_case_20261106074025.json does not have permission to read. please check the path permission.' or 'success count: 1' in '2026-11-06 07:40:25 (4443) - [error] the path /mnt/share/autotest/mindstudio/autotestproperty/operator_project/lib/addn_case_20261106074025.json does not have ...[truncated]"
+    },
+    {
+      "task": "Test_msot_nightly_smoke",
+      "case": "test_msopst_paramType_dynamic_011",
+      "source": "case_logs/case_0054.html",
+      "line": 543,
+      "level": "ERROR",
+      "text": "Traceback:\ntestcase/mindstudio/op_tool/msopgen/test_msopgen_dynamic.py:123: in test_msopst_paramType_dynamic_011\n assert \"success\" in result.lower() or \"success count: 1\" in result.lower(), \"多 dynamic 输入运行失败\"\nE AssertionError: 多 dynamic 输入运行失败\nE assert ('success' in '2026-11-06 07:40:25 (4443) - [error] the path /mnt/share/autotest/mindstudio/autotestproperty/operator_project/lib/addn_case_20261106074025.json does not have permission to read. please check the path permission.' or 'success count: 1' in '2026-11-06 07:40:25 (4443) - [error] the path /mnt/share/autotest/mindstudio/autotestpropert ...[truncated]"
+    },
+    {
+      "task": "Test_msot_nightly_smoke",
+      "case": "test_pytorch_to_toolkit_001",
+      "source": "case_logs/case_0055.html",
+      "line": 658,
+      "level": "FAIL",
+      "text": "Test FAILED: testcase/mindstudio/op_tool/msopgen/test_msopgen_gen_basic.py::TestMsopgenGenBasic::test_pytorch_to_toolkit_001\nException: AssertionError\nMessage: pytorch_to_toolkit 001 运行失败\nassert ('success' in '-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.' or 'success count: 1' in '-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\\n2026-11-06 07:41:04 (7023) - [error] ...[truncated]"
+    },
+    {
+      "task": "Test_msot_nightly_smoke",
+      "case": "test_pytorch_to_toolkit_001",
+      "source": "case_logs/case_0055.html",
+      "line": 672,
+      "level": "ERROR",
+      "text": "Traceback:\ntestcase/mindstudio/op_tool/msopgen/test_msopgen_gen_basic.py:136: in test_pytorch_to_toolkit_001\n assert \"success\" in result_run.lower() or \"success count: 1\" in result_run.lower(), (\nE AssertionError: pytorch_to_toolkit 001 运行失败\nE assert ('success' in '-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.' or 'success count: 1' in '-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such ...[truncated]"
+    }
+  ],
+  "evidence": {
+    "files": [
+      "case_logs/case_0054.html",
+      "case_logs/case_0055.html"
+    ],
+    "missing": [],
+    "github": null
+  },
+  "counts": {
+    "tasks": 1,
+    "testTasks": 1,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 2,
+    "errorMessages": 4,
+    "evidenceFiles": 2
+  },
+  "verdict": {
+    "category": "test_failure",
+    "text": "用例失败",
+    "confidence": 0.75,
+    "level": "高",
+    "basis": [
+      "test 任务 Test_msot_nightly_smoke 取到 2 条失败用例、4 条用例级 ERROR/FAIL 消息（无 job 日志，证据来自测试报告/用例日志）",
+      "基线 0.30",
+      "证据文件落盘 2 份 +0.25",
+      "用例级错误消息 4 条 +0.20"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "rootCause": "两条用例断言失败：test_msopst_paramType_dynamic_011 报「多 dynamic 输入运行失败」，test_pytorch_to_toolkit_001 报「pytorch_to_toolkit 001 运行失败」；运行状态为 CANCELED，运行平台侧未留存任务日志，失败细节不可见。",
+    "advice": "单独复跑这两条用例并保留完整日志，定位 dynamic 输入场景的报错原文与 pytorch_to_toolkit 转换失败原因；同时确认本次取消是人工取消还是因前序失败联动取消。",
+    "cites": [
+      "records/run_262.json:L56",
+      "records/run_262.json:L67"
+    ],
+    "updatedAt": "2026-11-09 15:07:00",
+    "source": "agent"
+  }
+}

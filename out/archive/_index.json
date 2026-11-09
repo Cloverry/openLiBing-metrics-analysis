@@ -1,0 +1,27 @@
+{
+ "_doc": {
+  "step": "step_7_archive",
+  "title": "归档索引",
+  "source": "第 1~6 步中间产物（out/work/）",
+  "criteria": "按执行结束时间分层归档的日期清单，逐层可查",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-09 15:07:00",
+  "indexType": "day"
+ },
+ "generatedAt": "2026-11-09 15:06:58",
+ "dayCount": 1,
+ "productCount": 13,
+ "productsFile": "_products.json",
+ "days": [
+  {
+   "date": "2026-11-06",
+   "path": "archive/2026/2026-11/2026-11-06",
+   "components": 12,
+   "pipelines": 45,
+   "records": 81,
+   "tasks": 76,
+   "cases": 89,
+   "errorMessages": 762
+  }
+ ]
+}

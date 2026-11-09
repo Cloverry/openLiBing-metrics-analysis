@@ -1,0 +1,942 @@
+{
+ "pipelines": [
+  {
+   "key": "openUBMC|openUBMC",
+   "product": "openUBMC",
+   "projectId": 2,
+   "pipelineName": "Nightly-CI-Version-pipeline_openUBMC",
+   "pipelineShortName": "openUBMC",
+   "pipelineId": "440c21006cf141e9806d6029c5185b53",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "AscendForPyTorch|master",
+   "product": "AscendForPyTorch",
+   "projectId": 4,
+   "pipelineName": "Nightly-CI-Version-pipeline_pytorch_master",
+   "pipelineShortName": "master",
+   "pipelineId": "c5fb1178a82e4121bd7033824630a47f",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindIE|MindIE-SD",
+   "product": "MindIE",
+   "projectId": 300036,
+   "pipelineName": "Nightly-CI-Component-pipeline_MindIE-SD",
+   "pipelineShortName": "MindIE-SD",
+   "pipelineId": "921e6a7215ec4bf3972bbe13e9e41bb6",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindIE|MindIE-Motor",
+   "product": "MindIE",
+   "projectId": 300036,
+   "pipelineName": "Nightly-CI-Component-pipeline_MindIE-Motor",
+   "pipelineShortName": "MindIE-Motor",
+   "pipelineId": "d05b26dfc2e5450e8fff23ddf4cd0eb6",
+   "platform": "codearts",
+   "versionAvailabilityRate": 0,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindStudio|msprof",
+   "product": "MindStudio",
+   "projectId": 300037,
+   "pipelineName": "Nightly-CI-Component-pipeline_msprof",
+   "pipelineShortName": "msprof",
+   "pipelineId": "6cf1bab4d4444a2b836c7b106901af49",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindStudio|msprobe",
+   "product": "MindStudio",
+   "projectId": 300037,
+   "pipelineName": "Nightly-CI-Component-pipeline_msprobe",
+   "pipelineShortName": "msprobe",
+   "pipelineId": "9de3361a26304f96a7ac8ebf571d0b57",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindStudio|msserviceprofiler",
+   "product": "MindStudio",
+   "projectId": 300037,
+   "pipelineName": "Nightly-CI-Component-pipeline_msserviceprofiler",
+   "pipelineShortName": "msserviceprofiler",
+   "pipelineId": "af61355154f54c85adac46449f506edc",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindStudio|msmemscope",
+   "product": "MindStudio",
+   "projectId": 300037,
+   "pipelineName": "Nightly-CI-Component-pipeline_msmemscope",
+   "pipelineShortName": "msmemscope",
+   "pipelineId": "b4bf5a6de15549c59ce223fe03922413",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindStudio|msot",
+   "product": "MindStudio",
+   "projectId": 300037,
+   "pipelineName": "Nightly-CI-Component-pipeline_msot",
+   "pipelineShortName": "msot",
+   "pipelineId": "b67d335347fa4646acd3b96d1c55573e",
+   "platform": "codearts",
+   "versionAvailabilityRate": 0,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindStudio|msmodelslim",
+   "product": "MindStudio",
+   "projectId": 300037,
+   "pipelineName": "Nightly-CI-Component-pipeline_msmodelslim",
+   "pipelineShortName": "msmodelslim",
+   "pipelineId": "b9948b4f145e4063a094356af192513c",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindCluster|IndexSDK",
+   "product": "MindCluster",
+   "projectId": 300038,
+   "pipelineName": "Nightly-CI-Component-pipeline_IndexSDK",
+   "pipelineShortName": "IndexSDK",
+   "pipelineId": "12313bdcc9bb435bb8755eb51548157a",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindCluster|ascend-deployer",
+   "product": "MindCluster",
+   "projectId": 300038,
+   "pipelineName": "Nightly-CI-Component-pipeline_ascend-deployer",
+   "pipelineShortName": "ascend-deployer",
+   "pipelineId": "3bf413db452e4b2d8e26dd521bc9b78b",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindCluster|MindCluster",
+   "product": "MindCluster",
+   "projectId": 300038,
+   "pipelineName": "Nightly-CI-Component-pipeline_MindCluster",
+   "pipelineShortName": "MindCluster",
+   "pipelineId": "576d7d060dc24749951e0b3abd6a5dcc",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindCluster|RecSDK",
+   "product": "MindCluster",
+   "projectId": 300038,
+   "pipelineName": "Nightly-CI-Component-pipeline_RecSDK",
+   "pipelineShortName": "RecSDK",
+   "pipelineId": "610d7853be5a4efa9096ddead93a2d4f",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindCluster|AgentSDK",
+   "product": "MindCluster",
+   "projectId": 300038,
+   "pipelineName": "Nightly-CI-Component-pipeline_AgentSDK",
+   "pipelineShortName": "AgentSDK",
+   "pipelineId": "9f864a61fe8b4268b592e5e2b38f859a",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindCluster|VisionSDK",
+   "product": "MindCluster",
+   "projectId": 300038,
+   "pipelineName": "Nightly-CI-Component-pipeline_VisionSDK",
+   "pipelineShortName": "VisionSDK",
+   "pipelineId": "ac8a7ce54ea347c08a697987c21653fc",
+   "platform": "codearts",
+   "versionAvailabilityRate": null,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindCluster|MultimodalSDK",
+   "product": "MindCluster",
+   "projectId": 300038,
+   "pipelineName": "Nightly-CI-Component-pipeline_MultimodalSDK",
+   "pipelineShortName": "MultimodalSDK",
+   "pipelineId": "c39c0146a8b2492db59ec77bedb7170c",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindCluster|RAGSDK",
+   "product": "MindCluster",
+   "projectId": 300038,
+   "pipelineName": "Nightly-CI-Component-pipeline_RAGSDK",
+   "pipelineShortName": "RAGSDK",
+   "pipelineId": "fd920c7904cb47ad9ce80d4eaede5cb5",
+   "platform": "codearts",
+   "versionAvailabilityRate": null,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "Ascend-CANN|os",
+   "product": "Ascend-CANN",
+   "projectId": 300057,
+   "pipelineName": "Nightly-CI-Version-pipeline_CANN_duo_os",
+   "pipelineShortName": "os",
+   "pipelineId": "03da2691669a4f2bbfcfd89356bc3576",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "Ascend-CANN|ops-transformer",
+   "product": "Ascend-CANN",
+   "projectId": 300057,
+   "pipelineName": "Nightly-CI-Component-pipeline_ops-transformer",
+   "pipelineShortName": "ops-transformer",
+   "pipelineId": "309180d5c2904adf942f5678d9356d99",
+   "platform": "codearts",
+   "versionAvailabilityRate": 0,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "Ascend-CANN|ops-cv",
+   "product": "Ascend-CANN",
+   "projectId": 300057,
+   "pipelineName": "Nightly-CI-Component-pipeline_ops-cv",
+   "pipelineShortName": "ops-cv",
+   "pipelineId": "66b8958d6e0349ddb01143765c64afa5",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "Ascend-CANN|ops-nn",
+   "product": "Ascend-CANN",
+   "projectId": 300057,
+   "pipelineName": "Nightly-CI-Component-pipeline_ops-nn",
+   "pipelineShortName": "ops-nn",
+   "pipelineId": "6d402b76f9b14451872ef07ac1f864ba",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "Ascend-CANN|hcomm",
+   "product": "Ascend-CANN",
+   "projectId": 300057,
+   "pipelineName": "Nightly-CI-Component-pipeline_hccl_hcomm",
+   "pipelineShortName": "hcomm",
+   "pipelineId": "917e9d4ef3624408999817444349c4dc",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "Ascend-CANN|shmem",
+   "product": "Ascend-CANN",
+   "projectId": 300057,
+   "pipelineName": "Nightly-CI-Component-pipeline_shmem",
+   "pipelineShortName": "shmem",
+   "pipelineId": "93831fdaa3234c8a9dd0b8a0c220f939",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "Ascend-CANN|ops-math",
+   "product": "Ascend-CANN",
+   "projectId": 300057,
+   "pipelineName": "Nightly-CI-Component-pipeline_ops-math",
+   "pipelineShortName": "ops-math",
+   "pipelineId": "aa3d520fe64f4071a09178d2d603278e",
+   "platform": "codearts",
+   "versionAvailabilityRate": 0,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "Ascend-CANN|atb",
+   "product": "Ascend-CANN",
+   "projectId": 300057,
+   "pipelineName": "Nightly-CI-Component-pipeline_atb",
+   "pipelineShortName": "atb",
+   "pipelineId": "b4f302b7c22b4eacab56d4b120bf7d04",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "Ascend-CANN|sip",
+   "product": "Ascend-CANN",
+   "projectId": 300057,
+   "pipelineName": "Nightly-CI-Component-pipeline_sip",
+   "pipelineShortName": "sip",
+   "pipelineId": "ca98a3e75ff84332a3abd4f091a0c233",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "boostkit|avx2ki",
+   "product": "boostkit",
+   "projectId": 300059,
+   "pipelineName": "Nightly-CI-Component-pipeline_avx2ki",
+   "pipelineShortName": "avx2ki",
+   "pipelineId": "2944ce957b494b72a41150b5467b61b4",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "boostkit|kqmalloc",
+   "product": "boostkit",
+   "projectId": 300059,
+   "pipelineName": "Nightly-CI-Component-pipeline_core_kqmalloc",
+   "pipelineShortName": "kqmalloc",
+   "pipelineId": "452bb706ced24726aa7686b92a966734",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "boostkit|OmniStream",
+   "product": "boostkit",
+   "projectId": 300059,
+   "pipelineName": "Nightly-CI-Component-pipeline_OmniStream",
+   "pipelineShortName": "OmniStream",
+   "pipelineId": "636f9465b49d4a6591d5572ad6f9456f",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "boostkit|Megascan",
+   "product": "boostkit",
+   "projectId": 300059,
+   "pipelineName": "Nightly-CI-Component-pipeline_Megascan",
+   "pipelineShortName": "Megascan",
+   "pipelineId": "9485ce9d987d4717a944aa3932474391",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "boostkit|Bigdata",
+   "product": "boostkit",
+   "projectId": 300059,
+   "pipelineName": "Nightly-CI-Component-pipeline_Bigdata",
+   "pipelineShortName": "Bigdata",
+   "pipelineId": "a74a64d931f34c98bc726e5ea599f8a3",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "boostkit|KTAG",
+   "product": "boostkit",
+   "projectId": 300059,
+   "pipelineName": "Nightly-CI-Component-pipeline_KTAG",
+   "pipelineShortName": "KTAG",
+   "pipelineId": "a8c3dbdd3feb4c4ab4a4a336e1323ce3",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "boostkit|Ultrascan",
+   "product": "boostkit",
+   "projectId": 300059,
+   "pipelineName": "Nightly-CI-Component-pipeline_Ultrascan",
+   "pipelineShortName": "Ultrascan",
+   "pipelineId": "b0040d6ccaae48b5b623931d34db5d24",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "boostkit|KAE",
+   "product": "boostkit",
+   "projectId": 300059,
+   "pipelineName": "Nightly-CI-Component-pipeline_KAE",
+   "pipelineShortName": "KAE",
+   "pipelineId": "eaf0862dd3f84fc2b51862830d7fe19e",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "HPCKit|kudnn",
+   "product": "HPCKit",
+   "projectId": 300073,
+   "pipelineName": "Nightly-CI-Component-pipeline_kudnn",
+   "pipelineShortName": "kudnn",
+   "pipelineId": "ca83efb8c37648db8084e31b1e88b62c",
+   "platform": "codearts",
+   "versionAvailabilityRate": 0,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "HPCKit|kupl",
+   "product": "HPCKit",
+   "projectId": 300073,
+   "pipelineName": "Nightly-CI-Component-pipeline_kupl",
+   "pipelineShortName": "kupl",
+   "pipelineId": "ddb211b1e4a74f55a0e604fa95ef469e",
+   "platform": "codearts",
+   "versionAvailabilityRate": 0,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "HPCKit|kuqcd",
+   "product": "HPCKit",
+   "projectId": 300073,
+   "pipelineName": "Nightly-CI-Component-pipeline_kuqcd",
+   "pipelineShortName": "kuqcd",
+   "pipelineId": "eeedf3e4794449969ad6d7f67691d0be",
+   "platform": "codearts",
+   "versionAvailabilityRate": 0,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "HPCKit|kpex",
+   "product": "HPCKit",
+   "projectId": 300073,
+   "pipelineName": "Nightly-CI-Component-pipeline_kpex",
+   "pipelineShortName": "kpex",
+   "pipelineId": "fec036d3c59f4d27bb506138f273f113",
+   "platform": "codearts",
+   "versionAvailabilityRate": 0,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "HPCKit|hmpi",
+   "product": "HPCKit",
+   "projectId": 300073,
+   "pipelineName": "Nightly-CI-Component-pipeline_hmpi",
+   "pipelineShortName": "hmpi",
+   "pipelineId": "ffe131425ad84d4b8b6c17c4c09476d9",
+   "platform": "codearts",
+   "versionAvailabilityRate": 0,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindSpeed|master",
+   "product": "MindSpeed",
+   "projectId": 300091,
+   "pipelineName": "Nightly-CI-Component-pipeline_DrivingSDK_master",
+   "pipelineShortName": "master",
+   "pipelineId": "0260b812efd04b0ebf649f3a4c533996",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindSpeed|master",
+   "product": "MindSpeed",
+   "projectId": 300091,
+   "pipelineName": "Nightly-CI-Component-pipeline_MindSpeed-MM_master",
+   "pipelineShortName": "master",
+   "pipelineId": "094eb44f70df495783f375641b7143e6",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindSpeed|master",
+   "product": "MindSpeed",
+   "projectId": 300091,
+   "pipelineName": "Nightly-CI-Component-pipeline_MindSpeed-LLM_master",
+   "pipelineShortName": "master",
+   "pipelineId": "b30f40b85cce4153b175379589793abc",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindSpeed|master",
+   "product": "MindSpeed",
+   "projectId": 300091,
+   "pipelineName": "Nightly-CI-Component-pipeline_MindSpeed_master",
+   "pipelineShortName": "master",
+   "pipelineId": "e12bb930ffe84e3b9258f23c41644b58",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "MindSpeed|master",
+   "product": "MindSpeed",
+   "projectId": 300091,
+   "pipelineName": "Nightly-CI-Component-pipeline_MindSpeed-A3_master",
+   "pipelineShortName": "master",
+   "pipelineId": "e593e0b8911044b69ce9d1be3c19032a",
+   "platform": "codearts",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "vllm-ascend|a2.yaml",
+   "product": "vllm-ascend",
+   "projectId": 300127,
+   "pipelineName": "schedule_nightly_test_a2.yaml",
+   "pipelineShortName": "a2.yaml",
+   "pipelineId": "228664975",
+   "platform": "github",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": true
+  },
+  {
+   "key": "vllm-ascend|a3.yaml",
+   "product": "vllm-ascend",
+   "projectId": 300127,
+   "pipelineName": "schedule_nightly_test_a3.yaml",
+   "pipelineShortName": "a3.yaml",
+   "pipelineId": "228664976",
+   "platform": "github",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": true
+  },
+  {
+   "key": "Triton_Ascend|Ascend",
+   "product": "Triton_Ascend",
+   "projectId": 300130,
+   "pipelineName": "Nightly-CI-Version-pipeline_Triton_Ascend",
+   "pipelineShortName": "Ascend",
+   "pipelineId": "9a4886d40e544cecb7da63c9597490a6",
+   "platform": "codearts",
+   "versionAvailabilityRate": 0,
+   "buildSuccessRate": 1,
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  },
+  {
+   "key": "SgLang|nightly-test-npu.yml",
+   "product": "SgLang",
+   "projectId": 300134,
+   "pipelineName": "nightly-test-npu.yml",
+   "pipelineShortName": "nightly-test-npu.yml",
+   "pipelineId": "209837578",
+   "platform": "github",
+   "versionAvailabilityRate": 0,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  }
+ ],
+ "github": [
+  {
+   "key": "vllm-ascend|a2.yaml",
+   "product": "vllm-ascend",
+   "projectId": 300127,
+   "pipelineName": "schedule_nightly_test_a2.yaml",
+   "pipelineShortName": "a2.yaml",
+   "pipelineId": "228664975",
+   "platform": "github",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": true
+  },
+  {
+   "key": "vllm-ascend|a3.yaml",
+   "product": "vllm-ascend",
+   "projectId": 300127,
+   "pipelineName": "schedule_nightly_test_a3.yaml",
+   "pipelineShortName": "a3.yaml",
+   "pipelineId": "228664976",
+   "platform": "github",
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": true
+  },
+  {
+   "key": "SgLang|nightly-test-npu.yml",
+   "product": "SgLang",
+   "projectId": 300134,
+   "pipelineName": "nightly-test-npu.yml",
+   "pipelineShortName": "nightly-test-npu.yml",
+   "pipelineId": "209837578",
+   "platform": "github",
+   "versionAvailabilityRate": 0,
+   "buildSuccessRate": null,
+   "dims": [
+    "va"
+   ],
+   "rateRule": "runs",
+   "recompute": true,
+   "scheduledOnly": false
+  }
+ ],
+ "notes": [
+  "analysis_policy.always_analyze 已不再是特例（vllm-ascend）：全量采集对所有产品默认生效，比率一律按执行记录重算，该配置当前无额外作用",
+  "产品 AscendForPyTorch ops-overview 未返回 nightlyBuildSuccessRate，产品级编译成功率无数据",
+  "产品 AscendForPyTorch 有 1 条流水线 buildSuccess 无数据，未纳入编译成功率统计（该流水线可能无 Build* 任务）",
+  "产品 CANN ops-overview 未返回 nightlyBuildSuccessRate，产品级编译成功率无数据",
+  "产品 MindStudio ops-overview 未返回 nightlyBuildSuccessRate，产品级编译成功率无数据",
+  "产品 MindStudio 有 6 条流水线 buildSuccess 无数据，未纳入编译成功率统计（该流水线可能无 Build* 任务）",
+  "产品 MindCluster 有 2 条流水线 versionAvail 无数据，未纳入可用度统计",
+  "产品 MindCluster 有 2 条流水线 buildSuccess 无数据，未纳入编译成功率统计（该流水线可能无 Build* 任务）",
+  "产品 MindSpeed ops-overview 未返回 nightlyBuildSuccessRate，产品级编译成功率无数据",
+  "产品 MindSpeed 有 5 条流水线 buildSuccess 无数据，未纳入编译成功率统计（该流水线可能无 Build* 任务）",
+  "产品 vllm-ascend ops-overview 未返回 nightlyBuildSuccessRate，产品级编译成功率无数据",
+  "产品 vllm-ascend 有 2 条流水线 buildSuccess 无数据，未纳入编译成功率统计（该流水线可能无 Build* 任务）",
+  "产品 vllm-ascend 只采集定时任务运行（displayTitle 含 (scheduled)），含 PR 的运行一律不采集、不归档、不做根因分析",
+  "产品 SgLang ops-overview 未返回 nightlyBuildSuccessRate，产品级编译成功率无数据",
+  "产品 SgLang 有 1 条流水线 buildSuccess 无数据，未纳入编译成功率统计（该流水线可能无 Build* 任务）",
+  "github 平台流水线 schedule_nightly_test_a2.yaml 执行记录与日志在 github 运行平台（T4 任务图谱/T5 日志导出/T6 用例接口不适用），走第 5c 步 github 平台采集（jobs 元数据筛选 → 失败 job 精取 / 整包 zip）",
+  "github 平台流水线 schedule_nightly_test_a3.yaml 执行记录与日志在 github 运行平台（T4 任务图谱/T5 日志导出/T6 用例接口不适用），走第 5c 步 github 平台采集（jobs 元数据筛选 → 失败 job 精取 / 整包 zip）",
+  "github 平台流水线 nightly-test-npu.yml 执行记录与日志在 github 运行平台（T4 任务图谱/T5 日志导出/T6 用例接口不适用），走第 5c 步 github 平台采集（jobs 元数据筛选 → 失败 job 精取 / 整包 zip）"
+ ]
+}

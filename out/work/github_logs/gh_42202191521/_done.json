@@ -1,0 +1,98 @@
+{
+ "route": "github",
+ "key": "SgLang|nightly-test-npu.yml",
+ "rn": 2094,
+ "rid": "42202191521",
+ "st": "11-06 18:22",
+ "runId": 42202191521,
+ "repo": "sgl-project/sglang",
+ "displayTitle": "[Test] npu/glm5.3: Add 2P2D PCP EPLB GPQA accuracy test",
+ "event": "pull_request",
+ "status": "FAILED",
+ "duration": 42.63,
+ "runStatus": {
+  "status": "completed",
+  "conclusion": "failure",
+  "updatedAt": "2026-11-06T11:05:15Z",
+  "attempt": 1
+ },
+ "_v": 2,
+ "mode": "perjob",
+ "why": "失败 job 2 个（≤5，逐 job 精取）",
+ "totalJobs": 15,
+ "failedJobs": [
+  {
+   "name": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_3... / glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa",
+   "id": 127839975906,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "check-all-jobs",
+   "id": 127857876813,
+   "steps": [
+    {
+     "name": "Generate results table",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ ],
+ "cancelledJobs": [],
+ "jobs": [
+  {
+   "name": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_3... / glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa",
+   "id": 127839975906,
+   "conclusion": "failure",
+   "startedAt": "2026-11-06T10:23:07Z",
+   "completedAt": "2026-11-06T11:05:07Z",
+   "logFile": "github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa, 2, 2, 1, test_registered_np~0c5b3a.txt",
+   "logBytes": 110389,
+   "logLines": 937,
+   "errorLines": [
+    "L825: Traceback (most recent call last):",
+    "L835: Traceback (most recent call last):",
+    "L843: ##[error]Error: failed to run script step:",
+    "L844: ✗ exit code: 1",
+    "L850: Traceback (most recent call last):",
+    "L860: Traceback (most recent call last):",
+    "L868: ##[error]Process completed with exit code 1.",
+    "L869: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ],
+   "isTestJob": true,
+   "testResults": null
+  },
+  {
+   "name": "check-all-jobs",
+   "id": 127857876813,
+   "conclusion": "failure",
+   "startedAt": "2026-11-06T11:05:10Z",
+   "completedAt": "2026-11-06T11:05:14Z",
+   "logFile": "github_logs/gh_42202191521/127857876813_check-all-jobs.txt",
+   "logBytes": 6490,
+   "logLines": 99,
+   "errorLines": [
+    "L98: ##[error]Process completed with exit code 1."
+   ],
+   "githubSteps": [
+    {
+     "name": "Generate results table",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ ],
+ "missing": [],
+ "systemLogs": [],
+ "ghComplete": true
+}

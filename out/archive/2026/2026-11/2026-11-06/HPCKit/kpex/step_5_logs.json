@@ -1,0 +1,49 @@
+{
+ "_doc": {
+  "step": "step_5_logs",
+  "title": "第 5 步 任务日志取证（T5）",
+  "source": "openLiBing 任务日志导出/分页接口",
+  "criteria": "对每个失败任务导出整份日志落 job_logs/，并按关键字扫描错误行",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-09 15:06:59",
+  "component": "HPCKit",
+  "pipeline": "kpex",
+  "date": "2026-11-06"
+ },
+ "results": [
+  {
+   "route": "log",
+   "key": "HPCKit|kpex",
+   "pipeline": "kpex",
+   "rn": 139,
+   "st": "11-06 00:41",
+   "rid": "08890715f1e8442288cc08c1b92cc7b0",
+   "jobId": "1f0b204bb4994e47ae518ba383a72705",
+   "jobName": "Test_kpex",
+   "fallback": true,
+   "stepErrMsgs": [
+    "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+   ],
+   "jobErrMsg": "步骤Test_kpex执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "logFile": "job_logs/05_kpex_139_Test_kpex.log",
+   "logBytes": 16559,
+   "logLines": 144,
+   "download": "export",
+   "truncated": false,
+   "excerpt": null,
+   "errorLines": [
+    "L138: [2026/11/06 00:43:18.658 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+    "L139: [2026/11/06 00:43:18.658 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'",
+    "L140: [2026/11/06 00:43:18.659 GMT+08:00] [ERROR] git clone test_cases code fail",
+    "L142: [2026/11/06 00:43:18.661 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed",
+    "L144: [2026/11/06 00:43:23.168 GMT+08:00] Finished: FAILURE"
+   ]
+  }
+ ],
+ "errors": [],
+ "counts": {
+  "tasks": 1,
+  "logFiles": 1,
+  "errorLines": 5
+ }
+}

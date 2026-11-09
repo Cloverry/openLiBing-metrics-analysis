@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>openLiBing指标分析 · 明细</title>
+<style>
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --line:#e4e7ec; --line2:#eef0f3;
+  --txt:#1f2328; --dim:#6b7280; --acc:#2563eb;
+  --green:#16a34a; --yellow:#d97706; --red:#dc2626; --gray:#c9ced6;
+  --radius:10px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--txt);
+  font:13px/1.55 "Noto Sans CJK SC","Microsoft YaHei",-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+h1{font-size:21px;margin:0 0 6px;font-weight:600;letter-spacing:.2px;color:#16233a}
+h2{font-size:15px;margin:14px 0 10px;padding-left:10px;border-left:3px solid var(--acc);
+  color:#1c2b45;font-weight:600}
+h3{font-size:13.5px;margin:14px 0 8px;font-weight:600;color:#1c2b45}
+.dim{color:var(--dim)}
+.mono{font-family:Consolas,"Courier New",monospace}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- 页面骨架：白卡 + 标题 + 公共日期筛选（两页共用，跳转时顶部不变） ---------- */
+.wrap{width:min(1560px,94vw);margin:12px auto;background:var(--panel);border-radius:10px;
+  box-shadow:0 1px 6px rgba(16,32,64,.06);padding:18px 30px 20px;
+  min-height:calc(100vh - 24px);display:flex;flex-direction:column}
+p.meta{font-size:12.5px;color:#7c8698;line-height:1.65;margin:0}
+/* 品牌行：两页完全一致，因此它下面的公共筛选条在切页时位置不跳动 */
+.hd{margin:0 0 12px}
+.hd h1{font-size:21px;margin:0 0 5px}
+.hd p.meta{font-size:12.5px}
+/* 公共日期筛选条：系统级全局筛选，整条贴到卡片左右边缘并吸顶（top:0），
+   首页与二级页共用同一份 DOM + 同一位置（品牌行之下、页面自身标题之上），
+   切页、滚动都不动，语义始终是「整个系统的数据筛选」。 */
+.toolbar{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+  margin:0 -30px 14px;padding:8px 30px;background:#fff;
+  border-top:1px solid var(--line2);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 8px rgba(16,32,64,.05)}
+.toolbar .lb{font-size:12.5px;color:#4a5668;font-weight:600;white-space:nowrap}
+.toolbar .vsep{width:1px;height:16px;background:#e2e8f0;margin:0 2px}
+.toolbar .sp{flex:1 1 auto}
+.seg{display:inline-flex;border:1px solid #d9e0ea;border-radius:8px;overflow:hidden;background:#fff}
+.seg button{border:0;border-right:1px solid #e8edf4;background:#fff;padding:6px 14px;font:inherit;
+  font-size:13px;color:#4a5668;cursor:pointer;line-height:1.3;transition:.15s}
+.seg button:last-child{border-right:0}
+.seg button:hover{background:#eef4ff;color:var(--acc)}
+.seg button.on{background:var(--acc);color:#fff;font-weight:600}
+.dates{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #d9e0ea;
+  border-radius:8px;padding:4px 10px}
+.dates input[type=date]{border:0;outline:0;font:inherit;font-size:12.5px;color:#2b3547;
+  background:transparent;padding:2px 0}
+.dates .dash{color:#c2cad6;font-size:12px}
+.hint{font-size:12px;color:var(--dim);white-space:nowrap}
+.hint b{color:#374151;font-weight:600}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;
+  border-radius:8px;padding:4px 9px;font:inherit;color:#374151;cursor:pointer}
+.chip.on{border-color:#bfd3fe;background:#eff5ff;color:#1d4ed8}
+input[type=text],select{border:1px solid var(--line);border-radius:8px;background:#fff;
+  padding:5px 9px;font:inherit;color:var(--txt);outline:0}
+input[type=text]:focus,select:focus{border-color:#b9cdfb;box-shadow:0 0 0 3px #eaf1ff}
+label.sw{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#374151;cursor:pointer}
+
+/* ---------- 卡片 ---------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:10px;margin-bottom:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:10px 12px}
+.card .k{font-size:12px;color:var(--dim)}
+.card .v{font-size:19px;font-weight:600;margin-top:2px;font-variant-numeric:tabular-nums}
+.card .s{font-size:11.5px;color:var(--dim);margin-top:1px}
+
+/* ---------- 表格 ---------- */
+/* 表格容器自适应剩余高度：数据条数变化时高度不变，页面不出现外层滚动条 */
+.tbl-wrap{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:auto;flex:1 1 auto;height:auto;min-height:320px}
+.detail .tbl-wrap{height:auto;max-height:none}
+/* 组件级概览表：版式对齐旧报告 table.ov（表头浅蓝底、单元格细右分隔线、行高 7px/14px） */
+table.ov{margin:0;border-collapse:separate;border-spacing:0;width:100%;font-size:13px}
+table.ov thead th{position:sticky;top:0;z-index:3;background:#f4f7fb;color:#3b4a60;font-weight:600;
+  font-size:12.5px;text-align:left;padding:8px 14px;border:0;border-bottom:1px solid #e6ebf2;
+  border-right:1px solid #eef2f7;white-space:nowrap}
+table.ov thead th:last-child{border-right:0}
+table.ov tbody td{padding:7px 14px;line-height:1.45;border:0;border-bottom:1px solid #eef2f7;
+  border-right:1px solid #f5f7fa;background:#fff;vertical-align:middle}
+table.ov tbody td:last-child{border-right:0}
+table.ov tbody tr:hover td{background:#f6faff}
+table.ov .c-name{font-weight:600;color:#1b2739;white-space:nowrap}
+table.ov .c-rate{min-width:120px}
+table.ov .c-num{text-align:center;white-space:nowrap;font-variant-numeric:tabular-nums;color:#2b3547}
+/* 行高由页面脚本按「可用高度 / 行数」算出后写进 --rowh，让数据行刚好铺满表格区：
+   条数少时自动拉高、条数多时回落到紧凑行高，且不会撑出外层滚动条。 */
+table.ov tbody tr{height:var(--rowh,auto)}
+/* 比率单元格：百分比 + 灯点（同旧版 .rate-line） */
+.rate-line{display:inline-flex;align-items:center;gap:8px}
+.rate-line .pct{min-width:52px;font-weight:600;font-variant-numeric:tabular-nums;color:#1b2739}
+.rate-line .dot{margin:0}
+/* 可点击数字（同旧版 .lnk）：只在有待分析流水线时出现，点进二级页看明细 */
+.lnk{color:#1677ff;cursor:pointer}
+.lnk:hover{text-decoration:underline}
+td.r,th.r{text-align:right}
+td.c,th.c{text-align:center}
+.nowrap{white-space:nowrap}
+.ell{max-width:360px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--gray);
+  vertical-align:1px;margin-right:5px}
+.dot.green{background:var(--green)} .dot.yellow{background:var(--yellow)} .dot.red{background:var(--red)}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:999px;background:#f3f4f6;
+  color:#4b5563;border:1px solid var(--line);margin-right:4px;white-space:nowrap}
+.tag.red{background:#fef2f2;border-color:#fecaca;color:#b91c1c}
+.tag.yellow{background:#fffbeb;border-color:#fde68a;color:#92400e}
+.tag.green{background:#f0fdf4;border-color:#bbf7d0;color:#15803d}
+.tag.blue{background:#eff6ff;border-color:#bfdbfe;color:#1d4ed8}
+
+/* ---------- 二级页 ---------- */
+.rec{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:12px}
+.rec-hd{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 13px;border-bottom:1px solid var(--line2)}
+.rec-hd .bn{font-weight:600;font-size:13.5px}
+.rec-bd{padding:0 13px 12px}
+.rec-sec{margin-top:11px}
+.rec-sec .t{font-size:12px;color:var(--dim);margin-bottom:5px}
+.rec-sec table{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px}
+.rec-sec th{text-align:left;color:#4b5563;font-weight:600;background:#fafbfc;padding:6px 9px;
+  border-bottom:1px solid var(--line);white-space:nowrap;position:static}
+.rec-sec td{padding:6px 9px;border-bottom:1px solid var(--line2);vertical-align:top}
+.empty{color:var(--dim);padding:26px 0;text-align:center}
+.ev-list{display:flex;flex-wrap:wrap;gap:6px}
+.ev{font-size:11.5px;background:#f8fafc;border:1px solid var(--line);border-radius:6px;
+  padding:2px 8px;color:#334155}
+.err-line{background:#fbfbfc;border:1px solid var(--line2);border-radius:7px;padding:7px 9px;
+  margin-bottom:6px;font-size:12px}
+.err-line .src{color:var(--dim);font-size:11px;margin-bottom:2px}
+.err-line pre{margin:0;white-space:pre-wrap;word-break:break-all;font-family:Consolas,"Courier New",monospace;
+  font-size:11.5px;color:#334155}
+.loading{padding:34px 0;text-align:center;color:var(--dim)}
+.err{padding:14px;border:1px solid #fecaca;background:#fef2f2;color:#b91c1c;border-radius:var(--radius)}
+
+#back{margin:2px 0 8px;align-self:flex-start}
+/* 组件级流水线清单的比率：纯数字百分比（80.0%），不带圆点/灯色 */
+table.ov td.c-rate .pct{font-weight:600;font-variant-numeric:tabular-nums;color:#1b2739}
+.crumb{margin:2px 0 4px;font-size:13px;color:#666}
+.crumb b{color:#222}
+/* 面包屑逐层可点：总览 › 组件（维度）› 流水线，点哪一层回哪一层 */
+.crumb a{color:var(--acc)}
+.crumb .sep{color:#c2cad6;margin:0 5px}
+.grow{flex:1 1 auto}
+
+/* ---------- 流水线区块头（同旧报告 h3） ---------- */
+.subview h3{font-size:15px;font-weight:600;color:#16233a;line-height:1.6;
+  margin:22px 0 8px;padding:8px 12px;background:#f0f5ff;border-radius:6px}
+.subview h3:first-of-type{margin-top:8px}
+.subview h3 .hist{font-size:12px;font-weight:400;margin-left:8px}
+.subview h3 .rate-line{margin-left:8px;font-weight:400;font-size:13px}
+
+/* ---------- 根因明细表（同旧报告 table.rca）：7 列固定列宽，行宽不随内容变化 ---------- */
+table.rca{table-layout:fixed;width:100%;border-collapse:collapse;font-size:13px;margin:8px 0 4px}
+table.rca th,table.rca td{border:1px solid #e3e6ea;padding:7px 9px;text-align:left;
+  vertical-align:top;line-height:1.55;word-break:break-word;overflow-wrap:anywhere}
+table.rca th{background:#f7f9fc;font-weight:600;white-space:nowrap;color:#3b4a60}
+table.rca tbody tr:nth-child(even) td{background:#fafbfc}
+table.rca td.err-cell{font-size:12.5px}
+/* 错误信息列：日志原文必须在列宽内换行（长路径 testcase/cann/... 没有空格，
+   只靠 word-break 会撑破列），并按行数截断，超出部分留省略号而不是溢出到下一列 */
+table.rca td.err-cell .err-text{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;
+  overflow:hidden;white-space:normal;word-break:break-all;overflow-wrap:anywhere}
+/* 「证据」链接单独一行、不参与上面的行数截断，保证永远可点 */
+table.rca td.err-cell .ev-lnk{display:inline-block;margin-top:3px}
+/* 弹窗里的长文本（用例失败详情 / 日志证据原文）：整行完整输出，不截断、不溢出 */
+table.rca td.expr-txt{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;
+  font-family:Consolas,Menlo,monospace;font-size:12px;line-height:1.5}
+/* 第 1 列「构建编号」里的构建号链接不折行 */
+table.rca td:nth-child(1) a{white-space:nowrap}
+.exec-sub{display:block;color:#999;font-size:11px;margin-top:2px}
+.badge{display:inline-block;padding:1px 9px;border-radius:10px;color:#fff;font-size:12px;vertical-align:1px}
+.badge.green{background:#52c41a}.badge.yellow{background:#faad14}
+.badge.red{background:#f5222d}.badge.gray{background:#999}
+
+/* ---------- 弹窗骨架：只给「构建记录」用（记录明细页已下线） ---------- */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;
+  align-items:flex-start;justify-content:center;padding:44px 16px;overflow:auto}
+.modal.on{display:flex}
+.modal-box{background:#fff;border-radius:10px;width:min(1280px,96vw);max-height:82vh;overflow:auto;
+  padding:16px 20px;box-shadow:0 8px 30px rgba(16,32,64,.2)}
+.modal-hd{display:flex;justify-content:space-between;align-items:center;gap:10px;
+  font-weight:600;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--line2)}
+.modal-hd button{background:#fff;border:1px solid #ccc;border-radius:6px;padding:3px 12px;cursor:pointer;font:inherit}
+/* 定性分布：二级页字段，按执行记录计数 */
+.dist{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0 10px;
+  padding:8px 12px;background:#fff;border:1px solid var(--line);border-radius:8px;font-size:12px}
+.dist:empty{display:none}
+.dist .dt{color:#374151;font-weight:600;margin-right:2px}
+.dist .sp{flex:1 1 auto}
+
+.mrec-note{margin-top:6px;color:#999;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hd">
+  <h1>openLiBing指标分析</h1>
+  <p class="meta" id="hsub">夜间流水线工程指标 · 口径：执行结束时间 · 数据源 out/archive/</p>
+</div>
+  <div class="toolbar" id="rf">
+  <span class="lb">统计区间</span>
+  <div class="seg" id="rf-seg">
+    <button type="button" data-range="prev">昨天</button>
+    <button type="button" data-range="7">近 7 天</button>
+    <button type="button" data-range="30">近 30 天</button>
+    <button type="button" data-range="90">近 90 天</button>
+  </div>
+  <span class="vsep"></span>
+  <div class="dates">
+    <input type="date" id="rf-from">
+    <span class="dash">~</span>
+    <input type="date" id="rf-to">
+  </div>
+  <span class="sp"></span>
+  <span class="hint" id="rf-hint" title="按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"></span>
+  
+</div>
+  <a class="chip" href="index.html" id="back">← 返回总览</a>
+  <h1 id="ttl">流水线根因明细</h1>
+  <div class="crumb" id="crumb"></div>
+  <p class="meta" id="meta">正在读取归档…</p>
+  <div class="dist" id="dist"></div>
+  <div id="recs"><div class="loading">正在读取归档记录…</div></div>
+</div>
+<div class="modal" id="mrec">
+  <div class="modal-box">
+    <div class="modal-hd"><span id="mttl"></span><button type="button" id="mclose">关闭</button></div>
+    <div id="mbody"></div>
+  </div>
+</div>
+<script>
+
+/* ==== 公共日期筛选组件（唯一来源 lib/ui.py，口径 = 执行结束时间）==== */
+const RF_FIELD = "pipelineRunEndtime";
+const rfState = {min:null, max:null, prev:null, seg:null, onChange:null};
+
+function rfYmd(d){const p=n=>String(n).padStart(2,'0');return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate());}
+function rfShift(ymd, days){const d=new Date(ymd+'T00:00:00');d.setDate(d.getDate()+days);return rfYmd(d);}
+/* 区间内工作日数（周一~周五），顶部「工作日 N 天」用 */
+function rfWorkdays(f, t){
+  if (!f || !t) return 0;
+  let d = new Date(f + 'T00:00:00'), end = new Date(t + 'T00:00:00'), n = 0;
+  while (d <= end && n < 4000){
+    const w = d.getDay();
+    if (w !== 0 && w !== 6) n++;
+    d.setDate(d.getDate() + 1);
+  }
+  return n;
+}
+function rfClamp(v){return (v && rfState.min && v<rfState.min) ? rfState.min : ((v && rfState.max && v>rfState.max) ? rfState.max : v);}
+
+/* 快捷段 → 实际区间：右端固定取归档最大日，左端不早于归档最小日（数据不足时自动收缩） */
+function rfSegRange(r){
+  const max = rfState.max || rfYmd(new Date());
+  if (r === 'prev'){ const p = rfState.prev || rfShift(max, -1); return {f: p, t: p}; }
+  const n = Number(r);
+  if (!n) return null;
+  let f = rfShift(max, -(n - 1));
+  if (rfState.min && f < rfState.min) f = rfState.min;
+  return {f: f, t: max};
+}
+
+function rfInit(opts){
+  opts = opts || {};
+  rfState.min = opts.min || null;
+  rfState.max = opts.max || null;
+  /* 「昨天」段的锚点：先取真实昨天，再夹到归档区间内。
+     每日跑数归档的是「前一日」，所以正常情况真实昨天 == 归档最大日；
+     若归档落后（例如今天补跑周五），则退到归档最大日，避免默认落在无数据的空档。 */
+  rfState.prev = (function(){
+    let p = rfShift(rfYmd(new Date()), -1);
+    if (rfState.max && p > rfState.max) p = rfState.max;
+    if (rfState.min && p < rfState.min) p = rfState.min;
+    return p;
+  })();
+  rfState.onChange = opts.onChange || null;   /* 不接上 onChange，页面就永远不会按区间取数 */
+  const fromEl = document.getElementById('rf-from');
+  const toEl   = document.getElementById('rf-to');
+  if (rfState.min) { fromEl.min = rfState.min; toEl.min = rfState.min; }
+  if (rfState.max) { fromEl.max = rfState.max; toEl.max = rfState.max; }
+
+  const qs = new URLSearchParams(location.search);
+  /* 每日跑数只归档「前一日」一个目录，所以默认段取「昨天」，与采集口径一致；
+     历史多日归档仍然可用「近7/近30/近90天」或自定义区间回看 */
+  const def = rfSegRange('prev') || {f: rfState.min, t: rfState.max};
+  let from = qs.get('from') || localStorage.getItem('rf_from') || def.f;
+  let to   = qs.get('to')   || localStorage.getItem('rf_to')   || def.t;
+  if (rfState.min && from < rfState.min) from = rfState.min;
+  if (rfState.max && to > rfState.max)   to   = rfState.max;
+  if (from > to) from = to;
+  fromEl.value = from || ''; toEl.value = to || '';
+
+  /* 选中态：seg 只在「当前区间仍是该段算出来的区间」时才算数。
+     原实现的致命问题：paintSeg() 读的是 rfInit 的闭包变量 from/to，初始化后永不更新，
+     所以点任何快捷段，高亮都停在初始那一段（表现为「点了没反应」）。 */
+  let seg = localStorage.getItem('rf_seg') || null;
+  function segHit(r, f, t){
+    const rg = rfSegRange(r);
+    return !!rg && rg.f === f && rg.t === t;
+  }
+  function deriveSeg(f, t){
+    if (!f || !t) return null;
+    let hit = null;
+    document.querySelectorAll('#rf-seg button').forEach(function(b){
+      if (hit === null && segHit(b.dataset.range, f, t)) hit = b.dataset.range;
+    });
+    return hit;
+  }
+  function paintSeg(){
+    const f = fromEl.value, t = toEl.value;
+    if (seg && !segHit(seg, f, t)) seg = null;      // 日期被手动改过 → 丢弃旧段
+    const r = seg || deriveSeg(f, t);
+    rfState.seg = r;
+    document.querySelectorAll('#rf-seg button').forEach(function(b){
+      b.classList.toggle('on', b.dataset.range === r);
+    });
+  }
+
+  function commit(){
+    const f = fromEl.value || rfState.min, t = toEl.value || rfState.max;
+    fromEl.value = f || ''; toEl.value = t || '';
+    localStorage.setItem('rf_from', f || ''); localStorage.setItem('rf_to', t || '');
+    localStorage.setItem('rf_seg', seg || '');
+    const u = new URL(location.href); u.searchParams.set('from', f || ''); u.searchParams.set('to', t || '');
+    history.replaceState(null, '', u);
+    paintSeg(); paintHint();
+    if (rfState.onChange) rfState.onChange(f, t);
+  }
+  window.__rfCommit = commit;
+
+  function paintHint(){
+    const f = fromEl.value, t = toEl.value;
+    const el = document.getElementById('rf-hint');
+    if (!f || !t) { if (el) el.textContent = ''; return; }
+    if (el) el.innerHTML = '当前区间 <b>' + f + '</b> ~ <b>' + t + '</b> ｜ 工作日 '
+      + rfWorkdays(f, t) + ' 天';
+  }
+  rfState.paintHint = paintHint;
+
+  document.querySelectorAll('#rf-seg button').forEach(function(b){
+    b.addEventListener('click', function(){
+      const rg = rfSegRange(b.dataset.range);
+      if (!rg) return;
+      seg = b.dataset.range;                       // 先记下要选中的段，再由 commit 统一落盘
+      fromEl.value = rg.f; toEl.value = rg.t;
+      commit();
+    });
+  });
+  fromEl.addEventListener('change', function(){ seg = null; if (fromEl.value > toEl.value) toEl.value = fromEl.value; commit(); });
+  toEl.addEventListener('change',   function(){ seg = null; if (toEl.value < fromEl.value) fromEl.value = toEl.value; commit(); });
+  paintSeg(); paintHint();
+  if (rfState.onChange) rfState.onChange(fromEl.value, toEl.value);
+}
+function rfDays(a, b){ const d1=new Date(a+'T00:00:00'), d2=new Date(b+'T00:00:00'); return Math.round((d2-d1)/86400000)+1; }
+function rfIn(ymd){ const f=document.getElementById('rf-from').value, t=document.getElementById('rf-to').value;
+  return !!ymd && ymd >= f && ymd <= t; }
+function rfEsc(s){ return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+
+/* ================= 二级页：同口径区间 → 该流水线每天的归档目录 → 逐条执行记录 ================= */
+const BACK_TO = '../';
+const CATS = {
+  compile_failure: ['编译失败', 'red'],
+  test_failure:    ['用例失败', 'red'],
+  env_not_ready:   ['用例未拉起', 'yellow'],
+  job_failure:     ['任务失败', 'yellow'],
+  cancelled:       ['运行被取消', ''],
+  evidence_missing:['证据缺失', 'blue'],
+  unknown:         ['证据不足待确认', '']
+};
+const QS = new URLSearchParams(location.search);
+const KEY = QS.get('key') || '';        /* 流水线级：组件|流水线 */
+const COMP = QS.get('comp') || '';      /* 组件级：从首页「待分析流水线数」点进来的 */
+const DIM = QS.get('dim') || '';        /* 组件级下的维度过滤：va / bs */
+const DIMNAME = {va: '版本可用度', bs: '编译成功率'};
+/* 流水线级页面上「上一级」是哪个组件：优先用链接带过来的 comp，退化到 key 的组件前缀 */
+const COMP_OF_KEY = COMP || (KEY ? String(KEY).split('|')[0] : '');
+const INDEX_PAGE = 'index.html';          /* 首页文件名（构建时注入） */
+let DAYS = [];
+
+function jget(p){
+  return fetch(p, {cache: 'no-store'}).then(function(r){
+    if (!r.ok) throw new Error(p + ' → HTTP ' + r.status);
+    return r.json();
+  });
+}
+/* 文件不存在（归档区还没跑过采集）与「读取失败」要分开：前者提示去采集，后者才是环境问题 */
+function isNotFound(e){
+  const m = String((e && e.message) || e);
+  return /HTTP 40[34]/.test(m) || /\b(404|ENOENT)\b/.test(m) || /not\s*found/i.test(m);
+}
+function nz(v){ return (v === null || v === undefined || v === '') ? '--' : String(v); }
+function dotOf(l){ const m = {'绿': 'green', '黄': 'yellow', '红': 'red'}; return m[l] ? '<span class="dot ' + m[l] + '"></span>' : ''; }
+/* 灯色不落库：归档只存数值，这里按比率就地判档（老归档的 vaLight/bsLight 只作兜底）。
+   版本可用度 >=90% 绿 / >=80% 黄 / 否则红；编译成功率 100% 绿 / >=95% 黄 / 否则红 */
+function lightByRate(v, kind){
+  if (v === null || v === undefined || v === '' || isNaN(v)) return null;
+  const r = Number(v);
+  if (kind === 'bs') return r >= 1 ? '绿' : (r >= 0.95 ? '黄' : '红');
+  return r >= 0.9 ? '绿' : (r >= 0.8 ? '黄' : '红');
+}
+
+/* ===== 逐层下钻与逐层返回 =====
+   首页（组件级概览）→ 组件级流水线清单（?comp=&dim=）→ 流水线根因（?key=）。
+   每一层的链接都显式带上 comp / dim / from / to，所以：
+   1) 返回按钮只回上一层，不会一步跳回首页；
+   2) 回到上一层后，维度过滤和统计区间都保持不变（不用重新选日期）。 */
+function rangeQS(from, to){
+  return (from && to) ? 'from=' + encodeURIComponent(from) + '&to=' + encodeURIComponent(to) : '';
+}
+function levelQS(extra, from, to){
+  const parts = [];
+  Object.keys(extra || {}).forEach(function(k){
+    if (extra[k] !== null && extra[k] !== undefined && extra[k] !== '') parts.push(k + '=' + encodeURIComponent(extra[k]));
+  });
+  const r = rangeQS(from, to);
+  if (r) parts.push(r);
+  return parts.length ? '?' + parts.join('&') : '';
+}
+/* 组件级清单地址（流水线级页面的上一层；首页返回按钮也用它判断层级） */
+function compHref(from, to){
+  return levelQS({comp: COMP_OF_KEY || COMP, dim: DIM}, from, to);
+}
+function indexHref(from, to){
+  return INDEX_PAGE + levelQS({}, from, to);
+}
+function setBack(from, to){
+  const el = document.getElementById('back');
+  if (!el) return;
+  if (KEY && (COMP_OF_KEY || COMP)){
+    el.href = compHref(from, to);
+    el.textContent = '← 返回 ' + (COMP_OF_KEY || COMP) + ' 流水线清单';
+    el.title = '返回组件级流水线清单（' + (DIMNAME[DIM] || '全部维度') + '，统计区间不变）';
+  } else if (COMP){
+    el.href = indexHref(from, to);
+    el.textContent = '← 返回总览';
+    el.title = '返回首页组件级概览（统计区间不变）';
+  }
+}
+/* 面包屑：总览 › 组件（维度）› 流水线，每层都可点回去 */
+function crumbHead(from, to){
+  return '<a href="' + indexHref(from, to) + '">总览</a><span class="sep">›</span>';
+}
+function statusTag(s){
+  const v = String(s || '').toUpperCase();
+  if (v === 'FAILED' || v === 'FAILURE') return '<span class="tag red">' + rfEsc(s) + '</span>';
+  if (v === 'SUCCESS' || v === 'SUCCEEDED') return '<span class="tag green">' + rfEsc(s) + '</span>';
+  return '<span class="tag">' + rfEsc(s || '--') + '</span>';
+}
+function failBox(msg){
+  const box = document.getElementById('recs');
+  if (box) box.innerHTML = '<div class="err">' + msg + '</div>';
+}
+
+function boot(){
+  if (!KEY && !COMP){
+    failBox('缺少参数。请从首页表格点击「待分析流水线数」进入（组件级），或点「查看记录 →」进入（流水线级）。');
+    return;
+  }
+  /* 先把返回按钮按层级摆好（数据回来之前也不要显示错层级） */
+  setBack(QS.get('from') || '', QS.get('to') || '');
+  jget(BACK_TO + 'archive/_index.json').then(function(idx){
+    DAYS = (idx.days || []).slice().sort(function(a, b){ return a.date < b.date ? -1 : 1; });
+    if (!DAYS.length){
+      failBox('归档区暂无数据：请先执行 <span class="mono">python run_pipeline.py</span>。');
+      return;
+    }
+    rfInit({min: DAYS[0].date, max: DAYS[DAYS.length - 1].date, onChange: load});
+  }).catch(function(e){
+    /* 归档区为空时 _index.json 本来就不存在（HTTP 404 / ENOENT）→ 提示去采集；
+       file:// 直开被浏览器拦截（TypeError）才提示起本地服务 */
+    if (isNotFound(e)){
+      failBox('归档区暂无数据：请先执行 <span class="mono">python run_pipeline.py</span> 采集并归档。');
+      return;
+    }
+    failBox('<b>读取归档索引失败</b><div class="mono" style="margin-top:6px">' + rfEsc(String(e)) + '</div>'
+      + '<div style="margin-top:8px">file:// 直开会被浏览器拦截 fetch，请用 '
+      + '<span class="mono">python run_pipeline.py --serve</span> 起本地服务后访问。</div>');
+  });
+}
+
+function load(from, to){
+  setBack(from, to);                     /* 返回按钮跟着当前层级 + 当前区间走 */
+  if (!KEY) return loadComp(from, to);   /* 没给 key 就是组件级：先列该组件的流水线 */
+  const box = document.getElementById('recs');
+  box.innerHTML = '<div class="loading">正在读取归档记录…</div>';
+  document.getElementById('ttl').textContent = KEY.replace('|', ' / ');
+  const days = DAYS.filter(function(d){ return d.date >= from && d.date <= to; });
+  if (!days.length){
+    box.innerHTML = '<div class="empty">该区间内没有归档日（' + rfEsc(from) + ' ~ ' + rfEsc(to) + '）</div>';
+    renderHead(null, [], {dirs: [], days: days, from: from, to: to});
+    return;
+  }
+  /* 1) 逐日找该流水线的归档目录（同一条流水线在区间内可能每天一个目录） */
+  const dirs = [];
+  let meta = null;
+  let chain = Promise.resolve();
+  days.forEach(function(d){
+    chain = chain.then(function(){
+      return jget(BACK_TO + d.path + '/_day.json').then(function(day){
+        (day.pipelines || []).forEach(function(pl){
+          if (pl.key === KEY){
+            dirs.push({date: d.date, path: pl.path, pl: pl});
+            if (!meta) meta = {pl: pl, day: day};
+          }
+        });
+      }).catch(function(){ /* 该日读取失败则跳过，不影响其它日 */ });
+    });
+  });
+  chain.then(function(){
+    if (!dirs.length){
+      const withAny = (DAYS.length && days.length) ? '' : '';
+      box.innerHTML = '<div class="empty">该区间内没有这条流水线的归档记录（' + rfEsc(from) + ' ~ ' + rfEsc(to) + '）'
+        + withAny + '<div class="dim" style="margin-top:6px">流水线只在被点灯的日期才会进入待分析集合。</div></div>';
+      RUNS = [];
+      CTX = {dirs: [], days: days, from: from, to: to, runs: []};
+      renderHead(null, [], CTX);
+      return;
+    }
+    /* 2) 逐目录读 step_2_runs.json（区间内全部运行 → 按天构建记录 / 区间重算）
+          + _manifest.json → records[] → 单条记录（不读 80KB+ 的 step_6_records.json） */
+    const recs = [];
+    const runs = [];
+    const runSeen = {};
+    let chain2 = Promise.resolve();
+    dirs.forEach(function(d){
+      /* 2a) 运行历史：同一条流水线的每个归档日都带着同一份「整区间」runHistory，按构建号去重 */
+      chain2 = chain2.then(function(){
+        return jget(BACK_TO + d.path + '/step_2_runs.json').then(function(s2){
+          ((s2 || {}).runHistory || []).forEach(function(h){
+            const rn = String(h.rn);
+            if (!rn || rn === 'undefined' || runSeen[rn]) return;
+            runSeen[rn] = 1;
+            const end = String(h.end || '');
+            runs.push({rn: h.rn, start: h.start, end: end, day: end.slice(0, 10),
+                       status: h.status, url: h.url, iva: h.iva,
+                       bc: h.bc, bpc: h.bpc, cpr: h.cpr, ftt: h.ftt});
+          });
+        }).catch(function(){ /* 老归档没有 step_2_runs.json：退回「逐日灯态」口径，不报错 */ });
+      });
+      /* 2b) 归档清单 → records[] → 单条记录 */
+      chain2 = chain2.then(function(){
+        return jget(BACK_TO + d.path + '/_manifest.json').then(function(mf){
+          const missing = new Set(((mf.evidence || {}).missing) || []);
+          const list = (mf.records || []).slice();
+          let chain3 = Promise.resolve();
+          list.forEach(function(r){
+            chain3 = chain3.then(function(){
+              return jget(BACK_TO + d.path + '/' + r.file).then(function(rec){
+                rec.__base = BACK_TO + d.path + '/';
+                rec.__dir = d.path;
+                rec.__missing = missing;
+                recs.push(rec);
+              }).catch(function(e){
+                recs.push({__err: String(e), __base: BACK_TO + d.path + '/', __dir: d.path, __missing: missing,
+                           recordId: r.recordId, buildNumber: r.buildNumber, endedAt: r.endedAt,
+                           category: r.category, tasks: [], cases: [], errorMessages: [], evidence: {files: [], missing: []}});
+              });
+            });
+          });
+          return chain3;
+        }).catch(function(){});
+      });
+    });
+    chain2.then(function(){
+      recs.sort(function(a, b){ return String(a.endedAt || '') < String(b.endedAt || '') ? 1 : -1; });
+      runs.sort(function(a, b){ return String(a.end || '') < String(b.end || '') ? 1 : -1; });
+      RUNS = runs;
+      CTX = {dirs: dirs, days: days, from: from, to: to, runs: runs};
+      renderHead(meta, recs, CTX);
+      renderRecs(recs, CTX);
+    });
+  });
+}
+
+/* ---------- 流水线级页面的维度口径 ----------
+   这一页是**从哪个维度点进来的，就只讲哪个维度**：dim=va 只讲版本可用度，dim=bs 只讲编译成功率。
+   比率、工作日达标数、构建记录都按同一个维度取；另一个维度在这一页上完全不出现。 */
+function dimOf(){
+  if (DIM === 'bs') return 'bs';
+  if (DIM === 'va') return 'va';
+  /* 没带 dim（直接开链接）时：该流水线只有 bs 维度的就按 bs，否则按 va */
+  const pl = (RECS[0] || {}).light || {};
+  const dims = pl.dims || [];
+  return (dims.indexOf('bs') >= 0 && dims.indexOf('va') < 0) ? 'bs' : 'va';
+}
+
+/* 该流水线在区间内的逐日灯态：用于区块头的「可用 N/M 工作日」（按当前维度取灯）
+   灯态由当天比率就地判档，归档里不再存灯色 */
+function dayLights(ctx){
+  const dim = DIM || '';
+  const out = [];
+  (ctx.dirs || []).forEach(function(d){
+    const pl = d.pl || {};
+    const ds = pl.dims || [];
+    const useBs = dim ? dim === 'bs' : (ds.indexOf('bs') >= 0 && ds.indexOf('va') < 0);
+    const light = useBs
+      ? (lightByRate(pl.bsRate, 'bs') || pl.bsLight)
+      : (lightByRate(pl.vaRate, 'va') || pl.vaLight);
+    out.push({date: d.date, light: light || null});
+  });
+  return out;
+}
+/* 区间重算：只统计「执行结束时间落在当前统计区间内」的运行，逐日判定是否达标。
+   比率 = 达标日 / 有运行的工作日（与第 2 步 recompute 口径一致：可用日 / 有记录日）；
+   区间一变，分子分母同时按新区间重算，不再沿用归档当日写死的比率。
+   dim=va：当天任一次运行 iva=true 才算可用；dim=bs：当天全部运行的编译成功次数 = 编译次数。 */
+function rangeStats(ctx, dim){
+  ctx = ctx || {};
+  const from = ctx.from || '', to = ctx.to || '';
+  const inRange = (ctx.runs || []).filter(function(r){
+    return r.day && r.day >= from && r.day <= to;
+  });
+  if (inRange.length){
+    const byDay = {}, dayRuns = {};
+    inRange.forEach(function(r){
+      const d = byDay[r.day] || (byDay[r.day] = {runs: 0, ok: false, bc: 0, bpc: 0});
+      d.runs += 1;
+      if (r.iva === true) d.ok = true;
+      if (r.bc !== null && r.bc !== undefined && r.bc !== ''){
+        d.bc += Number(r.bc) || 0;
+        d.bpc += Number(r.bpc) || 0;
+      }
+      (dayRuns[r.day] || (dayRuns[r.day] = [])).push(r);
+    });
+    const dayList = Object.keys(byDay).sort();
+    let okDays = 0, bc = 0, bpc = 0;
+    const dayOk = {};
+    dayList.forEach(function(k){
+      const d = byDay[k];
+      const ok = (dim === 'bs') ? (d.bc > 0 && d.bpc >= d.bc) : !!d.ok;
+      dayOk[k] = ok;
+      if (ok) okDays += 1;
+      bc += d.bc; bpc += d.bpc;
+    });
+    Object.keys(dayRuns).forEach(function(k){
+      dayRuns[k].sort(function(a, b){ return String(a.end || '') < String(b.end || '') ? 1 : -1; });
+    });
+    return {source: 'runs', runs: inRange, byDay: byDay, dayRuns: dayRuns, dayList: dayList,
+            dayOk: dayOk, total: dayList.length, availDays: okDays,
+            bc: bc, bpc: bpc,
+            rate: (dim === 'bs') ? (bc > 0 ? bpc / bc : null)
+                                 : (dayList.length ? okDays / dayList.length : null)};
+  }
+  /* 兜底：老归档没有 step_2_runs.json 的运行历史时，退回「归档日逐日灯态」口径（灯态由比率就地算）。
+     只统计有灯态的日子：既没有比率也没有灯色字段的日子不计入分母，避免被当成达标日。 */
+  const dls = dayLights(ctx).filter(function(d){ return !!d.light; });
+  const bad = {};
+  dls.forEach(function(d){ if (d.light === '黄' || d.light === '红') bad[d.date] = 1; });
+  const total = dls.length;
+  const okDays = Math.max(0, total - Object.keys(bad).length);
+  return {source: 'lights', runs: [], byDay: {}, dayRuns: {}, dayList: [], dayOk: {},
+          total: total, availDays: okDays, bc: 0, bpc: 0,
+          rate: total ? okDays / total : null};
+}
+/* 根因：只取本条记录的 AI 分析结论（不做任何历史结论复用），没有就留空走兜底文案 */
+function rootCauseOf(r){
+  const an = r.analysis || {};
+  return an.rootCause || '';
+}
+function cut(s, n){
+  const t = String(s == null ? '' : s).replace(/\s+/g, ' ').trim();
+  if (!t) return '--';
+  return t.length > n ? t.slice(0, n) + '…' : t;
+}
+/* 2026-10-28T21:10:17 → 2026-10-28 21:10:17 */
+function tm(s){
+  const v = String(s == null ? '' : s).replace('T', ' ');
+  return v ? v.slice(0, 19) : '--';
+}
+/* 错误信息里常见 {"errorMessage":..,"errorCode":..} 的 JSON 原文，表格单元格里压成一句话 */
+function errText(t){
+  const s = String(t == null ? '' : t).trim();
+  if (s.charAt(0) === '{'){
+    try {
+      const o = JSON.parse(s);
+      if (o && (o.errorMessage || o.errorCode)){
+        const msg = String(o.errorMessage || '').trim();
+        return msg + (o.errorCode ? '（' + o.errorCode + '）' : '');
+      }
+    } catch (e) { /* 不是合法 JSON 就按原文展示 */ }
+  }
+  return s;
+}
+
+/* job 日志的每一行本来就带时间戳（[2026/11/06 01:11:47.479 GMT+08:00] ...），
+   而 errorMessages 这一层只有行号没有时间字段 → 从原文行首把时间抽出来，供「证据」弹窗的时间列用 */
+function timeFromLine(s){
+  const m = String(s == null ? '' : s)
+    .match(/(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})[ T](\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?)/);
+  if (!m) return '';
+  const p2 = function(x){ return ('0' + x).slice(-2); };
+  return m[1] + '-' + p2(m[2]) + '-' + p2(m[3]) + ' ' + m[4];
+}
+/* 一条记录的「证据」行 = 用例级 errorMessages（带 time/loc，测试报告路线）
+   + 顶层 errorMessages（job 日志扫描出的错误行，时间在行首），逐行去重、逐行完整保留。
+   用例级证据排前面并按时间升序（同一次执行的日志时间线），
+   没有时间的「测试报告断言」保持原序排在后面，不丢任何一行。 */
+function evidenceRows(r){
+  if (!r) return [];
+  if (r.__ev) return r.__ev;
+  const out = [], seen = new Set();
+  const push = function(o){
+    const k = [o.time || '', o.level || '', o.loc || '',
+               (o.line == null ? '' : o.line), o.text || ''].join('|');
+    if (seen.has(k)) return;
+    seen.add(k);
+    out.push(o);
+  };
+  (r.cases || []).forEach(function(c){
+    (c.errorMessages || []).forEach(function(m){
+      push({time: m.time || timeFromLine(m.msg), level: nz(m.level), loc: m.loc || '',
+            line: m.line, text: m.msg || '', task: c.task || '', case: c.name || ''});
+    });
+  });
+  (r.errorMessages || []).forEach(function(e){
+    if (e.isSummary) return;                 /* pytest 汇总行不是一条证据 */
+    push({time: e.time || timeFromLine(e.text), level: nz(e.level), loc: '',
+          line: e.line, text: e.text || '', task: e.task || '', case: e.case || ''});
+  });
+  const withT = out.filter(function(x){ return x.time; });
+  const noT = out.filter(function(x){ return !x.time; });
+  withT.sort(function(a, b){ return String(a.time).localeCompare(String(b.time)); });
+  r.__ev = withT.concat(noT);
+  return r.__ev;
+}
+
+/* ---------- 组件级：首页「待分析流水线数」点进来的流水线清单（不展开、单独一页） ----------
+   这一页是**按维度下钻**来的：dim=va 就只列版本可用度，dim=bs 就只列编译成功率，
+   另一个维度根本不渲染（不显示、不出灯、不出归档日），避免在一张表里塞两套口径。
+   比率只给纯数字（80.0%），不带黄/绿/红圆点或灯色文字：
+   达标与否已在首页「待分析流水线数」表达，这里是查数用的清单。 */
+function loadComp(from, to){
+  const box = document.getElementById('recs');
+  const ttl = document.getElementById('ttl');
+  if (ttl) ttl.textContent = COMP;
+  const dimTxt = DIMNAME[DIM] || '';
+  const days = DAYS.filter(function(d){ return d.date >= from && d.date <= to; });
+  if (!days.length){
+    box.innerHTML = '<div class="empty">该区间内没有归档日（' + rfEsc(from) + ' ~ ' + rfEsc(to) + '）</div>';
+    const meta0 = document.getElementById('meta');
+    if (meta0) meta0.textContent = '区间 ' + from + ' ~ ' + to + ' · 无归档日';
+    return;
+  }
+  box.innerHTML = '<div class="loading">正在读取 ' + days.length + ' 个归档日…</div>';
+  const map = new Map();
+  let chain = Promise.resolve();
+  days.forEach(function(d){
+    chain = chain.then(function(){
+      return jget(BACK_TO + d.path + '/_day.json').then(function(day){
+        (day.pipelines || []).forEach(function(pl){
+          if (pl.component !== COMP) return;
+          const dims = pl.dims || [];
+          if (DIM && dims.indexOf(DIM) < 0) return;
+          let r = map.get(pl.key);
+          if (!r){
+            r = {key: pl.key, pipeline: pl.pipeline, name: pl.pipelineName || pl.pipeline,
+                 platform: pl.platform || '', dims: {},
+                 vaVals: [], bsVals: [], vaA: 0, vaN: 0, bsP: 0, bsC: 0,
+                 runs: [], totalRuns: 0};
+            map.set(pl.key, r);
+          }
+          dims.forEach(function(x){ r.dims[x] = 1; });
+          /* 区间重算：逐日累加分子/分母（可用日/有运行日、编译通过/编译次数），
+             统计区间一变就按新的 Σ分子/Σ分母 重算；老归档无 *Detail 才退回逐日比率平均 */
+          const vd = pl.vaDetail, bd = pl.bsDetail;
+          if (vd && Number(vd.daysInPeriod) > 0){
+            r.vaA += Number(vd.availDays) || 0; r.vaN += Number(vd.daysInPeriod) || 0;
+          } else { r.vaVals.push(pl.vaRate); }
+          if (bd && Number(bd.buildCount) > 0){
+            r.bsP += Number(bd.buildPassCount) || 0; r.bsC += Number(bd.buildCount) || 0;
+          } else { r.bsVals.push(pl.bsRate); }
+          /* 只记当日运行数：比率按统计区间重算，逐日再贴一遍同一个比率只会误导 */
+          r.runs.push({date: d.date, n: pl.runsToday || 0, fail: pl.failedRunsToday || 0});
+          r.totalRuns = Math.max(r.totalRuns || 0, pl.runsInPeriod || 0);
+        });
+      }).catch(function(){ /* 单日读取失败跳过，不影响其它日 */ });
+    });
+  });
+  chain.then(function(){
+    const list = Array.from(map.values()).sort(function(a, b){ return a.pipeline < b.pipeline ? -1 : 1; });
+    /* 流水线级比率同样按统计区间重算：Σ可用日/Σ有运行日、Σ编译通过/Σ编译次数 */
+    list.forEach(function(p){
+      p.vaRate = p.vaN > 0 ? p.vaA / p.vaN : avgNum(p.vaVals);
+      p.bsRate = p.bsC > 0 ? p.bsP / p.bsC : avgNum(p.bsVals);
+      p.vaAcc = p.vaN > 0 ? ('Σ可用日 / Σ有运行日 = ' + p.vaA + ' / ' + p.vaN) : '归档无分子/分母，退回归档比率';
+      p.bsAcc = p.bsC > 0 ? ('Σ编译通过 / Σ编译次数 = ' + p.bsP + ' / ' + p.bsC) : '归档无分子/分母，退回归档比率';
+      const head = '区间内共 ' + (p.totalRuns || 0) + ' 次运行（成功与失败都采集）'
+        + '，比率按本统计区间重算（区间一变即重算，不是逐日比率取平均）';
+      const dd = (p.runs || []).map(function(x){
+        return x.date + '  当日 ' + x.n + ' 次运行'
+          + (x.fail ? '（失败/取消 ' + x.fail + '）' : '');
+      });
+      p.vaTitle = '版本可用度（流水线级）\n' + head + '\n' + p.vaAcc + '\n' + dd.join('\n');
+      p.bsTitle = '编译成功率（流水线级）\n' + head + '\n' + p.bsAcc + '\n' + dd.join('\n');
+    });
+    const cols = DIM ? [DIM] : ['va', 'bs'];
+    const meta = document.getElementById('meta');
+    if (meta) meta.textContent = '区间 ' + from + ' ~ ' + to
+      + (dimTxt ? ' · 维度仅 ' + dimTxt : '')
+      + ' · 待分析流水线 ' + list.length + ' 条 · 数据源 out/archive/';
+    const crumb = document.getElementById('crumb');
+    if (crumb) crumb.innerHTML = crumbHead(from, to) + '<b>' + rfEsc(COMP) + '</b>（' + rfEsc(dimTxt || '全部维度')
+      + ' · ' + list.length + ' 条待分析流水线'
+      + (list.length ? '：' + rfEsc(list.map(function(p){ return p.name; }).join('、')) : '')
+      + '）';
+    const dist = document.getElementById('dist');
+    if (dist) dist.innerHTML = '';
+    if (!list.length){
+      box.innerHTML = '<div class="empty">该区间内没有进入待分析集合的流水线</div>';
+      return;
+    }
+    const head = '<th style="width:38%">流水线</th><th style="width:16%">平台</th>'
+      + cols.map(function(d){ return '<th style="width:18%">' + DIMNAME[d] + '</th>'; }).join('')
+      + '<th style="width:10%"></th>';
+    box.innerHTML = '<div class="tbl-wrap" style="border:0;border-radius:0;min-height:0">'
+      + '<table class="ov" id="tbl"><thead><tr>' + head + '</tr></thead><tbody>'
+      + list.map(function(p){ return compRow(p, from, to, cols); }).join('')
+      + '</tbody></table></div>';
+  });
+}
+
+function compRow(p, from, to, cols){
+  /* 下钻链接带上 comp + dim：流水线页才知道上一层是哪个组件的哪个维度，能逐层退回来 */
+  const q = levelQS({key: p.key, comp: COMP, dim: DIM}, from, to);
+  let tds = '<td class="c-name">' + rfEsc(p.pipeline)
+    + '<div class="dim" style="font-size:11px;font-weight:400">' + rfEsc(p.name) + '</div></td>'
+    + '<td>' + rfEsc(p.platform || '--') + '</td>';
+  cols.forEach(function(d){
+    tds += '<td class="c-rate">'
+      + rateNum(d === 'va' ? p.vaRate : p.bsRate, d === 'va' ? p.vaTitle : p.bsTitle,
+                p.key, d, from, to)
+      + '</td>';
+  });
+  /* 本页展示的维度比率全部 100% = 这区间内没有需要下钻的失败记录：
+     「查看记录」直接显示 --（不给链接、不响应点击），避免点进去看到一张空表 */
+  let full = cols.length > 0;
+  cols.forEach(function(d){
+    const v = d === 'va' ? p.vaRate : p.bsRate;
+    if (v === null || v === undefined || v === '' || isNaN(v) || Number(v) < 1) full = false;
+  });
+  tds += '<td class="nowrap">'
+    + (full ? '<span class="dim" title="该维度比率 100%，区间内没有失败记录可下钻">--</span>'
+            : '<a class="lnk" href="' + q + '">查看记录 →</a>')
+    + '</td>';
+  return '<tr>' + tds + '</tr>';
+}
+
+/* 纯数字百分比（80.0%）：不输出圆点、不输出黄/绿/红文字，title 里给逐日明细；
+   数字本身可点 → 弹「构建记录」（数据源 = 该流水线归档里的 step_2_runs.json，
+   点的时候才按需去读，组件级清单首屏不额外拉数据） */
+function rateNum(v, title, key, dim, from, to){
+  const txt = pctText(v);
+  const has = !(v === null || v === undefined || v === '' || isNaN(v));
+  if (!has) return '<span class="pct">' + txt + '</span>';
+  const t = (title ? title + '\n' : '') + '点击查看构建记录';
+  return '<span class="pct lnk" title="' + rfEsc(t) + '"'
+    + ' data-builds-of="' + rfEsc(key) + '" data-dim="' + rfEsc(dim) + '"'
+    + ' data-from="' + rfEsc(from) + '" data-to="' + rfEsc(to) + '">' + txt + '</span>';
+}
+function pctText(v){
+  return (v === null || v === undefined || v === '' || isNaN(v)) ? '--'
+    : (Number(v) * 100).toFixed(1) + '%';
+}
+function avgNum(a){
+  const xs = (a || []).filter(function(v){ return v !== null && v !== undefined && v !== '' && !isNaN(v); });
+  if (!xs.length) return null;
+  let s = 0; xs.forEach(function(v){ s += Number(v); });
+  return s / xs.length;
+}
+
+function renderHead(meta, recs, ctx){
+  const el = document.getElementById('meta');
+  let tasks = 0, cases = 0, errs = 0, evs = 0;
+  recs.forEach(function(r){
+    const c = r.counts || {};
+    tasks += Number(c.tasks || 0); cases += Number(c.cases || 0);
+    errs += Number(c.errorMessages || 0); evs += Number(c.evidenceFiles || 0);
+  });
+  if (meta && meta.pl){
+    const pl = meta.pl;
+    document.getElementById('ttl').innerHTML = '<b>' + rfEsc(pl.component) + '</b> / ' + rfEsc(pl.pipeline)
+      + ' <span class="dim" style="font-weight:400;font-size:12px">' + rfEsc(pl.pipelineName || '') + '</span>';
+    const crumb = document.getElementById('crumb');
+    if (crumb) crumb.innerHTML = crumbHead(ctx.from, ctx.to)
+      + '<a href="' + levelQS({comp: pl.component, dim: DIM}, ctx.from, ctx.to) + '">'
+      + rfEsc(pl.component) + '</a>'
+      + (DIM ? '<span class="dim">（' + rfEsc(DIMNAME[DIM]) + '）</span>' : '')
+      + '<span class="sep">›</span><b>' + rfEsc(pl.pipeline) + '</b>'
+      + '<span class="dim">（流水线级 · 区间内 ' + ((ctx.dirs || []).length) + ' 天有归档记录 · 每条执行记录一行根因）</span>';
+  }
+  if (el) el.textContent = '区间 ' + ctx.from + ' ~ ' + ctx.to
+    + (meta && meta.pl ? ' · 平台 ' + (meta.pl.platform || '--') : '')
+    + ' · 执行记录 ' + recs.length + ' · 任务 ' + tasks + ' · 用例 ' + cases
+    + ' · 错误信息 ' + errs + ' · 证据 ' + evs;
+  renderDist(recs);
+}
+
+/* 定性分布：二级页字段，按执行记录计数（含占比） */
+function renderDist(recs){
+  const el = document.getElementById('dist');
+  if (!el) return;
+  const byCat = {};
+  recs.forEach(function(r){
+    const k = (r.verdict || {}).category || r.category || 'unknown';
+    byCat[k] = (byCat[k] || 0) + 1;
+  });
+  const ks = Object.keys(byCat).sort(function(a, b){ return byCat[b] - byCat[a]; });
+  const total = recs.length || 1;
+  const tags = ks.map(function(k){
+    const c = CATS[k] || [k, ''];
+    const p = (byCat[k] / total * 100).toFixed(byCat[k] === total ? 0 : 1);
+    return '<span class="tag ' + c[1] + '">' + c[0] + ' ' + byCat[k]
+      + ' <span class="dim">' + p + '%</span></span>';
+  }).join('');
+  el.innerHTML = '<span class="dt">定性分布</span>'
+    + (ks.length ? tags : '<span class="dim">--</span>')
+    + '<span class="sp"></span>'
+    + '<span class="dim">按执行记录计数，共 ' + recs.length + ' 条</span>';
+}
+
+let RECS = [];
+let RUNS = [];      /* 区间内该流水线的全部运行（每日 step_2_runs.json 的 runHistory，按构建号去重） */
+let CTX = null;     /* 当前统计区间上下文：dirs / days / from / to / runs */
+
+/* ===== 流水线级：一条流水线一个区块（h3 浅蓝区块头）+ 一张 10 列固定列宽的根因明细表 ===== */
+function renderRecs(recs, ctx){
+  const box = document.getElementById('recs');
+  RECS = recs;
+  const dim = dimOf();
+  const st = rangeStats(ctx, dim);
+  const total = st.total;
+  const okDays = st.availDays;
+  const rate = st.rate;
+  const pl = recs[0] || ((ctx.dirs || [])[0] || {}).pl || {};
+  /* 流水线级只看数字（85.71%），不带黄/绿/红标记：
+     灯色只在首页组件级出现，往下钻一律看数字 + 达标工作日数。 */
+  const okWord = dim === 'bs' ? '达标' : '可用';
+  const h3 = '<h3 title="' + DIMNAME[dim] + '：' + (st.source === 'runs'
+      ? '区间内有运行的工作日 ' + total + ' 天，其中 ' + okDays + ' 天' + okWord
+        + '（逐日按执行结果重算，统计区间一变即重算）'
+      : '区间内归档 ' + total + ' 天，其中 ' + okDays + ' 天该流水线在此维度上没有黄/红')
+    + '">' + rfEsc(pl.pipelineName || pl.pipeline || KEY)
+    + ' ｜ ' + DIMNAME[dim] + ' ' + (rate == null ? '--' : (rate * 100).toFixed(2) + '%')
+    + ' ｜ ' + okWord + ' ' + okDays + '/' + total + ' 工作日 '
+    + '<span class="hist lnk" data-builds="1">查看构建记录</span></h3>';
+  if (!recs.length){
+    /* 区间内没有失败记录也要出区块头：比率/工作日是区间重算的结果，不是记录数的函数 */
+    box.innerHTML = '<div class="subview">' + h3
+      + '<div class="empty">该区间内没有需要根因分析的失败执行记录'
+      + (st.runs.length ? '（区间内共 ' + st.runs.length + ' 次运行，见「查看构建记录」）' : '')
+      + '</div></div>';
+    return;
+  }
+  /* 7 列：构建编号 → 任务 → 用例 → 错误信息 → 定性 → 根因 → 建议
+     （「根因编号」列已删除，构建号本身就跳 openLiBing，编号没有额外信息量；
+       原 8/6/9/9/20/7/24/17 里腾出的 6% 并给用例、错误信息、根因，合计仍是 100%） */
+  const cols = ['8%', '11%', '11%', '22%', '7%', '24%', '17%'];
+  const ths = ['构建编号', '任务', '用例', '错误信息', '定性', '根因', '建议'];
+  const table = '<table class="rca"><colgroup>'
+    + cols.map(function(w){ return '<col style="width:' + w + '">'; }).join('')
+    + '</colgroup><thead><tr>' + ths.map(function(t){ return '<th>' + t + '</th>'; }).join('') + '</tr></thead>'
+    + '<tbody>' + recs.map(function(r, i){ return recRow(r, i); }).join('') + '</tbody></table>';
+  box.innerHTML = '<div class="subview">' + h3 + table + '</div>';
+}
+
+/* 一行 = 一条执行记录（内容口径与改版前完全一致，只是换成表格一行） */
+function recRow(r, i){
+  const v = r.verdict || {};
+  const cov = r.counts || {};
+  const an = r.analysis || {};
+  const links = r.links || {};
+
+  const tasks = r.tasks || [];
+  const taskCell = tasks.length
+    ? '<b>' + rfEsc(nz(tasks[0].jobName)) + '</b>'
+      + (tasks.length > 1 ? '<span class="exec-sub">共 ' + tasks.length + ' 个任务</span>' : '')
+    : '<span class="dim">--</span>';
+
+  /* 成功运行也落记录（全量采集），但它没有失败用例，不能套用「setup 阶段批量失败」的兜底文案 */
+  const isOk = (v.category === 'success');
+  const cases = r.cases || [];
+  let caseCell;
+  if (cases.length){
+    /* 用例列：第一条用例名打头，「共 N 条失败用例」是可点链接 → 弹窗里逐条给用例详情
+       （用例名 / 状态 / 起止时间 / 报告里的断言原文 / 该用例日志） */
+    caseCell = rfEsc(cut(cases[0].name, 70))
+      + '<span class="lnk exec-sub" data-cases="' + i + '"'
+      + ' title="点击查看 ' + cases.length + ' 条失败用例的详情">共 '
+      + cases.length + ' 条失败用例</span>';
+  } else if (isOk){
+    caseCell = '<span class="dim">--（执行成功，无失败用例）</span>';
+  } else {
+    caseCell = '<span class="dim">—（setup 阶段批量失败，未产出有效用例记录）</span>';
+  }
+
+  const seen = new Set();
+  const uniq = [];
+  (r.errorMessages || []).forEach(function(e){
+    const k = (e.level || '') + '|' + (e.text || '');
+    if (seen.has(k)) return;
+    seen.add(k);
+    uniq.push(e);
+  });
+  /* 证据行：用例级 errorMessages（带时间/位置）+ job 日志扫描出的错误行，逐行完整保留 */
+  const evs = evidenceRows(r);
+  let errCell = '<span class="dim">--</span>';
+  if (uniq.length){
+    /* 优先展示真因：跳过平台封装文案（STEP/JOB，如「构建任务执行失败!(DEV-CODECI-35002)」），
+       直接给行级/用例级错误；全都只有封装码时才回退首条。
+       出处标签（Test_ops-math · 测试报告 · CASE）不再堆在单元格里，改成「证据」链接看原始行 */
+    const cand = uniq.filter(function(e){
+      return !e.isWrapper && e.level !== 'STEP' && e.level !== 'JOB';
+    });
+    const e0 = cand[0] || uniq[0];
+    errCell = '<div class="err-text">' + rfEsc(cut(errText(e0.text), 220)) + '</div>'
+      + (evs.length
+        ? '<div><span class="lnk ev-lnk" data-evidence="' + i + '" title="点击查看日志证据：'
+          + evs.length + ' 行（时间 / 级别 / 位置 / 原文）">证据</span></div>'
+        : '<div><span class="dim ev-lnk">证据 --</span></div>');
+  }
+
+  const buildCell = links.openlibing
+    ? '<a href="' + rfEsc(links.openlibing) + '" target="_blank" rel="noopener">#' + rfEsc(nz(r.buildNumber)) + '</a>'
+    : '#' + rfEsc(nz(r.buildNumber));
+
+  /* 根因：插在「建议」前一列，方便一眼看出这条记录为什么失败；
+     不做 AI 分析的记录（成功运行 / 指标达标的失败运行，analysis.status=na）显示 -- */
+  const noAI = isOk || an.status === 'na';
+  const rc = rootCauseOf(r);
+  const rcCell = rc ? rfEsc(cut(rc, 120))
+    : (noAI ? '<span class="dim">--</span>' : '<span class="dim">待 AI 根因分析</span>');
+
+  const adv = an.advice || ((r.suggestions || [])[0] || '');
+  const advCell = adv ? rfEsc(cut(adv, 160))
+    : (noAI ? '<span class="dim">--</span>' : '<span class="dim">待 AI 根因分析</span>');
+
+  /* 根因编号列已删除：构建号本身就在第一列且直接跳 openLiBing，编号（AC-BS-01）没有额外信息量 */
+  return '<tr>'
+    + '<td class="nowrap">' + buildCell
+      + (r.__err ? '<span class="exec-sub" style="color:#f5222d">记录读取失败</span>' : '') + '</td>'
+    + '<td>' + taskCell + '</td>'
+    + '<td>' + caseCell + '</td>'
+    + '<td class="err-cell">' + errCell + '</td>'
+    + '<td class="nowrap">' + rfEsc(((CATS[v.category] || [v.text || v.category || '未定性']))[0]) + '</td>'
+    + '<td>' + rcCell + '</td>'
+    + '<td>' + advCell + '</td>'
+    + '</tr>';
+}
+
+/* ===== 弹窗骨架：三个入口共用（失败用例 / 日志证据 / 构建记录） ===== */
+function openModal(title, html){
+  const m = document.getElementById('mrec');
+  const t = document.getElementById('mttl');
+  const b = document.getElementById('mbody');
+  if (!m || !b) return;
+  if (t) t.innerHTML = title;
+  b.innerHTML = html;
+  m.classList.add('on');
+  m.scrollTop = 0;
+}
+function closeModal(){
+  const m = document.getElementById('mrec');
+  if (m) m.classList.remove('on');
+}
+
+/* ===== 用例列「共 N 条失败用例」→ 弹窗逐条给出用例详情 =====
+   数据源 = 该执行记录 records/run_<构建号>.json 的 cases[]（测试报告 failedCases）：
+   name / state / beginTime / endTime / description（报告里的断言原文）/ localLog（归档的用例 HTML）。
+   这里只做「有哪些用例失败、失败在哪一步」，日志原文行在「证据」弹窗里看。 */
+function openCases(i){
+  const r = RECS[i] || {};
+  const cases = r.cases || [];
+  if (!cases.length) return;
+  const base = r.__base || '';
+  const rows = cases.map(function(c, k){
+    /* 用例日志：优先归档里的本地 HTML（localLog），没有再给 openLiBing 的远程报告地址 */
+    const lg = c.localLog ? (base + c.localLog) : (c.logUrl || '');
+    const lgCell = lg
+      ? '<a href="' + rfEsc(lg) + '" target="_blank" rel="noopener">用例日志</a>'
+      : '<span class="dim">--</span>';
+    return '<tr>'
+      + '<td class="expr-txt"><span class="dim">' + (k + 1) + '</span> ' + rfEsc(nz(c.name)) + '</td>'
+      + '<td class="nowrap">' + statusTag(c.state) + '</td>'
+      + '<td class="nowrap dim">' + rfEsc(nz(c.beginTime)) + '</td>'
+      + '<td class="nowrap dim">' + rfEsc(nz(c.endTime)) + '</td>'
+      + '<td class="expr-txt">' + rfEsc(nz(c.description)) + '</td>'
+      + '<td class="nowrap">' + lgCell + '</td>'
+      + '</tr>';
+  }).join('');
+  openModal('失败用例（' + cases.length + ' 条）｜#' + rfEsc(nz(r.buildNumber))
+      + ' · ' + rfEsc(nz(r.pipeline)),
+    '<table class="rca"><colgroup><col style="width:21%"><col style="width:7%">'
+    + '<col style="width:11%"><col style="width:11%"><col style="width:43%"><col style="width:7%"></colgroup>'
+    + '<thead><tr><th>用例</th><th>状态</th><th>开始时间</th><th>结束时间</th>'
+    + '<th>失败详情（测试报告断言原文）</th><th>日志</th></tr></thead>'
+    + '<tbody>' + rows + '</tbody></table>'
+    + '<div class="mrec-note">用例清单取自该次执行的测试报告 failedCases（共 ' + cases.length
+    + ' 条全部失败用例），失败详情按原文完整输出、不做截断；'
+    + '「用例日志」打开归档里的该用例 HTML 报告。日志原始错误行见「错误信息」列的「证据」。</div>');
+}
+
+/* ===== 错误信息列「证据」→ 弹窗逐行输出日志证据（时间 / 级别 / 位置 / 整行原文） =====
+   行级信息（time / level / loc / line / 原文）直接从归档记录里取，不再堆在单元格里，
+   单元格只留「证据」两个字。 */
+function openEvidence(i){
+  const r = RECS[i] || {};
+  const evs = evidenceRows(r);
+  if (!evs.length) return;
+  const rows = evs.map(function(x){
+    /* 位置：log 行给 line（L3340），用例内错误给 loc:line（plugin.py:999:3340） */
+    const loc = x.loc
+      ? rfEsc(x.loc) + (x.line == null ? '' : ':' + rfEsc(x.line))
+      : (x.line == null ? '<span class="dim">--</span>' : 'L' + rfEsc(x.line));
+    const who = [nz(x.task), x.case || ''].filter(function(s){ return s && s !== '--'; }).join(' / ');
+    return '<tr>'
+      + '<td class="nowrap">' + (x.time ? rfEsc(x.time) : '<span class="dim">--</span>') + '</td>'
+      + '<td class="nowrap">' + (x.level && x.level !== '--'
+          ? rfEsc(x.level) : '<span class="dim">--</span>') + '</td>'
+      + '<td class="nowrap dim">' + rfEsc(who || '--') + '</td>'
+      + '<td class="nowrap dim">' + loc + '</td>'
+      + '<td class="expr-txt">' + rfEsc(nz(x.text)) + '</td>'
+      + '</tr>';
+  }).join('');
+  openModal('日志证据（' + evs.length + ' 行）｜#' + rfEsc(nz(r.buildNumber))
+      + ' · ' + rfEsc(nz(r.pipeline)),
+    '<table class="rca"><colgroup><col style="width:13%"><col style="width:6%">'
+    + '<col style="width:20%"><col style="width:13%"><col style="width:48%"></colgroup>'
+    + '<thead><tr><th>时间</th><th>级别</th><th>任务 / 用例</th><th>位置</th>'
+    + '<th>证据原文（整行，不截断）</th></tr></thead>'
+    + '<tbody>' + rows + '</tbody></table>'
+    + '<div class="mrec-note">证据 = 采集到的日志/报告原始行，逐行完整输出。'
+    + '用例级证据取自测试报告 errorMessages（自带时间与位置）；'
+    + 'job 日志证据的源行本就带时间戳，已抽到「时间」列；'
+    + '没有时间戳的「测试报告」断言显示 --。pytest 汇总行不计入证据。</div>');
+}
+/* ===== 构建记录：区间内该流水线的**每一次运行** =====
+   数据源 = 归档里每日 step_2_runs.json 的 runHistory（整区间全部运行，按结束时间归属日期），
+   所以区间一变就按新区间重新筛、重新统计；不是只看被点灯/待查的那几条失败记录。
+   dim=va 看「当天是否有可用运行」，dim=bs 看「当天编译是否全成功」。
+   同一张表服务两个入口：流水线页区块头的「查看构建记录」、组件级清单里可点的比率数字。 */
+function buildsTable(ctx, dim, recs, who){
+  const st = rangeStats(ctx, dim);
+  if (st.source !== 'runs' || !st.runs.length) return false;
+  /* 构建号跳转：优先用 runHistory 自带的 openLiBing 链接（pipelineId/projectId/pipelineRunId），
+     没有再回落到同构建号的归档记录里的 links.openlibing；都没有就只显示构建号（不做明细弹窗） */
+  const lbByBuild = {};
+  (recs || []).forEach(function(r){ lbByBuild[String(r.buildNumber)] = ((r.links || {}).openlibing) || ''; });
+  /* 不做按天汇总（不再出现「N 次运行 · 当日达标」这类聚合行），区间内每一次运行直接平铺成一行，
+     时间列本身带年月日时分秒，按结束时间倒序即为最新在前 */
+  const rows = [];
+  const flat = [];
+  st.dayList.forEach(function(day){
+    (st.dayRuns[day] || []).forEach(function(x){ flat.push(x); });
+  });
+  flat.sort(function(a, b){ return String(b.end || '').localeCompare(String(a.end || '')); });
+  flat.forEach(function(x){
+      const lb = x.url || lbByBuild[String(x.rn)] || '';
+      const bn = lb
+        ? '<a href="' + rfEsc(lb) + '" target="_blank" rel="noopener" title="在 openLiBing 查看构建 #'
+          + rfEsc(nz(x.rn)) + '">#' + rfEsc(nz(x.rn)) + '</a>'
+        : '<span class="mono">#' + rfEsc(nz(x.rn)) + '</span>';
+      const va = (x.iva === true) ? '可用' : ((x.iva === false) ? '<span class="dim">不可用</span>'
+        : '<span class="dim">--</span>');
+      const bs = (x.bc === null || x.bc === undefined || x.bc === '')
+        ? '<span class="dim">--</span>'
+        : (Number(x.bpc) || 0) + '/' + Number(x.bc);
+      const cpr = (x.cpr === null || x.cpr === undefined || x.cpr === '')
+        ? '<span class="dim">--</span>' : Number(x.cpr).toFixed(1) + '%';
+      /* 失败类型：服务端 failedTaskType（如「用例失败」「编译失败」）；执行成功时为 null */
+      const ftt = (x.ftt === null || x.ftt === undefined || x.ftt === '' || x.ftt === '流水线未失败')
+        ? '<span class="dim">--</span>' : rfEsc(String(x.ftt));
+      rows.push('<tr>'
+        + '<td class="nowrap">' + bn + '</td>'
+        + '<td class="nowrap">' + statusTag(x.status) + '</td>'
+        + '<td class="nowrap dim">' + ftt + '</td>'
+        + '<td class="nowrap">' + va + '</td>'
+        + '<td class="nowrap">' + bs + '</td>'
+        + '<td class="nowrap dim">' + cpr + '</td>'
+        + '<td class="nowrap dim">' + rfEsc(String(x.start || '') || '--') + '</td>'
+        + '<td class="nowrap dim">' + rfEsc(String(x.end || '') || '--') + '</td>'
+        + '</tr>');
+  });
+  openModal('构建记录（' + st.runs.length + ' 次运行）｜'
+      + rfEsc(who ? who + ' · ' : '') + rfEsc(DIMNAME[dim] || '全部维度'),
+    '<table class="rca"><colgroup><col style="width:8%"><col style="width:9%">'
+    + '<col style="width:12%"><col style="width:8%"><col style="width:11%">'
+    + '<col style="width:9%"><col style="width:21.5%"><col style="width:21.5%"></colgroup>'
+    + '<thead><tr><th>构建</th><th>状态</th><th>失败类型</th><th>版本可用</th><th>编译成功/次数</th>'
+    + '<th>用例通过率</th><th>开始时间</th><th>结束时间</th></tr></thead>'
+    + '<tbody>' + rows.join('') + '</tbody></table>'
+    + '<div class="mrec-note">区间 ' + rfEsc(ctx.from) + ' ~ ' + rfEsc(ctx.to)
+    + ' · 区间内每一次运行逐条平铺（不按天汇总），运行来自归档 step_2_runs.json 的 runHistory'
+    + '（按执行结束时间归属日期）· 统计区间一变即按新区间重新筛选、重新计算 · 执行成功也逐条列出'
+    + ' · 点构建号直接在 openLiBing 打开该次执行。</div>');
+  return true;
+}
+/* 流水线页区块头入口：CTX / RECS 已在页面加载时备好，直接渲染 */
+function openBuilds(){
+  const dim = dimOf();
+  const ctx = CTX || {dirs: [], days: [], from: '', to: '', runs: RUNS};
+  const r0 = RECS[0] || {};
+  if (buildsTable(ctx, dim, RECS, r0.pipelineName || r0.pipeline || KEY)) return;
+  openBuildsLegacy(dim);
+}
+/* 组件级清单入口：点「版本可用度 / 编译成功率」数字 → 按 key 找到该流水线的归档目录，
+   再按需读 step_2_runs.json 取运行历史（组件级首屏只算比率，不带运行明细，所以这里现取）。
+   多个归档日各自带着同一份整区间 runHistory，按构建号去重即可，不会重复出行。 */
+function openBuildsOf(key, dim, from, to){
+  key = key || ''; dim = (dim === 'bs' ? 'bs' : 'va');
+  const label = key.replace('|', ' / ') || '流水线';
+  const days = DAYS.filter(function(d){ return d.date >= from && d.date <= to; });
+  if (!days.length){
+    openModal('构建记录｜' + rfEsc(label),
+      '<div class="dim">该区间内没有归档日（' + rfEsc(from) + ' ~ ' + rfEsc(to) + '）。</div>');
+    return;
+  }
+  openModal('构建记录｜' + rfEsc(label), '<div class="loading">正在读取运行历史…</div>');
+  const dirs = [], runs = [], seen = {};
+  let chain = Promise.resolve();
+  days.forEach(function(d){
+    chain = chain.then(function(){
+      return jget(BACK_TO + d.path + '/_day.json').then(function(day){
+        let pl = null;
+        (day.pipelines || []).forEach(function(x){ if (x.key === key) pl = x; });
+        if (!pl) return;
+        dirs.push({date: d.date, path: pl.path, pl: pl});
+        return jget(BACK_TO + pl.path + '/step_2_runs.json').then(function(s2){
+          ((s2 || {}).runHistory || []).forEach(function(h){
+            const rn = String(h.rn);
+            if (!rn || rn === 'undefined' || seen[rn]) return;
+            seen[rn] = 1;
+            const end = String(h.end || '');
+            runs.push({rn: h.rn, start: h.start, end: end, day: end.slice(0, 10),
+                       status: h.status, url: h.url, iva: h.iva,
+                       bc: h.bc, bpc: h.bpc, cpr: h.cpr, ftt: h.ftt});
+          });
+        }).catch(function(){ /* 老归档没有 step_2_runs.json：下面统一提示 */ });
+      }).catch(function(){ /* 单日读取失败跳过，不影响其它日 */ });
+    });
+  });
+  chain.then(function(){
+    const ctx = {dirs: dirs, days: days, from: from, to: to, runs: runs};
+    if (buildsTable(ctx, dim, [], label)) return;
+    openModal('构建记录（0 次运行）｜' + rfEsc(label),
+      '<div class="dim">该流水线在区间 ' + rfEsc(from) + ' ~ ' + rfEsc(to)
+      + ' 内没有读到运行历史（归档缺少 step_2_runs.json）。</div>');
+  });
+}
+/* 兜底：老归档没有 step_2_runs.json 的运行历史时，仍按「当前维度的归档记录」列出构建 */
+function openBuildsLegacy(dim){
+  const picked = [];
+  RECS.forEach(function(r, i){
+    if (dim && (r.light || {}).track !== dim) return;
+    picked.push({r: r, i: i});
+  });
+  if (!picked.length){
+    openModal('构建记录（0 条）｜' + rfEsc(DIMNAME[dim] || '全部维度'),
+      '<div class="dim">该区间内没有读到这条流水线的运行历史（归档缺少 step_2_runs.json），'
+      + '也没有「' + rfEsc(DIMNAME[dim] || '当前维度') + '」维度的失败记录。</div>');
+    return;
+  }
+  const rows = picked.map(function(x){
+    const r = x.r, i = x.i;
+    const v = r.verdict || {};
+    const ftt = r.failedTaskType || r.ftt;
+    const lb = (r.links || {}).openlibing || '';
+    const bn = lb
+      ? '<a href="' + rfEsc(lb) + '" target="_blank" rel="noopener" title="在 openLiBing 查看该次执行">#'
+        + rfEsc(nz(r.buildNumber)) + '</a>'
+      : '#' + rfEsc(nz(r.buildNumber));
+    return '<tr>'
+      + '<td class="nowrap">' + bn + '</td>'
+      + '<td class="nowrap">' + statusTag(r.status) + '</td>'
+      + '<td class="nowrap dim">' + (ftt ? rfEsc(ftt) : '<span class="dim">--</span>') + '</td>'
+      + '<td class="nowrap">' + rfEsc(((CATS[v.category] || [v.text || '--']))[0]) + '</td>'
+      + '<td class="nowrap dim">' + rfEsc(tm(r.startedAt)) + '</td>'
+      + '<td class="nowrap dim">' + rfEsc(tm(r.endedAt)) + '</td>'
+      + '</tr>';
+  }).join('');
+  openModal('构建记录（' + picked.length + ' 条）｜' + rfEsc(DIMNAME[dim] || '全部维度'),
+    '<table class="rca"><colgroup><col style="width:11%"><col style="width:11%">'
+    + '<col style="width:15%"><col style="width:15%">'
+    + '<col style="width:24%"><col style="width:24%"></colgroup>'
+    + '<thead><tr><th>构建</th><th>状态</th><th>失败类型</th><th>定性</th>'
+    + '<th>开始时间</th><th>结束时间</th></tr></thead>'
+    + '<tbody>' + rows + '</tbody></table>'
+    + '<div class="mrec-note">归档里没有运行历史（step_2_runs.json），只列出当前维度的失败记录（共 '
+    + picked.length + ' 条）。点构建号直接在 openLiBing 打开该次执行。</div>');
+}
+
+/* 弹窗入口（记录明细页已下线，点构建号直接跳 openLiBing）：
+   data-builds      → 流水线页「查看记录」/「构建记录」按钮 → 本页构建记录弹窗
+   data-cases       → 根因表「共 N 条失败用例」→ 失败用例详情
+   data-evidence    → 根因表「证据」→ 日志证据逐行
+   data-builds-of   → 组件级清单里的比率数字 → 该流水线按需拉运行历史再弹窗 */
+document.addEventListener('click', function(ev){
+  const el = (ev.target && ev.target.closest)
+    ? ev.target.closest('[data-builds],[data-cases],[data-evidence],[data-builds-of],#mclose,#mrec')
+    : null;
+  if (!el) return;
+  if (el.id === 'mclose'){ closeModal(); return; }
+  if (el.id === 'mrec' && ev.target === el){ closeModal(); return; }
+  if (el.hasAttribute('data-builds')){ ev.preventDefault(); openBuilds(); return; }
+  if (el.hasAttribute('data-cases')){ ev.preventDefault(); openCases(Number(el.getAttribute('data-cases'))); return; }
+  if (el.hasAttribute('data-evidence')){ ev.preventDefault(); openEvidence(Number(el.getAttribute('data-evidence'))); return; }
+  if (el.hasAttribute('data-builds-of')){
+    ev.preventDefault();
+    openBuildsOf(el.getAttribute('data-builds-of'), el.getAttribute('data-dim'),
+                 el.getAttribute('data-from'), el.getAttribute('data-to'));
+  }
+});
+document.addEventListener('keydown', function(ev){ if (ev.key === 'Escape') closeModal(); });
+
+boot();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Log Report: testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnmatmulalltoall</title>
+    <style>
+        body { font-family: Consolas, monospace; margin: 20px; background-color: #f4f4f4; }
+        .header {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .header h2 { margin: 0; color: #333; }
+        .header p { margin: 5px 0; }
+        .status-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            background-color: #F44336;
+        }
+        table { width: 100%; border-collapse: collapse; background-color: white; margin-bottom: 5px; }
+        th, td { border: 1px solid #ddd; padding: 6px 8px; text-align: left; word-break: break-word; vertical-align: top; }
+        th { background-color: #9E9E9E; color: white; }
+        .ERROR, .FAIL { color: #F44336; font-weight: bold; }
+        .WARN { color: #FF9800; font-weight: bold; }
+        .INFO, .PASS { color: #2E8B57; }
+        .DEBUG { color: #607D8B; }
+        .TRACE { color: #757575; }
+        .TC_STEP { color: #1976D2; font-weight: bold; }
+        th:nth-child(1), td:nth-child(1) { width: 220px; min-width: 150px; }
+        th:nth-child(2), td:nth-child(2) { width: 70px; min-width: 60px; }
+        th:nth-child(3), td:nth-child(3) { width: 50px; min-width: 40px; }
+        th:nth-child(4), td:nth-child(4) { width: 128px; min-width: 112px; }
+        th:nth-child(5), td:nth-child(5) { width: auto; }
+
+        /* Step row status colors - all cells in the row */
+        .step-error td { color: #F44336; }
+        .step-warning td { color: #FF9800; }
+        .step-success td { color: #2E8B57; }
+
+        /* Collapsible section styles */
+        .step-toggle {
+            display: inline-block;
+            padding: 4px 12px;
+            border: 2px solid #666;
+            border-radius: 4px;
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 8px;
+            white-space: nowrap;
+        }
+        .step-toggle:hover {
+            background-color: #e0e0e0;
+            border-color: #333;
+        }
+        .step-content { display: none; }
+        .step-content.expanded { display: table-row; }
+        .step-indent { padding-left: 24px; }
+
+        /* Message scroll styles */
+        .msg-scroll {
+            max-height: 300px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            word-break: break-word;
+            white-space: pre-wrap;
+        }
+    </style>
+    <script>
+        function toggleStep(stepId) {
+            var rows = document.querySelectorAll('.content-' + stepId);
+            var toggle = document.getElementById('toggle-' + stepId);
+            if (rows.length === 0) {
+                return;
+            }
+            if (rows[0].classList.contains('expanded')) {
+                rows.forEach(function(r) { r.classList.remove('expanded'); });
+                toggle.textContent = '+Expand step';
+            } else {
+                rows.forEach(function(r) { r.classList.add('expanded'); });
+                toggle.textContent = '-Collapse step';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h2>Log Report: testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnmatmulalltoall</h2>
+        <p><strong>Case ID:</strong> testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnmatmulalltoall</p>
+        <p><strong>Status:</strong> <span class="status-badge">Failed</span></p>
+        <p><strong>Duration:</strong> 32.18s</p>
+    </div>
+    <div class="summary-section" style="background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #1e293b 100%); padding: 32px 28px; margin: 24px 0; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.08);">
+        <div style="display: flex; align-items: center; margin-bottom: 28px;">
+            <span style="font-size: 22px; margin-right: 10px;">📊</span>
+            <h3 style="color: #f1f5f9; margin: 0; font-size: 20px; font-weight: 600; letter-spacing: .5px;">算子执行结果汇总</h3>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px;">
+            <div class="stat-card" style="background: rgba(255,255,255,.95); padding: 20px 16px; border-radius: 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.06); transition: transform .2s,box-shadow .2s; cursor: default;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 8px rgba(0,0,0,.06)'">
+                <div style="font-size: 13px; color: #64748b; margin-bottom: 8px; font-weight: 500;">📋 总用例数</div>
+                <div style="font-size: 32px; font-weight: 700; color: #1e293b; line-height: 1;">2</div>
+            </div>
+            <div class="stat-card" style="background: rgba(255,255,255,.95); padding: 20px 16px; border-radius: 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.06); transition: transform .2s,box-shadow .2s; cursor: default;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 8px rgba(0,0,0,.06)'">
+                <div style="font-size: 13px; color: #64748b; margin-bottom: 8px; font-weight: 500;">✅ 执行成功</div>
+                <div style="font-size: 32px; font-weight: 700; color: #10b981; line-height: 1;">0</div>
+            </div>
+            <div class="stat-card" style="background: rgba(255,255,255,.95); padding: 20px 16px; border-radius: 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.06); transition: transform .2s,box-shadow .2s; cursor: default;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 8px rgba(0,0,0,.06)'">
+                <div style="font-size: 13px; color: #64748b; margin-bottom: 8px; font-weight: 500;">❌ 执行失败</div>
+                <div style="font-size: 32px; font-weight: 700; color: #ef4444; line-height: 1;">1</div>
+            </div>
+            <div class="stat-card" style="background: rgba(255,255,255,.95); padding: 20px 16px; border-radius: 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.06); transition: transform .2s,box-shadow .2s; cursor: default;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 8px rgba(0,0,0,.06)'">
+                <div style="font-size: 13px; color: #64748b; margin-bottom: 8px; font-weight: 500;">🏆 通过用例</div>
+                <div style="font-size: 32px; font-weight: 700; color: #3b82f6; line-height: 1;">0</div>
+            </div>
+            <div class="stat-card" style="background: rgba(255,255,255,.95); padding: 20px 16px; border-radius: 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.06); transition: transform .2s,box-shadow .2s; cursor: default;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 8px rgba(0,0,0,.06)'">
+                <div style="font-size: 13px; color: #64748b; margin-bottom: 8px; font-weight: 500;">📈 通过率</div>
+                <div style="font-size: 32px; font-weight: 700; color: #8b5cf6; line-height: 1;">0.0<span style="font-size: 16px; font-weight: 400;">%</span></div>
+            </div>
+            <div class="stat-card stat-precision" style="background: rgba(255,255,255,.95); padding: 20px 16px; border-radius: 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.06); transition: transform .2s,box-shadow .2s; cursor: default;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 8px rgba(0,0,0,.06)'">
+                <div style="font-size: 13px; color: #64748b; margin-bottom: 8px; font-weight: 500;">🎯 精度状态</div>
+                <div style="display: inline-flex; align-items: center; gap: 6px; margin-top: 4px;">
+                    <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: #ef4444; color: white; font-size: 18px; font-weight: 700;">✗</span>
+                    <span style="font-size: 15px; font-weight: 600; color: #ef4444;">Failed</span>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 24px; padding: 12px 16px; background: rgba(255,255,255,.08); border-radius: 8px; display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 15px;">📁</span>
+            <span style="color: #cbd5e1; font-size: 13px; font-weight: 500;">xlsx文件:</span>
+            <code style="color: #e2e8f0; font-size: 13px; font-family: Consolas,Monaco,monospace; background: rgba(255,255,255,.12); padding: 3px 10px; border-radius: 4px;">logs/TestCases/results/mc2/aclnnMatmulAlltoAll_Smoke_reports_accuracy_2026-11-06-20-45-11.xlsx</code>
+        </div>
+    </div>
+<div style="background: #fff; margin: 24px 0; padding: 28px; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.04); border: 1px solid #f1f5f9;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+            <div style="width: 4px; height: 24px; background: #ef4444; border-radius: 2px;"></div>
+            <h3 style="color: #1e293b; margin: 0; font-size: 18px; font-weight: 600;">📈 失败概述</h3>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 24px; padding: 12px 16px; background: #fef2f2; border-radius: 8px; border: 1px solid #fecaca;">
+            <span style="font-size: 20px;">⚠️</span>
+            <span style="color: #991b1b; font-size: 14px;">共 <strong style="font-size: 22px; color: #dc2626;">1</strong> 个失败用例</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px;">
+            <div>
+                <h4 style="color: #475569; margin: 0 0 16px 0; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px;">📋 按失败类型分布</h4>
+                
+                    <div style="margin: 14px 0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                            <span style="font-weight: 600; color: #334155; font-size: 13px;">execution_failed</span>
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                <span style="font-weight: 700; color: #ef4444; font-size: 15px;">1</span>
+                                <span style="font-size: 12px; color: #94a3b8; font-weight: 500;">(100.0%)</span>
+                            </div>
+                        </div>
+                        <div style="background: #f1f5f9; border-radius: 8px; height: 10px; overflow: hidden; box-shadow: inset 0 1px 2px rgba(0,0,0,.06);">
+                            <div style="background: linear-gradient(90deg, #ef4444, #dc2626); height: 100%; width: 100.0%; border-radius: 8px; transition: width .6s ease; box-shadow: 0 1px 3px rgba(239,68,68,.3);"></div>
+                        </div>
+                    </div>
+            </div>
+            <div>
+                <h4 style="color: #475569; margin: 0 0 16px 0; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px;">🔢 按数据类型分布</h4>
+                
+                    <div style="margin: 14px 0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                            <span style="font-weight: 600; color: #334155; font-size: 13px;">{'method_inputs': None, 'tensor_input': None, 'inputs': [['bf16'], ['bf16'], ['bf16'], ['int64_t', 'int64_t'], ['string'], ['bool'], ['bool'], ['int64_t'], ['bool']]}</span>
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                <span style="font-weight: 700; color: #3b82f6; font-size: 15px;">1</span>
+                                <span style="font-size: 12px; color: #94a3b8; font-weight: 500;">(100.0%)</span>
+                            </div>
+                        </div>
+                        <div style="background: #f1f5f9; border-radius: 8px; height: 10px; overflow: hidden; box-shadow: inset 0 1px 2px rgba(0,0,0,.06);">
+                            <div style="background: linear-gradient(90deg, #3b82f6, #3b82f6dd); height: 100%; width: 100.0%; border-radius: 8px; transition: width .6s ease; box-shadow: 0 1px 3px rgba(59,130,246,.3);"></div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+<div style="background: #fff; margin: 24px 0; padding: 0; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.04); border: 1px solid #f1f5f9; overflow: hidden;">
+        <div style="padding: 24px 28px 0 28px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 4px; height: 24px; background: #ef4444; border-radius: 2px;"></div>
+                    <h3 style="color: #1e293b; margin: 0; font-size: 18px; font-weight: 600;">❌ 失败用例列表</h3>
+                </div>
+                <span style="background: #fef2f2; color: #dc2626; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">1 cases</span>
+            </div>
+        </div>
+        <div style="overflow-x: auto; padding: 0 4px 4px 4px;">
+            <table style="width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px;">
+                <thead>
+                    <tr>
+                        <th style="color: #64748b; padding: 14px 12px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; background: #f8fafc; border-bottom: 2px solid #e2e8f0; position: sticky; top: 0;">序号</th>
+                        <th style="color: #64748b; padding: 14px 12px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; background: #f8fafc; border-bottom: 2px solid #e2e8f0;">输入shape</th>
+                        <th style="color: #64748b; padding: 14px 12px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; background: #f8fafc; border-bottom: 2px solid #e2e8f0;">输入dtype</th>
+                        <th style="color: #64748b; padding: 14px 12px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; background: #f8fafc; border-bottom: 2px solid #e2e8f0;">输入range</th>
+                        <th style="color: #64748b; padding: 14px 12px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; background: #f8fafc; border-bottom: 2px solid #e2e8f0;">失败类型</th>
+                        <th style="color: #64748b; padding: 14px 12px; text-align: center; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; background: #f8fafc; border-bottom: 2px solid #e2e8f0;">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: #f8fafc; transition: background .15s;" onmouseover="this.style.background='#eff6ff'" onmouseout="this.style.background='#f8fafc'">
+                    <td style="padding: 14px 12px; border-bottom: 1px solid #f1f5f9; font-weight: 600; color: #334155; font-size: 13px; white-space: nowrap;">#3</td>
+                    <td style="padding: 14px 12px; border-bottom: 1px solid #f1f5f9; font-family: Consolas,Monaco,monospace; font-size: 12px; color: #475569; max-width: 320px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="{'method_inputs': None, 'tensor_input': None, 'inputs': [[50, 64], [128, 64], [128], [None, None], [0], [0], [0], [0], [0]]}">{'method_inputs': None, 'tensor_input': None, 'inputs': [[50, 64], [128, 64], [128], [None, None], [0], [0], [0], [0], [0]]}</td>
+                    <td style="padding: 14px 12px; border-bottom: 1px solid #f1f5f9;"><span style="display: inline-block; background: #e0e7ff; color: #3730a3; padding: 3px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; font-family: Consolas,monospace;">{'method_inputs': None, 'tensor_input': None, 'inputs': [['bf16'], ['bf16'], ['bf16'], ['int64_t', 'int64_t'], ['string'], ['bool'], ['bool'], ['int64_t'], ['bool']]}</span></td>
+                    <td style="padding: 14px 12px; border-bottom: 1px solid #f1f5f9; font-size: 12px; color: #64748b; font-family: Consolas,monospace;">{'method_inputs': None, 'tensor_input': None, 'inputs': [[[-1, 1]], [[-1, 1]], [[-0.3, 0.3]], [-1, -2], [1], [False], [True], [['-inf', 'inf']], [False]]}</td>
+                    <td style="padding: 14px 12px; border-bottom: 1px solid #f1f5f9;"><span style="display: inline-flex; align-items: center; gap: 5px; color: #dc2626; font-weight: 600; font-size: 12px;"><span style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #dc2626;"></span>execution_failed</span></td>
+                    <td style="padding: 14px 12px; border-bottom: 1px solid #f1f5f9; text-align: center;"><a href="mc2/details/failed_case_aclnnMatmulAlltoAll_3.html" style="display: inline-block; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; padding: 7px 16px; text-decoration: none; border-radius: 8px; font-size: 12px; font-weight: 600; transition: all .2s; box-shadow: 0 2px 6px rgba(37,99,235,.25);" onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 12px rgba(37,99,235,.35)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 6px rgba(37,99,235,.25)'">📄 查看详情</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <p><strong>Total Entries:</strong> 158</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Level</th>
+                <th>Thread</th>
+                <th>Location</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>2026-11-06 20:44:54.843</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>plugin.py:425</td>
+            <td><div class="msg-scroll">environment requirements: [{&#39;name&#39;: &#39;cann_single_A2_device_2_cover_single_type-nodes_1-device&#39;, &#39;res_type&#39;: &#39;container&#39;, &#39;cpu_arch&#39;: &#39;ARM&#39;, &#39;cpu_core_num&#39;: 48, &#39;npu_gen&#39;: &#39;A2&#39;, &#39;npu_model&#39;: &#39;Ascend 910B3&#39;, &#39;npu_num&#39;: 2, &#39;shm_size&#39;: &#39;256Gi&#39;, &#39;memory_size&#39;: 256, &#39;resources&#39;: {&#39;cpu&#39;: {&#39;request&#39;: &#39;48&#39;, &#39;limit&#39;: &#39;128&#39;}, &#39;memory&#39;: {&#39;request&#39;: &#39;256Gi&#39;, &#39;limit&#39;: &#39;1024Gi&#39;}}, &#39;use_nfs&#39;: True, &#39;mount_source_data&#39;: [&#39;cann_ops_data1&#39;, &#39;cann_ops_data2&#39;, &#39;cann_ops_data3&#39;, &#39;cann_ops_data4&#39;, &#39;cann_ops_data5&#39;, &#39;cann_duo_os_autos_test&#39;, &#39;cann_duo_os_imagenet&#39;, &#39;cann_duo_os_acl&#39;, &#39;cann_duo_os_pyacl_A2&#39;], &#39;mount_dest_dir&#39;: [&#39;/autotest/ATK_BIN&#39;, &#39;/autotest/atk_output&#39;, &#39;/autotest/config&#39;, &#39;/autotest/golden_path&#39;, &#39;/autotest/result&#39;, &#39;/autos_test&#39;, &#39;/data/imagenet2012&#39;, &#39;/home/infer/bin_bak/acl&#39;, &#39;/home/pyacl&#39;], &#39;pool&#39;: &#39;ascend-general-a2&#39;, &#39;image_label&#39;: &#39;swr.cn-north-4.myhuaweicloud.com/hw-ascend/smoke:atb-910b&#39;}]</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:44:54.844</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>plugin.py:391</td>
+            <td><div class="msg-scroll">pre_action_registry has no actions registered</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:44:55.600</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>sendcmd[device]</td>
+            <td><div class="msg-scroll">source /usr/local/Ascend/ascend-toolkit/set_env.sh &amp;&amp; npu-smi info</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:44:55.601</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>recvcmd[device]</td>
+            <td><div class="msg-scroll">+------------------------------------------------------------------------------------------------+
+| npu-smi 24.1.rc1                 Version: 26.1.1                                               |
++---------------------------+---------------+----------------------------------------------------+
+| NPU   Name                | Health        | Power(W)    Temp(C)           Hugepages-Usage(page)|
+| Chip                      | Bus-Id        | AICore(%)   Memory-Usage(MB)  HBM-Usage(MB)        |
++===========================+===============+====================================================+
+| 0     910B3               | OK            | 93.9        49                0    / 0             |
+| 0                         | 0000:C1:00.0  | 0           0    / 0          3536 / 65536         |
++===========================+===============+====================================================+
+| 1     910B3               | OK            | 99.5        48                0    / 0             |
+| 0                         | 0000:01:00.0  | 0           0    / 0          3528 / 65536         |
++===========================+===============+====================================================+
++---------------------------+---------------+----------------------------------------------------+
+| NPU     Chip              | Process id    | Process name             | Process memory(MB)      |
++===========================+===============+====================================================+
+| No running processes found in NPU 0                                                            |
++===========================+===============+====================================================+
+| No running processes found in NPU 1                                                            |
++===========================+===============+====================================================+</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:44:55.602</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>npu.py:509</td>
+            <td><div class="msg-scroll">解析npu-smi info完成，共 2 个NPU</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:44:55.602</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>conftest.py:112</td>
+            <td><div class="msg-scroll">[env_preflight] cann_single_A2_device_2_cover_single_type-nodes_1-device 环境信息:</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:44:55.602</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>conftest.py:113</td>
+            <td><div class="msg-scroll">[env_preflight] cann_single_A2_device_2_cover_single_type-nodes_1-device.npu_smi_info:
+{&#39;driver_version&#39;: &#39;npu-smi 24.1.rc1&#39;, &#39;npu_smi_version&#39;: &#39;Version: 26.1.1&#39;, &#39;npu_message&#39;: {&#39;0&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;93.9&#39;, &#39;temp_c&#39;: &#39;49&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:C1:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3536/65536&#39;, &#39;processes&#39;: []}, &#39;1&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;99.5&#39;, &#39;temp_c&#39;: &#39;48&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:01:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3528/65536&#39;, &#39;processes&#39;: []}}}</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:44:55.603</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>conftest.py:115</td>
+            <td><div class="msg-scroll">[env_preflight] cann_single_A2_device_2_cover_single_type-nodes_1-device.os_version:
+NAME=&quot;Ubuntu&quot;
+VERSION=&quot;20.04.6 LTS (Focal Fossa)&quot;
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME=&quot;Ubuntu 20.04.6 LTS&quot;
+VERSION_ID=&quot;20.04&quot;
+HOME_URL=&quot;https://www.ubuntu.com/&quot;
+SUPPORT_URL=&quot;https://help.ubuntu.com/&quot;
+BUG_REPORT_URL=&quot;https://bugs.launchpad.net/ubuntu/&quot;
+PRIVACY_POLICY_URL=&quot;https://www.ubuntu.com/legal/terms-and-policies/privacy-policy&quot;
+VERSION_CODENAME=focal
+UBUNTU_CODENAME=focal</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:44:55.603</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>conftest.py:115</td>
+            <td><div class="msg-scroll">[env_preflight] cann_single_A2_device_2_cover_single_type-nodes_1-device.arch_type:
+aarch64</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:44:55.604</td>
+            <td class='TC_START'>TC_START</td>
+            <td>281473166712848</td>
+            <td>_callers.py:88</td>
+            <td><div class="msg-scroll">testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnmatmulalltoall</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:44:55.604</td>
+            <td class='TC_START'>TC_START</td>
+            <td>281473166712848</td>
+            <td>python.py:159</td>
+            <td><div class="msg-scroll">test_CANN_ACCU_SMK_aclnnMatmulAlltoAll</div></td>
+        </tr>
+        <tr class="step-success">
+            <td>2026-11-06 20:44:55.605</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281473166712848</td>
+            <td>python.py:159</td>
+            <td>
+                <span id="toggle-step-1" class="step-toggle" onclick="toggleStep('step-1')">+Expand step</span>
+                <div class="msg-scroll">-------------------------------- VAR DEFINE --------------------------------</div>
+            </td>
+        </tr>
+        <tr class="step-success">
+            <td>2026-11-06 20:44:55.605</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281473166712848</td>
+            <td>python.py:159</td>
+            <td>
+                <span id="toggle-step-2" class="step-toggle" onclick="toggleStep('step-2')">+Expand step</span>
+                <div class="msg-scroll">-------------------------------- ENV INIT --------------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.605</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: workdir=/autotest</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.606</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: team=ascend</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.606</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:275</td>
+                <td class="step-indent"><div class="msg-scroll">[PREPARE] Step 1/5: 初始化时间戳与日志路径</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.606</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: task_id=aclnnMatmulAlltoAll_Smoke</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.607</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: timestamp=20261106204455</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.607</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:441</td>
+                <td class="step-indent"><div class="msg-scroll">Log path: /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.607</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:278</td>
+                <td class="step-indent"><div class="msg-scroll">[PREPARE] Step 2/5: 创建远端日志目录</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.618</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">mkdir -p &#39;/autotest/atk_output/log&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.618</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.673</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">mkdir -p &#39;/autotest/result&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.673</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.673</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:281</td>
+                <td class="step-indent"><div class="msg-scroll">[PREPARE] Step 3/5: 检查 nodes 配置文件 (nodes_yaml=nodes_aclnnMatmulAlltoAll_Accu.yaml)</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.674</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: team=ascend</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.674</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: op_name=aclnnMatmulAlltoAll</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.675</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: category=mc2</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.675</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: team=ascend</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.676</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: yaml_name=nodes_aclnnMatmulAlltoAll_Accu.yaml</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.676</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: team=gdd</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.677</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: category=mc2</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.677</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: op_name=aclnnMatmulAlltoAll</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.677</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: team=ascend</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.678</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>file_utils.py:419</td>
+                <td class="step-indent"><div class="msg-scroll">检查路径是否存在: /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/nodes_aclnnMatmulAlltoAll_Accu.yaml, 搜索关键字: None, 递归: False</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.728</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">test -e &#39;/autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/nodes_aclnnMatmulAlltoAll_Accu.yaml&#39; &amp;&amp; echo &#39;exists&#39; || echo &#39;not_exists&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.728</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">exists</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.728</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>file_utils.py:425</td>
+                <td class="step-indent"><div class="msg-scroll">路径存在: /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/nodes_aclnnMatmulAlltoAll_Accu.yaml</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.728</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:494</td>
+                <td class="step-indent"><div class="msg-scroll">Found nodes config: /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/nodes_aclnnMatmulAlltoAll_Accu.yaml</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.729</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:283</td>
+                <td class="step-indent"><div class="msg-scroll">[PREPARE] Step 3/5: ✓ nodes 配置已定位 → /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/nodes_aclnnMatmulAlltoAll_Accu.yaml</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.729</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:285</td>
+                <td class="step-indent"><div class="msg-scroll">[PREPARE] Step 4/5: 检查 JSON case 文件 (json_path=aclnnMatmulAlltoAll_Smoke.json)</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.729</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: team=ascend</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.730</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: op_name=aclnnMatmulAlltoAll</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.730</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: category=mc2</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.731</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: team=gdd</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.731</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: category=mc2</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.732</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: op_name=aclnnMatmulAlltoAll</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.732</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: team=ascend</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.732</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>file_utils.py:419</td>
+                <td class="step-indent"><div class="msg-scroll">检查路径是否存在: /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/aclnnMatmulAlltoAll_Smoke.json, 搜索关键字: None, 递归: False</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.776</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">test -e &#39;/autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/aclnnMatmulAlltoAll_Smoke.json&#39; &amp;&amp; echo &#39;exists&#39; || echo &#39;not_exists&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.776</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">exists</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.776</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>file_utils.py:425</td>
+                <td class="step-indent"><div class="msg-scroll">路径存在: /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/aclnnMatmulAlltoAll_Smoke.json</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.777</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:549</td>
+                <td class="step-indent"><div class="msg-scroll">Found JSON file: /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/aclnnMatmulAlltoAll_Smoke.json</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.777</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:287</td>
+                <td class="step-indent"><div class="msg-scroll">[PREPARE] Step 4/5: ✓ JSON 文件已定位 → /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/aclnnMatmulAlltoAll_Smoke.json</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.777</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: team=ascend</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.778</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: op_name=aclnnMatmulAlltoAll</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.778</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: category=mc2</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.778</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>file_utils.py:419</td>
+                <td class="step-indent"><div class="msg-scroll">检查路径是否存在: /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll, 搜索关键字: None, 递归: False</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.824</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">test -e &#39;/autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll&#39; &amp;&amp; echo &#39;exists&#39; || echo &#39;not_exists&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.824</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">exists</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.824</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>file_utils.py:425</td>
+                <td class="step-indent"><div class="msg-scroll">路径存在: /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.824</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:736</td>
+                <td class="step-indent"><div class="msg-scroll">Found plugin path: /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.824</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:294</td>
+                <td class="step-indent"><div class="msg-scroll">[PREPARE] ✓ plugin 路径已定位 → /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.825</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:301</td>
+                <td class="step-indent"><div class="msg-scroll">[PREPARE] Step 5/5: 跳过用例生成 (gen_by_yaml=False, regenerate_case=True)</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 20:44:55.825</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:312</td>
+                <td class="step-indent"><div class="msg-scroll">[PREPARE] ✓ 全部完成 | nodes=/autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/nodes_aclnnMatmulAlltoAll_Accu.yaml | json=/autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/aclnnMatmulAlltoAll_Smoke.json | plugin=/autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll | log=/autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+        <tr class="step-error">
+            <td>2026-11-06 20:44:55.825</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281473166712848</td>
+            <td>python.py:159</td>
+            <td>
+                <span id="toggle-step-3" class="step-toggle" onclick="toggleStep('step-3')">+Expand step</span>
+                <div class="msg-scroll">-------------------------------- TC EXECUTE --------------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:55.826</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: team=ascend</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:55.827</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: op_name=aclnnMatmulAlltoAll</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:55.827</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: category=mc2</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:55.828</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: team=ascend</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:55.829</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: op_name=aclnnMatmulAlltoAll</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:55.829</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>config.py:49</td>
+                <td class="step-indent"><div class="msg-scroll">配置项解析完成，共 18 项，设置变量: category=mc2</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:55.830</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:340</td>
+                <td class="step-indent"><div class="msg-scroll">[EXECUTE] atk task 核心参数: -c /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/aclnnMatmulAlltoAll_Smoke.json -n /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/nodes_aclnnMatmulAlltoAll_Accu.yaml -p /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll  -mt 1 -bmo /autotest/ATK_BIN/mc2/aclnnMatmulAlltoAll/output</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:55.831</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:341</td>
+                <td class="step-indent"><div class="msg-scroll">[EXECUTE] 完整执行命令 (含 docker/nohup 包装):</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:55.831</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:342</td>
+                <td class="step-indent"><div class="msg-scroll">[EXECUTE]   nohup bash -c &quot;source ~/.bashrc &amp;&amp; source /usr/local/Ascend/ascend-toolkit/set_env.sh &amp;&amp; cd /autotest &amp;&amp; atk task -c /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/aclnnMatmulAlltoAll_Smoke.json -n /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/nodes_aclnnMatmulAlltoAll_Accu.yaml -p /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll  -mt 1 -bmo /autotest/ATK_BIN/mc2/aclnnMatmulAlltoAll/output&quot;&gt;&gt; /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log 2&gt;&amp;1 &amp;</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:55.831</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:343</td>
+                <td class="step-indent"><div class="msg-scroll">[EXECUTE] ✓ 命令已下发至远端容器, 日志写入: /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:55.876</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">nohup bash -c &quot;source ~/.bashrc &amp;&amp; source /usr/local/Ascend/ascend-toolkit/set_env.sh &amp;&amp; cd /autotest &amp;&amp; atk task -c /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/aclnnMatmulAlltoAll_Smoke.json -n /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/nodes_aclnnMatmulAlltoAll_Accu.yaml -p /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll  -mt 1 -bmo /autotest/ATK_BIN/mc2/aclnnMatmulAlltoAll/output&quot;&gt;&gt; /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log 2&gt;&amp;1 &amp;</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:55.877</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:55.877</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:367</td>
+                <td class="step-indent"><div class="msg-scroll">[MONITOR] 开始监控远端日志, 等待 &#39;atk task finish&#39; ...</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:55.877</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:368</td>
+                <td class="step-indent"><div class="msg-scroll">[MONITOR]   日志路径: /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:55.877</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:369</td>
+                <td class="step-indent"><div class="msg-scroll">[MONITOR]   超时设置: 1200s</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:55.926</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">tail -n 100 /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:55.926</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:57.939</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">tail -n 100 /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:57.939</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:59.951</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">tail -n 100 /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:44:59.951</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:01.965</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">tail -n 100 /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:01.965</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:03.977</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">tail -n 100 /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:03.977</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:05.992</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">tail -n 100 /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:05.992</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:08.004</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">tail -n 100 /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:08.004</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:10.017</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">tail -n 100 /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:10.018</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:12.031</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">tail -n 100 /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:12.031</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+ct-tool not installed, please install it first.
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">task_output_path: /autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">clear celery filesystem storage before start. broker=/autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005/db/celery/broker, processed=/autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005/db/celery/processed, results=/autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005/db/celery/results</span></span>
+[2026-11-06 20:45:10]</span> [WARNING]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#FFC107">register from python file /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/aclnnMatmulAlltoAll_testcase.py <span style="color:#F44336;font-weight:bold">failed</span>, <span style="color:#F44336;font-weight:bold">ERROR</span>: No module named &#39;common&#39;</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">function_aclnn_matmul_allto_all is already registered, repeated registration will coverage it, new module path is executor_aclnnMatmulAlltoAll</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">Module function_aclnn_matmul_allto_all has been registered.</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">pyaclnn_aclnn_matmul_allto_all is already registered, repeated registration will coverage it, new module path is executor_aclnnMatmulAlltoAll</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">Module pyaclnn_aclnn_matmul_allto_all has been registered.</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">pyaclnn_aclnn_matmul_allto_all_abnormal is already registered, repeated registration will coverage it, new module path is executor_aclnnMatmulAlltoAll</span></span>
+[2026-11-06 20:45:10]</span> [WARNING]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#FFC107">register from python file /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/aclnnMatmulAlltoAll_testcase.py <span style="color:#F44336;font-weight:bold">failed</span>, <span style="color:#F44336;font-weight:bold">ERROR</span>: No module named &#39;common&#39;</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [executor_aclnnMatmulAlltoAll.py</span>:20</span>]  <span style="color:#2196F3">function_aclnn_matmul_allto_all is already registered, repeated registration will coverage it, new module path is executor_aclnnMatmulAlltoAll</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [executor_aclnnMatmulAlltoAll.py</span>:156</span>]  <span style="color:#2196F3">pyaclnn_aclnn_matmul_allto_all is already registered, repeated registration will coverage it, new module path is executor_aclnnMatmulAlltoAll</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [executor_aclnnMatmulAlltoAll.py</span>:202</span>]  <span style="color:#2196F3">pyaclnn_aclnn_matmul_allto_all_abnormal is already registered, repeated registration will coverage it, new module path is executor_aclnnMatmulAlltoAll</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">bind_cpu_type auto resolved to 2 (reason=container_detected)</span></span>
+[2026-11-06 20:45:11]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">create_tasks start!!!, case_config_name:aclnnMatmulAlltoAll, all_cases_num: 2</span></span>
+ATK任务进度:   0%|          | 0/2 [00:00&lt;?, ?it/s][2026-11-06 20:45:11]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">[case 0] create dist execute task, backend=pyaclnn, node=0, devices=[0, 1], ranks=[0, 1], world_size=2, master_ip=127.0.0.1, master_port=21901, init_method=tcp://127.0.0.1:21901, comm_domain=41901</span></span>
+ * Serving Flask app &#39;sqlite_web.sqlite_web&#39;
+ * Debug mode: off
+[2026-11-06 20:45:11]</span> [WARNING]</span> [MainProcess]</span> [10432]</span> [warnings.py</span>:109</span>]  <span style="color:#FFC107">/usr/local/lib/python3.9/dist-packages/pydantic/main.py:389: UserWarning: Pydantic serializer warnings:
+  Expected `Union[definition-ref, list[definition-ref]]` but got `dict` with value `{&#39;dtype&#39;: &#39;torch.float16&#39;... 32], &#39;stride&#39;: [32, 1]}` - serialized value may not be as expected
+  return self.__pydantic_serializer__.to_python(
+</span></span>
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8881
+ * Running on http://10.0.2.118:8881
+Press CTRL+C to quit
+[2026-11-06 20:45:11]</span> [WARNING]</span> [MainProcess]</span> [10432]</span> [warnings.py</span>:109</span>]  <span style="color:#FFC107">/usr/local/lib/python3.9/dist-packages/pydantic/main.py:389: UserWarning: Pydantic serializer warnings:
+  Expected `enum` but got `int` with value `0` - serialized value may not be as expected
+  return self.__pydantic_serializer__.to_python(
+</span></span>
+[2026-11-06 20:45:12]</span> [INFO]</span> [ForkPoolWorker-1]</span> [10620]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 0] start CREATE DATASET.</span></span></div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:14.047</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">tail -n 100 /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:14.048</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+ct-tool not installed, please install it first.
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">task_output_path: /autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">clear celery filesystem storage before start. broker=/autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005/db/celery/broker, processed=/autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005/db/celery/processed, results=/autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005/db/celery/results</span></span>
+[2026-11-06 20:45:10]</span> [WARNING]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#FFC107">register from python file /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/aclnnMatmulAlltoAll_testcase.py <span style="color:#F44336;font-weight:bold">failed</span>, <span style="color:#F44336;font-weight:bold">ERROR</span>: No module named &#39;common&#39;</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">function_aclnn_matmul_allto_all is already registered, repeated registration will coverage it, new module path is executor_aclnnMatmulAlltoAll</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">Module function_aclnn_matmul_allto_all has been registered.</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">pyaclnn_aclnn_matmul_allto_all is already registered, repeated registration will coverage it, new module path is executor_aclnnMatmulAlltoAll</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">Module pyaclnn_aclnn_matmul_allto_all has been registered.</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">pyaclnn_aclnn_matmul_allto_all_abnormal is already registered, repeated registration will coverage it, new module path is executor_aclnnMatmulAlltoAll</span></span>
+[2026-11-06 20:45:10]</span> [WARNING]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#FFC107">register from python file /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/aclnnMatmulAlltoAll_testcase.py <span style="color:#F44336;font-weight:bold">failed</span>, <span style="color:#F44336;font-weight:bold">ERROR</span>: No module named &#39;common&#39;</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [executor_aclnnMatmulAlltoAll.py</span>:20</span>]  <span style="color:#2196F3">function_aclnn_matmul_allto_all is already registered, repeated registration will coverage it, new module path is executor_aclnnMatmulAlltoAll</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [executor_aclnnMatmulAlltoAll.py</span>:156</span>]  <span style="color:#2196F3">pyaclnn_aclnn_matmul_allto_all is already registered, repeated registration will coverage it, new module path is executor_aclnnMatmulAlltoAll</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [executor_aclnnMatmulAlltoAll.py</span>:202</span>]  <span style="color:#2196F3">pyaclnn_aclnn_matmul_allto_all_abnormal is already registered, repeated registration will coverage it, new module path is executor_aclnnMatmulAlltoAll</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">bind_cpu_type auto resolved to 2 (reason=container_detected)</span></span>
+[2026-11-06 20:45:11]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">create_tasks start!!!, case_config_name:aclnnMatmulAlltoAll, all_cases_num: 2</span></span>
+ATK任务进度:   0%|          | 0/2 [00:00&lt;?, ?it/s][2026-11-06 20:45:11]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">[case 0] create dist execute task, backend=pyaclnn, node=0, devices=[0, 1], ranks=[0, 1], world_size=2, master_ip=127.0.0.1, master_port=21901, init_method=tcp://127.0.0.1:21901, comm_domain=41901</span></span>
+ * Serving Flask app &#39;sqlite_web.sqlite_web&#39;
+ * Debug mode: off
+[2026-11-06 20:45:11]</span> [WARNING]</span> [MainProcess]</span> [10432]</span> [warnings.py</span>:109</span>]  <span style="color:#FFC107">/usr/local/lib/python3.9/dist-packages/pydantic/main.py:389: UserWarning: Pydantic serializer warnings:
+  Expected `Union[definition-ref, list[definition-ref]]` but got `dict` with value `{&#39;dtype&#39;: &#39;torch.float16&#39;... 32], &#39;stride&#39;: [32, 1]}` - serialized value may not be as expected
+  return self.__pydantic_serializer__.to_python(
+</span></span>
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8881
+ * Running on http://10.0.2.118:8881
+Press CTRL+C to quit
+[2026-11-06 20:45:11]</span> [WARNING]</span> [MainProcess]</span> [10432]</span> [warnings.py</span>:109</span>]  <span style="color:#FFC107">/usr/local/lib/python3.9/dist-packages/pydantic/main.py:389: UserWarning: Pydantic serializer warnings:
+  Expected `enum` but got `int` with value `0` - serialized value may not be as expected
+  return self.__pydantic_serializer__.to_python(
+</span></span>
+[2026-11-06 20:45:12]</span> [INFO]</span> [ForkPoolWorker-1]</span> [10620]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 0] start CREATE DATASET.</span></span>
+[2026-11-06 20:45:12]</span> [INFO]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 0] start run PYACLNN OPP TASK.</span></span>
+ATK任务进度:   0%|          | 0/2 [00:01&lt;?, ?it/s][2026-11-06 20:45:12]</span> [INFO]</span> [ForkPoolWorker-1]</span> [10644]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 0] start run CPU OPP TASK.</span></span>
+[2026-11-06 20:45:13]</span> [INFO]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 0] start run PYACLNN OPP TASK.</span></span>
+ATK任务进度:   0%|          | 0/2 [00:02&lt;?, ?it/s]</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:16.066</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">tail -n 100 /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:16.067</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+AttributeError: &#39;MessageFactory&#39; object has no attribute &#39;GetPrototype&#39;
+ct-tool not installed, please install it first.
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">task_output_path: /autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">clear celery filesystem storage before start. broker=/autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005/db/celery/broker, processed=/autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005/db/celery/processed, results=/autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005/db/celery/results</span></span>
+[2026-11-06 20:45:10]</span> [WARNING]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#FFC107">register from python file /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/aclnnMatmulAlltoAll_testcase.py <span style="color:#F44336;font-weight:bold">failed</span>, <span style="color:#F44336;font-weight:bold">ERROR</span>: No module named &#39;common&#39;</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">function_aclnn_matmul_allto_all is already registered, repeated registration will coverage it, new module path is executor_aclnnMatmulAlltoAll</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">Module function_aclnn_matmul_allto_all has been registered.</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">pyaclnn_aclnn_matmul_allto_all is already registered, repeated registration will coverage it, new module path is executor_aclnnMatmulAlltoAll</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">Module pyaclnn_aclnn_matmul_allto_all has been registered.</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">pyaclnn_aclnn_matmul_allto_all_abnormal is already registered, repeated registration will coverage it, new module path is executor_aclnnMatmulAlltoAll</span></span>
+[2026-11-06 20:45:10]</span> [WARNING]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#FFC107">register from python file /autotest/ATK_CIDA/ascend/Aclnn/mc2/aclnnMatmulAlltoAll/aclnnMatmulAlltoAll_testcase.py <span style="color:#F44336;font-weight:bold">failed</span>, <span style="color:#F44336;font-weight:bold">ERROR</span>: No module named &#39;common&#39;</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [executor_aclnnMatmulAlltoAll.py</span>:20</span>]  <span style="color:#2196F3">function_aclnn_matmul_allto_all is already registered, repeated registration will coverage it, new module path is executor_aclnnMatmulAlltoAll</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [executor_aclnnMatmulAlltoAll.py</span>:156</span>]  <span style="color:#2196F3">pyaclnn_aclnn_matmul_allto_all is already registered, repeated registration will coverage it, new module path is executor_aclnnMatmulAlltoAll</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [executor_aclnnMatmulAlltoAll.py</span>:202</span>]  <span style="color:#2196F3">pyaclnn_aclnn_matmul_allto_all_abnormal is already registered, repeated registration will coverage it, new module path is executor_aclnnMatmulAlltoAll</span></span>
+[2026-11-06 20:45:10]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">bind_cpu_type auto resolved to 2 (reason=container_detected)</span></span>
+[2026-11-06 20:45:11]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">create_tasks start!!!, case_config_name:aclnnMatmulAlltoAll, all_cases_num: 2</span></span>
+ATK任务进度:   0%|          | 0/2 [00:00&lt;?, ?it/s][2026-11-06 20:45:11]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">[case 0] create dist execute task, backend=pyaclnn, node=0, devices=[0, 1], ranks=[0, 1], world_size=2, master_ip=127.0.0.1, master_port=21901, init_method=tcp://127.0.0.1:21901, comm_domain=41901</span></span>
+ * Serving Flask app &#39;sqlite_web.sqlite_web&#39;
+ * Debug mode: off
+[2026-11-06 20:45:11]</span> [WARNING]</span> [MainProcess]</span> [10432]</span> [warnings.py</span>:109</span>]  <span style="color:#FFC107">/usr/local/lib/python3.9/dist-packages/pydantic/main.py:389: UserWarning: Pydantic serializer warnings:
+  Expected `Union[definition-ref, list[definition-ref]]` but got `dict` with value `{&#39;dtype&#39;: &#39;torch.float16&#39;... 32], &#39;stride&#39;: [32, 1]}` - serialized value may not be as expected
+  return self.__pydantic_serializer__.to_python(
+</span></span>
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8881
+ * Running on http://10.0.2.118:8881
+Press CTRL+C to quit
+[2026-11-06 20:45:11]</span> [WARNING]</span> [MainProcess]</span> [10432]</span> [warnings.py</span>:109</span>]  <span style="color:#FFC107">/usr/local/lib/python3.9/dist-packages/pydantic/main.py:389: UserWarning: Pydantic serializer warnings:
+  Expected `enum` but got `int` with value `0` - serialized value may not be as expected
+  return self.__pydantic_serializer__.to_python(
+</span></span>
+[2026-11-06 20:45:12]</span> [INFO]</span> [ForkPoolWorker-1]</span> [10620]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 0] start CREATE DATASET.</span></span>
+[2026-11-06 20:45:12]</span> [INFO]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 0] start run PYACLNN OPP TASK.</span></span>
+ATK任务进度:   0%|          | 0/2 [00:01&lt;?, ?it/s][2026-11-06 20:45:12]</span> [INFO]</span> [ForkPoolWorker-1]</span> [10644]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 0] start run CPU OPP TASK.</span></span>
+[2026-11-06 20:45:13]</span> [INFO]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 0] start run PYACLNN OPP TASK.</span></span>
+ATK任务进度:   0%|          | 0/2 [00:02&lt;?, ?it/s]ATK任务进度:   0%|          | 0/2 [00:03&lt;?, ?it/s]ATK任务进度:   0%|          | 0/2 [00:04&lt;?, ?it/s][2026-11-06 20:45:15]</span> [WARNING]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:736</span>]  <span style="color:#FFC107">[case 0][rank 0/2] dist run_failed, backend=pyaclnn, dist_backend=hccl, device_id=0, host=127.0.0.1, port=9090, master_ip=127.0.0.1, master_port=21901, init_method=tcp://127.0.0.1:21901, dist_initialized=True</span></span>
+[2026-11-06 20:45:15]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:736</span>]  <span style="color:#F44336">case 0 run opp <span style="color:#F44336;font-weight:bold">failed</span>: create_config:build/CMakeFiles/torch_npu.dir/compiler_depend.ts:130 HCCL function <span style="color:#F44336;font-weight:bold">error</span>: hcclCommInitRootInfoConfig(numRanks, &amp;rootInfo, rank, config, &amp;(comm-&gt;hcclComm_)), <span style="color:#F44336;font-weight:bold">error</span> code is 4
+[<span style="color:#F44336;font-weight:bold">ERROR</span>] 2026-11-06-20:45:15 (PID:10633, Device:0, RankID:-1) ERR02200 DIST call hccl api <span style="color:#F44336;font-weight:bold">failed</span>.
+</span></span>
+[2026-11-06 20:45:15]</span> [WARNING]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#FFC107">[case 0][rank 1/2] dist run_failed, backend=pyaclnn, dist_backend=hccl, device_id=1, host=127.0.0.1, port=9090, master_ip=127.0.0.1, master_port=21901, init_method=tcp://127.0.0.1:21901, dist_initialized=True</span></span>
+[2026-11-06 20:45:15]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#F44336">case 0 run opp <span style="color:#F44336;font-weight:bold">failed</span>: create_config:build/CMakeFiles/torch_npu.dir/compiler_depend.ts:130 HCCL function <span style="color:#F44336;font-weight:bold">error</span>: hcclCommInitRootInfoConfig(numRanks, &amp;rootInfo, rank, config, &amp;(comm-&gt;hcclComm_)), <span style="color:#F44336;font-weight:bold">error</span> code is 4
+[<span style="color:#F44336;font-weight:bold">ERROR</span>] 2026-11-06-20:45:15 (PID:10638, Device:1, RankID:-1) ERR02200 DIST call hccl api <span style="color:#F44336;font-weight:bold">failed</span>.
+</span></span></div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:18.098</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">tail -n 100 /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:18.098</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">[2026-11-06 20:45:11]</span> [WARNING]</span> [MainProcess]</span> [10432]</span> [warnings.py</span>:109</span>]  <span style="color:#FFC107">/usr/local/lib/python3.9/dist-packages/pydantic/main.py:389: UserWarning: Pydantic serializer warnings:
+  Expected `Union[definition-ref, list[definition-ref]]` but got `dict` with value `{&#39;dtype&#39;: &#39;torch.float16&#39;... 32], &#39;stride&#39;: [32, 1]}` - serialized value may not be as expected
+  return self.__pydantic_serializer__.to_python(
+</span></span>
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8881
+ * Running on http://10.0.2.118:8881
+Press CTRL+C to quit
+[2026-11-06 20:45:11]</span> [WARNING]</span> [MainProcess]</span> [10432]</span> [warnings.py</span>:109</span>]  <span style="color:#FFC107">/usr/local/lib/python3.9/dist-packages/pydantic/main.py:389: UserWarning: Pydantic serializer warnings:
+  Expected `enum` but got `int` with value `0` - serialized value may not be as expected
+  return self.__pydantic_serializer__.to_python(
+</span></span>
+[2026-11-06 20:45:12]</span> [INFO]</span> [ForkPoolWorker-1]</span> [10620]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 0] start CREATE DATASET.</span></span>
+[2026-11-06 20:45:12]</span> [INFO]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 0] start run PYACLNN OPP TASK.</span></span>
+ATK任务进度:   0%|          | 0/2 [00:01&lt;?, ?it/s][2026-11-06 20:45:12]</span> [INFO]</span> [ForkPoolWorker-1]</span> [10644]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 0] start run CPU OPP TASK.</span></span>
+[2026-11-06 20:45:13]</span> [INFO]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 0] start run PYACLNN OPP TASK.</span></span>
+ATK任务进度:   0%|          | 0/2 [00:02&lt;?, ?it/s]ATK任务进度:   0%|          | 0/2 [00:03&lt;?, ?it/s]ATK任务进度:   0%|          | 0/2 [00:04&lt;?, ?it/s][2026-11-06 20:45:15]</span> [WARNING]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:736</span>]  <span style="color:#FFC107">[case 0][rank 0/2] dist run_failed, backend=pyaclnn, dist_backend=hccl, device_id=0, host=127.0.0.1, port=9090, master_ip=127.0.0.1, master_port=21901, init_method=tcp://127.0.0.1:21901, dist_initialized=True</span></span>
+[2026-11-06 20:45:15]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:736</span>]  <span style="color:#F44336">case 0 run opp <span style="color:#F44336;font-weight:bold">failed</span>: create_config:build/CMakeFiles/torch_npu.dir/compiler_depend.ts:130 HCCL function <span style="color:#F44336;font-weight:bold">error</span>: hcclCommInitRootInfoConfig(numRanks, &amp;rootInfo, rank, config, &amp;(comm-&gt;hcclComm_)), <span style="color:#F44336;font-weight:bold">error</span> code is 4
+[<span style="color:#F44336;font-weight:bold">ERROR</span>] 2026-11-06-20:45:15 (PID:10633, Device:0, RankID:-1) ERR02200 DIST call hccl api <span style="color:#F44336;font-weight:bold">failed</span>.
+</span></span>
+[2026-11-06 20:45:15]</span> [WARNING]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#FFC107">[case 0][rank 1/2] dist run_failed, backend=pyaclnn, dist_backend=hccl, device_id=1, host=127.0.0.1, port=9090, master_ip=127.0.0.1, master_port=21901, init_method=tcp://127.0.0.1:21901, dist_initialized=True</span></span>
+[2026-11-06 20:45:15]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#F44336">case 0 run opp <span style="color:#F44336;font-weight:bold">failed</span>: create_config:build/CMakeFiles/torch_npu.dir/compiler_depend.ts:130 HCCL function <span style="color:#F44336;font-weight:bold">error</span>: hcclCommInitRootInfoConfig(numRanks, &amp;rootInfo, rank, config, &amp;(comm-&gt;hcclComm_)), <span style="color:#F44336;font-weight:bold">error</span> code is 4
+[<span style="color:#F44336;font-weight:bold">ERROR</span>] 2026-11-06-20:45:15 (PID:10638, Device:1, RankID:-1) ERR02200 DIST call hccl api <span style="color:#F44336;font-weight:bold">failed</span>.
+</span></span>
+[2026-11-06 20:45:16]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:233</span>]  <span style="color:#F44336">aclnnMatmulAlltoAll_0 on atk.tasks.celery_tasks.celery_run_dist_opp_task 127.0.0.1:9090@device_run_0 task <span style="color:#F44336;font-weight:bold">failed</span>.
+run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+</span></span>
+[2026-11-06 20:45:16]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:267</span>]  <span style="color:#F44336">Task atk.tasks.celery_tasks.celery_run_dist_opp_task[1f91a3ad-bd94-423e-b88c-4b8bc42d1b8f_rank0] raised unexpected: RuntimeError(&#39;run opp task <span style="color:#F44336;font-weight:bold">failed</span>!&#39;)</span></span>
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+[2026-11-06 20:45:16]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">[case 3] create dist execute task, backend=pyaclnn, node=0, devices=[0, 1], ranks=[0, 1], world_size=2, master_ip=127.0.0.1, master_port=21901, init_method=tcp://127.0.0.1:21901, comm_domain=48332</span></span>
+[2026-11-06 20:45:16]</span> [WARNING]</span> [MainProcess]</span> [10432]</span> [warnings.py</span>:109</span>]  <span style="color:#FFC107">/usr/local/lib/python3.9/dist-packages/pydantic/main.py:389: UserWarning: Pydantic serializer warnings:
+  Expected `Union[definition-ref, list[definition-ref]]` but got `dict` with value `{&#39;dtype&#39;: &#39;torch.bfloat16... 64], &#39;stride&#39;: [64, 1]}` - serialized value may not be as expected
+  return self.__pydantic_serializer__.to_python(
+</span></span>
+[2026-11-06 20:45:16]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">create_tasks over!!!, case_config_name:aclnnMatmulAlltoAll, all_cases_num: 2</span></span>
+[2026-11-06 20:45:16]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:233</span>]  <span style="color:#F44336">aclnnMatmulAlltoAll_0 on atk.tasks.celery_tasks.celery_run_dist_opp_task 127.0.0.1:9090@device_run_1 task <span style="color:#F44336;font-weight:bold">failed</span>.
+run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+</span></span>
+[2026-11-06 20:45:16]</span> [WARNING]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:233</span>]  <span style="color:#FFC107">Case already terminal <span style="color:#F44336;font-weight:bold">failed</span>, skip status overwrite. case: aclnnMatmulAlltoAll_0, incoming_status: RunStatus.<span style="color:#F44336;font-weight:bold">FAILED</span></span></span>
+[2026-11-06 20:45:16]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:267</span>]  <span style="color:#F44336">Task atk.tasks.celery_tasks.celery_run_dist_opp_task[1f91a3ad-bd94-423e-b88c-4b8bc42d1b8f_rank1] raised unexpected: RuntimeError(&#39;run opp task <span style="color:#F44336;font-weight:bold">failed</span>!&#39;)</span></span>
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+ATK任务进度:   0%|          | 0/2 [00:05&lt;?, ?it/s][2026-11-06 20:45:16]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">
++-------------+-----------------------+-------------------------+------------------------+--------------------------+----------+
+|     id_0    | pyaclnn_0_input_bytes | dist_npu_bm_input_bytes | pyaclnn_0_output_bytes | dist_npu_bm_output_bytes | accuracy |
++-------------+-----------------------+-------------------------+------------------------+--------------------------+----------+
+|  pyaclnn_0  |          None         |           None          |          None          |           None           |    -     |
+| dist_npu_bm |                       |                         |                        |                          |          |
++-------------+-----------------------+-------------------------+------------------------+--------------------------+----------+</span></span>
+[2026-11-06 20:45:17]</span> [INFO]</span> [ForkPoolWorker-2]</span> [10622]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 3] start CREATE DATASET.</span></span>
+[2026-11-06 20:45:17]</span> [INFO]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 3] start run PYACLNN OPP TASK.</span></span>
+[2026-11-06 20:45:17]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [ForkPoolWorker-3]</span> [10654]</span> [builtins.py</span>:88</span>]  <span style="color:#F44336">Chord &#39;02448378-c789-42c9-ad50-8fe61d1227eb&#39; raised: RuntimeError(&#39;run opp task <span style="color:#F44336;font-weight:bold">failed</span>!&#39;)</span></span>
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/builtins.py&quot;, line 78, in unlock_chord
+    ret = j(
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 775, in join
+    value = result.get(
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 247, in get
+    self.maybe_throw(callback=callback)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 365, in maybe_throw
+    self.throw(value, self._to_remote_traceback(tb))
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 358, in throw
+    self.on_ready.throw(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/vine/promises.py&quot;, line 235, in throw
+    reraise(type(exc), exc, tb)
+  File &quot;/usr/local/lib/python3.9/dist-packages/vine/utils.py&quot;, line 27, in reraise
+    raise value
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+[2026-11-06 20:45:17]</span> [INFO]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 3] start run PYACLNN OPP TASK.</span></span>
+ATK任务进度:  50%|█████     | 1/2 [00:06&lt;00:01,  1.03s/it][2026-11-06 20:45:17]</span> [INFO]</span> [ForkPoolWorker-2]</span> [10646]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 3] start run CPU OPP TASK.</span></span></div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:20.120</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">tail -n 100 /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:20.120</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">+-------------+-----------------------+-------------------------+------------------------+--------------------------+----------+</span></span>
+[2026-11-06 20:45:17]</span> [INFO]</span> [ForkPoolWorker-2]</span> [10622]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 3] start CREATE DATASET.</span></span>
+[2026-11-06 20:45:17]</span> [INFO]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 3] start run PYACLNN OPP TASK.</span></span>
+[2026-11-06 20:45:17]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [ForkPoolWorker-3]</span> [10654]</span> [builtins.py</span>:88</span>]  <span style="color:#F44336">Chord &#39;02448378-c789-42c9-ad50-8fe61d1227eb&#39; raised: RuntimeError(&#39;run opp task <span style="color:#F44336;font-weight:bold">failed</span>!&#39;)</span></span>
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/builtins.py&quot;, line 78, in unlock_chord
+    ret = j(
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 775, in join
+    value = result.get(
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 247, in get
+    self.maybe_throw(callback=callback)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 365, in maybe_throw
+    self.throw(value, self._to_remote_traceback(tb))
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 358, in throw
+    self.on_ready.throw(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/vine/promises.py&quot;, line 235, in throw
+    reraise(type(exc), exc, tb)
+  File &quot;/usr/local/lib/python3.9/dist-packages/vine/utils.py&quot;, line 27, in reraise
+    raise value
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+[2026-11-06 20:45:17]</span> [INFO]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 3] start run PYACLNN OPP TASK.</span></span>
+ATK任务进度:  50%|█████     | 1/2 [00:06&lt;00:01,  1.03s/it][2026-11-06 20:45:17]</span> [INFO]</span> [ForkPoolWorker-2]</span> [10646]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 3] start run CPU OPP TASK.</span></span>
+[2026-11-06 20:45:18]</span> [WARNING]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#FFC107">[case 3][rank 1/2] dist run_failed, backend=pyaclnn, dist_backend=hccl, device_id=1, host=127.0.0.1, port=9090, master_ip=127.0.0.1, master_port=21901, init_method=tcp://127.0.0.1:21901, dist_initialized=True</span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#F44336">case 3 run opp <span style="color:#F44336;font-weight:bold">failed</span>: create_config:build/CMakeFiles/torch_npu.dir/compiler_depend.ts:130 HCCL function <span style="color:#F44336;font-weight:bold">error</span>: hcclCommInitRootInfoConfig(numRanks, &amp;rootInfo, rank, config, &amp;(comm-&gt;hcclComm_)), <span style="color:#F44336;font-weight:bold">error</span> code is 4
+[<span style="color:#F44336;font-weight:bold">ERROR</span>] 2026-11-06-20:45:18 (PID:10638, Device:1, RankID:-1) ERR02200 DIST call hccl api <span style="color:#F44336;font-weight:bold">failed</span>.
+</span></span>
+[2026-11-06 20:45:18]</span> [WARNING]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:736</span>]  <span style="color:#FFC107">[case 3][rank 0/2] dist run_failed, backend=pyaclnn, dist_backend=hccl, device_id=0, host=127.0.0.1, port=9090, master_ip=127.0.0.1, master_port=21901, init_method=tcp://127.0.0.1:21901, dist_initialized=True</span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:736</span>]  <span style="color:#F44336">case 3 run opp <span style="color:#F44336;font-weight:bold">failed</span>: create_config:build/CMakeFiles/torch_npu.dir/compiler_depend.ts:130 HCCL function <span style="color:#F44336;font-weight:bold">error</span>: hcclCommInitRootInfoConfig(numRanks, &amp;rootInfo, rank, config, &amp;(comm-&gt;hcclComm_)), <span style="color:#F44336;font-weight:bold">error</span> code is 4
+[<span style="color:#F44336;font-weight:bold">ERROR</span>] 2026-11-06-20:45:18 (PID:10633, Device:0, RankID:-1) ERR02200 DIST call hccl api <span style="color:#F44336;font-weight:bold">failed</span>.
+</span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:233</span>]  <span style="color:#F44336">aclnnMatmulAlltoAll_3 on atk.tasks.celery_tasks.celery_run_dist_opp_task 127.0.0.1:9090@device_run_0 task <span style="color:#F44336;font-weight:bold">failed</span>.
+run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+</span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:267</span>]  <span style="color:#F44336">Task atk.tasks.celery_tasks.celery_run_dist_opp_task[a0b2bccc-bd89-4d63-a4fa-20c199bd1b8d_rank0] raised unexpected: RuntimeError(&#39;run opp task <span style="color:#F44336;font-weight:bold">failed</span>!&#39;)</span></span>
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:233</span>]  <span style="color:#F44336">aclnnMatmulAlltoAll_3 on atk.tasks.celery_tasks.celery_run_dist_opp_task 127.0.0.1:9090@device_run_1 task <span style="color:#F44336;font-weight:bold">failed</span>.
+run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+</span></span>
+[2026-11-06 20:45:18]</span> [WARNING]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:233</span>]  <span style="color:#FFC107">Case already terminal <span style="color:#F44336;font-weight:bold">failed</span>, skip status overwrite. case: aclnnMatmulAlltoAll_3, incoming_status: RunStatus.<span style="color:#F44336;font-weight:bold">FAILED</span></span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:267</span>]  <span style="color:#F44336">Task atk.tasks.celery_tasks.celery_run_dist_opp_task[a0b2bccc-bd89-4d63-a4fa-20c199bd1b8d_rank1] raised unexpected: RuntimeError(&#39;run opp task <span style="color:#F44336;font-weight:bold">failed</span>!&#39;)</span></span>
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+[2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">
++-------------+-----------------------+-------------------------+------------------------+--------------------------+----------+
+|     id_3    | pyaclnn_0_input_bytes | dist_npu_bm_input_bytes | pyaclnn_0_output_bytes | dist_npu_bm_output_bytes | accuracy |
++-------------+-----------------------+-------------------------+------------------------+--------------------------+----------+
+|  pyaclnn_0  |          None         |           None          |          None          |           None           |    -     |
+| dist_npu_bm |                       |                         |                        |                          |          |
++-------------+-----------------------+-------------------------+------------------------+--------------------------+----------+</span></span>
+ATK任务进度: 100%|██████████| 2/2 [00:08&lt;00:00,  1.61s/it][2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">
++-------------+----------+------------------+------------------+--------------+----------------------+--------+--------------+
+|     名称    | 总用例数 | 执行成功用例个数 | 执行失败用例个数 | 通过用例个数 | 错误信息匹配用例个数 | 通过率 | 精度是否达标 |
++-------------+----------+------------------+------------------+--------------+----------------------+--------+--------------+
+| dist_npu_bm |    2     |        0         |        2         |      0       |          -           |  0.0   |    <span style="color:#F44336;font-weight:bold">Failed</span>    |
++-------------+----------+------------------+------------------+--------------+----------------------+--------+--------------+</span></span>
+[2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">Total Task: 2, success 0, <span style="color:#F44336;font-weight:bold">failed</span> 2</span></span>
+[2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">Summary info: acc_pass_result:<span style="color:#F44336;font-weight:bold">Failed</span>&nbsp;&nbsp;&nbsp;&nbsp;is_acc_dc_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_e2e_perf_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_benchmark_perf_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_device_perf_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_device_memory_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_memory_check_pass:None .</span></span>
+[2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">save result excel file: /autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005/report/aclnnMatmulAlltoAll_Smoke_reports_accuracy_2026-11-06-20-45-11.xlsx</span></span>
+ATK任务进度: 100%|██████████| 2/2 [00:08&lt;00:00,  4.06s/it]
+[2026-11-06 20:45:19]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">atk task success!</span></span>
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+[2026-11-06 20:45:19]</span> [WARNING]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [control.py</span>:582</span>]  <span style="color:#FFC107">Got shutdown from remote</span></span></div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:22.146</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">tail -n 100 /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:22.146</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">File &quot;/usr/local/lib/python3.9/dist-packages/vine/utils.py&quot;, line 27, in reraise
+    raise value
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+[2026-11-06 20:45:17]</span> [INFO]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 3] start run PYACLNN OPP TASK.</span></span>
+ATK任务进度:  50%|█████     | 1/2 [00:06&lt;00:01,  1.03s/it][2026-11-06 20:45:17]</span> [INFO]</span> [ForkPoolWorker-2]</span> [10646]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 3] start run CPU OPP TASK.</span></span>
+[2026-11-06 20:45:18]</span> [WARNING]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#FFC107">[case 3][rank 1/2] dist run_failed, backend=pyaclnn, dist_backend=hccl, device_id=1, host=127.0.0.1, port=9090, master_ip=127.0.0.1, master_port=21901, init_method=tcp://127.0.0.1:21901, dist_initialized=True</span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#F44336">case 3 run opp <span style="color:#F44336;font-weight:bold">failed</span>: create_config:build/CMakeFiles/torch_npu.dir/compiler_depend.ts:130 HCCL function <span style="color:#F44336;font-weight:bold">error</span>: hcclCommInitRootInfoConfig(numRanks, &amp;rootInfo, rank, config, &amp;(comm-&gt;hcclComm_)), <span style="color:#F44336;font-weight:bold">error</span> code is 4
+[<span style="color:#F44336;font-weight:bold">ERROR</span>] 2026-11-06-20:45:18 (PID:10638, Device:1, RankID:-1) ERR02200 DIST call hccl api <span style="color:#F44336;font-weight:bold">failed</span>.
+</span></span>
+[2026-11-06 20:45:18]</span> [WARNING]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:736</span>]  <span style="color:#FFC107">[case 3][rank 0/2] dist run_failed, backend=pyaclnn, dist_backend=hccl, device_id=0, host=127.0.0.1, port=9090, master_ip=127.0.0.1, master_port=21901, init_method=tcp://127.0.0.1:21901, dist_initialized=True</span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:736</span>]  <span style="color:#F44336">case 3 run opp <span style="color:#F44336;font-weight:bold">failed</span>: create_config:build/CMakeFiles/torch_npu.dir/compiler_depend.ts:130 HCCL function <span style="color:#F44336;font-weight:bold">error</span>: hcclCommInitRootInfoConfig(numRanks, &amp;rootInfo, rank, config, &amp;(comm-&gt;hcclComm_)), <span style="color:#F44336;font-weight:bold">error</span> code is 4
+[<span style="color:#F44336;font-weight:bold">ERROR</span>] 2026-11-06-20:45:18 (PID:10633, Device:0, RankID:-1) ERR02200 DIST call hccl api <span style="color:#F44336;font-weight:bold">failed</span>.
+</span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:233</span>]  <span style="color:#F44336">aclnnMatmulAlltoAll_3 on atk.tasks.celery_tasks.celery_run_dist_opp_task 127.0.0.1:9090@device_run_0 task <span style="color:#F44336;font-weight:bold">failed</span>.
+run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+</span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:267</span>]  <span style="color:#F44336">Task atk.tasks.celery_tasks.celery_run_dist_opp_task[a0b2bccc-bd89-4d63-a4fa-20c199bd1b8d_rank0] raised unexpected: RuntimeError(&#39;run opp task <span style="color:#F44336;font-weight:bold">failed</span>!&#39;)</span></span>
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:233</span>]  <span style="color:#F44336">aclnnMatmulAlltoAll_3 on atk.tasks.celery_tasks.celery_run_dist_opp_task 127.0.0.1:9090@device_run_1 task <span style="color:#F44336;font-weight:bold">failed</span>.
+run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+</span></span>
+[2026-11-06 20:45:18]</span> [WARNING]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:233</span>]  <span style="color:#FFC107">Case already terminal <span style="color:#F44336;font-weight:bold">failed</span>, skip status overwrite. case: aclnnMatmulAlltoAll_3, incoming_status: RunStatus.<span style="color:#F44336;font-weight:bold">FAILED</span></span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:267</span>]  <span style="color:#F44336">Task atk.tasks.celery_tasks.celery_run_dist_opp_task[a0b2bccc-bd89-4d63-a4fa-20c199bd1b8d_rank1] raised unexpected: RuntimeError(&#39;run opp task <span style="color:#F44336;font-weight:bold">failed</span>!&#39;)</span></span>
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+[2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">
++-------------+-----------------------+-------------------------+------------------------+--------------------------+----------+
+|     id_3    | pyaclnn_0_input_bytes | dist_npu_bm_input_bytes | pyaclnn_0_output_bytes | dist_npu_bm_output_bytes | accuracy |
++-------------+-----------------------+-------------------------+------------------------+--------------------------+----------+
+|  pyaclnn_0  |          None         |           None          |          None          |           None           |    -     |
+| dist_npu_bm |                       |                         |                        |                          |          |
++-------------+-----------------------+-------------------------+------------------------+--------------------------+----------+</span></span>
+ATK任务进度: 100%|██████████| 2/2 [00:08&lt;00:00,  1.61s/it][2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">
++-------------+----------+------------------+------------------+--------------+----------------------+--------+--------------+
+|     名称    | 总用例数 | 执行成功用例个数 | 执行失败用例个数 | 通过用例个数 | 错误信息匹配用例个数 | 通过率 | 精度是否达标 |
++-------------+----------+------------------+------------------+--------------+----------------------+--------+--------------+
+| dist_npu_bm |    2     |        0         |        2         |      0       |          -           |  0.0   |    <span style="color:#F44336;font-weight:bold">Failed</span>    |
++-------------+----------+------------------+------------------+--------------+----------------------+--------+--------------+</span></span>
+[2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">Total Task: 2, success 0, <span style="color:#F44336;font-weight:bold">failed</span> 2</span></span>
+[2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">Summary info: acc_pass_result:<span style="color:#F44336;font-weight:bold">Failed</span>&nbsp;&nbsp;&nbsp;&nbsp;is_acc_dc_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_e2e_perf_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_benchmark_perf_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_device_perf_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_device_memory_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_memory_check_pass:None .</span></span>
+[2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">save result excel file: /autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005/report/aclnnMatmulAlltoAll_Smoke_reports_accuracy_2026-11-06-20-45-11.xlsx</span></span>
+ATK任务进度: 100%|██████████| 2/2 [00:08&lt;00:00,  4.06s/it]
+[2026-11-06 20:45:19]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">atk task success!</span></span>
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+[2026-11-06 20:45:19]</span> [WARNING]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [control.py</span>:582</span>]  <span style="color:#FFC107">Got shutdown from remote</span></span>
+[2026-11-06 20:45:20]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [ForkPoolWorker-1]</span> [10650]</span> [builtins.py</span>:88</span>]  <span style="color:#F44336">Chord &#39;98fb9be9-1934-4df7-a263-c33ca293b27a&#39; raised: RuntimeError(&#39;run opp task <span style="color:#F44336;font-weight:bold">failed</span>!&#39;)</span></span>
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/builtins.py&quot;, line 78, in unlock_chord
+    ret = j(
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 775, in join
+    value = result.get(
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 247, in get
+    self.maybe_throw(callback=callback)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 365, in maybe_throw
+    self.throw(value, self._to_remote_traceback(tb))
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 358, in throw
+    self.on_ready.throw(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/vine/promises.py&quot;, line 235, in throw
+    reraise(type(exc), exc, tb)
+  File &quot;/usr/local/lib/python3.9/dist-packages/vine/utils.py&quot;, line 27, in reraise
+    raise value
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:24.169</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">tail -n 100 /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:24.170</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">raise value
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+[2026-11-06 20:45:17]</span> [INFO]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 3] start run PYACLNN OPP TASK.</span></span>
+ATK任务进度:  50%|█████     | 1/2 [00:06&lt;00:01,  1.03s/it][2026-11-06 20:45:17]</span> [INFO]</span> [ForkPoolWorker-2]</span> [10646]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 3] start run CPU OPP TASK.</span></span>
+[2026-11-06 20:45:18]</span> [WARNING]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#FFC107">[case 3][rank 1/2] dist run_failed, backend=pyaclnn, dist_backend=hccl, device_id=1, host=127.0.0.1, port=9090, master_ip=127.0.0.1, master_port=21901, init_method=tcp://127.0.0.1:21901, dist_initialized=True</span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#F44336">case 3 run opp <span style="color:#F44336;font-weight:bold">failed</span>: create_config:build/CMakeFiles/torch_npu.dir/compiler_depend.ts:130 HCCL function <span style="color:#F44336;font-weight:bold">error</span>: hcclCommInitRootInfoConfig(numRanks, &amp;rootInfo, rank, config, &amp;(comm-&gt;hcclComm_)), <span style="color:#F44336;font-weight:bold">error</span> code is 4
+[<span style="color:#F44336;font-weight:bold">ERROR</span>] 2026-11-06-20:45:18 (PID:10638, Device:1, RankID:-1) ERR02200 DIST call hccl api <span style="color:#F44336;font-weight:bold">failed</span>.
+</span></span>
+[2026-11-06 20:45:18]</span> [WARNING]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:736</span>]  <span style="color:#FFC107">[case 3][rank 0/2] dist run_failed, backend=pyaclnn, dist_backend=hccl, device_id=0, host=127.0.0.1, port=9090, master_ip=127.0.0.1, master_port=21901, init_method=tcp://127.0.0.1:21901, dist_initialized=True</span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:736</span>]  <span style="color:#F44336">case 3 run opp <span style="color:#F44336;font-weight:bold">failed</span>: create_config:build/CMakeFiles/torch_npu.dir/compiler_depend.ts:130 HCCL function <span style="color:#F44336;font-weight:bold">error</span>: hcclCommInitRootInfoConfig(numRanks, &amp;rootInfo, rank, config, &amp;(comm-&gt;hcclComm_)), <span style="color:#F44336;font-weight:bold">error</span> code is 4
+[<span style="color:#F44336;font-weight:bold">ERROR</span>] 2026-11-06-20:45:18 (PID:10633, Device:0, RankID:-1) ERR02200 DIST call hccl api <span style="color:#F44336;font-weight:bold">failed</span>.
+</span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:233</span>]  <span style="color:#F44336">aclnnMatmulAlltoAll_3 on atk.tasks.celery_tasks.celery_run_dist_opp_task 127.0.0.1:9090@device_run_0 task <span style="color:#F44336;font-weight:bold">failed</span>.
+run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+</span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:267</span>]  <span style="color:#F44336">Task atk.tasks.celery_tasks.celery_run_dist_opp_task[a0b2bccc-bd89-4d63-a4fa-20c199bd1b8d_rank0] raised unexpected: RuntimeError(&#39;run opp task <span style="color:#F44336;font-weight:bold">failed</span>!&#39;)</span></span>
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:233</span>]  <span style="color:#F44336">aclnnMatmulAlltoAll_3 on atk.tasks.celery_tasks.celery_run_dist_opp_task 127.0.0.1:9090@device_run_1 task <span style="color:#F44336;font-weight:bold">failed</span>.
+run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+</span></span>
+[2026-11-06 20:45:18]</span> [WARNING]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:233</span>]  <span style="color:#FFC107">Case already terminal <span style="color:#F44336;font-weight:bold">failed</span>, skip status overwrite. case: aclnnMatmulAlltoAll_3, incoming_status: RunStatus.<span style="color:#F44336;font-weight:bold">FAILED</span></span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:267</span>]  <span style="color:#F44336">Task atk.tasks.celery_tasks.celery_run_dist_opp_task[a0b2bccc-bd89-4d63-a4fa-20c199bd1b8d_rank1] raised unexpected: RuntimeError(&#39;run opp task <span style="color:#F44336;font-weight:bold">failed</span>!&#39;)</span></span>
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+[2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">
++-------------+-----------------------+-------------------------+------------------------+--------------------------+----------+
+|     id_3    | pyaclnn_0_input_bytes | dist_npu_bm_input_bytes | pyaclnn_0_output_bytes | dist_npu_bm_output_bytes | accuracy |
++-------------+-----------------------+-------------------------+------------------------+--------------------------+----------+
+|  pyaclnn_0  |          None         |           None          |          None          |           None           |    -     |
+| dist_npu_bm |                       |                         |                        |                          |          |
++-------------+-----------------------+-------------------------+------------------------+--------------------------+----------+</span></span>
+ATK任务进度: 100%|██████████| 2/2 [00:08&lt;00:00,  1.61s/it][2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">
++-------------+----------+------------------+------------------+--------------+----------------------+--------+--------------+
+|     名称    | 总用例数 | 执行成功用例个数 | 执行失败用例个数 | 通过用例个数 | 错误信息匹配用例个数 | 通过率 | 精度是否达标 |
++-------------+----------+------------------+------------------+--------------+----------------------+--------+--------------+
+| dist_npu_bm |    2     |        0         |        2         |      0       |          -           |  0.0   |    <span style="color:#F44336;font-weight:bold">Failed</span>    |
++-------------+----------+------------------+------------------+--------------+----------------------+--------+--------------+</span></span>
+[2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">Total Task: 2, success 0, <span style="color:#F44336;font-weight:bold">failed</span> 2</span></span>
+[2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">Summary info: acc_pass_result:<span style="color:#F44336;font-weight:bold">Failed</span>&nbsp;&nbsp;&nbsp;&nbsp;is_acc_dc_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_e2e_perf_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_benchmark_perf_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_device_perf_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_device_memory_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_memory_check_pass:None .</span></span>
+[2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">save result excel file: /autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005/report/aclnnMatmulAlltoAll_Smoke_reports_accuracy_2026-11-06-20-45-11.xlsx</span></span>
+ATK任务进度: 100%|██████████| 2/2 [00:08&lt;00:00,  4.06s/it]
+[2026-11-06 20:45:19]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">atk task success!</span></span>
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+[2026-11-06 20:45:19]</span> [WARNING]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [control.py</span>:582</span>]  <span style="color:#FFC107">Got shutdown from remote</span></span>
+[2026-11-06 20:45:20]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [ForkPoolWorker-1]</span> [10650]</span> [builtins.py</span>:88</span>]  <span style="color:#F44336">Chord &#39;98fb9be9-1934-4df7-a263-c33ca293b27a&#39; raised: RuntimeError(&#39;run opp task <span style="color:#F44336;font-weight:bold">failed</span>!&#39;)</span></span>
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/builtins.py&quot;, line 78, in unlock_chord
+    ret = j(
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 775, in join
+    value = result.get(
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 247, in get
+    self.maybe_throw(callback=callback)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 365, in maybe_throw
+    self.throw(value, self._to_remote_traceback(tb))
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 358, in throw
+    self.on_ready.throw(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/vine/promises.py&quot;, line 235, in throw
+    reraise(type(exc), exc, tb)
+  File &quot;/usr/local/lib/python3.9/dist-packages/vine/utils.py&quot;, line 27, in reraise
+    raise value
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+Restoring 1 unacknowledged message(s)</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.191</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">tail -n 100 /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.191</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">[2026-11-06 20:45:17]</span> [INFO]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 3] start run PYACLNN OPP TASK.</span></span>
+ATK任务进度:  50%|█████     | 1/2 [00:06&lt;00:01,  1.03s/it][2026-11-06 20:45:17]</span> [INFO]</span> [ForkPoolWorker-2]</span> [10646]</span> [trace.py</span>:736</span>]  <span style="color:#2196F3">[case 3] start run CPU OPP TASK.</span></span>
+[2026-11-06 20:45:18]</span> [WARNING]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#FFC107">[case 3][rank 1/2] dist run_failed, backend=pyaclnn, dist_backend=hccl, device_id=1, host=127.0.0.1, port=9090, master_ip=127.0.0.1, master_port=21901, init_method=tcp://127.0.0.1:21901, dist_initialized=True</span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:736</span>]  <span style="color:#F44336">case 3 run opp <span style="color:#F44336;font-weight:bold">failed</span>: create_config:build/CMakeFiles/torch_npu.dir/compiler_depend.ts:130 HCCL function <span style="color:#F44336;font-weight:bold">error</span>: hcclCommInitRootInfoConfig(numRanks, &amp;rootInfo, rank, config, &amp;(comm-&gt;hcclComm_)), <span style="color:#F44336;font-weight:bold">error</span> code is 4
+[<span style="color:#F44336;font-weight:bold">ERROR</span>] 2026-11-06-20:45:18 (PID:10638, Device:1, RankID:-1) ERR02200 DIST call hccl api <span style="color:#F44336;font-weight:bold">failed</span>.
+</span></span>
+[2026-11-06 20:45:18]</span> [WARNING]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:736</span>]  <span style="color:#FFC107">[case 3][rank 0/2] dist run_failed, backend=pyaclnn, dist_backend=hccl, device_id=0, host=127.0.0.1, port=9090, master_ip=127.0.0.1, master_port=21901, init_method=tcp://127.0.0.1:21901, dist_initialized=True</span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:736</span>]  <span style="color:#F44336">case 3 run opp <span style="color:#F44336;font-weight:bold">failed</span>: create_config:build/CMakeFiles/torch_npu.dir/compiler_depend.ts:130 HCCL function <span style="color:#F44336;font-weight:bold">error</span>: hcclCommInitRootInfoConfig(numRanks, &amp;rootInfo, rank, config, &amp;(comm-&gt;hcclComm_)), <span style="color:#F44336;font-weight:bold">error</span> code is 4
+[<span style="color:#F44336;font-weight:bold">ERROR</span>] 2026-11-06-20:45:18 (PID:10633, Device:0, RankID:-1) ERR02200 DIST call hccl api <span style="color:#F44336;font-weight:bold">failed</span>.
+</span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:233</span>]  <span style="color:#F44336">aclnnMatmulAlltoAll_3 on atk.tasks.celery_tasks.celery_run_dist_opp_task 127.0.0.1:9090@device_run_0 task <span style="color:#F44336;font-weight:bold">failed</span>.
+run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+</span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [trace.py</span>:267</span>]  <span style="color:#F44336">Task atk.tasks.celery_tasks.celery_run_dist_opp_task[a0b2bccc-bd89-4d63-a4fa-20c199bd1b8d_rank0] raised unexpected: RuntimeError(&#39;run opp task <span style="color:#F44336;font-weight:bold">failed</span>!&#39;)</span></span>
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:233</span>]  <span style="color:#F44336">aclnnMatmulAlltoAll_3 on atk.tasks.celery_tasks.celery_run_dist_opp_task 127.0.0.1:9090@device_run_1 task <span style="color:#F44336;font-weight:bold">failed</span>.
+run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+</span></span>
+[2026-11-06 20:45:18]</span> [WARNING]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:233</span>]  <span style="color:#FFC107">Case already terminal <span style="color:#F44336;font-weight:bold">failed</span>, skip status overwrite. case: aclnnMatmulAlltoAll_3, incoming_status: RunStatus.<span style="color:#F44336;font-weight:bold">FAILED</span></span></span>
+[2026-11-06 20:45:18]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [127.0.0.1:9090@device_run_1]</span> [10638]</span> [trace.py</span>:267</span>]  <span style="color:#F44336">Task atk.tasks.celery_tasks.celery_run_dist_opp_task[a0b2bccc-bd89-4d63-a4fa-20c199bd1b8d_rank1] raised unexpected: RuntimeError(&#39;run opp task <span style="color:#F44336;font-weight:bold">failed</span>!&#39;)</span></span>
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 453, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/trace.py&quot;, line 736, in __protected_call__
+    return self.run(*args, **kwargs)
+  File &quot;atk/tasks/celery_tasks.py&quot;, line 107, in atk.tasks.celery_tasks.celery_run_dist_opp_task
+  File &quot;atk/tasks/opp_tasks.py&quot;, line 576, in atk.tasks.opp_tasks.run_dist_opp_task
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+[2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">
++-------------+-----------------------+-------------------------+------------------------+--------------------------+----------+
+|     id_3    | pyaclnn_0_input_bytes | dist_npu_bm_input_bytes | pyaclnn_0_output_bytes | dist_npu_bm_output_bytes | accuracy |
++-------------+-----------------------+-------------------------+------------------------+--------------------------+----------+
+|  pyaclnn_0  |          None         |           None          |          None          |           None           |    -     |
+| dist_npu_bm |                       |                         |                        |                          |          |
++-------------+-----------------------+-------------------------+------------------------+--------------------------+----------+</span></span>
+ATK任务进度: 100%|██████████| 2/2 [00:08&lt;00:00,  1.61s/it][2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">
++-------------+----------+------------------+------------------+--------------+----------------------+--------+--------------+
+|     名称    | 总用例数 | 执行成功用例个数 | 执行失败用例个数 | 通过用例个数 | 错误信息匹配用例个数 | 通过率 | 精度是否达标 |
++-------------+----------+------------------+------------------+--------------+----------------------+--------+--------------+
+| dist_npu_bm |    2     |        0         |        2         |      0       |          -           |  0.0   |    <span style="color:#F44336;font-weight:bold">Failed</span>    |
++-------------+----------+------------------+------------------+--------------+----------------------+--------+--------------+</span></span>
+[2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">Total Task: 2, success 0, <span style="color:#F44336;font-weight:bold">failed</span> 2</span></span>
+[2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">Summary info: acc_pass_result:<span style="color:#F44336;font-weight:bold">Failed</span>&nbsp;&nbsp;&nbsp;&nbsp;is_acc_dc_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_e2e_perf_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_benchmark_perf_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_device_perf_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_device_memory_pass:None&nbsp;&nbsp;&nbsp;&nbsp;is_memory_check_pass:None .</span></span>
+[2026-11-06 20:45:19]</span> [INFO]</span> [ResultProcess-6]</span> [10668]</span> [process.py</span>:315</span>]  <span style="color:#2196F3">save result excel file: /autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005/report/aclnnMatmulAlltoAll_Smoke_reports_accuracy_2026-11-06-20-45-11.xlsx</span></span>
+ATK任务进度: 100%|██████████| 2/2 [00:08&lt;00:00,  4.06s/it]
+[2026-11-06 20:45:19]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">atk task success!</span></span>
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+[2026-11-06 20:45:19]</span> [WARNING]</span> [127.0.0.1:9090@device_run_0]</span> [10633]</span> [control.py</span>:582</span>]  <span style="color:#FFC107">Got shutdown from remote</span></span>
+[2026-11-06 20:45:20]</span> [<span style="color:#F44336;font-weight:bold">ERROR</span>]</span> [ForkPoolWorker-1]</span> [10650]</span> [builtins.py</span>:88</span>]  <span style="color:#F44336">Chord &#39;98fb9be9-1934-4df7-a263-c33ca293b27a&#39; raised: RuntimeError(&#39;run opp task <span style="color:#F44336;font-weight:bold">failed</span>!&#39;)</span></span>
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/app/builtins.py&quot;, line 78, in unlock_chord
+    ret = j(
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 775, in join
+    value = result.get(
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 247, in get
+    self.maybe_throw(callback=callback)
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 365, in maybe_throw
+    self.throw(value, self._to_remote_traceback(tb))
+  File &quot;/usr/local/lib/python3.9/dist-packages/celery/result.py&quot;, line 358, in throw
+    self.on_ready.throw(*args, **kwargs)
+  File &quot;/usr/local/lib/python3.9/dist-packages/vine/promises.py&quot;, line 235, in throw
+    reraise(type(exc), exc, tb)
+  File &quot;/usr/local/lib/python3.9/dist-packages/vine/utils.py&quot;, line 27, in reraise
+    raise value
+RuntimeError: run opp task <span style="color:#F44336;font-weight:bold">failed</span>!
+Restoring 1 unacknowledged message(s)
+[2026-11-06 20:45:24]</span> [INFO]</span> [MainProcess]</span> [10432]</span> [decorators.py</span>:33</span>]  <span style="color:#2196F3">atk task finish. cost time: 14 s</span></span>
+[<span style="color:#F44336;font-weight:bold">ERROR</span>] 2026-11-06-20:45:24 (PID:10432, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton <span style="color:#F44336;font-weight:bold">exception</span></div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.200</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:374</td>
+                <td class="step-indent"><div class="msg-scroll">[MONITOR] ✓ 监控完成, 日志已收集 (共 150 行)</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.200</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:398</td>
+                <td class="step-indent"><div class="msg-scroll">[VERIFY] 开始解析日志并评估结果 (test_mode=Smoke)</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.201</td>
+                <td class='ERROR'>ERROR</td>
+                <td>281473166712848</td>
+                <td>__init__.py:71</td>
+                <td class="step-indent"><div class="msg-scroll">Test failed: aclnnMatmulAlltoAll (Smoke) - aclnnMatmulAlltoAll accuracy not passed</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.201</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:417</td>
+                <td class="step-indent"><div class="msg-scroll">[VERIFY] ✓ 结果评估完成:</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.201</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:418</td>
+                <td class="step-indent"><div class="msg-scroll">[VERIFY]   success        = False</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.201</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:419</td>
+                <td class="step-indent"><div class="msg-scroll">[VERIFY]   acc_pass_result= Failed</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.201</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:420</td>
+                <td class="step-indent"><div class="msg-scroll">[VERIFY]   is_acc_dc_pass = None</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.201</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:421</td>
+                <td class="step-indent"><div class="msg-scroll">[VERIFY]   is_e2e_perf_pass= None</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.201</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:422</td>
+                <td class="step-indent"><div class="msg-scroll">[VERIFY]   is_device_perf_pass= None</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.201</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:423</td>
+                <td class="step-indent"><div class="msg-scroll">[VERIFY]   is_device_memory_pass= None</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.201</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:424</td>
+                <td class="step-indent"><div class="msg-scroll">[VERIFY]   is_memory_check_pass= None</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.202</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:425</td>
+                <td class="step-indent"><div class="msg-scroll">[VERIFY]   error_msg      = aclnnMatmulAlltoAll accuracy not passed</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.202</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:426</td>
+                <td class="step-indent"><div class="msg-scroll">[VERIFY]   log_file       = /autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.202</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>xlsx_analyzer.py:210</td>
+                <td class="step-indent"><div class="msg-scroll">下载xlsx文件: remote_path=/autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005/report/aclnnMatmulAlltoAll_Smoke_reports_accuracy_2026-11-06-20-45-11.xlsx, category=mc2</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.202</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>device.py:1087</td>
+                <td class="step-indent"><div class="msg-scroll">[Device.download_file] Downloading /autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005/report/aclnnMatmulAlltoAll_Smoke_reports_accuracy_2026-11-06-20-45-11.xlsx to logs/TestCases/results/mc2/aclnnMatmulAlltoAll_Smoke_reports_accuracy_2026-11-06-20-45-11.xlsx via SCP</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.247</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>xlsx_analyzer.py:233</td>
+                <td class="step-indent"><div class="msg-scroll">xlsx文件下载成功: logs/TestCases/results/mc2/aclnnMatmulAlltoAll_Smoke_reports_accuracy_2026-11-06-20-45-11.xlsx</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.273</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>atk_executor.py:1179</td>
+                <td class="step-indent"><div class="msg-scroll">xlsx分析完成: aclnnMatmulAlltoAll_Smoke_reports_accuracy_2026-11-06-20-45-11.xlsx | 总计: 2 | 通过: 0 | 失败: 2 | 失败用例数: 1</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.274</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>html.py:465</td>
+                <td class="step-indent"><div class="msg-scroll">开始生成完整测试报告: 总用例=2, 成功=0, 失败=1, 通过率=0.0</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.274</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>html.py:88</td>
+                <td class="step-indent"><div class="msg-scroll">HTML元素生成成功</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.274</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>html.py:389</td>
+                <td class="step-indent"><div class="msg-scroll">失败用例详情HTML生成成功: /home/pytest-infra/logs_V6KV5jcQ/TestCases/2026-11-06/test_cann_accu_smk_aclnnmatmulalltoall_20-44-54/mc2/details/failed_case_aclnnMatmulAlltoAll_3.html</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.275</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>html.py:165</td>
+                <td class="step-indent"><div class="msg-scroll">失败概述HTML元素生成成功</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.275</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>html.py:230</td>
+                <td class="step-indent"><div class="msg-scroll">失败用例列表HTML元素生成成功</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.275</td>
+                <td class='INFO'>INFO</td>
+                <td>281473166712848</td>
+                <td>html.py:515</td>
+                <td class="step-indent"><div class="msg-scroll">完整测试报告生成成功</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 20:45:26.277</td>
+                <td class='PASS'>PASS</td>
+                <td>281473166712848</td>
+                <td>test_ops_transformer_part3.py:379</td>
+                <td class="step-indent"><div class="msg-scroll">xlsx分析完成: 总计2条用例</div></td>
+            </tr>
+        <tr class="step-error">
+            <td>2026-11-06 20:45:26.278</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281473166712848</td>
+            <td>python.py:159</td>
+            <td>
+                <span id="toggle-step-4" class="step-toggle" onclick="toggleStep('step-4')">+Expand step</span>
+                <div class="msg-scroll">-------------------------------- TEST ASSERT --------------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-4">
+                <td>2026-11-06 20:45:26.278</td>
+                <td class='FAIL'>FAIL</td>
+                <td>281473166712848</td>
+                <td>test_ops_transformer_part3.py:387</td>
+                <td class="step-indent"><div class="msg-scroll">测试失败: aclnnMatmulAlltoAll功能精度测试(executor)失败: aclnnMatmulAlltoAll accuracy not passed
+assert False
+ +  where False = AtkTaskResult(success=False, acc_pass_result=&#39;Failed&#39;, is_acc_dc_pass=&#39;None&#39;, is_e2e_perf_pass=&#39;None&#39;, is_device_perf_pass=&#39;None&#39;, is_device_memory_pass=&#39;None&#39;, is_memory_check_pass=&#39;None&#39;, excel_file=&#39;/autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005/report/aclnnMatmulAlltoAll_Smoke_reports_accuracy_2026-11-06-20-45-11.xlsx&#39;, error_msg=&#39;aclnnMatmulAlltoAll accuracy not passed&#39;, raw_output=&#39;AttributeError: \&#39;MessageFactory\&#39; object has no attribute \&#39;GetPrototype\&#39;\nAttributeError: \&#39;MessageFactory\&#39; object has no attribute \&#39;GetPrototype\&#39;\nct-tool not installed, please install it first.\n\x1b[1;36m[2026-11-06 20:45:10]\x1b[0m \x1b[1;36m[INFO]\x1b[0m \x1b[1;36m[MainProcess]\x1b[0m \x1b[1;36m[10432]\x1b[0m [\x1b[1;36mdecorators.py\x1b[0m:\x1b[1;36m33\x1b[0m]  \x1b[1m\x1b[34mtask_output_path: /autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-06-20-45-10-348005\x1b[0m\x1b[0m\n\x1b[1;36m[2026-11-06 20:45:10]\x1b[0m \x1b[1;36m[INFO]\x1b[0m \x1b[1;36m[MainProcess]\x1b[0m \x1b[1;36m[10432]\x1b[0m [\x1b[1;36mdecorators.py\x1b[0m:\x1b[1;36m33\x1b[0m]  \x1b[1m\x1b[34mclear celery filesystem storage before start. broker=/autotest/atk_output/aclnnMatmulAlltoAll_...m shutdown (MainProcess)\nworker: Warm shutdown (MainProcess)\nworker: Warm shutdown (MainProcess)\nworker: Warm shutdown (MainProcess)\nworker: Warm shutdown (MainProcess)\n\x1b[1;36m[2026-11-06 20:45:19]\x1b[0m \x1b[1;36m[WARNING]\x1b[0m \x1b[1;36m[127.0.0.1:9090@device_run_0]\x1b[0m \x1b[1;36m[10633]\x1b[0m [\x1b[1;36mcontrol.py\x1b[0m:\x1b[1;36m582\x1b[0m]  \x1b[1m\x1b[33mGot shutdown from remote\x1b[0m\x1b[0m\n\x1b[1;36m[2026-11-06 20:45:20]\x1b[0m \x1b[1;36m[ERROR]\x1b[0m \x1b[1;36m[ForkPoolWorker-1]\x1b[0m \x1b[1;36m[10650]\x1b[0m [\x1b[1;36mbuiltins.py\x1b[0m:\x1b[1;36m88\x1b[0m]  \x1b[1m\x1b[31mChord \&#39;98fb9be9-1934-4df7-a263-c33ca293b27a\&#39; raised: RuntimeError(\&#39;run opp task failed!\&#39;)\x1b[0m\x1b[0m\nRestoring 1 unacknowledged message(s)\n\x1b[1;36m[2026-11-06 20:45:24]\x1b[0m \x1b[1;36m[INFO]\x1b[0m \x1b[1;36m[MainProcess]\x1b[0m \x1b[1;36m[10432]\x1b[0m [\x1b[1;36mdecorators.py\x1b[0m:\x1b[1;36m33\x1b[0m]  \x1b[1m\x1b[34matk task finish. cost time: 14 s\x1b[0m\x1b[0m\n[ERROR] 2026-11-06-20:45:24 (PID:10432, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception&#39;, log_file=&#39;/autotest/atk_output/log/aclnnMatmulAlltoAll_Smoke_20261106204455.log&#39;, xlsx_analysis=None).success</div></td>
+            </tr>
+        <tr>
+            <td>2026-11-06 20:45:26.281</td>
+            <td class='TC_END'>TC_END</td>
+            <td>281473166712848</td>
+            <td>python.py:159</td>
+            <td><div class="msg-scroll">Test Case End</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:45:26.374</td>
+            <td class='FAIL'>FAIL</td>
+            <td>281473166712848</td>
+            <td>plugin.py:999</td>
+            <td><div class="msg-scroll">Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnmatmulalltoall
+</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:45:26.385</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>sendcmd[device]</td>
+            <td><div class="msg-scroll">test -d /root/ascend/log</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:45:26.386</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>recvcmd[device]</td>
+            <td><div class="msg-scroll">(empty)</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:45:26.386</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>device.py:1087</td>
+            <td><div class="msg-scroll">[Device.download_file] Downloading /root/ascend/log to /home/pytest-infra/logs_V6KV5jcQ/TestCases/2026-11-06/test_cann_accu_smk_aclnnmatmulalltoall_20-44-54/cann_single_A2_device_2_cover_single_type-nodes_1-device/ascend_log via SCP</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:45:26.622</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>conftest.py:224</td>
+            <td><div class="msg-scroll">[mv_dir_on_teardown] cann_single_A2_device_2_cover_single_type-nodes_1-device download &#39;/root/ascend/log&#39; -&gt; &#39;/home/pytest-infra/logs_V6KV5jcQ/TestCases/2026-11-06/test_cann_accu_smk_aclnnmatmulalltoall_20-44-54/cann_single_A2_device_2_cover_single_type-nodes_1-device/ascend_log&#39; success</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:45:26.684</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>sendcmd[device]</td>
+            <td><div class="msg-scroll">mv /root/ascend/log /mnt/share/cann_autotest_log/test_cann_accu_smk_aclnnmatmulalltoall_20261106_204526/ascend_log</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:45:26.684</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>recvcmd[device]</td>
+            <td><div class="msg-scroll">mv: cannot move &#39;/root/ascend/log&#39; to &#39;/mnt/share/cann_autotest_log/test_cann_accu_smk_aclnnmatmulalltoall_20261106_204526/ascend_log&#39;: <span style="color:#F44336;font-weight:bold">No such file or directory</span></div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:45:26.684</td>
+            <td class='WARN'>WARN</td>
+            <td>281473166712848</td>
+            <td>conftest.py:231</td>
+            <td><div class="msg-scroll">[mv_dir_on_teardown] cann_single_A2_device_2_cover_single_type-nodes_1-device &#39;mv /root/ascend/log /mnt/share/cann_autotest_log/test_cann_accu_smk_aclnnmatmulalltoall_20261106_204526/ascend_log&#39; failed: mv: cannot move &#39;/root/ascend/log&#39; to &#39;/mnt/share/cann_autotest_log/test_cann_accu_smk_aclnnmatmulalltoall_20261106_204526/ascend_log&#39;: No such file or directory</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:45:26.739</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>sendcmd[device]</td>
+            <td><div class="msg-scroll">test -d /autotest/atk_output</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:45:26.740</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>recvcmd[device]</td>
+            <td><div class="msg-scroll">(empty)</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:45:26.740</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>device.py:1087</td>
+            <td><div class="msg-scroll">[Device.download_file] Downloading /autotest/atk_output to /home/pytest-infra/logs_V6KV5jcQ/TestCases/2026-11-06/test_cann_accu_smk_aclnnmatmulalltoall_20-44-54/cann_single_A2_device_2_cover_single_type-nodes_1-device/autotest_atk_output via SCP</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:45:26.872</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>conftest.py:224</td>
+            <td><div class="msg-scroll">[mv_dir_on_teardown] cann_single_A2_device_2_cover_single_type-nodes_1-device download &#39;/autotest/atk_output&#39; -&gt; &#39;/home/pytest-infra/logs_V6KV5jcQ/TestCases/2026-11-06/test_cann_accu_smk_aclnnmatmulalltoall_20-44-54/cann_single_A2_device_2_cover_single_type-nodes_1-device/autotest_atk_output&#39; success</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:45:26.928</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>sendcmd[device]</td>
+            <td><div class="msg-scroll">mv /autotest/atk_output /mnt/share/cann_autotest_log/test_cann_accu_smk_aclnnmatmulalltoall_20261106_204526/autotest_atk_output</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:45:26.928</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>recvcmd[device]</td>
+            <td><div class="msg-scroll">mv: cannot move &#39;/autotest/atk_output&#39; to &#39;/mnt/share/cann_autotest_log/test_cann_accu_smk_aclnnmatmulalltoall_20261106_204526/autotest_atk_output&#39;: <span style="color:#F44336;font-weight:bold">No such file or directory</span></div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:45:26.928</td>
+            <td class='WARN'>WARN</td>
+            <td>281473166712848</td>
+            <td>conftest.py:231</td>
+            <td><div class="msg-scroll">[mv_dir_on_teardown] cann_single_A2_device_2_cover_single_type-nodes_1-device &#39;mv /autotest/atk_output /mnt/share/cann_autotest_log/test_cann_accu_smk_aclnnmatmulalltoall_20261106_204526/autotest_atk_output&#39; failed: mv: cannot move &#39;/autotest/atk_output&#39; to &#39;/mnt/share/cann_autotest_log/test_cann_accu_smk_aclnnmatmulalltoall_20261106_204526/autotest_atk_output&#39;: No such file or directory</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:45:27.018</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>sendcmd[device]</td>
+            <td><div class="msg-scroll">find /mnt/share/cann_autotest_log -maxdepth 1 -mindepth 1 -mtime +5 -exec rm -rf {} +</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:45:27.018</td>
+            <td class='INFO'>INFO</td>
+            <td>281473166712848</td>
+            <td>recvcmd[device]</td>
+            <td><div class="msg-scroll">(empty)</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 20:45:27.018</td>
+            <td class='TC_END'>TC_END</td>
+            <td>281473166712848</td>
+            <td>_callers.py:156</td>
+            <td><div class="msg-scroll">TestCase End, completed in 32.18s</div></td>
+        </tr>
+        </tbody>
+    </table>
+    
+</body>
+</html>

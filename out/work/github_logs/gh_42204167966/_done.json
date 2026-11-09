@@ -1,0 +1,79 @@
+{
+ "route": "github",
+ "key": "SgLang|nightly-test-npu.yml",
+ "rn": 2095,
+ "rid": "42204167966",
+ "st": "11-06 18:38",
+ "runId": 42204167966,
+ "repo": "sgl-project/sglang",
+ "displayTitle": "[Test][NPU] overlap-schedule validation: GLM5/Kimi/DSV4 case reconfig + TEMP nightly scoping",
+ "event": "pull_request",
+ "status": "FAILED",
+ "duration": 37.62,
+ "runStatus": {
+  "status": "completed",
+  "conclusion": "cancelled",
+  "updatedAt": "2026-11-06T11:15:43Z",
+  "attempt": 1
+ },
+ "_v": 2,
+ "mode": "perjob",
+ "why": "失败 job 1 个（≤5，逐 job 精取）",
+ "totalJobs": 15,
+ "failedJobs": [
+  {
+   "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+   "id": 127846761875,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ ],
+ "cancelledJobs": [
+  {
+   "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+   "id": 127846831887
+  },
+  {
+   "name": "check-all-jobs",
+   "id": 127862430618
+  }
+ ],
+ "jobs": [
+  {
+   "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+   "id": 127846761875,
+   "conclusion": "failure",
+   "startedAt": "2026-11-06T10:45:55Z",
+   "completedAt": "2026-11-06T11:00:22Z",
+   "logFile": "github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf-16-npu-a3.txt",
+   "logBytes": 1172604,
+   "logLines": 8811,
+   "errorLines": [
+    "L5477: [2026-11-06 10:53:49] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+    "L7692: [2026-11-06 10:58:15] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+    "L8615: Traceback (most recent call last):",
+    "L8633: FileNotFoundError: [Errno 2] No such file or directory: '/root/.cache/tests/output/shun8686-overlapschedule-20261106-1838-42204167966-1/Nightly_Test_NPU--cann9.1.0-a3-B010/perf/nightly-perf-16-npu-a3/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_fia_unset/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_pass1_metrics",
+    "L8641: Traceback (most recent call last):",
+    "L8659: FileNotFoundError: [Errno 2] No such file or directory: '/root/.cache/tests/output/shun8686-overlapschedule-20261106-1838-42204167966-1/Nightly_Test_NPU--cann9.1.0-a3-B010/perf/nightly-perf-16-npu-a3/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_fia_unset/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_pass1_metrics",
+    "L8663: Traceback (most recent call last):",
+    "L8755: ##[error]Error: failed to run script step:",
+    "L8756: ✗ exit code: 255",
+    "L8780: ##[error]Process completed with exit code 1.",
+    "L8781: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ ],
+ "missing": [],
+ "systemLogs": [],
+ "ghComplete": true
+}

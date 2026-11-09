@@ -1,0 +1,53 @@
+{
+ "_doc": {
+  "step": "step_3_tasks",
+  "title": "第 3 步 失败任务分流（T4）",
+  "source": "openLiBing 流水线运行详情（任务列表）",
+  "criteria": "仅取状态为失败的任务；UNSELECTED/CANCELED/IGNORED/INIT 跳过；含测试结果的任务走测试取证（第 4 步），其余走日志取证（第 5 步），github 平台运行改走第 5c 步",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-09 15:06:58",
+  "component": "MindIE",
+  "pipeline": "MindIE-Motor",
+  "date": "2026-11-06"
+ },
+ "test": [
+  {
+   "key": "MindIE|MindIE-Motor",
+   "pipeline": "MindIE-Motor",
+   "pipelineName": "Nightly-CI-Component-pipeline_MindIE-Motor",
+   "projectId": 300036,
+   "pipelineId": "d05b26dfc2e5450e8fff23ddf4cd0eb6",
+   "rid": "c5a424f5e96646668648f056869831c1",
+   "rn": 117,
+   "st": "11-06 07:04",
+   "jobId": "8bc5e442a3694e72b8da2119c75c7132",
+   "jobName": "Test_Pytest_MindIE-Motor_smoke_test",
+   "stepIds": [
+    "b29d803ec3084ea9acbdfd089875f144"
+   ],
+   "steps": [
+    {
+     "id": "b29d803ec3084ea9acbdfd089875f144",
+     "name": "Test_Pytest_MindIE-Motor_smoke_test",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "a6449e5f8e154605b3b3a4c69169ee54",
+     "jobIdParam": "35af558b239a4803948c2651933bc2bd"
+    }
+   ],
+   "jobErrMsg": "步骤Test_Pytest_MindIE-Motor_smoke_test执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "f9ff44c2f63c4cc291581a8ca88c2c1e",
+   "route": "test",
+   "isBuild": false,
+   "buildJobId": "35af558b239a4803948c2651933bc2bd"
+  }
+ ],
+ "log": [],
+ "skipped": [],
+ "errors": [],
+ "counts": {
+  "test": 1,
+  "log": 0,
+  "skipped": 0
+ }
+}

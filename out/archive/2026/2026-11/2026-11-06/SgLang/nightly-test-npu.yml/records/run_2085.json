@@ -1,0 +1,618 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-09 15:07:00",
+    "component": "SgLang",
+    "pipeline": "nightly-test-npu.yml",
+    "date": "2026-11-06",
+    "recordId": "SgLang|nightly-test-npu.yml#2085"
+  },
+  "recordId": "SgLang|nightly-test-npu.yml#2085",
+  "date": "2026-11-06",
+  "component": "SgLang",
+  "pipeline": "nightly-test-npu.yml",
+  "pipelineName": "nightly-test-npu.yml",
+  "platform": "github",
+  "buildNumber": 2085,
+  "pipelineRunId": "42073069875",
+  "status": "FAILED",
+  "failedTaskType": null,
+  "startedAt": "2026-11-06T01:16:55",
+  "endedAt": "2026-11-06T01:28:24",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-06T01:28:24",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0,
+    "bsRate": null,
+    "dims": [
+      "va"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42073069875",
+    "detail": "https://github.com/sgl-project/sglang/actions/runs/42073069875",
+    "github": "https://github.com/sgl-project/sglang/actions/runs/42073069875"
+  },
+  "tasks": [
+    {
+      "jobName": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "logBytes": 901532,
+      "logLines": 6014,
+      "download": "github-perjob",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L531: Traceback (most recent call last):",
+        "L3378: 2026-11-06 01:24:33.556644 WARN [1185-1185][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+        "L3389: 2026-11-06 01:24:33.558446 ERROR [1185-1185][HYBM hybm_entity_default.cpp:1324 InitDramSegment] dram segment does not support sdma in current environment, rankId: 0",
+        "L3390: 2026-11-06 01:24:33.558460 ERROR [1185-1185][HYBM hybm_entity_default.cpp:1245 InitSegment] InitDramSegment() failed: -1",
+        "L3391: 2026-11-06 01:24:33.558465 ERROR [1185-1185][HYBM hybm_entity_default.cpp:127 Initialize] Assert InitSegment() == BM_OK, Failed to init segment.",
+        "L3392: 2026-11-06 01:24:33.558471 ERROR [1185-1185][HYBM hybm_big_mem_entry.cpp:35 hybm_create_entity] initialize entity failed, id: 64 flags: 0x0 ret: ffffffff",
+        "L3393: 2026-11-06 01:24:33.558492 ERROR [1185-1185][SMEM smem_bm_entry.cpp:152 Initialize] hybm_create_entity failed, entityId: 64 rankId: 0 flags: 0",
+        "L3394: 2026-11-06 01:24:33.558522 ERROR [1185-1185][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1",
+        "L3395: 2026-11-06 01:24:33.558530 ERROR [1185-1185][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed",
+        "L3396: 2026-11-06 01:24:33.558536 ERROR [1185-1185][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm",
+        "L4846: 2026-11-06 01:24:35.763974 ERROR [1173-1173][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+        "L4849: 2026-11-06 01:24:35.763992 ERROR [1181-1181][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+        "L4850: 2026-11-06 01:24:35.764153 ERROR [1173-1173][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+        "L4851: 2026-11-06 01:24:35.764154 ERROR [1181-1181][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+        "L4852: 2026-11-06 01:24:35.764180 ERROR [1181-1181][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+        "L4853: 2026-11-06 01:24:35.764187 ERROR [1173-1173][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+        "L4856: 2026-11-06 01:24:35.764398 ERROR [1178-1178][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+        "L4857: 2026-11-06 01:24:35.764529 ERROR [1178-1178][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+        "L4858: 2026-11-06 01:24:35.764537 ERROR [1178-1178][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+        "L4861: Traceback (most recent call last):",
+        "L4888: [2026-11-06 01:24:35 DP7 PP1 TP7 EP7] Scheduler hit an exception: Traceback (most recent call last):",
+        "L4938: [2026-11-06 01:24:35 DP2 PP0 TP2 EP2] Scheduler hit an exception: Traceback (most recent call last):",
+        "L4988: [2026-11-06 01:24:35 DP0 PP1 TP0 EP0] Scheduler hit an exception: Traceback (most recent call last):",
+        "L5036: 2026-11-06 01:24:35.765375 ERROR [1175-1175][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+        "L5040: 2026-11-06 01:24:35.765531 ERROR [1175-1175][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+        "L5041: 2026-11-06 01:24:35.765546 ERROR [1175-1175][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+        "L5044: 2026-11-06 01:24:35.765863 ERROR [1184-1184][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+        "L5045: 2026-11-06 01:24:35.766006 ERROR [1184-1184][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+        "L5046: 2026-11-06 01:24:35.766016 ERROR [1184-1184][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+        "L5052: [2026-11-06 01:24:35 DP6 PP1 TP6 EP6] Scheduler hit an exception: Traceback (most recent call last):",
+        "L5100: 2026-11-06 01:24:35.766620 ERROR [1183-1183][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+        "L5101: 2026-11-06 01:24:35.766745 ERROR [1183-1183][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+        "L5102: 2026-11-06 01:24:35.766754 ERROR [1183-1183][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+        "L5104: Traceback (most recent call last):",
+        "L5131: Traceback (most recent call last):",
+        "L5158: [2026-11-06 01:24:35 DP5 PP0 TP5 EP5] Scheduler hit an exception: Traceback (most recent call last):",
+        "L5206: Traceback (most recent call last):",
+        "L5233: Traceback (most recent call last):",
+        "L5260: Traceback (most recent call last):",
+        "L5287: Traceback (most recent call last):",
+        "L5313: [2026-11-06 01:24:35 DP2 PP1 TP2 EP2] Scheduler hit an exception: Traceback (most recent call last):",
+        "L5359: [2026-11-06 01:24:35 DP0 PP0 TP0 EP0] Scheduler hit an exception: Traceback (most recent call last):",
+        "L5406: Traceback (most recent call last):",
+        "L5433: Traceback (most recent call last):",
+        "L5459: [2026-11-06 01:24:35 DP1 PP1 TP1 EP1] Scheduler hit an exception: Traceback (most recent call last):",
+        "L5505: [2026-11-06 01:24:35 DP1 PP0 TP1 EP1] Scheduler hit an exception: Traceback (most recent call last):",
+        "L5551: [2026-11-06 01:24:35 DP6 PP0 TP6 EP6] Scheduler hit an exception: Traceback (most recent call last):",
+        "L5597: [2026-11-06 01:24:35 DP3 PP0 TP3 EP3] Scheduler hit an exception: Traceback (most recent call last):",
+        "L5643: [2026-11-06 01:24:35 DP4 PP1 TP4 EP4] Scheduler hit an exception: Traceback (most recent call last):",
+        "L5689: [2026-11-06 01:24:35 DP3 PP1 TP3 EP3] Scheduler hit an exception: Traceback (most recent call last):",
+        "L5737: Traceback (most recent call last):",
+        "L5748: Traceback (most recent call last):",
+        "L5764: Traceback (most recent call last):",
+        "L5801: Traceback (most recent call last):",
+        "L5811: Traceback (most recent call last):",
+        "L5915: ##[error]Error: failed to run script step:",
+        "L5916: ✗ exit code: 1",
+        "L5932: Traceback (most recent call last):",
+        "L5940: ##[error]Process completed with exit code 1.",
+        "L5941: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+      ],
+      "githubJob": {
+        "id": 127405967141,
+        "conclusion": "failure",
+        "startedAt": "2026-11-05T17:17:28Z",
+        "completedAt": "2026-11-05T17:28:23Z",
+        "steps": [
+          {
+            "name": "Run test",
+            "conclusion": "failure"
+          }
+        ]
+      },
+      "isTestJob": true,
+      "testResults": null
+    }
+  ],
+  "cases": [],
+  "errorMessages": [
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 531,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 3378,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:33.556644 WARN [1185-1185][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 3389,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:33.558446 ERROR [1185-1185][HYBM hybm_entity_default.cpp:1324 InitDramSegment] dram segment does not support sdma in current environment, rankId: 0"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 3390,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:33.558460 ERROR [1185-1185][HYBM hybm_entity_default.cpp:1245 InitSegment] InitDramSegment() failed: -1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 3391,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:33.558465 ERROR [1185-1185][HYBM hybm_entity_default.cpp:127 Initialize] Assert InitSegment() == BM_OK, Failed to init segment."
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 3392,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:33.558471 ERROR [1185-1185][HYBM hybm_big_mem_entry.cpp:35 hybm_create_entity] initialize entity failed, id: 64 flags: 0x0 ret: ffffffff"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 3393,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:33.558492 ERROR [1185-1185][SMEM smem_bm_entry.cpp:152 Initialize] hybm_create_entity failed, entityId: 64 rankId: 0 flags: 0"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 3394,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:33.558522 ERROR [1185-1185][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 3395,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:33.558530 ERROR [1185-1185][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 3396,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:33.558536 ERROR [1185-1185][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 4846,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:35.763974 ERROR [1173-1173][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 4849,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:35.763992 ERROR [1181-1181][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 4850,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:35.764153 ERROR [1173-1173][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 4851,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:35.764154 ERROR [1181-1181][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 4852,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:35.764180 ERROR [1181-1181][MMC mmc.cpp:324 mmc_init] failed to create or start local service"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 4853,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:35.764187 ERROR [1173-1173][MMC mmc.cpp:324 mmc_init] failed to create or start local service"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 4856,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:35.764398 ERROR [1178-1178][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 4857,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:35.764529 ERROR [1178-1178][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 4858,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:35.764537 ERROR [1178-1178][MMC mmc.cpp:324 mmc_init] failed to create or start local service"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 4861,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 4888,
+      "level": "LOG",
+      "text": "[2026-11-06 01:24:35 DP7 PP1 TP7 EP7] Scheduler hit an exception: Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 4938,
+      "level": "LOG",
+      "text": "[2026-11-06 01:24:35 DP2 PP0 TP2 EP2] Scheduler hit an exception: Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 4988,
+      "level": "LOG",
+      "text": "[2026-11-06 01:24:35 DP0 PP1 TP0 EP0] Scheduler hit an exception: Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5036,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:35.765375 ERROR [1175-1175][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5040,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:35.765531 ERROR [1175-1175][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5041,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:35.765546 ERROR [1175-1175][MMC mmc.cpp:324 mmc_init] failed to create or start local service"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5044,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:35.765863 ERROR [1184-1184][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5045,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:35.766006 ERROR [1184-1184][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5046,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:35.766016 ERROR [1184-1184][MMC mmc.cpp:324 mmc_init] failed to create or start local service"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5052,
+      "level": "LOG",
+      "text": "[2026-11-06 01:24:35 DP6 PP1 TP6 EP6] Scheduler hit an exception: Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5100,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:35.766620 ERROR [1183-1183][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5101,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:35.766745 ERROR [1183-1183][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5102,
+      "level": "LOG",
+      "text": "2026-11-06 01:24:35.766754 ERROR [1183-1183][MMC mmc.cpp:324 mmc_init] failed to create or start local service"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5104,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5131,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5158,
+      "level": "LOG",
+      "text": "[2026-11-06 01:24:35 DP5 PP0 TP5 EP5] Scheduler hit an exception: Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5206,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5233,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5260,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5287,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5313,
+      "level": "LOG",
+      "text": "[2026-11-06 01:24:35 DP2 PP1 TP2 EP2] Scheduler hit an exception: Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5359,
+      "level": "LOG",
+      "text": "[2026-11-06 01:24:35 DP0 PP0 TP0 EP0] Scheduler hit an exception: Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5406,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5433,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5459,
+      "level": "LOG",
+      "text": "[2026-11-06 01:24:35 DP1 PP1 TP1 EP1] Scheduler hit an exception: Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5505,
+      "level": "LOG",
+      "text": "[2026-11-06 01:24:35 DP1 PP0 TP1 EP1] Scheduler hit an exception: Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5551,
+      "level": "LOG",
+      "text": "[2026-11-06 01:24:35 DP6 PP0 TP6 EP6] Scheduler hit an exception: Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5597,
+      "level": "LOG",
+      "text": "[2026-11-06 01:24:35 DP3 PP0 TP3 EP3] Scheduler hit an exception: Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5643,
+      "level": "LOG",
+      "text": "[2026-11-06 01:24:35 DP4 PP1 TP4 EP4] Scheduler hit an exception: Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5689,
+      "level": "LOG",
+      "text": "[2026-11-06 01:24:35 DP3 PP1 TP3 EP3] Scheduler hit an exception: Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5737,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5748,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5764,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5801,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5811,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5915,
+      "level": "LOG",
+      "text": "##[error]Error: failed to run script step:"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5916,
+      "level": "LOG",
+      "text": "✗ exit code: 1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5932,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5940,
+      "level": "LOG",
+      "text": "##[error]Process completed with exit code 1."
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5941,
+      "level": "LOG",
+      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+    }
+  ],
+  "evidence": {
+    "files": [
+      "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt"
+    ],
+    "missing": [],
+    "github": {
+      "runId": 42073069875,
+      "repo": "sgl-project/sglang",
+      "displayTitle": "ci run",
+      "mode": "perjob",
+      "totalJobs": 15,
+      "failedJobs": [
+        {
+          "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+          "id": 127405967141,
+          "steps": [
+            {
+              "name": "Run test",
+              "conclusion": "failure"
+            }
+          ]
+        }
+      ],
+      "missing": [],
+      "complete": true
+    }
+  },
+  "counts": {
+    "tasks": 1,
+    "testTasks": 0,
+    "logTasks": 1,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 60,
+    "evidenceFiles": 1
+  },
+  "verdict": {
+    "category": "job_failure",
+    "text": "任务失败",
+    "confidence": 0.7,
+    "level": "中",
+    "basis": [
+      "任务 multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa 日志命中 60 条错误行（非编译特征），见 github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "基线 0.30",
+      "证据文件落盘 1 份 +0.25",
+      "任务日志命中错误行 +0.15"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "rootCause": "运行库与环境能力缺失：日志持续报 Unable to open library [libhcom.so]（cannot open shared object file），随后报 dram segment does not support sdma in current environment、InitDramSegment() failed: -1、Failed to init segment，用例在通信/内存段初始化阶段即中断。",
+    "advice": "在镜像中补齐 libhcom.so 并确认 LD_LIBRARY_PATH 与驱动版本匹配；同时核对当前机器是否支持 dram 段 sdma（跨代机器或虚拟化环境常不支持），必要时更换节点或调整内存段配置后重跑。",
+    "cites": [
+      "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3378",
+      "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3389",
+      "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3391"
+    ],
+    "updatedAt": "2026-11-09 15:07:00",
+    "source": "agent"
+  }
+}

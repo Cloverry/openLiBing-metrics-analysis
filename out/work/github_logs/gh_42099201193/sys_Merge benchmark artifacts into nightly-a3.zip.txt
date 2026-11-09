@@ -1,0 +1,8 @@
+2026-11-06T03:22:44.3420000Z Requested labels: linux-amd64-cpu-8-hk
+2026-11-06T03:22:44.3420000Z Job defined at: vllm-project/vllm-ascend/.github/workflows/schedule_nightly_test_a3.yaml@refs/heads/releases/v0.32.0rc
+2026-11-06T03:22:44.3420000Z Waiting for a runner to pick up this job...
+2026-11-06T03:22:44.3390000Z Evaluating merge-benchmark-artifacts.if
+2026-11-06T03:22:44.3390000Z Evaluating: (always() && (github.event_name == 'workflow_dispatch') && (needs.parse-trigger.result == 'success'))
+2026-11-06T03:22:44.3390000Z Expanded: (true && ('workflow_dispatch' == 'workflow_dispatch') && ('success' == 'success'))
+2026-11-06T03:22:44.3390000Z Result: true
+2026-11-06T03:22:44.3450000Z Job is about to start running on the runner: linux-amd64-cpu-8-hk

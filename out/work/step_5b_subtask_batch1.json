@@ -1,0 +1,1 @@
+{"ok":true,"results":[{"key":"Triton_Ascend|Ascend","pipeline":"Ascend","rn":104,"rid":"9ae1e7dda41c4a78957a5ba09d2e5b3c","jobId":"5b0ba7feedf147a0a53594304b3c15b2","jobName":"npu_ir流水线调用","flow":"ok","reason":"","builds":[]}],"subLogs":[]}

@@ -1,0 +1,985 @@
+﻿2026-11-05T14:49:24.7013848Z Current runner version: '2.338.0'
+2026-11-05T14:49:24.7021228Z Runner name: 'linux-aarch64-a3-2-cn12-001-x586q-runner-sdldh'
+2026-11-05T14:49:24.7022282Z Runner group name: 'Default'
+2026-11-05T14:49:24.7023488Z Machine name: 'linux-aarch64-a3-2-cn12-001-x586q-runner-sdldh'
+2026-11-05T14:49:24.7027007Z ##[group]GITHUB_TOKEN Permissions
+2026-11-05T14:49:24.7029432Z Contents: read
+2026-11-05T14:49:24.7030081Z Metadata: read
+2026-11-05T14:49:24.7030744Z Packages: read
+2026-11-05T14:49:24.7031338Z ##[endgroup]
+2026-11-05T14:49:24.7033583Z Secret source: None
+2026-11-05T14:49:24.7034727Z Cache mode: write
+2026-11-05T14:49:24.7035930Z Runner is running behind proxy server 'http://squid-cache.squid.svc.cluster.local:3128' for all HTTP requests.
+2026-11-05T14:49:24.7037558Z Runner is running behind proxy server 'http://squid-cache.squid.svc.cluster.local:3128' for all HTTPS requests.
+2026-11-05T14:49:24.7038739Z Prepare workflow directory
+2026-11-05T14:49:24.7873031Z Prepare all required actions
+2026-11-05T14:49:24.7922796Z Getting action download info
+2026-11-05T14:49:26.1525748Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-05T14:49:30.1552981Z Download action repository 'actions/github-script@v8' (SHA:ed597411d8f924073f98dfc5c65a23a2325f34cd)
+2026-11-05T14:49:33.6382770Z Uses: sgl-project/sglang/.github/workflows/_npu-pr-test-stage.yml@refs/pull/48664/merge (ac8137ebdeca2b91691d8ab8a9e91efe8cd9db0b)
+2026-11-05T14:49:33.6387273Z ##[group] Inputs
+2026-11-05T14:49:33.6387654Z   self_name: nightly-1-npu-a3
+2026-11-05T14:49:33.6388140Z   runner_config: linux-aarch64-a3-2-
+2026-11-05T14:49:33.6388783Z   image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann9.1.0-a3-B010
+2026-11-05T14:49:33.6389385Z   npu_device_type: a3
+2026-11-05T14:49:33.6389695Z   run_timeout_minutes: 90
+2026-11-05T14:49:33.6389999Z   timeout_per_file: 3600
+2026-11-05T14:49:33.6390322Z   partitions: {"size":1,"arr":[0]}
+2026-11-05T14:49:33.6390683Z   ref: 
+2026-11-05T14:49:33.6390961Z   skip_pr_test_health_check: true
+2026-11-05T14:49:33.6391796Z   is_nightly_pipeline_job: true
+2026-11-05T14:49:33.6392148Z   use_coverage_runner: false
+2026-11-05T14:49:33.6392853Z   only_tests: test/registered/npu/basic_function/runtime_opts/test_npu_needs_cpu_seq_lens_fia_warning.py
+
+2026-11-05T14:49:33.6393484Z   github-token: 
+2026-11-05T14:49:33.6393769Z ##[endgroup]
+2026-11-05T14:49:33.6394068Z Complete job name: nightly-1-npu-a3 / run (0)
+2026-11-05T14:49:33.7203495Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-05T14:49:33.7207165Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-05T14:49:33.7207994Z ##[endgroup]
+2026-11-05T14:49:33.9735776Z (node:472) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-05T14:49:33.9736742Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-05T14:49:33.9934603Z (node:472) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-05T14:49:49.2974018Z (node:472) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-05T14:49:51.4266788Z ##[group]Run actions/checkout@v4
+2026-11-05T14:49:51.4267193Z with:
+2026-11-05T14:49:51.4267479Z   ref: ac8137ebdeca2b91691d8ab8a9e91efe8cd9db0b
+2026-11-05T14:49:51.4267872Z   repository: sgl-project/sglang
+2026-11-05T14:49:51.4271502Z   token: ***
+2026-11-05T14:49:51.4271989Z   ssh-strict: true
+2026-11-05T14:49:51.4272223Z   ssh-user: git
+2026-11-05T14:49:51.4272469Z   persist-credentials: true
+2026-11-05T14:49:51.4272740Z   clean: true
+2026-11-05T14:49:51.4273002Z   sparse-checkout-cone-mode: true
+2026-11-05T14:49:51.4273304Z   fetch-depth: 1
+2026-11-05T14:49:51.4273533Z   fetch-tags: false
+2026-11-05T14:49:51.4273775Z   show-progress: true
+2026-11-05T14:49:51.4274662Z   lfs: false
+2026-11-05T14:49:51.4275398Z   submodules: false
+2026-11-05T14:49:51.4275733Z   set-safe-directory: true
+2026-11-05T14:49:51.4276038Z   allow-unsafe-pr-checkout: false
+2026-11-05T14:49:51.4276357Z env:
+2026-11-05T14:49:51.4276623Z   SKIP_PR_TEST_HEALTH_CHECK: true
+2026-11-05T14:49:51.4276981Z   SGLANG_USE_MODELSCOPE: true
+2026-11-05T14:49:51.4277280Z   SGLANG_IS_IN_CI: true
+2026-11-05T14:49:51.4277593Z   HF_ENDPOINT: https://hf-mirror.com
+2026-11-05T14:49:51.4277929Z   TORCH_EXTENSIONS_DIR: /tmp/torch_extensions
+2026-11-05T14:49:51.4278329Z   PYTORCH_NPU_ALLOC_CONF: expandable_segments:True
+2026-11-05T14:49:51.4278711Z   STREAMS_PER_DEVICE: 32
+2026-11-05T14:49:51.4278959Z ##[endgroup]
+2026-11-05T14:49:51.4387942Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-05T14:49:51.4389163Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-05T14:49:51.4389546Z ##[endgroup]
+2026-11-05T14:49:51.6804071Z (node:669) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-05T14:49:51.6804942Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-05T14:49:51.7018671Z (node:669) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-05T14:49:51.7750395Z (node:669) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-05T14:49:52.6123221Z Syncing repository: sgl-project/sglang
+2026-11-05T14:49:52.6124583Z ##[group]Getting Git version info
+2026-11-05T14:49:52.6124958Z Working directory is '/__w/sglang/sglang'
+2026-11-05T14:49:52.6125497Z [command]/usr/bin/git version
+2026-11-05T14:49:52.6125788Z git version 2.34.1
+2026-11-05T14:49:52.6126829Z ##[endgroup]
+2026-11-05T14:49:52.6130895Z Copying '/root/.gitconfig' to '/__w/_temp/0ca10037-1cbc-4105-9708-24e494006361/.gitconfig'
+2026-11-05T14:49:52.6131695Z Temporarily overriding HOME='/__w/_temp/0ca10037-1cbc-4105-9708-24e494006361' before making global git config changes
+2026-11-05T14:49:52.6132480Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-05T14:49:52.6133165Z [command]/usr/bin/git config --global --add safe.directory /__w/sglang/sglang
+2026-11-05T14:49:52.6163048Z Deleting the contents of '/__w/sglang/sglang'
+2026-11-05T14:49:52.6166200Z ##[group]Initializing the repository
+2026-11-05T14:49:52.6169615Z [command]/usr/bin/git init /__w/sglang/sglang
+2026-11-05T14:49:52.6309067Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-05T14:49:52.6309727Z hint: is subject to change. To configure the initial branch name to use in all
+2026-11-05T14:49:52.6310315Z hint: of your new repositories, which will suppress this warning, call:
+2026-11-05T14:49:52.6310750Z hint: 
+2026-11-05T14:49:52.6311160Z hint: 	git config --global init.defaultBranch <name>
+2026-11-05T14:49:52.6311517Z hint: 
+2026-11-05T14:49:52.6311862Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-05T14:49:52.6312473Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-05T14:49:52.6313615Z hint: 
+2026-11-05T14:49:52.6317860Z hint: 	git branch -m <name>
+2026-11-05T14:49:52.6318245Z Initialized empty Git repository in /__w/sglang/sglang/.git/
+2026-11-05T14:49:52.6326950Z [command]/usr/bin/git remote add origin https://github.com/sgl-project/sglang
+2026-11-05T14:49:52.6385193Z ##[endgroup]
+2026-11-05T14:49:52.6385733Z ##[group]Disabling automatic garbage collection
+2026-11-05T14:49:52.6388902Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-05T14:49:52.6424057Z ##[endgroup]
+2026-11-05T14:49:52.6424460Z ##[group]Setting up auth
+2026-11-05T14:49:52.6430407Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-05T14:49:52.6468068Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-05T14:49:52.7088821Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-05T14:49:52.7129022Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-05T14:49:52.7482501Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-05T14:49:52.7517314Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-05T14:49:52.7879619Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-05T14:49:52.7921784Z ##[endgroup]
+2026-11-05T14:49:52.7922268Z ##[group]Fetching the repository
+2026-11-05T14:49:52.7929251Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin ac8137ebdeca2b91691d8ab8a9e91efe8cd9db0b
+2026-11-05T14:49:53.3251285Z warning: redirecting to http://git-cdn-service.git-cdn.svc.cluster.local:8000/sgl-project/sglang.git/
+2026-11-05T14:50:05.1797053Z From http://git-cdn-service.git-cdn.svc.cluster.local:8000/sgl-project/sglang
+2026-11-05T14:50:05.1797812Z  * branch            ac8137ebdeca2b91691d8ab8a9e91efe8cd9db0b -> FETCH_HEAD
+2026-11-05T14:50:05.1825066Z ##[endgroup]
+2026-11-05T14:50:05.1825606Z ##[group]Determining the checkout info
+2026-11-05T14:50:05.1826157Z ##[endgroup]
+2026-11-05T14:50:05.1831652Z [command]/usr/bin/git sparse-checkout disable
+2026-11-05T14:50:05.1896548Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-05T14:50:05.1933724Z ##[group]Checking out the ref
+2026-11-05T14:50:05.1937304Z [command]/usr/bin/git checkout --progress --force ac8137ebdeca2b91691d8ab8a9e91efe8cd9db0b
+2026-11-05T14:50:06.0699400Z Note: switching to 'ac8137ebdeca2b91691d8ab8a9e91efe8cd9db0b'.
+2026-11-05T14:50:06.0699808Z 
+2026-11-05T14:50:06.0700132Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-11-05T14:50:06.0700775Z changes and commit them, and you can discard any commits you make in this
+2026-11-05T14:50:06.0701349Z state without impacting any branches by switching back to a branch.
+2026-11-05T14:50:06.0701676Z 
+2026-11-05T14:50:06.0701901Z If you want to create a new branch to retain commits you create, you may
+2026-11-05T14:50:06.0702420Z do so (now or later) by using -c with the switch command. Example:
+2026-11-05T14:50:06.0702708Z 
+2026-11-05T14:50:06.0702833Z   git switch -c <new-branch-name>
+2026-11-05T14:50:06.0703026Z 
+2026-11-05T14:50:06.0703147Z Or undo this operation with:
+2026-11-05T14:50:06.0703330Z 
+2026-11-05T14:50:06.0703470Z   git switch -
+2026-11-05T14:50:06.0703616Z 
+2026-11-05T14:50:06.0703873Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-11-05T14:50:06.0704234Z 
+2026-11-05T14:50:06.0704615Z HEAD is now at ac8137e Merge a5b6dc8daeb48226cb032f707f86a81f13210f68 into 3fa242f27c5e6caca28ccd2538f2043eec654740
+2026-11-05T14:50:06.0778189Z ##[endgroup]
+2026-11-05T14:50:06.0895507Z [command]/usr/bin/git log -1 --format=%H
+2026-11-05T14:50:06.0896068Z ac8137ebdeca2b91691d8ab8a9e91efe8cd9db0b
+2026-11-05T14:50:06.7483225Z ##[group]Run git config --system --add safe.directory ${GITHUB_WORKSPACE}
+2026-11-05T14:50:06.7483844Z [36;1mgit config --system --add safe.directory ${GITHUB_WORKSPACE}[0m
+2026-11-05T14:50:06.7487212Z shell: sh -e {0}
+2026-11-05T14:50:06.7487439Z env:
+2026-11-05T14:50:06.7487647Z   SKIP_PR_TEST_HEALTH_CHECK: true
+2026-11-05T14:50:06.7487928Z   SGLANG_USE_MODELSCOPE: true
+2026-11-05T14:50:06.7488183Z   SGLANG_IS_IN_CI: true
+2026-11-05T14:50:06.7488444Z   HF_ENDPOINT: https://hf-mirror.com
+2026-11-05T14:50:06.7488758Z   TORCH_EXTENSIONS_DIR: /tmp/torch_extensions
+2026-11-05T14:50:06.7489479Z   PYTORCH_NPU_ALLOC_CONF: expandable_segments:True
+2026-11-05T14:50:06.7489837Z   STREAMS_PER_DEVICE: 32
+2026-11-05T14:50:06.7490070Z ##[endgroup]
+2026-11-05T14:50:06.7589639Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-05T14:50:06.7590652Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-05T14:50:06.7590973Z ##[endgroup]
+2026-11-05T14:50:06.9965702Z (node:705) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-05T14:50:06.9966503Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-05T14:50:07.0181091Z (node:705) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-05T14:50:07.0778381Z (node:705) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-05T14:50:08.9329332Z ##[group]Run actions/github-script@v8
+2026-11-05T14:50:08.9329688Z with:
+2026-11-05T14:50:08.9333096Z   github-token: ***
+2026-11-05T14:50:08.9349244Z   script: core.notice(`[health-check] START — event=${context.eventName}, runId=${context.runId}`);
+
+// Skip when explicitly requested via env var (e.g. release branch cut)
+if (process.env.SKIP_PR_TEST_HEALTH_CHECK === 'true') {
+  core.notice('[health-check] SKIP: SKIP_PR_TEST_HEALTH_CHECK=true');
+  return;
+}
+
+// Skip for scheduled runs — they should collect all failures, not fast-fail
+if (context.eventName === 'schedule') {
+  core.notice('[health-check] SKIP: scheduled run');
+  return;
+}
+
+// Check lint status from the separate Lint workflow (lint.yml).
+// listJobsForWorkflowRun only sees jobs within the SAME run, so we use
+// checks.listForRef which queries by commit SHA across ALL workflows.
+const ref = context.payload.pull_request?.head?.sha || context.sha;
+core.info(`[health-check] Checking lint for ref=${ref}`);
+const { data } = await github.rest.checks.listForRef({
+  owner: context.repo.owner,
+  repo: context.repo.repo,
+  ref: ref,
+  check_name: 'lint',
+});
+const lintRun = data.check_runs.find(
+  cr => cr.app?.slug === 'github-actions'
+);
+core.info(`[health-check] Lint check: status=${lintRun?.status}, conclusion=${lintRun?.conclusion}`);
+if (lintRun?.status === 'completed' && lintRun?.conclusion === 'failure') {
+  core.setFailed('Fast-fail: lint check failed');
+  return;
+}
+
+// Skip the jobs-failed check when the PR carries the bypass-fastfail label.
+// Lint check above still runs.
+let labels = [];
+if (context.payload.pull_request?.labels) {
+  labels = context.payload.pull_request.labels.map(l => l.name);
+} else {
+  const { data: prs } = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    commit_sha: ref,
+  });
+  if (prs.length > 0) {
+    labels = prs[0].labels.map(l => l.name);
+  }
+}
+core.info(`[health-check] PR labels: [${labels.join(', ')}]`);
+if (labels.includes('bypass-fastfail')) {
+  core.notice('[health-check] SKIP jobs-failed check: bypass-fastfail label present');
+  return;
+}
+
+const jobs = await github.paginate(github.rest.actions.listJobsForWorkflowRun, {
+  owner: context.repo.owner,
+  repo: context.repo.repo,
+  run_id: context.runId,
+  per_page: 100,
+});
+core.info(`[health-check] Total jobs in run: ${jobs.length}`);
+const failedJobs = jobs.filter(j => j.status === 'completed' && j.conclusion === 'failure');
+core.info(`[health-check] Failed jobs (before filtering): ${failedJobs.map(j => `${j.name}(${j.conclusion})`).join(', ') || 'none'}`);
+
+// Find jobs that failed from a real error, not from fast-fail cascade
+const rootCauseFailures = jobs.filter(j => {
+  if (j.status !== 'completed' || j.conclusion !== 'failure') return false;
+  // h20 runners are flaky (dirty GPU state from prior runs); their failures
+  // should not cascade fast-fail to other stages. j.name shape from
+  // listJobsForWorkflowRun: "<job-key>" + optional " / <reusable-job>"
+  // + optional " (<matrix>)". Split off the base job key before exact
+  // match so we cover both inline + reusable forms without confusing
+  // 'h20' with the 'h200' prefix.
+  const baseName = j.name.split(/[ /]/)[0];
+  if (baseName === 'base-c-test-8-gpu-h20') {
+    core.info(`[health-check] Filtered out h20 job: ${j.name}`);
+    return false;
+  }
+  // multimodal-gen NPU tests should not cascade fast-fail to perf/accuracy stages.
+  if (baseName === 'multimodal-gen-test-1-npu-a3' || baseName === 'multimodal-gen-test-4-npu-a3') {
+    core.info(`[health-check] Filtered out multimodal-gen NPU job: ${j.name}`);
+    return false;
+  }
+  // If the failing step is the health check, it's a cascade — skip it
+  const failedStep = (j.steps || []).find(s => s.conclusion === 'failure');
+  if (failedStep && (failedStep.name.includes('check-pr-test-health') || failedStep.name.includes('Check PR test health'))) {
+    core.info(`[health-check] Filtered out cascade failure: ${j.name} (failed step: ${failedStep.name})`);
+    return false;
+  }
+  return true;
+});
+core.info(`[health-check] Root cause failures (after filtering): ${rootCauseFailures.map(j => j.name).join(', ') || 'none'}`);
+
+if (rootCauseFailures.length > 0) {
+  core.setFailed(`Fast-fail: skipping — root cause job(s): ${rootCauseFailures.map(j => j.name).join(', ')}`);
+} else {
+  core.notice('[health-check] PASS: no root cause failures detected');
+}
+
+2026-11-05T14:50:08.9365438Z   debug: false
+2026-11-05T14:50:08.9365661Z   user-agent: actions/github-script
+2026-11-05T14:50:08.9365938Z   result-encoding: json
+2026-11-05T14:50:08.9366166Z   retries: 0
+2026-11-05T14:50:08.9366407Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-11-05T14:50:08.9366714Z env:
+2026-11-05T14:50:08.9366914Z   SKIP_PR_TEST_HEALTH_CHECK: true
+2026-11-05T14:50:08.9367188Z   SGLANG_USE_MODELSCOPE: true
+2026-11-05T14:50:08.9367442Z   SGLANG_IS_IN_CI: true
+2026-11-05T14:50:08.9367694Z   HF_ENDPOINT: https://hf-mirror.com
+2026-11-05T14:50:08.9368015Z   TORCH_EXTENSIONS_DIR: /tmp/torch_extensions
+2026-11-05T14:50:08.9368369Z   PYTORCH_NPU_ALLOC_CONF: expandable_segments:True
+2026-11-05T14:50:08.9368698Z   STREAMS_PER_DEVICE: 32
+2026-11-05T14:50:08.9368924Z ##[endgroup]
+2026-11-05T14:50:08.9409979Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-05T14:50:08.9411011Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-05T14:50:08.9411325Z ##[endgroup]
+2026-11-05T14:50:09.1807987Z (node:754) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-05T14:50:09.1808740Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-05T14:50:09.2023149Z (node:754) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-05T14:50:09.2563046Z (node:754) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-05T14:50:10.1034754Z ##[notice][health-check] START — event=pull_request, runId=42047810705
+2026-11-05T14:50:10.1042311Z ##[notice][health-check] SKIP: SKIP_PR_TEST_HEALTH_CHECK=true
+2026-11-05T14:50:10.9874231Z ##[group]Run set -euo pipefail
+2026-11-05T14:50:10.9874634Z [36;1mset -euo pipefail[0m
+2026-11-05T14:50:10.9875244Z [36;1mcp ~/.cache/modelscope/hub/datasets/otavia/ShareGPT_Vicuna_unfiltered/ShareGPT_V3_unfiltered_cleaned_split.json /tmp[0m
+2026-11-05T14:50:10.9875970Z [36;1mcp ~/.cache/modelscope/hub/datasets/tmp/test.jsonl /tmp[0m
+2026-11-05T14:50:10.9876339Z [36;1m[0m
+2026-11-05T14:50:10.9876540Z [36;1mif [[ "true" != "true" ]]; then[0m
+2026-11-05T14:50:10.9876906Z [36;1m  bash scripts/ci/npu/npu_ci_install_dependency.sh a3[0m
+2026-11-05T14:50:10.9877258Z [36;1m[0m
+2026-11-05T14:50:10.9877439Z [36;1melse[0m
+2026-11-05T14:50:10.9877990Z [36;1m  sglang_pkg_path=/sgl-workspace/sglang/python[0m
+2026-11-05T14:50:10.9878433Z [36;1m  ascend_test_util_path=${sglang_pkg_path}/sglang/test/ascend[0m
+2026-11-05T14:50:10.9878845Z [36;1m  mkdir -p ${ascend_test_util_path}[0m
+2026-11-05T14:50:10.9879259Z [36;1m  mv ${ascend_test_util_path} ${ascend_test_util_path}_bak[0m
+2026-11-05T14:50:10.9879741Z [36;1m  cp -r $(pwd)/python/sglang/test/ascend ${ascend_test_util_path}[0m
+2026-11-05T14:50:10.9880125Z [36;1m[0m
+2026-11-05T14:50:10.9880872Z [36;1m  pip install sentence_transformers zss "wandb>=0.16.0" tenacity==8.3.0 loguru openpyxl latex2sympy2 zstandard transformers-stream-generator tqdm-multiprocess pycocoevalcap[0m
+2026-11-05T14:50:10.9882082Z [36;1m  pip install yt-dlp sentencepiece==0.1.99 nltk av ftfy sqlitedict==2.1.0 "sacrebleu>=1.5.0" pytablewriter "peft>=0.2.0" "accelerate>=0.29.1"[0m
+2026-11-05T14:50:10.9882833Z [36;1m  pip install jsonlines "evaluate>=0.4.0" numexpr dotenv[0m
+2026-11-05T14:50:10.9883198Z [36;1m[0m
+2026-11-05T14:50:10.9883440Z [36;1m  hf download MMMU/MMMU --repo-type dataset[0m
+2026-11-05T14:50:10.9883751Z [36;1mfi[0m
+2026-11-05T14:50:10.9883939Z [36;1m[0m
+2026-11-05T14:50:10.9884139Z [36;1m# install sglang_router[0m
+2026-11-05T14:50:10.9884420Z [36;1mapt-get install -y libssl-dev[0m
+2026-11-05T14:50:10.9884772Z [36;1mpip install sglang_router[0m
+2026-11-05T14:50:10.9885183Z shell: bash --noprofile --norc -e -o pipefail {0}
+2026-11-05T14:50:10.9885490Z env:
+2026-11-05T14:50:10.9885695Z   SKIP_PR_TEST_HEALTH_CHECK: true
+2026-11-05T14:50:10.9885966Z   SGLANG_USE_MODELSCOPE: true
+2026-11-05T14:50:10.9886220Z   SGLANG_IS_IN_CI: true
+2026-11-05T14:50:10.9886476Z   HF_ENDPOINT: https://hf-mirror.com
+2026-11-05T14:50:10.9886784Z   TORCH_EXTENSIONS_DIR: /tmp/torch_extensions
+2026-11-05T14:50:10.9887135Z   PYTORCH_NPU_ALLOC_CONF: expandable_segments:True
+2026-11-05T14:50:10.9887458Z   STREAMS_PER_DEVICE: 32
+2026-11-05T14:50:10.9887763Z   GITHUB_PROXY_URL: https://gh-proxy.test.osinfra.cn/
+2026-11-05T14:50:10.9888110Z ##[endgroup]
+2026-11-05T14:50:10.9998329Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-05T14:50:10.9999366Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-05T14:50:10.9999705Z ##[endgroup]
+2026-11-05T14:50:11.2384570Z (node:817) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-05T14:50:11.2385352Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-05T14:50:11.2597072Z (node:817) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-05T14:50:11.3187200Z (node:817) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-05T14:50:13.3801952Z Looking in indexes: https://pypi.org/simple/
+2026-11-05T14:50:13.4968234Z Collecting sentence_transformers
+2026-11-05T14:50:13.4999208Z   Downloading sentence_transformers-6.2.0-py3-none-any.whl (760 kB)
+2026-11-05T14:50:13.5174327Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 760.7/760.7 kB 36.0 MB/s  0:00:00
+2026-11-05T14:50:13.5527443Z Collecting zss
+2026-11-05T14:50:13.6150895Z   Downloading zss-1.2.0.tar.gz (9.8 kB)
+2026-11-05T14:50:13.6275114Z   Installing build dependencies: started
+2026-11-05T14:50:14.3860812Z   Installing build dependencies: finished with status 'done'
+2026-11-05T14:50:14.3861293Z   Getting requirements to build wheel: started
+2026-11-05T14:50:14.7474323Z   Getting requirements to build wheel: finished with status 'done'
+2026-11-05T14:50:14.7480060Z   Preparing metadata (pyproject.toml): started
+2026-11-05T14:50:14.9519736Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-11-05T14:50:15.0717599Z Collecting wandb>=0.16.0
+2026-11-05T14:50:15.0772293Z   Downloading wandb-0.31.0-py3-none-manylinux_2_28_aarch64.whl (18.5 MB)
+2026-11-05T14:50:15.2508869Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.5/18.5 MB 108.5 MB/s  0:00:00
+2026-11-05T14:50:15.3106171Z Collecting tenacity==8.3.0
+2026-11-05T14:50:15.3126925Z   Downloading tenacity-8.3.0-py3-none-any.whl (25 kB)
+2026-11-05T14:50:15.3194832Z Requirement already satisfied: loguru in /usr/local/python3.12.13/lib/python3.12/site-packages (0.7.3)
+2026-11-05T14:50:15.3394020Z Collecting openpyxl
+2026-11-05T14:50:15.3413867Z   Downloading openpyxl-3.1.5-py2.py3-none-any.whl (250 kB)
+2026-11-05T14:50:15.4052264Z Collecting latex2sympy2
+2026-11-05T14:50:15.4080455Z   Downloading latex2sympy2-1.9.1-py3-none-any.whl (89 kB)
+2026-11-05T14:50:15.5594786Z Collecting zstandard
+2026-11-05T14:50:15.5631888Z   Downloading zstandard-0.25.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl (5.1 MB)
+2026-11-05T14:50:15.6512228Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.1/5.1 MB 89.4 MB/s  0:00:00
+2026-11-05T14:50:15.6512607Z Collecting transformers-stream-generator
+2026-11-05T14:50:15.6732249Z   Downloading transformers-stream-generator-0.0.5.tar.gz (13 kB)
+2026-11-05T14:50:15.6830362Z   Installing build dependencies: started
+2026-11-05T14:50:16.4231571Z   Installing build dependencies: finished with status 'done'
+2026-11-05T14:50:16.4237144Z   Getting requirements to build wheel: started
+2026-11-05T14:50:16.7857240Z   Getting requirements to build wheel: finished with status 'done'
+2026-11-05T14:50:16.7866032Z   Preparing metadata (pyproject.toml): started
+2026-11-05T14:50:16.9794594Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-11-05T14:50:17.1867261Z Collecting tqdm-multiprocess
+2026-11-05T14:50:17.1892899Z   Downloading tqdm_multiprocess-0.0.11-py3-none-any.whl (9.8 kB)
+2026-11-05T14:50:17.2544870Z Collecting pycocoevalcap
+2026-11-05T14:50:17.2623716Z   Downloading pycocoevalcap-1.2-py3-none-any.whl (104.3 MB)
+2026-11-05T14:50:18.3315524Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 104.3/104.3 MB 97.6 MB/s  0:00:01
+2026-11-05T14:50:18.4210419Z Requirement already satisfied: transformers<6.0.0,>=5.0.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sentence_transformers) (5.19.0)
+2026-11-05T14:50:18.4214236Z Requirement already satisfied: tokenizers>=0.19 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sentence_transformers) (0.23.3)
+2026-11-05T14:50:18.4218926Z Requirement already satisfied: huggingface-hub<3.0.0,>=1.3.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sentence_transformers) (1.33.0)
+2026-11-05T14:50:18.4222449Z Requirement already satisfied: torch>=2.2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sentence_transformers) (2.10.0+cpu)
+2026-11-05T14:50:18.4226134Z Requirement already satisfied: numpy>=1.24.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sentence_transformers) (2.2.6)
+2026-11-05T14:50:18.5575484Z Collecting scikit-learn>=1.1.0 (from sentence_transformers)
+2026-11-05T14:50:18.5604442Z   Downloading scikit_learn-1.9.1-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl (8.9 MB)
+2026-11-05T14:50:18.6497358Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.9/8.9 MB 99.6 MB/s  0:00:00
+2026-11-05T14:50:18.6655851Z Requirement already satisfied: scipy>=1.0.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sentence_transformers) (1.13.1)
+2026-11-05T14:50:18.6657295Z Requirement already satisfied: typing_extensions>=4.10.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sentence_transformers) (4.16.0)
+2026-11-05T14:50:18.6658372Z Requirement already satisfied: tqdm>=4.0.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sentence_transformers) (4.70.1)
+2026-11-05T14:50:18.6727874Z Requirement already satisfied: click<9.0.0,>=8.4.2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from huggingface-hub<3.0.0,>=1.3.0->sentence_transformers) (8.5.0)
+2026-11-05T14:50:18.6729152Z Requirement already satisfied: filelock>=3.10.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from huggingface-hub<3.0.0,>=1.3.0->sentence_transformers) (4.2.4)
+2026-11-05T14:50:18.6733082Z Requirement already satisfied: fsspec>=2023.5.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from huggingface-hub<3.0.0,>=1.3.0->sentence_transformers) (2026.2.0)
+2026-11-05T14:50:18.6743091Z Requirement already satisfied: hf-xet<2.0.0,>=1.6.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from huggingface-hub<3.0.0,>=1.3.0->sentence_transformers) (1.7.1)
+2026-11-05T14:50:18.6747941Z Requirement already satisfied: httpx<1,>=0.23.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from huggingface-hub<3.0.0,>=1.3.0->sentence_transformers) (0.28.1)
+2026-11-05T14:50:18.6752191Z Requirement already satisfied: packaging>=20.9 in /usr/local/python3.12.13/lib/python3.12/site-packages (from huggingface-hub<3.0.0,>=1.3.0->sentence_transformers) (26.3)
+2026-11-05T14:50:18.6756106Z Requirement already satisfied: pyyaml>=5.1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from huggingface-hub<3.0.0,>=1.3.0->sentence_transformers) (6.0.1)
+2026-11-05T14:50:18.6867337Z Requirement already satisfied: anyio in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpx<1,>=0.23.0->huggingface-hub<3.0.0,>=1.3.0->sentence_transformers) (4.15.1)
+2026-11-05T14:50:18.6871150Z Requirement already satisfied: certifi in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpx<1,>=0.23.0->huggingface-hub<3.0.0,>=1.3.0->sentence_transformers) (2026.7.22)
+2026-11-05T14:50:18.6876969Z Requirement already satisfied: httpcore==1.* in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpx<1,>=0.23.0->huggingface-hub<3.0.0,>=1.3.0->sentence_transformers) (1.0.9)
+2026-11-05T14:50:18.6880768Z Requirement already satisfied: idna in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpx<1,>=0.23.0->huggingface-hub<3.0.0,>=1.3.0->sentence_transformers) (3.18)
+2026-11-05T14:50:18.6911154Z Requirement already satisfied: h11>=0.16 in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpcore==1.*->httpx<1,>=0.23.0->huggingface-hub<3.0.0,>=1.3.0->sentence_transformers) (0.16.0)
+2026-11-05T14:50:18.6960791Z Requirement already satisfied: regex>=2025.10.22 in /usr/local/python3.12.13/lib/python3.12/site-packages (from transformers<6.0.0,>=5.0.0->sentence_transformers) (2026.9.29)
+2026-11-05T14:50:18.6965885Z Requirement already satisfied: typer in /usr/local/python3.12.13/lib/python3.12/site-packages (from transformers<6.0.0,>=5.0.0->sentence_transformers) (0.27.3)
+2026-11-05T14:50:18.6970543Z Requirement already satisfied: safetensors>=0.8.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from transformers<6.0.0,>=5.0.0->sentence_transformers) (0.8.0)
+2026-11-05T14:50:18.7131008Z Requirement already satisfied: six in /usr/local/python3.12.13/lib/python3.12/site-packages (from zss) (1.17.0)
+2026-11-05T14:50:18.7726212Z Collecting cwevals==0.0.1b1 (from wandb>=0.16.0)
+2026-11-05T14:50:18.7764058Z   Downloading cwevals-0.0.1b1-py3-none-any.whl (176 kB)
+2026-11-05T14:50:18.7863398Z Requirement already satisfied: opentelemetry-api>=1.43.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from wandb>=0.16.0) (1.45.2)
+2026-11-05T14:50:18.8187974Z Collecting opentelemetry-exporter-otlp-proto-http>=1.43.0 (from wandb>=0.16.0)
+2026-11-05T14:50:18.8271634Z   Downloading opentelemetry_exporter_otlp_proto_http-1.45.2-py3-none-any.whl (22 kB)
+2026-11-05T14:50:18.8619000Z Collecting opentelemetry-sdk>=1.43.0 (from wandb>=0.16.0)
+2026-11-05T14:50:18.8663083Z   Downloading opentelemetry_sdk-1.45.2-py3-none-any.whl (141 kB)
+2026-11-05T14:50:18.9180660Z Collecting platformdirs (from wandb>=0.16.0)
+2026-11-05T14:50:18.9200391Z   Downloading platformdirs-4.14.4-py3-none-any.whl (35 kB)
+2026-11-05T14:50:18.9269118Z Requirement already satisfied: protobuf!=5.28.0,!=5.29.0,<8,>=5 in /usr/local/python3.12.13/lib/python3.12/site-packages (from wandb>=0.16.0) (7.36.2)
+2026-11-05T14:50:18.9272849Z Requirement already satisfied: pydantic<3,>=2.6 in /usr/local/python3.12.13/lib/python3.12/site-packages (from wandb>=0.16.0) (2.14.2)
+2026-11-05T14:50:18.9279028Z Requirement already satisfied: requests<3,>=2.0.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from wandb>=0.16.0) (2.34.2)
+2026-11-05T14:50:18.9284198Z Requirement already satisfied: xxhash>=3.0.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from wandb>=0.16.0) (4.0.2)
+2026-11-05T14:50:18.9299583Z Requirement already satisfied: distro<2,>=1.7.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from cwevals==0.0.1b1->wandb>=0.16.0) (1.9.0)
+2026-11-05T14:50:18.9304526Z Requirement already satisfied: sniffio in /usr/local/python3.12.13/lib/python3.12/site-packages (from cwevals==0.0.1b1->wandb>=0.16.0) (1.3.1)
+2026-11-05T14:50:18.9435373Z Requirement already satisfied: annotated-types>=0.6.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from pydantic<3,>=2.6->wandb>=0.16.0) (0.8.0)
+2026-11-05T14:50:18.9439778Z Requirement already satisfied: pydantic-core==2.50.2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from pydantic<3,>=2.6->wandb>=0.16.0) (2.50.2)
+2026-11-05T14:50:18.9445815Z Requirement already satisfied: typing-inspection>=0.4.4 in /usr/local/python3.12.13/lib/python3.12/site-packages (from pydantic<3,>=2.6->wandb>=0.16.0) (0.4.4)
+2026-11-05T14:50:18.9480957Z Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from requests<3,>=2.0.0->wandb>=0.16.0) (3.4.9)
+2026-11-05T14:50:18.9487247Z Requirement already satisfied: urllib3<3,>=1.26 in /usr/local/python3.12.13/lib/python3.12/site-packages (from requests<3,>=2.0.0->wandb>=0.16.0) (2.7.0)
+2026-11-05T14:50:18.9728075Z Collecting et-xmlfile (from openpyxl)
+2026-11-05T14:50:18.9797986Z   Downloading et_xmlfile-2.0.0-py3-none-any.whl (18 kB)
+2026-11-05T14:50:18.9868944Z Requirement already satisfied: sympy>=1.4 in /usr/local/python3.12.13/lib/python3.12/site-packages (from latex2sympy2) (1.14.0)
+2026-11-05T14:50:19.0044946Z Collecting antlr4-python3-runtime==4.7.2 (from latex2sympy2)
+2026-11-05T14:50:19.2997753Z   Downloading antlr4-python3-runtime-4.7.2.tar.gz (112 kB)
+2026-11-05T14:50:19.3280241Z   Installing build dependencies: started
+2026-11-05T14:50:20.0780826Z   Installing build dependencies: finished with status 'done'
+2026-11-05T14:50:20.0786772Z   Getting requirements to build wheel: started
+2026-11-05T14:50:20.4475721Z   Getting requirements to build wheel: finished with status 'done'
+2026-11-05T14:50:20.4487404Z   Preparing metadata (pyproject.toml): started
+2026-11-05T14:50:20.6489438Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-11-05T14:50:20.6621712Z Requirement already satisfied: colorama in /usr/local/python3.12.13/lib/python3.12/site-packages (from tqdm-multiprocess) (0.4.6)
+2026-11-05T14:50:20.6804859Z Collecting pycocotools>=2.0.2 (from pycocoevalcap)
+2026-11-05T14:50:20.6833451Z   Downloading pycocotools-2.0.11-cp312-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (398 kB)
+2026-11-05T14:50:20.7610335Z Collecting googleapis-common-protos~=1.52 (from opentelemetry-exporter-otlp-proto-http>=1.43.0->wandb>=0.16.0)
+2026-11-05T14:50:20.7634136Z   Downloading googleapis_common_protos-1.76.0-py3-none-any.whl (307 kB)
+2026-11-05T14:50:20.7935640Z Collecting opentelemetry-exporter-http-transport==0.66b2 (from opentelemetry-exporter-http-transport[requests]==0.66b2->opentelemetry-exporter-otlp-proto-http>=1.43.0->wandb>=0.16.0)
+2026-11-05T14:50:20.8004467Z   Downloading opentelemetry_exporter_http_transport-0.66b2-py3-none-any.whl (12 kB)
+2026-11-05T14:50:20.8256890Z Collecting opentelemetry-exporter-otlp-common==0.66b2 (from opentelemetry-exporter-otlp-proto-http>=1.43.0->wandb>=0.16.0)
+2026-11-05T14:50:20.8393549Z   Downloading opentelemetry_exporter_otlp_common-0.66b2-py3-none-any.whl (12 kB)
+2026-11-05T14:50:20.8620070Z Collecting opentelemetry-exporter-otlp-proto-common==1.45.2 (from opentelemetry-exporter-otlp-proto-http>=1.43.0->wandb>=0.16.0)
+2026-11-05T14:50:20.8757810Z   Downloading opentelemetry_exporter_otlp_proto_common-1.45.2-py3-none-any.whl (15 kB)
+2026-11-05T14:50:20.9027322Z Collecting opentelemetry-proto==1.45.2 (from opentelemetry-exporter-otlp-proto-http>=1.43.0->wandb>=0.16.0)
+2026-11-05T14:50:20.9130768Z   Downloading opentelemetry_proto-1.45.2-py3-none-any.whl (72 kB)
+2026-11-05T14:50:20.9520174Z Collecting opentelemetry-semantic-conventions==0.66b2 (from opentelemetry-sdk>=1.43.0->wandb>=0.16.0)
+2026-11-05T14:50:20.9762697Z   Downloading opentelemetry_semantic_conventions-0.66b2-py3-none-any.whl (206 kB)
+2026-11-05T14:50:21.0024085Z Requirement already satisfied: joblib>=1.4.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from scikit-learn>=1.1.0->sentence_transformers) (1.6.0)
+2026-11-05T14:50:21.0026635Z Requirement already satisfied: narwhals>=2.0.1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from scikit-learn>=1.1.0->sentence_transformers) (2.28.0)
+2026-11-05T14:50:21.0177973Z Collecting threadpoolctl>=3.5.0 (from scikit-learn>=1.1.0->sentence_transformers)
+2026-11-05T14:50:21.0223064Z   Downloading threadpoolctl-3.7.0-py3-none-any.whl (26 kB)
+2026-11-05T14:50:21.0332960Z Requirement already satisfied: cloudpickle>=3.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from joblib>=1.4.0->scikit-learn>=1.1.0->sentence_transformers) (3.1.2)
+2026-11-05T14:50:21.0525004Z Requirement already satisfied: mpmath<1.4,>=1.1.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sympy>=1.4->latex2sympy2) (1.3.0)
+2026-11-05T14:50:21.0594259Z Requirement already satisfied: setuptools in /usr/local/python3.12.13/lib/python3.12/site-packages (from torch>=2.2->sentence_transformers) (78.1.0)
+2026-11-05T14:50:21.0599007Z Requirement already satisfied: networkx>=2.5.1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from torch>=2.2->sentence_transformers) (3.7)
+2026-11-05T14:50:21.0602890Z Requirement already satisfied: jinja2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from torch>=2.2->sentence_transformers) (3.1.6)
+2026-11-05T14:50:21.0855837Z Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from jinja2->torch>=2.2->sentence_transformers) (3.0.3)
+2026-11-05T14:50:21.1069293Z Requirement already satisfied: shellingham>=1.3.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from typer->transformers<6.0.0,>=5.0.0->sentence_transformers) (1.5.4)
+2026-11-05T14:50:21.1072346Z Requirement already satisfied: rich>=13.8.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from typer->transformers<6.0.0,>=5.0.0->sentence_transformers) (15.0.0)
+2026-11-05T14:50:21.1076846Z Requirement already satisfied: annotated-doc>=0.0.2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from typer->transformers<6.0.0,>=5.0.0->sentence_transformers) (0.0.5)
+2026-11-05T14:50:21.1128135Z Requirement already satisfied: markdown-it-py>=2.2.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from rich>=13.8.0->typer->transformers<6.0.0,>=5.0.0->sentence_transformers) (4.2.0)
+2026-11-05T14:50:21.1132551Z Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from rich>=13.8.0->typer->transformers<6.0.0,>=5.0.0->sentence_transformers) (2.21.0)
+2026-11-05T14:50:21.1209900Z Requirement already satisfied: mdurl~=0.1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from markdown-it-py>=2.2.0->rich>=13.8.0->typer->transformers<6.0.0,>=5.0.0->sentence_transformers) (0.1.2)
+2026-11-05T14:50:21.1321252Z Building wheels for collected packages: zss, antlr4-python3-runtime, transformers-stream-generator
+2026-11-05T14:50:21.1321826Z   Building wheel for zss (pyproject.toml): started
+2026-11-05T14:50:21.3650676Z   Building wheel for zss (pyproject.toml): finished with status 'done'
+2026-11-05T14:50:21.3654853Z   Created wheel for zss: filename=zss-1.2.0-py3-none-any.whl size=6792 sha256=c5cb2f2b2f2801edaaf2985ea74d4ecc96550cb372015027c0770d7b3c6158ff
+2026-11-05T14:50:21.3655770Z   Stored in directory: /tmp/pip-cache/wheels/88/76/28/964cf66ac12dfa9d92789c9c35aed7aa12f00ccac3379c1798
+2026-11-05T14:50:21.3677654Z   Building wheel for antlr4-python3-runtime (pyproject.toml): started
+2026-11-05T14:50:21.6429794Z   Building wheel for antlr4-python3-runtime (pyproject.toml): finished with status 'done'
+2026-11-05T14:50:21.6434792Z   Created wheel for antlr4-python3-runtime: filename=antlr4_python3_runtime-4.7.2-py3-none-any.whl size=140967 sha256=e3a520153853876806e593d497d262319b6b7b7f43615a9829c81e8e1d5d47b0
+2026-11-05T14:50:21.6435878Z   Stored in directory: /tmp/pip-cache/wheels/d0/2a/12/ec2895f327970718cbd75f5e2975fa4042887704fc09bc5054
+2026-11-05T14:50:21.6459136Z   Building wheel for transformers-stream-generator (pyproject.toml): started
+2026-11-05T14:50:21.8834516Z   Building wheel for transformers-stream-generator (pyproject.toml): finished with status 'done'
+2026-11-05T14:50:21.8835674Z   Created wheel for transformers-stream-generator: filename=transformers_stream_generator-0.0.5-py3-none-any.whl size=12526 sha256=352f54bea1c4c7253a187ffd310c034f6e2062363a822a2b742a98f1a1538fe3
+2026-11-05T14:50:21.8836836Z   Stored in directory: /tmp/pip-cache/wheels/12/c5/11/d5c9fca0a94ca9962dd563342bd9b2e6c0bf37ffd48c81dc49
+2026-11-05T14:50:21.8837517Z Successfully built zss antlr4-python3-runtime transformers-stream-generator
+2026-11-05T14:50:23.2557481Z Installing collected packages: antlr4-python3-runtime, zstandard, zss, tqdm-multiprocess, threadpoolctl, tenacity, pycocotools, platformdirs, opentelemetry-proto, googleapis-common-protos, et-xmlfile, scikit-learn, pycocoevalcap, opentelemetry-semantic-conventions, opentelemetry-exporter-otlp-proto-common, opentelemetry-exporter-http-transport, openpyxl, latex2sympy2, opentelemetry-sdk, cwevals, opentelemetry-exporter-otlp-common, opentelemetry-exporter-otlp-proto-http, wandb, transformers-stream-generator, sentence_transformers
+2026-11-05T14:50:23.2560029Z   Attempting uninstall: antlr4-python3-runtime
+2026-11-05T14:50:23.2633602Z     Found existing installation: antlr4-python3-runtime 4.13.2
+2026-11-05T14:50:23.2811186Z     Uninstalling antlr4-python3-runtime-4.13.2:
+2026-11-05T14:50:23.8100030Z       Successfully uninstalled antlr4-python3-runtime-4.13.2
+2026-11-05T14:50:29.2492301Z 
+2026-11-05T14:50:29.2500644Z ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+2026-11-05T14:50:29.2501618Z ms-service-profiler 26.0.0 requires matplotlib, which is not installed.
+2026-11-05T14:50:29.2502182Z ms-service-profiler 26.0.0 requires msguard, which is not installed.
+2026-11-05T14:50:29.2502875Z ms-service-profiler 26.0.0 requires opentelemetry-exporter-otlp-proto-grpc==1.33.1, which is not installed.
+2026-11-05T14:50:29.2503970Z ms-service-profiler 26.0.0 requires opentelemetry-exporter-otlp-proto-http==1.33.1, but you have opentelemetry-exporter-otlp-proto-http 1.45.2 which is incompatible.
+2026-11-05T14:50:29.2505002Z ms-service-profiler 26.0.0 requires pandas~=2.2, but you have pandas 3.0.6 which is incompatible.
+2026-11-05T14:50:29.2505889Z latex2sympy2-extended 1.11.0 requires antlr4-python3-runtime<=4.13.2,>=4.9.3, but you have antlr4-python3-runtime 4.7.2 which is incompatible.
+2026-11-05T14:50:29.2684676Z Successfully installed antlr4-python3-runtime-4.7.2 cwevals-0.0.1b1 et-xmlfile-2.0.0 googleapis-common-protos-1.76.0 latex2sympy2-1.9.1 openpyxl-3.1.5 opentelemetry-exporter-http-transport-0.66b2 opentelemetry-exporter-otlp-common-0.66b2 opentelemetry-exporter-otlp-proto-common-1.45.2 opentelemetry-exporter-otlp-proto-http-1.45.2 opentelemetry-proto-1.45.2 opentelemetry-sdk-1.45.2 opentelemetry-semantic-conventions-0.66b2 platformdirs-4.14.4 pycocoevalcap-1.2 pycocotools-2.0.11 scikit-learn-1.9.1 sentence_transformers-6.2.0 tenacity-8.3.0 threadpoolctl-3.7.0 tqdm-multiprocess-0.0.11 transformers-stream-generator-0.0.5 wandb-0.31.0 zss-1.2.0 zstandard-0.25.0
+2026-11-05T14:50:29.2688954Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-11-05T14:50:29.2696749Z 
+2026-11-05T14:50:29.2696922Z [notice] A new release of pip is available: 26.2 -> 26.3
+2026-11-05T14:50:29.2697310Z [notice] To update, run: pip install --upgrade pip
+2026-11-05T14:50:29.8429906Z Looking in indexes: https://pypi.org/simple/
+2026-11-05T14:50:30.1158273Z Collecting yt-dlp
+2026-11-05T14:50:30.1428045Z   Downloading yt_dlp-2026.10.26-py3-none-any.whl (3.2 MB)
+2026-11-05T14:50:30.1915026Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 70.4 MB/s  0:00:00
+2026-11-05T14:50:30.3066782Z Collecting sentencepiece==0.1.99
+2026-11-05T14:50:30.3222412Z   Downloading sentencepiece-0.1.99.tar.gz (2.6 MB)
+2026-11-05T14:50:30.3633661Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.6/2.6 MB 71.0 MB/s  0:00:00
+2026-11-05T14:50:30.5511699Z   Installing build dependencies: started
+2026-11-05T14:50:31.2691273Z   Installing build dependencies: finished with status 'done'
+2026-11-05T14:50:31.2697238Z   Getting requirements to build wheel: started
+2026-11-05T14:50:31.6601098Z   Getting requirements to build wheel: finished with status 'done'
+2026-11-05T14:50:31.6609842Z   Preparing metadata (pyproject.toml): started
+2026-11-05T14:50:31.8643508Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-11-05T14:50:31.8670886Z Requirement already satisfied: nltk in /usr/local/python3.12.13/lib/python3.12/site-packages (3.10.4)
+2026-11-05T14:50:31.8671636Z Requirement already satisfied: av in /usr/local/python3.12.13/lib/python3.12/site-packages (19.0.2)
+2026-11-05T14:50:31.9174628Z Collecting ftfy
+2026-11-05T14:50:31.9233103Z   Downloading ftfy-6.3.1-py3-none-any.whl (44 kB)
+2026-11-05T14:50:31.9632986Z Collecting sqlitedict==2.1.0
+2026-11-05T14:50:31.9865175Z   Downloading sqlitedict-2.1.0.tar.gz (21 kB)
+2026-11-05T14:50:31.9995722Z   Installing build dependencies: started
+2026-11-05T14:50:32.7504424Z   Installing build dependencies: finished with status 'done'
+2026-11-05T14:50:32.7506553Z   Getting requirements to build wheel: started
+2026-11-05T14:50:33.1094644Z   Getting requirements to build wheel: finished with status 'done'
+2026-11-05T14:50:33.1100989Z   Preparing metadata (pyproject.toml): started
+2026-11-05T14:50:33.3019655Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-11-05T14:50:33.3038038Z Requirement already satisfied: sacrebleu>=1.5.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (2.6.0)
+2026-11-05T14:50:33.3421614Z Collecting pytablewriter
+2026-11-05T14:50:33.3468397Z   Downloading pytablewriter-1.2.1-py3-none-any.whl (91 kB)
+2026-11-05T14:50:33.3853347Z Collecting peft>=0.2.0
+2026-11-05T14:50:33.3878454Z   Downloading peft-0.21.2-py3-none-any.whl (835 kB)
+2026-11-05T14:50:33.4016240Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 835.4/835.4 kB 51.7 MB/s  0:00:00
+2026-11-05T14:50:33.4469162Z Collecting accelerate>=0.29.1
+2026-11-05T14:50:33.4489256Z   Downloading accelerate-1.15.0-py3-none-any.whl (394 kB)
+2026-11-05T14:50:33.4687471Z Requirement already satisfied: defusedxml in /usr/local/python3.12.13/lib/python3.12/site-packages (from nltk) (0.7.1)
+2026-11-05T14:50:33.4691049Z Requirement already satisfied: click in /usr/local/python3.12.13/lib/python3.12/site-packages (from nltk) (8.5.0)
+2026-11-05T14:50:33.4694329Z Requirement already satisfied: joblib in /usr/local/python3.12.13/lib/python3.12/site-packages (from nltk) (1.6.0)
+2026-11-05T14:50:33.4698302Z Requirement already satisfied: regex>=2021.8.3 in /usr/local/python3.12.13/lib/python3.12/site-packages (from nltk) (2026.9.29)
+2026-11-05T14:50:33.4702120Z Requirement already satisfied: tqdm in /usr/local/python3.12.13/lib/python3.12/site-packages (from nltk) (4.70.1)
+2026-11-05T14:50:33.4722110Z Requirement already satisfied: wcwidth in /usr/local/python3.12.13/lib/python3.12/site-packages (from ftfy) (0.9.4)
+2026-11-05T14:50:33.4735292Z Requirement already satisfied: portalocker in /usr/local/python3.12.13/lib/python3.12/site-packages (from sacrebleu>=1.5.0) (4.4.2)
+2026-11-05T14:50:33.4740465Z Requirement already satisfied: tabulate>=0.8.9 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sacrebleu>=1.5.0) (0.10.0)
+2026-11-05T14:50:33.4743904Z Requirement already satisfied: numpy>=1.17 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sacrebleu>=1.5.0) (2.2.6)
+2026-11-05T14:50:33.4747329Z Requirement already satisfied: colorama in /usr/local/python3.12.13/lib/python3.12/site-packages (from sacrebleu>=1.5.0) (0.4.6)
+2026-11-05T14:50:33.4750861Z Requirement already satisfied: lxml in /usr/local/python3.12.13/lib/python3.12/site-packages (from sacrebleu>=1.5.0) (6.1.3)
+2026-11-05T14:50:33.4765854Z Requirement already satisfied: setuptools>=38.3.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from pytablewriter) (78.1.0)
+2026-11-05T14:50:33.5250522Z Collecting DataProperty<2,>=1.1.0 (from pytablewriter)
+2026-11-05T14:50:33.5299907Z   Downloading dataproperty-1.1.1-py3-none-any.whl (27 kB)
+2026-11-05T14:50:33.5698042Z Collecting mbstrdecoder<2,>=1.0.0 (from pytablewriter)
+2026-11-05T14:50:33.5763125Z   Downloading mbstrdecoder-1.1.5-py3-none-any.whl (8.0 kB)
+2026-11-05T14:50:33.6113523Z Collecting pathvalidate<4,>=2.3.0 (from pytablewriter)
+2026-11-05T14:50:33.6154552Z   Downloading pathvalidate-3.3.1-py3-none-any.whl (24 kB)
+2026-11-05T14:50:33.6495387Z Collecting tabledata<2,>=1.3.1 (from pytablewriter)
+2026-11-05T14:50:33.6538751Z   Downloading tabledata-1.3.5-py3-none-any.whl (11 kB)
+2026-11-05T14:50:33.6749753Z Collecting tcolorpy<1,>=0.0.5 (from pytablewriter)
+2026-11-05T14:50:33.6800542Z   Downloading tcolorpy-0.1.7-py3-none-any.whl (8.1 kB)
+2026-11-05T14:50:33.7110896Z Collecting typepy<2,>=1.3.2 (from typepy[datetime]<2,>=1.3.2->pytablewriter)
+2026-11-05T14:50:33.7160286Z   Downloading typepy-1.3.5-py3-none-any.whl (31 kB)
+2026-11-05T14:50:33.7967061Z Collecting chardet<7,>=3.0.4 (from mbstrdecoder<2,>=1.0.0->pytablewriter)
+2026-11-05T14:50:33.8017714Z   Downloading chardet-6.0.0.post1-py3-none-any.whl (627 kB)
+2026-11-05T14:50:33.8176114Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 627.2/627.2 kB 35.6 MB/s  0:00:00
+2026-11-05T14:50:33.8491929Z Collecting python-dateutil<3.0.0,>=2.8.0 (from typepy[datetime]<2,>=1.3.2->pytablewriter)
+2026-11-05T14:50:33.8492533Z   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+2026-11-05T14:50:33.9183903Z Collecting pytz>=2018.9 (from typepy[datetime]<2,>=1.3.2->pytablewriter)
+2026-11-05T14:50:33.9281063Z   Downloading pytz-2026.6-py2.py3-none-any.whl (506 kB)
+2026-11-05T14:50:33.9422981Z Requirement already satisfied: packaging in /usr/local/python3.12.13/lib/python3.12/site-packages (from typepy[datetime]<2,>=1.3.2->pytablewriter) (26.3)
+2026-11-05T14:50:33.9433865Z Requirement already satisfied: six>=1.5 in /usr/local/python3.12.13/lib/python3.12/site-packages (from python-dateutil<3.0.0,>=2.8.0->typepy[datetime]<2,>=1.3.2->pytablewriter) (1.17.0)
+2026-11-05T14:50:33.9442820Z Requirement already satisfied: psutil in /usr/local/python3.12.13/lib/python3.12/site-packages (from peft>=0.2.0) (7.2.2)
+2026-11-05T14:50:33.9446305Z Requirement already satisfied: pyyaml in /usr/local/python3.12.13/lib/python3.12/site-packages (from peft>=0.2.0) (6.0.1)
+2026-11-05T14:50:33.9467261Z Requirement already satisfied: torch>=1.13.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from peft>=0.2.0) (2.10.0+cpu)
+2026-11-05T14:50:33.9468237Z Requirement already satisfied: transformers in /usr/local/python3.12.13/lib/python3.12/site-packages (from peft>=0.2.0) (5.19.0)
+2026-11-05T14:50:33.9485435Z Requirement already satisfied: safetensors in /usr/local/python3.12.13/lib/python3.12/site-packages (from peft>=0.2.0) (0.8.0)
+2026-11-05T14:50:33.9486406Z Requirement already satisfied: huggingface_hub>=0.25.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from peft>=0.2.0) (1.33.0)
+2026-11-05T14:50:33.9516171Z Requirement already satisfied: filelock>=3.10.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from huggingface_hub>=0.25.0->peft>=0.2.0) (4.2.4)
+2026-11-05T14:50:33.9520469Z Requirement already satisfied: fsspec>=2023.5.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from huggingface_hub>=0.25.0->peft>=0.2.0) (2026.2.0)
+2026-11-05T14:50:33.9530905Z Requirement already satisfied: hf-xet<2.0.0,>=1.6.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from huggingface_hub>=0.25.0->peft>=0.2.0) (1.7.1)
+2026-11-05T14:50:33.9535596Z Requirement already satisfied: httpx<1,>=0.23.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from huggingface_hub>=0.25.0->peft>=0.2.0) (0.28.1)
+2026-11-05T14:50:33.9543253Z Requirement already satisfied: typing-extensions>=4.1.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from huggingface_hub>=0.25.0->peft>=0.2.0) (4.16.0)
+2026-11-05T14:50:33.9620095Z Requirement already satisfied: anyio in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpx<1,>=0.23.0->huggingface_hub>=0.25.0->peft>=0.2.0) (4.15.1)
+2026-11-05T14:50:33.9623871Z Requirement already satisfied: certifi in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpx<1,>=0.23.0->huggingface_hub>=0.25.0->peft>=0.2.0) (2026.7.22)
+2026-11-05T14:50:33.9628040Z Requirement already satisfied: httpcore==1.* in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpx<1,>=0.23.0->huggingface_hub>=0.25.0->peft>=0.2.0) (1.0.9)
+2026-11-05T14:50:33.9632591Z Requirement already satisfied: idna in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpx<1,>=0.23.0->huggingface_hub>=0.25.0->peft>=0.2.0) (3.18)
+2026-11-05T14:50:33.9653696Z Requirement already satisfied: h11>=0.16 in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpcore==1.*->httpx<1,>=0.23.0->huggingface_hub>=0.25.0->peft>=0.2.0) (0.16.0)
+2026-11-05T14:50:33.9903522Z Requirement already satisfied: sympy>=1.13.3 in /usr/local/python3.12.13/lib/python3.12/site-packages (from torch>=1.13.0->peft>=0.2.0) (1.14.0)
+2026-11-05T14:50:33.9907392Z Requirement already satisfied: networkx>=2.5.1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from torch>=1.13.0->peft>=0.2.0) (3.7)
+2026-11-05T14:50:33.9910975Z Requirement already satisfied: jinja2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from torch>=1.13.0->peft>=0.2.0) (3.1.6)
+2026-11-05T14:50:33.9961237Z Requirement already satisfied: mpmath<1.4,>=1.1.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sympy>=1.13.3->torch>=1.13.0->peft>=0.2.0) (1.3.0)
+2026-11-05T14:50:34.0081979Z Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from jinja2->torch>=1.13.0->peft>=0.2.0) (3.0.3)
+2026-11-05T14:50:34.0106108Z Requirement already satisfied: cloudpickle>=3.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from joblib->nltk) (3.1.2)
+2026-11-05T14:50:34.0219532Z Requirement already satisfied: tokenizers<0.24.0,>=0.23.1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from transformers->peft>=0.2.0) (0.23.3)
+2026-11-05T14:50:34.0223992Z Requirement already satisfied: typer in /usr/local/python3.12.13/lib/python3.12/site-packages (from transformers->peft>=0.2.0) (0.27.3)
+2026-11-05T14:50:34.0376036Z Requirement already satisfied: shellingham>=1.3.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from typer->transformers->peft>=0.2.0) (1.5.4)
+2026-11-05T14:50:34.0377579Z Requirement already satisfied: rich>=13.8.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from typer->transformers->peft>=0.2.0) (15.0.0)
+2026-11-05T14:50:34.0381322Z Requirement already satisfied: annotated-doc>=0.0.2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from typer->transformers->peft>=0.2.0) (0.0.5)
+2026-11-05T14:50:34.0410844Z Requirement already satisfied: markdown-it-py>=2.2.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from rich>=13.8.0->typer->transformers->peft>=0.2.0) (4.2.0)
+2026-11-05T14:50:34.0415573Z Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from rich>=13.8.0->typer->transformers->peft>=0.2.0) (2.21.0)
+2026-11-05T14:50:34.0444814Z Requirement already satisfied: mdurl~=0.1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from markdown-it-py>=2.2.0->rich>=13.8.0->typer->transformers->peft>=0.2.0) (0.1.2)
+2026-11-05T14:50:34.0511197Z Building wheels for collected packages: sentencepiece, sqlitedict
+2026-11-05T14:50:34.0518245Z   Building wheel for sentencepiece (pyproject.toml): started
+2026-11-05T14:50:49.2787230Z   Building wheel for sentencepiece (pyproject.toml): finished with status 'done'
+2026-11-05T14:50:49.2801823Z   Created wheel for sentencepiece: filename=sentencepiece-0.1.99-cp312-cp312-linux_aarch64.whl size=1239971 sha256=13b014e8489c72dabd53335cb6bb22b0225ad1fc9230c2b4692711c6f3d12e7c
+2026-11-05T14:50:49.2802927Z   Stored in directory: /tmp/pip-cache/wheels/08/a1/88/696becfd31a9c6d3fdb281a480d7b160923b6391ec434fce0e
+2026-11-05T14:50:49.2828826Z   Building wheel for sqlitedict (pyproject.toml): started
+2026-11-05T14:50:49.5151573Z   Building wheel for sqlitedict (pyproject.toml): finished with status 'done'
+2026-11-05T14:50:49.5155471Z   Created wheel for sqlitedict: filename=sqlitedict-2.1.0-py3-none-any.whl size=16957 sha256=c5a1ac4c5b14dfde4771fb3927f94b3453b0aa68392beb8df6833c30514a476f
+2026-11-05T14:50:49.5156607Z   Stored in directory: /tmp/pip-cache/wheels/33/ca/7e/8694e20c5fc9167bf811686a4923f2e7aa6513b0dd57542db4
+2026-11-05T14:50:49.5179123Z Successfully built sentencepiece sqlitedict
+2026-11-05T14:50:49.8485508Z Installing collected packages: sqlitedict, sentencepiece, pytz, yt-dlp, tcolorpy, python-dateutil, pathvalidate, ftfy, chardet, mbstrdecoder, typepy, accelerate, DataProperty, tabledata, peft, pytablewriter
+2026-11-05T14:50:49.8619010Z   Attempting uninstall: sentencepiece
+2026-11-05T14:50:49.8714183Z     Found existing installation: sentencepiece 0.2.1
+2026-11-05T14:50:49.8762589Z     Uninstalling sentencepiece-0.2.1:
+2026-11-05T14:50:49.9037310Z       Successfully uninstalled sentencepiece-0.2.1
+2026-11-05T14:50:52.1137073Z   Attempting uninstall: python-dateutil
+2026-11-05T14:50:52.1259139Z     Found existing installation: python-dateutil 3.0.0
+2026-11-05T14:50:52.1339052Z     Uninstalling python-dateutil-3.0.0:
+2026-11-05T14:50:52.1643252Z       Successfully uninstalled python-dateutil-3.0.0
+2026-11-05T14:50:54.4688232Z 
+2026-11-05T14:50:54.4691711Z ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+2026-11-05T14:50:54.4693006Z sglang 0.5.24.dev258+g93f4f1a87 requires sentencepiece==0.2.1, but you have sentencepiece 0.1.99 which is incompatible.
+2026-11-05T14:50:54.4883673Z Successfully installed DataProperty-1.1.1 accelerate-1.15.0 chardet-6.0.0.post1 ftfy-6.3.1 mbstrdecoder-1.1.5 pathvalidate-3.3.1 peft-0.21.2 pytablewriter-1.2.1 python-dateutil-2.9.0.post0 pytz-2026.6 sentencepiece-0.1.99 sqlitedict-2.1.0 tabledata-1.3.5 tcolorpy-0.1.7 typepy-1.3.5 yt-dlp-2026.10.26
+2026-11-05T14:50:54.4886787Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-11-05T14:50:54.4896650Z 
+2026-11-05T14:50:54.4896825Z [notice] A new release of pip is available: 26.2 -> 26.3
+2026-11-05T14:50:54.4897222Z [notice] To update, run: pip install --upgrade pip
+2026-11-05T14:50:55.0671917Z Looking in indexes: https://pypi.org/simple/
+2026-11-05T14:50:55.0672717Z Requirement already satisfied: jsonlines in /usr/local/python3.12.13/lib/python3.12/site-packages (4.0.0)
+2026-11-05T14:50:55.1831923Z Collecting evaluate>=0.4.0
+2026-11-05T14:50:55.1929502Z   Downloading evaluate-0.4.6-py3-none-any.whl (84 kB)
+2026-11-05T14:50:55.3512756Z Collecting numexpr
+2026-11-05T14:50:55.3513327Z   Downloading numexpr-2.14.2-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl (455 kB)
+2026-11-05T14:50:55.3614814Z Requirement already satisfied: dotenv in /usr/local/python3.12.13/lib/python3.12/site-packages (0.9.9)
+2026-11-05T14:50:55.3623191Z Requirement already satisfied: attrs>=19.2.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from jsonlines) (24.2.0)
+2026-11-05T14:50:55.3630748Z Requirement already satisfied: datasets>=2.0.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from evaluate>=0.4.0) (4.8.4)
+2026-11-05T14:50:55.3634642Z Requirement already satisfied: numpy>=1.17 in /usr/local/python3.12.13/lib/python3.12/site-packages (from evaluate>=0.4.0) (2.2.6)
+2026-11-05T14:50:55.3638152Z Requirement already satisfied: dill in /usr/local/python3.12.13/lib/python3.12/site-packages (from evaluate>=0.4.0) (0.4.1)
+2026-11-05T14:50:55.3642015Z Requirement already satisfied: pandas in /usr/local/python3.12.13/lib/python3.12/site-packages (from evaluate>=0.4.0) (3.0.6)
+2026-11-05T14:50:55.3645690Z Requirement already satisfied: requests>=2.19.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from evaluate>=0.4.0) (2.34.2)
+2026-11-05T14:50:55.3649585Z Requirement already satisfied: tqdm>=4.62.1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from evaluate>=0.4.0) (4.70.1)
+2026-11-05T14:50:55.3652938Z Requirement already satisfied: xxhash in /usr/local/python3.12.13/lib/python3.12/site-packages (from evaluate>=0.4.0) (4.0.2)
+2026-11-05T14:50:55.3657940Z Requirement already satisfied: multiprocess in /usr/local/python3.12.13/lib/python3.12/site-packages (from evaluate>=0.4.0) (0.70.19)
+2026-11-05T14:50:55.3665455Z Requirement already satisfied: fsspec>=2021.05.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from fsspec[http]>=2021.05.0->evaluate>=0.4.0) (2026.2.0)
+2026-11-05T14:50:55.3670319Z Requirement already satisfied: huggingface-hub>=0.7.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from evaluate>=0.4.0) (1.33.0)
+2026-11-05T14:50:55.3673708Z Requirement already satisfied: packaging in /usr/local/python3.12.13/lib/python3.12/site-packages (from evaluate>=0.4.0) (26.3)
+2026-11-05T14:50:55.3692883Z Requirement already satisfied: python-dotenv in /usr/local/python3.12.13/lib/python3.12/site-packages (from dotenv) (1.2.4)
+2026-11-05T14:50:55.3744007Z Requirement already satisfied: filelock in /usr/local/python3.12.13/lib/python3.12/site-packages (from datasets>=2.0.0->evaluate>=0.4.0) (4.2.4)
+2026-11-05T14:50:55.3748226Z Requirement already satisfied: pyarrow>=21.0.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from datasets>=2.0.0->evaluate>=0.4.0) (26.0.0)
+2026-11-05T14:50:55.3755303Z Requirement already satisfied: httpx<1.0.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from datasets>=2.0.0->evaluate>=0.4.0) (0.28.1)
+2026-11-05T14:50:55.3845569Z Requirement already satisfied: pyyaml>=5.1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from datasets>=2.0.0->evaluate>=0.4.0) (6.0.1)
+2026-11-05T14:50:55.4085594Z Requirement already satisfied: aiohttp!=4.0.0a0,!=4.0.0a1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from fsspec[http]>=2021.05.0->evaluate>=0.4.0) (3.14.5)
+2026-11-05T14:50:55.4100141Z Requirement already satisfied: anyio in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpx<1.0.0->datasets>=2.0.0->evaluate>=0.4.0) (4.15.1)
+2026-11-05T14:50:55.4104961Z Requirement already satisfied: certifi in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpx<1.0.0->datasets>=2.0.0->evaluate>=0.4.0) (2026.7.22)
+2026-11-05T14:50:55.4108908Z Requirement already satisfied: httpcore==1.* in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpx<1.0.0->datasets>=2.0.0->evaluate>=0.4.0) (1.0.9)
+2026-11-05T14:50:55.4112552Z Requirement already satisfied: idna in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpx<1.0.0->datasets>=2.0.0->evaluate>=0.4.0) (3.18)
+2026-11-05T14:50:55.4132762Z Requirement already satisfied: h11>=0.16 in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpcore==1.*->httpx<1.0.0->datasets>=2.0.0->evaluate>=0.4.0) (0.16.0)
+2026-11-05T14:50:55.4152365Z Requirement already satisfied: click<9.0.0,>=8.4.2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from huggingface-hub>=0.7.0->evaluate>=0.4.0) (8.5.0)
+2026-11-05T14:50:55.4162454Z Requirement already satisfied: hf-xet<2.0.0,>=1.6.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from huggingface-hub>=0.7.0->evaluate>=0.4.0) (1.7.1)
+2026-11-05T14:50:55.4171855Z Requirement already satisfied: typing-extensions>=4.1.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from huggingface-hub>=0.7.0->evaluate>=0.4.0) (4.16.0)
+2026-11-05T14:50:55.4290980Z Requirement already satisfied: aiohappyeyeballs>=2.5.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]>=2021.05.0->evaluate>=0.4.0) (2.7.1)
+2026-11-05T14:50:55.4292384Z Requirement already satisfied: aiosignal>=1.4.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]>=2021.05.0->evaluate>=0.4.0) (1.4.0)
+2026-11-05T14:50:55.4293758Z Requirement already satisfied: frozenlist>=1.1.1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]>=2021.05.0->evaluate>=0.4.0) (1.8.0)
+2026-11-05T14:50:55.4295115Z Requirement already satisfied: multidict<8.0,>=4.5 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]>=2021.05.0->evaluate>=0.4.0) (7.2.1)
+2026-11-05T14:50:55.4296472Z Requirement already satisfied: propcache>=0.2.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]>=2021.05.0->evaluate>=0.4.0) (0.5.4)
+2026-11-05T14:50:55.4297814Z Requirement already satisfied: yarl<2.0,>=1.25.1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]>=2021.05.0->evaluate>=0.4.0) (1.25.1)
+2026-11-05T14:50:55.4458337Z Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from requests>=2.19.0->evaluate>=0.4.0) (3.4.9)
+2026-11-05T14:50:55.4463856Z Requirement already satisfied: urllib3<3,>=1.26 in /usr/local/python3.12.13/lib/python3.12/site-packages (from requests>=2.19.0->evaluate>=0.4.0) (2.7.0)
+2026-11-05T14:50:55.4598175Z Requirement already satisfied: python-dateutil>=2.8.2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from pandas->evaluate>=0.4.0) (2.9.0.post0)
+2026-11-05T14:50:55.4659886Z Requirement already satisfied: six>=1.5 in /usr/local/python3.12.13/lib/python3.12/site-packages (from python-dateutil>=2.8.2->pandas->evaluate>=0.4.0) (1.17.0)
+2026-11-05T14:50:55.7677728Z Installing collected packages: numexpr, evaluate
+2026-11-05T14:50:55.8770931Z 
+2026-11-05T14:50:55.8964715Z Successfully installed evaluate-0.4.6 numexpr-2.14.2
+2026-11-05T14:50:55.8966975Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-11-05T14:50:55.8978932Z 
+2026-11-05T14:50:55.8979110Z [notice] A new release of pip is available: 26.2 -> 26.3
+2026-11-05T14:50:55.8979698Z [notice] To update, run: pip install --upgrade pip
+2026-11-05T14:50:57.7924283Z 
+2026-11-05T14:50:57.8988185Z Fetching 94 files:   0%|          | 0/94 [00:00<?, ?it/s]
+2026-11-05T14:50:57.9989628Z Fetching 94 files:  18%|█▊        | 17/94 [00:00<00:00, 159.59it/s]
+2026-11-05T14:50:58.1964389Z Fetching 94 files:  67%|██████▋   | 63/94 [00:00<00:00, 331.21it/s]
+2026-11-05T14:50:58.1964921Z Fetching 94 files: 100%|██████████| 94/94 [00:00<00:00, 232.55it/s]
+2026-11-05T14:50:58.1965392Z [32m✓ Downloaded[0m
+2026-11-05T14:50:58.1965897Z   path: /root/.cache/huggingface/hub/datasets--MMMU--MMMU/snapshots/876ce5cb130f7f7e290ce4d9984357737d4db5cf
+2026-11-05T14:50:58.3651206Z Reading package lists...
+2026-11-05T14:50:58.3768779Z Building dependency tree...
+2026-11-05T14:50:58.3769425Z Reading state information...
+2026-11-05T14:50:58.3769865Z libssl-dev is already the newest version (3.0.2-0ubuntu1.30).
+2026-11-05T14:50:58.3770332Z 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+2026-11-05T14:50:58.7494256Z Looking in indexes: https://pypi.org/simple/
+2026-11-05T14:50:58.7498561Z Requirement already satisfied: sglang_router in /usr/local/python3.12.13/lib/python3.12/site-packages (0.3.2)
+2026-11-05T14:50:58.7514265Z Requirement already satisfied: setproctitle in /usr/local/python3.12.13/lib/python3.12/site-packages (from sglang_router) (1.3.8)
+2026-11-05T14:50:58.7518039Z Requirement already satisfied: aiohttp in /usr/local/python3.12.13/lib/python3.12/site-packages (from sglang_router) (3.14.5)
+2026-11-05T14:50:58.7522024Z Requirement already satisfied: orjson in /usr/local/python3.12.13/lib/python3.12/site-packages (from sglang_router) (3.13.0)
+2026-11-05T14:50:58.7526044Z Requirement already satisfied: uvicorn in /usr/local/python3.12.13/lib/python3.12/site-packages (from sglang_router) (0.54.0)
+2026-11-05T14:50:58.7529310Z Requirement already satisfied: fastapi in /usr/local/python3.12.13/lib/python3.12/site-packages (from sglang_router) (0.162.0)
+2026-11-05T14:50:58.7543160Z Requirement already satisfied: aiohappyeyeballs>=2.5.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp->sglang_router) (2.7.1)
+2026-11-05T14:50:58.7547477Z Requirement already satisfied: aiosignal>=1.4.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp->sglang_router) (1.4.0)
+2026-11-05T14:50:58.7552849Z Requirement already satisfied: attrs>=17.3.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp->sglang_router) (24.2.0)
+2026-11-05T14:50:58.7556463Z Requirement already satisfied: frozenlist>=1.1.1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp->sglang_router) (1.8.0)
+2026-11-05T14:50:58.7562410Z Requirement already satisfied: multidict<8.0,>=4.5 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp->sglang_router) (7.2.1)
+2026-11-05T14:50:58.7566785Z Requirement already satisfied: propcache>=0.2.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp->sglang_router) (0.5.4)
+2026-11-05T14:50:58.7572791Z Requirement already satisfied: typing_extensions>=4.4 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp->sglang_router) (4.16.0)
+2026-11-05T14:50:58.7577456Z Requirement already satisfied: yarl<2.0,>=1.25.1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp->sglang_router) (1.25.1)
+2026-11-05T14:50:58.7616752Z Requirement already satisfied: idna>=2.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from yarl<2.0,>=1.25.1->aiohttp->sglang_router) (3.18)
+2026-11-05T14:50:58.7721797Z Requirement already satisfied: starlette>=0.46.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from fastapi->sglang_router) (1.10.0)
+2026-11-05T14:50:58.7725332Z Requirement already satisfied: pydantic>=2.9.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from fastapi->sglang_router) (2.14.2)
+2026-11-05T14:50:58.7731080Z Requirement already satisfied: typing-inspection>=0.4.2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from fastapi->sglang_router) (0.4.4)
+2026-11-05T14:50:58.7735387Z Requirement already satisfied: annotated-doc>=0.0.2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from fastapi->sglang_router) (0.0.5)
+2026-11-05T14:50:58.7739315Z Requirement already satisfied: opentelemetry-api>=1.44.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from fastapi->sglang_router) (1.45.2)
+2026-11-05T14:50:58.7794863Z Requirement already satisfied: annotated-types>=0.6.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from pydantic>=2.9.0->fastapi->sglang_router) (0.8.0)
+2026-11-05T14:50:58.7798556Z Requirement already satisfied: pydantic-core==2.50.2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from pydantic>=2.9.0->fastapi->sglang_router) (2.50.2)
+2026-11-05T14:50:58.7829110Z Requirement already satisfied: anyio<5,>=4.0.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from starlette>=0.46.0->fastapi->sglang_router) (4.15.1)
+2026-11-05T14:50:58.7886935Z Requirement already satisfied: click>=7.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from uvicorn->sglang_router) (8.5.0)
+2026-11-05T14:50:58.7891005Z Requirement already satisfied: h11>=0.8 in /usr/local/python3.12.13/lib/python3.12/site-packages (from uvicorn->sglang_router) (0.16.0)
+2026-11-05T14:50:59.1320682Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-11-05T14:50:59.1329950Z 
+2026-11-05T14:50:59.1330126Z [notice] A new release of pip is available: 26.2 -> 26.3
+2026-11-05T14:50:59.1330520Z [notice] To update, run: pip install --upgrade pip
+2026-11-05T14:51:00.3021788Z ##[group]Run # Fail fast on any command error, undefined variable, or pipe failure.
+2026-11-05T14:51:00.3022603Z [36;1m# Fail fast on any command error, undefined variable, or pipe failure.[0m
+2026-11-05T14:51:00.3023113Z [36;1mset -euo pipefail[0m
+2026-11-05T14:51:00.3023443Z [36;1mmkdir -p "${TEST_LOG_DIR}"[0m
+2026-11-05T14:51:00.3023816Z [36;1m[0m
+2026-11-05T14:51:00.3024170Z [36;1m# Install missing python deps (skip if already importable).[0m
+2026-11-05T14:51:00.3024641Z [36;1mPYTHON_FOR_SGLANG="python"[0m
+2026-11-05T14:51:00.3025367Z [36;1mPIP_INDEXES=("https://repo.huaweicloud.com/repository/pypi/simple/" "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple")[0m
+2026-11-05T14:51:00.3026117Z [36;1minstall_pkg() {[0m
+2026-11-05T14:51:00.3026411Z [36;1m  local pkg="$1"[0m
+2026-11-05T14:51:00.3026706Z [36;1m  ok=0[0m
+2026-11-05T14:51:00.3026993Z [36;1m  for index in "${PIP_INDEXES[@]}"; do[0m
+2026-11-05T14:51:00.3027430Z [36;1m    echo "${pkg}: try via ${index}"[0m
+2026-11-05T14:51:00.3028002Z [36;1m    if ${PYTHON_FOR_SGLANG} -m pip install "${pkg}" --retries 3 --timeout 60 \[0m
+2026-11-05T14:51:00.3028484Z [36;1m        -i "${index}"; then[0m
+2026-11-05T14:51:00.3028843Z [36;1m      ok=1; break[0m
+2026-11-05T14:51:00.3029112Z [36;1m    fi[0m
+2026-11-05T14:51:00.3029361Z [36;1m  done[0m
+2026-11-05T14:51:00.3029725Z [36;1m  [ "${ok}" = "1" ] || { echo "ERROR: failed to install ${pkg}"; exit 1; }[0m
+2026-11-05T14:51:00.3030134Z [36;1m}[0m
+2026-11-05T14:51:00.3030417Z [36;1mREQUIRED_PIP_PKGS=(tabulate)[0m
+2026-11-05T14:51:00.3030779Z [36;1mfor pkg in "${REQUIRED_PIP_PKGS[@]}"; do[0m
+2026-11-05T14:51:00.3031367Z [36;1m  ${PYTHON_FOR_SGLANG} -c "import ${pkg}" 2>/dev/null && { echo "${pkg}: available, skip"; continue; }[0m
+2026-11-05T14:51:00.3032043Z [36;1m  install_pkg "${pkg}"[0m
+2026-11-05T14:51:00.3032325Z [36;1mdone[0m
+2026-11-05T14:51:00.3032590Z [36;1m[0m
+2026-11-05T14:51:00.3032976Z [36;1m# Fallback for images that predate the pin in pyproject_npu.toml. Checking[0m
+2026-11-05T14:51:00.3033615Z [36;1m# the version, not the command, so a stale wheel is replaced rather than kept.[0m
+2026-11-05T14:51:00.3034130Z [36;1mSGL_EVAL_VERSION=0.1.2[0m
+2026-11-05T14:51:00.3034722Z [36;1m${PYTHON_FOR_SGLANG} -c "import sgl_eval, sys; sys.exit(sgl_eval.__version__ != '${SGL_EVAL_VERSION}')" 2>/dev/null \[0m
+2026-11-05T14:51:00.3035423Z [36;1m  || install_pkg "sgl-eval==${SGL_EVAL_VERSION}"[0m
+2026-11-05T14:51:00.3035801Z [36;1m[0m
+2026-11-05T14:51:00.3036045Z [36;1mcd test[0m
+2026-11-05T14:51:00.3036593Z [36;1m# Append `--nightly` and `--continue-on-error` when the job belongs to the nightly pipeline.[0m
+2026-11-05T14:51:00.3037253Z [36;1m# --nightly: Collect test cases registered for nightly runs.[0m
+2026-11-05T14:51:00.3038103Z [36;1m# --continue-on-error: Keep running remaining cases even if one fails.[0m
+2026-11-05T14:51:00.3038571Z [36;1mNIGHTLY_FLAG=""[0m
+2026-11-05T14:51:00.3038867Z [36;1mif [ "true" = "true" ]; then[0m
+2026-11-05T14:51:00.3039283Z [36;1m  NIGHTLY_FLAG="--nightly --continue-on-error"[0m
+2026-11-05T14:51:00.3039665Z [36;1mfi[0m
+2026-11-05T14:51:00.3039907Z [36;1m[0m
+2026-11-05T14:51:00.3040291Z [36;1m# Precision-test mode: run only the coverage-recommended files for[0m
+2026-11-05T14:51:00.3040861Z [36;1m# this suite. The bucketed list comes from recommend-tests-from-[0m
+2026-11-05T14:51:00.3041485Z [36;1m# coverage; empty input keeps the full-suite behavior.[0m
+2026-11-05T14:51:00.3041904Z [36;1mONLY_FILE_ARGS=""[0m
+2026-11-05T14:51:00.3042207Z [36;1mif [ -n "${ONLY_TESTS}" ]; then[0m
+2026-11-05T14:51:00.3042650Z [36;1m  printf '%s\n' "${ONLY_TESTS}" > /tmp/precision_tests.txt[0m
+2026-11-05T14:51:00.3043159Z [36;1m  ONLY_FILE_ARGS="--only-file-list /tmp/precision_tests.txt"[0m
+2026-11-05T14:51:00.3043802Z [36;1m  echo "Precision mode: running $(wc -l < /tmp/precision_tests.txt) recommended file(s)"[0m
+2026-11-05T14:51:00.3044326Z [36;1mfi[0m
+2026-11-05T14:51:00.3044748Z [36;1m[0m
+2026-11-05T14:51:00.3045264Z [36;1m# Optional: delegate execution to scripts/ci/npu/precise-test/run_tests_with_coverage.sh when the[0m
+2026-11-05T14:51:00.3046031Z [36;1m# caller sets use_coverage_runner=true. list_tests.py (same directory) enumerates the[0m
+2026-11-05T14:51:00.3046835Z [36;1m# selected test files; the original run_suite.py execution below is preserved[0m
+2026-11-05T14:51:00.3047363Z [36;1m# unchanged for the default (false) path.[0m
+2026-11-05T14:51:00.3047821Z [36;1mLOG_FILE="${TEST_LOG_DIR}/nightly-1-npu-a3-part0.log"[0m
+2026-11-05T14:51:00.3048238Z [36;1m[0m
+2026-11-05T14:51:00.3048482Z [36;1mif [[ "false" == "true" ]]; then[0m
+2026-11-05T14:51:00.3048855Z [36;1m  pip install coverage==7.8.*[0m
+2026-11-05T14:51:00.3049408Z [36;1m  python3 ../scripts/ci/npu/precise-test/list_tests.py --hw npu --suite nightly-1-npu-a3 \[0m
+2026-11-05T14:51:00.3050015Z [36;1m    --auto-partition-id 0 \[0m
+2026-11-05T14:51:00.3050363Z [36;1m    --auto-partition-size 1 \[0m
+2026-11-05T14:51:00.3050705Z [36;1m    -o /tmp/selected_tests.txt[0m
+2026-11-05T14:51:00.3051144Z [36;1m  echo "Selected test files:"[0m
+2026-11-05T14:51:00.3051480Z [36;1m  cat /tmp/selected_tests.txt[0m
+2026-11-05T14:51:00.3051941Z [36;1m  if [ -s /tmp/selected_tests.txt ]; then[0m
+2026-11-05T14:51:00.3052594Z [36;1m    bash ../scripts/ci/npu/precise-test/run_tests_with_coverage.sh $(cat /tmp/selected_tests.txt)[0m
+2026-11-05T14:51:00.3053164Z [36;1m  fi[0m
+2026-11-05T14:51:00.3053422Z [36;1m  exit 0[0m
+2026-11-05T14:51:00.3053662Z [36;1mfi[0m
+2026-11-05T14:51:00.3053899Z [36;1m[0m
+2026-11-05T14:51:00.3054258Z [36;1mpython3 run_suite.py --hw npu --suite nightly-1-npu-a3 \[0m
+2026-11-05T14:51:00.3054711Z [36;1m  --auto-partition-id 0 \[0m
+2026-11-05T14:51:00.3055126Z [36;1m  --auto-partition-size 1 \[0m
+2026-11-05T14:51:00.3055505Z [36;1m  --timeout-per-file 3600 \[0m
+2026-11-05T14:51:00.3055971Z [36;1m  $ONLY_FILE_ARGS $NIGHTLY_FLAG $CONTINUE_ON_ERROR_FLAG 2>&1 | tee "${LOG_FILE}"[0m
+2026-11-05T14:51:00.3056642Z shell: bash --noprofile --norc -e -o pipefail {0}
+2026-11-05T14:51:00.3057003Z env:
+2026-11-05T14:51:00.3057252Z   SKIP_PR_TEST_HEALTH_CHECK: true
+2026-11-05T14:51:00.3057596Z   SGLANG_USE_MODELSCOPE: true
+2026-11-05T14:51:00.3057888Z   SGLANG_IS_IN_CI: true
+2026-11-05T14:51:00.3058198Z   HF_ENDPOINT: https://hf-mirror.com
+2026-11-05T14:51:00.3058558Z   TORCH_EXTENSIONS_DIR: /tmp/torch_extensions
+2026-11-05T14:51:00.3059034Z   PYTORCH_NPU_ALLOC_CONF: expandable_segments:True
+2026-11-05T14:51:00.3059653Z   STREAMS_PER_DEVICE: 32
+2026-11-05T14:51:00.3059934Z   CONTINUE_ON_ERROR_FLAG: 
+2026-11-05T14:51:00.3060243Z   TEST_LOG_DIR: /tmp/test-logs
+2026-11-05T14:51:00.3060795Z   ONLY_TESTS: test/registered/npu/basic_function/runtime_opts/test_npu_needs_cpu_seq_lens_fia_warning.py
+
+2026-11-05T14:51:00.3061580Z ##[endgroup]
+2026-11-05T14:51:00.3260840Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-05T14:51:00.3261894Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-05T14:51:00.3262235Z ##[endgroup]
+2026-11-05T14:51:00.5641666Z (node:910) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-05T14:51:00.5642528Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-05T14:51:00.5854703Z (node:910) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-05T14:51:00.6360221Z (node:910) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-05T14:51:01.5627740Z tabulate: available, skip
+2026-11-05T14:51:01.5937559Z sgl-eval==0.1.2: try via https://repo.huaweicloud.com/repository/pypi/simple/
+2026-11-05T14:51:01.9585946Z Looking in indexes: https://repo.huaweicloud.com/repository/pypi/simple/
+2026-11-05T14:51:02.0633867Z Collecting sgl-eval==0.1.2
+2026-11-05T14:51:02.0657174Z   Downloading sgl_eval-0.1.2-py3-none-any.whl (180 kB)
+2026-11-05T14:51:02.0811967Z Requirement already satisfied: openai<3,>=1.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sgl-eval==0.1.2) (2.6.1)
+2026-11-05T14:51:02.0815494Z Requirement already satisfied: httpx<1,>=0.24 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sgl-eval==0.1.2) (0.28.1)
+2026-11-05T14:51:02.0820358Z Requirement already satisfied: tqdm<5,>=4.65 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sgl-eval==0.1.2) (4.70.1)
+2026-11-05T14:51:02.0823232Z Requirement already satisfied: pyyaml<7,>=6.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sgl-eval==0.1.2) (6.0.1)
+2026-11-05T14:51:02.0831347Z Requirement already satisfied: math_verify<1,>=0.5 in /usr/local/python3.12.13/lib/python3.12/site-packages (from math_verify[antlr4_9_3]<1,>=0.5->sgl-eval==0.1.2) (0.9.0)
+2026-11-05T14:51:02.0837304Z Requirement already satisfied: latex2sympy2_extended<2,>=1.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sgl-eval==0.1.2) (1.11.0)
+2026-11-05T14:51:02.0841337Z Requirement already satisfied: numpy<3,>=1.24 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sgl-eval==0.1.2) (2.2.6)
+2026-11-05T14:51:02.2987565Z Collecting pandas<3,>=2.0 (from sgl-eval==0.1.2)
+2026-11-05T14:51:02.3080939Z   Downloading pandas-2.3.3-cp312-cp312-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl (11.7 MB)
+2026-11-05T14:51:02.4368652Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.7/11.7 MB 93.0 MB/s  0:00:00
+2026-11-05T14:51:02.4802405Z Requirement already satisfied: datasets<5,>=2.14 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sgl-eval==0.1.2) (4.8.4)
+2026-11-05T14:51:02.4806937Z Requirement already satisfied: pillow<12,>=10 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sgl-eval==0.1.2) (11.3.0)
+2026-11-05T14:51:02.4811189Z Requirement already satisfied: editdistance<1,>=0.6 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sgl-eval==0.1.2) (0.8.1)
+2026-11-05T14:51:02.4833974Z Requirement already satisfied: filelock in /usr/local/python3.12.13/lib/python3.12/site-packages (from datasets<5,>=2.14->sgl-eval==0.1.2) (4.2.4)
+2026-11-05T14:51:02.4839636Z Requirement already satisfied: pyarrow>=21.0.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from datasets<5,>=2.14->sgl-eval==0.1.2) (26.0.0)
+2026-11-05T14:51:02.4844445Z Requirement already satisfied: dill<0.4.2,>=0.3.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from datasets<5,>=2.14->sgl-eval==0.1.2) (0.4.1)
+2026-11-05T14:51:02.4850505Z Requirement already satisfied: requests>=2.32.2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from datasets<5,>=2.14->sgl-eval==0.1.2) (2.34.2)
+2026-11-05T14:51:02.4856120Z Requirement already satisfied: xxhash in /usr/local/python3.12.13/lib/python3.12/site-packages (from datasets<5,>=2.14->sgl-eval==0.1.2) (4.0.2)
+2026-11-05T14:51:02.4860700Z Requirement already satisfied: multiprocess<0.70.20 in /usr/local/python3.12.13/lib/python3.12/site-packages (from datasets<5,>=2.14->sgl-eval==0.1.2) (0.70.19)
+2026-11-05T14:51:02.4867018Z Requirement already satisfied: fsspec<=2026.2.0,>=2023.1.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from fsspec[http]<=2026.2.0,>=2023.1.0->datasets<5,>=2.14->sgl-eval==0.1.2) (2026.2.0)
+2026-11-05T14:51:02.4872474Z Requirement already satisfied: huggingface-hub<2.0,>=0.25.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from datasets<5,>=2.14->sgl-eval==0.1.2) (1.33.0)
+2026-11-05T14:51:02.4876040Z Requirement already satisfied: packaging in /usr/local/python3.12.13/lib/python3.12/site-packages (from datasets<5,>=2.14->sgl-eval==0.1.2) (26.3)
+2026-11-05T14:51:02.5033946Z Requirement already satisfied: aiohttp!=4.0.0a0,!=4.0.0a1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from fsspec[http]<=2026.2.0,>=2023.1.0->datasets<5,>=2.14->sgl-eval==0.1.2) (3.14.5)
+2026-11-05T14:51:02.5048620Z Requirement already satisfied: anyio in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpx<1,>=0.24->sgl-eval==0.1.2) (4.15.1)
+2026-11-05T14:51:02.5052719Z Requirement already satisfied: certifi in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpx<1,>=0.24->sgl-eval==0.1.2) (2026.7.22)
+2026-11-05T14:51:02.5056738Z Requirement already satisfied: httpcore==1.* in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpx<1,>=0.24->sgl-eval==0.1.2) (1.0.9)
+2026-11-05T14:51:02.5061176Z Requirement already satisfied: idna in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpx<1,>=0.24->sgl-eval==0.1.2) (3.18)
+2026-11-05T14:51:02.5082124Z Requirement already satisfied: h11>=0.16 in /usr/local/python3.12.13/lib/python3.12/site-packages (from httpcore==1.*->httpx<1,>=0.24->sgl-eval==0.1.2) (0.16.0)
+2026-11-05T14:51:02.5101285Z Requirement already satisfied: click<9.0.0,>=8.4.2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from huggingface-hub<2.0,>=0.25.0->datasets<5,>=2.14->sgl-eval==0.1.2) (8.5.0)
+2026-11-05T14:51:02.5112970Z Requirement already satisfied: hf-xet<2.0.0,>=1.6.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from huggingface-hub<2.0,>=0.25.0->datasets<5,>=2.14->sgl-eval==0.1.2) (1.7.1)
+2026-11-05T14:51:02.5121712Z Requirement already satisfied: typing-extensions>=4.1.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from huggingface-hub<2.0,>=0.25.0->datasets<5,>=2.14->sgl-eval==0.1.2) (4.16.0)
+2026-11-05T14:51:02.5193259Z Requirement already satisfied: sympy in /usr/local/python3.12.13/lib/python3.12/site-packages (from latex2sympy2_extended<2,>=1.0->sgl-eval==0.1.2) (1.14.0)
+2026-11-05T14:51:02.5339469Z Collecting antlr4-python3-runtime<=4.13.2,>=4.9.3 (from latex2sympy2_extended<2,>=1.0->sgl-eval==0.1.2)
+2026-11-05T14:51:02.5367514Z   Downloading antlr4_python3_runtime-4.13.2-py3-none-any.whl (144 kB)
+2026-11-05T14:51:02.5548058Z Requirement already satisfied: distro<2,>=1.7.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from openai<3,>=1.0->sgl-eval==0.1.2) (1.9.0)
+2026-11-05T14:51:02.5553308Z Requirement already satisfied: jiter<1,>=0.10.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from openai<3,>=1.0->sgl-eval==0.1.2) (0.18.0)
+2026-11-05T14:51:02.5558122Z Requirement already satisfied: pydantic<3,>=1.9.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from openai<3,>=1.0->sgl-eval==0.1.2) (2.14.2)
+2026-11-05T14:51:02.5562147Z Requirement already satisfied: sniffio in /usr/local/python3.12.13/lib/python3.12/site-packages (from openai<3,>=1.0->sgl-eval==0.1.2) (1.3.1)
+2026-11-05T14:51:02.5613700Z Requirement already satisfied: python-dateutil>=2.8.2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from pandas<3,>=2.0->sgl-eval==0.1.2) (2.9.0.post0)
+2026-11-05T14:51:02.5617129Z Requirement already satisfied: pytz>=2020.1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from pandas<3,>=2.0->sgl-eval==0.1.2) (2026.6)
+2026-11-05T14:51:02.5621626Z Requirement already satisfied: tzdata>=2022.7 in /usr/local/python3.12.13/lib/python3.12/site-packages (from pandas<3,>=2.0->sgl-eval==0.1.2) (2026.6)
+2026-11-05T14:51:02.5673529Z Requirement already satisfied: annotated-types>=0.6.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from pydantic<3,>=1.9.0->openai<3,>=1.0->sgl-eval==0.1.2) (0.8.0)
+2026-11-05T14:51:02.5677815Z Requirement already satisfied: pydantic-core==2.50.2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from pydantic<3,>=1.9.0->openai<3,>=1.0->sgl-eval==0.1.2) (2.50.2)
+2026-11-05T14:51:02.5683668Z Requirement already satisfied: typing-inspection>=0.4.4 in /usr/local/python3.12.13/lib/python3.12/site-packages (from pydantic<3,>=1.9.0->openai<3,>=1.0->sgl-eval==0.1.2) (0.4.4)
+2026-11-05T14:51:02.5752692Z Requirement already satisfied: aiohappyeyeballs>=2.5.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets<5,>=2.14->sgl-eval==0.1.2) (2.7.1)
+2026-11-05T14:51:02.5756947Z Requirement already satisfied: aiosignal>=1.4.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets<5,>=2.14->sgl-eval==0.1.2) (1.4.0)
+2026-11-05T14:51:02.5762417Z Requirement already satisfied: attrs>=17.3.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets<5,>=2.14->sgl-eval==0.1.2) (24.2.0)
+2026-11-05T14:51:02.5767840Z Requirement already satisfied: frozenlist>=1.1.1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets<5,>=2.14->sgl-eval==0.1.2) (1.8.0)
+2026-11-05T14:51:02.5773884Z Requirement already satisfied: multidict<8.0,>=4.5 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets<5,>=2.14->sgl-eval==0.1.2) (7.2.1)
+2026-11-05T14:51:02.5777067Z Requirement already satisfied: propcache>=0.2.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets<5,>=2.14->sgl-eval==0.1.2) (0.5.4)
+2026-11-05T14:51:02.5784384Z Requirement already satisfied: yarl<2.0,>=1.25.1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets<5,>=2.14->sgl-eval==0.1.2) (1.25.1)
+2026-11-05T14:51:02.6026634Z Requirement already satisfied: six>=1.5 in /usr/local/python3.12.13/lib/python3.12/site-packages (from python-dateutil>=2.8.2->pandas<3,>=2.0->sgl-eval==0.1.2) (1.17.0)
+2026-11-05T14:51:02.6030952Z Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from requests>=2.32.2->datasets<5,>=2.14->sgl-eval==0.1.2) (3.4.9)
+2026-11-05T14:51:02.6037135Z Requirement already satisfied: urllib3<3,>=1.26 in /usr/local/python3.12.13/lib/python3.12/site-packages (from requests>=2.32.2->datasets<5,>=2.14->sgl-eval==0.1.2) (2.7.0)
+2026-11-05T14:51:02.6238748Z   Downloading antlr4-python3-runtime-4.9.3.tar.gz (117 kB)
+2026-11-05T14:51:02.6577524Z   Installing build dependencies: started
+2026-11-05T14:51:03.4143720Z   Installing build dependencies: finished with status 'done'
+2026-11-05T14:51:03.4149133Z   Getting requirements to build wheel: started
+2026-11-05T14:51:03.8016360Z   Getting requirements to build wheel: finished with status 'done'
+2026-11-05T14:51:03.8027721Z   Preparing metadata (pyproject.toml): started
+2026-11-05T14:51:04.0093874Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-11-05T14:51:04.0167438Z Requirement already satisfied: mpmath<1.4,>=1.1.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from sympy->latex2sympy2_extended<2,>=1.0->sgl-eval==0.1.2) (1.3.0)
+2026-11-05T14:51:04.0226984Z Building wheels for collected packages: antlr4-python3-runtime
+2026-11-05T14:51:04.0236029Z   Building wheel for antlr4-python3-runtime (pyproject.toml): started
+2026-11-05T14:51:04.3058762Z   Building wheel for antlr4-python3-runtime (pyproject.toml): finished with status 'done'
+2026-11-05T14:51:04.3067953Z   Created wheel for antlr4-python3-runtime: filename=antlr4_python3_runtime-4.9.3-py3-none-any.whl size=144590 sha256=9e63a6f42afce161f7f9e75dbce1883cfd8e7d46378d5078aabb3509fdaa1739
+2026-11-05T14:51:04.3069080Z   Stored in directory: /tmp/pip-cache/wheels/6a/cf/d7/802a62d888df1d4723ae49a889dffe2aac6889b66f6f26b841
+2026-11-05T14:51:04.3092312Z Successfully built antlr4-python3-runtime
+2026-11-05T14:51:04.6384951Z Installing collected packages: antlr4-python3-runtime, pandas, sgl-eval
+2026-11-05T14:51:04.6389863Z   Attempting uninstall: antlr4-python3-runtime
+2026-11-05T14:51:04.6436762Z     Found existing installation: antlr4-python3-runtime 4.7.2
+2026-11-05T14:51:04.6502363Z     Uninstalling antlr4-python3-runtime-4.7.2:
+2026-11-05T14:51:04.6517492Z       Successfully uninstalled antlr4-python3-runtime-4.7.2
+2026-11-05T14:51:04.7535134Z   Attempting uninstall: pandas
+2026-11-05T14:51:04.7676561Z     Found existing installation: pandas 3.0.6
+2026-11-05T14:51:05.0658920Z     Uninstalling pandas-3.0.6:
+2026-11-05T14:51:06.7253072Z       Successfully uninstalled pandas-3.0.6
+2026-11-05T14:51:11.8341846Z 
+2026-11-05T14:51:11.8348762Z ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+2026-11-05T14:51:11.8349752Z ms-service-profiler 26.0.0 requires matplotlib, which is not installed.
+2026-11-05T14:51:11.8350295Z ms-service-profiler 26.0.0 requires msguard, which is not installed.
+2026-11-05T14:51:11.8350998Z ms-service-profiler 26.0.0 requires opentelemetry-exporter-otlp-proto-grpc==1.33.1, which is not installed.
+2026-11-05T14:51:11.8352144Z ms-service-profiler 26.0.0 requires opentelemetry-exporter-otlp-proto-http==1.33.1, but you have opentelemetry-exporter-otlp-proto-http 1.45.2 which is incompatible.
+2026-11-05T14:51:11.8353292Z latex2sympy2 1.9.1 requires antlr4-python3-runtime==4.7.2, but you have antlr4-python3-runtime 4.9.3 which is incompatible.
+2026-11-05T14:51:11.8354076Z triton-ascend 3.2.2 requires numpy==1.26.4, but you have numpy 2.2.6 which is incompatible.
+2026-11-05T14:51:11.8354734Z triton-ascend 3.2.2 requires psutil==6.0.0, but you have psutil 7.2.2 which is incompatible.
+2026-11-05T14:51:11.8537814Z Successfully installed antlr4-python3-runtime-4.9.3 pandas-2.3.3 sgl-eval-0.1.2
+2026-11-05T14:51:11.8540042Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-11-05T14:51:11.8552031Z 
+2026-11-05T14:51:11.8552320Z [notice] A new release of pip is available: 26.2 -> 26.3
+2026-11-05T14:51:11.8552733Z [notice] To update, run: pip install --upgrade pip
+2026-11-05T14:51:12.0037902Z Precision mode: running 2 recommended file(s)
+2026-11-05T14:51:28.5228383Z get env LANGUAGE = en_US:en
+2026-11-05T14:51:40.5824610Z Precision filter (--only-file-list /tmp/precision_tests.txt): 12 -> 1 test file(s)
+2026-11-05T14:51:40.5825145Z LPT: no live est (None); using in-source est_time
+2026-11-05T14:51:40.5833043Z +------------+------------------+-----------+--------------------+
+2026-11-05T14:51:40.5833525Z | Hardware   | Suite            | Nightly   | Partition          |
+2026-11-05T14:51:40.5833955Z |------------+------------------+-----------+--------------------|
+2026-11-05T14:51:40.5834374Z | NPU        | nightly-1-npu-a3 | True      | 1/1 (0-based id=0) |
+2026-11-05T14:51:40.5835527Z +------------+------------------+-----------+--------------------+
+2026-11-05T14:51:40.5836158Z ⚠️  Skipped 1 test(s):
+2026-11-05T14:51:40.5836715Z   - /__w/sglang/sglang/test/registered/model_loading/test_load_weights_from_remote_instance_npu.py (reason: run failed)
+2026-11-05T14:51:40.5837277Z 
+2026-11-05T14:51:40.5837450Z ✅ Enabled 1 test(s) (est total 400.0s):
+2026-11-05T14:51:40.5838093Z   - /__w/sglang/sglang/test/registered/npu/basic_function/runtime_opts/test_npu_needs_cpu_seq_lens_fia_warning.py (est_time=400.0)
+2026-11-05T14:51:40.5838648Z 
+2026-11-05T14:51:40.5838762Z Traceback (most recent call last):
+2026-11-05T14:51:40.5839158Z   File "/__w/sglang/sglang/test/run_suite.py", line 648, in <module>
+2026-11-05T14:51:40.5839532Z     main()
+2026-11-05T14:51:40.5839813Z   File "/__w/sglang/sglang/test/run_suite.py", line 643, in main
+2026-11-05T14:51:40.5840182Z     exit_code = run_a_suite(args)
+2026-11-05T14:51:40.5840450Z                 ^^^^^^^^^^^^^^^^^
+2026-11-05T14:51:40.5840810Z   File "/__w/sglang/sglang/test/run_suite.py", line 474, in run_a_suite
+2026-11-05T14:51:40.5841220Z     return run_unittest_files(
+2026-11-05T14:51:40.5841472Z            ^^^^^^^^^^^^^^^^^^^
+2026-11-05T14:51:40.5842123Z TypeError: run_unittest_files() got an unexpected keyword argument 'fork_worker_preload'
+2026-11-05T14:51:40.5959485Z [ERROR] 2026-11-05-14:51:40 (PID:3049, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception
+2026-11-05T14:51:43.0497287Z ##[error]Error: failed to run script step:
+  ✗ exit code: 1
+  → your script exited with a non-zero code; please check your script for errors
+------------------------------------------------------------
+Last output:
+  +------------+------------------+-----------+--------------------+
+  | Hardware   | Suite            | Nightly   | Partition          |
+  |------------+------------------+-----------+--------------------|
+  | NPU        | nightly-1-npu-a3 | True      | 1/1 (0-based id=0) |
+  +------------+------------------+-----------+--------------------+
+  ⚠️  Skipped 1 test(s):
+    - /__w/sglang/sglang/test/registered/model_loading/test_load_weights_from_remote_instance_npu.py (reason: run failed)
+  ✅ Enabled 1 test(s) (est total 400.0s):
+    - /__w/sglang/sglang/test/registered/npu/basic_function/runtime_opts/test_npu_needs_cpu_seq_lens_fia_warning.py (est_time=400.0)
+  Traceback (most recent call last):
+    File "/__w/sglang/sglang/test/run_suite.py", line 648, in <module>
+      main()
+    File "/__w/sglang/sglang/test/run_suite.py", line 643, in main
+      exit_code = run_a_suite(args)
+                  ^^^^^^^^^^^^^^^^^
+    File "/__w/sglang/sglang/test/run_suite.py", line 474, in run_a_suite
+      return run_unittest_files(
+             ^^^^^^^^^^^^^^^^^^^
+  TypeError: run_unittest_files() got an unexpected keyword argument 'fork_worker_preload'
+  [ERROR] 2026-11-05-14:51:40 (PID:3049, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception
+2026-11-05T14:51:43.0674442Z ##[error]Process completed with exit code 1.
+2026-11-05T14:51:43.0858013Z ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.
+2026-11-05T14:51:43.1687822Z Post job cleanup.
+2026-11-05T14:51:43.1733175Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-05T14:51:43.1734358Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-05T14:51:43.1734703Z ##[endgroup]
+2026-11-05T14:51:43.4118373Z (node:979) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-05T14:51:43.4119140Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-05T14:51:43.4330256Z (node:979) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-05T14:51:43.4884824Z (node:979) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-05T14:51:44.3182219Z [command]/usr/bin/git version
+2026-11-05T14:51:44.3255899Z git version 2.34.1
+2026-11-05T14:51:44.3258595Z Copying '/root/.gitconfig' to '/__w/_temp/299d3d2d-3992-4cb6-8704-9410d8b88beb/.gitconfig'
+2026-11-05T14:51:44.3259499Z Temporarily overriding HOME='/__w/_temp/299d3d2d-3992-4cb6-8704-9410d8b88beb' before making global git config changes
+2026-11-05T14:51:44.3260270Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-05T14:51:44.3261148Z [command]/usr/bin/git config --global --add safe.directory /__w/sglang/sglang
+2026-11-05T14:51:44.3300080Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-05T14:51:44.3338842Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-05T14:51:44.3703360Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-05T14:51:44.3732145Z http.https://github.com/.extraheader
+2026-11-05T14:51:44.3741466Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-05T14:51:44.3779946Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-05T14:51:44.4142871Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-05T14:51:44.4179125Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-05T14:51:45.7146439Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-05T14:51:45.7147603Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-05T14:51:45.7147928Z ##[endgroup]
+2026-11-05T14:51:45.9577170Z (node:1088) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-05T14:51:45.9578032Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-05T14:51:45.9791023Z (node:1088) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-05T14:51:46.1218527Z Cleaning up orphan processes
+2026-11-05T14:51:46.1335904Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

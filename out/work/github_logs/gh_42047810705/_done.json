@@ -1,0 +1,324 @@
+{
+ "route": "github",
+ "key": "SgLang|nightly-test-npu.yml",
+ "rn": 2079,
+ "rid": "42047810705",
+ "st": "11-05 22:43",
+ "runId": 42047810705,
+ "repo": "sgl-project/sglang",
+ "displayTitle": "[Test][NPU] overlap-schedule validation: GLM5/Kimi/DSV4 case reconfig + TEMP nightly scoping",
+ "event": "pull_request",
+ "status": "FAILED",
+ "duration": 655.02,
+ "runStatus": {
+  "status": "completed",
+  "conclusion": "cancelled",
+  "updatedAt": "2026-11-06T01:38:47Z",
+  "attempt": 1
+ },
+ "_v": 2,
+ "mode": "zip",
+ "why": "失败 job 7 个（>5，整包一次下载更省时）",
+ "totalJobs": 20,
+ "failedJobs": [
+  {
+   "name": "nightly-1-npu-a3 / run (0)",
+   "id": 127318476257,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+   "id": 127318477062,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+   "id": 127318477381,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap, 1, 1, 1, test... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap",
+   "id": 127320733280,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap, 1, 1, 1, test/registered/npu/a... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap",
+   "id": 127343204261,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa_overlap, 2, 2, 1, test/registered/npu/acc... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa_overlap",
+   "id": 127442782595,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_dcp_gpqa",
+   "id": 127563337013,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ ],
+ "cancelledJobs": [
+  {
+   "name": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test/registered/npu/pe... / glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms",
+   "id": 127626844705
+  },
+  {
+   "name": "check-all-jobs",
+   "id": 127654905328
+  }
+ ],
+ "jobs": [
+  {
+   "name": "nightly-1-npu-a3 / run (0)",
+   "id": 127318476257,
+   "conclusion": "failure",
+   "startedAt": "2026-11-05T14:49:22Z",
+   "completedAt": "2026-11-05T14:51:51Z",
+   "logFile": "github_logs/gh_42047810705/10_nightly-1-npu-a3 _ run (0).txt",
+   "logBytes": 106145,
+   "logLines": 985,
+   "errorLines": [
+    "L918: Traceback (most recent call last):",
+    "L929: ##[error]Error: failed to run script step:",
+    "L930: ✗ exit code: 1",
+    "L943: Traceback (most recent call last):",
+    "L954: ##[error]Process completed with exit code 1.",
+    "L955: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+   "id": 127318477062,
+   "conclusion": "failure",
+   "startedAt": "2026-11-05T14:49:25Z",
+   "completedAt": "2026-11-05T14:52:48Z",
+   "logFile": "github_logs/gh_42047810705/9_nightly-perf-16-npu-a3 _ nightly-perf-16-npu-a3.txt",
+   "logBytes": 58919,
+   "logLines": 700,
+   "errorLines": [
+    "L631: Traceback (most recent call last):",
+    "L644: ##[error]Error: failed to run script step:",
+    "L645: ✗ exit code: 1",
+    "L656: Traceback (most recent call last):",
+    "L669: ##[error]Process completed with exit code 1.",
+    "L670: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+   "id": 127318477381,
+   "conclusion": "failure",
+   "startedAt": "2026-11-05T14:49:45Z",
+   "completedAt": "2026-11-05T14:51:22Z",
+   "logFile": "github_logs/gh_42047810705/8_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
+   "logBytes": 58845,
+   "logLines": 700,
+   "errorLines": [
+    "L631: Traceback (most recent call last):",
+    "L644: ##[error]Error: failed to run script step:",
+    "L645: ✗ exit code: 1",
+    "L656: Traceback (most recent call last):",
+    "L669: ##[error]Process completed with exit code 1.",
+    "L670: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap, 1, 1, 1, test... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap",
+   "id": 127320733280,
+   "conclusion": "failure",
+   "startedAt": "2026-11-05T14:53:13Z",
+   "completedAt": "2026-11-05T15:30:25Z",
+   "logFile": "github_logs/gh_42047810705/7_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overl~db0591.txt",
+   "logBytes": 545706,
+   "logLines": 3066,
+   "errorLines": [
+    "L604: │ exit code: 1",
+    "L2887: Traceback (most recent call last):",
+    "L2923: Traceback (most recent call last):",
+    "L2934: Traceback (most recent call last):",
+    "L2947: Traceback (most recent call last):",
+    "L2958: Traceback (most recent call last):",
+    "L2966: ##[error]Error: failed to run script step:",
+    "L2967: ✗ exit code: 1",
+    "L2972: Traceback (most recent call last):",
+    "L2983: Traceback (most recent call last):",
+    "L2991: ##[error]Process completed with exit code 1.",
+    "L2992: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ],
+   "isTestJob": true,
+   "testResults": null
+  },
+  {
+   "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap, 1, 1, 1, test/registered/npu/a... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap",
+   "id": 127343204261,
+   "conclusion": "failure",
+   "startedAt": "2026-11-05T15:30:51Z",
+   "completedAt": "2026-11-05T18:22:33Z",
+   "logFile": "github_logs/gh_42047810705/6_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap, 1, 1, 1, test~ec30f2.txt",
+   "logBytes": 620232,
+   "logLines": 2862,
+   "errorLines": [
+    "L2430: Traceback (most recent call last):",
+    "L2458: Traceback (most recent call last):",
+    "L2545: Traceback (most recent call last):",
+    "L2573: Traceback (most recent call last):",
+    "L2676: Traceback (most recent call last):",
+    "L2704: Traceback (most recent call last):",
+    "L2731: Traceback (most recent call last):",
+    "L2743: Traceback (most recent call last):",
+    "L2754: Traceback (most recent call last):",
+    "L2762: ##[error]Error: failed to run script step:",
+    "L2763: ✗ exit code: 1",
+    "L2768: Traceback (most recent call last):",
+    "L2779: Traceback (most recent call last):",
+    "L2787: ##[error]Process completed with exit code 1.",
+    "L2788: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ],
+   "isTestJob": true,
+   "testResults": null
+  },
+  {
+   "name": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa_overlap, 2, 2, 1, test/registered/npu/acc... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa_overlap",
+   "id": 127442782595,
+   "conclusion": "failure",
+   "startedAt": "2026-11-05T18:23:00Z",
+   "completedAt": "2026-11-05T22:03:48Z",
+   "logFile": "github_logs/gh_42047810705/5_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa_overlap, 2, 2, 1, test_r~7420f7.txt",
+   "logBytes": 2882778,
+   "logLines": 7423,
+   "errorLines": [
+    "L1213: Traceback (most recent call last):",
+    "L6179: Traceback (most recent call last):",
+    "L7130: Traceback (most recent call last):",
+    "L7212: Traceback (most recent call last):",
+    "L7228: Traceback (most recent call last):",
+    "L7247: Traceback (most recent call last):",
+    "L7258: Traceback (most recent call last):",
+    "L7269: Traceback (most recent call last):",
+    "L7295: Traceback (most recent call last):",
+    "L7311: Traceback (most recent call last):",
+    "L7319: ##[error]Error: failed to run script step:",
+    "L7320: ✗ exit code: 1",
+    "L7325: Traceback (most recent call last):",
+    "L7336: Traceback (most recent call last):",
+    "L7344: ##[error]Process completed with exit code 1.",
+    "L7345: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ],
+   "isTestJob": true,
+   "testResults": null
+  },
+  {
+   "name": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_dcp_gpqa",
+   "id": 127563337013,
+   "conclusion": "failure",
+   "startedAt": "2026-11-05T22:04:40Z",
+   "completedAt": "2026-11-05T22:15:39Z",
+   "logFile": "github_logs/gh_42047810705/4_multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test_registered_npu_acc~83db7b.txt",
+   "logBytes": 74477,
+   "logLines": 684,
+   "errorLines": [
+    "L571: Traceback (most recent call last):",
+    "L581: Traceback (most recent call last):",
+    "L589: ##[error]Error: failed to run script step:",
+    "L590: ✗ exit code: 1",
+    "L596: Traceback (most recent call last):",
+    "L606: Traceback (most recent call last):",
+    "L614: ##[error]Process completed with exit code 1.",
+    "L615: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ],
+   "isTestJob": true,
+   "testResults": null
+  }
+ ],
+ "missing": [],
+ "systemLogs": [
+  "github_logs/gh_42047810705/sys_multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test_~de9f27.txt",
+  "github_logs/gh_42047810705/sys_multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test_registered_npu_acc~cc387a.txt",
+  "github_logs/gh_42047810705/sys_multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test_registered_npu_acc~83db7b.txt",
+  "github_logs/gh_42047810705/sys_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa_overlap, 2, 2, 1, test_r~7420f7.txt",
+  "github_logs/gh_42047810705/sys_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap, 1, 1, 1, test~ec30f2.txt",
+  "github_logs/gh_42047810705/sys_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overl~db0591.txt",
+  "github_logs/gh_42047810705/sys_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
+  "github_logs/gh_42047810705/sys_nightly-perf-16-npu-a3 _ nightly-perf-16-npu-a3.txt",
+  "github_logs/gh_42047810705/sys_nightly-1-npu-a3 _ run (0).txt",
+  "github_logs/gh_42047810705/sys_set-image-config.txt"
+ ],
+ "ghComplete": true
+}

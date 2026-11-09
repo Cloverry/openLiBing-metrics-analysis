@@ -1,0 +1,179 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-09 15:06:59",
+    "component": "HPCKit",
+    "pipeline": "kupl",
+    "date": "2026-11-06",
+    "recordId": "HPCKit|kupl#299"
+  },
+  "recordId": "HPCKit|kupl#299",
+  "date": "2026-11-06",
+  "component": "HPCKit",
+  "pipeline": "kupl",
+  "pipelineName": "Nightly-CI-Component-pipeline_kupl",
+  "platform": "codearts",
+  "buildNumber": 299,
+  "pipelineRunId": "83e34fe2e1184610959638c360c41c45",
+  "status": "FAILED",
+  "failedTaskType": "测试任务",
+  "startedAt": "2026-11-06T13:30:50",
+  "endedAt": "2026-11-06T13:32:14",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-06T13:32:14",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0,
+    "bsRate": 1,
+    "dims": [
+      "va",
+      "bs"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=ddb211b1e4a74f55a0e604fa95ef469e&projectId=300073&pipelineRunId=83e34fe2e1184610959638c360c41c45",
+    "detail": null,
+    "github": null
+  },
+  "tasks": [
+    {
+      "jobName": "Test_kupl",
+      "type": "test",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "passRate": "0.00%"
+      },
+      "cases": [],
+      "emptyTestResult": true,
+      "stepErrMsgs": []
+    },
+    {
+      "jobName": "Test_kupl",
+      "type": "log",
+      "fallback": true,
+      "logFile": "job_logs/04_kupl_299_Test_kupl.log",
+      "logBytes": 16559,
+      "logLines": 144,
+      "download": "export",
+      "truncated": false,
+      "excerpt": null,
+      "stepErrMsgs": [
+        "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+      ],
+      "jobErrMsg": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+      "errorLines": [
+        "L138: [2026/11/06 13:32:03.681 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+        "L139: [2026/11/06 13:32:03.681 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'",
+        "L140: [2026/11/06 13:32:03.681 GMT+08:00] [ERROR] git clone test_cases code fail",
+        "L142: [2026/11/06 13:32:03.846 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed",
+        "L144: [2026/11/06 13:32:06.815 GMT+08:00] Finished: FAILURE"
+      ],
+      "subTasks": []
+    }
+  ],
+  "cases": [],
+  "errorMessages": [
+    {
+      "task": "Test_kupl",
+      "source": "job_logs/04_kupl_299_Test_kupl.log",
+      "line": 138,
+      "level": "LOG",
+      "text": "[2026/11/06 13:32:03.681 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'"
+    },
+    {
+      "task": "Test_kupl",
+      "source": "job_logs/04_kupl_299_Test_kupl.log",
+      "line": 139,
+      "level": "LOG",
+      "text": "[2026/11/06 13:32:03.681 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'"
+    },
+    {
+      "task": "Test_kupl",
+      "source": "job_logs/04_kupl_299_Test_kupl.log",
+      "line": 140,
+      "level": "LOG",
+      "text": "[2026/11/06 13:32:03.681 GMT+08:00] [ERROR] git clone test_cases code fail"
+    },
+    {
+      "task": "Test_kupl",
+      "source": "job_logs/04_kupl_299_Test_kupl.log",
+      "line": 142,
+      "level": "LOG",
+      "text": "[2026/11/06 13:32:03.846 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed"
+    },
+    {
+      "task": "Test_kupl",
+      "source": "job_logs/04_kupl_299_Test_kupl.log",
+      "line": 144,
+      "level": "LOG",
+      "text": "[2026/11/06 13:32:06.815 GMT+08:00] Finished: FAILURE"
+    },
+    {
+      "task": "Test_kupl",
+      "source": "job_logs/04_kupl_299_Test_kupl.log",
+      "line": null,
+      "level": "JOB",
+      "text": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+      "isWrapper": true
+    },
+    {
+      "task": "Test_kupl",
+      "source": "job_logs/04_kupl_299_Test_kupl.log",
+      "line": null,
+      "level": "STEP",
+      "text": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+      "isWrapper": true
+    }
+  ],
+  "evidence": {
+    "files": [
+      "job_logs/04_kupl_299_Test_kupl.log"
+    ],
+    "missing": [
+      "Test_kupl"
+    ],
+    "github": null
+  },
+  "counts": {
+    "tasks": 2,
+    "testTasks": 1,
+    "logTasks": 1,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 7,
+    "evidenceFiles": 1
+  },
+  "verdict": {
+    "category": "env_not_ready",
+    "text": "用例未拉起（测试环境异常）",
+    "confidence": 0.5,
+    "level": "中",
+    "basis": [
+      "test 任务 Test_kupl 测试结果为空（用例未拉起），已回退整 job 日志",
+      "基线 0.30",
+      "证据文件落盘 1 份 +0.25",
+      "任务日志命中错误行 +0.15",
+      "任务 Test_kupl 无任何证据 −0.20"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "rootCause": "测试用例在拉取阶段失败：整 job 日志报 fatal: Authentication failed（用例仓库鉴权失败），用例未执行、测试任务用例结果为空，运行以脚本退出码 1 结束。",
+    "advice": "与同批次鉴权失败一并处理：修复凭据、验证 clone 后重跑；建议流水线开始处加一次仓库可达性预检。",
+    "cites": [
+      "job_logs/04_kupl_299_Test_kupl.log:L138"
+    ],
+    "updatedAt": "2026-11-09 15:07:00",
+    "source": "agent"
+  }
+}

@@ -1,0 +1,82 @@
+﻿2026-11-05T14:48:53.9265496Z Current runner version: '2.338.2'
+2026-11-05T14:48:53.9292070Z ##[group]Runner Image Provisioner
+2026-11-05T14:48:53.9293281Z Hosted Compute Agent
+2026-11-05T14:48:53.9293950Z Version: 20261028.624
+2026-11-05T14:48:53.9294602Z Commit: 54898b74c23fde5556c9b3c3a2290865feef0dfe
+2026-11-05T14:48:53.9295379Z Build Date: 2026-10-28T21:51:42Z
+2026-11-05T14:48:53.9296075Z Worker ID: {3b5d3961-f44a-4c2b-9da7-50f1e3e07ce6}
+2026-11-05T14:48:53.9296806Z Region: westus
+2026-11-05T14:48:53.9297395Z Cloud: Azure
+2026-11-05T14:48:53.9297914Z ##[endgroup]
+2026-11-05T14:48:53.9299785Z ##[group]Operating System
+2026-11-05T14:48:53.9300438Z Ubuntu
+2026-11-05T14:48:53.9301230Z 26.04.1
+2026-11-05T14:48:53.9301882Z LTS
+2026-11-05T14:48:53.9302393Z ##[endgroup]
+2026-11-05T14:48:53.9303016Z ##[group]Runner Image
+2026-11-05T14:48:53.9303590Z Image: ubuntu-26.04
+2026-11-05T14:48:53.9304128Z Version: 20261101.186.1
+2026-11-05T14:48:53.9305494Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261101.186/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-05T14:48:53.9307072Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261101.186
+2026-11-05T14:48:53.9308007Z ##[endgroup]
+2026-11-05T14:48:53.9309286Z ##[group]GITHUB_TOKEN Permissions
+2026-11-05T14:48:53.9311641Z Contents: read
+2026-11-05T14:48:53.9312223Z Metadata: read
+2026-11-05T14:48:53.9312910Z Packages: read
+2026-11-05T14:48:53.9313453Z ##[endgroup]
+2026-11-05T14:48:53.9315747Z Secret source: None
+2026-11-05T14:48:53.9316742Z Cache mode: write
+2026-11-05T14:48:53.9317488Z Prepare workflow directory
+2026-11-05T14:48:53.9674530Z Prepare all required actions
+2026-11-05T14:48:53.9782444Z Complete job name: set-image-config
+2026-11-05T14:48:54.1353393Z ##[group]Run if [ -z "" ]; then
+2026-11-05T14:48:54.1354516Z [36;1mif [ -z "" ]; then[0m
+2026-11-05T14:48:54.1355458Z [36;1m  echo "ref=" >> $GITHUB_OUTPUT[0m
+2026-11-05T14:48:54.1356445Z [36;1melse[0m
+2026-11-05T14:48:54.1357250Z [36;1m  echo "ref=" >> $GITHUB_OUTPUT[0m
+2026-11-05T14:48:54.1358249Z [36;1mfi[0m
+2026-11-05T14:48:54.1358987Z [36;1mif [ -z "" ]; then[0m
+2026-11-05T14:48:54.1360225Z [36;1m  echo "job_filter=all" >> $GITHUB_OUTPUT[0m
+2026-11-05T14:48:54.1361283Z [36;1melse[0m
+2026-11-05T14:48:54.1362120Z [36;1m  echo "job_filter=" >> $GITHUB_OUTPUT[0m
+2026-11-05T14:48:54.1363146Z [36;1mfi[0m
+2026-11-05T14:48:54.1363886Z [36;1mif [ -z "" ]; then[0m
+2026-11-05T14:48:54.1365759Z [36;1m  echo "image_a3=swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann9.1.0-a3-B010" >> $GITHUB_OUTPUT[0m
+2026-11-05T14:48:54.1367738Z [36;1melse[0m
+2026-11-05T14:48:54.1368566Z [36;1m  echo "image_a3=" >> $GITHUB_OUTPUT[0m
+2026-11-05T14:48:54.1369855Z [36;1mfi[0m
+2026-11-05T14:48:54.1370628Z [36;1mif [ -z "" ]; then[0m
+2026-11-05T14:48:54.1372518Z [36;1m  echo "image_a5=swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:main-cann9.1.0-950" >> $GITHUB_OUTPUT[0m
+2026-11-05T14:48:54.1374507Z [36;1melse[0m
+2026-11-05T14:48:54.1375408Z [36;1m  echo "image_a5=" >> $GITHUB_OUTPUT[0m
+2026-11-05T14:48:54.1376418Z [36;1mfi[0m
+2026-11-05T14:48:54.1377164Z [36;1mif [ -z "" ]; then[0m
+2026-11-05T14:48:54.1378211Z [36;1m  echo "skip_install_flag=false" >> $GITHUB_OUTPUT[0m
+2026-11-05T14:48:54.1379355Z [36;1melse[0m
+2026-11-05T14:48:54.1380446Z [36;1m  echo "skip_install_flag=" >> $GITHUB_OUTPUT[0m
+2026-11-05T14:48:54.1381516Z [36;1mfi[0m
+2026-11-05T14:48:54.1382921Z [36;1m# If the nightly pipeline is triggered by a PR, this variable takes the source branch label of the PR;[0m
+2026-11-05T14:48:54.1384830Z [36;1m# otherwise, it uses the branch or tag name of the current ref.[0m
+2026-11-05T14:48:54.1386143Z [36;1mBRANCH_LABEL="$HEAD_LABEL"[0m
+2026-11-05T14:48:54.1387190Z [36;1mif [ -z "${BRANCH_LABEL}" ]; then[0m
+2026-11-05T14:48:54.1388195Z [36;1m  BRANCH_LABEL="48664/merge"[0m
+2026-11-05T14:48:54.1389115Z [36;1mfi[0m
+2026-11-05T14:48:54.1390471Z [36;1mBRANCH_LABEL="$(echo "${BRANCH_LABEL}" | tr -cd 'a-zA-Z0-9._/:' | tr '/:' '--')"[0m
+2026-11-05T14:48:54.1393056Z [36;1m# Package run metadata (branch/workflow/create_time) as a single JSON for reuse by all[0m
+2026-11-05T14:48:54.1395048Z [36;1m# test jobs; create_time is UTC+8 date + time (minute precision) recorded once at run[0m
+2026-11-05T14:48:54.1396590Z [36;1m# start, shared even across midnight.[0m
+2026-11-05T14:48:54.1399417Z [36;1mRUN_START_METADATA="$(python3 -c "import json,sys; print(json.dumps({'branch_label':sys.argv[1],'workflow_name':sys.argv[2],'create_time':sys.argv[3]}))" "$BRANCH_LABEL" "Nightly Test (NPU)" "$(date -u -d '+8 hours' +%Y%m%d-%H%M)")"[0m
+2026-11-05T14:48:54.1402632Z [36;1m# Write to GITHUB_OUTPUT and print to the log in one command.[0m
+2026-11-05T14:48:54.1404273Z [36;1mecho "run_start_metadata=${RUN_START_METADATA}" | tee -a $GITHUB_OUTPUT[0m
+2026-11-05T14:48:54.2494395Z shell: /usr/bin/bash -e {0}
+2026-11-05T14:48:54.2495310Z env:
+2026-11-05T14:48:54.2495778Z   HEAD_LABEL: shun8686:overlap-schedule
+2026-11-05T14:48:54.2496387Z ##[endgroup]
+2026-11-05T14:48:54.3040482Z run_start_metadata={"branch_label": "shun8686-overlapschedule", "workflow_name": "Nightly Test (NPU)", "create_time": "20261105-2248"}
+2026-11-05T14:48:54.3222667Z Evaluate and set job outputs
+2026-11-05T14:48:54.3232432Z Set output 'job_filter'
+2026-11-05T14:48:54.3234783Z Set output 'image_a3'
+2026-11-05T14:48:54.3236123Z Set output 'image_a5'
+2026-11-05T14:48:54.3236779Z Set output 'skip_install_flag'
+2026-11-05T14:48:54.3237898Z Set output 'run_start_metadata'
+2026-11-05T14:48:54.3239011Z Cleaning up orphan processes

@@ -1,0 +1,64 @@
+{
+ "version": 13,
+ "analysis": {
+  "classification": {
+   "环境/资源": "节点/镜像/依赖缺陷（conda 缺失、运行库缺失、模型仓文件缺失）、网络、机器、排队、磁盘",
+   "平台/基础设施": "云构建/基础设施层失败、通知服务等平台侧问题（整 job 日志与 buildflow 子任务日志下钻后仍无任务内部真实报错，仅凭封装码定性，置信度低）",
+   "代码/用例缺陷": "编译错误、断言失败、量化基线比对失败等确定性功能问题",
+   "流程/配置": "基线未随版本刷新、流水线调度配置、环境准备脚本缺失等流程性问题"
+  },
+  "confidence_rules": [
+   "高：多个运行/多环境确定性复现同一报错，或日志中有完整报错原文与调用链",
+   "中：单次或少量复现，但有清晰错误链可支撑判断",
+   "低：仅有封装错误码、日志截断或证据不足，只能给出待核对方向"
+  ],
+  "wording_rules": [
+   "全文不出现外部平台/品牌名与「需到 XX 平台查看」类跨平台说辞：github 平台流水线在根因描述中以「运行平台」指代其执行平台，不出现外部平台品牌名；全部证据已由采集脚本落盘本地（openLiBing 接口证据 + buildflow 子任务下钻日志 + github 运行取证日志，均在归档记录同级目录），只引用本地落盘证据",
+   "不写「与…一致 / 计算一致 / 复算一致」类描述：指标数值由脚本按归档逐运行明细计算，AI 不复述计算过程、不评价口径，只对非 1 指标给出真实失败原因",
+   "测试用例通过率未达 100% 导致的不达标（VA 双指标口径）作为一条根因：错误信息写实际问题（如哪几天通过率为空、具体失败用例与断言），原因与建议写清楚，不写复算类描述",
+   "只呈现结论与异常，不复述指标计算过程"
+  ],
+  "dimensions": {
+   "va": {
+    "name": "版本可用度",
+    "definition": "Nightly 流水线当天产出可用版本的能力",
+    "source": "组件级取 T1 ops-overview/main 的 nightlyVersionAvailabilityRate；流水线级取 N1 的 versionAvail（服务端按工作日算好，0-1 小数）；日可用判定用 N2 nightly-dashboard-detail 的逐运行 isVersionAvailable（双指标：任务构建成功且测试用例通过率 100%，casePassRate 为空/-- 视为失败），归档 records/run_<构建号>.json 即逐运行明细（同运行多条评估记录保留结束时间最新一条）",
+    "light": ">=90% 绿 / [80%,90%) 黄 / <80% 红",
+    "scope": "双指标口径：当天任一次运行 isVersionAvailable=true 即当天可用（构建成功且用例通过率 100%）；仅统计工作日（含法定调休补班）；运行按结束时间归属统计周期与日期（跨午夜运行归到结束日，进行中运行不纳入）"
+   },
+   "bs": {
+    "name": "编译成功率",
+    "definition": "Nightly 流水线的成功编译能力",
+    "source": "组件级取 T1 ops-overview/main 的 nightlyBuildSuccessRate；流水线级取 N1 的 buildSuccess（成功编译的构建次数/总编译次数：服务端优先 Nightly-Version-Pipeline 命名口径，无则 Nightly-Component-Pipeline 多条取平均；失败重试一次算流水线失败一次）；github 平台流水线不计算编译成功率（buildSuccess/bc/bpc 恒 null，不采集不展示，仅 VA 维度分析）；逐运行口径为 ΣbuildPassCount/ΣbuildCount（N2 逐运行 buildCount/buildPassCount，null 跳过，同运行多条评估记录保留结束时间最新一条），由脚本计算，AI 不做复算与比对",
+    "light": "=100% 绿 / [95%,100%) 黄 / <95% 红",
+    "scope": "仅统计工作日；运行按结束时间归属统计周期与日期（跨午夜运行归到结束日，进行中运行不纳入）；构建数据为子任务名以 Build（大小写不敏感）开头的任务；一条流水线一次执行出现多次构建失败在计算时算一条数据"
+   }
+  },
+  "deep_dive": {
+   "enabled": true,
+   "evidence_dirs": {
+    "jobLogs": "out/archive/<年>/<年-月>/<日>/<开源组件>/<流水线>/job_logs/",
+    "caseLogs": "out/archive/<年>/<年-月>/<日>/<开源组件>/<流水线>/case_logs/",
+    "githubLogs": "out/archive/<年>/<年-月>/<日>/<开源组件>/<流水线>/github_logs/",
+    "records": "out/archive/<年>/<年-月>/<日>/<开源组件>/<流水线>/records/run_<构建号>.json"
+   },
+   "procedure": "凭 record 内 errorLines 行号 / errorMessages[].line / stepErrMsgs 回同级 job_logs/ 全量日志 grep -n 定位错误上下文（前后 10~30 行），把根因下钻到具体报错原文；truncated=true 的日志只有局部内容，结论注明证据不完整；github 平台任务（platform=github）凭 errorLines 行号回同级 github_logs/ 的 job 日志按同一规则定位，evidenceNote 非空（运行平台日志未留存 404）时以 jobs 元数据（conclusion/时长/失败步骤）定性并注明证据不完整",
+   "citation_format": "文件名:行号（如 01_msot_242_Test_msot_nightly_smoke_A3.log:L58213）；行号必须来自全量日志，摘录文件行号不连续",
+   "wrapper_code_policy": "封装码（DEV-CODECI-*）出现时，先在整 job 全量日志中找任务内部真实报错；buildflow 任务再下钻失败子任务日志；确实无有效错误才定性平台/基础设施+置信度低",
+   "pending_timeline": "排队类根因（Pending/queued 等资源等待）必须举证完整等待时间线：环境申请开始时间 → 首次查询状态（status: Pending/queued、progress ready/pending）→ 轮询总次数与每轮间隔 → 放弃/分配失败时间，四个节点逐点括注 file:line；等待时长=起止时间差（如 约 1h44m），不得用「轮询次数×30s」推算（各流水线每轮间隔不同，查询耗时+等待时间不一）；调度器返回的结构化原因须摘录关键细节（reason code 如 INSUFFICIENT_NPU、requested 规格、observed 候选节点剩余资源、预留占用 lease-cap 等）；禁止只写「资源调度失败/排队超时」等无时长、无日志行举证的笼统结论",
+   "subtask_drilldown": "buildflow 任务（subTasks 非空）的失败子任务真实编译报错以 subTasks[].logFile（同级 job_logs/ 目录，文件名含子任务名）与 subTasks[].errorLines 为准，凭行号回子任务全量日志定位错误上下文；整 job 日志中的 build_flow 调度层记录（Follow jobs are failed 等）仅作调度上下文，不得作为最终报错；subTasks=[] 为普通任务，直接以整 job 日志为准；子任务日志 truncated=true 为尾部窗口，结论注明证据不完整",
+   "github_evidence": "github 平台流水线取证：根因行任务列写 github job 名；运行标识以流水线名+构建号呈现；jobs 元数据（githubMeta.failedJobs 含失败步骤名与 conclusion、任务级 githubJob.steps）作为运行平台日志未留存（404）时的定性依据；取消 job（githubMeta.cancelledJobs）不编根因行，仅作运行失败形态说明；github 测试 job（isTestJob=true）根因定位到具体用例/模型：优先引用任务 testResults（failedModels 逐模型失败/aisbenchFailed 失败用例/benchmarkFailed/failedTagTests/pytestFailed，各条目带 line 行号），错误信息写用例/模型名与失败原因，行号回 job 日志原文印证；testResults 为 null 时退回 errorLines 定性；github 流水线 buildSuccess 恒为 null（BS 维度无数据），仅 VA 维度分析"
+  },
+  "wrapper_codes": {
+   "DEV-CODECI-35002": "云构建「构建任务执行失败」封装码：只定位层不定位因，出现时先在整 job 全量日志与 buildflow 子任务日志中下钻真实报错；确实无有效错误才定性平台/基础设施、置信度低",
+   "DEV-CODECI": "其余 DEV-CODECI-* 前缀错误码同属云构建封装层，处理方式同上"
+  },
+  "context_dimensions": [
+   "同一流水线历史失败模式：间歇恢复偏环境，持续且失败点一致偏配置/环境确定性缺陷，失败点飘忽偏用例不稳定",
+   "跨流水线共性：同任务名/同报错在多条流水线复现，优先怀疑公共镜像、公共依赖或平台侧",
+   "失败日期分布：周末集中失败需检查无人值守时段的调度与环境，工作日失败看变更合入",
+   "多任务同挂：同一运行内多任务同时失败偏平台/环境，单任务失败偏该任务自身"
+  ],
+  "extra_focus": []
+ }
+}

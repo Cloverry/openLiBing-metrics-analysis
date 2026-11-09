@@ -1,0 +1,8 @@
+2026-11-06T03:22:44.3420000Z Requested labels: linux-aarch64-a3-800t-0
+2026-11-06T03:22:44.3420000Z Job defined at: vllm-project/vllm-ascend/.github/workflows/schedule_nightly_test_a3.yaml@refs/heads/releases/v0.32.0rc
+2026-11-06T03:22:44.3420000Z Waiting for a runner to pick up this job...
+2026-11-06T03:22:44.3410000Z Evaluating remove-taints.if
+2026-11-06T03:22:44.3410000Z Evaluating: (always() && (inputs.request_id == '') && (((needs.multi-node-tests.result != 'skipped') || (needs.double-node-tests.result != 'skipped'))))
+2026-11-06T03:22:44.3410000Z Expanded: (true && (null == '') && (('success' != 'skipped') || (needs.double-node-tests.result != 'skipped')))
+2026-11-06T03:22:44.3410000Z Result: true
+2026-11-06T03:22:44.7940000Z Job is about to start running on the runner: linux-aarch64-a3-800t-0

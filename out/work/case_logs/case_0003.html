@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Log Report: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_aclgraph_cube.py::TestMssanitizerAclGraph::test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003</title>
+    <style>
+        body { font-family: Consolas, monospace; margin: 20px; background-color: #f4f4f4; }
+        .header {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .header h2 { margin: 0; color: #333; }
+        .header p { margin: 5px 0; }
+        .status-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            background-color: #F44336;
+        }
+        table { width: 100%; border-collapse: collapse; background-color: white; margin-bottom: 5px; }
+        th, td { border: 1px solid #ddd; padding: 6px 8px; text-align: left; word-break: break-word; vertical-align: top; }
+        th { background-color: #9E9E9E; color: white; }
+        .ERROR, .FAIL { color: #F44336; font-weight: bold; }
+        .WARN { color: #FF9800; font-weight: bold; }
+        .INFO, .PASS { color: #2E8B57; }
+        .DEBUG { color: #607D8B; }
+        .TRACE { color: #757575; }
+        .TC_STEP { color: #1976D2; font-weight: bold; }
+        th:nth-child(1), td:nth-child(1) { width: 220px; min-width: 150px; }
+        th:nth-child(2), td:nth-child(2) { width: 70px; min-width: 60px; }
+        th:nth-child(3), td:nth-child(3) { width: 50px; min-width: 40px; }
+        th:nth-child(4), td:nth-child(4) { width: 128px; min-width: 112px; }
+        th:nth-child(5), td:nth-child(5) { width: auto; }
+
+        /* Step row status colors - all cells in the row */
+        .step-error td { color: #F44336; }
+        .step-warning td { color: #FF9800; }
+        .step-success td { color: #2E8B57; }
+
+        /* Collapsible section styles */
+        .step-toggle {
+            display: inline-block;
+            padding: 4px 12px;
+            border: 2px solid #666;
+            border-radius: 4px;
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 8px;
+            white-space: nowrap;
+        }
+        .step-toggle:hover {
+            background-color: #e0e0e0;
+            border-color: #333;
+        }
+        .step-content { display: none; }
+        .step-content.expanded { display: table-row; }
+        .step-indent { padding-left: 24px; }
+
+        /* Message scroll styles */
+        .msg-scroll {
+            max-height: 300px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            word-break: break-word;
+            white-space: pre-wrap;
+        }
+    </style>
+    <script>
+        function toggleStep(stepId) {
+            var rows = document.querySelectorAll('.content-' + stepId);
+            var toggle = document.getElementById('toggle-' + stepId);
+            if (rows.length === 0) {
+                return;
+            }
+            if (rows[0].classList.contains('expanded')) {
+                rows.forEach(function(r) { r.classList.remove('expanded'); });
+                toggle.textContent = '+Expand step';
+            } else {
+                rows.forEach(function(r) { r.classList.add('expanded'); });
+                toggle.textContent = '-Collapse step';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h2>Log Report: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_aclgraph_cube.py::TestMssanitizerAclGraph::test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003</h2>
+        <p><strong>Case ID:</strong> testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_aclgraph_cube.py::TestMssanitizerAclGraph::test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003</p>
+        <p><strong>Status:</strong> <span class="status-badge">Failed</span></p>
+        <p><strong>Duration:</strong> 64.06s</p>
+    </div>
+    
+    <p><strong>Total Entries:</strong> 87</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Level</th>
+                <th>Thread</th>
+                <th>Location</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>2026-11-06 09:59:15.818</td>
+            <td class='INFO'>INFO</td>
+            <td>281473222766624</td>
+            <td>plugin.py:425</td>
+            <td><div class="msg-scroll">environment requirements: [{&#39;name&#39;: &#39;mindstudio_single_device_8_a2a3_env_type-nodes_A2-device&#39;, &#39;res_type&#39;: &#39;container&#39;, &#39;cpu_arch&#39;: &#39;ARM&#39;, &#39;cpu_core_num&#39;: 64, &#39;npu_gen&#39;: &#39;A2&#39;, &#39;npu_model&#39;: &#39;Ascend 910B3&#39;, &#39;npu_num&#39;: 8, &#39;shm_size&#39;: &#39;720Gi&#39;, &#39;mount_source_data&#39;: [&#39;mindstudio_data&#39;], &#39;mount_dest_dir&#39;: [&#39;/home/autotest&#39;], &#39;resources&#39;: {&#39;cpu&#39;: {&#39;request&#39;: &#39;48&#39;, &#39;limit&#39;: &#39;128&#39;}, &#39;memory&#39;: {&#39;request&#39;: &#39;256Gi&#39;, &#39;limit&#39;: &#39;1024Gi&#39;}}, &#39;use_nfs&#39;: True, &#39;memory_size&#39;: 1024, &#39;pool&#39;: &#39;ascend-general-a2&#39;, &#39;env&#39;: {&#39;LD_LIBRARY_PATH&#39;: &#39;/usr/lib64/:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64/common:/usr/lib/aarch64-linux-gnu/:&#39;}}, {&#39;name&#39;: &#39;mindstudio_single_device_8_a2a3_env_type-nodes_A3-device&#39;, &#39;res_type&#39;: &#39;container&#39;, &#39;cpu_arch&#39;: &#39;ARM&#39;, &#39;cpu_core_num&#39;: 64, &#39;npu_gen&#39;: &#39;A3&#39;, &#39;npu_model&#39;: &#39;Ascend 910C&#39;, &#39;npu_num&#39;: 16, &#39;shm_size&#39;: &#39;720Gi&#39;, &#39;mount_source_data&#39;: [&#39;mindstudio_data&#39;], &#39;mount_dest_dir&#39;: [&#39;/home/autotest&#39;], &#39;resources&#39;: {&#39;cpu&#39;: {&#39;request&#39;: &#39;48&#39;, &#39;limit&#39;: &#39;128&#39;}, &#39;memory&#39;: {&#39;request&#39;: &#39;256Gi&#39;, &#39;limit&#39;: &#39;1024Gi&#39;}}, &#39;use_nfs&#39;: True, &#39;memory_size&#39;: 1024, &#39;pool&#39;: &#39;ascend-general-a3&#39;, &#39;env&#39;: {&#39;LD_LIBRARY_PATH&#39;: &#39;/usr/lib64/:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64/common:/usr/lib/aarch64-linux-gnu/:&#39;}}]</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:59:15.818</td>
+            <td class='INFO'>INFO</td>
+            <td>281473222766624</td>
+            <td>plugin.py:391</td>
+            <td><div class="msg-scroll">pre_action_registry has no actions registered</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:59:16.814</td>
+            <td class='INFO'>INFO</td>
+            <td>281473222766624</td>
+            <td>sendcmd[device]</td>
+            <td><div class="msg-scroll">source /usr/local/Ascend/ascend-toolkit/set_env.sh &amp;&amp; npu-smi info</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:59:16.815</td>
+            <td class='INFO'>INFO</td>
+            <td>281473222766624</td>
+            <td>recvcmd[device]</td>
+            <td><div class="msg-scroll">+------------------------------------------------------------------------------------------------------------------+
+| npu-smi 26.1.1                              Version: 26.1.1                                                      |
++---------------------------+---------------+----------------------------------------------------------------------+
+| NPU   Name                | Health        | Power(W)             Temp(C)                 Hugepages-Usage(page)   |
+| Chip                      | Bus-Id        | AICore(%)            Memory-Usage(MB)        HBM-Usage(MB)           |
++===========================+===============+======================================================================+
+| 0     910B3               | OK            | 92.9                 37                      0    / 0                |
+| 0                         | 0000:C1:00.0  | 0                    0    / 0                3457 / 65536            |
++===========================+===============+======================================================================+
+| 1     910B3               | OK            | 90.0                 34                      0    / 0                |
+| 0                         | 0000:C2:00.0  | 0                    0    / 0                3453 / 65536            |
++===========================+===============+======================================================================+
+| 2     910B3               | OK            | 89.5                 33                      0    / 0                |
+| 0                         | 0000:81:00.0  | 0                    0    / 0                3431 / 65536            |
++===========================+===============+======================================================================+
+| 3     910B3               | OK            | 94.2                 35                      0    / 0                |
+| 0                         | 0000:82:00.0  | 0                    0    / 0                3426 / 65536            |
++===========================+===============+======================================================================+
+| 4     910B3               | OK            | 89.1                 39                      0    / 0                |
+| 0                         | 0000:01:00.0  | 0                    0    / 0                3437 / 65536            |
++===========================+===============+======================================================================+
+| 5     910B3               | OK            | 93.3                 40                      0    / 0                |
+| 0                         | 0000:02:00.0  | 0                    0    / 0                3431 / 65536            |
++===========================+===============+======================================================================+
+| 6     910B3               | OK            | 91.8                 40                      0    / 0                |
+| 0                         | 0000:41:00.0  | 0                    0    / 0                3450 / 65536            |
++===========================+===============+======================================================================+
+| 7     910B3               | OK            | 89.4                 39                      0    / 0                |
+| 0                         | 0000:42:00.0  | 0                    0    / 0                3449 / 65536            |
++===========================+===============+======================================================================+
++---------------------------+---------------+----------------------------------------------------------------------+
+| NPU     Chip              | Process id    | Process name       | Process memory(MB)    | Process id in container |
++===========================+===============+======================================================================+
+| No running processes found in NPU 0                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 1                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 2                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 3                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 4                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 5                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 6                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 7                                                                              |
++===========================+===============+======================================================================+</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:59:16.816</td>
+            <td class='INFO'>INFO</td>
+            <td>281473222766624</td>
+            <td>npu.py:509</td>
+            <td><div class="msg-scroll">解析npu-smi info完成，共 8 个NPU</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:59:16.816</td>
+            <td class='INFO'>INFO</td>
+            <td>281473222766624</td>
+            <td>conftest.py:112</td>
+            <td><div class="msg-scroll">[env_preflight] mindstudio_single_device_8_a2a3_env_type-nodes_A2-device 环境信息:</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:59:16.817</td>
+            <td class='INFO'>INFO</td>
+            <td>281473222766624</td>
+            <td>conftest.py:113</td>
+            <td><div class="msg-scroll">[env_preflight] mindstudio_single_device_8_a2a3_env_type-nodes_A2-device.npu_smi_info:
+{&#39;driver_version&#39;: &#39;npu-smi 26.1.1&#39;, &#39;npu_smi_version&#39;: &#39;Version: 26.1.1&#39;, &#39;npu_message&#39;: {&#39;0&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;92.9&#39;, &#39;temp_c&#39;: &#39;37&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:C1:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3457/65536&#39;, &#39;processes&#39;: []}, &#39;1&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;90.0&#39;, &#39;temp_c&#39;: &#39;34&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:C2:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3453/65536&#39;, &#39;processes&#39;: []}, &#39;2&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;89.5&#39;, &#39;temp_c&#39;: &#39;33&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:81:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3431/65536&#39;, &#39;processes&#39;: []}, &#39;3&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;94.2&#39;, &#39;temp_c&#39;: &#39;35&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:82:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3426/65536&#39;, &#39;processes&#39;: []}, &#39;4&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;89.1&#39;, &#39;temp_c&#39;: &#39;39&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:01:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3437/65536&#39;, &#39;processes&#39;: []}, &#39;5&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;93.3&#39;, &#39;temp_c&#39;: &#39;40&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:02:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3431/65536&#39;, &#39;processes&#39;: []}, &#39;6&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;91.8&#39;, &#39;temp_c&#39;: &#39;40&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:41:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3450/65536&#39;, &#39;processes&#39;: []}, &#39;7&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;89.4&#39;, &#39;temp_c&#39;: &#39;39&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:42:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3449/65536&#39;, &#39;processes&#39;: []}}}</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:59:16.818</td>
+            <td class='INFO'>INFO</td>
+            <td>281473222766624</td>
+            <td>conftest.py:115</td>
+            <td><div class="msg-scroll">[env_preflight] mindstudio_single_device_8_a2a3_env_type-nodes_A2-device.os_version:
+PRETTY_NAME=&quot;Ubuntu 22.04.5 LTS&quot;
+NAME=&quot;Ubuntu&quot;
+VERSION_ID=&quot;22.04&quot;
+VERSION=&quot;22.04.5 LTS (Jammy Jellyfish)&quot;
+VERSION_CODENAME=jammy
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL=&quot;https://www.ubuntu.com/&quot;
+SUPPORT_URL=&quot;https://help.ubuntu.com/&quot;
+BUG_REPORT_URL=&quot;https://bugs.launchpad.net/ubuntu/&quot;
+PRIVACY_POLICY_URL=&quot;https://www.ubuntu.com/legal/terms-and-policies/privacy-policy&quot;
+UBUNTU_CODENAME=jammy</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:59:16.818</td>
+            <td class='INFO'>INFO</td>
+            <td>281473222766624</td>
+            <td>conftest.py:115</td>
+            <td><div class="msg-scroll">[env_preflight] mindstudio_single_device_8_a2a3_env_type-nodes_A2-device.arch_type:
+aarch64</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:59:16.919</td>
+            <td class='INFO'>INFO</td>
+            <td>281473222766624</td>
+            <td>sendcmd[device]</td>
+            <td><div class="msg-scroll">export MSSANITIZER_ENABLE_DEBUG_LOG=1</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:59:16.919</td>
+            <td class='INFO'>INFO</td>
+            <td>281473222766624</td>
+            <td>recvcmd[device]</td>
+            <td><div class="msg-scroll">(empty)</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:59:17.019</td>
+            <td class='INFO'>INFO</td>
+            <td>281473222766624</td>
+            <td>sendcmd[device]</td>
+            <td><div class="msg-scroll">cp -r /home/autotest/AutoTestProperty/op_anomaly_detection/mindstudio/mssanitizer /home/mssanitizer_scripts</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:59:17.019</td>
+            <td class='INFO'>INFO</td>
+            <td>281473222766624</td>
+            <td>recvcmd[device]</td>
+            <td><div class="msg-scroll">(empty)</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:59:17.020</td>
+            <td class='TC_START'>TC_START</td>
+            <td>281473222766624</td>
+            <td>plugin.py:970</td>
+            <td><div class="msg-scroll">testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_aclgraph_cube.py::TestMssanitizerAclGraph::test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003</div></td>
+        </tr>
+        <tr class="step-success">
+            <td>2026-11-06 09:59:17.020</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281473222766624</td>
+            <td>test_mssanitizer_aclgraph_cube.py:218</td>
+            <td>
+                <span id="toggle-step-1" class="step-toggle" onclick="toggleStep('step-1')">+Expand step</span>
+                <div class="msg-scroll">---------------------------- ENV INIT -----------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:59:17.020</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>process.py:27</td>
+                <td class="step-indent"><div class="msg-scroll">初始化Process管理类</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:59:17.020</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>process.py:475</td>
+                <td class="step-indent"><div class="msg-scroll">终止所有占用NPU的进程</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:59:17.572</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">npu-smi info | awk &#39;{print $5}&#39; | grep &#39;[0-9]&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:59:17.572</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">26.1.1</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:59:17.572</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>process.py:494</td>
+                <td class="step-indent"><div class="msg-scroll">npu-smi检测到NPU占用进程: 成功终止 0 个, 失败 0 个</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:59:17.572</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>process.py:507</td>
+                <td class="step-indent"><div class="msg-scroll">NPU进程终止完成: 共成功终止 0 个, 失败 0 个</div></td>
+            </tr>
+        <tr class="step-success">
+            <td>2026-11-06 09:59:17.572</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281473222766624</td>
+            <td>test_mssanitizer_aclgraph_cube.py:221</td>
+            <td>
+                <span id="toggle-step-2" class="step-toggle" onclick="toggleStep('step-2')">+Expand step</span>
+                <div class="msg-scroll">---------------------------- CLONE ASC-DEVKIT -----------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:59:17.572</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>file_utils.py:419</td>
+                <td class="step-indent"><div class="msg-scroll">检查路径是否存在: /home, 搜索关键字: None, 递归: False</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:59:17.622</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">test -e &#39;/home&#39; &amp;&amp; echo &#39;exists&#39; || echo &#39;not_exists&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:59:17.622</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">exists</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:59:17.622</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>file_utils.py:425</td>
+                <td class="step-indent"><div class="msg-scroll">路径存在: /home</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:59:17.622</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>file_utils.py:419</td>
+                <td class="step-indent"><div class="msg-scroll">检查路径是否存在: /home/asc-devkit, 搜索关键字: None, 递归: False</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:59:17.629</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">test -e &#39;/home/asc-devkit&#39; &amp;&amp; echo &#39;exists&#39; || echo &#39;not_exists&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:59:17.629</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">not_exists</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:59:17.630</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>file_utils.py:427</td>
+                <td class="step-indent"><div class="msg-scroll">路径不存在: /home/asc-devkit</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:59:17.630</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>operator_base.py:258</td>
+                <td class="step-indent"><div class="msg-scroll">克隆仓库: asc-devkit</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:59:17.630</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>git.py:101</td>
+                <td class="step-indent"><div class="msg-scroll">GitClient初始化完成，执行模式: 远程</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:59:17.630</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>git.py:150</td>
+                <td class="step-indent"><div class="msg-scroll">开始克隆仓库: https://gitcode.com/cann/asc-devkit.git</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:59:17.630</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>git.py:154</td>
+                <td class="step-indent"><div class="msg-scroll">执行克隆命令: git clone --depth 1 https://gitcode.com/cann/asc-devkit.git /home/asc-devkit</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:59:22.965</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">git clone --depth 1 https://gitcode.com/cann/asc-devkit.git /home/asc-devkit</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:59:22.965</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">Cloning into &#39;/home/asc-devkit&#39;...
+Updating files:  68% (10724/15630)Updating files:  69% (10785/15630)Updating files:  70% (10941/15630)Updating files:  71% (11098/15630)Updating files:  72% (11254/15630)Updating files:  73% (11410/15630)Updating files:  74% (11567/15630)Updating files:  75% (11723/15630)Updating files:  76% (11879/15630)Updating files:  77% (12036/15630)Updating files:  78% (12192/15630)Updating files:  79% (12348/15630)Updating files:  80% (12504/15630)Updating files:  81% (12661/15630)Updating files:  82% (12817/15630)Updating files:  83% (12973/15630)Updating files:  84% (13130/15630)Updating files:  85% (13286/15630)Updating files:  86% (13442/15630)Updating files:  87% (13599/15630)Updating files:  88% (13755/15630)Updating files:  89% (13911/15630)Updating files:  90% (14067/15630)Updating files:  91% (14224/15630)Updating files:  92% (14380/15630)Updating files:  93% (14536/15630)Updating files:  94% (14693/15630)Updating files:  95% (14849/15630)Updating files:  96% (15005/15630)Updating files:  97% (15162/15630)Updating files:  98% (15318/15630)Updating files:  99% (15474/15630)Updating files: 100% (15630/15630)Updating files: 100% (15630/15630), done.</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:59:22.966</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>git.py:171</td>
+                <td class="step-indent"><div class="msg-scroll">仓库克隆成功: https://gitcode.com/cann/asc-devkit.git -&gt; /home/asc-devkit</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:59:22.966</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>file_utils.py:419</td>
+                <td class="step-indent"><div class="msg-scroll">检查路径是否存在: /home/asc-devkit/.git, 搜索关键字: None, 递归: False</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:59:22.974</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">test -e &#39;/home/asc-devkit/.git&#39; &amp;&amp; echo &#39;exists&#39; || echo &#39;not_exists&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:59:22.974</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">exists</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:59:22.975</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>file_utils.py:425</td>
+                <td class="step-indent"><div class="msg-scroll">路径存在: /home/asc-devkit/.git</div></td>
+            </tr>
+        <tr class="step-success">
+            <td>2026-11-06 09:59:22.975</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281473222766624</td>
+            <td>test_mssanitizer_aclgraph_cube.py:229</td>
+            <td>
+                <span id="toggle-step-3" class="step-toggle" onclick="toggleStep('step-3')">+Expand step</span>
+                <div class="msg-scroll">---------------------------- SET TOOLKIT ENV -----------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 09:59:23.075</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">whoami</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 09:59:23.075</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">root</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 09:59:23.176</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">source /usr/local/Ascend/ascend-toolkit/set_env.sh</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 09:59:23.176</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+        <tr class="step-success">
+            <td>2026-11-06 09:59:23.176</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281473222766624</td>
+            <td>test_mssanitizer_aclgraph_cube.py:232</td>
+            <td>
+                <span id="toggle-step-4" class="step-toggle" onclick="toggleStep('step-4')">+Expand step</span>
+                <div class="msg-scroll">---------------------------- MODIFY CMAKE -----------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-4">
+                <td>2026-11-06 09:59:23.176</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>test_mssanitizer_aclgraph_cube.py:237</td>
+                <td class="step-indent"><div class="msg-scroll">在 op_kernel/CMakeLists.txt 末尾追加 -DASCENDC_DUMP=0</div></td>
+            </tr>
+            <tr class="step-content content-step-4">
+                <td>2026-11-06 09:59:23.278</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">echo &#39;npu_op_kernel_options(ascendc_kernels ALL OPTIONS -DASCENDC_DUMP=0)&#39; &gt;&gt; /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_kernel/CMakeLists.txt</div></td>
+            </tr>
+            <tr class="step-content content-step-4">
+                <td>2026-11-06 09:59:23.278</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+        <tr class="step-success">
+            <td>2026-11-06 09:59:23.278</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281473222766624</td>
+            <td>test_mssanitizer_aclgraph_cube.py:242</td>
+            <td>
+                <span id="toggle-step-5" class="step-toggle" onclick="toggleStep('step-5')">+Expand step</span>
+                <div class="msg-scroll">---------------------------- BUILD CUSTOM OP -----------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 09:59:56.731</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">cd /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op &amp;&amp; mkdir -p build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; make -j binary package 2&gt;&amp;1</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 09:59:56.731</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- set package config: INSTALL_PATH;/home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/build
+INFO target name: cust_tf_parsers
+INFO target name: cust_onnx_parsers
+-- Opbuild generating sources
+-- Opbuild generating sources - done
+-- Ascendc device library generating
+cmake -E touch: <span style="color:#F44336;font-weight:bold">failed</span> to update &quot;/home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/build/op_host/tiling_sink/CMakeLists.txt&quot;.
+INFO target name: cust_optiling
+INFO target name: cust_opapi
+INFO target name: cust_op_proto
+INFO target name: cust_opmaster
+INFO target name: ascendc_kernels
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/build
+[ 10%] Generating ../autogen/copy_kernel_src.timestamp
+[ 20%] Building CXX object op_host/CMakeFiles/cust_optiling.dir/add_custom/add_custom_host.cpp.o
+[ 50%] Building CXX object op_host/CMakeFiles/cust_optiling.dir/add_custom_tiling_sink/add_custom_tiling_sink_tiling.cpp.o
+[ 50%] Building CXX object op_host/CMakeFiles/cust_optiling.dir/add_custom_tiling_sink/add_custom_tiling_sink.cpp.o
+[ 50%] Building CXX object op_host/CMakeFiles/cust_optiling.dir/add_custom_template/add_custom_template.cpp.o
+[ 60%] Building CXX object op_host/CMakeFiles/cust_optiling.dir/leaky_relu_custom/leaky_relu_custom_host.cpp.o
+[ 60%] Built target ascendc_kernels_copy_kernel_srcs
+[ 90%] Generating ascendc_kernels/tbe/op_info_cfg/ai_core/ascend910b/aic-ascend910b-ops-info.json
+[ 90%] Generating ascendc_kernels/tbe/op_info_cfg/ai_core/ascend910_93/aic-ascend910_93-ops-info.json
+[ 90%] Generating ascendc_kernels/tbe/op_info_cfg/ai_core/ascend950/aic-ascend950-ops-info.json
+
+
+==============check valid for ops info start==============
+
+==============check valid for ops info start==============
+
+==============check valid for ops info start==============
+
+
+==============check valid for ops info end================
+
+==============check valid for ops info end================
+
+
+==============check valid for ops info end================
+
+
+
+Compile op info cfg successfully.
+Compile op info cfg successfully.
+Compile op info cfg successfully.
+[ 90%] Built target ascendc_kernels_ops_info_gen_ascend950
+[ 90%] Built target ascendc_kernels_ops_info_gen_ascend910b
+[ 90%] Built target ascendc_kernels_ops_info_gen_ascend910_93
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom/add_custom_host.cpp:12:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_error_codes.h:15:122: note: &#39;#pragma message: Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include &quot;graph/error_codes.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include \&quot;graph/error_codes.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:17,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom/add_custom_host.cpp:12:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_api_types.h:15:122: note: &#39;#pragma message: Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include &quot;ge_common_api_types.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include \&quot;ge_common_api_types.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/leaky_relu_custom/leaky_relu_custom_host.cpp:12:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_error_codes.h:15:122: note: &#39;#pragma message: Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include &quot;graph/error_codes.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include \&quot;graph/error_codes.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:17,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/leaky_relu_custom/leaky_relu_custom_host.cpp:12:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_api_types.h:15:122: note: &#39;#pragma message: Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include &quot;ge_common_api_types.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include \&quot;ge_common_api_types.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_template/add_custom_template.cpp:11:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_error_codes.h:15:122: note: &#39;#pragma message: Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include &quot;graph/error_codes.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include \&quot;graph/error_codes.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:17,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_template/add_custom_template.cpp:11:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_api_types.h:15:122: note: &#39;#pragma message: Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include &quot;ge_common_api_types.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include \&quot;ge_common_api_types.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_tiling_sink/add_custom_tiling_sink_tiling.h:13,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_tiling_sink/add_custom_tiling_sink_tiling.cpp:12:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_error_codes.h:15:122: note: &#39;#pragma message: Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include &quot;graph/error_codes.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include \&quot;graph/error_codes.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_tiling_sink/add_custom_tiling_sink.cpp:11:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_error_codes.h:15:122: note: &#39;#pragma message: Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include &quot;graph/error_codes.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include \&quot;graph/error_codes.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:17,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_tiling_sink/add_custom_tiling_sink_tiling.h:13,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_tiling_sink/add_custom_tiling_sink_tiling.cpp:12:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_api_types.h:15:122: note: &#39;#pragma message: Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include &quot;ge_common_api_types.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include \&quot;ge_common_api_types.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:17,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_tiling_sink/add_custom_tiling_sink.cpp:11:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_api_types.h:15:122: note: &#39;#pragma message: Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include &quot;ge_common_api_types.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include \&quot;ge_common_api_types.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+[ 90%] Built target cust_optiling
+[100%] Linking CXX shared library libcust_opmaster_rt2.0.so
+[100%] Built target customize_ascendc_cust_optiling
+[ascend910b] Generating LeakyReluCustom_8cfa33d3cb332de6b8b432a5780d77ba ...
+[ascend910b] Generating AddCustomTemplate_862645f6bafeab7b8e397662e7e517c2 ...
+[ascend910b] Generating AddCustomTemplate_816f04e052850554f4b3cacb35f8e8c6 ...
+[ascend950] Generating LeakyReluCustom_8cfa33d3cb332de6b8b432a5780d77ba ...
+[ascend950] Generating AddCustom_ab1b6750d7f510985325b603cb06dc8b ...
+[ascend910b] Generating AddCustom_ab1b6750d7f510985325b603cb06dc8b ...
+[ascend910_93] Generating LeakyReluCustom_8cfa33d3cb332de6b8b432a5780d77ba ...
+[ascend950] Generating AddCustomTilingSink_2827bda24ef94caff45962c05c95eeda ...
+[ascend910_93] Generating AddCustom_ab1b6750d7f510985325b603cb06dc8b ...
+[ascend910b] Generating AddCustomTilingSink_2827bda24ef94caff45962c05c95eeda ...
+[ascend910_93] Generating AddCustomTilingSink_2827bda24ef94caff45962c05c95eeda ...
+[ascend950] Generating AddCustomTemplate_862645f6bafeab7b8e397662e7e517c2 ...
+[ascend950] Generating AddCustomTemplate_816f04e052850554f4b3cacb35f8e8c6 ...
+[ascend910_93] Generating AddCustomTemplate_862645f6bafeab7b8e397662e7e517c2 ...
+[ascend910_93] Generating AddCustomTemplate_816f04e052850554f4b3cacb35f8e8c6 ...
+/usr/local/Ascend/cann-9.3.0/python/site-packages/tbe/tvm/relay/analysis/sparse_dense.py:25: UserWarning: A NumPy version &gt;=1.22.4 and &lt;2.3.0 is required for this version of SciPy (detected version 2.4.6)
+  import scipy.sparse as sp
+/usr/local/Ascend/cann-9.3.0/python/site-packages/tbe/tvm/relay/analysis/sparse_dense.py:25: UserWarning: A NumPy version &gt;=1.22.4 and &lt;2.3.0 is required for this version of SciPy (detected version 2.4.6)
+  import scipy.sparse as sp
+/usr/local/Ascend/cann-9.3.0/python/site-packages/tbe/tvm/relay/analysis/sparse_dense.py:25: UserWarning: A NumPy version &gt;=1.22.4 and &lt;2.3.0 is required for this version of SciPy (detected version 2.4.6)
+  import scipy.sparse as sp
+/usr/local/Ascend/cann-9.3.0/python/site-packages/tbe/tvm/relay/analysis/sparse_dense.py:25: UserWarning: A NumPy version &gt;=1.22.4 and &lt;2.3.0 is required for this version of SciPy (detected version 2.4.6)
+  import scipy.sparse as sp
+/usr/local/Ascend/cann-9.3.0/python/site-packages/tbe/tvm/relay/analysis/sparse_dense.py:25: UserWarning: A NumPy version &gt;=1.22.4 and &lt;2.3.0 is required for this version of SciPy (detected version 2.4.6)
+  import scipy.sparse as sp
+/usr/local/Ascend/cann-9.3.0/python/site-packages/tbe/tvm/relay/analysis/sparse_dense.py:25: UserWarning: A NumPy version &gt;=1.22.4 and &lt;2.3.0 is required for this version of SciPy (detected version 2.4.6)
+  import scipy.sparse as sp
+/usr/local/Ascend/cann-9.3.0/python/site-packages/tbe/tvm/relay/analysis/sparse_dense.py:25: UserWarning: A NumPy version &gt;=1.22.4 and &lt;2.3.0 is required for this version of SciPy (detected version 2.4.6)
+  import scipy.sparse as sp
+/usr/local/Ascend/cann-9.3.0/python/site-packages/tbe/tvm/relay/analysis/sparse_dense.py:25: UserWarning: A NumPy version &gt;=1.22.4 and &lt;2.3.0 is required for this version of SciPy (detected version 2.4.6)
+  import scipy.sparse as sp
+/usr/local/Ascend/cann-9.3.0/python/site-packages/tbe/tvm/relay/analysis/sparse_dense.py:25: UserWarning: A NumPy version &gt;=1.22.4 and &lt;2.3.0 is required for this version of SciPy (detected version 2.4.6)
+  import scipy.sparse as sp
+/usr/local/Ascend/cann-9.3.0/python/site-packages/tbe/tvm/relay/analysis/sparse_dense.py:25: UserWarning: A NumPy version &gt;=1.22.4 and &lt;2.3.0 is required for this version of SciPy (detected version 2.4.6)
+  import scipy.sparse as sp
+/usr/local/Ascend/cann-9.3.0/python/site-packages/tbe/tvm/relay/analysis/sparse_dense.py:25: UserWarning: A NumPy version &gt;=1.22.4 and &lt;2.3.0 is required for this version of SciPy (detected version 2.4.6)
+  import scipy.sparse as sp
+/usr/local/Ascend/cann-9.3.0/python/site-packages/tbe/tvm/relay/analysis/sparse_dense.py:25: UserWarning: A NumPy version &gt;=1.22.4 and &lt;2.3.0 is required for this version of SciPy (detected version 2.4.6)
+  import scipy.sparse as sp
+/usr/local/Ascend/cann-9.3.0/python/site-packages/tbe/tvm/relay/analysis/sparse_dense.py:25: UserWarning: A NumPy version &gt;=1.22.4 and &lt;2.3.0 is required for this version of SciPy (detected version 2.4.6)
+  import scipy.sparse as sp
+/usr/local/Ascend/cann-9.3.0/python/site-packages/tbe/tvm/relay/analysis/sparse_dense.py:25: UserWarning: A NumPy version &gt;=1.22.4 and &lt;2.3.0 is required for this version of SciPy (detected version 2.4.6)
+  import scipy.sparse as sp
+/usr/local/Ascend/cann-9.3.0/python/site-packages/tbe/tvm/relay/analysis/sparse_dense.py:25: UserWarning: A NumPy version &gt;=1.22.4 and &lt;2.3.0 is required for this version of SciPy (detected version 2.4.6)
+  import scipy.sparse as sp
+Opc tool start working now, please wait for a moment.
+[ascend910_93] Generating AddCustomTilingSink_2827bda24ef94caff45962c05c95eeda Done
+Opc tool start working now, please wait for a moment.
+[ascend910b] Generating AddCustomTilingSink_2827bda24ef94caff45962c05c95eeda Done
+[100%] Built target AddCustomTilingSink_ascend910_93
+[100%] Built target AddCustomTilingSink_ascend910b
+Opc tool start working now, please wait for a moment.
+[ascend950] Generating AddCustomTilingSink_2827bda24ef94caff45962c05c95eeda Done
+[100%] Built target AddCustomTilingSink_ascend950
+Opc tool start working now, please wait for a moment.
+[ascend910b] Generating AddCustomTemplate_816f04e052850554f4b3cacb35f8e8c6 Done
+Opc tool start working now, please wait for a moment.
+[ascend910b] Generating AddCustom_ab1b6750d7f510985325b603cb06dc8b Done
+[100%] Built target AddCustom_ascend910b
+Opc tool start working now, please wait for a moment.
+[ascend910b] Generating AddCustomTemplate_862645f6bafeab7b8e397662e7e517c2 Done
+[100%] Built target AddCustomTemplate_ascend910b
+Opc tool start working now, please wait for a moment.
+[ascend910_93] Generating AddCustom_ab1b6750d7f510985325b603cb06dc8b Done
+Opc tool start working now, please wait for a moment.
+[ascend910_93] Generating LeakyReluCustom_8cfa33d3cb332de6b8b432a5780d77ba Done
+[100%] Built target AddCustom_ascend910_93
+[100%] Built target LeakyReluCustom_ascend910_93
+Opc tool start working now, please wait for a moment.
+[ascend910b] Generating LeakyReluCustom_8cfa33d3cb332de6b8b432a5780d77ba Done
+[100%] Built target LeakyReluCustom_ascend910b
+Opc tool start working now, please wait for a moment.
+[ascend910_93] Generating AddCustomTemplate_862645f6bafeab7b8e397662e7e517c2 Done
+Opc tool start working now, please wait for a moment.
+[ascend910_93] Generating AddCustomTemplate_816f04e052850554f4b3cacb35f8e8c6 Done
+[100%] Built target AddCustomTemplate_ascend910_93
+[100%] Built target ascendc_kernels_ascendc_bin_ascend910b_gen_ops_config
+[100%] Built target ascendc_kernels_ascendc_bin_ascend910_93_gen_ops_config
+Opc tool start working now, please wait for a moment.
+[ascend950] Generating LeakyReluCustom_8cfa33d3cb332de6b8b432a5780d77ba Done
+[100%] Built target LeakyReluCustom_ascend950
+Opc tool start working now, please wait for a moment.
+[ascend950] Generating AddCustomTemplate_862645f6bafeab7b8e397662e7e517c2 Done
+Opc tool start working now, please wait for a moment.
+[ascend950] Generating AddCustomTemplate_816f04e052850554f4b3cacb35f8e8c6 Done
+[100%] Built target AddCustomTemplate_ascend950
+Opc tool start working now, please wait for a moment.
+[ascend950] Generating AddCustom_ab1b6750d7f510985325b603cb06dc8b Done
+[100%] Built target AddCustom_ascend950
+[100%] Built target ascendc_kernels_ascendc_bin_ascend950_gen_ops_config
+[100%] Built target binary
+Consolidate compiler generated dependencies of target cust_optiling
+[  2%] Building CXX object framework/onnx_plugin/CMakeFiles/cust_onnx_parsers.dir/leaky_relu_custom_plugin.cc.o
+[  5%] Building CXX object framework/tf_plugin/CMakeFiles/cust_tf_parsers.dir/tensorflow_add_custom_plugin.cc.o
+[  8%] Creating directories for &#39;tiling_sink_task&#39;
+[ 11%] Building CXX object op_host/CMakeFiles/cust_opapi.dir/__/autogen/aclnn_add_custom.cpp.o
+[ 13%] Built target ascendc_kernels_copy_kernel_srcs
+[ 16%] Generating scripts/install.sh, scripts/upgrade.sh, scripts/uninstall.sh
+[ 19%] Building CXX object op_host/CMakeFiles/cust_op_proto.dir/add_custom_tiling_sink/add_custom_tiling_sink_tiling.cpp.o
+[ 27%] Building CXX object op_host/CMakeFiles/cust_opapi.dir/__/autogen/aclnn_add_custom_tiling_sink.cpp.o
+[ 33%] Building CXX object op_host/CMakeFiles/cust_opapi.dir/__/autogen/aclnn_leaky_relu_custom.cpp.o
+[ 33%] Building CXX object op_host/CMakeFiles/cust_op_proto.dir/add_custom_template/add_custom_template.cpp.o
+[ 33%] Building CXX object op_host/CMakeFiles/cust_op_proto.dir/leaky_relu_custom/leaky_relu_custom_host.cpp.o
+[ 33%] Building CXX object op_host/CMakeFiles/cust_op_proto.dir/add_custom/add_custom_host.cpp.o
+[ 38%] Building CXX object op_host/CMakeFiles/cust_opapi.dir/__/autogen/aclnn_add_custom_template.cpp.o
+[ 38%] Building CXX object op_host/CMakeFiles/cust_op_proto.dir/add_custom_tiling_sink/add_custom_tiling_sink.cpp.o
+[ 41%] Building CXX object op_host/CMakeFiles/cust_op_proto.dir/__/autogen/op_proto.cc.o
+[ 55%] Built target gen_version_info
+[ 58%] Generating ascendc_kernels/tbe/op_info_cfg/ai_core/npu_supported_ops.json
+[ 58%] Built target cust_optiling
+/home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/build/autogen /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/build/op_kernel/ascendc_kernels/tbe/op_info_cfg/ai_core
+[ 66%] Built target ascendc_kernels_ops_info_gen_ascend910_93
+[ 66%] Built target ascendc_kernels_ops_info_gen_ascend910b
+[ 66%] Built target ascendc_kernels_ops_info_gen_ascend950
+[ 69%] Built target customize_ascendc_cust_optiling
+[ 69%] Built target modify_vendor
+[ 69%] Built target optiling_compat
+[ 69%] Built target customize_update_so_names
+[INFO] Succeeded generated /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/build/op_kernel/ascendc_kernels/tbe/op_info_cfg/ai_core/npu_supported_ops.json
+[ 72%] No download step for &#39;tiling_sink_task&#39;
+[ 72%] Built target customize_npu_supported_ops
+[ 75%] No update step for &#39;tiling_sink_task&#39;
+[ 77%] No patch step for &#39;tiling_sink_task&#39;
+[ 80%] Performing configure step for &#39;tiling_sink_task&#39;
+-- The C compiler identification is GNU 11.4.0
+[ 80%] Built target cust_opapi
+[ 83%] Linking CXX shared library libcust_opapi.so
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+[ 83%] Built target customize_ascendc_cust_opapi
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_tiling_sink/add_custom_tiling_sink.cpp:11:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_error_codes.h:15:122: note: &#39;#pragma message: Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include &quot;graph/error_codes.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include \&quot;graph/error_codes.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:17,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_tiling_sink/add_custom_tiling_sink.cpp:11:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_api_types.h:15:122: note: &#39;#pragma message: Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include &quot;ge_common_api_types.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include \&quot;ge_common_api_types.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_tiling_sink/add_custom_tiling_sink_tiling.h:13,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_tiling_sink/add_custom_tiling_sink_tiling.cpp:12:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_error_codes.h:15:122: note: &#39;#pragma message: Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include &quot;graph/error_codes.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include \&quot;graph/error_codes.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:17,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_tiling_sink/add_custom_tiling_sink_tiling.h:13,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_tiling_sink/add_custom_tiling_sink_tiling.cpp:12:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_api_types.h:15:122: note: &#39;#pragma message: Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include &quot;ge_common_api_types.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include \&quot;ge_common_api_types.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_template/add_custom_template.cpp:11:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_error_codes.h:15:122: note: &#39;#pragma message: Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include &quot;graph/error_codes.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include \&quot;graph/error_codes.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:17,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_template/add_custom_template.cpp:11:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_api_types.h:15:122: note: &#39;#pragma message: Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include &quot;ge_common_api_types.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include \&quot;ge_common_api_types.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+-- Detecting CXX compiler ABI info - done
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/leaky_relu_custom/leaky_relu_custom_host.cpp:12:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_error_codes.h:15:122: note: &#39;#pragma message: Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include &quot;graph/error_codes.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include \&quot;graph/error_codes.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:17,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/leaky_relu_custom/leaky_relu_custom_host.cpp:12:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_api_types.h:15:122: note: &#39;#pragma message: Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include &quot;ge_common_api_types.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include \&quot;ge_common_api_types.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom/add_custom_host.cpp:12:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_error_codes.h:15:122: note: &#39;#pragma message: Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include &quot;graph/error_codes.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include \&quot;graph/error_codes.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:17,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom/add_custom_host.cpp:12:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_api_types.h:15:122: note: &#39;#pragma message: Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include &quot;ge_common_api_types.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include \&quot;ge_common_api_types.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- TILING SINK TASK BEGIN
+-- TARGET: cust_opmaster
+-- OPTION: SHARED
+-- SRC: /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_tiling_sink/add_custom_tiling_sink_tiling.cpp
+-- VENDOR: 
+-- Configuring done
+-- Generating done
+[ 86%] Linking CXX shared library libcust_tf_parsers.so
+-- Build files have been written to: /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/build/op_host/tiling_sink_task-prefix/src/tiling_sink_task-build
+[ 88%] Performing build step for &#39;tiling_sink_task&#39;
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/build/autogen/op_proto.h:5,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/build/autogen/op_proto.cc:1:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_error_codes.h:15:122: note: &#39;#pragma message: Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include &quot;graph/error_codes.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include \&quot;graph/error_codes.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:17,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/build/autogen/op_proto.h:5,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/build/autogen/op_proto.cc:1:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_api_types.h:15:122: note: &#39;#pragma message: Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include &quot;ge_common_api_types.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include \&quot;ge_common_api_types.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+[ 50%] Building CXX object CMakeFiles/cust_opmaster.dir/home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_tiling_sink/add_custom_tiling_sink_tiling.cpp.o
+[ 88%] Built target cust_tf_parsers
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/continuous_vector.h:20,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/runtime_attrs.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/exe_graph/runtime/infer_shape_context.h:16,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_impl_registry.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def.h:19,
+                 from /usr/local/Ascend/cann-9.3.0/include/register/op_def_registry.h:14,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_tiling_sink/add_custom_tiling_sink_tiling.h:13,
+                 from /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/op_host/add_custom_tiling_sink/add_custom_tiling_sink_tiling.cpp:12:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_error_codes.h:15:122: note: &#39;#pragma message: Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include &quot;graph/error_codes.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_error_codes.h is deprecated and will be removed after 2027-06. Include \&quot;graph/error_codes.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+In file included from /usr/local/Ascend/cann-9.3.0/include/external/ge_common/api_error_codes.h:17:
+/usr/local/Ascend/cann-9.3.0/include/external/ge_common/ge_api_types.h:15:122: note: &#39;#pragma message: Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include &quot;ge_common_api_types.h&quot; instead.&#39;
+   15 |     &quot;Warning: ge_api_types.h is deprecated and will be removed after 2027-06. Include \&quot;ge_common_api_types.h\&quot; instead.&quot;)
+      |                                                                                                                          ^
+[ 88%] Built target cust_op_proto
+[ 91%] Linking CXX shared library libcust_opsproto_rt2.0.so
+[ 91%] Built target customize_ascendc_cust_op_proto
+[100%] Linking CXX shared library libcust_opmaster.so
+[ 94%] Linking CXX shared library libcust_onnx_parsers.so
+[100%] Built target cust_opmaster
+[ 94%] Built target cust_onnx_parsers
+[ 97%] No install step for &#39;tiling_sink_task&#39;
+[100%] Completed &#39;tiling_sink_task&#39;
+[100%] Built target tiling_sink_task
+Run CPack packaging tool...
+CPack: Create package using External
+CPack: Install projects
+CPack: - Run preinstall target for: custom_op_prj
+CPack: - Install project: custom_op_prj []
+CPack: Create package
+
+About to compress 12372 KB of data...
+Adding files to archive named &quot;custom_opp_ubuntu_aarch64.run&quot;...
+./help.info
+./install.sh
+./packages/vendors/customize/framework/onnx/libcust_onnx_parsers.so
+./packages/vendors/customize/framework/tensorflow/libcust_tf_parsers.so
+./packages/vendors/customize/framework/tensorflow/npu_supported_ops.json
+./packages/vendors/customize/op_api/include/aclnn_add_custom.h
+./packages/vendors/customize/op_api/include/aclnn_add_custom_template.h
+./packages/vendors/customize/op_api/include/aclnn_add_custom_tiling_sink.h
+./packages/vendors/customize/op_api/include/aclnn_leaky_relu_custom.h
+./packages/vendors/customize/op_api/lib/libcust_opapi.so
+./packages/vendors/customize/op_impl/ai_core/tbe/config/ascend910_93/aic-ascend910_93-ops-info.json
+./packages/vendors/customize/op_impl/ai_core/tbe/config/ascend910b/aic-ascend910b-ops-info.json
+./packages/vendors/customize/op_impl/ai_core/tbe/config/ascend950/aic-ascend950-ops-info.json
+./packages/vendors/customize/op_impl/ai_core/tbe/customize_impl/dynamic/add_custom.py
+./packages/vendors/customize/op_impl/ai_core/tbe/customize_impl/dynamic/add_custom/add_custom_kernel.cpp
+./packages/vendors/customize/op_impl/ai_core/tbe/customize_impl/dynamic/add_custom/add_custom_tiling.h
+./packages/vendors/customize/op_impl/ai_core/tbe/customize_impl/dynamic/add_custom_template.py
+./packages/vendors/customize/op_impl/ai_core/tbe/customize_impl/dynamic/add_custom_template/add_custom_template.cpp
+./packages/vendors/customize/op_impl/ai_core/tbe/customize_impl/dynamic/add_custom_template/add_custom_template_tiling.h
+./packages/vendors/customize/op_impl/ai_core/tbe/customize_impl/dynamic/add_custom_template/tiling_key_add_custom_template.h
+./packages/vendors/customize/op_impl/ai_core/tbe/customize_impl/dynamic/add_custom_tiling_sink.py
+./packages/vendors/customize/op_impl/ai_core/tbe/customize_impl/dynamic/add_custom_tiling_sink/add_custom_tiling_sink_kernel.cpp
+./packages/vendors/customize/op_impl/ai_core/tbe/customize_impl/dynamic/add_custom_tiling_sink/add_custom_tiling_sink_tiling_struct.h
+./packages/vendors/customize/op_impl/ai_core/tbe/customize_impl/dynamic/leaky_relu_custom.py
+./packages/vendors/customize/op_impl/ai_core/tbe/customize_impl/dynamic/leaky_relu_custom/leaky_relu_custom_kernel.cpp
+./packages/vendors/customize/op_impl/ai_core/tbe/customize_impl/dynamic/leaky_relu_custom/leaky_relu_custom_tiling.h
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910_93/add_custom/AddCustom_ab1b6750d7f510985325b603cb06dc8b.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910_93/add_custom/AddCustom_ab1b6750d7f510985325b603cb06dc8b.o
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910_93/add_custom_template/AddCustomTemplate_816f04e052850554f4b3cacb35f8e8c6.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910_93/add_custom_template/AddCustomTemplate_816f04e052850554f4b3cacb35f8e8c6.o
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910_93/add_custom_template/AddCustomTemplate_862645f6bafeab7b8e397662e7e517c2.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910_93/add_custom_template/AddCustomTemplate_862645f6bafeab7b8e397662e7e517c2.o
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910_93/add_custom_tiling_sink/AddCustomTilingSink_2827bda24ef94caff45962c05c95eeda.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910_93/add_custom_tiling_sink/AddCustomTilingSink_2827bda24ef94caff45962c05c95eeda.o
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910_93/leaky_relu_custom/LeakyReluCustom_8cfa33d3cb332de6b8b432a5780d77ba.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910_93/leaky_relu_custom/LeakyReluCustom_8cfa33d3cb332de6b8b432a5780d77ba.o
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910b/add_custom/AddCustom_ab1b6750d7f510985325b603cb06dc8b.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910b/add_custom/AddCustom_ab1b6750d7f510985325b603cb06dc8b.o
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910b/add_custom_template/AddCustomTemplate_816f04e052850554f4b3cacb35f8e8c6.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910b/add_custom_template/AddCustomTemplate_816f04e052850554f4b3cacb35f8e8c6.o
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910b/add_custom_template/AddCustomTemplate_862645f6bafeab7b8e397662e7e517c2.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910b/add_custom_template/AddCustomTemplate_862645f6bafeab7b8e397662e7e517c2.o
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910b/add_custom_tiling_sink/AddCustomTilingSink_2827bda24ef94caff45962c05c95eeda.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910b/add_custom_tiling_sink/AddCustomTilingSink_2827bda24ef94caff45962c05c95eeda.o
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910b/leaky_relu_custom/LeakyReluCustom_8cfa33d3cb332de6b8b432a5780d77ba.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend910b/leaky_relu_custom/LeakyReluCustom_8cfa33d3cb332de6b8b432a5780d77ba.o
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend950/add_custom/AddCustom_ab1b6750d7f510985325b603cb06dc8b.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend950/add_custom/AddCustom_ab1b6750d7f510985325b603cb06dc8b.o
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend950/add_custom_template/AddCustomTemplate_816f04e052850554f4b3cacb35f8e8c6.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend950/add_custom_template/AddCustomTemplate_816f04e052850554f4b3cacb35f8e8c6.o
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend950/add_custom_template/AddCustomTemplate_862645f6bafeab7b8e397662e7e517c2.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend950/add_custom_template/AddCustomTemplate_862645f6bafeab7b8e397662e7e517c2.o
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend950/add_custom_tiling_sink/AddCustomTilingSink_2827bda24ef94caff45962c05c95eeda.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend950/add_custom_tiling_sink/AddCustomTilingSink_2827bda24ef94caff45962c05c95eeda.o
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend950/leaky_relu_custom/LeakyReluCustom_8cfa33d3cb332de6b8b432a5780d77ba.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/ascend950/leaky_relu_custom/LeakyReluCustom_8cfa33d3cb332de6b8b432a5780d77ba.o
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/config/ascend910_93/add_custom.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/config/ascend910_93/add_custom_template.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/config/ascend910_93/add_custom_tiling_sink.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/config/ascend910_93/binary_info_config.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/config/ascend910_93/leaky_relu_custom.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/config/ascend910b/add_custom.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/config/ascend910b/add_custom_template.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/config/ascend910b/add_custom_tiling_sink.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/config/ascend910b/binary_info_config.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/config/ascend910b/leaky_relu_custom.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/config/ascend950/add_custom.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/config/ascend950/add_custom_template.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/config/ascend950/add_custom_tiling_sink.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/config/ascend950/binary_info_config.json
+./packages/vendors/customize/op_impl/ai_core/tbe/kernel/config/ascend950/leaky_relu_custom.json
+./packages/vendors/customize/op_impl/ai_core/tbe/op_master_device/lib/libcust_opmaster.so
+./packages/vendors/customize/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64/libcust_opmaster_rt2.0.so
+./packages/vendors/customize/op_impl/ai_core/tbe/op_tiling/liboptiling.so
+./packages/vendors/customize/op_proto/inc/op_proto.h
+./packages/vendors/customize/op_proto/lib/linux/aarch64/libcust_opsproto_rt2.0.so
+./packages/vendors/customize/version.info
+./uninstall.sh
+./upgrade.sh
+CRC: 2414665446
+SHA256: 0b9673c2e85b442e70e03f68e0aacc62ad41cf9840cad095d0bfa631da3a893b
+Skipping md5sum at user request
+
+Self-extractable archive &quot;custom_opp_ubuntu_aarch64.run&quot; successfully created.
+Copy /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/build/_CPack_Packages/Linux/External/custom_opp_ubuntu_aarch64.run/custom_opp_ubuntu_aarch64.run to /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/build/
+CPack: - package: /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/build/custom_opp_ubuntu_aarch64.run.json generated.
+CPack: - package: /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/build/custom_opp_ubuntu_aarch64.run generated.</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 09:59:57.608</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">cd /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/00_acl_compilation/custom_op/build &amp;&amp; ./custom_opp_*.run 2&gt;&amp;1</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 09:59:57.608</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">Verifying archive integrity...     0%    30%    61%    92%  100%   SHA256 checksums are OK. All good.
+Uncompressing version:1.0     0%    30%    61%    92%  100%  
+[ops_custom] [2026-11-06 09:59:57] [INFO] create /usr/local/Ascend/cann-9.3.0/opp/vendors/customize.
+[ops_custom] [2026-11-06 09:59:57] [INFO] validate shared libraries before installation
+[ops_custom] [2026-11-06 09:59:57] [INFO] upgrade framework
+[ops_custom] [2026-11-06 09:59:57] [INFO] create /usr/local/Ascend/cann-9.3.0/opp/vendors/customize/framework.
+[ops_custom] [2026-11-06 09:59:57] [INFO] copy new ops framework files ......
+[ops_custom] [2026-11-06 09:59:57] [INFO] upgrade op proto
+[ops_custom] [2026-11-06 09:59:57] [INFO] create /usr/local/Ascend/cann-9.3.0/opp/vendors/customize/op_proto.
+[ops_custom] [2026-11-06 09:59:57] [INFO] copy new ops op_proto files ......
+[ops_custom] [2026-11-06 09:59:57] [INFO] upgrade op impl
+[ops_custom] [2026-11-06 09:59:57] [INFO] create /usr/local/Ascend/cann-9.3.0/opp/vendors/customize/op_impl.
+[ops_custom] [2026-11-06 09:59:57] [INFO] copy new ops op_impl files ......
+[ops_custom] [2026-11-06 09:59:57] [INFO] upgrade op api
+[ops_custom] [2026-11-06 09:59:57] [INFO] create /usr/local/Ascend/cann-9.3.0/opp/vendors/customize/op_api.
+[ops_custom] [2026-11-06 09:59:57] [INFO] copy new ops op_api files ......
+[ops_custom] [2026-11-06 09:59:57] [INFO] upgrade uninstall
+[ops_custom] [2026-11-06 09:59:57] [INFO] copy new uninstall.sh files ......
+[ops_custom] [2026-11-06 09:59:57] [INFO] upgrade version.info
+[ops_custom] [2026-11-06 09:59:57] [INFO] copy new version.info files ......
+[ops_custom] [2026-11-06 09:59:57] [INFO] no need to upgrade custom.proto files
+[ops_custom] [2026-11-06 09:59:57] [INFO] using requirements: when custom module install finished or before you run the custom module, execute the command [ export LD_LIBRARY_PATH=/usr/local/Ascend/cann-9.3.0/opp/vendors/customize/op_api/lib/:${LD_LIBRARY_PATH} ] to set the environment path
+SUCCESS</div></td>
+            </tr>
+        <tr class="step-success">
+            <td>2026-11-06 09:59:57.609</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281473222766624</td>
+            <td>test_mssanitizer_aclgraph_cube.py:256</td>
+            <td>
+                <span id="toggle-step-6" class="step-toggle" onclick="toggleStep('step-6')">+Expand step</span>
+                <div class="msg-scroll">---------------------------- BUILD ACLNN INVOCATION -----------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:59:59.163</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">cd /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/01_acl_invocation/aclnn_invocation &amp;&amp; mkdir -p build &amp;&amp; cd build &amp;&amp; python3 ../scripts/gen_data.py &amp;&amp; cmake .. &amp;&amp; make -j 2&gt;&amp;1</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:59:59.163</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/01_acl_invocation/aclnn_invocation/build
+[ 50%] Building CXX object CMakeFiles/execute_add_op.dir/main.cpp.o
+[100%] Linking CXX executable execute_add_op
+[100%] Built target execute_add_op</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 10:00:04.822</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">cd /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/01_acl_invocation/aclnn_invocation/build &amp;&amp; ./execute_add_op 2&gt;&amp;1</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 10:00:04.822</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">result is:
+3.3 3.3 3.3 3.3 3.3 3.3 3.3 3.3 3.3 3.3 
+test pass</div></td>
+            </tr>
+        <tr class="step-error">
+            <td>2026-11-06 10:00:04.822</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281473222766624</td>
+            <td>test_mssanitizer_aclgraph_cube.py:270</td>
+            <td>
+                <span id="toggle-step-7" class="step-toggle" onclick="toggleStep('step-7')">+Expand step</span>
+                <div class="msg-scroll">---------------------------- MSSANITIZER DETECTION -----------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-7">
+                <td>2026-11-06 10:00:11.282</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">cd /home/asc-devkit/examples/01_simd_cpp_api/02_features/99_acl_based/01_acl_invocation/aclnn_invocation/build &amp;&amp; mssanitizer ./execute_add_op 2&gt;&amp;1</div></td>
+            </tr>
+            <tr class="step-content content-step-7">
+                <td>2026-11-06 10:00:11.282</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">=================================================================
+                   &gt;&gt;&gt;&gt;&gt;   MindStudio   &lt;&lt;&lt;&lt;&lt;
+    THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE
+=================================================================
+
+[mssanitizer] logging to file: ./mindstudio_sanitizer_log/mssanitizer_20261106100004_18949.log
+[mssanitizer] Start memcheck sanitizer on kernel AddCustom_ab1b6750d7f510985325b603cb06dc8b_0
+[mssanitizer] WARN: Kernel AddCustom_ab1b6750d7f510985325b603cb06dc8b_0 missed debug_line information. Please recompile kernel with `-g&#39; or `-gline-tables-only&#39; option to enable callstack display.
+====== <span style="color:#F44336;font-weight:bold">ERROR</span>: illegal read of size 8
+======    at 0x12c100000040 on GM in AddCustom_ab1b6750d7f510985325b603cb06dc8b_0
+======    in block aiv(0-7) on device 0
+======    code in &lt;unknown&gt; (serialNo:22)
+
+[mssanitizer] Sanitizer finished on kernel AddCustom_ab1b6750d7f510985325b603cb06dc8b_0. See all detected <span style="color:#F44336;font-weight:bold">errors</span> above.
+result is:
+3.3 3.3 3.3 3.3 3.3 3.3 3.3 3.3 3.3 3.3 
+test pass</div></td>
+            </tr>
+            <tr class="step-content content-step-7">
+                <td>2026-11-06 10:00:11.283</td>
+                <td class='ERROR'>ERROR</td>
+                <td>281473222766624</td>
+                <td>__init__.py:71</td>
+                <td class="step-indent"><div class="msg-scroll">测试执行异常: 工具发生误报，应该没有越界异常
+assert &#39;ERROR&#39; not in &#39;===========... \ntest pass&#39;
+  
+  &#39;ERROR&#39; is contained here:
+    =================================================================
+                       &gt;&gt;&gt;&gt;&gt;   MindStudio   &lt;&lt;&lt;&lt;&lt;
+        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE
+    =================================================================
+    ...
+  
+  ...Full output truncated (13 lines hidden), use &#39;-vv&#39; to show</div></td>
+            </tr>
+        <tr class="step-error">
+            <td>2026-11-06 10:00:11.283</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281473222766624</td>
+            <td>test_mssanitizer_aclgraph_cube.py:283</td>
+            <td>
+                <span id="toggle-step-8" class="step-toggle" onclick="toggleStep('step-8')">+Expand step</span>
+                <div class="msg-scroll">---------------------------- CLEANUP -----------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:11.283</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>file_utils.py:419</td>
+                <td class="step-indent"><div class="msg-scroll">检查路径是否存在: /home/asc-devkit, 搜索关键字: None, 递归: False</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:11.291</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">test -e &#39;/home/asc-devkit&#39; &amp;&amp; echo &#39;exists&#39; || echo &#39;not_exists&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:11.291</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">exists</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:11.292</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>file_utils.py:425</td>
+                <td class="step-indent"><div class="msg-scroll">路径存在: /home/asc-devkit</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:11.342</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">test -e &#39;/home/asc-devkit&#39; &amp;&amp; echo &#39;exists&#39; || echo &#39;not_exists&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:11.342</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">exists</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:12.048</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">rm -rf &#39;/home/asc-devkit&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:12.048</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:12.081</td>
+                <td class='FAIL'>FAIL</td>
+                <td>281473222766624</td>
+                <td>__init__.py:71</td>
+                <td class="step-indent"><div class="msg-scroll">Test FAILED: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_aclgraph_cube.py::TestMssanitizerAclGraph::test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003
+Exception: AssertionError
+Message: 工具发生误报，应该没有越界异常
+assert &#39;ERROR&#39; not in &#39;===========... \ntest pass&#39;
+  
+  &#39;ERROR&#39; is contained here:
+    =================================================================
+                       &gt;&gt;&gt;&gt;&gt;   MindStudio   &lt;&lt;&lt;&lt;&lt;
+        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE
+    =================================================================
+    ...
+  
+  ...Full output truncated (13 lines hidden), use &#39;-vv&#39; to show</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:12.081</td>
+                <td class='ERROR'>ERROR</td>
+                <td>281473222766624</td>
+                <td>__init__.py:71</td>
+                <td class="step-indent"><div class="msg-scroll">Traceback:
+testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_aclgraph_cube.py:274: in test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003
+    assert &quot;ERROR&quot; not in ret_msan, &quot;工具发生误报，应该没有越界异常&quot;
+E   AssertionError: 工具发生误报，应该没有越界异常
+E   assert &#39;ERROR&#39; not in &#39;===========... \ntest pass&#39;
+E     
+E     &#39;ERROR&#39; is contained here:
+E       =================================================================
+E                          &gt;&gt;&gt;&gt;&gt;   MindStudio   &lt;&lt;&lt;&lt;&lt;
+E           THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE
+E       =================================================================
+E       ...
+E     
+E     ...Full output truncated (13 lines hidden), use &#39;-vv&#39; to show</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:12.183</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">rm -rf /home/asc-devkit /home/samples /home/shmem /home/catlass /home/mssanitizer_scripts 2&gt;/dev/null || true</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:12.183</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:12.196</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">test -d /root/ascend/log</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:12.196</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:12.196</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>device.py:1087</td>
+                <td class="step-indent"><div class="msg-scroll">[Device.download_file] Downloading /root/ascend/log to /home/pytest-infra/logs_CKC9UUYl/TestCases/2026-11-06/test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003_09-59-15/mindstudio_single_device_8_a2a3_env_type-nodes_A2-device via SCP</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:12.264</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>conftest.py:224</td>
+                <td class="step-indent"><div class="msg-scroll">[mv_dir_on_teardown] mindstudio_single_device_8_a2a3_env_type-nodes_A2-device download &#39;/root/ascend/log&#39; -&gt; &#39;/home/pytest-infra/logs_CKC9UUYl/TestCases/2026-11-06/test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003_09-59-15/mindstudio_single_device_8_a2a3_env_type-nodes_A2-device&#39; success</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:12.408</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">mv /root/ascend/log /mnt/share/autotest_log/test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003_20261106_100012</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:12.408</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:12.408</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>conftest.py:233</td>
+                <td class="step-indent"><div class="msg-scroll">[mv_dir_on_teardown] mindstudio_single_device_8_a2a3_env_type-nodes_A2-device &#39;mv /root/ascend/log /mnt/share/autotest_log/test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003_20261106_100012&#39; success</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:19.876</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">find /mnt/share/autotest_log -maxdepth 1 -mindepth 1 -mtime +5 -exec rm -rf {} +</div></td>
+            </tr>
+            <tr class="step-content content-step-8">
+                <td>2026-11-06 10:00:19.876</td>
+                <td class='INFO'>INFO</td>
+                <td>281473222766624</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+        <tr>
+            <td>2026-11-06 10:00:19.877</td>
+            <td class='TC_END'>TC_END</td>
+            <td>281473222766624</td>
+            <td>plugin.py:1076</td>
+            <td><div class="msg-scroll">TestCase End, completed in 64.06s</div></td>
+        </tr>
+        </tbody>
+    </table>
+    
+</body>
+</html>

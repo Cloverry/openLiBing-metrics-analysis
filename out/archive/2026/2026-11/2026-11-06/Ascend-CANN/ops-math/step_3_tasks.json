@@ -1,0 +1,53 @@
+{
+ "_doc": {
+  "step": "step_3_tasks",
+  "title": "第 3 步 失败任务分流（T4）",
+  "source": "openLiBing 流水线运行详情（任务列表）",
+  "criteria": "仅取状态为失败的任务；UNSELECTED/CANCELED/IGNORED/INIT 跳过；含测试结果的任务走测试取证（第 4 步），其余走日志取证（第 5 步），github 平台运行改走第 5c 步",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-09 15:06:59",
+  "component": "Ascend-CANN",
+  "pipeline": "ops-math",
+  "date": "2026-11-06"
+ },
+ "test": [
+  {
+   "key": "Ascend-CANN|ops-math",
+   "pipeline": "ops-math",
+   "pipelineName": "Nightly-CI-Component-pipeline_ops-math",
+   "projectId": 300057,
+   "pipelineId": "aa3d520fe64f4071a09178d2d603278e",
+   "rid": "5a5246b83f144e66b1244ecbbc0ee412",
+   "rn": 136,
+   "st": "11-06 02:05",
+   "jobId": "7fc13affce194f48b77150c8905c7c1f",
+   "jobName": "Test_ops-math",
+   "stepIds": [
+    "68bb23227393458984540159c6ce2896"
+   ],
+   "steps": [
+    {
+     "id": "68bb23227393458984540159c6ce2896",
+     "name": "Test_ops-math",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "82b7d75701fa4249ac703a6c0d9c67aa",
+     "jobIdParam": "44f7e2c731ea4e169523a081f7942dee"
+    }
+   ],
+   "jobErrMsg": "步骤Test_ops-math执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "2e8bb060bf82467d81eef90bb3cd85f4",
+   "route": "test",
+   "isBuild": false,
+   "buildJobId": "44f7e2c731ea4e169523a081f7942dee"
+  }
+ ],
+ "log": [],
+ "skipped": [],
+ "errors": [],
+ "counts": {
+  "test": 1,
+  "log": 0,
+  "skipped": 0
+ }
+}

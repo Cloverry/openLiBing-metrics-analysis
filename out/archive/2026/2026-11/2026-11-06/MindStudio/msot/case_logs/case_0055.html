@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Log Report: testcase/mindstudio/op_tool/msopgen/test_msopgen_gen_basic.py::TestMsopgenGenBasic::test_pytorch_to_toolkit_001</title>
+    <style>
+        body { font-family: Consolas, monospace; margin: 20px; background-color: #f4f4f4; }
+        .header {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .header h2 { margin: 0; color: #333; }
+        .header p { margin: 5px 0; }
+        .status-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            background-color: #F44336;
+        }
+        table { width: 100%; border-collapse: collapse; background-color: white; margin-bottom: 5px; }
+        th, td { border: 1px solid #ddd; padding: 6px 8px; text-align: left; word-break: break-word; vertical-align: top; }
+        th { background-color: #9E9E9E; color: white; }
+        .ERROR, .FAIL { color: #F44336; font-weight: bold; }
+        .WARN { color: #FF9800; font-weight: bold; }
+        .INFO, .PASS { color: #2E8B57; }
+        .DEBUG { color: #607D8B; }
+        .TRACE { color: #757575; }
+        .TC_STEP { color: #1976D2; font-weight: bold; }
+        th:nth-child(1), td:nth-child(1) { width: 220px; min-width: 150px; }
+        th:nth-child(2), td:nth-child(2) { width: 70px; min-width: 60px; }
+        th:nth-child(3), td:nth-child(3) { width: 50px; min-width: 40px; }
+        th:nth-child(4), td:nth-child(4) { width: 128px; min-width: 112px; }
+        th:nth-child(5), td:nth-child(5) { width: auto; }
+
+        /* Step row status colors - all cells in the row */
+        .step-error td { color: #F44336; }
+        .step-warning td { color: #FF9800; }
+        .step-success td { color: #2E8B57; }
+
+        /* Collapsible section styles */
+        .step-toggle {
+            display: inline-block;
+            padding: 4px 12px;
+            border: 2px solid #666;
+            border-radius: 4px;
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 8px;
+            white-space: nowrap;
+        }
+        .step-toggle:hover {
+            background-color: #e0e0e0;
+            border-color: #333;
+        }
+        .step-content { display: none; }
+        .step-content.expanded { display: table-row; }
+        .step-indent { padding-left: 24px; }
+
+        /* Message scroll styles */
+        .msg-scroll {
+            max-height: 300px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            word-break: break-word;
+            white-space: pre-wrap;
+        }
+    </style>
+    <script>
+        function toggleStep(stepId) {
+            var rows = document.querySelectorAll('.content-' + stepId);
+            var toggle = document.getElementById('toggle-' + stepId);
+            if (rows.length === 0) {
+                return;
+            }
+            if (rows[0].classList.contains('expanded')) {
+                rows.forEach(function(r) { r.classList.remove('expanded'); });
+                toggle.textContent = '+Expand step';
+            } else {
+                rows.forEach(function(r) { r.classList.add('expanded'); });
+                toggle.textContent = '-Collapse step';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h2>Log Report: testcase/mindstudio/op_tool/msopgen/test_msopgen_gen_basic.py::TestMsopgenGenBasic::test_pytorch_to_toolkit_001</h2>
+        <p><strong>Case ID:</strong> testcase/mindstudio/op_tool/msopgen/test_msopgen_gen_basic.py::TestMsopgenGenBasic::test_pytorch_to_toolkit_001</p>
+        <p><strong>Status:</strong> <span class="status-badge">Failed</span></p>
+        <p><strong>Duration:</strong> 3.72s</p>
+    </div>
+    
+    <p><strong>Total Entries:</strong> 65</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Level</th>
+                <th>Thread</th>
+                <th>Location</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>2026-11-06 07:41:01.006</td>
+            <td class='INFO'>INFO</td>
+            <td>281472886272032</td>
+            <td>plugin.py:425</td>
+            <td><div class="msg-scroll">environment requirements: [{&#39;name&#39;: &#39;mindstudio_single_device_8_a2a3_env_type-nodes_A2-device&#39;, &#39;res_type&#39;: &#39;container&#39;, &#39;cpu_arch&#39;: &#39;ARM&#39;, &#39;cpu_core_num&#39;: 64, &#39;npu_gen&#39;: &#39;A2&#39;, &#39;npu_model&#39;: &#39;Ascend 910B3&#39;, &#39;npu_num&#39;: 8, &#39;shm_size&#39;: &#39;720Gi&#39;, &#39;mount_source_data&#39;: [&#39;mindstudio_data&#39;], &#39;mount_dest_dir&#39;: [&#39;/home/autotest&#39;], &#39;resources&#39;: {&#39;cpu&#39;: {&#39;request&#39;: &#39;48&#39;, &#39;limit&#39;: &#39;128&#39;}, &#39;memory&#39;: {&#39;request&#39;: &#39;256Gi&#39;, &#39;limit&#39;: &#39;1024Gi&#39;}}, &#39;use_nfs&#39;: True, &#39;memory_size&#39;: 1024, &#39;pool&#39;: &#39;ascend-general-a2&#39;, &#39;env&#39;: {&#39;LD_LIBRARY_PATH&#39;: &#39;/usr/lib64/:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64/common:/usr/lib/aarch64-linux-gnu/:&#39;}}, {&#39;name&#39;: &#39;mindstudio_single_device_8_a2a3_env_type-nodes_A3-device&#39;, &#39;res_type&#39;: &#39;container&#39;, &#39;cpu_arch&#39;: &#39;ARM&#39;, &#39;cpu_core_num&#39;: 64, &#39;npu_gen&#39;: &#39;A3&#39;, &#39;npu_model&#39;: &#39;Ascend 910C&#39;, &#39;npu_num&#39;: 16, &#39;shm_size&#39;: &#39;720Gi&#39;, &#39;mount_source_data&#39;: [&#39;mindstudio_data&#39;], &#39;mount_dest_dir&#39;: [&#39;/home/autotest&#39;], &#39;resources&#39;: {&#39;cpu&#39;: {&#39;request&#39;: &#39;48&#39;, &#39;limit&#39;: &#39;128&#39;}, &#39;memory&#39;: {&#39;request&#39;: &#39;256Gi&#39;, &#39;limit&#39;: &#39;1024Gi&#39;}}, &#39;use_nfs&#39;: True, &#39;memory_size&#39;: 1024, &#39;pool&#39;: &#39;ascend-general-a3&#39;, &#39;env&#39;: {&#39;LD_LIBRARY_PATH&#39;: &#39;/usr/lib64/:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64/common:/usr/lib/aarch64-linux-gnu/:&#39;}}]</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 07:41:01.007</td>
+            <td class='INFO'>INFO</td>
+            <td>281472886272032</td>
+            <td>plugin.py:391</td>
+            <td><div class="msg-scroll">pre_action_registry has no actions registered</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 07:41:01.844</td>
+            <td class='INFO'>INFO</td>
+            <td>281472886272032</td>
+            <td>sendcmd[device]</td>
+            <td><div class="msg-scroll">source /usr/local/Ascend/ascend-toolkit/set_env.sh &amp;&amp; npu-smi info</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 07:41:01.844</td>
+            <td class='INFO'>INFO</td>
+            <td>281472886272032</td>
+            <td>recvcmd[device]</td>
+            <td><div class="msg-scroll">+------------------------------------------------------------------------------------------------------------------+
+| npu-smi 26.1.1                              Version: 26.1.1                                                      |
++---------------------------+---------------+----------------------------------------------------------------------+
+| NPU   Name                | Health        | Power(W)             Temp(C)                 Hugepages-Usage(page)   |
+| Chip                      | Bus-Id        | AICore(%)            Memory-Usage(MB)        HBM-Usage(MB)           |
++===========================+===============+======================================================================+
+| 0     910B3               | OK            | 91.8                 35                      0    / 0                |
+| 0                         | 0000:C1:00.0  | 0                    0    / 0                3438 / 65536            |
++===========================+===============+======================================================================+
+| 1     910B3               | OK            | 90.7                 36                      0    / 0                |
+| 0                         | 0000:C2:00.0  | 0                    0    / 0                3438 / 65536            |
++===========================+===============+======================================================================+
+| 2     910B3               | OK            | 90.9                 34                      0    / 0                |
+| 0                         | 0000:81:00.0  | 0                    0    / 0                3436 / 65536            |
++===========================+===============+======================================================================+
+| 3     910B3               | OK            | 90.9                 34                      0    / 0                |
+| 0                         | 0000:82:00.0  | 0                    0    / 0                3434 / 65536            |
++===========================+===============+======================================================================+
+| 4     910B3               | OK            | 89.8                 41                      0    / 0                |
+| 0                         | 0000:01:00.0  | 0                    0    / 0                3432 / 65536            |
++===========================+===============+======================================================================+
+| 5     910B3               | OK            | 94.8                 40                      0    / 0                |
+| 0                         | 0000:02:00.0  | 0                    0    / 0                3433 / 65536            |
++===========================+===============+======================================================================+
+| 6     910B3               | OK            | 94.9                 38                      0    / 0                |
+| 0                         | 0000:41:00.0  | 0                    0    / 0                3431 / 65536            |
++===========================+===============+======================================================================+
+| 7     910B3               | OK            | 95.7                 39                      0    / 0                |
+| 0                         | 0000:42:00.0  | 0                    0    / 0                3434 / 65536            |
++===========================+===============+======================================================================+
++---------------------------+---------------+----------------------------------------------------------------------+
+| NPU     Chip              | Process id    | Process name       | Process memory(MB)    | Process id in container |
++===========================+===============+======================================================================+
+| No running processes found in NPU 0                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 1                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 2                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 3                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 4                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 5                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 6                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 7                                                                              |
++===========================+===============+======================================================================+</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 07:41:01.846</td>
+            <td class='INFO'>INFO</td>
+            <td>281472886272032</td>
+            <td>npu.py:509</td>
+            <td><div class="msg-scroll">解析npu-smi info完成，共 8 个NPU</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 07:41:01.846</td>
+            <td class='INFO'>INFO</td>
+            <td>281472886272032</td>
+            <td>conftest.py:112</td>
+            <td><div class="msg-scroll">[env_preflight] mindstudio_single_device_8_a2a3_env_type-nodes_A2-device 环境信息:</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 07:41:01.846</td>
+            <td class='INFO'>INFO</td>
+            <td>281472886272032</td>
+            <td>conftest.py:113</td>
+            <td><div class="msg-scroll">[env_preflight] mindstudio_single_device_8_a2a3_env_type-nodes_A2-device.npu_smi_info:
+{&#39;driver_version&#39;: &#39;npu-smi 26.1.1&#39;, &#39;npu_smi_version&#39;: &#39;Version: 26.1.1&#39;, &#39;npu_message&#39;: {&#39;0&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;91.8&#39;, &#39;temp_c&#39;: &#39;35&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:C1:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3438/65536&#39;, &#39;processes&#39;: []}, &#39;1&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;90.7&#39;, &#39;temp_c&#39;: &#39;36&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:C2:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3438/65536&#39;, &#39;processes&#39;: []}, &#39;2&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;90.9&#39;, &#39;temp_c&#39;: &#39;34&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:81:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3436/65536&#39;, &#39;processes&#39;: []}, &#39;3&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;90.9&#39;, &#39;temp_c&#39;: &#39;34&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:82:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3434/65536&#39;, &#39;processes&#39;: []}, &#39;4&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;89.8&#39;, &#39;temp_c&#39;: &#39;41&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:01:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3432/65536&#39;, &#39;processes&#39;: []}, &#39;5&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;94.8&#39;, &#39;temp_c&#39;: &#39;40&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:02:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3433/65536&#39;, &#39;processes&#39;: []}, &#39;6&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;94.9&#39;, &#39;temp_c&#39;: &#39;38&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:41:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3431/65536&#39;, &#39;processes&#39;: []}, &#39;7&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;95.7&#39;, &#39;temp_c&#39;: &#39;39&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:42:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3434/65536&#39;, &#39;processes&#39;: []}}}</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 07:41:01.847</td>
+            <td class='INFO'>INFO</td>
+            <td>281472886272032</td>
+            <td>conftest.py:115</td>
+            <td><div class="msg-scroll">[env_preflight] mindstudio_single_device_8_a2a3_env_type-nodes_A2-device.os_version:
+PRETTY_NAME=&quot;Ubuntu 22.04.5 LTS&quot;
+NAME=&quot;Ubuntu&quot;
+VERSION_ID=&quot;22.04&quot;
+VERSION=&quot;22.04.5 LTS (Jammy Jellyfish)&quot;
+VERSION_CODENAME=jammy
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL=&quot;https://www.ubuntu.com/&quot;
+SUPPORT_URL=&quot;https://help.ubuntu.com/&quot;
+BUG_REPORT_URL=&quot;https://bugs.launchpad.net/ubuntu/&quot;
+PRIVACY_POLICY_URL=&quot;https://www.ubuntu.com/legal/terms-and-policies/privacy-policy&quot;
+UBUNTU_CODENAME=jammy</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 07:41:01.847</td>
+            <td class='INFO'>INFO</td>
+            <td>281472886272032</td>
+            <td>conftest.py:115</td>
+            <td><div class="msg-scroll">[env_preflight] mindstudio_single_device_8_a2a3_env_type-nodes_A2-device.arch_type:
+aarch64</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 07:41:01.848</td>
+            <td class='TC_START'>TC_START</td>
+            <td>281472886272032</td>
+            <td>plugin.py:970</td>
+            <td><div class="msg-scroll">testcase/mindstudio/op_tool/msopgen/test_msopgen_gen_basic.py::TestMsopgenGenBasic::test_pytorch_to_toolkit_001</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 07:41:01.848</td>
+            <td class='TC_START'>TC_START</td>
+            <td>281472886272032</td>
+            <td>test_msopgen_gen_basic.py:109</td>
+            <td></td>
+        </tr>
+        <tr class="step-success">
+            <td>2026-11-06 07:41:01.848</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281472886272032</td>
+            <td>test_msopgen_gen_basic.py:112</td>
+            <td>
+                <span id="toggle-step-1" class="step-toggle" onclick="toggleStep('step-1')">+Expand step</span>
+                <div class="msg-scroll">-------------------------------- VAR DEFINE --------------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 07:41:02.382</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">npu-smi info -t board -i 0 -c 0</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 07:41:02.382</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">NPU ID                         : 0
+&nbsp;&nbsp;&nbsp;&nbsp;Chip ID                        : 0
+&nbsp;&nbsp;&nbsp;&nbsp;Chip Type                      : Ascend
+&nbsp;&nbsp;&nbsp;&nbsp;Chip Name                      : 910B3
+&nbsp;&nbsp;&nbsp;&nbsp;Chip Version                   : V1
+&nbsp;&nbsp;&nbsp;&nbsp;Board ID                       : 0x32
+&nbsp;&nbsp;&nbsp;&nbsp;PCB ID                         : NA
+&nbsp;&nbsp;&nbsp;&nbsp;BOM ID                         : 1
+&nbsp;&nbsp;&nbsp;&nbsp;VDie ID                        : 72962A6C 80E0CD7B 72DC6312 808080E0 104301E3
+&nbsp;&nbsp;&nbsp;&nbsp;NDie ID                        : 00000000 00000000 00000000 00000000 00000000
+&nbsp;&nbsp;&nbsp;&nbsp;Chip Position ID               : 0
+&nbsp;&nbsp;&nbsp;&nbsp;PCIe Bus Info                  : 0000:C1:00.0
+&nbsp;&nbsp;&nbsp;&nbsp;Firmware Version               : 9.0.0.9.220</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 07:41:02.382</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>npu.py:183</td>
+                <td class="step-indent"><div class="msg-scroll">获取SoC名称成功(仅Chip Name): 910B3</div></td>
+            </tr>
+        <tr class="step-success">
+            <td>2026-11-06 07:41:02.382</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281472886272032</td>
+            <td>test_msopgen_gen_basic.py:119</td>
+            <td>
+                <span id="toggle-step-2" class="step-toggle" onclick="toggleStep('step-2')">+Expand step</span>
+                <div class="msg-scroll">-------------------------------- ENV INIT --------------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 07:41:02.483</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">whoami</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 07:41:02.483</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">root</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 07:41:02.583</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">source /usr/local/Ascend/ascend-toolkit/set_env.sh</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 07:41:02.584</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+        <tr class="step-success">
+            <td>2026-11-06 07:41:02.584</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281472886272032</td>
+            <td>test_msopgen_gen_basic.py:122</td>
+            <td>
+                <span id="toggle-step-3" class="step-toggle" onclick="toggleStep('step-3')">+Expand step</span>
+                <div class="msg-scroll">-------------------------------- TC EXECUTE --------------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 07:41:03.110</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">npu-smi info -t board -i 0 -c 0</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 07:41:03.110</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">NPU ID                         : 0
+&nbsp;&nbsp;&nbsp;&nbsp;Chip ID                        : 0
+&nbsp;&nbsp;&nbsp;&nbsp;Chip Type                      : Ascend
+&nbsp;&nbsp;&nbsp;&nbsp;Chip Name                      : 910B3
+&nbsp;&nbsp;&nbsp;&nbsp;Chip Version                   : V1
+&nbsp;&nbsp;&nbsp;&nbsp;Board ID                       : 0x32
+&nbsp;&nbsp;&nbsp;&nbsp;PCB ID                         : NA
+&nbsp;&nbsp;&nbsp;&nbsp;BOM ID                         : 1
+&nbsp;&nbsp;&nbsp;&nbsp;VDie ID                        : 72962A6C 80E0CD7B 72DC6312 808080E0 104301E3
+&nbsp;&nbsp;&nbsp;&nbsp;NDie ID                        : 00000000 00000000 00000000 00000000 00000000
+&nbsp;&nbsp;&nbsp;&nbsp;Chip Position ID               : 0
+&nbsp;&nbsp;&nbsp;&nbsp;PCIe Bus Info                  : 0000:C1:00.0
+&nbsp;&nbsp;&nbsp;&nbsp;Firmware Version               : 9.0.0.9.220</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 07:41:03.110</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>npu.py:183</td>
+                <td class="step-indent"><div class="msg-scroll">获取SoC名称成功(仅Chip Name): 910B3</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 07:41:03.265</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">rm -rf /home/autotest/AutoTestProperty/operator_project//*</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 07:41:03.265</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 07:41:03.286</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">cp -rf /home/autotest/AutoTestProperty/op_source/AddN.txt /home/autotest/AutoTestProperty/operator_project/; chmod 755 -R /home/autotest/AutoTestProperty/operator_project/</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 07:41:03.287</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+        <tr class="step-success">
+            <td>2026-11-06 07:41:03.287</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281472886272032</td>
+            <td>msopgen.py:443</td>
+            <td>
+                <span id="toggle-step-4" class="step-toggle" onclick="toggleStep('step-4')">+Expand step</span>
+                <div class="msg-scroll">msopgen gen: source /home/autotest/AutoTestProperty/op_source/env.sh; msopgen gen -i /home/autotest/AutoTestProperty/operator_project/AddN.txt -f pytorch -c ai_cpu -out /home/autotest/AutoTestProperty/operator_project/ -op AddN</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-4">
+                <td>2026-11-06 07:41:03.788</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">source /home/autotest/AutoTestProperty/op_source/env.sh; msopgen gen -i /home/autotest/AutoTestProperty/operator_project/AddN.txt -f pytorch -c ai_cpu -out /home/autotest/AutoTestProperty/operator_project/ -op AddN</div></td>
+            </tr>
+            <tr class="step-content content-step-4">
+                <td>2026-11-06 07:41:03.789</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">2026-11-06 07:41:03 (6938) - [WARNING] The path /home/autotest/AutoTestProperty/operator_project/AddN.txt is a soft link. 
+2026-11-06 07:41:03 (6938) - [WARNING] The path /home/autotest/AutoTestProperty/operator_project/ is a soft link. 
+=================================================================
+                   &gt;&gt;&gt;&gt;&gt;   MindStudio   &lt;&lt;&lt;&lt;&lt;
+    THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE
+=================================================================
+
+2026-11-06 07:41:03 (6938) - [INFO] Start to generate AI CPU operator files. 
+2026-11-06 07:41:03 (6938) - [INFO] Start to parse the tensorflow ir: /mnt/share/autotest/MindStudio/AutoTestProperty/operator_project/AddN.txt 
+2026-11-06 07:41:03 (6938) - [INFO] The op type is AddN. 
+2026-11-06 07:41:03 (6938) - [INFO] One input line has been handled: x:T 
+2026-11-06 07:41:03 (6938) - [INFO] One input line has been handled: y:T 
+2026-11-06 07:41:03 (6938) - [INFO] One output line has been handled: N:T 
+2026-11-06 07:41:03 (6938) - [INFO] One attribute line has been handled: T:{float,int32} 
+2026-11-06 07:41:03 (6938) - [INFO] Start to generate a new project. 
+2026-11-06 07:41:03 (6938) - [INFO] File /mnt/share/autotest/MindStudio/AutoTestProperty/operator_project/cpukernel/impl/add_n_kernels.cc generated successfully. 
+2026-11-06 07:41:03 (6938) - [INFO] File /mnt/share/autotest/MindStudio/AutoTestProperty/operator_project/cpukernel/impl/add_n_kernels.h generated successfully. 
+2026-11-06 07:41:03 (6938) - [INFO] File /mnt/share/autotest/MindStudio/AutoTestProperty/operator_project/cpukernel/op_info_cfg/aicpu_kernel/add_n.ini generated successfully. 
+2026-11-06 07:41:03 (6938) - [INFO] File /mnt/share/autotest/MindStudio/AutoTestProperty/operator_project/op_proto/add_n.h generated successfully. 
+2026-11-06 07:41:03 (6938) - [INFO] File /mnt/share/autotest/MindStudio/AutoTestProperty/operator_project/op_proto/add_n.cc generated successfully. 
+2026-11-06 07:41:03 (6938) - [INFO] Generation completed.</div></td>
+            </tr>
+            <tr class="step-content content-step-4">
+                <td>2026-11-06 07:41:03.790</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>msopgen.py:445</td>
+                <td class="step-indent"><div class="msg-scroll">msopgen gen 结果: 2026-11-06 07:41:03 (6938) - [WARNING] The path /home/autotest/AutoTestProperty/operator_project/AddN.txt is a soft link. 
+2026-11-06 07:41:03 (6938) - [WARNING] The path /home/autotest/AutoTestProper</div></td>
+            </tr>
+            <tr class="step-content content-step-4">
+                <td>2026-11-06 07:41:03.798</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">rm -rf /home/autotest/AutoTestProperty/operator_project//lib</div></td>
+            </tr>
+            <tr class="step-content content-step-4">
+                <td>2026-11-06 07:41:03.798</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-4">
+                <td>2026-11-06 07:41:03.858</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">cp -rf /home/autotest/AutoTestProperty/op_source/AddN.ini .</div></td>
+            </tr>
+            <tr class="step-content content-step-4">
+                <td>2026-11-06 07:41:03.858</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+        <tr class="step-success">
+            <td>2026-11-06 07:41:03.858</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281472886272032</td>
+            <td>msopgen.py:499</td>
+            <td>
+                <span id="toggle-step-5" class="step-toggle" onclick="toggleStep('step-5')">+Expand step</span>
+                <div class="msg-scroll">msopst create: source /home/autotest/AutoTestProperty/op_source/env.sh; msopst create -i /home/autotest/AutoTestProperty/operator_project/AddN.ini -out /home/autotest/AutoTestProperty/operator_project/lib</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 07:41:04.109</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">source /home/autotest/AutoTestProperty/op_source/env.sh; msopst create -i /home/autotest/AutoTestProperty/operator_project/AddN.ini -out /home/autotest/AutoTestProperty/operator_project/lib</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 07:41:04.109</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">2026-11-06 07:41:04 (6945) - [WARNING] The path /home/autotest/AutoTestProperty/operator_project/AddN.ini should not be written by user group or others, which will cause security risks
+=================================================================
+                   &gt;&gt;&gt;&gt;&gt;   MindStudio   &lt;&lt;&lt;&lt;&lt;
+    THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE
+=================================================================
+
+2026-11-06 07:41:04 (6945) - [INFO] Start to check valid for op info.
+2026-11-06 07:41:04 (6945) - [INFO] Finish to check valid for op info.
+2026-11-06 07:41:04 (6945) - [INFO] Generate test case file /mnt/share/autotest/MindStudio/AutoTestProperty/operator_project/lib/AddN_case_20261106074104.json successfully.
+2026-11-06 07:41:04 (6945) - [INFO] Process finished!</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 07:41:04.109</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>msopgen.py:501</td>
+                <td class="step-indent"><div class="msg-scroll">msopst create 结果: 2026-11-06 07:41:04 (6945) - [WARNING] The path /home/autotest/AutoTestProperty/operator_project/AddN.ini should not be written by user group or others, which will cause security risks
+===============</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 07:41:04.118</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">rm -rf /home/autotest/AutoTestProperty/operator_project//result</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 07:41:04.118</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 07:41:04.172</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">find AddN_case*.json</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 07:41:04.172</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">AddN_case_20261106074104.json</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 07:41:04.172</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>msopgen.py:361</td>
+                <td class="step-indent"><div class="msg-scroll">case_name: AddN_case_20261106074104.json</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 07:41:04.249</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">cp -rf /home/autotest/AutoTestProperty/op_source/AddN_case_inputparam_shape_dynamic.json /home/autotest/AutoTestProperty/operator_project/lib/AddN_case*; chmod 755 -R /home/autotest/AutoTestProperty/operator_project/</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 07:41:04.249</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 07:41:04.249</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>msopgen.py:522</td>
+                <td class="step-indent"><div class="msg-scroll">已复制数据文件 AddN_case_inputparam_shape_dynamic.json 到 /home/autotest/AutoTestProperty/operator_project/lib/AddN_case*</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 07:41:04.323</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">cp -rf /home/autotest/AutoTestProperty/op_source/AddN_case_inputparam_shape_dynamic.json /home/autotest/AutoTestProperty/operator_project/lib/AddN_case*; chmod 755 -R /home/autotest/AutoTestProperty/operator_project/</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 07:41:04.323</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">chmod: changing permissions of &#39;/home/autotest/AutoTestProperty/operator_project/lib&#39;: <span style="color:#F44336;font-weight:bold">No such file or directory</span>
+chmod: cannot read directory &#39;/home/autotest/AutoTestProperty/operator_project/lib&#39;: <span style="color:#F44336;font-weight:bold">No such file or directory</span></div></td>
+            </tr>
+        <tr class="step-success">
+            <td>2026-11-06 07:41:04.324</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281472886272032</td>
+            <td>msopgen.py:619</td>
+            <td>
+                <span id="toggle-step-6" class="step-toggle" onclick="toggleStep('step-6')">+Expand step</span>
+                <div class="msg-scroll">msopst run: source /home/autotest/AutoTestProperty/op_source/env.sh; cd /home/autotest/AutoTestProperty/operator_project/lib; msopst run -i AddN_case_20261106074104.json -soc 910B3 -out /home/autotest/AutoTestProperty/operator_project/result -d 0</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 07:41:04.575</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">source /home/autotest/AutoTestProperty/op_source/env.sh; cd /home/autotest/AutoTestProperty/operator_project/lib; msopst run -i AddN_case_20261106074104.json -soc 910B3 -out /home/autotest/AutoTestProperty/operator_project/result -d 0</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 07:41:04.575</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">-bash: cd: /home/autotest/AutoTestProperty/operator_project/lib: <span style="color:#F44336;font-weight:bold">No such file or directory</span>
+2026-11-06 07:41:04 (7023) - [<span style="color:#F44336;font-weight:bold">ERROR</span>] The path /home/runner/AddN_case_20261106074104.json does not exist. Please check whether the path exists.</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 07:41:04.576</td>
+                <td class='INFO'>INFO</td>
+                <td>281472886272032</td>
+                <td>msopgen.py:621</td>
+                <td class="step-indent"><div class="msg-scroll">msopst run 结果: -bash: cd: /home/autotest/AutoTestProperty/operator_project/lib: No such file or directory
+2026-11-06 07:41:04 (7023) - [ERROR] The path /home/runner/AddN_case_20261106074104.json does not exist. Plea</div></td>
+            </tr>
+        <tr class="step-error">
+            <td>2026-11-06 07:41:04.576</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281472886272032</td>
+            <td>test_msopgen_gen_basic.py:135</td>
+            <td>
+                <span id="toggle-step-7" class="step-toggle" onclick="toggleStep('step-7')">+Expand step</span>
+                <div class="msg-scroll">-------------------------------- TEST ASSERT --------------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-7">
+                <td>2026-11-06 07:41:04.577</td>
+                <td class='ERROR'>ERROR</td>
+                <td>281472886272032</td>
+                <td>__init__.py:71</td>
+                <td class="step-indent"><div class="msg-scroll">测试执行异常: pytorch_to_toolkit 001 运行失败
+assert (&#39;success&#39; in &#39;-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.&#39; or &#39;success count: 1&#39; in &#39;-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.&#39;)
+ +  where &#39;-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.&#39; = &lt;built-in method lower of str object at 0xffff80e66790&gt;()
+ +    where &lt;built-in method lower of str object at 0xffff80e66790&gt; = &#39;-bash: cd: /home/autotest/AutoTestProperty/operator_project/lib: No such file or directory\n2026-11-06 07:41:04 (7023) - [ERROR] The path /home/runner/AddN_case_20261106074104.json does not exist. Please check whether the path exists.&#39;.lower
+ +  and   &#39;-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.&#39; = &lt;built-in method lower of str object at 0xffff80e66790&gt;()
+ +    where &lt;built-in method lower of str object at 0xffff80e66790&gt; = &#39;-bash: cd: /home/autotest/AutoTestProperty/operator_project/lib: No such file or directory\n2026-11-06 07:41:04 (7023) - [ERROR] The path /home/runner/AddN_case_20261106074104.json does not exist. Please check whether the path exists.&#39;.lower</div></td>
+            </tr>
+        <tr>
+            <td>2026-11-06 07:41:04.578</td>
+            <td class='TC_END'>TC_END</td>
+            <td>281472886272032</td>
+            <td>test_msopgen_gen_basic.py:146</td>
+            <td><div class="msg-scroll">Test Case End</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 07:41:04.584</td>
+            <td class='FAIL'>FAIL</td>
+            <td>281472886272032</td>
+            <td>__init__.py:71</td>
+            <td><div class="msg-scroll">Test FAILED: testcase/mindstudio/op_tool/msopgen/test_msopgen_gen_basic.py::TestMsopgenGenBasic::test_pytorch_to_toolkit_001
+Exception: AssertionError
+Message: pytorch_to_toolkit 001 运行失败
+assert (&#39;success&#39; in &#39;-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.&#39; or &#39;success count: 1&#39; in &#39;-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.&#39;)
+ +  where &#39;-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.&#39; = &lt;built-in method lower of str object at 0xffff80e66790&gt;()
+ +    where &lt;built-in method lower of str object at 0xffff80e66790&gt; = &#39;-bash: cd: /home/autotest/AutoTestProperty/operator_project/lib: No such file or directory\n2026-11-06 07:41:04 (7023) - [ERROR] The path /home/runner/AddN_case_20261106074104.json does not exist. Please check whether the path exists.&#39;.lower
+ +  and   &#39;-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.&#39; = &lt;built-in method lower of str object at 0xffff80e66790&gt;()
+ +    where &lt;built-in method lower of str object at 0xffff80e66790&gt; = &#39;-bash: cd: /home/autotest/AutoTestProperty/operator_project/lib: No such file or directory\n2026-11-06 07:41:04 (7023) - [ERROR] The path /home/runner/AddN_case_20261106074104.json does not exist. Please check whether the path exists.&#39;.lower</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 07:41:04.585</td>
+            <td class='ERROR'>ERROR</td>
+            <td>281472886272032</td>
+            <td>__init__.py:71</td>
+            <td><div class="msg-scroll">Traceback:
+testcase/mindstudio/op_tool/msopgen/test_msopgen_gen_basic.py:136: in test_pytorch_to_toolkit_001
+    assert &quot;success&quot; in result_run.lower() or &quot;success count: 1&quot; in result_run.lower(), (
+E   AssertionError: pytorch_to_toolkit 001 运行失败
+E   assert (&#39;success&#39; in &#39;-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.&#39; or &#39;success count: 1&#39; in &#39;-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.&#39;)
+E    +  where &#39;-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.&#39; = &lt;built-in method lower of str object at 0xffff80e66790&gt;()
+E    +    where &lt;built-in method lower of str object at 0xffff80e66790&gt; = &#39;-bash: cd: /home/autotest/AutoTestProperty/operator_project/lib: No such file or directory\n2026-11-06 07:41:04 (7023) - [ERROR] The path /home/runner/AddN_case_20261106074104.json does not exist. Please check whether the path exists.&#39;.lower
+E    +  and   &#39;-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.&#39; = &lt;built-in method lower of str object at 0xffff80e66790&gt;()
+E    +    where &lt;built-in method lower of str object at 0xffff80e66790&gt; = &#39;-bash: cd: /home/autotest/AutoTestProperty/operator_project/lib: No such file or directory\n2026-11-06 07:41:04 (7023) - [ERROR] The path /home/runner/AddN_case_20261106074104.json does not exist. Please check whether the path exists.&#39;.lower</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 07:41:04.594</td>
+            <td class='INFO'>INFO</td>
+            <td>281472886272032</td>
+            <td>sendcmd[device]</td>
+            <td><div class="msg-scroll">test -d /root/ascend/log</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 07:41:04.594</td>
+            <td class='INFO'>INFO</td>
+            <td>281472886272032</td>
+            <td>recvcmd[device]</td>
+            <td><div class="msg-scroll">(empty)</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 07:41:04.595</td>
+            <td class='INFO'>INFO</td>
+            <td>281472886272032</td>
+            <td>conftest.py:215</td>
+            <td><div class="msg-scroll">[mv_dir_on_teardown] mindstudio_single_device_8_a2a3_env_type-nodes_A2-device source &#39;/root/ascend/log&#39; not exist, skip mv</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 07:41:04.729</td>
+            <td class='INFO'>INFO</td>
+            <td>281472886272032</td>
+            <td>sendcmd[device]</td>
+            <td><div class="msg-scroll">find /mnt/share/autotest_log -maxdepth 1 -mindepth 1 -mtime +5 -exec rm -rf {} +</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 07:41:04.729</td>
+            <td class='INFO'>INFO</td>
+            <td>281472886272032</td>
+            <td>recvcmd[device]</td>
+            <td><div class="msg-scroll">(empty)</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 07:41:04.730</td>
+            <td class='TC_END'>TC_END</td>
+            <td>281472886272032</td>
+            <td>plugin.py:1076</td>
+            <td><div class="msg-scroll">TestCase End, completed in 3.72s</div></td>
+        </tr>
+        </tbody>
+    </table>
+    
+</body>
+</html>

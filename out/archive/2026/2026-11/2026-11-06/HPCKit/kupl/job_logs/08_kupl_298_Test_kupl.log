@@ -1,0 +1,13 @@
+[2026/11/06 12:01:53.655 GMT+08:00] [INFO] [real_stage:official_devcloud_cloudBuild] : 该步骤开始执行
+[2026/11/06 12:01:53.656 GMT+08:00] [INFO] [real_stage:official_devcloud_cloudBuild] : [frame] start to send status data to service.
+[2026/11/06 12:01:53.656 GMT+08:00] [INFO]  : Start to execute task.
+[2026/11/06 12:01:53.683 GMT+08:00] [INFO] [real_stage:official_devcloud_cloudBuild] : [frame] finish to save status data to service.
+[2026/11/06 12:01:54.168 GMT+08:00] [INFO]  : Task execution completed.
+[2026/11/06 12:01:54.185 GMT+08:00] [INFO] [real_stage:official_devcloud_cloudBuild] : [frame] start to send status data to service.
+[2026/11/06 12:01:54.185 GMT+08:00] [INFO]  : Start to get the task status.
+[2026/11/06 12:01:54.210 GMT+08:00] [INFO] [real_stage:official_devcloud_cloudBuild] : [frame] finish to save status data to service.
+[2026/11/06 12:01:54.225 GMT+08:00] [INFO]  : Finish getting this task status.
+[2026/11/06 12:02:04.184 GMT+08:00] [INFO]  : Start to get the task status.
+[2026/11/06 12:02:04.212 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : [frame] query step status with error.
+[2026/11/06 12:02:04.213 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : 错误信息: DEV-CODECI-35002, 构建任务执行失败!
+[2026/11/06 12:02:04.286 GMT+08:00] [INFO]  : 开始: Get output to CloudBuild Task!

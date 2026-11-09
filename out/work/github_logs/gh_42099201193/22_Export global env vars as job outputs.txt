@@ -1,0 +1,533 @@
+﻿2026-11-05T23:40:39.3126506Z Current runner version: '2.338.0'
+2026-11-05T23:40:39.3131730Z Runner name: 'linux-amd64-cpu-8-hk-7mfx2-runner-b5mm7'
+2026-11-05T23:40:39.3132422Z Runner group name: 'Default'
+2026-11-05T23:40:39.3133438Z Machine name: 'linux-amd64-cpu-8-hk-7mfx2-runner-b5mm7'
+2026-11-05T23:40:39.3135957Z ##[group]GITHUB_TOKEN Permissions
+2026-11-05T23:40:39.3138022Z Contents: read
+2026-11-05T23:40:39.3138512Z Issues: read
+2026-11-05T23:40:39.3138947Z Metadata: read
+2026-11-05T23:40:39.3139463Z PullRequests: read
+2026-11-05T23:40:39.3139903Z ##[endgroup]
+2026-11-05T23:40:39.3141632Z Secret source: Actions
+2026-11-05T23:40:39.3142421Z Cache mode: write
+2026-11-05T23:40:39.3143532Z Runner is running behind proxy server 'http://squid-cache.squid.svc.cluster.local:3128' for all HTTP requests.
+2026-11-05T23:40:39.3144714Z Runner is running behind proxy server 'http://squid-cache.squid.svc.cluster.local:3128' for all HTTPS requests.
+2026-11-05T23:40:39.3145568Z Prepare workflow directory
+2026-11-05T23:40:39.3639600Z Prepare all required actions
+2026-11-05T23:40:39.3679529Z Getting action download info
+2026-11-05T23:40:40.1282657Z Download action repository 'actions/checkout@v7' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-11-05T23:40:42.7374182Z Download action repository 'actions/setup-python@v7' (SHA:6d4fd22b20465ccc0f7354476588e8df7c9ca0e0)
+2026-11-05T23:40:47.1054408Z Complete job name: Export global env vars as job outputs
+2026-11-05T23:40:47.1969256Z ##[group]Run {
+2026-11-05T23:40:47.1969717Z [36;1m{[0m
+2026-11-05T23:40:47.1970177Z [36;1m  echo "ascend_log_prefix=/root/.cache/ascend-logs"[0m
+2026-11-05T23:40:47.1970607Z [36;1m  input_branch="releases/v0.32.0rc"[0m
+2026-11-05T23:40:47.1970994Z [36;1m  normalized=$(echo "$input_branch" | tr '/' '-')[0m
+2026-11-05T23:40:47.1971390Z [36;1m  echo "vllm_ascend_branches=[\"${normalized}\"]"[0m
+2026-11-05T23:40:47.1971765Z [36;1m} >> $GITHUB_OUTPUT[0m
+2026-11-05T23:40:47.1978996Z shell: /usr/bin/bash -el {0}
+2026-11-05T23:40:47.1979655Z env:
+2026-11-05T23:40:47.1979988Z   ASCEND_LOG_PREFIX: /root/.cache/ascend-logs
+2026-11-05T23:40:47.1980343Z ##[endgroup]
+2026-11-05T23:40:47.2897946Z ##[group]Run actions/checkout@v7
+2026-11-05T23:40:47.2898369Z with:
+2026-11-05T23:40:47.2898666Z   ref: releases/v0.32.0rc
+2026-11-05T23:40:47.2899081Z   repository: vllm-project/vllm-ascend
+2026-11-05T23:40:47.2901256Z   token: ***
+2026-11-05T23:40:47.2901533Z   ssh-strict: true
+2026-11-05T23:40:47.2901828Z   ssh-user: git
+2026-11-05T23:40:47.2902118Z   persist-credentials: true
+2026-11-05T23:40:47.2902418Z   clean: true
+2026-11-05T23:40:47.2902708Z   sparse-checkout-cone-mode: true
+2026-11-05T23:40:47.2903086Z   fetch-depth: 1
+2026-11-05T23:40:47.2903560Z   fetch-tags: false
+2026-11-05T23:40:47.2903849Z   show-progress: true
+2026-11-05T23:40:47.2904161Z   lfs: false
+2026-11-05T23:40:47.2904534Z   submodules: false
+2026-11-05T23:40:47.2904807Z   set-safe-directory: true
+2026-11-05T23:40:47.2905276Z   allow-unsafe-pr-checkout: false
+2026-11-05T23:40:47.2905696Z env:
+2026-11-05T23:40:47.2906023Z   ASCEND_LOG_PREFIX: /root/.cache/ascend-logs
+2026-11-05T23:40:47.2906523Z ##[endgroup]
+2026-11-05T23:40:47.3885259Z Syncing repository: vllm-project/vllm-ascend
+2026-11-05T23:40:47.3886667Z ##[group]Getting Git version info
+2026-11-05T23:40:47.3887122Z Working directory is '/home/runner/_work/vllm-ascend/vllm-ascend'
+2026-11-05T23:40:47.3887807Z [command]/usr/bin/git version
+2026-11-05T23:40:47.3888130Z git version 2.55.0
+2026-11-05T23:40:47.3889208Z ##[endgroup]
+2026-11-05T23:40:47.3905661Z Temporarily overriding HOME='/home/runner/_work/_temp/b10379b8-fc52-43c4-800a-f8e768fdc540' before making global git config changes
+2026-11-05T23:40:47.3906371Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-05T23:40:47.3909187Z [command]/usr/bin/git config --global --add safe.directory /home/runner/_work/vllm-ascend/vllm-ascend
+2026-11-05T23:40:47.4133391Z Deleting the contents of '/home/runner/_work/vllm-ascend/vllm-ascend'
+2026-11-05T23:40:47.4164478Z ##[group]Determining repository object format
+2026-11-05T23:40:47.8645266Z ##[endgroup]
+2026-11-05T23:40:47.8645983Z ##[group]Initializing the repository
+2026-11-05T23:40:47.8650713Z [command]/usr/bin/git init /home/runner/_work/vllm-ascend/vllm-ascend
+2026-11-05T23:40:48.0367613Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-05T23:40:48.0368259Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-05T23:40:48.0368746Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-05T23:40:48.0369214Z hint: call:
+2026-11-05T23:40:48.0369441Z hint:
+2026-11-05T23:40:48.0369741Z hint: 	git config --global init.defaultBranch <name>
+2026-11-05T23:40:48.0370066Z hint:
+2026-11-05T23:40:48.0370420Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-05T23:40:48.0370888Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-05T23:40:48.0371268Z hint:
+2026-11-05T23:40:48.0371519Z hint: 	git branch -m <name>
+2026-11-05T23:40:48.0371787Z hint:
+2026-11-05T23:40:48.0372129Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-05T23:40:48.0545786Z Initialized empty Git repository in /home/runner/_work/vllm-ascend/vllm-ascend/.git/
+2026-11-05T23:40:48.0552629Z [command]/usr/bin/git remote add origin https://github.com/vllm-project/vllm-ascend
+2026-11-05T23:40:48.0837220Z ##[endgroup]
+2026-11-05T23:40:48.0837673Z ##[group]Disabling automatic garbage collection
+2026-11-05T23:40:48.0840155Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-05T23:40:48.0984049Z ##[endgroup]
+2026-11-05T23:40:48.0984441Z ##[group]Setting up auth
+2026-11-05T23:40:48.0984789Z Removing SSH command configuration
+2026-11-05T23:40:48.0988930Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-05T23:40:48.1054785Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-05T23:40:48.1350129Z Removing HTTP extra header
+2026-11-05T23:40:48.1359260Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-05T23:40:48.1396404Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-05T23:40:48.1643587Z Removing includeIf entries pointing to credentials config files
+2026-11-05T23:40:48.1647724Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-05T23:40:48.1684565Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-05T23:40:48.1934824Z [command]/usr/bin/git config --file /home/runner/_work/_temp/git-credentials-0dab755a-1b07-42e6-a3d1-74758a4ad336.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-05T23:40:48.2127009Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/_work/vllm-ascend/vllm-ascend/.git.path /home/runner/_work/_temp/git-credentials-0dab755a-1b07-42e6-a3d1-74758a4ad336.config
+2026-11-05T23:40:48.2251429Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/_work/vllm-ascend/vllm-ascend/.git/worktrees/*.path /home/runner/_work/_temp/git-credentials-0dab755a-1b07-42e6-a3d1-74758a4ad336.config
+2026-11-05T23:40:48.2427707Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-0dab755a-1b07-42e6-a3d1-74758a4ad336.config
+2026-11-05T23:40:48.2598178Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-0dab755a-1b07-42e6-a3d1-74758a4ad336.config
+2026-11-05T23:40:48.2749441Z ##[endgroup]
+2026-11-05T23:40:48.2749919Z ##[group]Fetching the repository
+2026-11-05T23:40:48.2755389Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/releases/v0.32.0rc*:refs/remotes/origin/releases/v0.32.0rc* +refs/tags/releases/v0.32.0rc*:refs/tags/releases/v0.32.0rc*
+2026-11-05T23:40:55.3724347Z From https://github.com/vllm-project/vllm-ascend
+2026-11-05T23:40:55.3724905Z  * [new branch]      releases/v0.32.0rc -> origin/releases/v0.32.0rc
+2026-11-05T23:40:55.3766219Z ##[endgroup]
+2026-11-05T23:40:55.3766656Z ##[group]Determining the checkout info
+2026-11-05T23:40:55.3771234Z [command]/usr/bin/git branch --list --remote origin/releases/v0.32.0rc
+2026-11-05T23:40:55.3898616Z   origin/releases/v0.32.0rc
+2026-11-05T23:40:55.3901502Z ##[endgroup]
+2026-11-05T23:40:55.3905476Z [command]/usr/bin/git sparse-checkout disable
+2026-11-05T23:40:55.4391272Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-05T23:40:55.4538029Z ##[group]Checking out the ref
+2026-11-05T23:40:55.4541381Z [command]/usr/bin/git checkout --progress --force -B releases/v0.32.0rc refs/remotes/origin/releases/v0.32.0rc
+2026-11-05T23:40:56.7735270Z Updating files:   3% (147/4745)
+2026-11-05T23:40:57.1100124Z Updating files:   4% (190/4745)
+2026-11-05T23:40:57.4434610Z Updating files:   5% (238/4745)
+2026-11-05T23:40:57.4842117Z Updating files:   6% (285/4745)
+2026-11-05T23:40:57.7779824Z Updating files:   6% (291/4745)
+2026-11-05T23:40:58.1136694Z Updating files:   7% (333/4745)
+2026-11-05T23:40:58.4414460Z Updating files:   8% (380/4745)
+2026-11-05T23:40:58.4815197Z Updating files:   9% (428/4745)
+2026-11-05T23:40:58.7651000Z Updating files:   9% (434/4745)
+2026-11-05T23:40:59.0885308Z Updating files:  10% (475/4745)
+2026-11-05T23:40:59.4098929Z Updating files:  11% (522/4745)
+2026-11-05T23:40:59.4778154Z Updating files:  12% (570/4745)
+2026-11-05T23:40:59.7322741Z Updating files:  12% (580/4745)
+2026-11-05T23:41:00.0945302Z Updating files:  13% (617/4745)
+2026-11-05T23:41:00.4261152Z Updating files:  14% (665/4745)
+2026-11-05T23:41:00.4782872Z Updating files:  15% (712/4745)
+2026-11-05T23:41:00.7592406Z Updating files:  15% (720/4745)
+2026-11-05T23:41:01.0663730Z Updating files:  16% (760/4745)
+2026-11-05T23:41:01.4135072Z Updating files:  17% (807/4745)
+2026-11-05T23:41:01.4818715Z Updating files:  18% (855/4745)
+2026-11-05T23:41:01.7560864Z Updating files:  18% (865/4745)
+2026-11-05T23:41:02.0708102Z Updating files:  19% (902/4745)
+2026-11-05T23:41:02.4009163Z Updating files:  20% (949/4745)
+2026-11-05T23:41:02.4790482Z Updating files:  21% (997/4745)
+2026-11-05T23:41:02.7089430Z Updating files:  21% (1009/4745)
+2026-11-05T23:41:03.0202993Z Updating files:  22% (1044/4745)
+2026-11-05T23:41:03.3429298Z Updating files:  23% (1092/4745)
+2026-11-05T23:41:03.4795054Z Updating files:  24% (1139/4745)
+2026-11-05T23:41:03.6559652Z Updating files:  24% (1161/4745)
+2026-11-05T23:41:03.9681373Z Updating files:  25% (1187/4745)
+2026-11-05T23:41:04.2979599Z Updating files:  26% (1234/4745)
+2026-11-05T23:41:04.4811545Z Updating files:  27% (1282/4745)
+2026-11-05T23:41:04.5916801Z Updating files:  27% (1311/4745)
+2026-11-05T23:41:04.8982929Z Updating files:  28% (1329/4745)
+2026-11-05T23:41:05.2133721Z Updating files:  29% (1377/4745)
+2026-11-05T23:41:05.4774854Z Updating files:  30% (1424/4745)
+2026-11-05T23:41:05.5555529Z Updating files:  30% (1462/4745)
+2026-11-05T23:41:05.9238340Z Updating files:  31% (1471/4745)
+2026-11-05T23:41:06.2630283Z Updating files:  32% (1519/4745)
+2026-11-05T23:41:06.4812817Z Updating files:  33% (1566/4745)
+2026-11-05T23:41:06.5897902Z Updating files:  33% (1597/4745)
+2026-11-05T23:41:06.9134613Z Updating files:  34% (1614/4745)
+2026-11-05T23:41:07.2470542Z Updating files:  35% (1661/4745)
+2026-11-05T23:41:07.4779239Z Updating files:  36% (1709/4745)
+2026-11-05T23:41:07.5640748Z Updating files:  36% (1743/4745)
+2026-11-05T23:41:07.8900287Z Updating files:  37% (1756/4745)
+2026-11-05T23:41:08.2167490Z Updating files:  38% (1804/4745)
+2026-11-05T23:41:08.4935239Z Updating files:  39% (1851/4745)
+2026-11-05T23:41:08.6128289Z Updating files:  39% (1884/4745)
+2026-11-05T23:41:08.9431614Z Updating files:  40% (1898/4745)
+2026-11-05T23:41:09.2768765Z Updating files:  41% (1946/4745)
+2026-11-05T23:41:09.4794277Z Updating files:  42% (1993/4745)
+2026-11-05T23:41:09.5898645Z Updating files:  42% (2024/4745)
+2026-11-05T23:41:09.9045528Z Updating files:  43% (2041/4745)
+2026-11-05T23:41:10.2189576Z Updating files:  44% (2088/4745)
+2026-11-05T23:41:10.4813638Z Updating files:  45% (2136/4745)
+2026-11-05T23:41:10.5331057Z Updating files:  45% (2175/4745)
+2026-11-05T23:41:10.8647383Z Updating files:  46% (2183/4745)
+2026-11-05T23:41:11.1997650Z Updating files:  47% (2231/4745)
+2026-11-05T23:41:11.4828113Z Updating files:  48% (2278/4745)
+2026-11-05T23:41:11.5265223Z Updating files:  48% (2320/4745)
+2026-11-05T23:41:11.8340831Z Updating files:  49% (2326/4745)
+2026-11-05T23:41:12.1195853Z Updating files:  50% (2373/4745)
+2026-11-05T23:41:12.4271676Z Updating files:  51% (2420/4745)
+2026-11-05T23:41:12.4816821Z Updating files:  52% (2468/4745)
+2026-11-05T23:41:12.7191330Z Updating files:  52% (2477/4745)
+2026-11-05T23:41:13.0138256Z Updating files:  53% (2515/4745)
+2026-11-05T23:41:13.3107466Z Updating files:  54% (2563/4745)
+2026-11-05T23:41:13.4810682Z Updating files:  55% (2610/4745)
+2026-11-05T23:41:13.6012251Z Updating files:  55% (2638/4745)
+2026-11-05T23:41:13.9121106Z Updating files:  56% (2658/4745)
+2026-11-05T23:41:14.2152010Z Updating files:  57% (2705/4745)
+2026-11-05T23:41:14.4779221Z Updating files:  58% (2753/4745)
+2026-11-05T23:41:14.5155717Z Updating files:  58% (2794/4745)
+2026-11-05T23:41:14.8098102Z Updating files:  59% (2800/4745)
+2026-11-05T23:41:15.1054374Z Updating files:  60% (2847/4745)
+2026-11-05T23:41:15.3865805Z Updating files:  61% (2895/4745)
+2026-11-05T23:41:15.4802809Z Updating files:  62% (2942/4745)
+2026-11-05T23:41:15.6789300Z Updating files:  62% (2957/4745)
+2026-11-05T23:41:15.9819979Z Updating files:  63% (2990/4745)
+2026-11-05T23:41:16.2924317Z Updating files:  64% (3037/4745)
+2026-11-05T23:41:16.4787615Z Updating files:  65% (3085/4745)
+2026-11-05T23:41:16.5834413Z Updating files:  65% (3115/4745)
+2026-11-05T23:41:16.8789677Z Updating files:  66% (3132/4745)
+2026-11-05T23:41:17.1826087Z Updating files:  67% (3180/4745)
+2026-11-05T23:41:17.4802082Z Updating files:  68% (3227/4745)
+2026-11-05T23:41:17.7772157Z Updating files:  69% (3275/4745)
+2026-11-05T23:41:18.0838511Z Updating files:  70% (3322/4745)
+2026-11-05T23:41:18.3969114Z Updating files:  71% (3369/4745)
+2026-11-05T23:41:18.4794802Z Updating files:  72% (3417/4745)
+2026-11-05T23:41:18.6941254Z Updating files:  72% (3430/4745)
+2026-11-05T23:41:19.0069599Z Updating files:  73% (3464/4745)
+2026-11-05T23:41:19.3069075Z Updating files:  74% (3512/4745)
+2026-11-05T23:41:19.4798112Z Updating files:  75% (3559/4745)
+2026-11-05T23:41:19.6019026Z Updating files:  75% (3587/4745)
+2026-11-05T23:41:19.8938333Z Updating files:  76% (3607/4745)
+2026-11-05T23:41:20.1993416Z Updating files:  77% (3654/4745)
+2026-11-05T23:41:20.4799772Z Updating files:  78% (3702/4745)
+2026-11-05T23:41:20.4872130Z Updating files:  78% (3748/4745)
+2026-11-05T23:41:20.7901687Z Updating files:  79% (3749/4745)
+2026-11-05T23:41:21.0944836Z Updating files:  80% (3796/4745)
+2026-11-05T23:41:21.3884083Z Updating files:  81% (3844/4745)
+2026-11-05T23:41:21.4823169Z Updating files:  82% (3891/4745)
+2026-11-05T23:41:21.7092418Z Updating files:  82% (3905/4745)
+2026-11-05T23:41:22.0165172Z Updating files:  83% (3939/4745)
+2026-11-05T23:41:22.3567778Z Updating files:  84% (3986/4745)
+2026-11-05T23:41:22.4798322Z Updating files:  85% (4034/4745)
+2026-11-05T23:41:22.6844277Z Updating files:  85% (4052/4745)
+2026-11-05T23:41:22.9939725Z Updating files:  86% (4081/4745)
+2026-11-05T23:41:23.3027981Z Updating files:  87% (4129/4745)
+2026-11-05T23:41:23.4811783Z Updating files:  88% (4176/4745)
+2026-11-05T23:41:23.6114531Z Updating files:  88% (4204/4745)
+2026-11-05T23:41:23.9370024Z Updating files:  89% (4224/4745)
+2026-11-05T23:41:24.2347079Z Updating files:  90% (4271/4745)
+2026-11-05T23:41:24.4778376Z Updating files:  91% (4318/4745)
+2026-11-05T23:41:24.5248733Z Updating files:  91% (4358/4745)
+2026-11-05T23:41:24.8330471Z Updating files:  92% (4366/4745)
+2026-11-05T23:41:25.1325407Z Updating files:  93% (4413/4745)
+2026-11-05T23:41:25.4273541Z Updating files:  94% (4461/4745)
+2026-11-05T23:41:25.4777047Z Updating files:  95% (4508/4745)
+2026-11-05T23:41:25.7283613Z Updating files:  95% (4516/4745)
+2026-11-05T23:41:26.0249752Z Updating files:  96% (4556/4745)
+2026-11-05T23:41:26.3290044Z Updating files:  97% (4603/4745)
+2026-11-05T23:41:26.4795041Z Updating files:  98% (4651/4745)
+2026-11-05T23:41:26.6312712Z Updating files:  98% (4675/4745)
+2026-11-05T23:41:26.9557798Z Updating files:  99% (4698/4745)
+2026-11-05T23:41:26.9558146Z Updating files: 100% (4745/4745)
+2026-11-05T23:41:26.9558503Z Updating files: 100% (4745/4745), done.
+2026-11-05T23:41:27.0429854Z Switched to a new branch 'releases/v0.32.0rc'
+2026-11-05T23:41:27.0747937Z branch 'releases/v0.32.0rc' set up to track 'origin/releases/v0.32.0rc'.
+2026-11-05T23:41:27.0766122Z ##[endgroup]
+2026-11-05T23:41:27.0897568Z [command]/usr/bin/git log -1 --format=%H
+2026-11-05T23:41:27.0945522Z b04f258fa559d9ee630a20e1112084ae5e270172
+2026-11-05T23:41:27.1726501Z ##[group]Run actions/setup-python@v7
+2026-11-05T23:41:27.1726804Z with:
+2026-11-05T23:41:27.1727064Z   python-version: 3.12
+2026-11-05T23:41:27.1727328Z   check-latest: false
+2026-11-05T23:41:27.1729255Z   token: ***
+2026-11-05T23:41:27.1729586Z   mirror: https://raw.githubusercontent.com/actions/python-versions/main
+2026-11-05T23:41:27.1729990Z   update-environment: true
+2026-11-05T23:41:27.1730272Z   allow-prereleases: false
+2026-11-05T23:41:27.1730539Z   freethreaded: false
+2026-11-05T23:41:27.1730779Z env:
+2026-11-05T23:41:27.1731109Z   ASCEND_LOG_PREFIX: /root/.cache/ascend-logs
+2026-11-05T23:41:27.1731409Z ##[endgroup]
+2026-11-05T23:41:27.2834103Z ##[group]Installed versions
+2026-11-05T23:41:27.2855825Z Version 3.12 was not found in the local cache
+2026-11-05T23:41:29.1011552Z Version 3.12 is available for downloading
+2026-11-05T23:41:29.1012601Z Download from "https://github.com/actions/python-versions/releases/download/3.12.16-40260402378/python-3.12.16-linux-24.04-x64.tar.gz"
+2026-11-05T23:41:43.9087547Z Extract downloaded archive
+2026-11-05T23:41:43.9178231Z [command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/_work/_temp/269ba50e-3642-4df7-9c79-8a09d6ad907b -f /home/runner/_work/_temp/3d3b5a4e-c69b-4040-935d-4fdeca911bd1
+2026-11-05T23:42:40.7339894Z Execute installation script
+2026-11-05T23:42:40.7449571Z Check if Python hostedtoolcache folder exist...
+2026-11-05T23:42:40.7452544Z Creating Python hostedtoolcache folder...
+2026-11-05T23:42:40.7480645Z Create Python 3.12.16 folder
+2026-11-05T23:42:40.7527500Z Copy Python binaries to hostedtoolcache folder
+2026-11-05T23:43:54.1429605Z Create additional symlinks (Required for the UsePythonVersion Azure Pipelines task and the setup-python GitHub Action)
+2026-11-05T23:43:54.1586650Z Upgrading pip...
+2026-11-05T23:44:00.3550226Z Collecting pip
+2026-11-05T23:44:00.4448823Z Downloading pip-26.3-py3-none-any.whl.metadata (4.6 kB)
+2026-11-05T23:44:00.4537968Z Downloading pip-26.3-py3-none-any.whl (2.0 MB)
+2026-11-05T23:44:00.4706773Z ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 124.1 MB/s eta 0:00:00
+2026-11-05T23:44:00.4708384Z 
+2026-11-05T23:44:00.4972041Z Installing collected packages: pip
+2026-11-05T23:44:00.4972398Z Attempting uninstall: pip
+2026-11-05T23:44:00.5003560Z Found existing installation: pip 25.0.1
+2026-11-05T23:44:01.0948226Z Uninstalling pip-25.0.1:
+2026-11-05T23:44:01.1763308Z Successfully uninstalled pip-25.0.1
+2026-11-05T23:44:11.6614476Z Successfully installed pip-26.3
+2026-11-05T23:44:11.7238297Z Create complete file
+2026-11-05T23:44:11.7679495Z Successfully set up CPython (3.12.16)
+2026-11-05T23:44:11.7680617Z ##[endgroup]
+2026-11-05T23:44:11.8346705Z ##[group]Run actions/checkout@v7
+2026-11-05T23:44:11.8347048Z with:
+2026-11-05T23:44:11.8347309Z   ref: b04f258fa559d9ee630a20e1112084ae5e270172
+2026-11-05T23:44:11.8347795Z   path: profile-source
+2026-11-05T23:44:11.8348052Z   sparse-checkout: tools/profiling
+2026-11-05T23:44:11.8348323Z   repository: vllm-project/vllm-ascend
+2026-11-05T23:44:11.8350351Z   token: ***
+2026-11-05T23:44:11.8350574Z   ssh-strict: true
+2026-11-05T23:44:11.8350851Z   ssh-user: git
+2026-11-05T23:44:11.8351125Z   persist-credentials: true
+2026-11-05T23:44:11.8351361Z   clean: true
+2026-11-05T23:44:11.8351648Z   sparse-checkout-cone-mode: true
+2026-11-05T23:44:11.8351921Z   fetch-depth: 1
+2026-11-05T23:44:11.8352148Z   fetch-tags: false
+2026-11-05T23:44:11.8352387Z   show-progress: true
+2026-11-05T23:44:11.8352627Z   lfs: false
+2026-11-05T23:44:11.8352841Z   submodules: false
+2026-11-05T23:44:11.8353068Z   set-safe-directory: true
+2026-11-05T23:44:11.8353470Z   allow-unsafe-pr-checkout: false
+2026-11-05T23:44:11.8353835Z env:
+2026-11-05T23:44:11.8354105Z   ASCEND_LOG_PREFIX: /root/.cache/ascend-logs
+2026-11-05T23:44:11.8354500Z   pythonLocation: /home/runner/_work/_tool/Python/3.12.16/x64
+2026-11-05T23:44:11.8354933Z   PKG_CONFIG_PATH: /home/runner/_work/_tool/Python/3.12.16/x64/lib/pkgconfig
+2026-11-05T23:44:11.8355340Z   Python_ROOT_DIR: /home/runner/_work/_tool/Python/3.12.16/x64
+2026-11-05T23:44:11.8355719Z   Python2_ROOT_DIR: /home/runner/_work/_tool/Python/3.12.16/x64
+2026-11-05T23:44:11.8356192Z   Python3_ROOT_DIR: /home/runner/_work/_tool/Python/3.12.16/x64
+2026-11-05T23:44:11.8356589Z   LD_LIBRARY_PATH: /home/runner/_work/_tool/Python/3.12.16/x64/lib
+2026-11-05T23:44:11.8356934Z ##[endgroup]
+2026-11-05T23:44:11.9207232Z Syncing repository: vllm-project/vllm-ascend
+2026-11-05T23:44:11.9207843Z ##[group]Getting Git version info
+2026-11-05T23:44:11.9208235Z Working directory is '/home/runner/_work/vllm-ascend/vllm-ascend/profile-source'
+2026-11-05T23:44:11.9237962Z [command]/usr/bin/git version
+2026-11-05T23:44:11.9276810Z git version 2.55.0
+2026-11-05T23:44:11.9290106Z ##[endgroup]
+2026-11-05T23:44:11.9324629Z Temporarily overriding HOME='/home/runner/_work/_temp/e2847e58-e3f2-49af-9bb5-e6c049f0c1eb' before making global git config changes
+2026-11-05T23:44:11.9325287Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-05T23:44:11.9328681Z [command]/usr/bin/git config --global --add safe.directory /home/runner/_work/vllm-ascend/vllm-ascend/profile-source
+2026-11-05T23:44:11.9562013Z ##[group]Determining repository object format
+2026-11-05T23:44:11.9563415Z ##[endgroup]
+2026-11-05T23:44:11.9563803Z ##[group]Initializing the repository
+2026-11-05T23:44:11.9567016Z [command]/usr/bin/git init /home/runner/_work/vllm-ascend/vllm-ascend/profile-source
+2026-11-05T23:44:12.1240859Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-05T23:44:12.1241352Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-05T23:44:12.1241811Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-05T23:44:12.1242188Z hint: call:
+2026-11-05T23:44:12.1242410Z hint:
+2026-11-05T23:44:12.1242728Z hint: 	git config --global init.defaultBranch <name>
+2026-11-05T23:44:12.1243032Z hint:
+2026-11-05T23:44:12.1243423Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-05T23:44:12.1243881Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-05T23:44:12.1244228Z hint:
+2026-11-05T23:44:12.1244450Z hint: 	git branch -m <name>
+2026-11-05T23:44:12.1244782Z hint:
+2026-11-05T23:44:12.1245106Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-05T23:44:12.1405870Z Initialized empty Git repository in /home/runner/_work/vllm-ascend/vllm-ascend/profile-source/.git/
+2026-11-05T23:44:12.1412355Z [command]/usr/bin/git remote add origin https://github.com/vllm-project/vllm-ascend
+2026-11-05T23:44:12.1678475Z ##[endgroup]
+2026-11-05T23:44:12.1679176Z ##[group]Disabling automatic garbage collection
+2026-11-05T23:44:12.1681780Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-05T23:44:12.1833966Z ##[endgroup]
+2026-11-05T23:44:12.1834664Z ##[group]Setting up auth
+2026-11-05T23:44:12.1835095Z Removing SSH command configuration
+2026-11-05T23:44:12.1838449Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-05T23:44:12.1901482Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-05T23:44:12.2211644Z Removing HTTP extra header
+2026-11-05T23:44:12.2215369Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-05T23:44:12.2249999Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-05T23:44:12.2495468Z Removing includeIf entries pointing to credentials config files
+2026-11-05T23:44:12.2499825Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-05T23:44:12.2534965Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-05T23:44:12.2787122Z [command]/usr/bin/git config --file /home/runner/_work/_temp/git-credentials-30d88e4b-b349-4e9f-85a8-b70a016a95fc.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-05T23:44:12.2955045Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/_work/vllm-ascend/vllm-ascend/profile-source/.git.path /home/runner/_work/_temp/git-credentials-30d88e4b-b349-4e9f-85a8-b70a016a95fc.config
+2026-11-05T23:44:12.3099592Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/_work/vllm-ascend/vllm-ascend/profile-source/.git/worktrees/*.path /home/runner/_work/_temp/git-credentials-30d88e4b-b349-4e9f-85a8-b70a016a95fc.config
+2026-11-05T23:44:12.3260481Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/profile-source/.git.path /github/runner_temp/git-credentials-30d88e4b-b349-4e9f-85a8-b70a016a95fc.config
+2026-11-05T23:44:12.3414548Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/profile-source/.git/worktrees/*.path /github/runner_temp/git-credentials-30d88e4b-b349-4e9f-85a8-b70a016a95fc.config
+2026-11-05T23:44:12.3560618Z ##[endgroup]
+2026-11-05T23:44:12.3561128Z ##[group]Fetching the repository
+2026-11-05T23:44:12.3566197Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin b04f258fa559d9ee630a20e1112084ae5e270172
+2026-11-05T23:44:13.6155113Z From https://github.com/vllm-project/vllm-ascend
+2026-11-05T23:44:13.6155562Z  * branch            b04f258fa559d9ee630a20e1112084ae5e270172 -> FETCH_HEAD
+2026-11-05T23:44:13.6191780Z [command]/usr/bin/git rev-parse --verify --quiet b04f258fa559d9ee630a20e1112084ae5e270172^{object}
+2026-11-05T23:44:13.6284536Z b04f258fa559d9ee630a20e1112084ae5e270172
+2026-11-05T23:44:13.6287183Z ##[endgroup]
+2026-11-05T23:44:13.6287675Z ##[group]Determining the checkout info
+2026-11-05T23:44:13.6289809Z ##[endgroup]
+2026-11-05T23:44:13.6290275Z ##[group]Setting up sparse checkout
+2026-11-05T23:44:13.6291854Z [command]/usr/bin/git sparse-checkout set tools/profiling
+2026-11-05T23:44:13.6772216Z ##[endgroup]
+2026-11-05T23:44:13.6772607Z ##[group]Checking out the ref
+2026-11-05T23:44:13.6775895Z [command]/usr/bin/git checkout --progress --force b04f258fa559d9ee630a20e1112084ae5e270172
+2026-11-05T23:44:14.7014016Z Updating files:  54% (37/68)
+2026-11-05T23:44:14.7084008Z Updating files:  55% (38/68)
+2026-11-05T23:44:14.7131929Z Updating files:  57% (39/68)
+2026-11-05T23:44:14.7197887Z Updating files:  58% (40/68)
+2026-11-05T23:44:14.7255461Z Updating files:  60% (41/68)
+2026-11-05T23:44:14.7317758Z Updating files:  61% (42/68)
+2026-11-05T23:44:14.7387764Z Updating files:  63% (43/68)
+2026-11-05T23:44:14.7442112Z Updating files:  64% (44/68)
+2026-11-05T23:44:14.7512802Z Updating files:  66% (45/68)
+2026-11-05T23:44:14.7615685Z Updating files:  67% (46/68)
+2026-11-05T23:44:14.7683041Z Updating files:  69% (47/68)
+2026-11-05T23:44:14.7742939Z Updating files:  70% (48/68)
+2026-11-05T23:44:14.7806136Z Updating files:  72% (49/68)
+2026-11-05T23:44:14.7875236Z Updating files:  73% (50/68)
+2026-11-05T23:44:14.7929080Z Updating files:  75% (51/68)
+2026-11-05T23:44:14.8016235Z Updating files:  76% (52/68)
+2026-11-05T23:44:14.8077310Z Updating files:  77% (53/68)
+2026-11-05T23:44:14.8137749Z Updating files:  79% (54/68)
+2026-11-05T23:44:14.8210227Z Updating files:  80% (55/68)
+2026-11-05T23:44:14.8268065Z Updating files:  82% (56/68)
+2026-11-05T23:44:14.8332068Z Updating files:  83% (57/68)
+2026-11-05T23:44:14.8380425Z Updating files:  85% (58/68)
+2026-11-05T23:44:14.8436754Z Updating files:  86% (59/68)
+2026-11-05T23:44:14.8500996Z Updating files:  88% (60/68)
+2026-11-05T23:44:14.8578412Z Updating files:  89% (61/68)
+2026-11-05T23:44:14.8646189Z Updating files:  91% (62/68)
+2026-11-05T23:44:14.8707207Z Updating files:  92% (63/68)
+2026-11-05T23:44:14.8785595Z Updating files:  94% (64/68)
+2026-11-05T23:44:14.8898256Z Updating files:  95% (65/68)
+2026-11-05T23:44:14.8952922Z Updating files:  97% (66/68)
+2026-11-05T23:44:14.9019960Z Updating files:  98% (67/68)
+2026-11-05T23:44:14.9020289Z Updating files: 100% (68/68)
+2026-11-05T23:44:14.9020617Z Updating files: 100% (68/68), done.
+2026-11-05T23:44:14.9337917Z Note: switching to 'b04f258fa559d9ee630a20e1112084ae5e270172'.
+2026-11-05T23:44:14.9338169Z 
+2026-11-05T23:44:14.9338381Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-11-05T23:44:14.9338907Z changes and commit them, and you can discard any commits you make in this
+2026-11-05T23:44:14.9339339Z state without impacting any branches by switching back to a branch.
+2026-11-05T23:44:14.9339601Z 
+2026-11-05T23:44:14.9339779Z If you want to create a new branch to retain commits you create, you may
+2026-11-05T23:44:14.9340176Z do so (now or later) by using -c with the switch command. Example:
+2026-11-05T23:44:14.9340448Z 
+2026-11-05T23:44:14.9340595Z   git switch -c <new-branch-name>
+2026-11-05T23:44:14.9340751Z 
+2026-11-05T23:44:14.9340885Z Or undo this operation with:
+2026-11-05T23:44:14.9341011Z 
+2026-11-05T23:44:14.9341147Z   git switch -
+2026-11-05T23:44:14.9341296Z 
+2026-11-05T23:44:14.9341484Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-11-05T23:44:14.9341763Z 
+2026-11-05T23:44:14.9341995Z HEAD is now at b04f258 [Feature][KV Pool][v0.32.0rc] Support GLM RecoverSSM prefix reuse with PCP (#21059)
+2026-11-05T23:44:14.9650491Z ##[endgroup]
+2026-11-05T23:44:14.9766107Z [command]/usr/bin/git log -1 --format=%H
+2026-11-05T23:44:14.9815829Z b04f258fa559d9ee630a20e1112084ae5e270172
+2026-11-05T23:44:15.0433664Z ##[group]Run python3 -m tools.profiling.capture configure \
+2026-11-05T23:44:15.0434118Z [36;1mpython3 -m tools.profiling.capture configure \[0m
+2026-11-05T23:44:15.0434542Z [36;1m  --options-json "$PROFILE_OPTIONS_JSON" --output "$GITHUB_OUTPUT"[0m
+2026-11-05T23:44:15.0458977Z shell: /usr/bin/bash -el {0}
+2026-11-05T23:44:15.0459290Z env:
+2026-11-05T23:44:15.0459563Z   ASCEND_LOG_PREFIX: /root/.cache/ascend-logs
+2026-11-05T23:44:15.0460027Z   pythonLocation: /home/runner/_work/_tool/Python/3.12.16/x64
+2026-11-05T23:44:15.0460485Z   PKG_CONFIG_PATH: /home/runner/_work/_tool/Python/3.12.16/x64/lib/pkgconfig
+2026-11-05T23:44:15.0460890Z   Python_ROOT_DIR: /home/runner/_work/_tool/Python/3.12.16/x64
+2026-11-05T23:44:15.0461261Z   Python2_ROOT_DIR: /home/runner/_work/_tool/Python/3.12.16/x64
+2026-11-05T23:44:15.0461640Z   Python3_ROOT_DIR: /home/runner/_work/_tool/Python/3.12.16/x64
+2026-11-05T23:44:15.0462020Z   LD_LIBRARY_PATH: /home/runner/_work/_tool/Python/3.12.16/x64/lib
+2026-11-05T23:44:15.0462445Z   PROFILE_OPTIONS_JSON: {}
+2026-11-05T23:44:15.0462699Z ##[endgroup]
+2026-11-05T23:44:15.4350798Z ##[group]Run python3 -m pip install pyyaml -q
+2026-11-05T23:44:15.4351164Z [36;1mpython3 -m pip install pyyaml -q[0m
+2026-11-05T23:44:15.4351566Z [36;1mpython3 .github/workflows/scripts/resolve_nightly_tests.py --mode=matrix[0m
+2026-11-05T23:44:15.4360927Z shell: /usr/bin/bash -el {0}
+2026-11-05T23:44:15.4361186Z env:
+2026-11-05T23:44:15.4361423Z   ASCEND_LOG_PREFIX: /root/.cache/ascend-logs
+2026-11-05T23:44:15.4361779Z   pythonLocation: /home/runner/_work/_tool/Python/3.12.16/x64
+2026-11-05T23:44:15.4362165Z   PKG_CONFIG_PATH: /home/runner/_work/_tool/Python/3.12.16/x64/lib/pkgconfig
+2026-11-05T23:44:15.4362564Z   Python_ROOT_DIR: /home/runner/_work/_tool/Python/3.12.16/x64
+2026-11-05T23:44:15.4362916Z   Python2_ROOT_DIR: /home/runner/_work/_tool/Python/3.12.16/x64
+2026-11-05T23:44:15.4363440Z   Python3_ROOT_DIR: /home/runner/_work/_tool/Python/3.12.16/x64
+2026-11-05T23:44:15.4363828Z   LD_LIBRARY_PATH: /home/runner/_work/_tool/Python/3.12.16/x64/lib
+2026-11-05T23:44:15.4364317Z   MATRIX_FILE: .github/workflows/configs/nightly_config.yaml
+2026-11-05T23:44:15.4364958Z   MATRIX_OUTPUTS: {"multi_node":"a3.multi_node.test_config","double_node":"a3.double_node.test_config","single_node":"a3.single_node.test_config","multi_card":"a3.multi_card.test_config"}
+2026-11-05T23:44:15.4365535Z ##[endgroup]
+2026-11-05T23:44:17.6004913Z Post job cleanup.
+2026-11-05T23:44:17.6686693Z [command]/usr/bin/git version
+2026-11-05T23:44:17.6711974Z git version 2.55.0
+2026-11-05T23:44:17.6764523Z Temporarily overriding HOME='/home/runner/_work/_temp/ae960c49-9d07-4f93-94d2-3ce60fefa94a' before making global git config changes
+2026-11-05T23:44:17.6765220Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-05T23:44:17.6768541Z [command]/usr/bin/git config --global --add safe.directory /home/runner/_work/vllm-ascend/vllm-ascend/profile-source
+2026-11-05T23:44:17.6918321Z Removing SSH command configuration
+2026-11-05T23:44:17.6922858Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-05T23:44:17.6989942Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-05T23:44:17.7390050Z Removing HTTP extra header
+2026-11-05T23:44:17.7393439Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-05T23:44:17.7436118Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-05T23:44:17.7744814Z Removing includeIf entries pointing to credentials config files
+2026-11-05T23:44:17.7748785Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-05T23:44:17.7785881Z includeif.gitdir:/home/runner/_work/vllm-ascend/vllm-ascend/profile-source/.git.path
+2026-11-05T23:44:17.7786504Z includeif.gitdir:/home/runner/_work/vllm-ascend/vllm-ascend/profile-source/.git/worktrees/*.path
+2026-11-05T23:44:17.7786987Z includeif.gitdir:/github/workspace/profile-source/.git.path
+2026-11-05T23:44:17.7787496Z includeif.gitdir:/github/workspace/profile-source/.git/worktrees/*.path
+2026-11-05T23:44:17.7791305Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/_work/vllm-ascend/vllm-ascend/profile-source/.git.path
+2026-11-05T23:44:17.7825894Z /home/runner/_work/_temp/git-credentials-30d88e4b-b349-4e9f-85a8-b70a016a95fc.config
+2026-11-05T23:44:17.7832452Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/_work/vllm-ascend/vllm-ascend/profile-source/.git.path \/home\/runner\/_work\/_temp\/git\-credentials\-30d88e4b\-b349\-4e9f\-85a8\-b70a016a95fc\.config
+2026-11-05T23:44:17.7957327Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/_work/vllm-ascend/vllm-ascend/profile-source/.git/worktrees/*.path
+2026-11-05T23:44:17.8027184Z /home/runner/_work/_temp/git-credentials-30d88e4b-b349-4e9f-85a8-b70a016a95fc.config
+2026-11-05T23:44:17.8033535Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/_work/vllm-ascend/vllm-ascend/profile-source/.git/worktrees/*.path \/home\/runner\/_work\/_temp\/git\-credentials\-30d88e4b\-b349\-4e9f\-85a8\-b70a016a95fc\.config
+2026-11-05T23:44:17.8160057Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/profile-source/.git.path
+2026-11-05T23:44:17.8218929Z /github/runner_temp/git-credentials-30d88e4b-b349-4e9f-85a8-b70a016a95fc.config
+2026-11-05T23:44:17.8223614Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/profile-source/.git.path \/github\/runner_temp\/git\-credentials\-30d88e4b\-b349\-4e9f\-85a8\-b70a016a95fc\.config
+2026-11-05T23:44:17.8339156Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/profile-source/.git/worktrees/*.path
+2026-11-05T23:44:17.8400500Z /github/runner_temp/git-credentials-30d88e4b-b349-4e9f-85a8-b70a016a95fc.config
+2026-11-05T23:44:17.8405670Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/profile-source/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-30d88e4b\-b349\-4e9f\-85a8\-b70a016a95fc\.config
+2026-11-05T23:44:17.8535792Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-05T23:44:17.8854544Z Removing credentials config '/home/runner/_work/_temp/git-credentials-30d88e4b-b349-4e9f-85a8-b70a016a95fc.config'
+2026-11-05T23:44:17.9437692Z Post job cleanup.
+2026-11-05T23:44:18.1035071Z Post job cleanup.
+2026-11-05T23:44:18.1734859Z [command]/usr/bin/git version
+2026-11-05T23:44:18.1759486Z git version 2.55.0
+2026-11-05T23:44:18.1830576Z Temporarily overriding HOME='/home/runner/_work/_temp/634faa05-7b3d-44d9-a4cd-1ffb25a0305f' before making global git config changes
+2026-11-05T23:44:18.1831233Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-05T23:44:18.1834366Z [command]/usr/bin/git config --global --add safe.directory /home/runner/_work/vllm-ascend/vllm-ascend
+2026-11-05T23:44:18.1986751Z Removing SSH command configuration
+2026-11-05T23:44:18.1991228Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-05T23:44:18.2052340Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-05T23:44:18.2450556Z Removing HTTP extra header
+2026-11-05T23:44:18.2454146Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-05T23:44:18.2492753Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-05T23:44:18.2777910Z Removing includeIf entries pointing to credentials config files
+2026-11-05T23:44:18.2781596Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-05T23:44:18.2813876Z includeif.gitdir:/home/runner/_work/vllm-ascend/vllm-ascend/.git.path
+2026-11-05T23:44:18.2814387Z includeif.gitdir:/home/runner/_work/vllm-ascend/vllm-ascend/.git/worktrees/*.path
+2026-11-05T23:44:18.2814772Z includeif.gitdir:/github/workspace/.git.path
+2026-11-05T23:44:18.2815155Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-05T23:44:18.2819537Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/_work/vllm-ascend/vllm-ascend/.git.path
+2026-11-05T23:44:18.2851597Z /home/runner/_work/_temp/git-credentials-0dab755a-1b07-42e6-a3d1-74758a4ad336.config
+2026-11-05T23:44:18.2858286Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/_work/vllm-ascend/vllm-ascend/.git.path \/home\/runner\/_work\/_temp\/git\-credentials\-0dab755a\-1b07\-42e6\-a3d1\-74758a4ad336\.config
+2026-11-05T23:44:18.2982210Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/_work/vllm-ascend/vllm-ascend/.git/worktrees/*.path
+2026-11-05T23:44:18.3054334Z /home/runner/_work/_temp/git-credentials-0dab755a-1b07-42e6-a3d1-74758a4ad336.config
+2026-11-05T23:44:18.3060567Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/_work/vllm-ascend/vllm-ascend/.git/worktrees/*.path \/home\/runner\/_work\/_temp\/git\-credentials\-0dab755a\-1b07\-42e6\-a3d1\-74758a4ad336\.config
+2026-11-05T23:44:18.3183108Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-11-05T23:44:18.3240301Z /github/runner_temp/git-credentials-0dab755a-1b07-42e6-a3d1-74758a4ad336.config
+2026-11-05T23:44:18.3245234Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-0dab755a\-1b07\-42e6\-a3d1\-74758a4ad336\.config
+2026-11-05T23:44:18.3351769Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-05T23:44:18.3408689Z /github/runner_temp/git-credentials-0dab755a-1b07-42e6-a3d1-74758a4ad336.config
+2026-11-05T23:44:18.3413138Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-0dab755a\-1b07\-42e6\-a3d1\-74758a4ad336\.config
+2026-11-05T23:44:18.3531970Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-05T23:44:18.3821720Z Removing credentials config '/home/runner/_work/_temp/git-credentials-0dab755a-1b07-42e6-a3d1-74758a4ad336.config'
+2026-11-05T23:44:18.4039440Z Evaluate and set job outputs
+2026-11-05T23:44:18.4046199Z Set output 'ascend_log_prefix'
+2026-11-05T23:44:18.4047879Z Set output 'vllm_ascend_branches'
+2026-11-05T23:44:18.4048815Z Set output 'profile_options'
+2026-11-05T23:44:18.4049202Z Set output 'profile_parse'
+2026-11-05T23:44:18.4051007Z Set output 'multi_node'
+2026-11-05T23:44:18.4055141Z Set output 'double_node'
+2026-11-05T23:44:18.4055529Z Set output 'single_node'
+2026-11-05T23:44:18.4055915Z Set output 'multi_card'
+2026-11-05T23:44:18.4056657Z Cleaning up orphan processes

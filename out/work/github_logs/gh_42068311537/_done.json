@@ -1,0 +1,104 @@
+{
+ "route": "github",
+ "key": "SgLang|nightly-test-npu.yml",
+ "rn": 2083,
+ "rid": "42068311537",
+ "st": "11-06 00:48",
+ "runId": 42068311537,
+ "repo": "sgl-project/sglang",
+ "displayTitle": "[Test] [NPU] glm5_3: Add 2P2D 32P and 1P1D 16P PD-sep performance cases",
+ "event": "pull_request",
+ "status": "FAILED",
+ "duration": 143.63,
+ "runStatus": {
+  "status": "completed",
+  "conclusion": "failure",
+  "updatedAt": "2026-11-05T19:12:32Z",
+  "attempt": 1
+ },
+ "_v": 2,
+ "mode": "perjob",
+ "why": "失败 job 2 个（≤5，逐 job 精取）",
+ "totalJobs": 16,
+ "failedJobs": [
+  {
+   "name": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test/registered/npu/pe... / glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms",
+   "id": 127453581942,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "check-all-jobs",
+   "id": 127470975935,
+   "steps": [
+    {
+     "name": "Generate results table",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ ],
+ "cancelledJobs": [],
+ "jobs": [
+  {
+   "name": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test/registered/npu/pe... / glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms",
+   "id": 127453581942,
+   "conclusion": "failure",
+   "startedAt": "2026-11-05T18:42:04Z",
+   "completedAt": "2026-11-05T19:12:26Z",
+   "logFile": "github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test_~e59536.txt",
+   "logBytes": 449634,
+   "logLines": 1991,
+   "errorLines": [
+    "L608: │ exit code: 1",
+    "L1652: Traceback (most recent call last):",
+    "L1773: Traceback (most recent call last):",
+    "L1795: Traceback (most recent call last):",
+    "L1829: Traceback (most recent call last):",
+    "L1858: Traceback (most recent call last):",
+    "L1870: Traceback (most recent call last):",
+    "L1881: Traceback (most recent call last):",
+    "L1889: ##[error]Error: failed to run script step:",
+    "L1890: ✗ exit code: 1",
+    "L1895: Traceback (most recent call last):",
+    "L1906: Traceback (most recent call last):",
+    "L1914: ##[error]Process completed with exit code 1.",
+    "L1915: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ],
+   "isTestJob": true,
+   "testResults": null
+  },
+  {
+   "name": "check-all-jobs",
+   "id": 127470975935,
+   "conclusion": "failure",
+   "startedAt": "2026-11-05T19:12:29Z",
+   "completedAt": "2026-11-05T19:12:32Z",
+   "logFile": "github_logs/gh_42068311537/127470975935_check-all-jobs.txt",
+   "logBytes": 6492,
+   "logLines": 99,
+   "errorLines": [
+    "L98: ##[error]Process completed with exit code 1."
+   ],
+   "githubSteps": [
+    {
+     "name": "Generate results table",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ ],
+ "missing": [],
+ "systemLogs": [],
+ "ghComplete": true
+}

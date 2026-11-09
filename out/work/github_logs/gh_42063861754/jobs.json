@@ -1,0 +1,3920 @@
+[
+ {
+  "id": 127640780266,
+  "run_id": 42063861754,
+  "workflow_name": "Nightly-A3 (scheduled)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/runs/42063861754",
+  "run_attempt": 2,
+  "node_id": "CR_kwDONxQEAc8AAAAdt_u96g",
+  "head_sha": "01741ac93f1c3c6241a90b19c14dc58b093eb49c",
+  "url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/jobs/127640780266",
+  "html_url": "https://github.com/vllm-project/vllm-ascend/actions/runs/42063861754/job/127640780266",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-11-06T01:01:13Z",
+  "started_at": "2026-11-06T01:01:38Z",
+  "completed_at": "2026-11-06T01:24:11Z",
+  "name": "multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2-A3.yaml, tests/e2e/cases/models/configs/Kimi, 4) / Kimi-K3-MRV2-A3.yaml",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-06T01:01:40Z",
+    "completed_at": "2026-11-06T01:01:51Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-06T01:01:51Z",
+    "completed_at": "2026-11-06T01:01:59Z"
+   },
+   {
+    "name": "Decode kubeconfig",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-06T01:01:59Z",
+    "completed_at": "2026-11-06T01:02:00Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-06T01:02:00Z",
+    "completed_at": "2026-11-06T01:02:05Z"
+   },
+   {
+    "name": "Configure profiling",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-06T01:02:05Z",
+    "completed_at": "2026-11-06T01:02:06Z"
+   },
+   {
+    "name": "Set job variables",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-06T01:02:06Z",
+    "completed_at": "2026-11-06T01:02:08Z"
+   },
+   {
+    "name": "Prepare scripts",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-06T01:02:08Z",
+    "completed_at": "2026-11-06T01:02:09Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-06T01:02:09Z",
+    "completed_at": "2026-11-06T01:02:11Z"
+   },
+   {
+    "name": "Launch cluster",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 9,
+    "started_at": "2026-11-06T01:02:11Z",
+    "completed_at": "2026-11-06T01:02:13Z"
+   },
+   {
+    "name": "Wait for pods ready",
+    "status": "completed",
+    "conclusion": "failure",
+    "number": 10,
+    "started_at": "2026-11-06T01:02:13Z",
+    "completed_at": "2026-11-06T01:22:15Z"
+   },
+   {
+    "name": "Stream logs",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 11,
+    "started_at": "2026-11-06T01:22:15Z",
+    "completed_at": "2026-11-06T01:22:15Z"
+   },
+   {
+    "name": "Update good_table.csv on success",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 12,
+    "started_at": "2026-11-06T01:22:15Z",
+    "completed_at": "2026-11-06T01:22:15Z"
+   },
+   {
+    "name": "Publish profiling data",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 13,
+    "started_at": "2026-11-06T01:22:15Z",
+    "completed_at": "2026-11-06T01:22:15Z"
+   },
+   {
+    "name": "Upload profiling index",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 14,
+    "started_at": "2026-11-06T01:22:15Z",
+    "completed_at": "2026-11-06T01:22:15Z"
+   },
+   {
+    "name": "Profiling summary",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 15,
+    "started_at": "2026-11-06T01:22:15Z",
+    "completed_at": "2026-11-06T01:22:15Z"
+   },
+   {
+    "name": "Collect AOP bisect diagnostics",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 16,
+    "started_at": "2026-11-06T01:22:15Z",
+    "completed_at": "2026-11-06T01:22:15Z"
+   },
+   {
+    "name": "Upload AOP bisect diagnostics (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 17,
+    "started_at": "2026-11-06T01:22:15Z",
+    "completed_at": "2026-11-06T01:22:15Z"
+   },
+   {
+    "name": "Fetch benchmark results from PVC",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 18,
+    "started_at": "2026-11-06T01:22:15Z",
+    "completed_at": "2026-11-06T01:22:17Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 19,
+    "started_at": "2026-11-06T01:22:17Z",
+    "completed_at": "2026-11-06T01:23:16Z"
+   },
+   {
+    "name": "Collect requested paths from test pods",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 20,
+    "started_at": "2026-11-06T01:23:16Z",
+    "completed_at": "2026-11-06T01:23:16Z"
+   },
+   {
+    "name": "Upload requested paths",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 21,
+    "started_at": "2026-11-06T01:23:16Z",
+    "completed_at": "2026-11-06T01:23:16Z"
+   },
+   {
+    "name": "Remove uploaded archives from shared storage",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 22,
+    "started_at": "2026-11-06T01:23:16Z",
+    "completed_at": "2026-11-06T01:23:16Z"
+   },
+   {
+    "name": "Collect Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 23,
+    "started_at": "2026-11-06T01:23:16Z",
+    "completed_at": "2026-11-06T01:23:19Z"
+   },
+   {
+    "name": "Upload Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 24,
+    "started_at": "2026-11-06T01:23:19Z",
+    "completed_at": "2026-11-06T01:23:29Z"
+   },
+   {
+    "name": "Upload Ascend logs (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 25,
+    "started_at": "2026-11-06T01:23:29Z",
+    "completed_at": "2026-11-06T01:23:36Z"
+   },
+   {
+    "name": "Set benchmark artifact timestamp",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 26,
+    "started_at": "2026-11-06T01:23:36Z",
+    "completed_at": "2026-11-06T01:23:39Z"
+   },
+   {
+    "name": "Upload benchmark results",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 27,
+    "started_at": "2026-11-06T01:23:39Z",
+    "completed_at": "2026-11-06T01:23:51Z"
+   },
+   {
+    "name": "Upload benchmark results (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 28,
+    "started_at": "2026-11-06T01:23:51Z",
+    "completed_at": "2026-11-06T01:23:55Z"
+   },
+   {
+    "name": "Upload AISBench outputs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 29,
+    "started_at": "2026-11-06T01:23:55Z",
+    "completed_at": "2026-11-06T01:23:59Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 57,
+    "started_at": "2026-11-06T01:23:59Z",
+    "completed_at": "2026-11-06T01:24:04Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 58,
+    "started_at": "2026-11-06T01:24:04Z",
+    "completed_at": "2026-11-06T01:24:04Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 59,
+    "started_at": "2026-11-06T01:24:04Z",
+    "completed_at": "2026-11-06T01:24:04Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/check-runs/127640780266",
+  "labels": [
+   "linux-aarch64-a3-800t-0"
+  ],
+  "runner_id": 851050,
+  "runner_name": "linux-aarch64-a3-800t-0-xvxb7-runner-qkfxn",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 127640780445,
+  "run_id": 42063861754,
+  "workflow_name": "Nightly-A3 (scheduled)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/runs/42063861754",
+  "run_attempt": 2,
+  "node_id": "CR_kwDONxQEAc8AAAAdt_u-nQ",
+  "head_sha": "01741ac93f1c3c6241a90b19c14dc58b093eb49c",
+  "url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/jobs/127640780445",
+  "html_url": "https://github.com/vllm-project/vllm-ascend/actions/runs/42063861754/job/127640780445",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-06T01:01:13Z",
+  "started_at": "2026-11-05T16:23:31Z",
+  "completed_at": "2026-11-05T16:23:47Z",
+  "name": "Parse trigger and determine test scope",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-05T16:23:33Z",
+    "completed_at": "2026-11-05T16:23:39Z"
+   },
+   {
+    "name": "Parse trigger",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-05T16:23:39Z",
+    "completed_at": "2026-11-05T16:23:39Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-05T16:23:39Z",
+    "completed_at": "2026-11-05T16:23:42Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/check-runs/127640780445",
+  "labels": [
+   "linux-aarch64-a3-800t-0"
+  ],
+  "runner_id": 850549,
+  "runner_name": "linux-aarch64-a3-800t-0-xvxb7-runner-f7h6z",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 127640781512,
+  "run_id": 42063861754,
+  "workflow_name": "Nightly-A3 (scheduled)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/runs/42063861754",
+  "run_attempt": 2,
+  "node_id": "CR_kwDONxQEAc8AAAAdt_vCyA",
+  "head_sha": "01741ac93f1c3c6241a90b19c14dc58b093eb49c",
+  "url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/jobs/127640781512",
+  "html_url": "https://github.com/vllm-project/vllm-ascend/actions/runs/42063861754/job/127640781512",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-06T01:01:13Z",
+  "started_at": "2026-11-05T16:24:08Z",
+  "completed_at": "2026-11-05T16:28:13Z",
+  "name": "Export global env vars as job outputs",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-05T16:24:09Z",
+    "completed_at": "2026-11-05T16:24:16Z"
+   },
+   {
+    "name": "Run {",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-05T16:24:16Z",
+    "completed_at": "2026-11-05T16:24:16Z"
+   },
+   {
+    "name": "Checkout repository",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-05T16:24:16Z",
+    "completed_at": "2026-11-05T16:24:53Z"
+   },
+   {
+    "name": "Checkout PR code",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 4,
+    "started_at": "2026-11-05T16:24:53Z",
+    "completed_at": "2026-11-05T16:24:53Z"
+   },
+   {
+    "name": "Setup Python",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-05T16:24:53Z",
+    "completed_at": "2026-11-05T16:27:37Z"
+   },
+   {
+    "name": "Checkout profiling tools",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-05T16:27:37Z",
+    "completed_at": "2026-11-05T16:27:52Z"
+   },
+   {
+    "name": "Normalize profiling options",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-05T16:27:52Z",
+    "completed_at": "2026-11-05T16:27:52Z"
+   },
+   {
+    "name": "Read A3 test matrix config",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-05T16:27:52Z",
+    "completed_at": "2026-11-05T16:27:55Z"
+   },
+   {
+    "name": "Post Checkout profiling tools",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 14,
+    "started_at": "2026-11-05T16:27:55Z",
+    "completed_at": "2026-11-05T16:27:55Z"
+   },
+   {
+    "name": "Post Setup Python",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-05T16:27:55Z",
+    "completed_at": "2026-11-05T16:27:55Z"
+   },
+   {
+    "name": "Post Checkout repository",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 16,
+    "started_at": "2026-11-05T16:27:55Z",
+    "completed_at": "2026-11-05T16:27:55Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 17,
+    "started_at": "2026-11-05T16:27:55Z",
+    "completed_at": "2026-11-05T16:27:55Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/check-runs/127640781512",
+  "labels": [
+   "linux-amd64-cpu-8-hk"
+  ],
+  "runner_id": 850560,
+  "runner_name": "linux-amd64-cpu-8-hk-7mfx2-runner-4ptbq",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 127640782494,
+  "run_id": 42063861754,
+  "workflow_name": "Nightly-A3 (scheduled)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/runs/42063861754",
+  "run_attempt": 2,
+  "node_id": "CR_kwDONxQEAc8AAAAdt_vGng",
+  "head_sha": "01741ac93f1c3c6241a90b19c14dc58b093eb49c",
+  "url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/jobs/127640782494",
+  "html_url": "https://github.com/vllm-project/vllm-ascend/actions/runs/42063861754/job/127640782494",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-06T01:01:13Z",
+  "started_at": "2026-11-05T16:29:15Z",
+  "completed_at": "2026-11-05T17:23:04Z",
+  "name": "multi-node (main, GLM-5.3-W8A8C8-A3-200k-PP-PD, GLM-5.3-W8A8C8-A3-200k-PP-PD.yaml, tests/e2e/case... / GLM-5.3-W8A8C8-A3-200k-PP-PD.yaml",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-05T16:29:17Z",
+    "completed_at": "2026-11-05T16:29:32Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-05T16:29:32Z",
+    "completed_at": "2026-11-05T16:29:40Z"
+   },
+   {
+    "name": "Decode kubeconfig",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-05T16:29:40Z",
+    "completed_at": "2026-11-05T16:29:42Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-05T16:29:42Z",
+    "completed_at": "2026-11-05T16:32:10Z"
+   },
+   {
+    "name": "Configure profiling",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-05T16:32:10Z",
+    "completed_at": "2026-11-05T16:32:12Z"
+   },
+   {
+    "name": "Set job variables",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-05T16:32:12Z",
+    "completed_at": "2026-11-05T16:32:13Z"
+   },
+   {
+    "name": "Prepare scripts",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-05T16:32:13Z",
+    "completed_at": "2026-11-05T16:32:15Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-05T16:32:15Z",
+    "completed_at": "2026-11-05T16:32:17Z"
+   },
+   {
+    "name": "Launch cluster",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 9,
+    "started_at": "2026-11-05T16:32:17Z",
+    "completed_at": "2026-11-05T16:32:19Z"
+   },
+   {
+    "name": "Wait for pods ready",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 10,
+    "started_at": "2026-11-05T16:32:19Z",
+    "completed_at": "2026-11-05T16:34:12Z"
+   },
+   {
+    "name": "Stream logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 11,
+    "started_at": "2026-11-05T16:34:12Z",
+    "completed_at": "2026-11-05T17:19:59Z"
+   },
+   {
+    "name": "Update good_table.csv on success",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 12,
+    "started_at": "2026-11-05T17:19:59Z",
+    "completed_at": "2026-11-05T17:20:03Z"
+   },
+   {
+    "name": "Publish profiling data",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 13,
+    "started_at": "2026-11-05T17:20:03Z",
+    "completed_at": "2026-11-05T17:20:03Z"
+   },
+   {
+    "name": "Upload profiling index",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 14,
+    "started_at": "2026-11-05T17:20:03Z",
+    "completed_at": "2026-11-05T17:20:03Z"
+   },
+   {
+    "name": "Profiling summary",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 15,
+    "started_at": "2026-11-05T17:20:03Z",
+    "completed_at": "2026-11-05T17:20:03Z"
+   },
+   {
+    "name": "Collect AOP bisect diagnostics",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 16,
+    "started_at": "2026-11-05T17:20:03Z",
+    "completed_at": "2026-11-05T17:20:03Z"
+   },
+   {
+    "name": "Upload AOP bisect diagnostics (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 17,
+    "started_at": "2026-11-05T17:20:03Z",
+    "completed_at": "2026-11-05T17:20:03Z"
+   },
+   {
+    "name": "Fetch benchmark results from PVC",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 18,
+    "started_at": "2026-11-05T17:20:03Z",
+    "completed_at": "2026-11-05T17:20:06Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 19,
+    "started_at": "2026-11-05T17:20:06Z",
+    "completed_at": "2026-11-05T17:21:15Z"
+   },
+   {
+    "name": "Collect requested paths from test pods",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 20,
+    "started_at": "2026-11-05T17:21:15Z",
+    "completed_at": "2026-11-05T17:21:15Z"
+   },
+   {
+    "name": "Upload requested paths",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 21,
+    "started_at": "2026-11-05T17:21:15Z",
+    "completed_at": "2026-11-05T17:21:15Z"
+   },
+   {
+    "name": "Remove uploaded archives from shared storage",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 22,
+    "started_at": "2026-11-05T17:21:15Z",
+    "completed_at": "2026-11-05T17:21:15Z"
+   },
+   {
+    "name": "Collect Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 23,
+    "started_at": "2026-11-05T17:21:15Z",
+    "completed_at": "2026-11-05T17:21:18Z"
+   },
+   {
+    "name": "Upload Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 24,
+    "started_at": "2026-11-05T17:21:18Z",
+    "completed_at": "2026-11-05T17:21:58Z"
+   },
+   {
+    "name": "Upload Ascend logs (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 25,
+    "started_at": "2026-11-05T17:21:58Z",
+    "completed_at": "2026-11-05T17:22:07Z"
+   },
+   {
+    "name": "Set benchmark artifact timestamp",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 26,
+    "started_at": "2026-11-05T17:22:07Z",
+    "completed_at": "2026-11-05T17:22:11Z"
+   },
+   {
+    "name": "Upload benchmark results",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 27,
+    "started_at": "2026-11-05T17:22:11Z",
+    "completed_at": "2026-11-05T17:22:28Z"
+   },
+   {
+    "name": "Upload benchmark results (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 28,
+    "started_at": "2026-11-05T17:22:28Z",
+    "completed_at": "2026-11-05T17:22:38Z"
+   },
+   {
+    "name": "Upload AISBench outputs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 29,
+    "started_at": "2026-11-05T17:22:38Z",
+    "completed_at": "2026-11-05T17:22:49Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 57,
+    "started_at": "2026-11-05T17:22:49Z",
+    "completed_at": "2026-11-05T17:22:55Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 58,
+    "started_at": "2026-11-05T17:22:55Z",
+    "completed_at": "2026-11-05T17:22:55Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 59,
+    "started_at": "2026-11-05T17:22:55Z",
+    "completed_at": "2026-11-05T17:22:55Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/check-runs/127640782494",
+  "labels": [
+   "linux-aarch64-a3-800t-0"
+  ],
+  "runner_id": 850585,
+  "runner_name": "linux-aarch64-a3-800t-0-xvxb7-runner-2qqlm",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 127640782846,
+  "run_id": 42063861754,
+  "workflow_name": "Nightly-A3 (scheduled)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/runs/42063861754",
+  "run_attempt": 2,
+  "node_id": "CR_kwDONxQEAc8AAAAdt_vH_g",
+  "head_sha": "01741ac93f1c3c6241a90b19c14dc58b093eb49c",
+  "url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/jobs/127640782846",
+  "html_url": "https://github.com/vllm-project/vllm-ascend/actions/runs/42063861754/job/127640782846",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-06T01:01:13Z",
+  "started_at": "2026-11-05T16:54:58Z",
+  "completed_at": "2026-11-05T17:56:33Z",
+  "name": "multi-node (main, DeepSeek-V4-Pro-w4a8-prefix-cache-PD, DeepSeek-V4-Pro-w4a8-prefix-cache-PD.yaml... / DeepSeek-V4-Pro-w4a8-prefix-cache-PD.yaml",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-05T16:55:00Z",
+    "completed_at": "2026-11-05T16:55:11Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-05T16:55:11Z",
+    "completed_at": "2026-11-05T16:55:19Z"
+   },
+   {
+    "name": "Decode kubeconfig",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-05T16:55:19Z",
+    "completed_at": "2026-11-05T16:55:20Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-05T16:55:20Z",
+    "completed_at": "2026-11-05T16:55:24Z"
+   },
+   {
+    "name": "Configure profiling",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-05T16:55:24Z",
+    "completed_at": "2026-11-05T16:55:26Z"
+   },
+   {
+    "name": "Set job variables",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-05T16:55:26Z",
+    "completed_at": "2026-11-05T16:55:27Z"
+   },
+   {
+    "name": "Prepare scripts",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-05T16:55:27Z",
+    "completed_at": "2026-11-05T16:55:29Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-05T16:55:29Z",
+    "completed_at": "2026-11-05T16:55:30Z"
+   },
+   {
+    "name": "Launch cluster",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 9,
+    "started_at": "2026-11-05T16:55:30Z",
+    "completed_at": "2026-11-05T16:55:32Z"
+   },
+   {
+    "name": "Wait for pods ready",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 10,
+    "started_at": "2026-11-05T16:55:32Z",
+    "completed_at": "2026-11-05T16:58:56Z"
+   },
+   {
+    "name": "Stream logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 11,
+    "started_at": "2026-11-05T16:58:56Z",
+    "completed_at": "2026-11-05T17:54:15Z"
+   },
+   {
+    "name": "Update good_table.csv on success",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 12,
+    "started_at": "2026-11-05T17:54:15Z",
+    "completed_at": "2026-11-05T17:54:17Z"
+   },
+   {
+    "name": "Publish profiling data",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 13,
+    "started_at": "2026-11-05T17:54:17Z",
+    "completed_at": "2026-11-05T17:54:17Z"
+   },
+   {
+    "name": "Upload profiling index",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 14,
+    "started_at": "2026-11-05T17:54:17Z",
+    "completed_at": "2026-11-05T17:54:17Z"
+   },
+   {
+    "name": "Profiling summary",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 15,
+    "started_at": "2026-11-05T17:54:17Z",
+    "completed_at": "2026-11-05T17:54:17Z"
+   },
+   {
+    "name": "Collect AOP bisect diagnostics",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 16,
+    "started_at": "2026-11-05T17:54:17Z",
+    "completed_at": "2026-11-05T17:54:17Z"
+   },
+   {
+    "name": "Upload AOP bisect diagnostics (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 17,
+    "started_at": "2026-11-05T17:54:17Z",
+    "completed_at": "2026-11-05T17:54:17Z"
+   },
+   {
+    "name": "Fetch benchmark results from PVC",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 18,
+    "started_at": "2026-11-05T17:54:17Z",
+    "completed_at": "2026-11-05T17:54:20Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 19,
+    "started_at": "2026-11-05T17:54:20Z",
+    "completed_at": "2026-11-05T17:55:29Z"
+   },
+   {
+    "name": "Collect requested paths from test pods",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 20,
+    "started_at": "2026-11-05T17:55:29Z",
+    "completed_at": "2026-11-05T17:55:29Z"
+   },
+   {
+    "name": "Upload requested paths",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 21,
+    "started_at": "2026-11-05T17:55:29Z",
+    "completed_at": "2026-11-05T17:55:29Z"
+   },
+   {
+    "name": "Remove uploaded archives from shared storage",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 22,
+    "started_at": "2026-11-05T17:55:29Z",
+    "completed_at": "2026-11-05T17:55:29Z"
+   },
+   {
+    "name": "Collect Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 23,
+    "started_at": "2026-11-05T17:55:29Z",
+    "completed_at": "2026-11-05T17:55:31Z"
+   },
+   {
+    "name": "Upload Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 24,
+    "started_at": "2026-11-05T17:55:31Z",
+    "completed_at": "2026-11-05T17:55:39Z"
+   },
+   {
+    "name": "Upload Ascend logs (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 25,
+    "started_at": "2026-11-05T17:55:39Z",
+    "completed_at": "2026-11-05T17:55:47Z"
+   },
+   {
+    "name": "Set benchmark artifact timestamp",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 26,
+    "started_at": "2026-11-05T17:55:47Z",
+    "completed_at": "2026-11-05T17:55:50Z"
+   },
+   {
+    "name": "Upload benchmark results",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 27,
+    "started_at": "2026-11-05T17:55:50Z",
+    "completed_at": "2026-11-05T17:55:59Z"
+   },
+   {
+    "name": "Upload benchmark results (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 28,
+    "started_at": "2026-11-05T17:55:59Z",
+    "completed_at": "2026-11-05T17:56:07Z"
+   },
+   {
+    "name": "Upload AISBench outputs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 29,
+    "started_at": "2026-11-05T17:56:07Z",
+    "completed_at": "2026-11-05T17:56:21Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 57,
+    "started_at": "2026-11-05T17:56:21Z",
+    "completed_at": "2026-11-05T17:56:25Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 58,
+    "started_at": "2026-11-05T17:56:25Z",
+    "completed_at": "2026-11-05T17:56:25Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 59,
+    "started_at": "2026-11-05T17:56:25Z",
+    "completed_at": "2026-11-05T17:56:25Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/check-runs/127640782846",
+  "labels": [
+   "linux-aarch64-a3-800t-0"
+  ],
+  "runner_id": 850641,
+  "runner_name": "linux-aarch64-a3-800t-0-xvxb7-runner-562c7",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 127640784310,
+  "run_id": 42063861754,
+  "workflow_name": "Nightly-A3 (scheduled)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/runs/42063861754",
+  "run_attempt": 2,
+  "node_id": "CR_kwDONxQEAc8AAAAdt_vNtg",
+  "head_sha": "01741ac93f1c3c6241a90b19c14dc58b093eb49c",
+  "url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/jobs/127640784310",
+  "html_url": "https://github.com/vllm-project/vllm-ascend/actions/runs/42063861754/job/127640784310",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-11-06T01:01:13Z",
+  "started_at": "2026-11-06T01:01:42Z",
+  "completed_at": "2026-11-06T01:23:29Z",
+  "name": "multi-node (main, MiniMax-M3-w8a8-PP-prefix-PD, MiniMax-M3-w8a8-PP-prefix-PD.yaml, tests/e2e/case... / MiniMax-M3-w8a8-PP-prefix-PD.yaml",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-06T01:01:44Z",
+    "completed_at": "2026-11-06T01:01:51Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-06T01:01:51Z",
+    "completed_at": "2026-11-06T01:02:00Z"
+   },
+   {
+    "name": "Decode kubeconfig",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-06T01:02:00Z",
+    "completed_at": "2026-11-06T01:02:01Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-06T01:02:01Z",
+    "completed_at": "2026-11-06T01:02:06Z"
+   },
+   {
+    "name": "Configure profiling",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-06T01:02:06Z",
+    "completed_at": "2026-11-06T01:02:07Z"
+   },
+   {
+    "name": "Set job variables",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-06T01:02:07Z",
+    "completed_at": "2026-11-06T01:02:08Z"
+   },
+   {
+    "name": "Prepare scripts",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-06T01:02:08Z",
+    "completed_at": "2026-11-06T01:02:10Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-06T01:02:10Z",
+    "completed_at": "2026-11-06T01:02:12Z"
+   },
+   {
+    "name": "Launch cluster",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 9,
+    "started_at": "2026-11-06T01:02:12Z",
+    "completed_at": "2026-11-06T01:02:14Z"
+   },
+   {
+    "name": "Wait for pods ready",
+    "status": "completed",
+    "conclusion": "failure",
+    "number": 10,
+    "started_at": "2026-11-06T01:02:14Z",
+    "completed_at": "2026-11-06T01:22:15Z"
+   },
+   {
+    "name": "Stream logs",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 11,
+    "started_at": "2026-11-06T01:22:15Z",
+    "completed_at": "2026-11-06T01:22:15Z"
+   },
+   {
+    "name": "Update good_table.csv on success",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 12,
+    "started_at": "2026-11-06T01:22:15Z",
+    "completed_at": "2026-11-06T01:22:15Z"
+   },
+   {
+    "name": "Publish profiling data",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 13,
+    "started_at": "2026-11-06T01:22:15Z",
+    "completed_at": "2026-11-06T01:22:15Z"
+   },
+   {
+    "name": "Upload profiling index",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 14,
+    "started_at": "2026-11-06T01:22:15Z",
+    "completed_at": "2026-11-06T01:22:15Z"
+   },
+   {
+    "name": "Profiling summary",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 15,
+    "started_at": "2026-11-06T01:22:15Z",
+    "completed_at": "2026-11-06T01:22:15Z"
+   },
+   {
+    "name": "Collect AOP bisect diagnostics",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 16,
+    "started_at": "2026-11-06T01:22:15Z",
+    "completed_at": "2026-11-06T01:22:15Z"
+   },
+   {
+    "name": "Upload AOP bisect diagnostics (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 17,
+    "started_at": "2026-11-06T01:22:15Z",
+    "completed_at": "2026-11-06T01:22:15Z"
+   },
+   {
+    "name": "Fetch benchmark results from PVC",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 18,
+    "started_at": "2026-11-06T01:22:15Z",
+    "completed_at": "2026-11-06T01:22:17Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 19,
+    "started_at": "2026-11-06T01:22:17Z",
+    "completed_at": "2026-11-06T01:22:25Z"
+   },
+   {
+    "name": "Collect requested paths from test pods",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 20,
+    "started_at": "2026-11-06T01:22:25Z",
+    "completed_at": "2026-11-06T01:22:25Z"
+   },
+   {
+    "name": "Upload requested paths",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 21,
+    "started_at": "2026-11-06T01:22:25Z",
+    "completed_at": "2026-11-06T01:22:25Z"
+   },
+   {
+    "name": "Remove uploaded archives from shared storage",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 22,
+    "started_at": "2026-11-06T01:22:25Z",
+    "completed_at": "2026-11-06T01:22:25Z"
+   },
+   {
+    "name": "Collect Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 23,
+    "started_at": "2026-11-06T01:22:25Z",
+    "completed_at": "2026-11-06T01:22:27Z"
+   },
+   {
+    "name": "Upload Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 24,
+    "started_at": "2026-11-06T01:22:27Z",
+    "completed_at": "2026-11-06T01:22:47Z"
+   },
+   {
+    "name": "Upload Ascend logs (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 25,
+    "started_at": "2026-11-06T01:22:47Z",
+    "completed_at": "2026-11-06T01:22:54Z"
+   },
+   {
+    "name": "Set benchmark artifact timestamp",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 26,
+    "started_at": "2026-11-06T01:22:54Z",
+    "completed_at": "2026-11-06T01:22:57Z"
+   },
+   {
+    "name": "Upload benchmark results",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 27,
+    "started_at": "2026-11-06T01:22:57Z",
+    "completed_at": "2026-11-06T01:23:09Z"
+   },
+   {
+    "name": "Upload benchmark results (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 28,
+    "started_at": "2026-11-06T01:23:09Z",
+    "completed_at": "2026-11-06T01:23:13Z"
+   },
+   {
+    "name": "Upload AISBench outputs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 29,
+    "started_at": "2026-11-06T01:23:13Z",
+    "completed_at": "2026-11-06T01:23:18Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 57,
+    "started_at": "2026-11-06T01:23:18Z",
+    "completed_at": "2026-11-06T01:23:22Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 58,
+    "started_at": "2026-11-06T01:23:22Z",
+    "completed_at": "2026-11-06T01:23:23Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 59,
+    "started_at": "2026-11-06T01:23:23Z",
+    "completed_at": "2026-11-06T01:23:23Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/check-runs/127640784310",
+  "labels": [
+   "linux-aarch64-a3-800t-0"
+  ],
+  "runner_id": 851051,
+  "runner_name": "linux-aarch64-a3-800t-0-xvxb7-runner-f4ckh",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 127640784707,
+  "run_id": 42063861754,
+  "workflow_name": "Nightly-A3 (scheduled)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/runs/42063861754",
+  "run_attempt": 2,
+  "node_id": "CR_kwDONxQEAc8AAAAdt_vPQw",
+  "head_sha": "01741ac93f1c3c6241a90b19c14dc58b093eb49c",
+  "url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/jobs/127640784707",
+  "html_url": "https://github.com/vllm-project/vllm-ascend/actions/runs/42063861754/job/127640784707",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-06T01:01:14Z",
+  "started_at": "2026-11-05T17:23:30Z",
+  "completed_at": "2026-11-05T18:11:47Z",
+  "name": "multi-node (main, QWEN3_235B_PD_3_5K_1_5k, QWEN3_235B_PD_3_5K_1_5k.yaml, tests/e2e/cases/models/c... / QWEN3_235B_PD_3_5K_1_5k.yaml",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-05T17:23:32Z",
+    "completed_at": "2026-11-05T17:23:40Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-05T17:23:40Z",
+    "completed_at": "2026-11-05T17:23:49Z"
+   },
+   {
+    "name": "Decode kubeconfig",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-05T17:23:49Z",
+    "completed_at": "2026-11-05T17:23:50Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-05T17:23:50Z",
+    "completed_at": "2026-11-05T17:24:28Z"
+   },
+   {
+    "name": "Configure profiling",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-05T17:24:28Z",
+    "completed_at": "2026-11-05T17:24:29Z"
+   },
+   {
+    "name": "Set job variables",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-05T17:24:29Z",
+    "completed_at": "2026-11-05T17:24:31Z"
+   },
+   {
+    "name": "Prepare scripts",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-05T17:24:31Z",
+    "completed_at": "2026-11-05T17:24:32Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-05T17:24:32Z",
+    "completed_at": "2026-11-05T17:24:34Z"
+   },
+   {
+    "name": "Launch cluster",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 9,
+    "started_at": "2026-11-05T17:24:34Z",
+    "completed_at": "2026-11-05T17:24:36Z"
+   },
+   {
+    "name": "Wait for pods ready",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 10,
+    "started_at": "2026-11-05T17:24:36Z",
+    "completed_at": "2026-11-05T17:24:52Z"
+   },
+   {
+    "name": "Stream logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 11,
+    "started_at": "2026-11-05T17:24:52Z",
+    "completed_at": "2026-11-05T18:09:04Z"
+   },
+   {
+    "name": "Update good_table.csv on success",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 12,
+    "started_at": "2026-11-05T18:09:04Z",
+    "completed_at": "2026-11-05T18:09:07Z"
+   },
+   {
+    "name": "Publish profiling data",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 13,
+    "started_at": "2026-11-05T18:09:07Z",
+    "completed_at": "2026-11-05T18:09:07Z"
+   },
+   {
+    "name": "Upload profiling index",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 14,
+    "started_at": "2026-11-05T18:09:07Z",
+    "completed_at": "2026-11-05T18:09:07Z"
+   },
+   {
+    "name": "Profiling summary",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 15,
+    "started_at": "2026-11-05T18:09:07Z",
+    "completed_at": "2026-11-05T18:09:07Z"
+   },
+   {
+    "name": "Collect AOP bisect diagnostics",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 16,
+    "started_at": "2026-11-05T18:09:07Z",
+    "completed_at": "2026-11-05T18:09:07Z"
+   },
+   {
+    "name": "Upload AOP bisect diagnostics (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 17,
+    "started_at": "2026-11-05T18:09:07Z",
+    "completed_at": "2026-11-05T18:09:07Z"
+   },
+   {
+    "name": "Fetch benchmark results from PVC",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 18,
+    "started_at": "2026-11-05T18:09:07Z",
+    "completed_at": "2026-11-05T18:09:10Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 19,
+    "started_at": "2026-11-05T18:09:10Z",
+    "completed_at": "2026-11-05T18:10:19Z"
+   },
+   {
+    "name": "Collect requested paths from test pods",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 20,
+    "started_at": "2026-11-05T18:10:19Z",
+    "completed_at": "2026-11-05T18:10:19Z"
+   },
+   {
+    "name": "Upload requested paths",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 21,
+    "started_at": "2026-11-05T18:10:19Z",
+    "completed_at": "2026-11-05T18:10:19Z"
+   },
+   {
+    "name": "Remove uploaded archives from shared storage",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 22,
+    "started_at": "2026-11-05T18:10:19Z",
+    "completed_at": "2026-11-05T18:10:19Z"
+   },
+   {
+    "name": "Collect Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 23,
+    "started_at": "2026-11-05T18:10:19Z",
+    "completed_at": "2026-11-05T18:10:22Z"
+   },
+   {
+    "name": "Upload Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 24,
+    "started_at": "2026-11-05T18:10:22Z",
+    "completed_at": "2026-11-05T18:10:42Z"
+   },
+   {
+    "name": "Upload Ascend logs (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 25,
+    "started_at": "2026-11-05T18:10:42Z",
+    "completed_at": "2026-11-05T18:10:51Z"
+   },
+   {
+    "name": "Set benchmark artifact timestamp",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 26,
+    "started_at": "2026-11-05T18:10:51Z",
+    "completed_at": "2026-11-05T18:10:54Z"
+   },
+   {
+    "name": "Upload benchmark results",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 27,
+    "started_at": "2026-11-05T18:10:54Z",
+    "completed_at": "2026-11-05T18:11:13Z"
+   },
+   {
+    "name": "Upload benchmark results (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 28,
+    "started_at": "2026-11-05T18:11:13Z",
+    "completed_at": "2026-11-05T18:11:21Z"
+   },
+   {
+    "name": "Upload AISBench outputs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 29,
+    "started_at": "2026-11-05T18:11:21Z",
+    "completed_at": "2026-11-05T18:11:35Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 57,
+    "started_at": "2026-11-05T18:11:35Z",
+    "completed_at": "2026-11-05T18:11:40Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 58,
+    "started_at": "2026-11-05T18:11:40Z",
+    "completed_at": "2026-11-05T18:11:40Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 59,
+    "started_at": "2026-11-05T18:11:40Z",
+    "completed_at": "2026-11-05T18:11:40Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/check-runs/127640784707",
+  "labels": [
+   "linux-aarch64-a3-800t-0"
+  ],
+  "runner_id": 850680,
+  "runner_name": "linux-aarch64-a3-800t-0-xvxb7-runner-5rjvr",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 127640832290,
+  "run_id": 42063861754,
+  "workflow_name": "Nightly-A3 (scheduled)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/runs/42063861754",
+  "run_attempt": 2,
+  "node_id": "CR_kwDONxQEAc8AAAAdt_yJIg",
+  "head_sha": "01741ac93f1c3c6241a90b19c14dc58b093eb49c",
+  "url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/jobs/127640832290",
+  "html_url": "https://github.com/vllm-project/vllm-ascend/actions/runs/42063861754/job/127640832290",
+  "status": "completed",
+  "conclusion": "skipped",
+  "created_at": "2026-11-06T01:01:21Z",
+  "started_at": "2026-11-06T01:01:21Z",
+  "completed_at": "2026-11-06T01:01:12Z",
+  "name": "Build nightly-a3 image",
+  "steps": [],
+  "check_run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/check-runs/127640832290",
+  "labels": [],
+  "runner_id": null,
+  "runner_name": null,
+  "runner_group_id": null,
+  "runner_group_name": null
+ },
+ {
+  "id": 127649607175,
+  "run_id": 42063861754,
+  "workflow_name": "Nightly-A3 (scheduled)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/runs/42063861754",
+  "run_attempt": 2,
+  "node_id": "CR_kwDONxQEAc8AAAAduIJuBw",
+  "head_sha": "01741ac93f1c3c6241a90b19c14dc58b093eb49c",
+  "url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/jobs/127649607175",
+  "html_url": "https://github.com/vllm-project/vllm-ascend/actions/runs/42063861754/job/127649607175",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-06T01:24:11Z",
+  "started_at": "2026-11-06T01:24:34Z",
+  "completed_at": "2026-11-06T02:27:39Z",
+  "name": "double-node (main, multi-node-GLM-5.2-w8a8-A3, GLM5_2-W8A8-A3-dual-nodes.yaml, tests/e2e/cases/mo... / GLM5_2-W8A8-A3-dual-nodes.yaml",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-06T01:24:37Z",
+    "completed_at": "2026-11-06T01:24:46Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-06T01:24:46Z",
+    "completed_at": "2026-11-06T01:24:55Z"
+   },
+   {
+    "name": "Decode kubeconfig",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-06T01:24:55Z",
+    "completed_at": "2026-11-06T01:24:56Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-06T01:24:56Z",
+    "completed_at": "2026-11-06T01:25:00Z"
+   },
+   {
+    "name": "Configure profiling",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-06T01:25:00Z",
+    "completed_at": "2026-11-06T01:25:01Z"
+   },
+   {
+    "name": "Set job variables",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-06T01:25:01Z",
+    "completed_at": "2026-11-06T01:25:05Z"
+   },
+   {
+    "name": "Prepare scripts",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-06T01:25:05Z",
+    "completed_at": "2026-11-06T01:25:07Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-06T01:25:07Z",
+    "completed_at": "2026-11-06T01:25:09Z"
+   },
+   {
+    "name": "Launch cluster",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 9,
+    "started_at": "2026-11-06T01:25:09Z",
+    "completed_at": "2026-11-06T01:25:11Z"
+   },
+   {
+    "name": "Wait for pods ready",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 10,
+    "started_at": "2026-11-06T01:25:11Z",
+    "completed_at": "2026-11-06T01:39:32Z"
+   },
+   {
+    "name": "Stream logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 11,
+    "started_at": "2026-11-06T01:39:33Z",
+    "completed_at": "2026-11-06T02:24:46Z"
+   },
+   {
+    "name": "Update good_table.csv on success",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 12,
+    "started_at": "2026-11-06T02:24:46Z",
+    "completed_at": "2026-11-06T02:24:48Z"
+   },
+   {
+    "name": "Publish profiling data",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 13,
+    "started_at": "2026-11-06T02:24:48Z",
+    "completed_at": "2026-11-06T02:24:48Z"
+   },
+   {
+    "name": "Upload profiling index",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 14,
+    "started_at": "2026-11-06T02:24:48Z",
+    "completed_at": "2026-11-06T02:24:48Z"
+   },
+   {
+    "name": "Profiling summary",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 15,
+    "started_at": "2026-11-06T02:24:48Z",
+    "completed_at": "2026-11-06T02:24:48Z"
+   },
+   {
+    "name": "Collect AOP bisect diagnostics",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 16,
+    "started_at": "2026-11-06T02:24:48Z",
+    "completed_at": "2026-11-06T02:24:48Z"
+   },
+   {
+    "name": "Upload AOP bisect diagnostics (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 17,
+    "started_at": "2026-11-06T02:24:48Z",
+    "completed_at": "2026-11-06T02:24:48Z"
+   },
+   {
+    "name": "Fetch benchmark results from PVC",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 18,
+    "started_at": "2026-11-06T02:24:48Z",
+    "completed_at": "2026-11-06T02:24:50Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 19,
+    "started_at": "2026-11-06T02:24:50Z",
+    "completed_at": "2026-11-06T02:26:00Z"
+   },
+   {
+    "name": "Collect requested paths from test pods",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 20,
+    "started_at": "2026-11-06T02:26:00Z",
+    "completed_at": "2026-11-06T02:26:00Z"
+   },
+   {
+    "name": "Upload requested paths",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 21,
+    "started_at": "2026-11-06T02:26:00Z",
+    "completed_at": "2026-11-06T02:26:00Z"
+   },
+   {
+    "name": "Remove uploaded archives from shared storage",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 22,
+    "started_at": "2026-11-06T02:26:00Z",
+    "completed_at": "2026-11-06T02:26:00Z"
+   },
+   {
+    "name": "Collect Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 23,
+    "started_at": "2026-11-06T02:26:00Z",
+    "completed_at": "2026-11-06T02:26:04Z"
+   },
+   {
+    "name": "Upload Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 24,
+    "started_at": "2026-11-06T02:26:04Z",
+    "completed_at": "2026-11-06T02:26:32Z"
+   },
+   {
+    "name": "Upload Ascend logs (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 25,
+    "started_at": "2026-11-06T02:26:32Z",
+    "completed_at": "2026-11-06T02:26:40Z"
+   },
+   {
+    "name": "Set benchmark artifact timestamp",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 26,
+    "started_at": "2026-11-06T02:26:40Z",
+    "completed_at": "2026-11-06T02:26:43Z"
+   },
+   {
+    "name": "Upload benchmark results",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 27,
+    "started_at": "2026-11-06T02:26:43Z",
+    "completed_at": "2026-11-06T02:27:08Z"
+   },
+   {
+    "name": "Upload benchmark results (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 28,
+    "started_at": "2026-11-06T02:27:08Z",
+    "completed_at": "2026-11-06T02:27:16Z"
+   },
+   {
+    "name": "Upload AISBench outputs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 29,
+    "started_at": "2026-11-06T02:27:16Z",
+    "completed_at": "2026-11-06T02:27:27Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 57,
+    "started_at": "2026-11-06T02:27:27Z",
+    "completed_at": "2026-11-06T02:27:32Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 58,
+    "started_at": "2026-11-06T02:27:32Z",
+    "completed_at": "2026-11-06T02:27:32Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 59,
+    "started_at": "2026-11-06T02:27:32Z",
+    "completed_at": "2026-11-06T02:27:32Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/check-runs/127649607175",
+  "labels": [
+   "linux-aarch64-a3-800t-0"
+  ],
+  "runner_id": 851214,
+  "runner_name": "linux-aarch64-a3-800t-0-xvxb7-runner-d57rb",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 127649607216,
+  "run_id": 42063861754,
+  "workflow_name": "Nightly-A3 (scheduled)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/runs/42063861754",
+  "run_attempt": 2,
+  "node_id": "CR_kwDONxQEAc8AAAAduIJuMA",
+  "head_sha": "01741ac93f1c3c6241a90b19c14dc58b093eb49c",
+  "url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/jobs/127649607216",
+  "html_url": "https://github.com/vllm-project/vllm-ascend/actions/runs/42063861754/job/127649607216",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-11-06T01:24:11Z",
+  "started_at": "2026-11-06T01:24:38Z",
+  "completed_at": "2026-11-06T01:47:00Z",
+  "name": "double-node (main, Kimi-K2.6-W4A8-64k-1k-TPOT50-PD, Kimi-K2.6-W4A8-64k-1k-TPOT50-PD.yaml, tests/e... / Kimi-K2.6-W4A8-64k-1k-TPOT50-PD.yaml",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-06T01:24:40Z",
+    "completed_at": "2026-11-06T01:24:48Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-06T01:24:48Z",
+    "completed_at": "2026-11-06T01:24:57Z"
+   },
+   {
+    "name": "Decode kubeconfig",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-06T01:24:57Z",
+    "completed_at": "2026-11-06T01:24:58Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-06T01:24:58Z",
+    "completed_at": "2026-11-06T01:25:04Z"
+   },
+   {
+    "name": "Configure profiling",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-06T01:25:04Z",
+    "completed_at": "2026-11-06T01:25:06Z"
+   },
+   {
+    "name": "Set job variables",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-06T01:25:06Z",
+    "completed_at": "2026-11-06T01:25:07Z"
+   },
+   {
+    "name": "Prepare scripts",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-06T01:25:07Z",
+    "completed_at": "2026-11-06T01:25:09Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-06T01:25:09Z",
+    "completed_at": "2026-11-06T01:25:11Z"
+   },
+   {
+    "name": "Launch cluster",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 9,
+    "started_at": "2026-11-06T01:25:11Z",
+    "completed_at": "2026-11-06T01:25:13Z"
+   },
+   {
+    "name": "Wait for pods ready",
+    "status": "completed",
+    "conclusion": "failure",
+    "number": 10,
+    "started_at": "2026-11-06T01:25:13Z",
+    "completed_at": "2026-11-06T01:45:15Z"
+   },
+   {
+    "name": "Stream logs",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 11,
+    "started_at": "2026-11-06T01:45:15Z",
+    "completed_at": "2026-11-06T01:45:15Z"
+   },
+   {
+    "name": "Update good_table.csv on success",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 12,
+    "started_at": "2026-11-06T01:45:15Z",
+    "completed_at": "2026-11-06T01:45:15Z"
+   },
+   {
+    "name": "Publish profiling data",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 13,
+    "started_at": "2026-11-06T01:45:15Z",
+    "completed_at": "2026-11-06T01:45:15Z"
+   },
+   {
+    "name": "Upload profiling index",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 14,
+    "started_at": "2026-11-06T01:45:15Z",
+    "completed_at": "2026-11-06T01:45:15Z"
+   },
+   {
+    "name": "Profiling summary",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 15,
+    "started_at": "2026-11-06T01:45:15Z",
+    "completed_at": "2026-11-06T01:45:15Z"
+   },
+   {
+    "name": "Collect AOP bisect diagnostics",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 16,
+    "started_at": "2026-11-06T01:45:15Z",
+    "completed_at": "2026-11-06T01:45:15Z"
+   },
+   {
+    "name": "Upload AOP bisect diagnostics (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 17,
+    "started_at": "2026-11-06T01:45:15Z",
+    "completed_at": "2026-11-06T01:45:15Z"
+   },
+   {
+    "name": "Fetch benchmark results from PVC",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 18,
+    "started_at": "2026-11-06T01:45:15Z",
+    "completed_at": "2026-11-06T01:45:18Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 19,
+    "started_at": "2026-11-06T01:45:18Z",
+    "completed_at": "2026-11-06T01:45:56Z"
+   },
+   {
+    "name": "Collect requested paths from test pods",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 20,
+    "started_at": "2026-11-06T01:45:56Z",
+    "completed_at": "2026-11-06T01:45:56Z"
+   },
+   {
+    "name": "Upload requested paths",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 21,
+    "started_at": "2026-11-06T01:45:56Z",
+    "completed_at": "2026-11-06T01:45:56Z"
+   },
+   {
+    "name": "Remove uploaded archives from shared storage",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 22,
+    "started_at": "2026-11-06T01:45:56Z",
+    "completed_at": "2026-11-06T01:45:56Z"
+   },
+   {
+    "name": "Collect Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 23,
+    "started_at": "2026-11-06T01:45:56Z",
+    "completed_at": "2026-11-06T01:45:58Z"
+   },
+   {
+    "name": "Upload Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 24,
+    "started_at": "2026-11-06T01:45:58Z",
+    "completed_at": "2026-11-06T01:46:19Z"
+   },
+   {
+    "name": "Upload Ascend logs (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 25,
+    "started_at": "2026-11-06T01:46:19Z",
+    "completed_at": "2026-11-06T01:46:27Z"
+   },
+   {
+    "name": "Set benchmark artifact timestamp",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 26,
+    "started_at": "2026-11-06T01:46:27Z",
+    "completed_at": "2026-11-06T01:46:31Z"
+   },
+   {
+    "name": "Upload benchmark results",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 27,
+    "started_at": "2026-11-06T01:46:31Z",
+    "completed_at": "2026-11-06T01:46:42Z"
+   },
+   {
+    "name": "Upload benchmark results (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 28,
+    "started_at": "2026-11-06T01:46:42Z",
+    "completed_at": "2026-11-06T01:46:46Z"
+   },
+   {
+    "name": "Upload AISBench outputs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 29,
+    "started_at": "2026-11-06T01:46:46Z",
+    "completed_at": "2026-11-06T01:46:50Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 57,
+    "started_at": "2026-11-06T01:46:50Z",
+    "completed_at": "2026-11-06T01:46:54Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 58,
+    "started_at": "2026-11-06T01:46:54Z",
+    "completed_at": "2026-11-06T01:46:54Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 59,
+    "started_at": "2026-11-06T01:46:54Z",
+    "completed_at": "2026-11-06T01:46:54Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/check-runs/127649607216",
+  "labels": [
+   "linux-aarch64-a3-800t-0"
+  ],
+  "runner_id": 851216,
+  "runner_name": "linux-aarch64-a3-800t-0-xvxb7-runner-k9r49",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 127649607230,
+  "run_id": 42063861754,
+  "workflow_name": "Nightly-A3 (scheduled)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/runs/42063861754",
+  "run_attempt": 2,
+  "node_id": "CR_kwDONxQEAc8AAAAduIJuPg",
+  "head_sha": "01741ac93f1c3c6241a90b19c14dc58b093eb49c",
+  "url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/jobs/127649607230",
+  "html_url": "https://github.com/vllm-project/vllm-ascend/actions/runs/42063861754/job/127649607230",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-11-06T01:24:11Z",
+  "started_at": "2026-11-06T01:24:43Z",
+  "completed_at": "2026-11-06T01:46:49Z",
+  "name": "double-node (main, multi-node-GLM-5.1-W8A8C8-MTP-A3_198k_function, GLM-5.1-W8A8C8-A3_198k_functio... / GLM-5.1-W8A8C8-A3_198k_function.yaml",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-06T01:24:45Z",
+    "completed_at": "2026-11-06T01:24:53Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-06T01:24:53Z",
+    "completed_at": "2026-11-06T01:25:04Z"
+   },
+   {
+    "name": "Decode kubeconfig",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-06T01:25:04Z",
+    "completed_at": "2026-11-06T01:25:07Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-06T01:25:07Z",
+    "completed_at": "2026-11-06T01:25:17Z"
+   },
+   {
+    "name": "Configure profiling",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-06T01:25:17Z",
+    "completed_at": "2026-11-06T01:25:19Z"
+   },
+   {
+    "name": "Set job variables",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-06T01:25:19Z",
+    "completed_at": "2026-11-06T01:25:21Z"
+   },
+   {
+    "name": "Prepare scripts",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-06T01:25:21Z",
+    "completed_at": "2026-11-06T01:25:23Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-06T01:25:23Z",
+    "completed_at": "2026-11-06T01:25:26Z"
+   },
+   {
+    "name": "Launch cluster",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 9,
+    "started_at": "2026-11-06T01:25:26Z",
+    "completed_at": "2026-11-06T01:25:30Z"
+   },
+   {
+    "name": "Wait for pods ready",
+    "status": "completed",
+    "conclusion": "failure",
+    "number": 10,
+    "started_at": "2026-11-06T01:25:30Z",
+    "completed_at": "2026-11-06T01:45:32Z"
+   },
+   {
+    "name": "Stream logs",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 11,
+    "started_at": "2026-11-06T01:45:32Z",
+    "completed_at": "2026-11-06T01:45:32Z"
+   },
+   {
+    "name": "Update good_table.csv on success",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 12,
+    "started_at": "2026-11-06T01:45:32Z",
+    "completed_at": "2026-11-06T01:45:32Z"
+   },
+   {
+    "name": "Publish profiling data",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 13,
+    "started_at": "2026-11-06T01:45:32Z",
+    "completed_at": "2026-11-06T01:45:32Z"
+   },
+   {
+    "name": "Upload profiling index",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 14,
+    "started_at": "2026-11-06T01:45:32Z",
+    "completed_at": "2026-11-06T01:45:32Z"
+   },
+   {
+    "name": "Profiling summary",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 15,
+    "started_at": "2026-11-06T01:45:32Z",
+    "completed_at": "2026-11-06T01:45:32Z"
+   },
+   {
+    "name": "Collect AOP bisect diagnostics",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 16,
+    "started_at": "2026-11-06T01:45:32Z",
+    "completed_at": "2026-11-06T01:45:32Z"
+   },
+   {
+    "name": "Upload AOP bisect diagnostics (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 17,
+    "started_at": "2026-11-06T01:45:32Z",
+    "completed_at": "2026-11-06T01:45:32Z"
+   },
+   {
+    "name": "Fetch benchmark results from PVC",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 18,
+    "started_at": "2026-11-06T01:45:32Z",
+    "completed_at": "2026-11-06T01:45:34Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 19,
+    "started_at": "2026-11-06T01:45:34Z",
+    "completed_at": "2026-11-06T01:45:37Z"
+   },
+   {
+    "name": "Collect requested paths from test pods",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 20,
+    "started_at": "2026-11-06T01:45:37Z",
+    "completed_at": "2026-11-06T01:45:37Z"
+   },
+   {
+    "name": "Upload requested paths",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 21,
+    "started_at": "2026-11-06T01:45:37Z",
+    "completed_at": "2026-11-06T01:45:37Z"
+   },
+   {
+    "name": "Remove uploaded archives from shared storage",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 22,
+    "started_at": "2026-11-06T01:45:37Z",
+    "completed_at": "2026-11-06T01:45:37Z"
+   },
+   {
+    "name": "Collect Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 23,
+    "started_at": "2026-11-06T01:45:37Z",
+    "completed_at": "2026-11-06T01:45:41Z"
+   },
+   {
+    "name": "Upload Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 24,
+    "started_at": "2026-11-06T01:45:41Z",
+    "completed_at": "2026-11-06T01:46:03Z"
+   },
+   {
+    "name": "Upload Ascend logs (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 25,
+    "started_at": "2026-11-06T01:46:03Z",
+    "completed_at": "2026-11-06T01:46:10Z"
+   },
+   {
+    "name": "Set benchmark artifact timestamp",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 26,
+    "started_at": "2026-11-06T01:46:10Z",
+    "completed_at": "2026-11-06T01:46:14Z"
+   },
+   {
+    "name": "Upload benchmark results",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 27,
+    "started_at": "2026-11-06T01:46:14Z",
+    "completed_at": "2026-11-06T01:46:26Z"
+   },
+   {
+    "name": "Upload benchmark results (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 28,
+    "started_at": "2026-11-06T01:46:26Z",
+    "completed_at": "2026-11-06T01:46:31Z"
+   },
+   {
+    "name": "Upload AISBench outputs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 29,
+    "started_at": "2026-11-06T01:46:31Z",
+    "completed_at": "2026-11-06T01:46:36Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 57,
+    "started_at": "2026-11-06T01:46:36Z",
+    "completed_at": "2026-11-06T01:46:41Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 58,
+    "started_at": "2026-11-06T01:46:41Z",
+    "completed_at": "2026-11-06T01:46:42Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 59,
+    "started_at": "2026-11-06T01:46:42Z",
+    "completed_at": "2026-11-06T01:46:42Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/check-runs/127649607230",
+  "labels": [
+   "linux-aarch64-a3-800t-0"
+  ],
+  "runner_id": 851217,
+  "runner_name": "linux-aarch64-a3-800t-0-xvxb7-runner-c654k",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 127649607327,
+  "run_id": 42063861754,
+  "workflow_name": "Nightly-A3 (scheduled)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/runs/42063861754",
+  "run_attempt": 2,
+  "node_id": "CR_kwDONxQEAc8AAAAduIJunw",
+  "head_sha": "01741ac93f1c3c6241a90b19c14dc58b093eb49c",
+  "url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/jobs/127649607327",
+  "html_url": "https://github.com/vllm-project/vllm-ascend/actions/runs/42063861754/job/127649607327",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-06T01:24:11Z",
+  "started_at": "2026-11-06T01:25:25Z",
+  "completed_at": "2026-11-06T02:31:27Z",
+  "name": "double-node (main, GLM-5.3-Flash-W8A8-130k-PD, GLM-5.3-Flash-W8A8-130k-PD.yaml, tests/e2e/cases/m... / GLM-5.3-Flash-W8A8-130k-PD.yaml",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-06T01:25:28Z",
+    "completed_at": "2026-11-06T01:25:36Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-06T01:25:36Z",
+    "completed_at": "2026-11-06T01:25:53Z"
+   },
+   {
+    "name": "Decode kubeconfig",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-06T01:25:53Z",
+    "completed_at": "2026-11-06T01:25:55Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-06T01:25:55Z",
+    "completed_at": "2026-11-06T01:26:15Z"
+   },
+   {
+    "name": "Configure profiling",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-06T01:26:15Z",
+    "completed_at": "2026-11-06T01:26:18Z"
+   },
+   {
+    "name": "Set job variables",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-06T01:26:18Z",
+    "completed_at": "2026-11-06T01:26:20Z"
+   },
+   {
+    "name": "Prepare scripts",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-06T01:26:20Z",
+    "completed_at": "2026-11-06T01:26:22Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-06T01:26:22Z",
+    "completed_at": "2026-11-06T01:26:25Z"
+   },
+   {
+    "name": "Launch cluster",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 9,
+    "started_at": "2026-11-06T01:26:25Z",
+    "completed_at": "2026-11-06T01:26:28Z"
+   },
+   {
+    "name": "Wait for pods ready",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 10,
+    "started_at": "2026-11-06T01:26:28Z",
+    "completed_at": "2026-11-06T01:38:55Z"
+   },
+   {
+    "name": "Stream logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 11,
+    "started_at": "2026-11-06T01:38:55Z",
+    "completed_at": "2026-11-06T02:28:02Z"
+   },
+   {
+    "name": "Update good_table.csv on success",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 12,
+    "started_at": "2026-11-06T02:28:02Z",
+    "completed_at": "2026-11-06T02:28:05Z"
+   },
+   {
+    "name": "Publish profiling data",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 13,
+    "started_at": "2026-11-06T02:28:05Z",
+    "completed_at": "2026-11-06T02:28:05Z"
+   },
+   {
+    "name": "Upload profiling index",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 14,
+    "started_at": "2026-11-06T02:28:05Z",
+    "completed_at": "2026-11-06T02:28:05Z"
+   },
+   {
+    "name": "Profiling summary",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 15,
+    "started_at": "2026-11-06T02:28:05Z",
+    "completed_at": "2026-11-06T02:28:05Z"
+   },
+   {
+    "name": "Collect AOP bisect diagnostics",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 16,
+    "started_at": "2026-11-06T02:28:05Z",
+    "completed_at": "2026-11-06T02:28:05Z"
+   },
+   {
+    "name": "Upload AOP bisect diagnostics (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 17,
+    "started_at": "2026-11-06T02:28:05Z",
+    "completed_at": "2026-11-06T02:28:05Z"
+   },
+   {
+    "name": "Fetch benchmark results from PVC",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 18,
+    "started_at": "2026-11-06T02:28:05Z",
+    "completed_at": "2026-11-06T02:28:08Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 19,
+    "started_at": "2026-11-06T02:28:08Z",
+    "completed_at": "2026-11-06T02:29:19Z"
+   },
+   {
+    "name": "Collect requested paths from test pods",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 20,
+    "started_at": "2026-11-06T02:29:19Z",
+    "completed_at": "2026-11-06T02:29:19Z"
+   },
+   {
+    "name": "Upload requested paths",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 21,
+    "started_at": "2026-11-06T02:29:19Z",
+    "completed_at": "2026-11-06T02:29:19Z"
+   },
+   {
+    "name": "Remove uploaded archives from shared storage",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 22,
+    "started_at": "2026-11-06T02:29:19Z",
+    "completed_at": "2026-11-06T02:29:19Z"
+   },
+   {
+    "name": "Collect Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 23,
+    "started_at": "2026-11-06T02:29:19Z",
+    "completed_at": "2026-11-06T02:29:22Z"
+   },
+   {
+    "name": "Upload Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 24,
+    "started_at": "2026-11-06T02:29:22Z",
+    "completed_at": "2026-11-06T02:30:19Z"
+   },
+   {
+    "name": "Upload Ascend logs (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 25,
+    "started_at": "2026-11-06T02:30:19Z",
+    "completed_at": "2026-11-06T02:30:27Z"
+   },
+   {
+    "name": "Set benchmark artifact timestamp",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 26,
+    "started_at": "2026-11-06T02:30:27Z",
+    "completed_at": "2026-11-06T02:30:31Z"
+   },
+   {
+    "name": "Upload benchmark results",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 27,
+    "started_at": "2026-11-06T02:30:31Z",
+    "completed_at": "2026-11-06T02:30:46Z"
+   },
+   {
+    "name": "Upload benchmark results (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 28,
+    "started_at": "2026-11-06T02:30:46Z",
+    "completed_at": "2026-11-06T02:30:56Z"
+   },
+   {
+    "name": "Upload AISBench outputs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 29,
+    "started_at": "2026-11-06T02:30:56Z",
+    "completed_at": "2026-11-06T02:31:14Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 57,
+    "started_at": "2026-11-06T02:31:14Z",
+    "completed_at": "2026-11-06T02:31:19Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 58,
+    "started_at": "2026-11-06T02:31:19Z",
+    "completed_at": "2026-11-06T02:31:20Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 59,
+    "started_at": "2026-11-06T02:31:20Z",
+    "completed_at": "2026-11-06T02:31:20Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/check-runs/127649607327",
+  "labels": [
+   "linux-aarch64-a3-800t-0"
+  ],
+  "runner_id": 851221,
+  "runner_name": "linux-aarch64-a3-800t-0-xvxb7-runner-hnfg7",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 127649608042,
+  "run_id": 42063861754,
+  "workflow_name": "Nightly-A3 (scheduled)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/runs/42063861754",
+  "run_attempt": 2,
+  "node_id": "CR_kwDONxQEAc8AAAAduIJxag",
+  "head_sha": "01741ac93f1c3c6241a90b19c14dc58b093eb49c",
+  "url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/jobs/127649608042",
+  "html_url": "https://github.com/vllm-project/vllm-ascend/actions/runs/42063861754/job/127649608042",
+  "status": "completed",
+  "conclusion": "skipped",
+  "created_at": "2026-11-06T01:24:11Z",
+  "started_at": "2026-11-06T01:24:11Z",
+  "completed_at": "2026-11-06T01:24:11Z",
+  "name": "Parse multi-node profiles",
+  "steps": [],
+  "check_run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/check-runs/127649608042",
+  "labels": [],
+  "runner_id": null,
+  "runner_name": null,
+  "runner_group_id": null,
+  "runner_group_name": null
+ },
+ {
+  "id": 127657747715,
+  "run_id": 42063861754,
+  "workflow_name": "Nightly-A3 (scheduled)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/runs/42063861754",
+  "run_attempt": 2,
+  "node_id": "CR_kwDONxQEAc8AAAAduP6lAw",
+  "head_sha": "01741ac93f1c3c6241a90b19c14dc58b093eb49c",
+  "url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/jobs/127657747715",
+  "html_url": "https://github.com/vllm-project/vllm-ascend/actions/runs/42063861754/job/127657747715",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-06T01:46:49Z",
+  "started_at": "2026-11-06T01:47:15Z",
+  "completed_at": "2026-11-06T02:30:50Z",
+  "name": "double-node (main, DeepSeek-V4-flash-w8a8-PD-prefix, DeepSeek-V4-flash-w8a8-PD-prefix.yaml, tests... / DeepSeek-V4-flash-w8a8-PD-prefix.yaml",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-06T01:47:17Z",
+    "completed_at": "2026-11-06T01:47:27Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-06T01:47:27Z",
+    "completed_at": "2026-11-06T01:47:36Z"
+   },
+   {
+    "name": "Decode kubeconfig",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-06T01:47:36Z",
+    "completed_at": "2026-11-06T01:47:37Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-06T01:47:37Z",
+    "completed_at": "2026-11-06T01:47:41Z"
+   },
+   {
+    "name": "Configure profiling",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-06T01:47:41Z",
+    "completed_at": "2026-11-06T01:47:42Z"
+   },
+   {
+    "name": "Set job variables",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-06T01:47:42Z",
+    "completed_at": "2026-11-06T01:47:44Z"
+   },
+   {
+    "name": "Prepare scripts",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-06T01:47:44Z",
+    "completed_at": "2026-11-06T01:47:45Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-06T01:47:45Z",
+    "completed_at": "2026-11-06T01:47:47Z"
+   },
+   {
+    "name": "Launch cluster",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 9,
+    "started_at": "2026-11-06T01:47:47Z",
+    "completed_at": "2026-11-06T01:47:49Z"
+   },
+   {
+    "name": "Wait for pods ready",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 10,
+    "started_at": "2026-11-06T01:47:49Z",
+    "completed_at": "2026-11-06T01:54:21Z"
+   },
+   {
+    "name": "Stream logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 11,
+    "started_at": "2026-11-06T01:54:21Z",
+    "completed_at": "2026-11-06T02:27:19Z"
+   },
+   {
+    "name": "Update good_table.csv on success",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 12,
+    "started_at": "2026-11-06T02:27:19Z",
+    "completed_at": "2026-11-06T02:27:21Z"
+   },
+   {
+    "name": "Publish profiling data",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 13,
+    "started_at": "2026-11-06T02:27:21Z",
+    "completed_at": "2026-11-06T02:27:21Z"
+   },
+   {
+    "name": "Upload profiling index",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 14,
+    "started_at": "2026-11-06T02:27:21Z",
+    "completed_at": "2026-11-06T02:27:21Z"
+   },
+   {
+    "name": "Profiling summary",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 15,
+    "started_at": "2026-11-06T02:27:21Z",
+    "completed_at": "2026-11-06T02:27:21Z"
+   },
+   {
+    "name": "Collect AOP bisect diagnostics",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 16,
+    "started_at": "2026-11-06T02:27:21Z",
+    "completed_at": "2026-11-06T02:27:21Z"
+   },
+   {
+    "name": "Upload AOP bisect diagnostics (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 17,
+    "started_at": "2026-11-06T02:27:21Z",
+    "completed_at": "2026-11-06T02:27:21Z"
+   },
+   {
+    "name": "Fetch benchmark results from PVC",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 18,
+    "started_at": "2026-11-06T02:27:21Z",
+    "completed_at": "2026-11-06T02:27:24Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 19,
+    "started_at": "2026-11-06T02:27:24Z",
+    "completed_at": "2026-11-06T02:28:33Z"
+   },
+   {
+    "name": "Collect requested paths from test pods",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 20,
+    "started_at": "2026-11-06T02:28:33Z",
+    "completed_at": "2026-11-06T02:28:33Z"
+   },
+   {
+    "name": "Upload requested paths",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 21,
+    "started_at": "2026-11-06T02:28:33Z",
+    "completed_at": "2026-11-06T02:28:33Z"
+   },
+   {
+    "name": "Remove uploaded archives from shared storage",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 22,
+    "started_at": "2026-11-06T02:28:33Z",
+    "completed_at": "2026-11-06T02:28:33Z"
+   },
+   {
+    "name": "Collect Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 23,
+    "started_at": "2026-11-06T02:28:33Z",
+    "completed_at": "2026-11-06T02:28:36Z"
+   },
+   {
+    "name": "Upload Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 24,
+    "started_at": "2026-11-06T02:28:36Z",
+    "completed_at": "2026-11-06T02:28:55Z"
+   },
+   {
+    "name": "Upload Ascend logs (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 25,
+    "started_at": "2026-11-06T02:28:55Z",
+    "completed_at": "2026-11-06T02:29:04Z"
+   },
+   {
+    "name": "Set benchmark artifact timestamp",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 26,
+    "started_at": "2026-11-06T02:29:04Z",
+    "completed_at": "2026-11-06T02:29:08Z"
+   },
+   {
+    "name": "Upload benchmark results",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 27,
+    "started_at": "2026-11-06T02:29:08Z",
+    "completed_at": "2026-11-06T02:30:22Z"
+   },
+   {
+    "name": "Upload benchmark results (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 28,
+    "started_at": "2026-11-06T02:30:22Z",
+    "completed_at": "2026-11-06T02:30:30Z"
+   },
+   {
+    "name": "Upload AISBench outputs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 29,
+    "started_at": "2026-11-06T02:30:30Z",
+    "completed_at": "2026-11-06T02:30:39Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 57,
+    "started_at": "2026-11-06T02:30:39Z",
+    "completed_at": "2026-11-06T02:30:43Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 58,
+    "started_at": "2026-11-06T02:30:43Z",
+    "completed_at": "2026-11-06T02:30:43Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 59,
+    "started_at": "2026-11-06T02:30:43Z",
+    "completed_at": "2026-11-06T02:30:43Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/check-runs/127657747715",
+  "labels": [
+   "linux-aarch64-a3-800t-0"
+  ],
+  "runner_id": 851504,
+  "runner_name": "linux-aarch64-a3-800t-0-xvxb7-runner-t26hj",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 127657815823,
+  "run_id": 42063861754,
+  "workflow_name": "Nightly-A3 (scheduled)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/runs/42063861754",
+  "run_attempt": 2,
+  "node_id": "CR_kwDONxQEAc8AAAAduP-vDw",
+  "head_sha": "01741ac93f1c3c6241a90b19c14dc58b093eb49c",
+  "url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/jobs/127657815823",
+  "html_url": "https://github.com/vllm-project/vllm-ascend/actions/runs/42063861754/job/127657815823",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-11-06T01:47:01Z",
+  "started_at": "2026-11-06T01:47:26Z",
+  "completed_at": "2026-11-06T02:10:12Z",
+  "name": "double-node (main, DeepSeek-V4.1-Flash-w8a8-PD-MRV2, DeepSeek-V4.1-Flash-w8a8-PD-MRV2.yaml, tests... / DeepSeek-V4.1-Flash-w8a8-PD-MRV2.yaml",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-06T01:47:29Z",
+    "completed_at": "2026-11-06T01:47:36Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-06T01:47:36Z",
+    "completed_at": "2026-11-06T01:47:46Z"
+   },
+   {
+    "name": "Decode kubeconfig",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-06T01:47:46Z",
+    "completed_at": "2026-11-06T01:47:47Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-06T01:47:47Z",
+    "completed_at": "2026-11-06T01:48:02Z"
+   },
+   {
+    "name": "Configure profiling",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-06T01:48:02Z",
+    "completed_at": "2026-11-06T01:48:04Z"
+   },
+   {
+    "name": "Set job variables",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-06T01:48:04Z",
+    "completed_at": "2026-11-06T01:48:07Z"
+   },
+   {
+    "name": "Prepare scripts",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-06T01:48:07Z",
+    "completed_at": "2026-11-06T01:48:09Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-06T01:48:09Z",
+    "completed_at": "2026-11-06T01:48:11Z"
+   },
+   {
+    "name": "Launch cluster",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 9,
+    "started_at": "2026-11-06T01:48:11Z",
+    "completed_at": "2026-11-06T01:48:14Z"
+   },
+   {
+    "name": "Wait for pods ready",
+    "status": "completed",
+    "conclusion": "failure",
+    "number": 10,
+    "started_at": "2026-11-06T01:48:14Z",
+    "completed_at": "2026-11-06T02:08:16Z"
+   },
+   {
+    "name": "Stream logs",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 11,
+    "started_at": "2026-11-06T02:08:16Z",
+    "completed_at": "2026-11-06T02:08:16Z"
+   },
+   {
+    "name": "Update good_table.csv on success",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 12,
+    "started_at": "2026-11-06T02:08:16Z",
+    "completed_at": "2026-11-06T02:08:16Z"
+   },
+   {
+    "name": "Publish profiling data",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 13,
+    "started_at": "2026-11-06T02:08:16Z",
+    "completed_at": "2026-11-06T02:08:16Z"
+   },
+   {
+    "name": "Upload profiling index",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 14,
+    "started_at": "2026-11-06T02:08:16Z",
+    "completed_at": "2026-11-06T02:08:16Z"
+   },
+   {
+    "name": "Profiling summary",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 15,
+    "started_at": "2026-11-06T02:08:16Z",
+    "completed_at": "2026-11-06T02:08:16Z"
+   },
+   {
+    "name": "Collect AOP bisect diagnostics",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 16,
+    "started_at": "2026-11-06T02:08:16Z",
+    "completed_at": "2026-11-06T02:08:16Z"
+   },
+   {
+    "name": "Upload AOP bisect diagnostics (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 17,
+    "started_at": "2026-11-06T02:08:16Z",
+    "completed_at": "2026-11-06T02:08:16Z"
+   },
+   {
+    "name": "Fetch benchmark results from PVC",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 18,
+    "started_at": "2026-11-06T02:08:16Z",
+    "completed_at": "2026-11-06T02:08:18Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 19,
+    "started_at": "2026-11-06T02:08:18Z",
+    "completed_at": "2026-11-06T02:08:53Z"
+   },
+   {
+    "name": "Collect requested paths from test pods",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 20,
+    "started_at": "2026-11-06T02:08:53Z",
+    "completed_at": "2026-11-06T02:08:53Z"
+   },
+   {
+    "name": "Upload requested paths",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 21,
+    "started_at": "2026-11-06T02:08:53Z",
+    "completed_at": "2026-11-06T02:08:53Z"
+   },
+   {
+    "name": "Remove uploaded archives from shared storage",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 22,
+    "started_at": "2026-11-06T02:08:53Z",
+    "completed_at": "2026-11-06T02:08:53Z"
+   },
+   {
+    "name": "Collect Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 23,
+    "started_at": "2026-11-06T02:08:53Z",
+    "completed_at": "2026-11-06T02:08:55Z"
+   },
+   {
+    "name": "Upload Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 24,
+    "started_at": "2026-11-06T02:08:55Z",
+    "completed_at": "2026-11-06T02:09:26Z"
+   },
+   {
+    "name": "Upload Ascend logs (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 25,
+    "started_at": "2026-11-06T02:09:26Z",
+    "completed_at": "2026-11-06T02:09:33Z"
+   },
+   {
+    "name": "Set benchmark artifact timestamp",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 26,
+    "started_at": "2026-11-06T02:09:33Z",
+    "completed_at": "2026-11-06T02:09:37Z"
+   },
+   {
+    "name": "Upload benchmark results",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 27,
+    "started_at": "2026-11-06T02:09:37Z",
+    "completed_at": "2026-11-06T02:09:50Z"
+   },
+   {
+    "name": "Upload benchmark results (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 28,
+    "started_at": "2026-11-06T02:09:50Z",
+    "completed_at": "2026-11-06T02:09:54Z"
+   },
+   {
+    "name": "Upload AISBench outputs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 29,
+    "started_at": "2026-11-06T02:09:54Z",
+    "completed_at": "2026-11-06T02:09:59Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 57,
+    "started_at": "2026-11-06T02:09:59Z",
+    "completed_at": "2026-11-06T02:10:05Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 58,
+    "started_at": "2026-11-06T02:10:05Z",
+    "completed_at": "2026-11-06T02:10:06Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 59,
+    "started_at": "2026-11-06T02:10:06Z",
+    "completed_at": "2026-11-06T02:10:06Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/check-runs/127657815823",
+  "labels": [
+   "linux-aarch64-a3-800t-0"
+  ],
+  "runner_id": 851506,
+  "runner_name": "linux-aarch64-a3-800t-0-xvxb7-runner-8j9lt",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 127665949541,
+  "run_id": 42063861754,
+  "workflow_name": "Nightly-A3 (scheduled)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/runs/42063861754",
+  "run_attempt": 2,
+  "node_id": "CR_kwDONxQEAc8AAAAduXvLZQ",
+  "head_sha": "01741ac93f1c3c6241a90b19c14dc58b093eb49c",
+  "url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/jobs/127665949541",
+  "html_url": "https://github.com/vllm-project/vllm-ascend/actions/runs/42063861754/job/127665949541",
+  "status": "completed",
+  "conclusion": "cancelled",
+  "created_at": "2026-11-06T02:10:13Z",
+  "started_at": "2026-11-06T02:10:38Z",
+  "completed_at": "2026-11-06T02:53:48Z",
+  "name": "double-node (main, DeepSeek-V4-flash-w8a8-PD-prefix-MRV2, DeepSeek-V4-flash-w8a8-PD-prefix-MRV2.y... / DeepSeek-V4-flash-w8a8-PD-prefix-MRV2.yaml",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-06T02:10:40Z",
+    "completed_at": "2026-11-06T02:10:52Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-06T02:10:52Z",
+    "completed_at": "2026-11-06T02:11:01Z"
+   },
+   {
+    "name": "Decode kubeconfig",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-06T02:11:01Z",
+    "completed_at": "2026-11-06T02:11:03Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-06T02:11:03Z",
+    "completed_at": "2026-11-06T02:11:15Z"
+   },
+   {
+    "name": "Configure profiling",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-06T02:11:15Z",
+    "completed_at": "2026-11-06T02:11:16Z"
+   },
+   {
+    "name": "Set job variables",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-06T02:11:16Z",
+    "completed_at": "2026-11-06T02:11:18Z"
+   },
+   {
+    "name": "Prepare scripts",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-06T02:11:18Z",
+    "completed_at": "2026-11-06T02:11:19Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-06T02:11:19Z",
+    "completed_at": "2026-11-06T02:11:21Z"
+   },
+   {
+    "name": "Launch cluster",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 9,
+    "started_at": "2026-11-06T02:11:21Z",
+    "completed_at": "2026-11-06T02:11:23Z"
+   },
+   {
+    "name": "Wait for pods ready",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 10,
+    "started_at": "2026-11-06T02:11:23Z",
+    "completed_at": "2026-11-06T02:28:48Z"
+   },
+   {
+    "name": "Stream logs",
+    "status": "completed",
+    "conclusion": "failure",
+    "number": 11,
+    "started_at": "2026-11-06T02:28:48Z",
+    "completed_at": "2026-11-06T02:53:51Z"
+   },
+   {
+    "name": "Update good_table.csv on success",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 12,
+    "started_at": "2026-11-06T02:53:51Z",
+    "completed_at": "2026-11-06T02:53:51Z"
+   },
+   {
+    "name": "Publish profiling data",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 13,
+    "started_at": "2026-11-06T02:53:51Z",
+    "completed_at": "2026-11-06T02:53:51Z"
+   },
+   {
+    "name": "Upload profiling index",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 14,
+    "started_at": "2026-11-06T02:53:51Z",
+    "completed_at": "2026-11-06T02:53:51Z"
+   },
+   {
+    "name": "Profiling summary",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 15,
+    "started_at": "2026-11-06T02:53:51Z",
+    "completed_at": "2026-11-06T02:53:51Z"
+   },
+   {
+    "name": "Collect AOP bisect diagnostics",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 16,
+    "started_at": "2026-11-06T02:53:51Z",
+    "completed_at": "2026-11-06T02:53:51Z"
+   },
+   {
+    "name": "Upload AOP bisect diagnostics (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 17,
+    "started_at": "2026-11-06T02:53:51Z",
+    "completed_at": "2026-11-06T02:53:51Z"
+   },
+   {
+    "name": "Fetch benchmark results from PVC",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 18,
+    "started_at": "2026-11-06T02:53:51Z",
+    "completed_at": "2026-11-06T02:53:53Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 19,
+    "started_at": "2026-11-06T02:53:53Z",
+    "completed_at": "2026-11-06T02:55:04Z"
+   },
+   {
+    "name": "Collect requested paths from test pods",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 20,
+    "started_at": "2026-11-06T02:55:04Z",
+    "completed_at": "2026-11-06T02:55:04Z"
+   },
+   {
+    "name": "Upload requested paths",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 21,
+    "started_at": "2026-11-06T02:55:04Z",
+    "completed_at": "2026-11-06T02:55:04Z"
+   },
+   {
+    "name": "Remove uploaded archives from shared storage",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 22,
+    "started_at": "2026-11-06T02:55:04Z",
+    "completed_at": "2026-11-06T02:55:04Z"
+   },
+   {
+    "name": "Collect Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 23,
+    "started_at": "2026-11-06T02:55:04Z",
+    "completed_at": "2026-11-06T02:55:06Z"
+   },
+   {
+    "name": "Upload Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 24,
+    "started_at": "2026-11-06T02:55:06Z",
+    "completed_at": "2026-11-06T02:55:14Z"
+   },
+   {
+    "name": "Upload Ascend logs (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 25,
+    "started_at": "2026-11-06T02:55:14Z",
+    "completed_at": "2026-11-06T02:55:18Z"
+   },
+   {
+    "name": "Set benchmark artifact timestamp",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 26,
+    "started_at": "2026-11-06T02:55:18Z",
+    "completed_at": "2026-11-06T02:55:22Z"
+   },
+   {
+    "name": "Upload benchmark results",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 27,
+    "started_at": "2026-11-06T02:55:22Z",
+    "completed_at": "2026-11-06T02:55:34Z"
+   },
+   {
+    "name": "Upload benchmark results (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 28,
+    "started_at": "2026-11-06T02:55:34Z",
+    "completed_at": "2026-11-06T02:55:38Z"
+   },
+   {
+    "name": "Upload AISBench outputs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 29,
+    "started_at": "2026-11-06T02:55:38Z",
+    "completed_at": "2026-11-06T02:55:42Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 57,
+    "started_at": "2026-11-06T02:55:42Z",
+    "completed_at": "2026-11-06T02:55:46Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 58,
+    "started_at": "2026-11-06T02:55:46Z",
+    "completed_at": "2026-11-06T02:55:46Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 59,
+    "started_at": "2026-11-06T02:55:46Z",
+    "completed_at": "2026-11-06T02:55:46Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/check-runs/127665949541",
+  "labels": [
+   "linux-aarch64-a3-800t-0"
+  ],
+  "runner_id": 851805,
+  "runner_name": "linux-aarch64-a3-800t-0-xvxb7-runner-gzms6",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 127672169057,
+  "run_id": 42063861754,
+  "workflow_name": "Nightly-A3 (scheduled)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/runs/42063861754",
+  "run_attempt": 2,
+  "node_id": "CR_kwDONxQEAc8AAAAdudqyYQ",
+  "head_sha": "01741ac93f1c3c6241a90b19c14dc58b093eb49c",
+  "url": "https://api.github.com/repos/vllm-project/vllm-ascend/actions/jobs/127672169057",
+  "html_url": "https://github.com/vllm-project/vllm-ascend/actions/runs/42063861754/job/127672169057",
+  "status": "completed",
+  "conclusion": "cancelled",
+  "created_at": "2026-11-06T02:27:39Z",
+  "started_at": "2026-11-06T02:28:04Z",
+  "completed_at": "2026-11-06T02:53:48Z",
+  "name": "double-node (main, multi-node-GLM-5.1-W8A8C8-A3_128k_90_50, GLM-5.1-W8A8C8-A3_128k_90_50.yaml, te... / GLM-5.1-W8A8C8-A3_128k_90_50.yaml",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-06T02:28:06Z",
+    "completed_at": "2026-11-06T02:28:16Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-06T02:28:16Z",
+    "completed_at": "2026-11-06T02:28:25Z"
+   },
+   {
+    "name": "Decode kubeconfig",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-06T02:28:25Z",
+    "completed_at": "2026-11-06T02:28:26Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-06T02:28:26Z",
+    "completed_at": "2026-11-06T02:28:30Z"
+   },
+   {
+    "name": "Configure profiling",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-06T02:28:30Z",
+    "completed_at": "2026-11-06T02:28:31Z"
+   },
+   {
+    "name": "Set job variables",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-06T02:28:31Z",
+    "completed_at": "2026-11-06T02:28:33Z"
+   },
+   {
+    "name": "Prepare scripts",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-06T02:28:33Z",
+    "completed_at": "2026-11-06T02:28:34Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-06T02:28:34Z",
+    "completed_at": "2026-11-06T02:28:36Z"
+   },
+   {
+    "name": "Launch cluster",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 9,
+    "started_at": "2026-11-06T02:28:36Z",
+    "completed_at": "2026-11-06T02:28:38Z"
+   },
+   {
+    "name": "Wait for pods ready",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 10,
+    "started_at": "2026-11-06T02:28:38Z",
+    "completed_at": "2026-11-06T02:29:26Z"
+   },
+   {
+    "name": "Stream logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 11,
+    "started_at": "2026-11-06T02:29:26Z",
+    "completed_at": "2026-11-06T02:52:33Z"
+   },
+   {
+    "name": "Update good_table.csv on success",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 12,
+    "started_at": "2026-11-06T02:52:33Z",
+    "completed_at": "2026-11-06T02:52:36Z"
+   },
+   {
+    "name": "Publish profiling data",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 13,
+    "started_at": "2026-11-06T02:52:36Z",
+    "completed_at": "2026-11-06T02:52:36Z"
+   },
+   {
+    "name": "Upload profiling index",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 14,
+    "started_at": "2026-11-06T02:52:36Z",
+    "completed_at": "2026-11-06T02:52:36Z"
+   },
+   {
+    "name": "Profiling summary",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 15,
+    "started_at": "2026-11-06T02:52:36Z",
+    "completed_at": "2026-11-06T02:52:36Z"
+   },
+   {
+    "name": "Collect AOP bisect diagnostics",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 16,
+    "started_at": "2026-11-06T02:52:36Z",
+    "completed_at": "2026-11-06T02:52:36Z"
+   },
+   {
+    "name": "Upload AOP bisect diagnostics (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 17,
+    "started_at": "2026-11-06T02:52:36Z",
+    "completed_at": "2026-11-06T02:52:36Z"
+   },
+   {
+    "name": "Fetch benchmark results from PVC",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 18,
+    "started_at": "2026-11-06T02:52:36Z",
+    "completed_at": "2026-11-06T02:52:38Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 19,
+    "started_at": "2026-11-06T02:52:38Z",
+    "completed_at": "2026-11-06T02:53:48Z"
+   },
+   {
+    "name": "Collect requested paths from test pods",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 20,
+    "started_at": "2026-11-06T02:53:48Z",
+    "completed_at": "2026-11-06T02:53:48Z"
+   },
+   {
+    "name": "Upload requested paths",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 21,
+    "started_at": "2026-11-06T02:53:48Z",
+    "completed_at": "2026-11-06T02:53:48Z"
+   },
+   {
+    "name": "Remove uploaded archives from shared storage",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 22,
+    "started_at": "2026-11-06T02:53:48Z",
+    "completed_at": "2026-11-06T02:53:48Z"
+   },
+   {
+    "name": "Collect Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 23,
+    "started_at": "2026-11-06T02:53:48Z",
+    "completed_at": "2026-11-06T02:53:51Z"
+   },
+   {
+    "name": "Upload Ascend logs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 24,
+    "started_at": "2026-11-06T02:53:51Z",
+    "completed_at": "2026-11-06T02:53:59Z"
+   },
+   {
+    "name": "Upload Ascend logs (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 25,
+    "started_at": "2026-11-06T02:53:59Z",
+    "completed_at": "2026-11-06T02:54:01Z"
+   },
+   {
+    "name": "Set benchmark artifact timestamp",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 26,
+    "started_at": "2026-11-06T02:54:01Z",
+    "completed_at": "2026-11-06T02:54:06Z"
+   },
+   {
+    "name": "Upload benchmark results",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 27,
+    "started_at": "2026-11-06T02:54:06Z",
+    "completed_at": "2026-11-06T02:54:12Z"
+   },
+   {
+    "name": "Upload benchmark results (GitHub Artifacts)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 28,
+    "started_at": "2026-11-06T02:54:12Z",
+    "completed_at": "2026-11-06T02:54:32Z"
+   },
+   {
+    "name": "Upload AISBench outputs",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 29,
+    "started_at": "2026-11-06T02:54:32Z",
+    "completed_at": "2026-11-06T02:54:52Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 57,
+    "started_at": "2026-11-06T02:54:52Z",
+    "completed_at": "2026-11-06T02:55:13Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 58,
+    "started_at": "2026-11-06T02:55:13Z",
+    "completed_at": "2026-11-06T02:55:14Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 59,
+    "started_at": "2026-11-06T02:55:14Z",
+    "completed_at": "2026-11-06T02:55:14Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/vllm-project/vllm-ascend/check-runs/127672169057",
+  "labels": [
+   "linux-aarch64-a3-800t-0"
+  ],
+  "runner_id": 852093,
+  "runner_name": "linux-aarch64-a3-800t-0-xvxb7-runner-svrmh",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ }
+]

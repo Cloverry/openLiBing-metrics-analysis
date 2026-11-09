@@ -1,0 +1,14 @@
+2026-11-05T14:48:57.7180000Z Evaluating nightly-perf-16-npu-a3.if
+2026-11-05T14:48:57.7180000Z Evaluating: !cancelled()
+2026-11-05T14:48:57.7180000Z Expanded: !false
+2026-11-05T14:48:57.7180000Z Result: true
+2026-11-05T14:48:57.7180000Z Evaluating nightly-perf-16-npu-a3.e2e.if
+2026-11-05T14:48:57.7180000Z Evaluating: success()
+2026-11-05T14:48:57.7180000Z Result: true
+2026-11-05T14:48:57.7250000Z Requested labels: linux-aarch64-a3-800t-16
+2026-11-05T14:48:57.7250000Z Job defined at: sgl-project/sglang/.github/workflows/_npu-single-node-test-stage.yml@refs/pull/48664/merge
+2026-11-05T14:48:57.7250000Z Reusable workflow chain:
+2026-11-05T14:48:57.7250000Z sgl-project/sglang/.github/workflows/nightly-test-npu.yml@refs/pull/48664/merge (ac8137ebdeca2b91691d8ab8a9e91efe8cd9db0b)
+2026-11-05T14:48:57.7250000Z -> sgl-project/sglang/.github/workflows/_npu-single-node-test-stage.yml@refs/pull/48664/merge (ac8137ebdeca2b91691d8ab8a9e91efe8cd9db0b)
+2026-11-05T14:48:57.7250000Z Waiting for a runner to pick up this job...
+2026-11-05T14:48:59.2520000Z Job is about to start running on the runner: linux-aarch64-a3-800t-16-cn12-001

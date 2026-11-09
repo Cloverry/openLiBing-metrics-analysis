@@ -1,0 +1,121 @@
+{
+ "route": "github",
+ "key": "SgLang|nightly-test-npu.yml",
+ "rn": 2085,
+ "rid": "42073069875",
+ "st": "11-06 01:16",
+ "runId": 42073069875,
+ "repo": "sgl-project/sglang",
+ "displayTitle": "ci run",
+ "event": "pull_request",
+ "status": "FAILED",
+ "duration": 11.48,
+ "runStatus": {
+  "status": "completed",
+  "conclusion": "failure",
+  "updatedAt": "2026-11-05T17:28:24Z",
+  "attempt": 1
+ },
+ "_v": 2,
+ "mode": "perjob",
+ "why": "失败 job 1 个（≤5，逐 job 精取）",
+ "totalJobs": 15,
+ "failedJobs": [
+  {
+   "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+   "id": 127405967141,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ ],
+ "cancelledJobs": [],
+ "jobs": [
+  {
+   "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+   "id": 127405967141,
+   "conclusion": "failure",
+   "startedAt": "2026-11-05T17:17:28Z",
+   "completedAt": "2026-11-05T17:28:23Z",
+   "logFile": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test_registe~6b37f9.txt",
+   "logBytes": 901532,
+   "logLines": 6014,
+   "errorLines": [
+    "L531: Traceback (most recent call last):",
+    "L3378: 2026-11-06 01:24:33.556644 WARN [1185-1185][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+    "L3389: 2026-11-06 01:24:33.558446 ERROR [1185-1185][HYBM hybm_entity_default.cpp:1324 InitDramSegment] dram segment does not support sdma in current environment, rankId: 0",
+    "L3390: 2026-11-06 01:24:33.558460 ERROR [1185-1185][HYBM hybm_entity_default.cpp:1245 InitSegment] InitDramSegment() failed: -1",
+    "L3391: 2026-11-06 01:24:33.558465 ERROR [1185-1185][HYBM hybm_entity_default.cpp:127 Initialize] Assert InitSegment() == BM_OK, Failed to init segment.",
+    "L3392: 2026-11-06 01:24:33.558471 ERROR [1185-1185][HYBM hybm_big_mem_entry.cpp:35 hybm_create_entity] initialize entity failed, id: 64 flags: 0x0 ret: ffffffff",
+    "L3393: 2026-11-06 01:24:33.558492 ERROR [1185-1185][SMEM smem_bm_entry.cpp:152 Initialize] hybm_create_entity failed, entityId: 64 rankId: 0 flags: 0",
+    "L3394: 2026-11-06 01:24:33.558522 ERROR [1185-1185][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1",
+    "L3395: 2026-11-06 01:24:33.558530 ERROR [1185-1185][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed",
+    "L3396: 2026-11-06 01:24:33.558536 ERROR [1185-1185][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm",
+    "L4846: 2026-11-06 01:24:35.763974 ERROR [1173-1173][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+    "L4849: 2026-11-06 01:24:35.763992 ERROR [1181-1181][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+    "L4850: 2026-11-06 01:24:35.764153 ERROR [1173-1173][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+    "L4851: 2026-11-06 01:24:35.764154 ERROR [1181-1181][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+    "L4852: 2026-11-06 01:24:35.764180 ERROR [1181-1181][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+    "L4853: 2026-11-06 01:24:35.764187 ERROR [1173-1173][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+    "L4856: 2026-11-06 01:24:35.764398 ERROR [1178-1178][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+    "L4857: 2026-11-06 01:24:35.764529 ERROR [1178-1178][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+    "L4858: 2026-11-06 01:24:35.764537 ERROR [1178-1178][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+    "L4861: Traceback (most recent call last):",
+    "L4888: [2026-11-06 01:24:35 DP7 PP1 TP7 EP7] Scheduler hit an exception: Traceback (most recent call last):",
+    "L4938: [2026-11-06 01:24:35 DP2 PP0 TP2 EP2] Scheduler hit an exception: Traceback (most recent call last):",
+    "L4988: [2026-11-06 01:24:35 DP0 PP1 TP0 EP0] Scheduler hit an exception: Traceback (most recent call last):",
+    "L5036: 2026-11-06 01:24:35.765375 ERROR [1175-1175][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+    "L5040: 2026-11-06 01:24:35.765531 ERROR [1175-1175][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+    "L5041: 2026-11-06 01:24:35.765546 ERROR [1175-1175][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+    "L5044: 2026-11-06 01:24:35.765863 ERROR [1184-1184][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+    "L5045: 2026-11-06 01:24:35.766006 ERROR [1184-1184][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+    "L5046: 2026-11-06 01:24:35.766016 ERROR [1184-1184][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+    "L5052: [2026-11-06 01:24:35 DP6 PP1 TP6 EP6] Scheduler hit an exception: Traceback (most recent call last):",
+    "L5100: 2026-11-06 01:24:35.766620 ERROR [1183-1183][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+    "L5101: 2026-11-06 01:24:35.766745 ERROR [1183-1183][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+    "L5102: 2026-11-06 01:24:35.766754 ERROR [1183-1183][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+    "L5104: Traceback (most recent call last):",
+    "L5131: Traceback (most recent call last):",
+    "L5158: [2026-11-06 01:24:35 DP5 PP0 TP5 EP5] Scheduler hit an exception: Traceback (most recent call last):",
+    "L5206: Traceback (most recent call last):",
+    "L5233: Traceback (most recent call last):",
+    "L5260: Traceback (most recent call last):",
+    "L5287: Traceback (most recent call last):",
+    "L5313: [2026-11-06 01:24:35 DP2 PP1 TP2 EP2] Scheduler hit an exception: Traceback (most recent call last):",
+    "L5359: [2026-11-06 01:24:35 DP0 PP0 TP0 EP0] Scheduler hit an exception: Traceback (most recent call last):",
+    "L5406: Traceback (most recent call last):",
+    "L5433: Traceback (most recent call last):",
+    "L5459: [2026-11-06 01:24:35 DP1 PP1 TP1 EP1] Scheduler hit an exception: Traceback (most recent call last):",
+    "L5505: [2026-11-06 01:24:35 DP1 PP0 TP1 EP1] Scheduler hit an exception: Traceback (most recent call last):",
+    "L5551: [2026-11-06 01:24:35 DP6 PP0 TP6 EP6] Scheduler hit an exception: Traceback (most recent call last):",
+    "L5597: [2026-11-06 01:24:35 DP3 PP0 TP3 EP3] Scheduler hit an exception: Traceback (most recent call last):",
+    "L5643: [2026-11-06 01:24:35 DP4 PP1 TP4 EP4] Scheduler hit an exception: Traceback (most recent call last):",
+    "L5689: [2026-11-06 01:24:35 DP3 PP1 TP3 EP3] Scheduler hit an exception: Traceback (most recent call last):",
+    "L5737: Traceback (most recent call last):",
+    "L5748: Traceback (most recent call last):",
+    "L5764: Traceback (most recent call last):",
+    "L5801: Traceback (most recent call last):",
+    "L5811: Traceback (most recent call last):",
+    "L5915: ##[error]Error: failed to run script step:",
+    "L5916: ✗ exit code: 1",
+    "L5932: Traceback (most recent call last):",
+    "L5940: ##[error]Process completed with exit code 1.",
+    "L5941: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ],
+   "isTestJob": true,
+   "testResults": null
+  }
+ ],
+ "missing": [],
+ "systemLogs": [],
+ "ghComplete": true
+}

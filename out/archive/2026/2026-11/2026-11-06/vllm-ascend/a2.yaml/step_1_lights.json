@@ -1,0 +1,62 @@
+{
+ "_doc": {
+  "step": "step_1_lights",
+  "title": "第 1 步 夜间统计与待分析圈定",
+  "source": "openLiBing 夜间统计看板（产品维度指标）",
+  "criteria": "默认取「前一个工作日」单日（跳过周末与法定节假日，config.date_range 留空时生效）：取 config.products 指定的开源组件在该日的版本可用度/编译成功率，比率按我们采集到的执行记录重算（归档只存数值，不存黄/绿/红）；本产品下任一指标未达 100%（或版本不可用）的流水线进入待分析集合",
+  "dateField": "统计区间（start~end，含端点）",
+  "generatedAt": "2026-11-09 15:06:59",
+  "component": "vllm-ascend",
+  "pipeline": "a2.yaml",
+  "date": "2026-11-06"
+ },
+ "dateRange": {
+  "start": "2026-11-06",
+  "end": "2026-11-06"
+ },
+ "product": {
+  "product": "vllm-ascend",
+  "projectId": 300127,
+  "versionAvailabilityRate": 0.5,
+  "buildSuccessRate": null,
+  "pipelineCount": 2,
+  "badPipelineCount": 0,
+  "badPipelineCountVA": 0,
+  "badPipelineCountBS": 0,
+  "analyze": true,
+  "collectedPipelineCount": 2,
+  "rateRule": "runs",
+  "recompute": true,
+  "scheduledOnly": true,
+  "versionAvailabilityDetail": {
+   "availDays": 1,
+   "daysInPeriod": 2,
+   "rule": "按采集到的全部运行重算：Σ可用日 / Σ有运行日（不看板 versionAvail；当日有 iva=true 的运行才算可用）"
+  }
+ },
+ "pipeline": {
+  "key": "vllm-ascend|a2.yaml",
+  "product": "vllm-ascend",
+  "projectId": 300127,
+  "pipelineName": "schedule_nightly_test_a2.yaml",
+  "pipelineShortName": "a2.yaml",
+  "pipelineId": "228664975",
+  "platform": "github",
+  "versionAvailabilityRate": 1,
+  "buildSuccessRate": null,
+  "dims": [
+   "va"
+  ],
+  "rateRule": "runs",
+  "recompute": true,
+  "scheduledOnly": true
+ },
+ "selection": {
+  "inBadPipelines": true,
+  "dims": [
+   "va"
+  ],
+  "rateRule": "runs",
+  "reason": "全量采集：该流水线区间内共 2 次运行（当日 2 次），其中 0 次失败/取消进入根因取证；版本可用度与编译成功率一律按全部运行逐日重算（不看板返回值）；仅采集定时任务运行（含 PR 的运行不计、不分析）"
+ }
+}

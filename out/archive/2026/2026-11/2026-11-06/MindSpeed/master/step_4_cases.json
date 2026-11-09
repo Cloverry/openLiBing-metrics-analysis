@@ -1,0 +1,22 @@
+{
+ "_doc": {
+  "step": "step_4_cases",
+  "title": "第 4 步 测试用例取证（T6）",
+  "source": "openLiBing 测试报告页 + 用例日志下载",
+  "criteria": "取失败任务的失败用例、错误信息、深度学习命中行，并下载用例日志到 case_logs/",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-09 15:06:59",
+  "component": "MindSpeed",
+  "pipeline": "master",
+  "date": "2026-11-06"
+ },
+ "results": [],
+ "caseErrors": [],
+ "errors": [],
+ "counts": {
+  "tasks": 0,
+  "failedCases": 0,
+  "caseLogs": 0,
+  "caseErrors": 0
+ }
+}

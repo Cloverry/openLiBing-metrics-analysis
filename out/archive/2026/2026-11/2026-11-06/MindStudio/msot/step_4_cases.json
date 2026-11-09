@@ -1,0 +1,356 @@
+{
+ "_doc": {
+  "step": "step_4_cases",
+  "title": "第 4 步 测试用例取证（T6）",
+  "source": "openLiBing 测试报告页 + 用例日志下载",
+  "criteria": "取失败任务的失败用例、错误信息、深度学习命中行，并下载用例日志到 case_logs/",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-09 15:06:58",
+  "component": "MindStudio",
+  "pipeline": "msot",
+  "date": "2026-11-06"
+ },
+ "results": [
+  {
+   "route": "test",
+   "key": "MindStudio|msot",
+   "pipeline": "msot",
+   "pipelineName": "Nightly-CI-Component-pipeline_msot",
+   "rn": 261,
+   "st": "11-06 06:00",
+   "projectId": 300037,
+   "pipelineId": "b67d335347fa4646acd3b96d1c55573e",
+   "rid": "e509275186da4ee38affa7c15dfb2ecc",
+   "jobId": "590fe0c1d5564da28daa9b40f839d53a",
+   "jobName": "Test_msot_nightly_smoke_debug",
+   "stepIds": [
+    "65c45094b8e641debac443f493db919d"
+   ],
+   "steps": [
+    {
+     "id": "65c45094b8e641debac443f493db919d",
+     "name": "Test_msot_nightly_smoke_debug",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "84f3d281fbfd4af4b9ad7a083176d4af",
+     "jobIdParam": "379cda1005e5430abe840cf3cbed483e"
+    }
+   ],
+   "jobErrMsg": "步骤Test_msot_nightly_smoke_debug执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "d4d00f1eea7e4d6c8498e5149f98003f",
+   "code": 200,
+   "summary": {
+    "total": 29,
+    "passed": 28,
+    "failed": 1,
+    "passRate": "96.55%"
+   },
+   "failedCases": [
+    {
+     "name": "test_mssanitizer_support_shmem_allgather",
+     "number": "test_mssanitizer_support_shmem_allgather",
+     "state": "failed",
+     "description": "AssertionError: 工具产生误报,不应该有内存越界\nassert 'ERROR' not in '===========...ther_int32_t'\n  \n  'ERROR' is contained here:\n    =================================================================\n                       >>>>>   MindStudio   <<<<<\n        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\n    =================================================================\n    ...\n  \n  ...Full output truncated (16 lines hidden), use '-vv' to show",
+     "beginTime": "2026-11-06 17:03:32",
+     "endTime": "2026-11-06 17:23:09",
+     "resultDownloadUrl": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db6211202611066109/test_mssanitizer_support_shmem_allgather.html",
+     "envDownloadUrl": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db6211202611066109/test_mssanitizer_support_shmem_allgather_log.zip"
+    }
+   ],
+   "empty": false
+  },
+  {
+   "route": "test",
+   "key": "MindStudio|msot",
+   "pipeline": "msot",
+   "pipelineName": "Nightly-CI-Component-pipeline_msot",
+   "rn": 261,
+   "st": "11-06 06:00",
+   "projectId": 300037,
+   "pipelineId": "b67d335347fa4646acd3b96d1c55573e",
+   "rid": "e509275186da4ee38affa7c15dfb2ecc",
+   "jobId": "e5ef78c4e3cd453f8c716dc6734a0a53",
+   "jobName": "Test_msot_nightly_smoke_A3_debug",
+   "stepIds": [
+    "baa20a66f3d74a0aa0f4a08cf4277009"
+   ],
+   "steps": [
+    {
+     "id": "baa20a66f3d74a0aa0f4a08cf4277009",
+     "name": "Test_msot_nightly_smoke_A3_debug",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "9d28f00da2d4429d945689bc4314a342",
+     "jobIdParam": "8cb875a4e0cb468f9f16d3e85ec79a17"
+    }
+   ],
+   "jobErrMsg": "步骤Test_msot_nightly_smoke_A3_debug执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "6f4914dcdccb4b5cbe125a0fd9d4a0fa",
+   "code": 200,
+   "summary": {
+    "total": 29,
+    "passed": 28,
+    "failed": 1,
+    "passRate": "96.55%"
+   },
+   "failedCases": [
+    {
+     "name": "test_mssanitizer_mc2_0002",
+     "number": "test_mssanitizer_mc2_0002",
+     "state": "failed",
+     "description": "AssertionError: 工具发生误报，应该没有越界异常\nassert 'ERROR' not in '===========... \\ntest pass'\n  \n  'ERROR' is contained here:\n    =================================================================\n                       >>>>>   MindStudio   <<<<<\n        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\n    =================================================================\n    ...\n  \n  ...Full output truncated (7 lines hidden), use '-vv' to show",
+     "beginTime": "2026-11-06 13:34:12",
+     "endTime": "2026-11-06 13:34:59",
+     "resultDownloadUrl": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db62112026110622992/test_mssanitizer_mc2_0002.html",
+     "envDownloadUrl": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db62112026110622992/test_mssanitizer_mc2_0002_log.zip"
+    }
+   ],
+   "empty": false
+  },
+  {
+   "route": "test",
+   "key": "MindStudio|msot",
+   "pipeline": "msot",
+   "pipelineName": "Nightly-CI-Component-pipeline_msot",
+   "rn": 262,
+   "st": "11-06 15:32",
+   "projectId": 300037,
+   "pipelineId": "b67d335347fa4646acd3b96d1c55573e",
+   "rid": "1987bc3c2f5d4cebbe0e0e932bff7a70",
+   "jobId": "eb8d3863e0524a9c97d407e58e11abd0",
+   "jobName": "Test_msot_nightly_smoke",
+   "stepIds": [
+    "babbb73bf9bd4ba4ab70effed7ac1b5e"
+   ],
+   "steps": [
+    {
+     "id": "babbb73bf9bd4ba4ab70effed7ac1b5e",
+     "name": "Test_msot_nightly_smoke",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "3f0e6f155ac04d318bea84de86d45df7",
+     "jobIdParam": "c55bdea4b34d4a1fbc8b8263bc2aed71"
+    }
+   ],
+   "jobErrMsg": "步骤Test_msot_nightly_smoke执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "e1ba381938284433b3edda37c20ce692",
+   "code": 200,
+   "summary": {
+    "total": 171,
+    "passed": 169,
+    "failed": 2,
+    "passRate": "98.83%"
+   },
+   "failedCases": [
+    {
+     "name": "test_msopst_paramType_dynamic_011",
+     "number": "test_msopst_paramType_dynamic_011",
+     "state": "failed",
+     "description": "AssertionError: 多 dynamic 输入运行失败",
+     "beginTime": "2026-11-06 15:39:16",
+     "endTime": "2026-11-06 15:39:19",
+     "resultDownloadUrl": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db6211202611065268/test_msopst_paramType_dynamic_011.html",
+     "envDownloadUrl": null
+    },
+    {
+     "name": "test_pytorch_to_toolkit_001",
+     "number": "test_pytorch_to_toolkit_001",
+     "state": "failed",
+     "description": "AssertionError: pytorch_to_toolkit 001 运行失败",
+     "beginTime": "2026-11-06 15:39:16",
+     "endTime": "2026-11-06 15:39:20",
+     "resultDownloadUrl": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db6211202611065268/test_pytorch_to_toolkit_001.html",
+     "envDownloadUrl": null
+    }
+   ],
+   "empty": false
+  },
+  {
+   "route": "test",
+   "key": "MindStudio|msot",
+   "pipeline": "msot",
+   "pipelineName": "Nightly-CI-Component-pipeline_msot",
+   "rn": 263,
+   "st": "11-06 17:50",
+   "projectId": 300037,
+   "pipelineId": "b67d335347fa4646acd3b96d1c55573e",
+   "rid": "ac82d90d09b040ac9feff4bd31c2b8d9",
+   "jobId": "10f6974be9f748e0bfa8c5b43f7baba0",
+   "jobName": "Test_msot_nightly_smoke_debug",
+   "stepIds": [
+    "16af5cba9c8849b9be22663dcba38503"
+   ],
+   "steps": [
+    {
+     "id": "16af5cba9c8849b9be22663dcba38503",
+     "name": "Test_msot_nightly_smoke_debug",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "08d9621b0f424ad8a3d2b110f2e82974",
+     "jobIdParam": "379cda1005e5430abe840cf3cbed483e"
+    }
+   ],
+   "jobErrMsg": "步骤Test_msot_nightly_smoke_debug执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "40fe1d05582245fc87865c5237cf23df",
+   "code": 200,
+   "summary": {
+    "total": 29,
+    "passed": 27,
+    "failed": 2,
+    "passRate": "93.10%"
+   },
+   "failedCases": [
+    {
+     "name": "test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003",
+     "number": "test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003",
+     "state": "failed",
+     "description": "AssertionError: 工具发生误报，应该没有越界异常\nassert 'ERROR' not in '===========... \\ntest pass'\n  \n  'ERROR' is contained here:\n    =================================================================\n                       >>>>>   MindStudio   <<<<<\n        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\n    =================================================================\n    ...\n  \n  ...Full output truncated (13 lines hidden), use '-vv' to show",
+     "beginTime": "2026-11-06 17:56:22",
+     "endTime": "2026-11-06 17:57:26",
+     "resultDownloadUrl": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db62112026110610633/test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003.html",
+     "envDownloadUrl": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db62112026110610633/test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003_log.zip"
+    },
+    {
+     "name": "test_mssanitizer_mc2_0002",
+     "number": "test_mssanitizer_mc2_0002",
+     "state": "failed",
+     "description": "AssertionError: 工具发生误报，应该没有越界异常\nassert 'ERROR' not in '===========... \\ntest pass'\n  \n  'ERROR' is contained here:\n    =================================================================\n                       >>>>>   MindStudio   <<<<<\n        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\n    =================================================================\n    ...\n  \n  ...Full output truncated (7 lines hidden), use '-vv' to show",
+     "beginTime": "2026-11-06 17:56:22",
+     "endTime": "2026-11-06 17:57:24",
+     "resultDownloadUrl": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db62112026110610633/test_mssanitizer_mc2_0002.html",
+     "envDownloadUrl": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db62112026110610633/test_mssanitizer_mc2_0002_log.zip"
+    }
+   ],
+   "empty": false
+  }
+ ],
+ "caseErrors": [
+  {
+   "url": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db6211202611066109/test_mssanitizer_support_shmem_allgather.html",
+   "file": "case_0001.html",
+   "localLog": "case_logs/case_0001.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py::TestMssanitizerMc2::test_mssanitizer_support_shmem_allgather",
+   "status": "Failed",
+   "duration": "1177.28s",
+   "fileBytes": 107481,
+   "fileLines": 1806,
+   "errors": [],
+   "deepHits": [
+    "Test FAILED: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py::TestMssanitizerMc2::test_mssanitizer_support_shmem_allgather\nException: AssertionError\nMessage: 工具产生误报,不应该有内存越界\nassert 'ERROR' not in '===========...ther_int32_t'\n  \n  'ERROR' is contained here:\n    =================================================================\n                       >>>>>   MindStudio   <<<<<\n        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\n    =================================================================\n    ...\n  \n  ...Full output truncated (16 lines hidden), use '-vv' to s",
+    "Traceback:\ntestcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py:83: in test_mssanitizer_support_shmem_allgather\n    assert \"ERROR\" not in memcheck, \"工具产生误报,不应该有内存越界\"\nE   AssertionError: 工具产生误报,不应该有内存越界\nE   assert 'ERROR' not in '===========...ther_int32_t'\nE     \nE     'ERROR' is contained here:\nE       =================================================================\nE                          >>>>>   MindStudio   <<<<<\nE           THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\nE       =================================================================\nE       ...\nE     \nE     ...Full output truncated (16 lines hidden), use '-vv' to show"
+   ]
+  },
+  {
+   "url": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db62112026110622992/test_mssanitizer_mc2_0002.html",
+   "file": "case_0002.html",
+   "localLog": "case_logs/case_0002.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py::TestMssanitizerMc2::test_mssanitizer_mc2_0002",
+   "status": "Failed",
+   "duration": "47.28s",
+   "fileBytes": 114474,
+   "fileLines": 1580,
+   "errors": [],
+   "deepHits": [
+    "Test FAILED: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py::TestMssanitizerMc2::test_mssanitizer_mc2_0002\nException: AssertionError\nMessage: 工具发生误报，应该没有越界异常\nassert 'ERROR' not in '===========... \\ntest pass'\n  \n  'ERROR' is contained here:\n    =================================================================\n                       >>>>>   MindStudio   <<<<<\n        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\n    =================================================================\n    ...\n  \n  ...Full output truncated (7 lines hidden), use '-vv' to show",
+    "Traceback:\ntestcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py:161: in test_mssanitizer_mc2_0002\n    assert \"ERROR\" not in ret_msan, \"工具发生误报，应该没有越界异常\"\nE   AssertionError: 工具发生误报，应该没有越界异常\nE   assert 'ERROR' not in '===========... \\ntest pass'\nE     \nE     'ERROR' is contained here:\nE       =================================================================\nE                          >>>>>   MindStudio   <<<<<\nE           THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\nE       =================================================================\nE       ...\nE     \nE     ...Full output truncated (7 lines hidden), use '-vv' to show"
+   ]
+  },
+  {
+   "url": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db6211202611065268/test_msopst_paramType_dynamic_011.html",
+   "file": "case_0054.html",
+   "localLog": "case_logs/case_0054.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/mindstudio/op_tool/msopgen/test_msopgen_dynamic.py::TestMsopgenDynamic::test_msopst_paramType_dynamic_011",
+   "status": "Failed",
+   "duration": "2.48s",
+   "fileBytes": 42146,
+   "fileLines": 604,
+   "errors": [
+    {
+     "time": "2026-11-06 07:40:25.969",
+     "level": "FAIL",
+     "line": 529,
+     "loc": "__init__.py:71",
+     "msg": "Test FAILED: testcase/mindstudio/op_tool/msopgen/test_msopgen_dynamic.py::TestMsopgenDynamic::test_msopst_paramType_dynamic_011\nException: AssertionError\nMessage: 多 dynamic 输入运行失败\nassert ('success' in '2026-11-06 07:40:25 (4443) - [error] the path /mnt/share/autotest/mindstudio/autotestproperty/operator_project/lib/addn_case_20261106074025.json does not have permission to read. please check the path permission.' or 'success count: 1' in '2026-11-06 07:40:25 (4443) - [error] the path /mnt/share/autotest/mindstudio/autotestproperty/operator_project/lib/addn_case_20261106074025.json does not have ...[truncated]"
+    },
+    {
+     "time": "2026-11-06 07:40:25.971",
+     "level": "ERROR",
+     "line": 543,
+     "loc": "__init__.py:71",
+     "msg": "Traceback:\ntestcase/mindstudio/op_tool/msopgen/test_msopgen_dynamic.py:123: in test_msopst_paramType_dynamic_011\n assert \"success\" in result.lower() or \"success count: 1\" in result.lower(), \"多 dynamic 输入运行失败\"\nE AssertionError: 多 dynamic 输入运行失败\nE assert ('success' in '2026-11-06 07:40:25 (4443) - [error] the path /mnt/share/autotest/mindstudio/autotestproperty/operator_project/lib/addn_case_20261106074025.json does not have permission to read. please check the path permission.' or 'success count: 1' in '2026-11-06 07:40:25 (4443) - [error] the path /mnt/share/autotest/mindstudio/autotestpropert ...[truncated]"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db6211202611065268/test_pytorch_to_toolkit_001.html",
+   "file": "case_0055.html",
+   "localLog": "case_logs/case_0055.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/mindstudio/op_tool/msopgen/test_msopgen_gen_basic.py::TestMsopgenGenBasic::test_pytorch_to_toolkit_001",
+   "status": "Failed",
+   "duration": "3.72s",
+   "fileBytes": 51423,
+   "fileLines": 733,
+   "errors": [
+    {
+     "time": "2026-11-06 07:41:04.584",
+     "level": "FAIL",
+     "line": 658,
+     "loc": "__init__.py:71",
+     "msg": "Test FAILED: testcase/mindstudio/op_tool/msopgen/test_msopgen_gen_basic.py::TestMsopgenGenBasic::test_pytorch_to_toolkit_001\nException: AssertionError\nMessage: pytorch_to_toolkit 001 运行失败\nassert ('success' in '-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.' or 'success count: 1' in '-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\\n2026-11-06 07:41:04 (7023) - [error] ...[truncated]"
+    },
+    {
+     "time": "2026-11-06 07:41:04.585",
+     "level": "ERROR",
+     "line": 672,
+     "loc": "__init__.py:71",
+     "msg": "Traceback:\ntestcase/mindstudio/op_tool/msopgen/test_msopgen_gen_basic.py:136: in test_pytorch_to_toolkit_001\n assert \"success\" in result_run.lower() or \"success count: 1\" in result_run.lower(), (\nE AssertionError: pytorch_to_toolkit 001 运行失败\nE assert ('success' in '-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory\\n2026-11-06 07:41:04 (7023) - [error] the path /home/runner/addn_case_20261106074104.json does not exist. please check whether the path exists.' or 'success count: 1' in '-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such ...[truncated]"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db62112026110610633/test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003.html",
+   "file": "case_0003.html",
+   "localLog": "case_logs/case_0003.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_aclgraph_cube.py::TestMssanitizerAclGraph::test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003",
+   "status": "Failed",
+   "duration": "64.06s",
+   "fileBytes": 113932,
+   "fileLines": 1485,
+   "errors": [],
+   "deepHits": [
+    "Test FAILED: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_aclgraph_cube.py::TestMssanitizerAclGraph::test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003\nException: AssertionError\nMessage: 工具发生误报，应该没有越界异常\nassert 'ERROR' not in '===========... \\ntest pass'\n  \n  'ERROR' is contained here:\n    =================================================================\n                       >>>>>   MindStudio   <<<<<\n        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\n    =================================================================\n    ...\n  \n  ...Full output trunc",
+    "Traceback:\ntestcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_aclgraph_cube.py:274: in test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003\n    assert \"ERROR\" not in ret_msan, \"工具发生误报，应该没有越界异常\"\nE   AssertionError: 工具发生误报，应该没有越界异常\nE   assert 'ERROR' not in '===========... \\ntest pass'\nE     \nE     'ERROR' is contained here:\nE       =================================================================\nE                          >>>>>   MindStudio   <<<<<\nE           THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\nE       =================================================================\nE       ...\nE     \nE     ...Full output truncated (13 lines hidden), use '-vv' to show"
+   ]
+  },
+  {
+   "url": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db62112026110610633/test_mssanitizer_mc2_0002.html",
+   "file": "case_0004.html",
+   "localLog": "case_logs/case_0004.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py::TestMssanitizerMc2::test_mssanitizer_mc2_0002",
+   "status": "Failed",
+   "duration": "62.08s",
+   "fileBytes": 117701,
+   "fileLines": 1571,
+   "errors": [],
+   "deepHits": [
+    "Test FAILED: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py::TestMssanitizerMc2::test_mssanitizer_mc2_0002\nException: AssertionError\nMessage: 工具发生误报，应该没有越界异常\nassert 'ERROR' not in '===========... \\ntest pass'\n  \n  'ERROR' is contained here:\n    =================================================================\n                       >>>>>   MindStudio   <<<<<\n        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\n    =================================================================\n    ...\n  \n  ...Full output truncated (7 lines hidden), use '-vv' to show",
+    "Traceback:\ntestcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py:188: in test_mssanitizer_mc2_0002\n    assert \"ERROR\" not in ret_msan, \"工具发生误报，应该没有越界异常\"\nE   AssertionError: 工具发生误报，应该没有越界异常\nE   assert 'ERROR' not in '===========... \\ntest pass'\nE     \nE     'ERROR' is contained here:\nE       =================================================================\nE                          >>>>>   MindStudio   <<<<<\nE           THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\nE       =================================================================\nE       ...\nE     \nE     ...Full output truncated (7 lines hidden), use '-vv' to show"
+   ]
+  }
+ ],
+ "errors": [],
+ "counts": {
+  "tasks": 4,
+  "failedCases": 6,
+  "caseLogs": 6,
+  "caseErrors": 4
+ }
+}

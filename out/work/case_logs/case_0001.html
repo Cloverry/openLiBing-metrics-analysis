@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Log Report: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py::TestMssanitizerMc2::test_mssanitizer_support_shmem_allgather</title>
+    <style>
+        body { font-family: Consolas, monospace; margin: 20px; background-color: #f4f4f4; }
+        .header {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .header h2 { margin: 0; color: #333; }
+        .header p { margin: 5px 0; }
+        .status-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            background-color: #F44336;
+        }
+        table { width: 100%; border-collapse: collapse; background-color: white; margin-bottom: 5px; }
+        th, td { border: 1px solid #ddd; padding: 6px 8px; text-align: left; word-break: break-word; vertical-align: top; }
+        th { background-color: #9E9E9E; color: white; }
+        .ERROR, .FAIL { color: #F44336; font-weight: bold; }
+        .WARN { color: #FF9800; font-weight: bold; }
+        .INFO, .PASS { color: #2E8B57; }
+        .DEBUG { color: #607D8B; }
+        .TRACE { color: #757575; }
+        .TC_STEP { color: #1976D2; font-weight: bold; }
+        th:nth-child(1), td:nth-child(1) { width: 220px; min-width: 150px; }
+        th:nth-child(2), td:nth-child(2) { width: 70px; min-width: 60px; }
+        th:nth-child(3), td:nth-child(3) { width: 50px; min-width: 40px; }
+        th:nth-child(4), td:nth-child(4) { width: 128px; min-width: 112px; }
+        th:nth-child(5), td:nth-child(5) { width: auto; }
+
+        /* Step row status colors - all cells in the row */
+        .step-error td { color: #F44336; }
+        .step-warning td { color: #FF9800; }
+        .step-success td { color: #2E8B57; }
+
+        /* Collapsible section styles */
+        .step-toggle {
+            display: inline-block;
+            padding: 4px 12px;
+            border: 2px solid #666;
+            border-radius: 4px;
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 8px;
+            white-space: nowrap;
+        }
+        .step-toggle:hover {
+            background-color: #e0e0e0;
+            border-color: #333;
+        }
+        .step-content { display: none; }
+        .step-content.expanded { display: table-row; }
+        .step-indent { padding-left: 24px; }
+
+        /* Message scroll styles */
+        .msg-scroll {
+            max-height: 300px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            word-break: break-word;
+            white-space: pre-wrap;
+        }
+    </style>
+    <script>
+        function toggleStep(stepId) {
+            var rows = document.querySelectorAll('.content-' + stepId);
+            var toggle = document.getElementById('toggle-' + stepId);
+            if (rows.length === 0) {
+                return;
+            }
+            if (rows[0].classList.contains('expanded')) {
+                rows.forEach(function(r) { r.classList.remove('expanded'); });
+                toggle.textContent = '+Expand step';
+            } else {
+                rows.forEach(function(r) { r.classList.add('expanded'); });
+                toggle.textContent = '-Collapse step';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h2>Log Report: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py::TestMssanitizerMc2::test_mssanitizer_support_shmem_allgather</h2>
+        <p><strong>Case ID:</strong> testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py::TestMssanitizerMc2::test_mssanitizer_support_shmem_allgather</p>
+        <p><strong>Status:</strong> <span class="status-badge">Failed</span></p>
+        <p><strong>Duration:</strong> 1177.28s</p>
+    </div>
+    
+    <p><strong>Total Entries:</strong> 91</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Level</th>
+                <th>Thread</th>
+                <th>Location</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>2026-11-06 09:13:34.821</td>
+            <td class='INFO'>INFO</td>
+            <td>281473065254944</td>
+            <td>plugin.py:425</td>
+            <td><div class="msg-scroll">environment requirements: [{&#39;name&#39;: &#39;mindstudio_single_device_8_a2a3_env_type-nodes_A2-device&#39;, &#39;res_type&#39;: &#39;container&#39;, &#39;cpu_arch&#39;: &#39;ARM&#39;, &#39;cpu_core_num&#39;: 64, &#39;npu_gen&#39;: &#39;A2&#39;, &#39;npu_model&#39;: &#39;Ascend 910B3&#39;, &#39;npu_num&#39;: 8, &#39;shm_size&#39;: &#39;720Gi&#39;, &#39;mount_source_data&#39;: [&#39;mindstudio_data&#39;], &#39;mount_dest_dir&#39;: [&#39;/home/autotest&#39;], &#39;resources&#39;: {&#39;cpu&#39;: {&#39;request&#39;: &#39;48&#39;, &#39;limit&#39;: &#39;128&#39;}, &#39;memory&#39;: {&#39;request&#39;: &#39;256Gi&#39;, &#39;limit&#39;: &#39;1024Gi&#39;}}, &#39;use_nfs&#39;: True, &#39;memory_size&#39;: 1024, &#39;pool&#39;: &#39;ascend-general-a2&#39;, &#39;env&#39;: {&#39;LD_LIBRARY_PATH&#39;: &#39;/usr/lib64/:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64/common:/usr/lib/aarch64-linux-gnu/:&#39;}}, {&#39;name&#39;: &#39;mindstudio_single_device_8_a2a3_env_type-nodes_A3-device&#39;, &#39;res_type&#39;: &#39;container&#39;, &#39;cpu_arch&#39;: &#39;ARM&#39;, &#39;cpu_core_num&#39;: 64, &#39;npu_gen&#39;: &#39;A3&#39;, &#39;npu_model&#39;: &#39;Ascend 910C&#39;, &#39;npu_num&#39;: 16, &#39;shm_size&#39;: &#39;720Gi&#39;, &#39;mount_source_data&#39;: [&#39;mindstudio_data&#39;], &#39;mount_dest_dir&#39;: [&#39;/home/autotest&#39;], &#39;resources&#39;: {&#39;cpu&#39;: {&#39;request&#39;: &#39;48&#39;, &#39;limit&#39;: &#39;128&#39;}, &#39;memory&#39;: {&#39;request&#39;: &#39;256Gi&#39;, &#39;limit&#39;: &#39;1024Gi&#39;}}, &#39;use_nfs&#39;: True, &#39;memory_size&#39;: 1024, &#39;pool&#39;: &#39;ascend-general-a3&#39;, &#39;env&#39;: {&#39;LD_LIBRARY_PATH&#39;: &#39;/usr/lib64/:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64/common:/usr/lib/aarch64-linux-gnu/:&#39;}}]</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:13:34.822</td>
+            <td class='INFO'>INFO</td>
+            <td>281473065254944</td>
+            <td>plugin.py:391</td>
+            <td><div class="msg-scroll">pre_action_registry has no actions registered</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:13:35.668</td>
+            <td class='INFO'>INFO</td>
+            <td>281473065254944</td>
+            <td>sendcmd[device]</td>
+            <td><div class="msg-scroll">source /usr/local/Ascend/ascend-toolkit/set_env.sh &amp;&amp; npu-smi info</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:13:35.668</td>
+            <td class='INFO'>INFO</td>
+            <td>281473065254944</td>
+            <td>recvcmd[device]</td>
+            <td><div class="msg-scroll">+------------------------------------------------------------------------------------------------------------------+
+| npu-smi 26.1.1                              Version: 26.1.1                                                      |
++---------------------------+---------------+----------------------------------------------------------------------+
+| NPU   Name                | Health        | Power(W)             Temp(C)                 Hugepages-Usage(page)   |
+| Chip                      | Bus-Id        | AICore(%)            Memory-Usage(MB)        HBM-Usage(MB)           |
++===========================+===============+======================================================================+
+| 0     910B3               | OK            | 93.2                 38                      0    / 0                |
+| 0                         | 0000:C1:00.0  | 0                    0    / 0                3457 / 65536            |
++===========================+===============+======================================================================+
+| 1     910B3               | OK            | 90.4                 34                      0    / 0                |
+| 0                         | 0000:C2:00.0  | 0                    0    / 0                3453 / 65536            |
++===========================+===============+======================================================================+
+| 2     910B3               | OK            | 89.9                 34                      0    / 0                |
+| 0                         | 0000:81:00.0  | 0                    0    / 0                3430 / 65536            |
++===========================+===============+======================================================================+
+| 3     910B3               | OK            | 94.4                 36                      0    / 0                |
+| 0                         | 0000:82:00.0  | 0                    0    / 0                3426 / 65536            |
++===========================+===============+======================================================================+
+| 4     910B3               | OK            | 89.5                 40                      0    / 0                |
+| 0                         | 0000:01:00.0  | 0                    0    / 0                3437 / 65536            |
++===========================+===============+======================================================================+
+| 5     910B3               | OK            | 93.6                 40                      0    / 0                |
+| 0                         | 0000:02:00.0  | 0                    0    / 0                3431 / 65536            |
++===========================+===============+======================================================================+
+| 6     910B3               | OK            | 92.3                 40                      0    / 0                |
+| 0                         | 0000:41:00.0  | 0                    0    / 0                3450 / 65536            |
++===========================+===============+======================================================================+
+| 7     910B3               | OK            | 89.7                 39                      0    / 0                |
+| 0                         | 0000:42:00.0  | 0                    0    / 0                3449 / 65536            |
++===========================+===============+======================================================================+
++---------------------------+---------------+----------------------------------------------------------------------+
+| NPU     Chip              | Process id    | Process name       | Process memory(MB)    | Process id in container |
++===========================+===============+======================================================================+
+| No running processes found in NPU 0                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 1                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 2                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 3                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 4                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 5                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 6                                                                              |
++===========================+===============+======================================================================+
+| No running processes found in NPU 7                                                                              |
++===========================+===============+======================================================================+</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:13:35.670</td>
+            <td class='INFO'>INFO</td>
+            <td>281473065254944</td>
+            <td>npu.py:509</td>
+            <td><div class="msg-scroll">解析npu-smi info完成，共 8 个NPU</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:13:35.670</td>
+            <td class='INFO'>INFO</td>
+            <td>281473065254944</td>
+            <td>conftest.py:112</td>
+            <td><div class="msg-scroll">[env_preflight] mindstudio_single_device_8_a2a3_env_type-nodes_A2-device 环境信息:</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:13:35.670</td>
+            <td class='INFO'>INFO</td>
+            <td>281473065254944</td>
+            <td>conftest.py:113</td>
+            <td><div class="msg-scroll">[env_preflight] mindstudio_single_device_8_a2a3_env_type-nodes_A2-device.npu_smi_info:
+{&#39;driver_version&#39;: &#39;npu-smi 26.1.1&#39;, &#39;npu_smi_version&#39;: &#39;Version: 26.1.1&#39;, &#39;npu_message&#39;: {&#39;0&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;93.2&#39;, &#39;temp_c&#39;: &#39;38&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:C1:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3457/65536&#39;, &#39;processes&#39;: []}, &#39;1&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;90.4&#39;, &#39;temp_c&#39;: &#39;34&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:C2:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3453/65536&#39;, &#39;processes&#39;: []}, &#39;2&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;89.9&#39;, &#39;temp_c&#39;: &#39;34&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:81:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3430/65536&#39;, &#39;processes&#39;: []}, &#39;3&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;94.4&#39;, &#39;temp_c&#39;: &#39;36&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:82:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3426/65536&#39;, &#39;processes&#39;: []}, &#39;4&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;89.5&#39;, &#39;temp_c&#39;: &#39;40&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:01:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3437/65536&#39;, &#39;processes&#39;: []}, &#39;5&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;93.6&#39;, &#39;temp_c&#39;: &#39;40&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:02:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3431/65536&#39;, &#39;processes&#39;: []}, &#39;6&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;92.3&#39;, &#39;temp_c&#39;: &#39;40&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:41:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3450/65536&#39;, &#39;processes&#39;: []}, &#39;7&#39;: {&#39;name&#39;: &#39;910B3&#39;, &#39;health&#39;: &#39;OK&#39;, &#39;power_w&#39;: &#39;89.7&#39;, &#39;temp_c&#39;: &#39;39&#39;, &#39;hugepages_usage&#39;: &#39;0/0&#39;, &#39;chip&#39;: &#39;0&#39;, &#39;bus_id&#39;: &#39;0000:42:00.0&#39;, &#39;aicore_usage&#39;: &#39;0&#39;, &#39;memory_usage_mb&#39;: &#39;0/0&#39;, &#39;hbm_usage_mb&#39;: &#39;3449/65536&#39;, &#39;processes&#39;: []}}}</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:13:35.671</td>
+            <td class='INFO'>INFO</td>
+            <td>281473065254944</td>
+            <td>conftest.py:115</td>
+            <td><div class="msg-scroll">[env_preflight] mindstudio_single_device_8_a2a3_env_type-nodes_A2-device.os_version:
+PRETTY_NAME=&quot;Ubuntu 22.04.5 LTS&quot;
+NAME=&quot;Ubuntu&quot;
+VERSION_ID=&quot;22.04&quot;
+VERSION=&quot;22.04.5 LTS (Jammy Jellyfish)&quot;
+VERSION_CODENAME=jammy
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL=&quot;https://www.ubuntu.com/&quot;
+SUPPORT_URL=&quot;https://help.ubuntu.com/&quot;
+BUG_REPORT_URL=&quot;https://bugs.launchpad.net/ubuntu/&quot;
+PRIVACY_POLICY_URL=&quot;https://www.ubuntu.com/legal/terms-and-policies/privacy-policy&quot;
+UBUNTU_CODENAME=jammy</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:13:35.671</td>
+            <td class='INFO'>INFO</td>
+            <td>281473065254944</td>
+            <td>conftest.py:115</td>
+            <td><div class="msg-scroll">[env_preflight] mindstudio_single_device_8_a2a3_env_type-nodes_A2-device.arch_type:
+aarch64</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:13:35.772</td>
+            <td class='INFO'>INFO</td>
+            <td>281473065254944</td>
+            <td>sendcmd[device]</td>
+            <td><div class="msg-scroll">export MSSANITIZER_ENABLE_DEBUG_LOG=1</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:13:35.772</td>
+            <td class='INFO'>INFO</td>
+            <td>281473065254944</td>
+            <td>recvcmd[device]</td>
+            <td><div class="msg-scroll">(empty)</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:13:35.873</td>
+            <td class='INFO'>INFO</td>
+            <td>281473065254944</td>
+            <td>sendcmd[device]</td>
+            <td><div class="msg-scroll">cp -r /home/autotest/AutoTestProperty/op_anomaly_detection/mindstudio/mssanitizer /home/mssanitizer_scripts</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:13:35.873</td>
+            <td class='INFO'>INFO</td>
+            <td>281473065254944</td>
+            <td>recvcmd[device]</td>
+            <td><div class="msg-scroll">(empty)</div></td>
+        </tr>
+        <tr>
+            <td>2026-11-06 09:13:35.873</td>
+            <td class='TC_START'>TC_START</td>
+            <td>281473065254944</td>
+            <td>plugin.py:970</td>
+            <td><div class="msg-scroll">testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py::TestMssanitizerMc2::test_mssanitizer_support_shmem_allgather</div></td>
+        </tr>
+        <tr class="step-success">
+            <td>2026-11-06 09:13:35.874</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281473065254944</td>
+            <td>test_mssanitizer_mc2.py:47</td>
+            <td>
+                <span id="toggle-step-1" class="step-toggle" onclick="toggleStep('step-1')">+Expand step</span>
+                <div class="msg-scroll">---------------------------- CLONE SHMEM -----------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:35.874</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>file_utils.py:419</td>
+                <td class="step-indent"><div class="msg-scroll">检查路径是否存在: /home, 搜索关键字: None, 递归: False</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:35.882</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">test -e &#39;/home&#39; &amp;&amp; echo &#39;exists&#39; || echo &#39;not_exists&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:35.882</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">exists</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:35.882</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>file_utils.py:425</td>
+                <td class="step-indent"><div class="msg-scroll">路径存在: /home</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:35.882</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>file_utils.py:419</td>
+                <td class="step-indent"><div class="msg-scroll">检查路径是否存在: /home/shmem_bak, 搜索关键字: None, 递归: False</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:35.929</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">test -e &#39;/home/shmem_bak&#39; &amp;&amp; echo &#39;exists&#39; || echo &#39;not_exists&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:35.929</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">not_exists</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:35.930</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>file_utils.py:427</td>
+                <td class="step-indent"><div class="msg-scroll">路径不存在: /home/shmem_bak</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:35.930</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>file_utils.py:419</td>
+                <td class="step-indent"><div class="msg-scroll">检查路径是否存在: /home/shmem, 搜索关键字: None, 递归: False</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:35.936</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">test -e &#39;/home/shmem&#39; &amp;&amp; echo &#39;exists&#39; || echo &#39;not_exists&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:35.937</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">not_exists</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:35.937</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>file_utils.py:427</td>
+                <td class="step-indent"><div class="msg-scroll">路径不存在: /home/shmem</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:35.937</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>operator_base.py:258</td>
+                <td class="step-indent"><div class="msg-scroll">克隆仓库: shmem</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:35.937</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>git.py:101</td>
+                <td class="step-indent"><div class="msg-scroll">GitClient初始化完成，执行模式: 远程</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:35.937</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>git.py:150</td>
+                <td class="step-indent"><div class="msg-scroll">开始克隆仓库: https://gitcode.com/cann/shmem</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:35.937</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>git.py:154</td>
+                <td class="step-indent"><div class="msg-scroll">执行克隆命令: git clone -b release/v1.7.0 --depth 1 https://gitcode.com/cann/shmem /home/shmem</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:37.927</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">git clone -b release/v1.7.0 --depth 1 https://gitcode.com/cann/shmem /home/shmem</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:37.928</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">Cloning into &#39;/home/shmem&#39;...
+warning: redirecting to https://gitcode.com/cann/shmem.git/</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:37.928</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>git.py:171</td>
+                <td class="step-indent"><div class="msg-scroll">仓库克隆成功: https://gitcode.com/cann/shmem -&gt; /home/shmem</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:37.928</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>file_utils.py:419</td>
+                <td class="step-indent"><div class="msg-scroll">检查路径是否存在: /home/shmem/.git, 搜索关键字: None, 递归: False</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:37.936</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">test -e &#39;/home/shmem/.git&#39; &amp;&amp; echo &#39;exists&#39; || echo &#39;not_exists&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:37.936</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">exists</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:37.936</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>file_utils.py:425</td>
+                <td class="step-indent"><div class="msg-scroll">路径存在: /home/shmem/.git</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:37.936</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>operator_base.py:267</td>
+                <td class="step-indent"><div class="msg-scroll">创建本地备份: /home/shmem -&gt; /home/shmem_bak</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:38.088</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">cp -r /home/shmem /home/shmem_bak</div></td>
+            </tr>
+            <tr class="step-content content-step-1">
+                <td>2026-11-06 09:13:38.088</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+        <tr class="step-success">
+            <td>2026-11-06 09:13:38.088</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281473065254944</td>
+            <td>test_mssanitizer_mc2.py:55</td>
+            <td>
+                <span id="toggle-step-2" class="step-toggle" onclick="toggleStep('step-2')">+Expand step</span>
+                <div class="msg-scroll">---------------------------- SET TOOLKIT ENV -----------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:13:38.189</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">whoami</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:13:38.189</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">root</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:13:38.289</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">source /usr/local/Ascend/ascend-toolkit/set_env.sh</div></td>
+            </tr>
+            <tr class="step-content content-step-2">
+                <td>2026-11-06 09:13:38.289</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+        <tr class="step-success">
+            <td>2026-11-06 09:13:38.290</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281473065254944</td>
+            <td>test_mssanitizer_mc2.py:58</td>
+            <td>
+                <span id="toggle-step-3" class="step-toggle" onclick="toggleStep('step-3')">+Expand step</span>
+                <div class="msg-scroll">---------------------------- REPLACE PERF_TIME -----------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 09:13:38.391</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">sed -i &#39;s/PERF_TIME=50/PERF_TIME=1/g&#39; /home/shmem/examples/allgather/run.sh</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 09:13:38.391</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 09:13:38.492</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">grep &#39;PERF_TIME&#39; /home/shmem/examples/allgather/run.sh</div></td>
+            </tr>
+            <tr class="step-content content-step-3">
+                <td>2026-11-06 09:13:38.492</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">PERF_TIME=1
+        msprof --application=&quot;${PROJECT_ROOT}/build/bin/allgather $PE_SIZE $idx $IPPORT $GNPU_NUM $FIRST_PE $FIRST_NPU $TEST_TYPE $PERF_TIME&quot; --output=${PROJECT_ROOT}/examples/allgather/output/ &amp;
+        PERF_TIME=1
+        ${PROJECT_ROOT}/build/bin/allgather $PE_SIZE $idx $IPPORT $GNPU_NUM $FIRST_PE $FIRST_NPU $TEST_TYPE $PERF_TIME &amp;</div></td>
+            </tr>
+        <tr class="step-success">
+            <td>2026-11-06 09:13:38.492</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281473065254944</td>
+            <td>test_mssanitizer_mc2.py:64</td>
+            <td>
+                <span id="toggle-step-4" class="step-toggle" onclick="toggleStep('step-4')">+Expand step</span>
+                <div class="msg-scroll">---------------------------- BUILD -----------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-4">
+                <td>2026-11-06 09:14:46.798</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">cd /home/shmem &amp;&amp; bash scripts/build.sh -examples -mssanitizer</div></td>
+            </tr>
+            <tr class="step-content content-step-4">
+                <td>2026-11-06 09:14:46.798</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">Cloning into &#39;catlass&#39;...
+remote: Enumerating objects: 30021, done.
+remote: Counting objects:   0% (1/14554)
+remote: Counting objects:   1% (146/14554)
+remote: Counting objects:   2% (292/14554)
+remote: Counting objects:   3% (437/14554)
+remote: Counting objects:   4% (583/14554)
+remote: Counting objects:   5% (728/14554)
+remote: Counting objects:   6% (874/14554)
+remote: Counting objects:   7% (1019/14554)
+remote: Counting objects:   8% (1165/14554)
+remote: Counting objects:   9% (1310/14554)
+remote: Counting objects:  10% (1456/14554)
+remote: Counting objects:  11% (1601/14554)
+remote: Counting objects:  12% (1747/14554)
+remote: Counting objects:  13% (1893/14554)
+remote: Counting objects:  14% (2038/14554)
+remote: Counting objects:  15% (2184/14554)
+remote: Counting objects:  16% (2329/14554)
+remote: Counting objects:  17% (2475/14554)
+remote: Counting objects:  18% (2620/14554)
+remote: Counting objects:  19% (2766/14554)
+remote: Counting objects:  20% (2911/14554)
+remote: Counting objects:  21% (3057/14554)
+remote: Counting objects:  22% (3202/14554)
+remote: Counting objects:  23% (3348/14554)
+remote: Counting objects:  24% (3493/14554)
+remote: Counting objects:  25% (3639/14554)
+remote: Counting objects:  26% (3785/14554)
+remote: Counting objects:  27% (3930/14554)
+remote: Counting objects:  28% (4076/14554)
+remote: Counting objects:  29% (4221/14554)
+remote: Counting objects:  30% (4367/14554)
+remote: Counting objects:  31% (4512/14554)
+remote: Counting objects:  32% (4658/14554)
+remote: Counting objects:  33% (4803/14554)
+remote: Counting objects:  34% (4949/14554)
+remote: Counting objects:  35% (5094/14554)
+remote: Counting objects:  36% (5240/14554)
+remote: Counting objects:  37% (5385/14554)
+remote: Counting objects:  38% (5531/14554)
+remote: Counting objects:  39% (5677/14554)
+remote: Counting objects:  40% (5822/14554)
+remote: Counting objects:  41% (5968/14554)
+remote: Counting objects:  42% (6113/14554)
+remote: Counting objects:  43% (6259/14554)
+remote: Counting objects:  44% (6404/14554)
+remote: Counting objects:  45% (6550/14554)
+remote: Counting objects:  46% (6695/14554)
+remote: Counting objects:  47% (6841/14554)
+remote: Counting objects:  48% (6986/14554)
+remote: Counting objects:  49% (7132/14554)
+remote: Counting objects:  50% (7277/14554)
+remote: Counting objects:  51% (7423/14554)
+remote: Counting objects:  52% (7569/14554)
+remote: Counting objects:  53% (7714/14554)
+remote: Counting objects:  54% (7860/14554)
+remote: Counting objects:  55% (8005/14554)
+remote: Counting objects:  56% (8151/14554)
+remote: Counting objects:  57% (8296/14554)
+remote: Counting objects:  58% (8442/14554)
+remote: Counting objects:  59% (8587/14554)
+remote: Counting objects:  60% (8733/14554)
+remote: Counting objects:  61% (8878/14554)
+remote: Counting objects:  62% (9024/14554)
+remote: Counting objects:  63% (9170/14554)
+remote: Counting objects:  64% (9315/14554)
+remote: Counting objects:  65% (9461/14554)
+remote: Counting objects:  66% (9606/14554)
+remote: Counting objects:  67% (9752/14554)
+remote: Counting objects:  68% (9897/14554)
+remote: Counting objects:  69% (10043/14554)
+remote: Counting objects:  70% (10188/14554)
+remote: Counting objects:  71% (10334/14554)
+remote: Counting objects:  72% (10479/14554)
+remote: Counting objects:  73% (10625/14554)
+remote: Counting objects:  74% (10770/14554)
+remote: Counting objects:  75% (10916/14554)
+remote: Counting objects:  76% (11062/14554)
+remote: Counting objects:  77% (11207/14554)
+remote: Counting objects:  78% (11353/14554)
+remote: Counting objects:  79% (11498/14554)
+remote: Counting objects:  80% (11644/14554)
+remote: Counting objects:  81% (11789/14554)
+remote: Counting objects:  82% (11935/14554)
+remote: Counting objects:  83% (12080/14554)
+remote: Counting objects:  84% (12226/14554)
+remote: Counting objects:  85% (12371/14554)
+remote: Counting objects:  86% (12517/14554)
+remote: Counting objects:  87% (12662/14554)
+remote: Counting objects:  88% (12808/14554)
+remote: Counting objects:  89% (12954/14554)
+remote: Counting objects:  90% (13099/14554)
+remote: Counting objects:  91% (13245/14554)
+remote: Counting objects:  92% (13390/14554)
+remote: Counting objects:  93% (13536/14554)
+remote: Counting objects:  94% (13681/14554)
+remote: Counting objects:  95% (13827/14554)
+remote: Counting objects:  96% (13972/14554)
+remote: Counting objects:  97% (14118/14554)
+remote: Counting objects:  98% (14263/14554)
+remote: Counting objects:  99% (14409/14554)
+remote: Counting objects: 100% (14554/14554)
+remote: Counting objects: 100% (14554/14554), done.
+remote: Compressing objects:   0% (1/5181)
+remote: Compressing objects:   1% (52/5181)
+remote: Compressing objects:   2% (104/5181)
+remote: Compressing objects:   3% (156/5181)
+remote: Compressing objects:   4% (208/5181)
+remote: Compressing objects:   5% (260/5181)
+remote: Compressing objects:   6% (311/5181)
+remote: Compressing objects:   7% (363/5181)
+remote: Compressing objects:   8% (415/5181)
+remote: Compressing objects:   9% (467/5181)
+remote: Compressing objects:  10% (519/5181)
+remote: Compressing objects:  11% (570/5181)
+remote: Compressing objects:  12% (622/5181)
+remote: Compressing objects:  13% (674/5181)
+remote: Compressing objects:  14% (726/5181)
+remote: Compressing objects:  15% (778/5181)
+remote: Compressing objects:  16% (829/5181)
+remote: Compressing objects:  17% (881/5181)
+remote: Compressing objects:  18% (933/5181)
+remote: Compressing objects:  19% (985/5181)
+remote: Compressing objects:  20% (1037/5181)
+remote: Compressing objects:  21% (1089/5181)
+remote: Compressing objects:  22% (1140/5181)
+remote: Compressing objects:  23% (1192/5181)
+remote: Compressing objects:  24% (1244/5181)
+remote: Compressing objects:  25% (1296/5181)
+remote: Compressing objects:  26% (1348/5181)
+remote: Compressing objects:  27% (1399/5181)
+remote: Compressing objects:  28% (1451/5181)
+remote: Compressing objects:  29% (1503/5181)
+remote: Compressing objects:  30% (1555/5181)
+remote: Compressing objects:  31% (1607/5181)
+remote: Compressing objects:  32% (1658/5181)
+remote: Compressing objects:  33% (1710/5181)
+remote: Compressing objects:  34% (1762/5181)
+remote: Compressing objects:  35% (1814/5181)
+remote: Compressing objects:  36% (1866/5181)
+remote: Compressing objects:  37% (1917/5181)
+remote: Compressing objects:  38% (1969/5181)
+remote: Compressing objects:  39% (2021/5181)
+remote: Compressing objects:  40% (2073/5181)
+remote: Compressing objects:  41% (2125/5181)
+remote: Compressing objects:  42% (2177/5181)
+remote: Compressing objects:  43% (2228/5181)
+remote: Compressing objects:  44% (2280/5181)
+remote: Compressing objects:  45% (2332/5181)
+remote: Compressing objects:  46% (2384/5181)
+remote: Compressing objects:  47% (2436/5181)
+remote: Compressing objects:  48% (2487/5181)
+remote: Compressing objects:  49% (2539/5181)
+remote: Compressing objects:  50% (2591/5181)
+remote: Compressing objects:  51% (2643/5181)
+remote: Compressing objects:  52% (2695/5181)
+remote: Compressing objects:  53% (2746/5181)
+remote: Compressing objects:  54% (2798/5181)
+remote: Compressing objects:  55% (2850/5181)
+remote: Compressing objects:  56% (2902/5181)
+remote: Compressing objects:  57% (2954/5181)
+remote: Compressing objects:  58% (3005/5181)
+remote: Compressing objects:  59% (3057/5181)
+remote: Compressing objects:  60% (3109/5181)
+remote: Compressing objects:  61% (3161/5181)
+remote: Compressing objects:  62% (3213/5181)
+remote: Compressing objects:  63% (3265/5181)
+remote: Compressing objects:  64% (3316/5181)
+remote: Compressing objects:  65% (3368/5181)
+remote: Compressing objects:  66% (3420/5181)
+remote: Compressing objects:  67% (3472/5181)
+remote: Compressing objects:  68% (3524/5181)
+remote: Compressing objects:  69% (3575/5181)
+remote: Compressing objects:  70% (3627/5181)
+remote: Compressing objects:  71% (3679/5181)
+remote: Compressing objects:  72% (3731/5181)
+remote: Compressing objects:  73% (3783/5181)
+remote: Compressing objects:  74% (3834/5181)
+remote: Compressing objects:  75% (3886/5181)
+remote: Compressing objects:  76% (3938/5181)
+remote: Compressing objects:  77% (3990/5181)
+remote: Compressing objects:  78% (4042/5181)
+remote: Compressing objects:  79% (4093/5181)
+remote: Compressing objects:  80% (4145/5181)
+remote: Compressing objects:  81% (4197/5181)
+remote: Compressing objects:  82% (4249/5181)
+remote: Compressing objects:  83% (4301/5181)
+remote: Compressing objects:  84% (4353/5181)
+remote: Compressing objects:  85% (4404/5181)
+remote: Compressing objects:  86% (4456/5181)
+remote: Compressing objects:  87% (4508/5181)
+remote: Compressing objects:  88% (4560/5181)
+remote: Compressing objects:  89% (4612/5181)
+remote: Compressing objects:  90% (4663/5181)
+remote: Compressing objects:  91% (4715/5181)
+remote: Compressing objects:  92% (4767/5181)
+remote: Compressing objects:  93% (4819/5181)
+remote: Compressing objects:  94% (4871/5181)
+remote: Compressing objects:  95% (4922/5181)
+remote: Compressing objects:  96% (4974/5181)
+remote: Compressing objects:  97% (5026/5181)
+remote: Compressing objects:  98% (5078/5181)
+remote: Compressing objects:  99% (5130/5181)
+remote: Compressing objects: 100% (5181/5181)
+remote: Compressing objects: 100% (5181/5181), done.
+Receiving objects:   0% (1/30021)
+Receiving objects:   1% (301/30021)
+Receiving objects:   2% (601/30021)
+Receiving objects:   3% (901/30021)
+Receiving objects:   4% (1201/30021)
+Receiving objects:   5% (1502/30021)
+Receiving objects:   6% (1802/30021)
+Receiving objects:   7% (2102/30021)
+Receiving objects:   8% (2402/30021)
+Receiving objects:   9% (2702/30021)
+Receiving objects:  10% (3003/30021)
+Receiving objects:  11% (3303/30021)
+Receiving objects:  12% (3603/30021)
+Receiving objects:  13% (3903/30021)
+Receiving objects:  14% (4203/30021)
+Receiving objects:  15% (4504/30021)
+Receiving objects:  16% (4804/30021)
+Receiving objects:  17% (5104/30021)
+Receiving objects:  18% (5404/30021)
+Receiving objects:  19% (5704/30021)
+Receiving objects:  20% (6005/30021)
+Receiving objects:  21% (6305/30021)
+Receiving objects:  22% (6605/30021)
+Receiving objects:  23% (6905/30021)
+Receiving objects:  24% (7206/30021)
+Receiving objects:  25% (7506/30021)
+Receiving objects:  26% (7806/30021)
+Receiving objects:  27% (8106/30021)
+Receiving objects:  28% (8406/30021)
+Receiving objects:  29% (8707/30021)
+Receiving objects:  30% (9007/30021)
+Receiving objects:  31% (9307/30021)
+Receiving objects:  32% (9607/30021)
+Receiving objects:  33% (9907/30021)
+Receiving objects:  34% (10208/30021)
+Receiving objects:  35% (10508/30021)
+Receiving objects:  36% (10808/30021)
+Receiving objects:  37% (11108/30021)
+Receiving objects:  38% (11408/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  39% (11709/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  40% (12009/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  41% (12309/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  42% (12609/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  43% (12910/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  44% (13210/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  45% (13510/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  46% (13810/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  47% (14110/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  48% (14411/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  49% (14711/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  50% (15011/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  51% (15311/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  52% (15611/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  53% (15912/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  54% (16212/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  55% (16512/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  56% (16812/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  57% (17112/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  58% (17413/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  59% (17713/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  60% (18013/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  61% (18313/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  62% (18614/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  63% (18914/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  64% (19214/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  65% (19514/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  66% (19814/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  67% (20115/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  68% (20415/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  69% (20715/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  70% (21015/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  71% (21315/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  72% (21616/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  73% (21916/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  74% (22216/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  75% (22516/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  76% (22816/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  77% (23117/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  78% (23417/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  79% (23717/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  80% (24017/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  81% (24318/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  82% (24618/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  83% (24918/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  84% (25218/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  85% (25518/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  86% (25819/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  87% (26119/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  88% (26419/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  89% (26719/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  90% (27019/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  91% (27320/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  92% (27620/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  93% (27920/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  94% (28220/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  95% (28520/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  96% (28821/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  97% (29121/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  98% (29421/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects:  99% (29721/30021), 17.56 MiB | 35.11 MiB/s
+remote: Total 30021 (delta 12851), reused 9373 (delta 9373), pack-reused 15467 (from 1)
+Receiving objects: 100% (30021/30021), 17.56 MiB | 35.11 MiB/s
+Receiving objects: 100% (30021/30021), 26.56 MiB | 34.43 MiB/s, done.
+Resolving deltas:   0% (0/20778)
+Resolving deltas:   1% (208/20778)
+Resolving deltas:   2% (416/20778)
+Resolving deltas:   3% (624/20778)
+Resolving deltas:   4% (833/20778)
+Resolving deltas:   5% (1039/20778)
+Resolving deltas:   6% (1248/20778)
+Resolving deltas:   7% (1455/20778)
+Resolving deltas:   8% (1663/20778)
+Resolving deltas:   9% (1871/20778)
+Resolving deltas:  10% (2078/20778)
+Resolving deltas:  11% (2286/20778)
+Resolving deltas:  12% (2494/20778)
+Resolving deltas:  13% (2702/20778)
+Resolving deltas:  14% (2909/20778)
+Resolving deltas:  15% (3117/20778)
+Resolving deltas:  16% (3326/20778)
+Resolving deltas:  17% (3533/20778)
+Resolving deltas:  18% (3741/20778)
+Resolving deltas:  19% (3948/20778)
+Resolving deltas:  20% (4156/20778)
+Resolving deltas:  21% (4364/20778)
+Resolving deltas:  22% (4573/20778)
+Resolving deltas:  23% (4781/20778)
+Resolving deltas:  24% (4987/20778)
+Resolving deltas:  25% (5195/20778)
+Resolving deltas:  26% (5403/20778)
+Resolving deltas:  27% (5611/20778)
+Resolving deltas:  28% (5818/20778)
+Resolving deltas:  29% (6026/20778)
+Resolving deltas:  30% (6236/20778)
+Resolving deltas:  31% (6442/20778)
+Resolving deltas:  32% (6649/20778)
+Resolving deltas:  33% (6858/20778)
+Resolving deltas:  34% (7065/20778)
+Resolving deltas:  35% (7275/20778)
+Resolving deltas:  36% (7481/20778)
+Resolving deltas:  37% (7688/20778)
+Resolving deltas:  38% (7896/20778)
+Resolving deltas:  39% (8104/20778)
+Resolving deltas:  40% (8312/20778)
+Resolving deltas:  41% (8519/20778)
+Resolving deltas:  42% (8727/20778)
+Resolving deltas:  43% (8935/20778)
+Resolving deltas:  44% (9143/20778)
+Resolving deltas:  45% (9351/20778)
+Resolving deltas:  46% (9558/20778)
+Resolving deltas:  47% (9766/20778)
+Resolving deltas:  48% (9974/20778)
+Resolving deltas:  49% (10182/20778)
+Resolving deltas:  50% (10389/20778)
+Resolving deltas:  51% (10597/20778)
+Resolving deltas:  52% (10805/20778)
+Resolving deltas:  53% (11013/20778)
+Resolving deltas:  54% (11221/20778)
+Resolving deltas:  55% (11428/20778)
+Resolving deltas:  56% (11636/20778)
+Resolving deltas:  57% (11844/20778)
+Resolving deltas:  58% (12052/20778)
+Resolving deltas:  59% (12261/20778)
+Resolving deltas:  60% (12467/20778)
+Resolving deltas:  61% (12676/20778)
+Resolving deltas:  62% (12883/20778)
+Resolving deltas:  63% (13091/20778)
+Resolving deltas:  64% (13298/20778)
+Resolving deltas:  65% (13507/20778)
+Resolving deltas:  66% (13715/20778)
+Resolving deltas:  67% (13922/20778)
+Resolving deltas:  68% (14130/20778)
+Resolving deltas:  69% (14337/20778)
+Resolving deltas:  70% (14545/20778)
+Resolving deltas:  71% (14753/20778)
+Resolving deltas:  72% (14962/20778)
+Resolving deltas:  73% (15169/20778)
+Resolving deltas:  74% (15377/20778)
+Resolving deltas:  75% (15584/20778)
+Resolving deltas:  76% (15792/20778)
+Resolving deltas:  77% (16000/20778)
+Resolving deltas:  78% (16207/20778)
+Resolving deltas:  79% (16415/20778)
+Resolving deltas:  80% (16623/20778)
+Resolving deltas:  81% (16831/20778)
+Resolving deltas:  82% (17038/20778)
+Resolving deltas:  83% (17246/20778)
+Resolving deltas:  84% (17454/20778)
+Resolving deltas:  85% (17662/20778)
+Resolving deltas:  86% (17870/20778)
+Resolving deltas:  87% (18077/20778)
+Resolving deltas:  88% (18286/20778)
+Resolving deltas:  89% (18493/20778)
+Resolving deltas:  90% (18701/20778)
+Resolving deltas:  91% (18908/20778)
+Resolving deltas:  92% (19116/20778)
+Resolving deltas:  93% (19324/20778)
+Resolving deltas:  94% (19532/20778)
+Resolving deltas:  95% (19740/20778)
+Resolving deltas:  96% (19947/20778)
+Resolving deltas:  97% (20155/20778)
+Resolving deltas:  98% (20363/20778)
+Resolving deltas:  99% (20571/20778)
+Resolving deltas: 100% (20778/20778)
+Resolving deltas: 100% (20778/20778), done.
+-- The C compiler identification is Clang 15.0.5
+-- The CXX compiler identification is Clang 15.0.5
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/Ascend/cann-9.3.0/bin/bisheng - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/Ascend/cann-9.3.0/bin/bisheng - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- ccache <span style="color:#F44336;font-weight:bold">not found</span>. Compilation will proceed without it.
+-- bisheng -v output:  2026-10-20T11:50:49+08:00 clang version 15.0.5 (clang-5c68a1cb1231 flang-5c68a1cb1231)
+Target: aarch64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /usr/local/Ascend/cann-9.3.0/bin
+Found candidate GCC installation: /usr/lib/gcc/aarch64-linux-gnu/11
+Selected GCC installation: /usr/lib/gcc/aarch64-linux-gnu/11
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+-- Extracted date: 2026-10-20, timestamp: 20261020
+-- Detected NEW version (20261020 &gt;= 20260327)
+-- SOC_TYPE:
+-- SHMEM_BACKEND_NAME:910
+-- CMAKE_CCE_COMPILE_OPTIONS: -xasc;-Xhost-start;-ftrapv;-Xhost-end;--npu-arch=dav-2201;--cce-auto-infer-kernel-type=false;--cce-auto-set-ffts=false
+-- Detected GM bypass API declarations in /usr/local/Ascend/cann-9.3.0/asc/include/basic_api/kernel_operator_scalar_intf.h
+-- Detected GM bypass API mode: NEW
+-- Selected GM bypass API mode: NEW
+-- USE_UNIT_TEST:OFF
+-- USE_EXAMPLES:ON
+-- ENABLE_ASCENDC_DUMP:OFF
+-- ACLSHMEM_RDMA_SUPPORT:OFF
+-- ACLSHMEM_SIMT_SUPPORT:OFF
+-- PYEXPAND_EXAMPLE:OFF
+-- CMAKE_BUILD_TYPE:RELEASE
+-- ACLSHMEM_RELAY_SUPPORT:OFF
+-- ACLSHMEM_MULTI_LINK_SUPPORT:OFF
+-- Performing Test HAS_WNO_UNUSED_VALUE
+-- Performing Test HAS_WNO_UNUSED_VALUE - Success
+-- Performing Test HAS_WNO_MACRO_REDEFINED
+-- Performing Test HAS_WNO_MACRO_REDEFINED - Success
+-- Performing Test HAS_WNO_IGNORED_ATTRIBUTES
+-- Performing Test HAS_WNO_IGNORED_ATTRIBUTES - Success
+-- aclrtMemExportToShareableHandleV2 symbol found, enabling user-buffer V2 handle support
+-- Looking for aclrtMemMapSetLink
+-- Looking for aclrtMemMapSetLink - found
+-- Fabric Handle or aclrtMemMapSetLink symbols <span style="color:#F44336;font-weight:bold">not found</span>, disabling ACLSHMEM_ONE_MULTI_PATH support
+-- aclrtMemMapSelectedLink symbol found, enabling ACLSHMEM_HCCS_SIO_LINK support
+-- Could NOT find MPI_C (missing: MPI_C_LIB_NAMES MPI_C_HEADER_DIR MPI_C_WORKS) 
+-- Could NOT find MPI_CXX (missing: MPI_CXX_LIB_NAMES MPI_CXX_HEADER_DIR MPI_CXX_WORKS) 
+-- Could NOT find MPI (missing: MPI_C_FOUND MPI_CXX_FOUND) 
+-- USE_MSSANITIZER=ON
+-- Configuring done
+-- Generating done
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    Python3_EXECUTABLE
+
+
+-- Build files have been written to: /home/shmem/build
+[  0%] Building CXX object src/CMakeFiles/aclshmem_device.dir/device/gm2gm/shmemi_device_cc_kernel.cpp.o
+[  0%] Building CXX object src/CMakeFiles/aclshmem_device.dir/device/gm2gm/shmemi_device_rma.cpp.o
+[  1%] Building CXX object src/CMakeFiles/aclshmem_device.dir/device/gm2gm/shmemi_device_p2p_sync_kernel.cpp.o
+[  2%] Building CXX object src/CMakeFiles/aclshmem_device.dir/device/utils/<span style="color:#F44336;font-weight:bold">exception</span>/shmemi_device_rdma_exception_report_kernel.cpp.o
+[  3%] Building CXX object src/CMakeFiles/aclshmem_device.dir/device/utils/<span style="color:#F44336;font-weight:bold">exception</span>/shmemi_device_udma_exception_report_kernel.cpp.o
+[  4%] Building CXX object src/CMakeFiles/shmem_utils.dir/host/utils/log/shmemi_logger.cpp.o
+[  5%] Building CXX object src/CMakeFiles/shmem_utils.dir/host/utils/under_api/dl_hccp_api.cpp.o
+[  6%] Building CXX object src/CMakeFiles/shmem_utils.dir/host/utils/prof/prof_util.cpp.o
+[  6%] Building CXX object examples/aclgraph_demo/CMakeFiles/aclgraph_demo_kernel.dir/aclgraph_demo_kernel.cpp.o
+[  7%] Building CXX object src/CMakeFiles/shmem_utils.dir/host/utils/under_api/dl_opapi_api.cpp.o
+[  8%] Building CXX object src/CMakeFiles/shmem_utils.dir/host/utils/under_api/dl_hcomm_api.cpp.o
+[  8%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/init/backends/shmem_init_backend.cpp.o
+[  8%] Building CXX object src/CMakeFiles/shmem_utils.dir/host/utils/under_api/dl_api.cpp.o
+[ 10%] Building CXX object src/CMakeFiles/shmem_utils.dir/host/utils/under_api/dl_comm_def.cpp.o
+[ 10%] Building CXX object src/CMakeFiles/shmem_utils.dir/host/utils/under_api/dl_acl_api.cpp.o
+[ 11%] Building CXX object examples/shmem_perftest/ascendc_perftest/CMakeFiles/ascendc_perftest_kernel.dir/ascendc_perftest_kernel.cpp.o
+[ 12%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/entity/mem_entity_factory.cpp.o
+[ 12%] Building CXX object examples/kv_shuffle/CMakeFiles/kv_shuffle_kernel.dir/kv_shuffle_kernel.cpp.o
+[ 12%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/init/bootstrap/shmemi_bootstrap.cpp.o
+[ 12%] Building CXX object examples/udma_qp_demo/CMakeFiles/udma_qp_demo_kernel.dir/udma_qp_demo_kernel.cpp.o
+[ 13%] Building CXX object examples/combine/combine_doubleplane/CMakeFiles/combine_doubleplane_kernel.dir/combine_doubleplane_kernel.cpp.o
+[ 13%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/mem/heap/driver/userspace/devmm_ioctl.cpp.o
+[ 15%] Building CXX object examples/dispatch/dispatch_doubleplane/CMakeFiles/dispatch_doubleplane_kernel.dir/dispatch_doubleplane_kernel.cpp.o
+[ 15%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/data_plane/shmem_host_rma.cpp.o
+[ 16%] Building CXX object examples/shmem_perftest/udma_perftest/CMakeFiles/udma_perftest_kernel.dir/udma_perftest_kernel.cpp.o
+[ 17%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/mem/heap/hybm_acl_device_mem_segment.cpp.o
+[ 18%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/mem/heap/hybm_mem_slice.cpp.o
+[ 19%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/sync/shmemi_sync.cpp.o
+[ 19%] Building CXX object src/CMakeFiles/shmem_utils.dir/host/utils/under_api/dl_hal_api.cpp.o
+[ 19%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/data_plane/shmem_host_cc.cpp.o
+[ 19%] Building CXX object examples/allgather/CMakeFiles/allgather_kernel.dir/allgather_kernel.cpp.o
+[ 20%] Building CXX object examples/shmem_perftest/sdma_perftest/CMakeFiles/sdma_perftest_kernel.dir/sdma_perftest_kernel.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/shmem_utils.dir/host/utils/mstx/mstx_mem_register.cpp.o
+[ 20%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/entity/mem_entity_entry.cpp.o
+[ 22%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/entity/mem_entity_default.cpp.o
+[ 22%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/team/shmem_team.cpp.o
+[ 23%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/mem/shmem_mm.cpp.o
+[ 23%] Building CXX object examples/combine/combine_classic/CMakeFiles/combine_kernel.dir/combine_kernel.cpp.o
+[ 23%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/mem/heap/hybm_drv_device_mem_segment.cpp.o
+[ 23%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/mem/heap/hybm_vmm_based_segment.cpp.o
+[ 24%] Building CXX object examples/udma_demo/CMakeFiles/udma_demo_kernel.dir/udma_demo_kernel.cpp.o
+[ 24%] Building CXX object examples/udma_atomic_add/CMakeFiles/udma_atomic_add_kernel.dir/udma_atomic_add_kernel.cpp.o
+[ 25%] Building CXX object examples/dispatch/dispatch_classic/CMakeFiles/dispatch_kernel.dir/dispatch_kernel.cpp.o
+[ 27%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/transport/device_rdma/device_rdma_helper.cpp.o
+[ 27%] Building CXX object src/CMakeFiles/shmem_utils.dir/host/utils/under_api/dl_dcmi_api.cpp.o
+[ 29%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/utils/<span style="color:#F44336;font-weight:bold">exception</span>/shmem_exception_rdma_dump_internal.cpp.o
+[ 29%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/utils/<span style="color:#F44336;font-weight:bold">exception</span>/shmem_exception_rdma_dump.cpp.o
+[ 29%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/utils/<span style="color:#F44336;font-weight:bold">exception</span>/shmem_exception_report.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/utils/prof/prof_util.cpp.o
+[ 30%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/utils/<span style="color:#F44336;font-weight:bold">exception</span>/shmem_exception_udma_dump.cpp.o
+[ 32%] Building CXX object src/CMakeFiles/shmem_utils.dir/host/utils/under_api/dl_rt_api.cpp.o
+[ 32%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/mem/heap/driver/userspace/devmm_svm_gva.cpp.o
+[ 33%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/init/shmem_init.cpp.o
+[ 33%] Building CXX object examples/tp_allreduce_udma/CMakeFiles/tp_allreduce_udma_kernel.dir/tp_allreduce_udma_kernel.cpp.o
+[ 35%] Building CXX object examples/multi_instance/CMakeFiles/multi_instance_kernel.dir/multi_instance_kernel.cpp.o
+[ 35%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/mem/shmem_mgr.cpp.o
+[ 35%] Building CXX object examples/user_buffer/CMakeFiles/user_buffer_kernel.dir/user_buffer_kernel.cpp.o
+[ 36%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/transport/device_sdma/device_sdma_transport_manager.cpp.o
+[ 36%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/transport/composite_transport_manager.cpp.o
+[ 37%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/transport/device_rdma/device_chip_info.cpp.o
+[ 38%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/mem/shmem_rma.cpp.o
+[ 39%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/transport/device_rdma/device_qp_manager.cpp.o
+[ 39%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/transport/device_rdma/dynamic_ranks_qp_manager.cpp.o
+[ 39%] Building CXX object examples/shmem_perftest/mte_perftest/CMakeFiles/mte_perftest_kernel.dir/mte_perftest_kernel.cpp.o
+[ 39%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/mem/heap/hybm_mem_segment.cpp.o
+[ 42%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/transport/transport_manager.cpp.o
+[ 42%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/transport/device_rdma/fixed_ranks_qp_manager.cpp.o
+[ 42%] Building CXX object src/CMakeFiles/aclshmem_host.dir/host/transport/device_rdma/device_rdma_transport_manager.cpp.o
+[ 42%] Linking CXX shared library ../lib/libshmem_utils.so
+[ 42%] Built target shmem_utils
+[ 42%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_uid.dir/host/bootstrap/socket/uid_socket.cpp.o
+[ 43%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_uid.dir/host/bootstrap/shmemi_bootstrap_uid.cpp.o
+[ 44%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_config_store.dir/host/bootstrap/config_store/acc_links/csrc/acc_tcp_common.cpp.o
+[ 45%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_config_store.dir/host/bootstrap/config_store/acc_links/csrc/acc_tcp_listener.cpp.o
+[ 46%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_config_store.dir/host/bootstrap/config_store/acc_links/csrc/acc_tcp_shared_buf.cpp.o
+[ 46%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_config_store.dir/host/bootstrap/config_store/acc_links/csrc/acc_tcp_link_complex_default.cpp.o
+[ 46%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_config_store.dir/host/bootstrap/config_store/acc_links/csrc/acc_tcp_request_context.cpp.o
+[ 47%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_config_store.dir/host/bootstrap/config_store/acc_links/csrc/under_api/openssl/openssl_api_dl.cpp.o
+[ 47%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_config_store.dir/host/bootstrap/config_store/acc_links/csrc/acc_tcp_server.cpp.o
+[ 49%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_config_store.dir/host/bootstrap/config_store/acc_links/csrc/acc_tcp_worker.cpp.o
+[ 49%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_config_store.dir/host/bootstrap/config_store/acc_links/csrc/security/acc_tcp_ssl_helper.cpp.o
+[ 52%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_config_store.dir/host/bootstrap/config_store/acc_links/csrc/acc_tcp_server_default.cpp.o
+[ 52%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_config_store.dir/host/bootstrap/config_store/acc_links/csrc/common/acc_common_util.cpp.o
+[ 52%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_config_store.dir/host/bootstrap/config_store/store_tcp_config.cpp.o
+[ 52%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_config_store.dir/host/bootstrap/config_store/acc_links/csrc/common/acc_file_validator.cpp.o
+[ 52%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_config_store.dir/host/bootstrap/config_store/store_factory.cpp.o
+[ 53%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_config_store.dir/host/bootstrap/config_store/store_net_common.cpp.o
+[ 55%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_config_store.dir/host/bootstrap/config_store/store_tcp_config_server.cpp.o
+[ 55%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_config_store.dir/host/bootstrap/config_store/store_net_group_engine.cpp.o
+[ 55%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_config_store.dir/host/bootstrap/shmemi_bootstrap_config_store.cpp.o
+[ 55%] Building CXX object src/CMakeFiles/aclshmem_bootstrap_config_store.dir/host/bootstrap/config_store/store_message_packer.cpp.o
+[ 55%] Built target aclshmem_host
+[ 56%] Linking CXX shared library ../lib/aclshmem_bootstrap_uid.so
+[ 56%] Built target aclshmem_bootstrap_uid
+[ 57%] Linking CXX shared library ../lib/aclshmem_bootstrap_config_store.so
+[ 57%] Built target aclshmem_bootstrap_config_store
+[ 57%] Linking CXX shared library ../../lib/libudma_atomic_add_kernel.so
+[ 58%] Linking CXX shared library ../../lib/libudma_qp_demo_kernel.so
+[ 58%] Built target udma_atomic_add_kernel
+[ 58%] Built target udma_qp_demo_kernel
+[ 59%] Linking CXX shared library ../../lib/libuser_buffer_kernel.so
+[ 59%] Built target user_buffer_kernel
+[ 60%] Linking CXX shared library ../../lib/libudma_demo_kernel.so
+[ 60%] Built target udma_demo_kernel
+[ 61%] Linking CXX shared library ../../lib/libtp_allreduce_udma_kernel.so
+[ 61%] Built target tp_allreduce_udma_kernel
+[ 62%] Linking CXX shared library ../../lib/libkv_shuffle_kernel.so
+[ 62%] Built target kv_shuffle_kernel
+[ 62%] Linking CXX shared library ../../../lib/libascendc_perftest_kernel.so
+[ 62%] Built target ascendc_perftest_kernel
+[ 63%] Linking CXX shared library ../../lib/libaclgraph_demo_kernel.so
+[ 63%] Built target aclgraph_demo_kernel
+[ 64%] Linking CXX shared library ../../lib/libmulti_instance_kernel.so
+[ 64%] Built target multi_instance_kernel
+[ 64%] Built target aclshmem_device
+[ 65%] Linking CXX shared library ../lib/libshmem.so
+[ 65%] Built target shmem
+[ 65%] Building CXX object examples/notifywait/CMakeFiles/notifywait.dir/main.cpp.o
+[ 66%] Building CXX object examples/hccs_sio_link/CMakeFiles/hccs_sio_link.dir/kernels/hccs_sio_link_kernel.cpp.o
+[ 67%] Building CXX object examples/hccs_sio_link/CMakeFiles/hccs_sio_link.dir/main.cpp.o
+[ 67%] Building CXX object examples/hccs_sio_link/CMakeFiles/hccs_sio_link.dir/kernels/hccs_sio_link_perf_kernel.cpp.o
+[ 71%] Building CXX object examples/udma_qp_demo/CMakeFiles/udma_qp_demo.dir/main.cpp.o
+[ 70%] Building CXX object examples/rma_d2h_demo/CMakeFiles/rma_d2h_demo.dir/main.cpp.o
+[ 71%] Building CXX object examples/multi_instance/CMakeFiles/multi_instance.dir/main.cpp.o
+[ 71%] Building CXX object examples/kv_shuffle/CMakeFiles/kv_shuffle.dir/main.cpp.o
+[ 71%] Building CXX object examples/aclgraph_demo/CMakeFiles/aclgraph_demo.dir/main.cpp.o
+[ 71%] Building CXX object examples/sdma_d2h_demo/CMakeFiles/sdma_d2h_demo.dir/main.cpp.o
+[ 72%] Building CXX object examples/shmem_perftest/ascendc_perftest/CMakeFiles/ascendc_perftest.dir/main.cpp.o
+[ 73%] Building CXX object examples/cmo/CMakeFiles/cmo.dir/main.cpp.o
+[ 75%] Building CXX object examples/sdma/CMakeFiles/sdma.dir/main.cpp.o
+[ 75%] Building CXX object examples/udma_atomic_add/CMakeFiles/udma_atomic_add.dir/main.cpp.o
+[ 75%] Building CXX object examples/udma_demo/CMakeFiles/udma_demo.dir/main.cpp.o
+[ 75%] Building CXX object examples/tp_allreduce_udma/CMakeFiles/tp_allreduce_udma.dir/main.cpp.o
+[ 76%] Building CXX object examples/user_buffer/CMakeFiles/user_buffer.dir/main.cpp.o
+[ 76%] Linking CXX shared library ../../../lib/libcombine_doubleplane_kernel.so
+[ 76%] Built target combine_doubleplane_kernel
+[ 77%] Building CXX object examples/combine/combine_doubleplane/CMakeFiles/combine_doubleplane.dir/main.cpp.o
+[ 78%] Linking CXX shared library ../../../lib/libcombine_kernel.so
+[ 78%] Built target combine_kernel
+[ 78%] Building CXX object examples/combine/combine_classic/CMakeFiles/combine.dir/main.cpp.o
+[ 78%] Linking CXX executable ../../bin/user_buffer
+[ 79%] Linking CXX executable ../../bin/udma_atomic_add
+[ 79%] Built target user_buffer
+[ 80%] Linking CXX executable ../../bin/aclgraph_demo
+[ 80%] Linking CXX shared library ../../../lib/libmte_perftest_kernel.so
+[ 81%] Linking CXX executable ../../bin/kv_shuffle
+[ 81%] Built target udma_atomic_add
+[ 82%] Linking CXX executable ../../bin/multi_instance
+[ 82%] Built target aclgraph_demo
+[ 83%] Linking CXX executable ../../bin/udma_demo
+[ 83%] Built target kv_shuffle
+[ 83%] Built target multi_instance
+[ 83%] Built target udma_demo
+[ 83%] Built target mte_perftest_kernel
+[ 83%] Building CXX object examples/shmem_perftest/mte_perftest/CMakeFiles/mte_perftest.dir/main.cpp.o
+[ 84%] Linking CXX executable ../../bin/udma_qp_demo
+[ 84%] Built target udma_qp_demo
+[ 85%] Linking CXX executable ../../../bin/ascendc_perftest
+[ 86%] Linking CXX executable ../../bin/tp_allreduce_udma
+[ 86%] Built target ascendc_perftest
+[ 86%] Built target tp_allreduce_udma
+[ 86%] Linking CXX executable ../../../bin/combine_doubleplane
+[ 86%] Built target combine_doubleplane
+[ 87%] Linking CXX executable ../../../bin/combine
+[ 87%] Built target combine
+[ 88%] Linking CXX shared library ../../lib/liballgather_kernel.so
+[ 88%] Built target allgather_kernel
+[ 89%] Building CXX object examples/allgather/CMakeFiles/allgather.dir/main.cpp.o
+[ 90%] Linking CXX executable ../../../bin/mte_perftest
+[ 90%] Built target mte_perftest
+[ 91%] Linking CXX executable ../../bin/allgather
+[ 91%] Built target allgather
+[ 91%] Linking CXX shared library ../../../lib/libudma_perftest_kernel.so
+[ 91%] Built target udma_perftest_kernel
+[ 92%] Building CXX object examples/shmem_perftest/udma_perftest/CMakeFiles/udma_perftest.dir/main.cpp.o
+[ 92%] Linking CXX shared library ../../../lib/libsdma_perftest_kernel.so
+[ 92%] Built target sdma_perftest_kernel
+[ 93%] Building CXX object examples/shmem_perftest/sdma_perftest/CMakeFiles/sdma_perftest.dir/main.cpp.o
+[ 94%] Linking CXX shared library ../../../lib/libdispatch_kernel.so
+[ 94%] Built target dispatch_kernel
+[ 94%] Building CXX object examples/dispatch/dispatch_classic/CMakeFiles/dispatch.dir/main.cpp.o
+[ 94%] Linking CXX executable ../../../bin/udma_perftest
+[ 94%] Built target udma_perftest
+[ 94%] Linking CXX executable ../../bin/rma_d2h_demo
+[ 94%] Built target rma_d2h_demo
+[ 94%] Linking CXX executable ../../bin/hccs_sio_link
+[ 94%] Built target hccs_sio_link
+[ 94%] Linking CXX executable ../../../bin/sdma_perftest
+[ 94%] Built target sdma_perftest
+[ 95%] Linking CXX executable ../../../bin/dispatch
+[ 95%] Built target dispatch
+[ 96%] Linking CXX executable ../../bin/sdma_d2h_demo
+[ 97%] Linking CXX executable ../../bin/notifywait
+[ 97%] Built target sdma_d2h_demo
+[ 97%] Built target notifywait
+[ 98%] Linking CXX executable ../../bin/sdma
+[ 98%] Built target sdma
+[ 99%] Linking CXX executable ../../bin/cmo
+[ 99%] Built target cmo
+[ 99%] Linking CXX shared library ../../../lib/libdispatch_doubleplane_kernel.so
+[ 99%] Built target dispatch_doubleplane_kernel
+[100%] Building CXX object examples/dispatch/dispatch_doubleplane/CMakeFiles/dispatch_doubleplane.dir/main.cpp.o
+[100%] Linking CXX executable ../../../bin/dispatch_doubleplane
+[100%] Built target dispatch_doubleplane
+Install the project...
+-- Install configuration: &quot;RELEASE&quot;
+-- Installing: /home/shmem/install/shmem/lib/libshmem_utils.so
+-- Installing: /home/shmem/install/shmem/lib/aclshmem_bootstrap_uid.so
+-- Installing: /home/shmem/install/shmem/lib/aclshmem_bootstrap_config_store.so
+-- Installing: /home/shmem/install/shmem/lib/libshmem.so
+-- Installing: /home/shmem/install/shmem/include
+-- Installing: /home/shmem/install/shmem/include/device
+-- Installing: /home/shmem/install/shmem/include/device/gm2gm
+-- Installing: /home/shmem/install/shmem/include/device/gm2gm/engine
+-- Installing: /home/shmem/install/shmem/include/device/gm2gm/engine/shmem_device_mte.h
+-- Installing: /home/shmem/install/shmem/include/device/gm2gm/engine/shmem_device_rdma.h
+-- Installing: /home/shmem/install/shmem/include/device/gm2gm/engine/shmem_device_sdma.h
+-- Installing: /home/shmem/install/shmem/include/device/gm2gm/engine/shmem_device_udma.h
+-- Installing: /home/shmem/install/shmem/include/device/gm2gm/shmem_device_amo.h
+-- Installing: /home/shmem/install/shmem/include/device/gm2gm/shmem_device_cc.h
+-- Installing: /home/shmem/install/shmem/include/device/gm2gm/shmem_device_mo.h
+-- Installing: /home/shmem/install/shmem/include/device/gm2gm/shmem_device_p2p_sync.h
+-- Installing: /home/shmem/install/shmem/include/device/gm2gm/shmem_device_rma.h
+-- Installing: /home/shmem/install/shmem/include/device/gm2gm/shmem_device_so.h
+-- Installing: /home/shmem/install/shmem/include/device/shmem_def.h
+-- Installing: /home/shmem/install/shmem/include/device/team
+-- Installing: /home/shmem/install/shmem/include/device/team/shmem_device_team.h
+-- Installing: /home/shmem/install/shmem/include/device/ub2gm
+-- Installing: /home/shmem/install/shmem/include/device/ub2gm/engine
+-- Installing: /home/shmem/install/shmem/include/device/ub2gm/engine/shmem_device_mte.h
+-- Installing: /home/shmem/install/shmem/include/device/ub2gm/shmem_device_rma.h
+-- Installing: /home/shmem/install/shmem/include/device_simt
+-- Installing: /home/shmem/install/shmem/include/device_simt/gm2gm
+-- Installing: /home/shmem/install/shmem/include/device_simt/gm2gm/engine
+-- Installing: /home/shmem/install/shmem/include/device_simt/gm2gm/engine/shmem_device_simt_mte.h
+-- Installing: /home/shmem/install/shmem/include/device_simt/gm2gm/shmem_device_simt_rma.h
+-- Installing: /home/shmem/install/shmem/include/device_simt/shmem_simt_common_types.h
+-- Installing: /home/shmem/install/shmem/include/device_simt/team
+-- Installing: /home/shmem/install/shmem/include/device_simt/team/shmem_device_simt_team.h
+-- Installing: /home/shmem/install/shmem/include/device_simt/ub2gm
+-- Installing: /home/shmem/install/shmem/include/device_simt/ub2gm/engine
+-- Installing: /home/shmem/install/shmem/include/device_simt/ub2gm/engine/shmem_device_simt_mte.h
+-- Installing: /home/shmem/install/shmem/include/device_simt/ub2gm/shmem_device_simt_rma.h
+-- Installing: /home/shmem/install/shmem/include/host
+-- Installing: /home/shmem/install/shmem/include/host/data_plane
+-- Installing: /home/shmem/install/shmem/include/host/data_plane/shmem_host_cc.h
+-- Installing: /home/shmem/install/shmem/include/host/data_plane/shmem_host_p2p_sync.h
+-- Installing: /home/shmem/install/shmem/include/host/data_plane/shmem_host_rma.h
+-- Installing: /home/shmem/install/shmem/include/host/data_plane/shmem_host_so.h
+-- Installing: /home/shmem/install/shmem/include/host/init
+-- Installing: /home/shmem/install/shmem/include/host/init/shmem_host_init.h
+-- Installing: /home/shmem/install/shmem/include/host/mem
+-- Installing: /home/shmem/install/shmem/include/host/mem/shmem_host_heap.h
+-- Installing: /home/shmem/install/shmem/include/host/shmem_host_def.h
+-- Installing: /home/shmem/install/shmem/include/host/team
+-- Installing: /home/shmem/install/shmem/include/host/team/shmem_host_team.h
+-- Installing: /home/shmem/install/shmem/include/host/utils
+-- Installing: /home/shmem/install/shmem/include/host/utils/shmem_host_exception.h
+-- Installing: /home/shmem/install/shmem/include/host/utils/shmem_log.h
+-- Installing: /home/shmem/install/shmem/include/host_device
+-- Installing: /home/shmem/install/shmem/include/host_device/shmem_common_macros.h
+-- Installing: /home/shmem/install/shmem/include/host_device/shmem_common_types.h
+-- Installing: /home/shmem/install/shmem/include/shmem.h
+-- Installing: /home/shmem/install/shmem/src/device
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/engine
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/engine/rdma_backends
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/engine/rdma_backends/rdma_device_backend_base.h
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/engine/rdma_backends/rdma_device_backend_base.hpp
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/engine/rdma_backends/rdma_device_backend_hns_1825.hpp
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/engine/rdma_backends/rdma_device_backend_in_die.hpp
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/engine/rdma_backends/rdma_device_backend_xscale.hpp
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/engine/shmem_device_mte.hpp
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/engine/shmem_device_rdma.hpp
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/engine/shmem_device_sdma.hpp
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/engine/shmem_device_udma.hpp
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/engine/shmemi_device_rdma.h
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/engine/shmemi_device_sdma.h
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/engine/shmemi_device_udma.h
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/shmem_device_amo.hpp
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/shmem_device_mo.hpp
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/shmem_device_p2p_sync.hpp
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/shmem_device_rma.hpp
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/shmem_device_so.hpp
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/shmemi_device_cc.h
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/shmemi_device_cc_kernel.cpp
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/shmemi_device_cc_kernel.h
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/shmemi_device_mo.h
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/shmemi_device_p2p_sync.h
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/shmemi_device_p2p_sync_kernel.cpp
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/shmemi_device_p2p_sync_kernel.h
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/shmemi_device_rma.cpp
+-- Installing: /home/shmem/install/shmem/src/device/gm2gm/shmemi_device_rma.h
+-- Installing: /home/shmem/install/shmem/src/device/shmemi_def.h
+-- Installing: /home/shmem/install/shmem/src/device/shmemi_device_common.h
+-- Installing: /home/shmem/install/shmem/src/device/shmemi_device_common.hpp
+-- Installing: /home/shmem/install/shmem/src/device/shmemi_device_meta.h
+-- Installing: /home/shmem/install/shmem/src/device/team
+-- Installing: /home/shmem/install/shmem/src/device/team/shmem_device_team.hpp
+-- Installing: /home/shmem/install/shmem/src/device/ub2gm
+-- Installing: /home/shmem/install/shmem/src/device/ub2gm/mte
+-- Installing: /home/shmem/install/shmem/src/device/ub2gm/mte/shmem_device_mte.hpp
+-- Installing: /home/shmem/install/shmem/src/device/ub2gm/mte/shmemi_device_mte.h
+-- Installing: /home/shmem/install/shmem/src/device/ub2gm/shmem_device_rma.hpp
+-- Installing: /home/shmem/install/shmem/src/device/utils
+-- Installing: /home/shmem/install/shmem/src/device/utils/<span style="color:#F44336;font-weight:bold">exception</span>
+-- Installing: /home/shmem/install/shmem/src/device/utils/<span style="color:#F44336;font-weight:bold">exception</span>/shmemi_device_rdma_exception_report_kernel.cpp
+-- Installing: /home/shmem/install/shmem/src/device/utils/<span style="color:#F44336;font-weight:bold">exception</span>/shmemi_device_rdma_exception_report_kernel.h
+-- Installing: /home/shmem/install/shmem/src/device/utils/<span style="color:#F44336;font-weight:bold">exception</span>/shmemi_device_udma_exception_report_kernel.cpp
+-- Installing: /home/shmem/install/shmem/src/device/utils/<span style="color:#F44336;font-weight:bold">exception</span>/shmemi_device_udma_exception_report_kernel.h
+-- Installing: /home/shmem/install/shmem/src/device/utils/mstx
+-- Installing: /home/shmem/install/shmem/src/device/utils/mstx/shmemi_mstx_report.h
+-- Installing: /home/shmem/install/shmem/src/device/utils/prof
+-- Installing: /home/shmem/install/shmem/src/device/utils/prof/shmemi_prof.h
+-- Installing: /home/shmem/install/shmem/src/device/utils/shmemi_kernel_debug.h
+-- Installing: /home/shmem/install/shmem/src/device_simt
+-- Installing: /home/shmem/install/shmem/src/device_simt/gm2gm
+-- Installing: /home/shmem/install/shmem/src/device_simt/gm2gm/engine
+-- Installing: /home/shmem/install/shmem/src/device_simt/gm2gm/engine/shmem_device_simt_mte.hpp
+-- Installing: /home/shmem/install/shmem/src/device_simt/gm2gm/shmem_device_simt_rma.hpp
+-- Installing: /home/shmem/install/shmem/src/device_simt/shmemi_device_simt_common.h
+-- Installing: /home/shmem/install/shmem/src/device_simt/shmemi_device_simt_common.hpp
+-- Installing: /home/shmem/install/shmem/src/device_simt/shmemi_device_simt_meta.h
+-- Installing: /home/shmem/install/shmem/src/device_simt/team
+-- Installing: /home/shmem/install/shmem/src/device_simt/team/shmem_device_simt_team.hpp
+-- Installing: /home/shmem/install/shmem/src/device_simt/ub2gm
+-- Installing: /home/shmem/install/shmem/src/device_simt/ub2gm/mte
+-- Installing: /home/shmem/install/shmem/src/device_simt/ub2gm/mte/shmem_device_simt_mte.hpp
+-- Installing: /home/shmem/install/shmem/src/device_simt/ub2gm/shmem_device_simt_rma.hpp
+-- Installing: /home/shmem/install/shmem/src/device_simt/utils
+-- Installing: /home/shmem/install/shmem/src/device_simt/utils/shmemi_simt_kernel_debug.h
+-- Installing: /home/shmem/install/shmem/src/host_device
+-- Installing: /home/shmem/install/shmem/src/host_device/shmemi_common_types.h
+-- Installing: /home/shmem/install/shmem/src/host_device/shmemi_host_device_constant.h
+-- Installing: /home/shmem/install/shmem/src/host_device/shmemi_rdma_cqe_layout.h
+/home/shmem
+it is system of aarch64
+Header is 698 lines long
+
+About to compress 28328 KB of data...
+Adding files to archive named &quot;/home/shmem/ci/release/aarch64/SHMEM_1.7.0_linux-aarch64.run&quot;...
+./install.sh
+./scripts/preinstall_check.sh
+./scripts/uninstall.sh
+./set_env.sh
+./shmem/include/device/gm2gm/engine/shmem_device_mte.h
+./shmem/include/device/gm2gm/engine/shmem_device_rdma.h
+./shmem/include/device/gm2gm/engine/shmem_device_sdma.h
+./shmem/include/device/gm2gm/engine/shmem_device_udma.h
+./shmem/include/device/gm2gm/shmem_device_amo.h
+./shmem/include/device/gm2gm/shmem_device_cc.h
+./shmem/include/device/gm2gm/shmem_device_mo.h
+./shmem/include/device/gm2gm/shmem_device_p2p_sync.h
+./shmem/include/device/gm2gm/shmem_device_rma.h
+./shmem/include/device/gm2gm/shmem_device_so.h
+./shmem/include/device/shmem_def.h
+./shmem/include/device/team/shmem_device_team.h
+./shmem/include/device/ub2gm/engine/shmem_device_mte.h
+./shmem/include/device/ub2gm/shmem_device_rma.h
+./shmem/include/device_simt/gm2gm/engine/shmem_device_simt_mte.h
+./shmem/include/device_simt/gm2gm/shmem_device_simt_rma.h
+./shmem/include/device_simt/shmem_simt_common_types.h
+./shmem/include/device_simt/team/shmem_device_simt_team.h
+./shmem/include/device_simt/ub2gm/engine/shmem_device_simt_mte.h
+./shmem/include/device_simt/ub2gm/shmem_device_simt_rma.h
+./shmem/include/host/data_plane/shmem_host_cc.h
+./shmem/include/host/data_plane/shmem_host_p2p_sync.h
+./shmem/include/host/data_plane/shmem_host_rma.h
+./shmem/include/host/data_plane/shmem_host_so.h
+./shmem/include/host/init/shmem_host_init.h
+./shmem/include/host/mem/shmem_host_heap.h
+./shmem/include/host/shmem_host_def.h
+./shmem/include/host/team/shmem_host_team.h
+./shmem/include/host/utils/shmem_host_exception.h
+./shmem/include/host/utils/shmem_log.h
+./shmem/include/host_device/shmem_common_macros.h
+./shmem/include/host_device/shmem_common_types.h
+./shmem/include/shmem.h
+./shmem/lib/aclshmem_bootstrap_config_store.so
+./shmem/lib/aclshmem_bootstrap_uid.so
+./shmem/lib/libshmem.so
+./shmem/lib/libshmem_utils.so
+./shmem/src/device/gm2gm/engine/rdma_backends/rdma_device_backend_base.h
+./shmem/src/device/gm2gm/engine/rdma_backends/rdma_device_backend_base.hpp
+./shmem/src/device/gm2gm/engine/rdma_backends/rdma_device_backend_hns_1825.hpp
+./shmem/src/device/gm2gm/engine/rdma_backends/rdma_device_backend_in_die.hpp
+./shmem/src/device/gm2gm/engine/rdma_backends/rdma_device_backend_xscale.hpp
+./shmem/src/device/gm2gm/engine/shmem_device_mte.hpp
+./shmem/src/device/gm2gm/engine/shmem_device_rdma.hpp
+./shmem/src/device/gm2gm/engine/shmem_device_sdma.hpp
+./shmem/src/device/gm2gm/engine/shmem_device_udma.hpp
+./shmem/src/device/gm2gm/engine/shmemi_device_rdma.h
+./shmem/src/device/gm2gm/engine/shmemi_device_sdma.h
+./shmem/src/device/gm2gm/engine/shmemi_device_udma.h
+./shmem/src/device/gm2gm/shmem_device_amo.hpp
+./shmem/src/device/gm2gm/shmem_device_mo.hpp
+./shmem/src/device/gm2gm/shmem_device_p2p_sync.hpp
+./shmem/src/device/gm2gm/shmem_device_rma.hpp
+./shmem/src/device/gm2gm/shmem_device_so.hpp
+./shmem/src/device/gm2gm/shmemi_device_cc.h
+./shmem/src/device/gm2gm/shmemi_device_cc_kernel.cpp
+./shmem/src/device/gm2gm/shmemi_device_cc_kernel.h
+./shmem/src/device/gm2gm/shmemi_device_mo.h
+./shmem/src/device/gm2gm/shmemi_device_p2p_sync.h
+./shmem/src/device/gm2gm/shmemi_device_p2p_sync_kernel.cpp
+./shmem/src/device/gm2gm/shmemi_device_p2p_sync_kernel.h
+./shmem/src/device/gm2gm/shmemi_device_rma.cpp
+./shmem/src/device/gm2gm/shmemi_device_rma.h
+./shmem/src/device/shmemi_def.h
+./shmem/src/device/shmemi_device_common.h
+./shmem/src/device/shmemi_device_common.hpp
+./shmem/src/device/shmemi_device_meta.h
+./shmem/src/device/team/shmem_device_team.hpp
+./shmem/src/device/ub2gm/mte/shmem_device_mte.hpp
+./shmem/src/device/ub2gm/mte/shmemi_device_mte.h
+./shmem/src/device/ub2gm/shmem_device_rma.hpp
+./shmem/src/device/utils/<span style="color:#F44336;font-weight:bold">exception</span>/shmemi_device_rdma_exception_report_kernel.cpp
+./shmem/src/device/utils/<span style="color:#F44336;font-weight:bold">exception</span>/shmemi_device_rdma_exception_report_kernel.h
+./shmem/src/device/utils/<span style="color:#F44336;font-weight:bold">exception</span>/shmemi_device_udma_exception_report_kernel.cpp
+./shmem/src/device/utils/<span style="color:#F44336;font-weight:bold">exception</span>/shmemi_device_udma_exception_report_kernel.h
+./shmem/src/device/utils/mstx/shmemi_mstx_report.h
+./shmem/src/device/utils/prof/shmemi_prof.h
+./shmem/src/device/utils/shmemi_kernel_debug.h
+./shmem/src/device_simt/gm2gm/engine/shmem_device_simt_mte.hpp
+./shmem/src/device_simt/gm2gm/shmem_device_simt_rma.hpp
+./shmem/src/device_simt/shmemi_device_simt_common.h
+./shmem/src/device_simt/shmemi_device_simt_common.hpp
+./shmem/src/device_simt/shmemi_device_simt_meta.h
+./shmem/src/device_simt/team/shmem_device_simt_team.hpp
+./shmem/src/device_simt/ub2gm/mte/shmem_device_simt_mte.hpp
+./shmem/src/device_simt/ub2gm/shmem_device_simt_rma.hpp
+./shmem/src/device_simt/utils/shmemi_simt_kernel_debug.h
+./shmem/src/host_device/shmemi_common_types.h
+./shmem/src/host_device/shmemi_host_device_constant.h
+./shmem/src/host_device/shmemi_rdma_cqe_layout.h
+./version.info
+CRC: 3940942423
+SHA256: 054699e0acea49d86a36e9f44f2add03ae80ef743cde4fb3f1e35619ac060632
+Skipping md5sum at user request
+
+Self-extractable archive &quot;/home/shmem/ci/release/aarch64/SHMEM_1.7.0_linux-aarch64.run&quot; successfully created.
+SHMEM_1.7.0_linux-aarch64.run is successfully generated in /home/shmem/install/aarch64</div></td>
+            </tr>
+        <tr class="step-error">
+            <td>2026-11-06 09:14:46.822</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281473065254944</td>
+            <td>test_mssanitizer_mc2.py:73</td>
+            <td>
+                <span id="toggle-step-5" class="step-toggle" onclick="toggleStep('step-5')">+Expand step</span>
+                <div class="msg-scroll">---------------------------- SOURCE ENV -----------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 09:14:46.923</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">cd /home/shmem &amp;&amp; source install/set_env.sh</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 09:14:46.923</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 09:14:46.923</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>process.py:27</td>
+                <td class="step-indent"><div class="msg-scroll">初始化Process管理类</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 09:14:46.923</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>process.py:475</td>
+                <td class="step-indent"><div class="msg-scroll">终止所有占用NPU的进程</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 09:14:47.485</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">npu-smi info | awk &#39;{print $5}&#39; | grep &#39;[0-9]&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 09:14:47.485</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">26.1.1</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 09:14:47.485</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>process.py:494</td>
+                <td class="step-indent"><div class="msg-scroll">npu-smi检测到NPU占用进程: 成功终止 0 个, 失败 0 个</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 09:14:47.485</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>process.py:507</td>
+                <td class="step-indent"><div class="msg-scroll">NPU进程终止完成: 共成功终止 0 个, 失败 0 个</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 09:14:47.485</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>test_mssanitizer_mc2.py:79</td>
+                <td class="step-indent"><div class="msg-scroll">开始allgather算子内存检测</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 09:24:47.532</td>
+                <td class='WARN'>WARN</td>
+                <td>281473065254944</td>
+                <td>ssh.py:590</td>
+                <td class="step-indent"><div class="msg-scroll">[Ssh._direct_exec_cmd_interactive] timeout waiting for prompt: expect_prompt=None, timeout=600s</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 09:24:48.534</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">cd /home/shmem/examples/allgather &amp;&amp; mssanitizer --log-level=error -- bash run.sh -pes 2 -type int32_t</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 09:24:48.534</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">=================================================================
+                   &gt;&gt;&gt;&gt;&gt;   MindStudio   &lt;&lt;&lt;&lt;&lt;
+    THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE
+=================================================================
+
+[mssanitizer] logging to file: ./mindstudio_sanitizer_log/mssanitizer_20261106091447_30241.log
+Because GNPU_NUM is greater than PE_SIZE, GNPU_NUM is assigned the value of PE_SIZE=2.
+<span style="color:#F44336;font-weight:bold">Traceback</span> (most recent call last):
+  File &quot;/home/shmem/examples/allgather/./scripts/data_gen.py&quot;, line 13, in &lt;module&gt;
+    from ml_dtypes import bfloat16
+ModuleNotFoundError: No module named &#39;ml_dtypes&#39;
+30316 background process recorded
+30317 background process recorded
+[INFO] Start profiling....
+[INFO] Start profiling....
+[<span style="color:#F44336;font-weight:bold">ERROR</span>] <span style="color:#F44336;font-weight:bold">Failed</span> to get file
+Case: 16 Started.
+[<span style="color:#F44336;font-weight:bold">ERROR</span>] <span style="color:#F44336;font-weight:bold">Failed</span> to get file
+[mssanitizer] Start memcheck sanitizer on kernel ShmemAllGather_int32_t
+[mssanitizer] Start memcheck sanitizer on kernel ShmemAllGather_int32_t</div></td>
+            </tr>
+            <tr class="step-content content-step-5">
+                <td>2026-11-06 09:24:48.536</td>
+                <td class='ERROR'>ERROR</td>
+                <td>281473065254944</td>
+                <td>__init__.py:71</td>
+                <td class="step-indent"><div class="msg-scroll">测试执行异常: 工具产生误报,不应该有内存越界
+assert &#39;ERROR&#39; not in &#39;===========...ther_int32_t&#39;
+  
+  &#39;ERROR&#39; is contained here:
+    =================================================================
+                       &gt;&gt;&gt;&gt;&gt;   MindStudio   &lt;&lt;&lt;&lt;&lt;
+        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE
+    =================================================================
+    ...
+  
+  ...Full output truncated (16 lines hidden), use &#39;-vv&#39; to show</div></td>
+            </tr>
+        <tr class="step-error">
+            <td>2026-11-06 09:24:48.536</td>
+            <td class='TC_STEP'>TC_STEP</td>
+            <td>281473065254944</td>
+            <td>test_mssanitizer_mc2.py:108</td>
+            <td>
+                <span id="toggle-step-6" class="step-toggle" onclick="toggleStep('step-6')">+Expand step</span>
+                <div class="msg-scroll">---------------------------- CLEANUP -----------------------------</div>
+            </td>
+        </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:24:48.536</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>file_utils.py:419</td>
+                <td class="step-indent"><div class="msg-scroll">检查路径是否存在: /home/shmem, 搜索关键字: None, 递归: False</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:24:48.549</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">test -e &#39;/home/shmem&#39; &amp;&amp; echo &#39;exists&#39; || echo &#39;not_exists&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:24:48.549</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">exists</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:24:48.549</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>file_utils.py:425</td>
+                <td class="step-indent"><div class="msg-scroll">路径存在: /home/shmem</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:24:48.600</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">test -e &#39;/home/shmem&#39; &amp;&amp; echo &#39;exists&#39; || echo &#39;not_exists&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:24:48.600</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">exists</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:24:48.937</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">rm -rf &#39;/home/shmem&#39;</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:24:48.938</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:24:48.981</td>
+                <td class='FAIL'>FAIL</td>
+                <td>281473065254944</td>
+                <td>__init__.py:71</td>
+                <td class="step-indent"><div class="msg-scroll">Test FAILED: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py::TestMssanitizerMc2::test_mssanitizer_support_shmem_allgather
+Exception: AssertionError
+Message: 工具产生误报,不应该有内存越界
+assert &#39;ERROR&#39; not in &#39;===========...ther_int32_t&#39;
+  
+  &#39;ERROR&#39; is contained here:
+    =================================================================
+                       &gt;&gt;&gt;&gt;&gt;   MindStudio   &lt;&lt;&lt;&lt;&lt;
+        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE
+    =================================================================
+    ...
+  
+  ...Full output truncated (16 lines hidden), use &#39;-vv&#39; to show</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:24:48.981</td>
+                <td class='ERROR'>ERROR</td>
+                <td>281473065254944</td>
+                <td>__init__.py:71</td>
+                <td class="step-indent"><div class="msg-scroll">Traceback:
+testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py:83: in test_mssanitizer_support_shmem_allgather
+    assert &quot;ERROR&quot; not in memcheck, &quot;工具产生误报,不应该有内存越界&quot;
+E   AssertionError: 工具产生误报,不应该有内存越界
+E   assert &#39;ERROR&#39; not in &#39;===========...ther_int32_t&#39;
+E     
+E     &#39;ERROR&#39; is contained here:
+E       =================================================================
+E                          &gt;&gt;&gt;&gt;&gt;   MindStudio   &lt;&lt;&lt;&lt;&lt;
+E           THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE
+E       =================================================================
+E       ...
+E     
+E     ...Full output truncated (16 lines hidden), use &#39;-vv&#39; to show</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:33:04.279</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">rm -rf /home/asc-devkit /home/samples /home/shmem /home/catlass /home/mssanitizer_scripts 2&gt;/dev/null || true</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:33:04.279</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:33:04.287</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">test -d /root/ascend/log</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:33:04.287</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:33:04.287</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>device.py:1087</td>
+                <td class="step-indent"><div class="msg-scroll">[Device.download_file] Downloading /root/ascend/log to /home/pytest-infra/logs_nH9vwEmI/TestCases/2026-11-06/test_mssanitizer_support_shmem_allgather_09-13-34/mindstudio_single_device_8_a2a3_env_type-nodes_A2-device via SCP</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:33:04.407</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>conftest.py:224</td>
+                <td class="step-indent"><div class="msg-scroll">[mv_dir_on_teardown] mindstudio_single_device_8_a2a3_env_type-nodes_A2-device download &#39;/root/ascend/log&#39; -&gt; &#39;/home/pytest-infra/logs_nH9vwEmI/TestCases/2026-11-06/test_mssanitizer_support_shmem_allgather_09-13-34/mindstudio_single_device_8_a2a3_env_type-nodes_A2-device&#39; success</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:33:04.623</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">mv /root/ascend/log /mnt/share/autotest_log/test_mssanitizer_support_shmem_allgather_20261106_093304</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:33:04.623</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:33:04.624</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>conftest.py:233</td>
+                <td class="step-indent"><div class="msg-scroll">[mv_dir_on_teardown] mindstudio_single_device_8_a2a3_env_type-nodes_A2-device &#39;mv /root/ascend/log /mnt/share/autotest_log/test_mssanitizer_support_shmem_allgather_20261106_093304&#39; success</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:33:12.098</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>sendcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">find /mnt/share/autotest_log -maxdepth 1 -mindepth 1 -mtime +5 -exec rm -rf {} +</div></td>
+            </tr>
+            <tr class="step-content content-step-6">
+                <td>2026-11-06 09:33:12.099</td>
+                <td class='INFO'>INFO</td>
+                <td>281473065254944</td>
+                <td>recvcmd[device]</td>
+                <td class="step-indent"><div class="msg-scroll">(empty)</div></td>
+            </tr>
+        <tr>
+            <td>2026-11-06 09:33:12.099</td>
+            <td class='TC_END'>TC_END</td>
+            <td>281473065254944</td>
+            <td>plugin.py:1076</td>
+            <td><div class="msg-scroll">TestCase End, completed in 1177.28s</div></td>
+        </tr>
+        </tbody>
+    </table>
+    
+</body>
+</html>

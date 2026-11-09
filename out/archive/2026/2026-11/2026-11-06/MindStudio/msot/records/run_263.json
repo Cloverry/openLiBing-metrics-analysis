@@ -1,0 +1,182 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-09 15:06:58",
+    "component": "MindStudio",
+    "pipeline": "msot",
+    "date": "2026-11-06",
+    "recordId": "MindStudio|msot#263"
+  },
+  "recordId": "MindStudio|msot#263",
+  "date": "2026-11-06",
+  "component": "MindStudio",
+  "pipeline": "msot",
+  "pipelineName": "Nightly-CI-Component-pipeline_msot",
+  "platform": "codearts",
+  "buildNumber": 263,
+  "pipelineRunId": "ac82d90d09b040ac9feff4bd31c2b8d9",
+  "status": "CANCELED",
+  "failedTaskType": "测试任务",
+  "startedAt": "2026-11-06T17:50:14",
+  "endedAt": "2026-11-06T19:12:50",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-06T19:12:50",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0,
+    "bsRate": null,
+    "dims": [
+      "va"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=b67d335347fa4646acd3b96d1c55573e&projectId=300037&pipelineRunId=ac82d90d09b040ac9feff4bd31c2b8d9",
+    "detail": null,
+    "github": null
+  },
+  "tasks": [
+    {
+      "jobName": "Test_msot_nightly_smoke_debug",
+      "type": "test",
+      "summary": {
+        "total": 29,
+        "passed": 27,
+        "failed": 2,
+        "passRate": "93.10%"
+      },
+      "cases": [
+        {
+          "name": "test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003",
+          "state": "failed",
+          "description": "AssertionError: 工具发生误报，应该没有越界异常\nassert 'ERROR' not in '===========... \\ntest pass'\n  \n  'ERROR' is contained here:\n    =================================================================\n                       >>>>>   MindStudio   <<<<<\n        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\n    =================================================================\n    ...\n  \n  ...Full output truncated (13 lines hidden), use '-vv' to show",
+          "beginTime": "2026-11-06 17:56:22",
+          "endTime": "2026-11-06 17:57:26",
+          "logUrl": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db62112026110610633/test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003.html",
+          "localLog": "case_logs/case_0003.html",
+          "errorMessages": [],
+          "deepHits": [
+            "Test FAILED: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_aclgraph_cube.py::TestMssanitizerAclGraph::test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003\nException: AssertionError\nMessage: 工具发生误报，应该没有越界异常\nassert 'ERROR' not in '===========... \\ntest pass'\n  \n  'ERROR' is contained here:\n    =================================================================\n                       >>>>>   MindStudio   <<<<<\n        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\n    =================================================================\n    ...\n  \n  ...Full output trunc",
+            "Traceback:\ntestcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_aclgraph_cube.py:274: in test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003\n    assert \"ERROR\" not in ret_msan, \"工具发生误报，应该没有越界异常\"\nE   AssertionError: 工具发生误报，应该没有越界异常\nE   assert 'ERROR' not in '===========... \\ntest pass'\nE     \nE     'ERROR' is contained here:\nE       =================================================================\nE                          >>>>>   MindStudio   <<<<<\nE           THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\nE       =================================================================\nE       ...\nE     \nE     ...Full output truncated (13 lines hidden), use '-vv' to show"
+          ]
+        },
+        {
+          "name": "test_mssanitizer_mc2_0002",
+          "state": "failed",
+          "description": "AssertionError: 工具发生误报，应该没有越界异常\nassert 'ERROR' not in '===========... \\ntest pass'\n  \n  'ERROR' is contained here:\n    =================================================================\n                       >>>>>   MindStudio   <<<<<\n        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\n    =================================================================\n    ...\n  \n  ...Full output truncated (7 lines hidden), use '-vv' to show",
+          "beginTime": "2026-11-06 17:56:22",
+          "endTime": "2026-11-06 17:57:24",
+          "logUrl": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db62112026110610633/test_mssanitizer_mc2_0002.html",
+          "localLog": "case_logs/case_0004.html",
+          "errorMessages": [],
+          "deepHits": [
+            "Test FAILED: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py::TestMssanitizerMc2::test_mssanitizer_mc2_0002\nException: AssertionError\nMessage: 工具发生误报，应该没有越界异常\nassert 'ERROR' not in '===========... \\ntest pass'\n  \n  'ERROR' is contained here:\n    =================================================================\n                       >>>>>   MindStudio   <<<<<\n        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\n    =================================================================\n    ...\n  \n  ...Full output truncated (7 lines hidden), use '-vv' to show",
+            "Traceback:\ntestcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py:188: in test_mssanitizer_mc2_0002\n    assert \"ERROR\" not in ret_msan, \"工具发生误报，应该没有越界异常\"\nE   AssertionError: 工具发生误报，应该没有越界异常\nE   assert 'ERROR' not in '===========... \\ntest pass'\nE     \nE     'ERROR' is contained here:\nE       =================================================================\nE                          >>>>>   MindStudio   <<<<<\nE           THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\nE       =================================================================\nE       ...\nE     \nE     ...Full output truncated (7 lines hidden), use '-vv' to show"
+          ]
+        }
+      ],
+      "emptyTestResult": false,
+      "stepErrMsgs": []
+    }
+  ],
+  "cases": [
+    {
+      "task": "Test_msot_nightly_smoke_debug",
+      "name": "test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003",
+      "state": "failed",
+      "description": "AssertionError: 工具发生误报，应该没有越界异常\nassert 'ERROR' not in '===========... \\ntest pass'\n  \n  'ERROR' is contained here:\n    =================================================================\n                       >>>>>   MindStudio   <<<<<\n        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\n    =================================================================\n    ...\n  \n  ...Full output truncated (13 lines hidden), use '-vv' to show",
+      "beginTime": "2026-11-06 17:56:22",
+      "endTime": "2026-11-06 17:57:26",
+      "logUrl": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db62112026110610633/test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003.html",
+      "localLog": "case_logs/case_0003.html",
+      "errorCount": 0,
+      "errorMessages": [],
+      "deepHits": [
+        "Test FAILED: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_aclgraph_cube.py::TestMssanitizerAclGraph::test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003\nException: AssertionError\nMessage: 工具发生误报，应该没有越界异常\nassert 'ERROR' not in '===========... \\ntest pass'\n  \n  'ERROR' is contained here:\n    =================================================================\n                       >>>>>   MindStudio   <<<<<\n        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\n    =================================================================\n    ...\n  \n  ...Full output trunc",
+        "Traceback:\ntestcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_aclgraph_cube.py:274: in test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003\n    assert \"ERROR\" not in ret_msan, \"工具发生误报，应该没有越界异常\"\nE   AssertionError: 工具发生误报，应该没有越界异常\nE   assert 'ERROR' not in '===========... \\ntest pass'\nE     \nE     'ERROR' is contained here:\nE       =================================================================\nE                          >>>>>   MindStudio   <<<<<\nE           THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\nE       =================================================================\nE       ...\nE     \nE     ...Full output truncated (13 lines hidden), use '-vv' to show"
+      ]
+    },
+    {
+      "task": "Test_msot_nightly_smoke_debug",
+      "name": "test_mssanitizer_mc2_0002",
+      "state": "failed",
+      "description": "AssertionError: 工具发生误报，应该没有越界异常\nassert 'ERROR' not in '===========... \\ntest pass'\n  \n  'ERROR' is contained here:\n    =================================================================\n                       >>>>>   MindStudio   <<<<<\n        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\n    =================================================================\n    ...\n  \n  ...Full output truncated (7 lines hidden), use '-vv' to show",
+      "beginTime": "2026-11-06 17:56:22",
+      "endTime": "2026-11-06 17:57:24",
+      "logUrl": "https://ascend-package.obs.cn-north-4.myhuaweicloud.com/msot/nightly/log/6b5df9811c84434296883cb706db62112026110610633/test_mssanitizer_mc2_0002.html",
+      "localLog": "case_logs/case_0004.html",
+      "errorCount": 0,
+      "errorMessages": [],
+      "deepHits": [
+        "Test FAILED: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py::TestMssanitizerMc2::test_mssanitizer_mc2_0002\nException: AssertionError\nMessage: 工具发生误报，应该没有越界异常\nassert 'ERROR' not in '===========... \\ntest pass'\n  \n  'ERROR' is contained here:\n    =================================================================\n                       >>>>>   MindStudio   <<<<<\n        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\n    =================================================================\n    ...\n  \n  ...Full output truncated (7 lines hidden), use '-vv' to show",
+        "Traceback:\ntestcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py:188: in test_mssanitizer_mc2_0002\n    assert \"ERROR\" not in ret_msan, \"工具发生误报，应该没有越界异常\"\nE   AssertionError: 工具发生误报，应该没有越界异常\nE   assert 'ERROR' not in '===========... \\ntest pass'\nE     \nE     'ERROR' is contained here:\nE       =================================================================\nE                          >>>>>   MindStudio   <<<<<\nE           THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\nE       =================================================================\nE       ...\nE     \nE     ...Full output truncated (7 lines hidden), use '-vv' to show"
+      ]
+    }
+  ],
+  "errorMessages": [
+    {
+      "task": "Test_msot_nightly_smoke_debug",
+      "case": "test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003",
+      "source": "case_logs/case_0003.html",
+      "line": null,
+      "level": "CASE",
+      "text": "Test FAILED: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_aclgraph_cube.py::TestMssanitizerAclGraph::test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003\nException: AssertionError\nMessage: 工具发生误报，应该没有越界异常\nassert 'ERROR' not in '===========... \\ntest pass'\n  \n  'ERROR' is contained here:\n    =================================================================\n                       >>>>>   MindStudio   <<<<<\n        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\n    =================================================================\n    ...\n  \n  ...Full output trunc",
+      "assertion": true
+    },
+    {
+      "task": "Test_msot_nightly_smoke_debug",
+      "case": "test_mssanitizer_mc2_0002",
+      "source": "case_logs/case_0004.html",
+      "line": null,
+      "level": "CASE",
+      "text": "Test FAILED: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py::TestMssanitizerMc2::test_mssanitizer_mc2_0002\nException: AssertionError\nMessage: 工具发生误报，应该没有越界异常\nassert 'ERROR' not in '===========... \\ntest pass'\n  \n  'ERROR' is contained here:\n    =================================================================\n                       >>>>>   MindStudio   <<<<<\n        THE END-TO-END TOOLCHAIN TO UNLEASH HUAWEI ASCEND COMPUTE\n    =================================================================\n    ...\n  \n  ...Full output truncated (7 lines hidden), use '-vv' to show",
+      "assertion": true
+    }
+  ],
+  "evidence": {
+    "files": [
+      "case_logs/case_0003.html",
+      "case_logs/case_0004.html"
+    ],
+    "missing": [],
+    "github": null
+  },
+  "counts": {
+    "tasks": 1,
+    "testTasks": 1,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 2,
+    "errorMessages": 2,
+    "evidenceFiles": 2
+  },
+  "verdict": {
+    "category": "test_failure",
+    "text": "用例失败",
+    "confidence": 0.55,
+    "level": "中",
+    "basis": [
+      "test 任务 Test_msot_nightly_smoke_debug 取到 2 条失败用例（无 job 日志，证据来自测试报告/用例日志）",
+      "基线 0.30",
+      "证据文件落盘 2 份 +0.25"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "rootCause": "两条内存检测用例断言失败：test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003 与 test_mssanitizer_mc2_0002 均报「工具发生误报，应该没有越界异常」；运行状态为 CANCELED，无任务日志，无法定位误报来源。",
+    "advice": "与 #261 的误报问题合并排查：抓取 ac lgraph 场景下的检测输出，核对检测模块对图模式内存复用的建模是否正确；修复后回归这两条用例。",
+    "cites": [
+      "records/run_263.json:L56",
+      "records/run_263.json:L67"
+    ],
+    "updatedAt": "2026-11-09 15:07:00",
+    "source": "agent"
+  }
+}

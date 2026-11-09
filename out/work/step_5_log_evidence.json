@@ -1,0 +1,264 @@
+{
+ "results": [
+  {
+   "route": "log",
+   "key": "Triton_Ascend|Ascend",
+   "pipeline": "Ascend",
+   "rn": 104,
+   "st": "11-06 17:00",
+   "rid": "9ae1e7dda41c4a78957a5ba09d2e5b3c",
+   "jobId": "5b0ba7feedf147a0a53594304b3c15b2",
+   "jobName": "npu_ir流水线调用",
+   "fallback": false,
+   "stepErrMsgs": [
+    "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+   ],
+   "jobErrMsg": "步骤npu_ir流水线调用执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "logFile": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
+   "logBytes": 18857,
+   "logLines": 187,
+   "download": "export",
+   "truncated": false,
+   "excerpt": null,
+   "errorLines": [
+    "L144: [2026/11/06 17:17:46.045 GMT+08:00]     任务 [Build_a3a5_arm]: RUNNING(运行中) -> FAILED(失败)",
+    "L161: [2026/11/06 17:26:21.511 GMT+08:00] [17:26:18] run#516 | FAILED(失败) | 已等待 00:25:10",
+    "L162: [2026/11/06 17:26:21.511 GMT+08:00]   · 阶段 [阶段_1]: RUNNING(运行中) -> FAILED(失败)",
+    "L163: [2026/11/06 17:26:21.511 GMT+08:00]     任务 [Build_a3a5_x86]: RUNNING(运行中) -> FAILED(失败)",
+    "L168: [2026/11/06 17:26:21.511 GMT+08:00] 最终状态: FAILED(失败)",
+    "L172: [2026/11/06 17:26:21.511 GMT+08:00]   [阶段] 阶段_1: FAILED(失败)",
+    "L173: [2026/11/06 17:26:21.511 GMT+08:00]     [任务] Build_a3a5_x86: FAILED(失败) | 持续时间: 00:24:51 | message: 步骤Build_a3a5_x86执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+    "L174: [2026/11/06 17:26:21.511 GMT+08:00]     [任务] Build_a3a5_arm: FAILED(失败) | 持续时间: 00:16:31 | message: 步骤Build_a3a5_arm执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+    "L176: [2026/11/06 17:26:21.511 GMT+08:00] 失败/取消任务明细:",
+    "L177: [2026/11/06 17:26:21.511 GMT+08:00]   [阶段_1] Build_a3a5_x86: FAILED(失败)",
+    "L178: [2026/11/06 17:26:21.511 GMT+08:00]       message: 步骤Build_a3a5_x86执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+    "L179: [2026/11/06 17:26:21.511 GMT+08:00]       step [Build_a3a5_x86]: FAILED(失败)",
+    "L180: [2026/11/06 17:26:21.511 GMT+08:00]           message: {\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+    "L181: [2026/11/06 17:26:21.511 GMT+08:00]   [阶段_1] Build_a3a5_arm: FAILED(失败)",
+    "L182: [2026/11/06 17:26:21.511 GMT+08:00]       message: 步骤Build_a3a5_arm执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+    "L183: [2026/11/06 17:26:21.511 GMT+08:00]       step [Build_a3a5_arm]: FAILED(失败)",
+    "L184: [2026/11/06 17:26:21.511 GMT+08:00]           message: {\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+    "L185: [2026/11/06 17:26:21.529 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed",
+    "L187: [2026/11/06 17:26:27.009 GMT+08:00] Finished: FAILURE"
+   ],
+   "subTasks": []
+  },
+  {
+   "route": "log",
+   "key": "HPCKit|kudnn",
+   "pipeline": "kudnn",
+   "rn": 224,
+   "st": "11-06 03:31",
+   "rid": "b999f6d751f64801844e50b47bf9bd3b",
+   "jobId": "ef833019ca2447c88170b4b84cecf5a6",
+   "jobName": "Test_kudnn",
+   "fallback": true,
+   "stepErrMsgs": [
+    "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+   ],
+   "jobErrMsg": "步骤Test_kudnn执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "logFile": "job_logs/02_kudnn_224_Test_kudnn.log",
+   "logBytes": 16567,
+   "logLines": 144,
+   "download": "export",
+   "truncated": false,
+   "excerpt": null,
+   "errorLines": [
+    "L138: [2026/11/06 03:34:00.703 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+    "L139: [2026/11/06 03:34:00.703 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'",
+    "L140: [2026/11/06 03:34:00.703 GMT+08:00] [ERROR] git clone test_cases code fail",
+    "L142: [2026/11/06 03:34:00.883 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed",
+    "L144: [2026/11/06 03:34:03.671 GMT+08:00] Finished: FAILURE"
+   ]
+  },
+  {
+   "route": "log",
+   "key": "HPCKit|kupl",
+   "pipeline": "kupl",
+   "rn": 297,
+   "st": "11-06 00:01",
+   "rid": "d0720a2f2a054736a8966e49063b89dc",
+   "jobId": "4045c06725184de7b48a42da6c8d440f",
+   "jobName": "Test_kupl",
+   "fallback": true,
+   "stepErrMsgs": [
+    "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+   ],
+   "jobErrMsg": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "logFile": "job_logs/09_kupl_297_Test_kupl.log",
+   "logBytes": 1385,
+   "logLines": 13,
+   "download": "paging",
+   "truncated": true,
+   "excerpt": null,
+   "errorLines": [
+    "L11: [2026/11/06 00:02:23.210 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : [frame] query step status with error.",
+    "L12: [2026/11/06 00:02:23.210 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : 错误信息: DEV-CODECI-35002, 构建任务执行失败!"
+   ]
+  },
+  {
+   "route": "log",
+   "key": "HPCKit|kupl",
+   "pipeline": "kupl",
+   "rn": 298,
+   "st": "11-06 12:00",
+   "rid": "0323dea18d954ecea0b5cc44c1c34696",
+   "jobId": "878efef62881418ab98220513a834dfc",
+   "jobName": "Test_kupl",
+   "fallback": true,
+   "stepErrMsgs": [
+    "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+   ],
+   "jobErrMsg": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "logFile": "job_logs/08_kupl_298_Test_kupl.log",
+   "logBytes": 1385,
+   "logLines": 13,
+   "download": "paging",
+   "truncated": true,
+   "excerpt": null,
+   "errorLines": [
+    "L11: [2026/11/06 12:02:04.212 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : [frame] query step status with error.",
+    "L12: [2026/11/06 12:02:04.213 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : 错误信息: DEV-CODECI-35002, 构建任务执行失败!"
+   ]
+  },
+  {
+   "route": "log",
+   "key": "HPCKit|kupl",
+   "pipeline": "kupl",
+   "rn": 299,
+   "st": "11-06 13:30",
+   "rid": "83e34fe2e1184610959638c360c41c45",
+   "jobId": "bb4373a54d9a4cc2b52a53177f551672",
+   "jobName": "Test_kupl",
+   "fallback": true,
+   "stepErrMsgs": [
+    "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+   ],
+   "jobErrMsg": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "logFile": "job_logs/04_kupl_299_Test_kupl.log",
+   "logBytes": 16559,
+   "logLines": 144,
+   "download": "export",
+   "truncated": false,
+   "excerpt": null,
+   "errorLines": [
+    "L138: [2026/11/06 13:32:03.681 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+    "L139: [2026/11/06 13:32:03.681 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'",
+    "L140: [2026/11/06 13:32:03.681 GMT+08:00] [ERROR] git clone test_cases code fail",
+    "L142: [2026/11/06 13:32:03.846 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed",
+    "L144: [2026/11/06 13:32:06.815 GMT+08:00] Finished: FAILURE"
+   ]
+  },
+  {
+   "route": "log",
+   "key": "HPCKit|kuqcd",
+   "pipeline": "kuqcd",
+   "rn": 198,
+   "st": "11-06 00:31",
+   "rid": "a36fec8406ed4de9ba4f868015c8f8e0",
+   "jobId": "51106a4afa194c74bdb0e822b05d6863",
+   "jobName": "Test_quqcd",
+   "fallback": true,
+   "stepErrMsgs": [
+    "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+   ],
+   "jobErrMsg": "步骤Test_quqcd执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "logFile": "job_logs/03_kuqcd_198_Test_quqcd.log",
+   "logBytes": 16559,
+   "logLines": 144,
+   "download": "export",
+   "truncated": false,
+   "excerpt": null,
+   "errorLines": [
+    "L138: [2026/11/06 00:33:07.909 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+    "L139: [2026/11/06 00:33:07.909 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'",
+    "L140: [2026/11/06 00:33:07.909 GMT+08:00] [ERROR] git clone test_cases code fail",
+    "L142: [2026/11/06 00:33:08.080 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed",
+    "L144: [2026/11/06 00:33:13.158 GMT+08:00] Finished: FAILURE"
+   ]
+  },
+  {
+   "route": "log",
+   "key": "HPCKit|kpex",
+   "pipeline": "kpex",
+   "rn": 139,
+   "st": "11-06 00:41",
+   "rid": "08890715f1e8442288cc08c1b92cc7b0",
+   "jobId": "1f0b204bb4994e47ae518ba383a72705",
+   "jobName": "Test_kpex",
+   "fallback": true,
+   "stepErrMsgs": [
+    "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+   ],
+   "jobErrMsg": "步骤Test_kpex执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "logFile": "job_logs/05_kpex_139_Test_kpex.log",
+   "logBytes": 16559,
+   "logLines": 144,
+   "download": "export",
+   "truncated": false,
+   "excerpt": null,
+   "errorLines": [
+    "L138: [2026/11/06 00:43:18.658 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+    "L139: [2026/11/06 00:43:18.658 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'",
+    "L140: [2026/11/06 00:43:18.659 GMT+08:00] [ERROR] git clone test_cases code fail",
+    "L142: [2026/11/06 00:43:18.661 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed",
+    "L144: [2026/11/06 00:43:23.168 GMT+08:00] Finished: FAILURE"
+   ]
+  },
+  {
+   "route": "log",
+   "key": "HPCKit|hmpi",
+   "pipeline": "hmpi",
+   "rn": 210,
+   "st": "11-06 01:01",
+   "rid": "9c42f33ef29645839271036fce5cfe60",
+   "jobId": "52332eeed4bb46beb6dafb03d2aa1730",
+   "jobName": "Test_hmpi",
+   "fallback": true,
+   "stepErrMsgs": [
+    "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+   ],
+   "jobErrMsg": "步骤Test_hmpi执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "logFile": "job_logs/07_hmpi_210_Test_hmpi.log",
+   "logBytes": 16562,
+   "logLines": 144,
+   "download": "export",
+   "truncated": false,
+   "excerpt": null,
+   "errorLines": [
+    "L138: [2026/11/06 01:11:47.479 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+    "L139: [2026/11/06 01:11:47.479 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'",
+    "L140: [2026/11/06 01:11:47.479 GMT+08:00] [ERROR] git clone test_cases code fail",
+    "L142: [2026/11/06 01:11:47.649 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed",
+    "L144: [2026/11/06 01:11:53.246 GMT+08:00] Finished: FAILURE"
+   ]
+  },
+  {
+   "route": "log",
+   "key": "Triton_Ascend|Ascend",
+   "pipeline": "Ascend",
+   "rn": 104,
+   "st": "11-06 17:00",
+   "rid": "9ae1e7dda41c4a78957a5ba09d2e5b3c",
+   "jobId": "2f8ebba6f3024d659e6f27bd51a95b98",
+   "jobName": "Test_Triton_Ascend",
+   "fallback": true,
+   "stepErrMsgs": [
+    "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+   ],
+   "jobErrMsg": "步骤Test_Triton_Ascend执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "logFile": "job_logs/06_Ascend_104_Test_Triton_Ascend.log",
+   "logBytes": 12641,
+   "logLines": 130,
+   "download": "export",
+   "truncated": false,
+   "excerpt": null,
+   "errorLines": [
+    "L126: [2026/11/06 17:27:23.672 GMT+08:00] 2026-11-06 17:27:23 ERROR 404: Not Found.",
+    "L128: [2026/11/06 17:27:23.698 GMT+08:00] [ERROR]  : script returned exit code 8, exitMessage is: command run failed",
+    "L130: [2026/11/06 17:27:28.925 GMT+08:00] Finished: FAILURE"
+   ]
+  }
+ ],
+ "errors": []
+}

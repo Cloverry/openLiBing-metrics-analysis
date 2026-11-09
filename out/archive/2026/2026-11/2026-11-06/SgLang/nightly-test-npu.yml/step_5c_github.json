@@ -1,0 +1,2098 @@
+{
+ "_doc": {
+  "step": "step_5c_github",
+  "title": "第 5c 步 GitHub 平台运行取证",
+  "source": "GitHub Actions API（jobs / logs / 测试结果）",
+  "criteria": "对 github 平台运行按 job 分流取日志，测试 job 解析测试结果定位到用例",
+  "dateField": "run.updated_at（等价于执行结束时间）",
+  "generatedAt": "2026-11-09 15:06:59",
+  "component": "SgLang",
+  "pipeline": "nightly-test-npu.yml",
+  "date": "2026-11-06"
+ },
+ "results": [
+  {
+   "route": "github",
+   "key": "SgLang|nightly-test-npu.yml",
+   "rn": 2084,
+   "rid": "42068844392",
+   "st": "11-06 00:51",
+   "runId": 42068844392,
+   "repo": "sgl-project/sglang",
+   "displayTitle": "ci run",
+   "event": "pull_request",
+   "status": "FAILED",
+   "duration": 12.17,
+   "runStatus": {
+    "status": "completed",
+    "conclusion": "failure",
+    "updatedAt": "2026-11-05T17:04:09Z",
+    "attempt": 1
+   },
+   "_v": 2,
+   "mode": "perjob",
+   "why": "失败 job 1 个（≤5，逐 job 精取）",
+   "totalJobs": 15,
+   "failedJobs": [
+    {
+     "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+     "id": 127390755997,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "cancelledJobs": [],
+   "jobs": [
+    {
+     "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+     "id": 127390755997,
+     "conclusion": "failure",
+     "startedAt": "2026-11-05T16:52:30Z",
+     "completedAt": "2026-11-05T17:04:07Z",
+     "logFile": "github_logs/gh_42068844392/127390755997_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+     "logBytes": 65845,
+     "logLines": 631,
+     "errorLines": [
+      "L514: Traceback (most recent call last):",
+      "L524: Traceback (most recent call last):",
+      "L532: ##[error]Error: failed to run script step:",
+      "L533: ✗ exit code: 1",
+      "L539: Traceback (most recent call last):",
+      "L549: Traceback (most recent call last):",
+      "L557: ##[error]Process completed with exit code 1.",
+      "L558: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ],
+     "isTestJob": true,
+     "testResults": null
+    }
+   ],
+   "missing": [],
+   "systemLogs": [],
+   "ghComplete": true,
+   "cached": true
+  },
+  {
+   "route": "github",
+   "key": "SgLang|nightly-test-npu.yml",
+   "rn": 2085,
+   "rid": "42073069875",
+   "st": "11-06 01:16",
+   "runId": 42073069875,
+   "repo": "sgl-project/sglang",
+   "displayTitle": "ci run",
+   "event": "pull_request",
+   "status": "FAILED",
+   "duration": 11.48,
+   "runStatus": {
+    "status": "completed",
+    "conclusion": "failure",
+    "updatedAt": "2026-11-05T17:28:24Z",
+    "attempt": 1
+   },
+   "_v": 2,
+   "mode": "perjob",
+   "why": "失败 job 1 个（≤5，逐 job 精取）",
+   "totalJobs": 15,
+   "failedJobs": [
+    {
+     "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+     "id": 127405967141,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "cancelledJobs": [],
+   "jobs": [
+    {
+     "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+     "id": 127405967141,
+     "conclusion": "failure",
+     "startedAt": "2026-11-05T17:17:28Z",
+     "completedAt": "2026-11-05T17:28:23Z",
+     "logFile": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+     "logBytes": 901532,
+     "logLines": 6014,
+     "errorLines": [
+      "L531: Traceback (most recent call last):",
+      "L3378: 2026-11-06 01:24:33.556644 WARN [1185-1185][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+      "L3389: 2026-11-06 01:24:33.558446 ERROR [1185-1185][HYBM hybm_entity_default.cpp:1324 InitDramSegment] dram segment does not support sdma in current environment, rankId: 0",
+      "L3390: 2026-11-06 01:24:33.558460 ERROR [1185-1185][HYBM hybm_entity_default.cpp:1245 InitSegment] InitDramSegment() failed: -1",
+      "L3391: 2026-11-06 01:24:33.558465 ERROR [1185-1185][HYBM hybm_entity_default.cpp:127 Initialize] Assert InitSegment() == BM_OK, Failed to init segment.",
+      "L3392: 2026-11-06 01:24:33.558471 ERROR [1185-1185][HYBM hybm_big_mem_entry.cpp:35 hybm_create_entity] initialize entity failed, id: 64 flags: 0x0 ret: ffffffff",
+      "L3393: 2026-11-06 01:24:33.558492 ERROR [1185-1185][SMEM smem_bm_entry.cpp:152 Initialize] hybm_create_entity failed, entityId: 64 rankId: 0 flags: 0",
+      "L3394: 2026-11-06 01:24:33.558522 ERROR [1185-1185][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1",
+      "L3395: 2026-11-06 01:24:33.558530 ERROR [1185-1185][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed",
+      "L3396: 2026-11-06 01:24:33.558536 ERROR [1185-1185][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm",
+      "L4846: 2026-11-06 01:24:35.763974 ERROR [1173-1173][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+      "L4849: 2026-11-06 01:24:35.763992 ERROR [1181-1181][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+      "L4850: 2026-11-06 01:24:35.764153 ERROR [1173-1173][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+      "L4851: 2026-11-06 01:24:35.764154 ERROR [1181-1181][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+      "L4852: 2026-11-06 01:24:35.764180 ERROR [1181-1181][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+      "L4853: 2026-11-06 01:24:35.764187 ERROR [1173-1173][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+      "L4856: 2026-11-06 01:24:35.764398 ERROR [1178-1178][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+      "L4857: 2026-11-06 01:24:35.764529 ERROR [1178-1178][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+      "L4858: 2026-11-06 01:24:35.764537 ERROR [1178-1178][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+      "L4861: Traceback (most recent call last):",
+      "L4888: [2026-11-06 01:24:35 DP7 PP1 TP7 EP7] Scheduler hit an exception: Traceback (most recent call last):",
+      "L4938: [2026-11-06 01:24:35 DP2 PP0 TP2 EP2] Scheduler hit an exception: Traceback (most recent call last):",
+      "L4988: [2026-11-06 01:24:35 DP0 PP1 TP0 EP0] Scheduler hit an exception: Traceback (most recent call last):",
+      "L5036: 2026-11-06 01:24:35.765375 ERROR [1175-1175][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+      "L5040: 2026-11-06 01:24:35.765531 ERROR [1175-1175][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+      "L5041: 2026-11-06 01:24:35.765546 ERROR [1175-1175][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+      "L5044: 2026-11-06 01:24:35.765863 ERROR [1184-1184][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+      "L5045: 2026-11-06 01:24:35.766006 ERROR [1184-1184][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+      "L5046: 2026-11-06 01:24:35.766016 ERROR [1184-1184][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+      "L5052: [2026-11-06 01:24:35 DP6 PP1 TP6 EP6] Scheduler hit an exception: Traceback (most recent call last):",
+      "L5100: 2026-11-06 01:24:35.766620 ERROR [1183-1183][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+      "L5101: 2026-11-06 01:24:35.766745 ERROR [1183-1183][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+      "L5102: 2026-11-06 01:24:35.766754 ERROR [1183-1183][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+      "L5104: Traceback (most recent call last):",
+      "L5131: Traceback (most recent call last):",
+      "L5158: [2026-11-06 01:24:35 DP5 PP0 TP5 EP5] Scheduler hit an exception: Traceback (most recent call last):",
+      "L5206: Traceback (most recent call last):",
+      "L5233: Traceback (most recent call last):",
+      "L5260: Traceback (most recent call last):",
+      "L5287: Traceback (most recent call last):",
+      "L5313: [2026-11-06 01:24:35 DP2 PP1 TP2 EP2] Scheduler hit an exception: Traceback (most recent call last):",
+      "L5359: [2026-11-06 01:24:35 DP0 PP0 TP0 EP0] Scheduler hit an exception: Traceback (most recent call last):",
+      "L5406: Traceback (most recent call last):",
+      "L5433: Traceback (most recent call last):",
+      "L5459: [2026-11-06 01:24:35 DP1 PP1 TP1 EP1] Scheduler hit an exception: Traceback (most recent call last):",
+      "L5505: [2026-11-06 01:24:35 DP1 PP0 TP1 EP1] Scheduler hit an exception: Traceback (most recent call last):",
+      "L5551: [2026-11-06 01:24:35 DP6 PP0 TP6 EP6] Scheduler hit an exception: Traceback (most recent call last):",
+      "L5597: [2026-11-06 01:24:35 DP3 PP0 TP3 EP3] Scheduler hit an exception: Traceback (most recent call last):",
+      "L5643: [2026-11-06 01:24:35 DP4 PP1 TP4 EP4] Scheduler hit an exception: Traceback (most recent call last):",
+      "L5689: [2026-11-06 01:24:35 DP3 PP1 TP3 EP3] Scheduler hit an exception: Traceback (most recent call last):",
+      "L5737: Traceback (most recent call last):",
+      "L5748: Traceback (most recent call last):",
+      "L5764: Traceback (most recent call last):",
+      "L5801: Traceback (most recent call last):",
+      "L5811: Traceback (most recent call last):",
+      "L5915: ##[error]Error: failed to run script step:",
+      "L5916: ✗ exit code: 1",
+      "L5932: Traceback (most recent call last):",
+      "L5940: ##[error]Process completed with exit code 1.",
+      "L5941: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ],
+     "isTestJob": true,
+     "testResults": null
+    }
+   ],
+   "missing": [],
+   "systemLogs": [],
+   "ghComplete": true,
+   "cached": true
+  },
+  {
+   "route": "github",
+   "key": "SgLang|nightly-test-npu.yml",
+   "rn": 2083,
+   "rid": "42068311537",
+   "st": "11-06 00:48",
+   "runId": 42068311537,
+   "repo": "sgl-project/sglang",
+   "displayTitle": "[Test] [NPU] glm5_3: Add 2P2D 32P and 1P1D 16P PD-sep performance cases",
+   "event": "pull_request",
+   "status": "FAILED",
+   "duration": 143.63,
+   "runStatus": {
+    "status": "completed",
+    "conclusion": "failure",
+    "updatedAt": "2026-11-05T19:12:32Z",
+    "attempt": 1
+   },
+   "_v": 2,
+   "mode": "perjob",
+   "why": "失败 job 2 个（≤5，逐 job 精取）",
+   "totalJobs": 16,
+   "failedJobs": [
+    {
+     "name": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test/registered/npu/pe... / glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms",
+     "id": 127453581942,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "check-all-jobs",
+     "id": 127470975935,
+     "steps": [
+      {
+       "name": "Generate results table",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "cancelledJobs": [],
+   "jobs": [
+    {
+     "name": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test/registered/npu/pe... / glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms",
+     "id": 127453581942,
+     "conclusion": "failure",
+     "startedAt": "2026-11-05T18:42:04Z",
+     "completedAt": "2026-11-05T19:12:26Z",
+     "logFile": "github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt",
+     "logBytes": 449634,
+     "logLines": 1991,
+     "errorLines": [
+      "L608: │ exit code: 1",
+      "L1652: Traceback (most recent call last):",
+      "L1773: Traceback (most recent call last):",
+      "L1795: Traceback (most recent call last):",
+      "L1829: Traceback (most recent call last):",
+      "L1858: Traceback (most recent call last):",
+      "L1870: Traceback (most recent call last):",
+      "L1881: Traceback (most recent call last):",
+      "L1889: ##[error]Error: failed to run script step:",
+      "L1890: ✗ exit code: 1",
+      "L1895: Traceback (most recent call last):",
+      "L1906: Traceback (most recent call last):",
+      "L1914: ##[error]Process completed with exit code 1.",
+      "L1915: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ],
+     "isTestJob": true,
+     "testResults": null
+    },
+    {
+     "name": "check-all-jobs",
+     "id": 127470975935,
+     "conclusion": "failure",
+     "startedAt": "2026-11-05T19:12:29Z",
+     "completedAt": "2026-11-05T19:12:32Z",
+     "logFile": "github_logs/gh_42068311537/127470975935_check-all-jobs.txt",
+     "logBytes": 6492,
+     "logLines": 99,
+     "errorLines": [
+      "L98: ##[error]Process completed with exit code 1."
+     ],
+     "githubSteps": [
+      {
+       "name": "Generate results table",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "missing": [],
+   "systemLogs": [],
+   "ghComplete": true,
+   "cached": true
+  },
+  {
+   "route": "github",
+   "key": "SgLang|nightly-test-npu.yml",
+   "rn": 2086,
+   "rid": "42088175169",
+   "st": "11-06 02:50",
+   "runId": 42088175169,
+   "repo": "sgl-project/sglang",
+   "displayTitle": "ci run",
+   "event": "pull_request",
+   "status": "FAILED",
+   "duration": 27.92,
+   "runStatus": {
+    "status": "completed",
+    "conclusion": "failure",
+    "updatedAt": "2026-11-05T19:18:46Z",
+    "attempt": 1
+   },
+   "_v": 2,
+   "mode": "perjob",
+   "why": "失败 job 1 个（≤5，逐 job 精取）",
+   "totalJobs": 15,
+   "failedJobs": [
+    {
+     "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+     "id": 127458874017,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "cancelledJobs": [],
+   "jobs": [
+    {
+     "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+     "id": 127458874017,
+     "conclusion": "failure",
+     "startedAt": "2026-11-05T18:51:21Z",
+     "completedAt": "2026-11-05T19:18:44Z",
+     "logFile": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+     "logBytes": 1037402,
+     "logLines": 6325,
+     "errorLines": [
+      "L679: Traceback (most recent call last):",
+      "L2625: 2026-11-06 03:14:36.540596 WARN [881-881][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+      "L2626: 2026-11-06 03:14:36.540726 WARN [888-888][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+      "L2628: 2026-11-06 03:14:36.541321 WARN [884-884][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+      "L2629: 2026-11-06 03:14:36.541543 WARN [882-882][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+      "L2641: 2026-11-06 03:14:36.545215 WARN [885-885][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+      "L2650: 2026-11-06 03:14:36.545901 WARN [890-890][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+      "L2658: 2026-11-06 03:14:36.546183 WARN [886-886][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+      "L2666: 2026-11-06 03:14:36.546563 WARN [893-893][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+      "L2668: 2026-11-06 03:14:36.546606 WARN [894-894][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+      "L5712: 2026-11-06 03:14:59.357917 ERROR [1180-1180][HYBM hybm_big_mem_entry.cpp:102 hybm_alloc_local_memory] allocate slice with size: 21474836480, mType: 2 failed: -6",
+      "L5713: 2026-11-06 03:14:59.357924 ERROR [1180-1180][SMEM smem_bm_entry.cpp:117 AllocDramMem] alloc local host mem failed, size: 21474836480",
+      "L5714: 2026-11-06 03:14:59.357929 ERROR [1180-1180][SMEM smem_bm_entry.cpp:187 Initialize] alloc dram mem failed, result: -1",
+      "L5718: 2026-11-06 03:14:59.365119 ERROR [1172-1172][HYBM hybm_vmm_based_segment.cpp:201 MallocFromHost] Try HalMemCreate failed ret:6 device:0 spend time: size:21474836480",
+      "L5719: 2026-11-06 03:14:59.365125 ERROR [1172-1172][HYBM hybm_vmm_based_segment.cpp:281 AllocLocalMemory] Assert ret == BM_OK, HalMemCreate failed: 6 segType:1 devId:0 size:21474836480",
+      "L5720: 2026-11-06 03:14:59.365131 ERROR [1172-1172][HYBM hybm_entity_default.cpp:218 AllocLocalMemory] segment allocate slice with size: 21474836480 failed: -6",
+      "L5721: 2026-11-06 03:14:59.365134 ERROR [1172-1172][HYBM hybm_big_mem_entry.cpp:102 hybm_alloc_local_memory] allocate slice with size: 21474836480, mType: 2 failed: -6",
+      "L5722: 2026-11-06 03:14:59.365140 ERROR [1172-1172][SMEM smem_bm_entry.cpp:117 AllocDramMem] alloc local host mem failed, size: 21474836480",
+      "L5723: 2026-11-06 03:14:59.365144 ERROR [1172-1172][SMEM smem_bm_entry.cpp:187 Initialize] alloc dram mem failed, result: -1",
+      "L5729: 2026-11-06 03:14:59.393251 ERROR [1174-1174][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1",
+      "L5730: 2026-11-06 03:14:59.393264 ERROR [1174-1174][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed",
+      "L5731: 2026-11-06 03:14:59.393273 ERROR [1174-1174][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm",
+      "L5732: 2026-11-06 03:14:59.393284 ERROR [1174-1174][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed",
+      "L5736: 2026-11-06 03:14:59.408436 ERROR [1180-1180][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1",
+      "L5737: 2026-11-06 03:14:59.408450 ERROR [1180-1180][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed",
+      "L5738: 2026-11-06 03:14:59.408460 ERROR [1180-1180][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm",
+      "L5739: 2026-11-06 03:14:59.408470 ERROR [1180-1180][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed",
+      "L5743: 2026-11-06 03:14:59.415699 ERROR [1172-1172][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1",
+      "L5744: 2026-11-06 03:14:59.415711 ERROR [1172-1172][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed",
+      "L5745: 2026-11-06 03:14:59.415720 ERROR [1172-1172][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm",
+      "L5746: 2026-11-06 03:14:59.415731 ERROR [1172-1172][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed",
+      "L5751: 2026-11-06 03:14:59.470008 ERROR [1186-1186][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1",
+      "L5752: 2026-11-06 03:14:59.470022 ERROR [1186-1186][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed",
+      "L5753: 2026-11-06 03:14:59.470031 ERROR [1186-1186][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm",
+      "L5754: 2026-11-06 03:14:59.470039 ERROR [1186-1186][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed",
+      "L5757: 2026-11-06 03:14:59.473486 ERROR [1176-1176][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1",
+      "L5758: 2026-11-06 03:14:59.473497 ERROR [1176-1176][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed",
+      "L5759: 2026-11-06 03:14:59.473504 ERROR [1176-1176][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm",
+      "L5760: 2026-11-06 03:14:59.473513 ERROR [1176-1176][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed",
+      "L5767: 2026-11-06 03:14:59.554694 ERROR [1177-1177][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+      "L5768: 2026-11-06 03:14:59.554771 ERROR [1177-1177][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+      "L5769: 2026-11-06 03:14:59.554778 ERROR [1177-1177][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+      "L5772: Traceback (most recent call last):",
+      "L5804: 2026-11-06 03:14:59.569802 ERROR [1179-1179][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+      "L5805: [2026-11-06 03:14:59 DP5 PP0 TP5 EP5] Scheduler hit an exception: Traceback (most recent call last):",
+      "L5851: 2026-11-06 03:14:59.569959 ERROR [1179-1179][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+      "L5852: 2026-11-06 03:14:59.569974 ERROR [1179-1179][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+      "L5855: Traceback (most recent call last):",
+      "L5881: [2026-11-06 03:14:59 DP7 PP0 TP7 EP7] Scheduler hit an exception: Traceback (most recent call last):",
+      "L5929: Traceback (most recent call last):",
+      "L5940: Traceback (most recent call last):",
+      "L5956: Traceback (most recent call last):",
+      "L6105: Traceback (most recent call last):",
+      "L6115: Traceback (most recent call last):",
+      "L6142: Traceback (most recent call last):",
+      "L6226: ##[error]Error: failed to run script step:",
+      "L6227: ✗ exit code: 1",
+      "L6243: Traceback (most recent call last):",
+      "L6251: ##[error]Process completed with exit code 1.",
+      "L6252: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ],
+     "isTestJob": true,
+     "testResults": null
+    }
+   ],
+   "missing": [],
+   "systemLogs": [],
+   "ghComplete": true,
+   "cached": true
+  },
+  {
+   "route": "github",
+   "key": "SgLang|nightly-test-npu.yml",
+   "rn": 2079,
+   "rid": "42047810705",
+   "st": "11-05 22:43",
+   "runId": 42047810705,
+   "repo": "sgl-project/sglang",
+   "displayTitle": "[Test][NPU] overlap-schedule validation: GLM5/Kimi/DSV4 case reconfig + TEMP nightly scoping",
+   "event": "pull_request",
+   "status": "FAILED",
+   "duration": 655.02,
+   "runStatus": {
+    "status": "completed",
+    "conclusion": "cancelled",
+    "updatedAt": "2026-11-06T01:38:47Z",
+    "attempt": 1
+   },
+   "_v": 2,
+   "mode": "zip",
+   "why": "失败 job 7 个（>5，整包一次下载更省时）",
+   "totalJobs": 20,
+   "failedJobs": [
+    {
+     "name": "nightly-1-npu-a3 / run (0)",
+     "id": 127318476257,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+     "id": 127318477062,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+     "id": 127318477381,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap, 1, 1, 1, test... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap",
+     "id": 127320733280,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap, 1, 1, 1, test/registered/npu/a... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap",
+     "id": 127343204261,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa_overlap, 2, 2, 1, test/registered/npu/acc... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa_overlap",
+     "id": 127442782595,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_dcp_gpqa",
+     "id": 127563337013,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "cancelledJobs": [
+    {
+     "name": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test/registered/npu/pe... / glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms",
+     "id": 127626844705
+    },
+    {
+     "name": "check-all-jobs",
+     "id": 127654905328
+    }
+   ],
+   "jobs": [
+    {
+     "name": "nightly-1-npu-a3 / run (0)",
+     "id": 127318476257,
+     "conclusion": "failure",
+     "startedAt": "2026-11-05T14:49:22Z",
+     "completedAt": "2026-11-05T14:51:51Z",
+     "logFile": "github_logs/gh_42047810705/10_nightly-1-npu-a3 _ run (0).txt",
+     "logBytes": 106145,
+     "logLines": 985,
+     "errorLines": [
+      "L918: Traceback (most recent call last):",
+      "L929: ##[error]Error: failed to run script step:",
+      "L930: ✗ exit code: 1",
+      "L943: Traceback (most recent call last):",
+      "L954: ##[error]Process completed with exit code 1.",
+      "L955: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+     "id": 127318477062,
+     "conclusion": "failure",
+     "startedAt": "2026-11-05T14:49:25Z",
+     "completedAt": "2026-11-05T14:52:48Z",
+     "logFile": "github_logs/gh_42047810705/9_nightly-perf-16-npu-a3 _ nightly-perf-16-npu-a3.txt",
+     "logBytes": 58919,
+     "logLines": 700,
+     "errorLines": [
+      "L631: Traceback (most recent call last):",
+      "L644: ##[error]Error: failed to run script step:",
+      "L645: ✗ exit code: 1",
+      "L656: Traceback (most recent call last):",
+      "L669: ##[error]Process completed with exit code 1.",
+      "L670: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+     "id": 127318477381,
+     "conclusion": "failure",
+     "startedAt": "2026-11-05T14:49:45Z",
+     "completedAt": "2026-11-05T14:51:22Z",
+     "logFile": "github_logs/gh_42047810705/8_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
+     "logBytes": 58845,
+     "logLines": 700,
+     "errorLines": [
+      "L631: Traceback (most recent call last):",
+      "L644: ##[error]Error: failed to run script step:",
+      "L645: ✗ exit code: 1",
+      "L656: Traceback (most recent call last):",
+      "L669: ##[error]Process completed with exit code 1.",
+      "L670: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap, 1, 1, 1, test... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap",
+     "id": 127320733280,
+     "conclusion": "failure",
+     "startedAt": "2026-11-05T14:53:13Z",
+     "completedAt": "2026-11-05T15:30:25Z",
+     "logFile": "github_logs/gh_42047810705/7_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~db0591.txt",
+     "logBytes": 545706,
+     "logLines": 3066,
+     "errorLines": [
+      "L604: │ exit code: 1",
+      "L2887: Traceback (most recent call last):",
+      "L2923: Traceback (most recent call last):",
+      "L2934: Traceback (most recent call last):",
+      "L2947: Traceback (most recent call last):",
+      "L2958: Traceback (most recent call last):",
+      "L2966: ##[error]Error: failed to run script step:",
+      "L2967: ✗ exit code: 1",
+      "L2972: Traceback (most recent call last):",
+      "L2983: Traceback (most recent call last):",
+      "L2991: ##[error]Process completed with exit code 1.",
+      "L2992: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ],
+     "isTestJob": true,
+     "testResults": null
+    },
+    {
+     "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap, 1, 1, 1, test/registered/npu/a... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap",
+     "id": 127343204261,
+     "conclusion": "failure",
+     "startedAt": "2026-11-05T15:30:51Z",
+     "completedAt": "2026-11-05T18:22:33Z",
+     "logFile": "github_logs/gh_42047810705/6_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~ec30f2.txt",
+     "logBytes": 620232,
+     "logLines": 2862,
+     "errorLines": [
+      "L2430: Traceback (most recent call last):",
+      "L2458: Traceback (most recent call last):",
+      "L2545: Traceback (most recent call last):",
+      "L2573: Traceback (most recent call last):",
+      "L2676: Traceback (most recent call last):",
+      "L2704: Traceback (most recent call last):",
+      "L2731: Traceback (most recent call last):",
+      "L2743: Traceback (most recent call last):",
+      "L2754: Traceback (most recent call last):",
+      "L2762: ##[error]Error: failed to run script step:",
+      "L2763: ✗ exit code: 1",
+      "L2768: Traceback (most recent call last):",
+      "L2779: Traceback (most recent call last):",
+      "L2787: ##[error]Process completed with exit code 1.",
+      "L2788: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ],
+     "isTestJob": true,
+     "testResults": null
+    },
+    {
+     "name": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa_overlap, 2, 2, 1, test/registered/npu/acc... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa_overlap",
+     "id": 127442782595,
+     "conclusion": "failure",
+     "startedAt": "2026-11-05T18:23:00Z",
+     "completedAt": "2026-11-05T22:03:48Z",
+     "logFile": "github_logs/gh_42047810705/5_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p~7420f7.txt",
+     "logBytes": 2882778,
+     "logLines": 7423,
+     "errorLines": [
+      "L1213: Traceback (most recent call last):",
+      "L6179: Traceback (most recent call last):",
+      "L7130: Traceback (most recent call last):",
+      "L7212: Traceback (most recent call last):",
+      "L7228: Traceback (most recent call last):",
+      "L7247: Traceback (most recent call last):",
+      "L7258: Traceback (most recent call last):",
+      "L7269: Traceback (most recent call last):",
+      "L7295: Traceback (most recent call last):",
+      "L7311: Traceback (most recent call last):",
+      "L7319: ##[error]Error: failed to run script step:",
+      "L7320: ✗ exit code: 1",
+      "L7325: Traceback (most recent call last):",
+      "L7336: Traceback (most recent call last):",
+      "L7344: ##[error]Process completed with exit code 1.",
+      "L7345: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ],
+     "isTestJob": true,
+     "testResults": null
+    },
+    {
+     "name": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_dcp_gpqa",
+     "id": 127563337013,
+     "conclusion": "failure",
+     "startedAt": "2026-11-05T22:04:40Z",
+     "completedAt": "2026-11-05T22:15:39Z",
+     "logFile": "github_logs/gh_42047810705/4_multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2,~83db7b.txt",
+     "logBytes": 74477,
+     "logLines": 684,
+     "errorLines": [
+      "L571: Traceback (most recent call last):",
+      "L581: Traceback (most recent call last):",
+      "L589: ##[error]Error: failed to run script step:",
+      "L590: ✗ exit code: 1",
+      "L596: Traceback (most recent call last):",
+      "L606: Traceback (most recent call last):",
+      "L614: ##[error]Process completed with exit code 1.",
+      "L615: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ],
+     "isTestJob": true,
+     "testResults": null
+    }
+   ],
+   "missing": [],
+   "systemLogs": [
+    "github_logs/gh_42047810705/sys_multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out~de9f27.txt",
+    "github_logs/gh_42047810705/sys_multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, ~cc387a.txt",
+    "github_logs/gh_42047810705/sys_multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, ~83db7b.txt",
+    "github_logs/gh_42047810705/sys_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_3~7420f7.txt",
+    "github_logs/gh_42047810705/sys_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d~ec30f2.txt",
+    "github_logs/gh_42047810705/sys_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_~db0591.txt",
+    "github_logs/gh_42047810705/sys_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
+    "github_logs/gh_42047810705/sys_nightly-perf-16-npu-a3 _ nightly-perf-16-npu-a3.txt",
+    "github_logs/gh_42047810705/sys_nightly-1-npu-a3 _ run (0).txt",
+    "github_logs/gh_42047810705/sys_set-image-config.txt"
+   ],
+   "ghComplete": true,
+   "cached": true
+  },
+  {
+   "route": "github",
+   "key": "SgLang|nightly-test-npu.yml",
+   "rn": 2087,
+   "rid": "42144867602",
+   "st": "11-06 09:35",
+   "runId": 42144867602,
+   "repo": "sgl-project/sglang",
+   "displayTitle": "[Test][NPU] overlap-schedule validation: GLM5/Kimi/DSV4 case reconfig + TEMP nightly scoping",
+   "event": "pull_request",
+   "status": "FAILED",
+   "duration": 35.12,
+   "runStatus": {
+    "status": "completed",
+    "conclusion": "cancelled",
+    "updatedAt": "2026-11-06T02:10:44Z",
+    "attempt": 1
+   },
+   "_v": 2,
+   "mode": "perjob",
+   "why": "失败 job 1 个（≤5，逐 job 精取）",
+   "totalJobs": 15,
+   "failedJobs": [
+    {
+     "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+     "id": 127654937116,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "cancelledJobs": [
+    {
+     "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+     "id": 127654937080
+    },
+    {
+     "name": "check-all-jobs",
+     "id": 127666141101
+    }
+   ],
+   "jobs": [
+    {
+     "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+     "id": 127654937116,
+     "conclusion": "failure",
+     "startedAt": "2026-11-06T01:40:28Z",
+     "completedAt": "2026-11-06T01:51:26Z",
+     "logFile": "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt",
+     "logBytes": 875208,
+     "logLines": 4819,
+     "errorLines": [
+      "L1988: [2026-11-06 01:45:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+      "L4629: Traceback (most recent call last):",
+      "L4662: Traceback (most recent call last):",
+      "L4673: Traceback (most recent call last):",
+      "L4763: ##[error]Error: failed to run script step:",
+      "L4764: ✗ exit code: 255",
+      "L4788: ##[error]Process completed with exit code 1.",
+      "L4789: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "missing": [],
+   "systemLogs": [],
+   "ghComplete": true,
+   "cached": true
+  },
+  {
+   "route": "github",
+   "key": "SgLang|nightly-test-npu.yml",
+   "rn": 2081,
+   "rid": "42061473997",
+   "st": "11-06 00:07",
+   "runId": 42061473997,
+   "repo": "sgl-project/sglang",
+   "displayTitle": "Nightly Test (NPU)",
+   "event": "schedule",
+   "status": "FAILED",
+   "duration": 788.02,
+   "runStatus": {
+    "status": "completed",
+    "conclusion": "failure",
+    "updatedAt": "2026-11-06T05:15:34Z",
+    "attempt": 1
+   },
+   "_v": 2,
+   "mode": "zip",
+   "why": "失败 job 8 个（>5，整包一次下载更省时）",
+   "totalJobs": 26,
+   "failedJobs": [
+    {
+     "name": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
+     "id": 127364349907,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms, 1, 1, 1, test/registe... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms",
+     "id": 127411811673,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+     "id": 127456547654,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
+     "id": 127470165328,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_dcp_gpqa",
+     "id": 127481421753,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_pcp_gpqa",
+     "id": 127491048217,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+     "id": 127666396538,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "check-all-jobs",
+     "id": 127726752733,
+     "steps": [
+      {
+       "name": "Generate results table",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "cancelledJobs": [],
+   "jobs": [
+    {
+     "name": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
+     "id": 127364349907,
+     "conclusion": "failure",
+     "startedAt": "2026-11-05T16:09:12Z",
+     "completedAt": "2026-11-05T17:07:03Z",
+     "logFile": "github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt",
+     "logBytes": 679369,
+     "logLines": 3842,
+     "errorLines": [
+      "L986: [2026-11-05 16:13:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+      "L3665: Traceback (most recent call last):",
+      "L3694: Traceback (most recent call last):",
+      "L3705: Traceback (most recent call last):",
+      "L3786: ##[error]Error: failed to run script step:",
+      "L3787: ✗ exit code: 255",
+      "L3811: ##[error]Process completed with exit code 1.",
+      "L3812: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms, 1, 1, 1, test/registe... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms",
+     "id": 127411811673,
+     "conclusion": "failure",
+     "startedAt": "2026-11-05T17:27:33Z",
+     "completedAt": "2026-11-05T18:46:52Z",
+     "logFile": "github_logs/gh_42061473997/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt",
+     "logBytes": 781110,
+     "logLines": 7256,
+     "errorLines": [
+      "L578: │ exit code: 1",
+      "L939: Traceback (most recent call last):",
+      "L6789: Traceback (most recent call last):",
+      "L6973: Traceback (most recent call last):",
+      "L7064: Traceback (most recent call last):",
+      "L7097: Traceback (most recent call last):",
+      "L7125: Traceback (most recent call last):",
+      "L7137: Traceback (most recent call last):",
+      "L7148: Traceback (most recent call last):",
+      "L7156: ##[error]Error: failed to run script step:",
+      "L7157: ✗ exit code: 1",
+      "L7162: Traceback (most recent call last):",
+      "L7173: Traceback (most recent call last):",
+      "L7181: ##[error]Process completed with exit code 1.",
+      "L7182: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ],
+     "isTestJob": true,
+     "testResults": null
+    },
+    {
+     "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+     "id": 127456547654,
+     "conclusion": "failure",
+     "startedAt": "2026-11-05T18:47:15Z",
+     "completedAt": "2026-11-05T19:11:00Z",
+     "logFile": "github_logs/gh_42061473997/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
+     "logBytes": 439890,
+     "logLines": 3600,
+     "errorLines": [
+      "L720: Traceback (most recent call last):",
+      "L878: Traceback (most recent call last):",
+      "L3099: Traceback (most recent call last):",
+      "L3127: Traceback (most recent call last):",
+      "L3152: Traceback (most recent call last):",
+      "L3258: Traceback (most recent call last):",
+      "L3286: Traceback (most recent call last):",
+      "L3311: Traceback (most recent call last):",
+      "L3392: Traceback (most recent call last):",
+      "L3420: Traceback (most recent call last):",
+      "L3431: Traceback (most recent call last):",
+      "L3442: Traceback (most recent call last):",
+      "L3469: Traceback (most recent call last):",
+      "L3481: Traceback (most recent call last):",
+      "L3492: Traceback (most recent call last):",
+      "L3500: ##[error]Error: failed to run script step:",
+      "L3501: ✗ exit code: 1",
+      "L3506: Traceback (most recent call last):",
+      "L3517: Traceback (most recent call last):",
+      "L3525: ##[error]Process completed with exit code 1.",
+      "L3526: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ],
+     "isTestJob": true,
+     "testResults": null
+    },
+    {
+     "name": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
+     "id": 127470165328,
+     "conclusion": "failure",
+     "startedAt": "2026-11-05T19:11:26Z",
+     "completedAt": "2026-11-05T19:31:14Z",
+     "logFile": "github_logs/gh_42061473997/7_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p~327148.txt",
+     "logBytes": 703370,
+     "logLines": 2792,
+     "errorLines": [
+      "L905: Traceback (most recent call last):",
+      "L2319: Traceback (most recent call last):",
+      "L2504: Traceback (most recent call last):",
+      "L2582: Traceback (most recent call last):",
+      "L2610: Traceback (most recent call last):",
+      "L2621: Traceback (most recent call last):",
+      "L2632: Traceback (most recent call last):",
+      "L2658: Traceback (most recent call last):",
+      "L2671: Traceback (most recent call last):",
+      "L2682: Traceback (most recent call last):",
+      "L2690: ##[error]Error: failed to run script step:",
+      "L2691: ✗ exit code: 1",
+      "L2696: Traceback (most recent call last):",
+      "L2707: Traceback (most recent call last):",
+      "L2715: ##[error]Process completed with exit code 1.",
+      "L2716: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ],
+     "isTestJob": true,
+     "testResults": null
+    },
+    {
+     "name": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_dcp_gpqa",
+     "id": 127481421753,
+     "conclusion": "failure",
+     "startedAt": "2026-11-05T19:31:39Z",
+     "completedAt": "2026-11-05T19:48:41Z",
+     "logFile": "github_logs/gh_42061473997/6_multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2,~83db7b.txt",
+     "logBytes": 150964,
+     "logLines": 1232,
+     "errorLines": [
+      "L1111: Traceback (most recent call last):",
+      "L1122: Traceback (most recent call last):",
+      "L1132: Traceback (most recent call last):",
+      "L1140: ##[error]Error: failed to run script step:",
+      "L1141: ✗ exit code: 1",
+      "L1147: Traceback (most recent call last):",
+      "L1157: Traceback (most recent call last):",
+      "L1165: ##[error]Process completed with exit code 1.",
+      "L1166: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ],
+     "isTestJob": true,
+     "testResults": null
+    },
+    {
+     "name": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_pcp_gpqa",
+     "id": 127491048217,
+     "conclusion": "failure",
+     "startedAt": "2026-11-05T19:49:07Z",
+     "completedAt": "2026-11-05T20:54:47Z",
+     "logFile": "github_logs/gh_42061473997/5_multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2,~cc387a.txt",
+     "logBytes": 193671,
+     "logLines": 1196,
+     "errorLines": [
+      "L857: Traceback (most recent call last):",
+      "L930: Traceback (most recent call last):",
+      "L1008: Traceback (most recent call last):",
+      "L1036: Traceback (most recent call last):",
+      "L1062: Traceback (most recent call last):",
+      "L1075: Traceback (most recent call last):",
+      "L1086: Traceback (most recent call last):",
+      "L1094: ##[error]Error: failed to run script step:",
+      "L1095: ✗ exit code: 1",
+      "L1100: Traceback (most recent call last):",
+      "L1111: Traceback (most recent call last):",
+      "L1119: ##[error]Process completed with exit code 1.",
+      "L1120: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ],
+     "isTestJob": true,
+     "testResults": null
+    },
+    {
+     "name": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+     "id": 127666396538,
+     "conclusion": "failure",
+     "startedAt": "2026-11-06T02:11:52Z",
+     "completedAt": "2026-11-06T05:15:28Z",
+     "logFile": "github_logs/gh_42061473997/1_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_ou~afd684.txt",
+     "logBytes": 1883085,
+     "logLines": 18980,
+     "errorLines": [
+      "L16602: [2026-11-06 12:48:24] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+      "L17507: │ exit code: 1",
+      "L18800: Traceback (most recent call last):",
+      "L18835: Traceback (most recent call last):",
+      "L18846: Traceback (most recent call last):",
+      "L18858: Traceback (most recent call last):",
+      "L18869: Traceback (most recent call last):",
+      "L18877: ##[error]Error: failed to run script step:",
+      "L18878: ✗ exit code: 1",
+      "L18883: Traceback (most recent call last):",
+      "L18894: Traceback (most recent call last):",
+      "L18902: ##[error]Process completed with exit code 1.",
+      "L18903: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ],
+     "isTestJob": true,
+     "testResults": null
+    },
+    {
+     "name": "check-all-jobs",
+     "id": 127726752733,
+     "conclusion": "failure",
+     "startedAt": "2026-11-06T05:15:31Z",
+     "completedAt": "2026-11-06T05:15:33Z",
+     "logFile": "github_logs/gh_42061473997/0_check-all-jobs.txt",
+     "logBytes": 6492,
+     "logLines": 99,
+     "errorLines": [
+      "L98: ##[error]Process completed with exit code 1."
+     ],
+     "githubSteps": [
+      {
+       "name": "Generate results table",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "missing": [],
+   "systemLogs": [
+    "github_logs/gh_42061473997/sys_check-all-jobs.txt",
+    "github_logs/gh_42061473997/sys_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_~afd684.txt",
+    "github_logs/gh_42061473997/sys_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_~bbd504.txt",
+    "github_logs/gh_42061473997/sys_multi-node-mix-poc (deepseek_v4_pro_16p_in128k_o~158988.txt",
+    "github_logs/gh_42061473997/sys_multi-node-mix-poc (kimi_k3_w4a8_32p_gpqa, 4, te~477515.txt",
+    "github_logs/gh_42061473997/sys_multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, ~cc387a.txt",
+    "github_logs/gh_42061473997/sys_multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, ~83db7b.txt",
+    "github_logs/gh_42061473997/sys_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_3~327148.txt",
+    "github_logs/gh_42061473997/sys_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d~45495f.txt",
+    "github_logs/gh_42061473997/sys_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_~5c11ad.txt",
+    "github_logs/gh_42061473997/sys_nightly-4-npu-a3 _ run (1).txt",
+    "github_logs/gh_42061473997/sys_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
+    "github_logs/gh_42061473997/sys_nightly-perf-16-npu-a3 _ nightly-perf-16-npu-a3.txt",
+    "github_logs/gh_42061473997/sys_nightly-16-npu-a3 _ run (0).txt",
+    "github_logs/gh_42061473997/sys_nightly-2-npu-a3 _ run (0).txt",
+    "github_logs/gh_42061473997/sys_nightly-perf-2-npu-a3 _ nightly-perf-2-npu-a3.txt",
+    "github_logs/gh_42061473997/sys_nightly-perf-4-npu-a3 _ nightly-perf-4-npu-a3.txt",
+    "github_logs/gh_42061473997/sys_nightly-acc-4-npu-a5 _ nightly-acc-4-npu-a5.txt",
+    "github_logs/gh_42061473997/sys_nightly-8-npu-a3 _ run (0).txt",
+    "github_logs/gh_42061473997/sys_nightly-1-npu-a3 _ run (0).txt",
+    "github_logs/gh_42061473997/sys_nightly-4-npu-a3 _ run (0).txt",
+    "github_logs/gh_42061473997/sys_set-image-config.txt"
+   ],
+   "ghComplete": true,
+   "cached": true
+  },
+  {
+   "route": "github",
+   "key": "SgLang|nightly-test-npu.yml",
+   "rn": 2088,
+   "rid": "42159951566",
+   "st": "11-06 12:01",
+   "runId": 42159951566,
+   "repo": "sgl-project/sglang",
+   "displayTitle": "[Test] [NPU] kimi_k3: run the decode perf case via the aisbench prefix mode",
+   "event": "pull_request",
+   "status": "FAILED",
+   "duration": 119.83,
+   "runStatus": {
+    "status": "completed",
+    "conclusion": "failure",
+    "updatedAt": "2026-11-06T06:00:54Z",
+    "attempt": 1
+   },
+   "_v": 2,
+   "mode": "perjob",
+   "why": "失败 job 1 个（≤5，逐 job 精取）",
+   "totalJobs": 15,
+   "failedJobs": [
+    {
+     "name": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+     "id": 127703027006,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "cancelledJobs": [],
+   "jobs": [
+    {
+     "name": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+     "id": 127703027006,
+     "conclusion": "failure",
+     "startedAt": "2026-11-06T04:01:35Z",
+     "completedAt": "2026-11-06T06:00:53Z",
+     "logFile": "github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt",
+     "logBytes": 1738735,
+     "logLines": 17648,
+     "errorLines": [
+      "L13563: [2026-11-06 13:32:41] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+      "L15680: │ exit code: 1",
+      "L17468: Traceback (most recent call last):",
+      "L17502: Traceback (most recent call last):",
+      "L17513: Traceback (most recent call last):",
+      "L17526: Traceback (most recent call last):",
+      "L17537: Traceback (most recent call last):",
+      "L17545: ##[error]Error: failed to run script step:",
+      "L17546: ✗ exit code: 1",
+      "L17551: Traceback (most recent call last):",
+      "L17562: Traceback (most recent call last):",
+      "L17570: ##[error]Process completed with exit code 1.",
+      "L17571: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ],
+     "isTestJob": true,
+     "testResults": null
+    }
+   ],
+   "missing": [],
+   "systemLogs": [],
+   "ghComplete": true,
+   "cached": true
+  },
+  {
+   "route": "github",
+   "key": "SgLang|nightly-test-npu.yml",
+   "rn": 2091,
+   "rid": "42197448133",
+   "st": "11-06 17:45",
+   "runId": 42197448133,
+   "repo": "sgl-project/sglang",
+   "displayTitle": "[Test][NPU] overlap-schedule validation: GLM5/Kimi/DSV4 case reconfig + TEMP nightly scoping",
+   "event": "pull_request",
+   "status": "FAILED",
+   "duration": 0.05,
+   "runStatus": {
+    "status": "completed",
+    "conclusion": "cancelled",
+    "updatedAt": "2026-11-06T09:45:38Z",
+    "attempt": 1
+   },
+   "_v": 2,
+   "mode": "perjob",
+   "why": "取消 job 2 个（≤5，逐 job 精取）",
+   "totalJobs": 15,
+   "failedJobs": [],
+   "cancelledJobs": [
+    {
+     "name": "set-image-config",
+     "id": 127824131767
+    },
+    {
+     "name": "check-all-jobs",
+     "id": 127824144289
+    }
+   ],
+   "jobs": [],
+   "missing": [
+    {
+     "job": "set-image-config",
+     "id": 127824131767,
+     "status": "404_not_retained"
+    },
+    {
+     "job": "check-all-jobs",
+     "id": 127824144289,
+     "status": "404_not_retained"
+    }
+   ],
+   "systemLogs": [],
+   "ghComplete": true,
+   "cached": true
+  },
+  {
+   "route": "github",
+   "key": "SgLang|nightly-test-npu.yml",
+   "rn": 2092,
+   "rid": "42197450049",
+   "st": "11-06 17:45",
+   "runId": 42197450049,
+   "repo": "sgl-project/sglang",
+   "displayTitle": "[Test][NPU] overlap-schedule validation: GLM5/Kimi/DSV4 case reconfig + TEMP nightly scoping",
+   "event": "pull_request",
+   "status": "FAILED",
+   "duration": 15.32,
+   "runStatus": {
+    "status": "completed",
+    "conclusion": "cancelled",
+    "updatedAt": "2026-11-06T10:00:55Z",
+    "attempt": 1
+   },
+   "_v": 2,
+   "mode": "perjob",
+   "why": "失败 job 3 个（≤5，逐 job 精取）",
+   "totalJobs": 15,
+   "failedJobs": [
+    {
+     "name": "nightly-1-npu-a3 / run (0)",
+     "id": 127824197172,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+     "id": 127824197865,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+     "id": 127824197899,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "cancelledJobs": [
+    {
+     "name": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap_fia_unset, 1, ... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap_fia_unset",
+     "id": 127830307390
+    },
+    {
+     "name": "check-all-jobs",
+     "id": 127830525266
+    }
+   ],
+   "jobs": [
+    {
+     "name": "nightly-1-npu-a3 / run (0)",
+     "id": 127824197172,
+     "conclusion": "failure",
+     "startedAt": "2026-11-06T09:48:34Z",
+     "completedAt": "2026-11-06T09:50:41Z",
+     "logFile": "github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt",
+     "logBytes": 105909,
+     "logLines": 971,
+     "errorLines": [
+      "L908: Traceback (most recent call last):",
+      "L913: ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
+      "L915: ##[error]Error: failed to run script step:",
+      "L916: ✗ exit code: 1",
+      "L933: Traceback (most recent call last):",
+      "L938: ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
+      "L940: ##[error]Process completed with exit code 1.",
+      "L941: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+     "id": 127824197865,
+     "conclusion": "failure",
+     "startedAt": "2026-11-06T09:53:47Z",
+     "completedAt": "2026-11-06T09:55:57Z",
+     "logFile": "github_logs/gh_42197450049/127824197865_nightly-perf-16-npu-a3 _ nightly-perf~e43578dd.txt",
+     "logBytes": 58499,
+     "logLines": 692,
+     "errorLines": [
+      "L627: Traceback (most recent call last):",
+      "L632: ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
+      "L636: ##[error]Error: failed to run script step:",
+      "L637: ✗ exit code: 1",
+      "L652: Traceback (most recent call last):",
+      "L657: ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
+      "L661: ##[error]Process completed with exit code 1.",
+      "L662: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+     "id": 127824197899,
+     "conclusion": "failure",
+     "startedAt": "2026-11-06T09:55:14Z",
+     "completedAt": "2026-11-06T10:00:25Z",
+     "logFile": "github_logs/gh_42197450049/127824197899_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
+     "logBytes": 59776,
+     "logLines": 692,
+     "errorLines": [
+      "L627: Traceback (most recent call last):",
+      "L632: ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
+      "L636: ##[error]Error: failed to run script step:",
+      "L637: ✗ exit code: 1",
+      "L652: Traceback (most recent call last):",
+      "L657: ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
+      "L661: ##[error]Process completed with exit code 1.",
+      "L662: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "missing": [],
+   "systemLogs": [],
+   "ghComplete": true,
+   "cached": true
+  },
+  {
+   "route": "github",
+   "key": "SgLang|nightly-test-npu.yml",
+   "rn": 2093,
+   "rid": "42199356561",
+   "st": "11-06 18:00",
+   "runId": 42199356561,
+   "repo": "sgl-project/sglang",
+   "displayTitle": "[Test][NPU] overlap-schedule validation: GLM5/Kimi/DSV4 case reconfig + TEMP nightly scoping",
+   "event": "pull_request",
+   "status": "FAILED",
+   "duration": 37.73,
+   "runStatus": {
+    "status": "completed",
+    "conclusion": "cancelled",
+    "updatedAt": "2026-11-06T10:38:37Z",
+    "attempt": 1
+   },
+   "_v": 2,
+   "mode": "perjob",
+   "why": "失败 job 3 个（≤5，逐 job 精取）",
+   "totalJobs": 15,
+   "failedJobs": [
+    {
+     "name": "nightly-1-npu-a3 / run (0)",
+     "id": 127830580941,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+     "id": 127830581265,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+     "id": 127830581346,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "cancelledJobs": [
+    {
+     "name": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap_fia_unset, 1, ... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap_fia_unset",
+     "id": 127835303206
+    },
+    {
+     "name": "check-all-jobs",
+     "id": 127846716964
+    }
+   ],
+   "jobs": [
+    {
+     "name": "nightly-1-npu-a3 / run (0)",
+     "id": 127830580941,
+     "conclusion": "failure",
+     "startedAt": "2026-11-06T10:05:41Z",
+     "completedAt": "2026-11-06T10:07:58Z",
+     "logFile": "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt",
+     "logBytes": 106764,
+     "logLines": 985,
+     "errorLines": [
+      "L916: Traceback (most recent call last):",
+      "L929: ##[error]Error: failed to run script step:",
+      "L930: ✗ exit code: 1",
+      "L941: Traceback (most recent call last):",
+      "L954: ##[error]Process completed with exit code 1.",
+      "L955: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+     "id": 127830581265,
+     "conclusion": "failure",
+     "startedAt": "2026-11-06T10:10:17Z",
+     "completedAt": "2026-11-06T10:11:55Z",
+     "logFile": "github_logs/gh_42199356561/127830581265_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
+     "logBytes": 61138,
+     "logLines": 707,
+     "errorLines": [
+      "L636: Traceback (most recent call last):",
+      "L651: ##[error]Error: failed to run script step:",
+      "L652: ✗ exit code: 1",
+      "L661: Traceback (most recent call last):",
+      "L676: ##[error]Process completed with exit code 1.",
+      "L677: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+     "id": 127830581346,
+     "conclusion": "failure",
+     "startedAt": "2026-11-06T10:05:19Z",
+     "completedAt": "2026-11-06T10:08:36Z",
+     "logFile": "github_logs/gh_42199356561/127830581346_nightly-perf-16-npu-a3 _ nightly-perf~467fc30b.txt",
+     "logBytes": 59864,
+     "logLines": 707,
+     "errorLines": [
+      "L636: Traceback (most recent call last):",
+      "L651: ##[error]Error: failed to run script step:",
+      "L652: ✗ exit code: 1",
+      "L661: Traceback (most recent call last):",
+      "L676: ##[error]Process completed with exit code 1.",
+      "L677: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "missing": [],
+   "systemLogs": [],
+   "ghComplete": true,
+   "cached": true
+  },
+  {
+   "route": "github",
+   "key": "SgLang|nightly-test-npu.yml",
+   "rn": 2094,
+   "rid": "42202191521",
+   "st": "11-06 18:22",
+   "runId": 42202191521,
+   "repo": "sgl-project/sglang",
+   "displayTitle": "[Test] npu/glm5.3: Add 2P2D PCP EPLB GPQA accuracy test",
+   "event": "pull_request",
+   "status": "FAILED",
+   "duration": 42.63,
+   "runStatus": {
+    "status": "completed",
+    "conclusion": "failure",
+    "updatedAt": "2026-11-06T11:05:15Z",
+    "attempt": 1
+   },
+   "_v": 2,
+   "mode": "perjob",
+   "why": "失败 job 2 个（≤5，逐 job 精取）",
+   "totalJobs": 15,
+   "failedJobs": [
+    {
+     "name": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_3... / glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa",
+     "id": 127839975906,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    },
+    {
+     "name": "check-all-jobs",
+     "id": 127857876813,
+     "steps": [
+      {
+       "name": "Generate results table",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "cancelledJobs": [],
+   "jobs": [
+    {
+     "name": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_3... / glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa",
+     "id": 127839975906,
+     "conclusion": "failure",
+     "startedAt": "2026-11-06T10:23:07Z",
+     "completedAt": "2026-11-06T11:05:07Z",
+     "logFile": "github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt",
+     "logBytes": 110389,
+     "logLines": 937,
+     "errorLines": [
+      "L825: Traceback (most recent call last):",
+      "L835: Traceback (most recent call last):",
+      "L843: ##[error]Error: failed to run script step:",
+      "L844: ✗ exit code: 1",
+      "L850: Traceback (most recent call last):",
+      "L860: Traceback (most recent call last):",
+      "L868: ##[error]Process completed with exit code 1.",
+      "L869: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ],
+     "isTestJob": true,
+     "testResults": null
+    },
+    {
+     "name": "check-all-jobs",
+     "id": 127857876813,
+     "conclusion": "failure",
+     "startedAt": "2026-11-06T11:05:10Z",
+     "completedAt": "2026-11-06T11:05:14Z",
+     "logFile": "github_logs/gh_42202191521/127857876813_check-all-jobs.txt",
+     "logBytes": 6490,
+     "logLines": 99,
+     "errorLines": [
+      "L98: ##[error]Process completed with exit code 1."
+     ],
+     "githubSteps": [
+      {
+       "name": "Generate results table",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "missing": [],
+   "systemLogs": [],
+   "ghComplete": true,
+   "cached": true
+  },
+  {
+   "route": "github",
+   "key": "SgLang|nightly-test-npu.yml",
+   "rn": 2095,
+   "rid": "42204167966",
+   "st": "11-06 18:38",
+   "runId": 42204167966,
+   "repo": "sgl-project/sglang",
+   "displayTitle": "[Test][NPU] overlap-schedule validation: GLM5/Kimi/DSV4 case reconfig + TEMP nightly scoping",
+   "event": "pull_request",
+   "status": "FAILED",
+   "duration": 37.62,
+   "runStatus": {
+    "status": "completed",
+    "conclusion": "cancelled",
+    "updatedAt": "2026-11-06T11:15:43Z",
+    "attempt": 1
+   },
+   "_v": 2,
+   "mode": "perjob",
+   "why": "失败 job 1 个（≤5，逐 job 精取）",
+   "totalJobs": 15,
+   "failedJobs": [
+    {
+     "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+     "id": 127846761875,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "cancelledJobs": [
+    {
+     "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+     "id": 127846831887
+    },
+    {
+     "name": "check-all-jobs",
+     "id": 127862430618
+    }
+   ],
+   "jobs": [
+    {
+     "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+     "id": 127846761875,
+     "conclusion": "failure",
+     "startedAt": "2026-11-06T10:45:55Z",
+     "completedAt": "2026-11-06T11:00:22Z",
+     "logFile": "github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt",
+     "logBytes": 1172604,
+     "logLines": 8811,
+     "errorLines": [
+      "L5477: [2026-11-06 10:53:49] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+      "L7692: [2026-11-06 10:58:15] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+      "L8615: Traceback (most recent call last):",
+      "L8633: FileNotFoundError: [Errno 2] No such file or directory: '/root/.cache/tests/output/shun8686-overlapschedule-20261106-1838-42204167966-1/Nightly_Test_NPU--cann9.1.0-a3-B010/perf/nightly-perf-16-npu-a3/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_fia_unset/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_pass1_metrics",
+      "L8641: Traceback (most recent call last):",
+      "L8659: FileNotFoundError: [Errno 2] No such file or directory: '/root/.cache/tests/output/shun8686-overlapschedule-20261106-1838-42204167966-1/Nightly_Test_NPU--cann9.1.0-a3-B010/perf/nightly-perf-16-npu-a3/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_fia_unset/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_pass1_metrics",
+      "L8663: Traceback (most recent call last):",
+      "L8755: ##[error]Error: failed to run script step:",
+      "L8756: ✗ exit code: 255",
+      "L8780: ##[error]Process completed with exit code 1.",
+      "L8781: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "missing": [],
+   "systemLogs": [],
+   "ghComplete": true,
+   "cached": true
+  },
+  {
+   "route": "github",
+   "key": "SgLang|nightly-test-npu.yml",
+   "rn": 2096,
+   "rid": "42208857568",
+   "st": "11-06 19:15",
+   "runId": 42208857568,
+   "repo": "sgl-project/sglang",
+   "displayTitle": "[Test][NPU] overlap-schedule validation: GLM5/Kimi/DSV4 case reconfig + TEMP nightly scoping",
+   "event": "pull_request",
+   "status": "FAILED",
+   "duration": 17.45,
+   "runStatus": {
+    "status": "completed",
+    "conclusion": "cancelled",
+    "updatedAt": "2026-11-06T11:32:39Z",
+    "attempt": 1
+   },
+   "_v": 2,
+   "mode": "perjob",
+   "why": "失败 job 1 个（≤5，逐 job 精取）",
+   "totalJobs": 15,
+   "failedJobs": [
+    {
+     "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+     "id": 127862479647,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "cancelledJobs": [
+    {
+     "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+     "id": 127862479723
+    },
+    {
+     "name": "check-all-jobs",
+     "id": 127869418340
+    }
+   ],
+   "jobs": [
+    {
+     "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+     "id": 127862479647,
+     "conclusion": "failure",
+     "startedAt": "2026-11-06T11:16:13Z",
+     "completedAt": "2026-11-06T11:27:51Z",
+     "logFile": "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt",
+     "logBytes": 930102,
+     "logLines": 5324,
+     "errorLines": [
+      "L1996: [2026-11-06 11:20:37] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+      "L4211: [2026-11-06 11:25:27] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+      "L5134: Traceback (most recent call last):",
+      "L5157: Traceback (most recent call last):",
+      "L5176: Traceback (most recent call last):",
+      "L5268: ##[error]Error: failed to run script step:",
+      "L5269: ✗ exit code: 255",
+      "L5293: ##[error]Process completed with exit code 1.",
+      "L5294: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "missing": [],
+   "systemLogs": [],
+   "ghComplete": true,
+   "cached": true
+  },
+  {
+   "route": "github",
+   "key": "SgLang|nightly-test-npu.yml",
+   "rn": 2100,
+   "rid": "42220260407",
+   "st": "11-06 20:46",
+   "runId": 42220260407,
+   "repo": "sgl-project/sglang",
+   "displayTitle": "ci run",
+   "event": "pull_request",
+   "status": "FAILED",
+   "duration": 0.03,
+   "runStatus": {
+    "status": "completed",
+    "conclusion": "cancelled",
+    "updatedAt": "2026-11-06T12:46:42Z",
+    "attempt": 1
+   },
+   "_v": 2,
+   "mode": "perjob",
+   "why": "取消 job 2 个（≤5，逐 job 精取）",
+   "totalJobs": 15,
+   "failedJobs": [],
+   "cancelledJobs": [
+    {
+     "name": "set-image-config",
+     "id": 127900239233
+    },
+    {
+     "name": "check-all-jobs",
+     "id": 127900249627
+    }
+   ],
+   "jobs": [],
+   "missing": [
+    {
+     "job": "set-image-config",
+     "id": 127900239233,
+     "status": "404_not_retained"
+    },
+    {
+     "job": "check-all-jobs",
+     "id": 127900249627,
+     "status": "404_not_retained"
+    }
+   ],
+   "systemLogs": [],
+   "ghComplete": true,
+   "cached": true
+  },
+  {
+   "route": "github",
+   "key": "SgLang|nightly-test-npu.yml",
+   "rn": 2101,
+   "rid": "42220261231",
+   "st": "11-06 20:46",
+   "runId": 42220261231,
+   "repo": "sgl-project/sglang",
+   "displayTitle": "ci run",
+   "event": "pull_request",
+   "status": "FAILED",
+   "duration": 50.45,
+   "runStatus": {
+    "status": "completed",
+    "conclusion": "failure",
+    "updatedAt": "2026-11-06T13:37:07Z",
+    "attempt": 1
+   },
+   "_v": 2,
+   "mode": "perjob",
+   "why": "失败 job 1 个（≤5，逐 job 精取）",
+   "totalJobs": 15,
+   "failedJobs": [
+    {
+     "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+     "id": 127900291162,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "cancelledJobs": [],
+   "jobs": [
+    {
+     "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+     "id": 127900291162,
+     "conclusion": "failure",
+     "startedAt": "2026-11-06T12:47:21Z",
+     "completedAt": "2026-11-06T13:37:06Z",
+     "logFile": "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+     "logBytes": 193570,
+     "logLines": 1473,
+     "errorLines": [
+      "L977: Traceback (most recent call last):",
+      "L1296: Traceback (most recent call last):",
+      "L1372: Traceback (most recent call last):",
+      "L1380: ##[error]Error: failed to run script step:",
+      "L1381: ✗ exit code: 1",
+      "L1397: Traceback (most recent call last):",
+      "L1405: ##[error]Process completed with exit code 1.",
+      "L1406: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ],
+     "isTestJob": true,
+     "testResults": null
+    }
+   ],
+   "missing": [],
+   "systemLogs": [],
+   "ghComplete": true,
+   "cached": true
+  },
+  {
+   "route": "github",
+   "key": "SgLang|nightly-test-npu.yml",
+   "rn": 2099,
+   "rid": "42212286289",
+   "st": "11-06 19:42",
+   "runId": 42212286289,
+   "repo": "sgl-project/sglang",
+   "displayTitle": "[Test] [NPU] kimi_k3: tune the 128k decode prefix case to repeat_rate=0.99 / request_rate=0",
+   "event": "pull_request",
+   "status": "FAILED",
+   "duration": 232.67,
+   "runStatus": {
+    "status": "completed",
+    "conclusion": "failure",
+    "updatedAt": "2026-11-06T15:35:37Z",
+    "attempt": 1
+   },
+   "_v": 2,
+   "mode": "perjob",
+   "why": "失败 job 1 个（≤5，逐 job 精取）",
+   "totalJobs": 15,
+   "failedJobs": [
+    {
+     "name": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+     "id": 127873650850,
+     "steps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ]
+    }
+   ],
+   "cancelledJobs": [],
+   "jobs": [
+    {
+     "name": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+     "id": 127873650850,
+     "conclusion": "failure",
+     "startedAt": "2026-11-06T11:43:39Z",
+     "completedAt": "2026-11-06T15:35:36Z",
+     "logFile": "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt",
+     "logBytes": 1652808,
+     "logLines": 15733,
+     "errorLines": [
+      "L13659: [2026-11-06 23:06:44] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+      "L13774: │ exit code: 1",
+      "L15551: Traceback (most recent call last):",
+      "L15585: Traceback (most recent call last):",
+      "L15596: Traceback (most recent call last):",
+      "L15609: Traceback (most recent call last):",
+      "L15620: Traceback (most recent call last):",
+      "L15628: ##[error]Error: failed to run script step:",
+      "L15629: ✗ exit code: 1",
+      "L15634: Traceback (most recent call last):",
+      "L15645: Traceback (most recent call last):",
+      "L15653: ##[error]Process completed with exit code 1.",
+      "L15654: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+     ],
+     "githubSteps": [
+      {
+       "name": "Run test",
+       "conclusion": "failure"
+      }
+     ],
+     "isTestJob": true,
+     "testResults": null
+    }
+   ],
+   "missing": [],
+   "systemLogs": [],
+   "ghComplete": true,
+   "cached": true
+  }
+ ],
+ "errors": [],
+ "counts": {
+  "runs": 17,
+  "jobs": 34,
+  "missing": 4
+ }
+}

@@ -1,0 +1,617 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-09 15:07:00",
+    "component": "SgLang",
+    "pipeline": "nightly-test-npu.yml",
+    "date": "2026-11-06",
+    "recordId": "SgLang|nightly-test-npu.yml#2086"
+  },
+  "recordId": "SgLang|nightly-test-npu.yml#2086",
+  "date": "2026-11-06",
+  "component": "SgLang",
+  "pipeline": "nightly-test-npu.yml",
+  "pipelineName": "nightly-test-npu.yml",
+  "platform": "github",
+  "buildNumber": 2086,
+  "pipelineRunId": "42088175169",
+  "status": "FAILED",
+  "failedTaskType": null,
+  "startedAt": "2026-11-06T02:50:51",
+  "endedAt": "2026-11-06T03:18:46",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-06T03:18:46",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0,
+    "bsRate": null,
+    "dims": [
+      "va"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42088175169",
+    "detail": "https://github.com/sgl-project/sglang/actions/runs/42088175169",
+    "github": "https://github.com/sgl-project/sglang/actions/runs/42088175169"
+  },
+  "tasks": [
+    {
+      "jobName": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "logBytes": 1037402,
+      "logLines": 6325,
+      "download": "github-perjob",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L679: Traceback (most recent call last):",
+        "L2625: 2026-11-06 03:14:36.540596 WARN [881-881][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+        "L2626: 2026-11-06 03:14:36.540726 WARN [888-888][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+        "L2628: 2026-11-06 03:14:36.541321 WARN [884-884][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+        "L2629: 2026-11-06 03:14:36.541543 WARN [882-882][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+        "L2641: 2026-11-06 03:14:36.545215 WARN [885-885][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+        "L2650: 2026-11-06 03:14:36.545901 WARN [890-890][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+        "L2658: 2026-11-06 03:14:36.546183 WARN [886-886][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+        "L2666: 2026-11-06 03:14:36.546563 WARN [893-893][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+        "L2668: 2026-11-06 03:14:36.546606 WARN [894-894][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory",
+        "L5712: 2026-11-06 03:14:59.357917 ERROR [1180-1180][HYBM hybm_big_mem_entry.cpp:102 hybm_alloc_local_memory] allocate slice with size: 21474836480, mType: 2 failed: -6",
+        "L5713: 2026-11-06 03:14:59.357924 ERROR [1180-1180][SMEM smem_bm_entry.cpp:117 AllocDramMem] alloc local host mem failed, size: 21474836480",
+        "L5714: 2026-11-06 03:14:59.357929 ERROR [1180-1180][SMEM smem_bm_entry.cpp:187 Initialize] alloc dram mem failed, result: -1",
+        "L5718: 2026-11-06 03:14:59.365119 ERROR [1172-1172][HYBM hybm_vmm_based_segment.cpp:201 MallocFromHost] Try HalMemCreate failed ret:6 device:0 spend time: size:21474836480",
+        "L5719: 2026-11-06 03:14:59.365125 ERROR [1172-1172][HYBM hybm_vmm_based_segment.cpp:281 AllocLocalMemory] Assert ret == BM_OK, HalMemCreate failed: 6 segType:1 devId:0 size:21474836480",
+        "L5720: 2026-11-06 03:14:59.365131 ERROR [1172-1172][HYBM hybm_entity_default.cpp:218 AllocLocalMemory] segment allocate slice with size: 21474836480 failed: -6",
+        "L5721: 2026-11-06 03:14:59.365134 ERROR [1172-1172][HYBM hybm_big_mem_entry.cpp:102 hybm_alloc_local_memory] allocate slice with size: 21474836480, mType: 2 failed: -6",
+        "L5722: 2026-11-06 03:14:59.365140 ERROR [1172-1172][SMEM smem_bm_entry.cpp:117 AllocDramMem] alloc local host mem failed, size: 21474836480",
+        "L5723: 2026-11-06 03:14:59.365144 ERROR [1172-1172][SMEM smem_bm_entry.cpp:187 Initialize] alloc dram mem failed, result: -1",
+        "L5729: 2026-11-06 03:14:59.393251 ERROR [1174-1174][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1",
+        "L5730: 2026-11-06 03:14:59.393264 ERROR [1174-1174][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed",
+        "L5731: 2026-11-06 03:14:59.393273 ERROR [1174-1174][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm",
+        "L5732: 2026-11-06 03:14:59.393284 ERROR [1174-1174][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed",
+        "L5736: 2026-11-06 03:14:59.408436 ERROR [1180-1180][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1",
+        "L5737: 2026-11-06 03:14:59.408450 ERROR [1180-1180][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed",
+        "L5738: 2026-11-06 03:14:59.408460 ERROR [1180-1180][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm",
+        "L5739: 2026-11-06 03:14:59.408470 ERROR [1180-1180][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed",
+        "L5743: 2026-11-06 03:14:59.415699 ERROR [1172-1172][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1",
+        "L5744: 2026-11-06 03:14:59.415711 ERROR [1172-1172][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed",
+        "L5745: 2026-11-06 03:14:59.415720 ERROR [1172-1172][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm",
+        "L5746: 2026-11-06 03:14:59.415731 ERROR [1172-1172][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed",
+        "L5751: 2026-11-06 03:14:59.470008 ERROR [1186-1186][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1",
+        "L5752: 2026-11-06 03:14:59.470022 ERROR [1186-1186][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed",
+        "L5753: 2026-11-06 03:14:59.470031 ERROR [1186-1186][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm",
+        "L5754: 2026-11-06 03:14:59.470039 ERROR [1186-1186][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed",
+        "L5757: 2026-11-06 03:14:59.473486 ERROR [1176-1176][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1",
+        "L5758: 2026-11-06 03:14:59.473497 ERROR [1176-1176][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed",
+        "L5759: 2026-11-06 03:14:59.473504 ERROR [1176-1176][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm",
+        "L5760: 2026-11-06 03:14:59.473513 ERROR [1176-1176][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed",
+        "L5767: 2026-11-06 03:14:59.554694 ERROR [1177-1177][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+        "L5768: 2026-11-06 03:14:59.554771 ERROR [1177-1177][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+        "L5769: 2026-11-06 03:14:59.554778 ERROR [1177-1177][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+        "L5772: Traceback (most recent call last):",
+        "L5804: 2026-11-06 03:14:59.569802 ERROR [1179-1179][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1",
+        "L5805: [2026-11-06 03:14:59 DP5 PP0 TP5 EP5] Scheduler hit an exception: Traceback (most recent call last):",
+        "L5851: 2026-11-06 03:14:59.569959 ERROR [1179-1179][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed",
+        "L5852: 2026-11-06 03:14:59.569974 ERROR [1179-1179][MMC mmc.cpp:324 mmc_init] failed to create or start local service",
+        "L5855: Traceback (most recent call last):",
+        "L5881: [2026-11-06 03:14:59 DP7 PP0 TP7 EP7] Scheduler hit an exception: Traceback (most recent call last):",
+        "L5929: Traceback (most recent call last):",
+        "L5940: Traceback (most recent call last):",
+        "L5956: Traceback (most recent call last):",
+        "L6105: Traceback (most recent call last):",
+        "L6115: Traceback (most recent call last):",
+        "L6142: Traceback (most recent call last):",
+        "L6226: ##[error]Error: failed to run script step:",
+        "L6227: ✗ exit code: 1",
+        "L6243: Traceback (most recent call last):",
+        "L6251: ##[error]Process completed with exit code 1.",
+        "L6252: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+      ],
+      "githubJob": {
+        "id": 127458874017,
+        "conclusion": "failure",
+        "startedAt": "2026-11-05T18:51:21Z",
+        "completedAt": "2026-11-05T19:18:44Z",
+        "steps": [
+          {
+            "name": "Run test",
+            "conclusion": "failure"
+          }
+        ]
+      },
+      "isTestJob": true,
+      "testResults": null
+    }
+  ],
+  "cases": [],
+  "errorMessages": [
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 679,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 2625,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:36.540596 WARN [881-881][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 2626,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:36.540726 WARN [888-888][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 2628,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:36.541321 WARN [884-884][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 2629,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:36.541543 WARN [882-882][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 2641,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:36.545215 WARN [885-885][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 2650,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:36.545901 WARN [890-890][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 2658,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:36.546183 WARN [886-886][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 2666,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:36.546563 WARN [893-893][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 2668,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:36.546606 WARN [894-894][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory; libhcom.so.0: cannot open shared object file: No such file or directory"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5712,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.357917 ERROR [1180-1180][HYBM hybm_big_mem_entry.cpp:102 hybm_alloc_local_memory] allocate slice with size: 21474836480, mType: 2 failed: -6"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5713,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.357924 ERROR [1180-1180][SMEM smem_bm_entry.cpp:117 AllocDramMem] alloc local host mem failed, size: 21474836480"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5714,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.357929 ERROR [1180-1180][SMEM smem_bm_entry.cpp:187 Initialize] alloc dram mem failed, result: -1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5718,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.365119 ERROR [1172-1172][HYBM hybm_vmm_based_segment.cpp:201 MallocFromHost] Try HalMemCreate failed ret:6 device:0 spend time: size:21474836480"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5719,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.365125 ERROR [1172-1172][HYBM hybm_vmm_based_segment.cpp:281 AllocLocalMemory] Assert ret == BM_OK, HalMemCreate failed: 6 segType:1 devId:0 size:21474836480"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5720,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.365131 ERROR [1172-1172][HYBM hybm_entity_default.cpp:218 AllocLocalMemory] segment allocate slice with size: 21474836480 failed: -6"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5721,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.365134 ERROR [1172-1172][HYBM hybm_big_mem_entry.cpp:102 hybm_alloc_local_memory] allocate slice with size: 21474836480, mType: 2 failed: -6"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5722,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.365140 ERROR [1172-1172][SMEM smem_bm_entry.cpp:117 AllocDramMem] alloc local host mem failed, size: 21474836480"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5723,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.365144 ERROR [1172-1172][SMEM smem_bm_entry.cpp:187 Initialize] alloc dram mem failed, result: -1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5729,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.393251 ERROR [1174-1174][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5730,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.393264 ERROR [1174-1174][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5731,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.393273 ERROR [1174-1174][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5732,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.393284 ERROR [1174-1174][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5736,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.408436 ERROR [1180-1180][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5737,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.408450 ERROR [1180-1180][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5738,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.408460 ERROR [1180-1180][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5739,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.408470 ERROR [1180-1180][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5743,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.415699 ERROR [1172-1172][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5744,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.415711 ERROR [1172-1172][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5745,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.415720 ERROR [1172-1172][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5746,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.415731 ERROR [1172-1172][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5751,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.470008 ERROR [1186-1186][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5752,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.470022 ERROR [1186-1186][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5753,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.470031 ERROR [1186-1186][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5754,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.470039 ERROR [1186-1186][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5757,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.473486 ERROR [1176-1176][SMEM smem_bm.cpp:396 smem_bm_create2_inner] entry init failed, result: -1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5758,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.473497 ERROR [1176-1176][SMEM smem_bm.cpp:409 smem_bm_create2] smem_bm_create2 failed"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5759,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.473504 ERROR [1176-1176][MMC mmc_bm_proxy.cpp:126 InternalCreateBm] Failed to create smem bm"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5760,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.473513 ERROR [1176-1176][MMC mmc_bm_proxy.cpp:71 InitBm] Internal create bm failed"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5767,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.554694 ERROR [1177-1177][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5768,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.554771 ERROR [1177-1177][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5769,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.554778 ERROR [1177-1177][MMC mmc.cpp:324 mmc_init] failed to create or start local service"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5772,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5804,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.569802 ERROR [1179-1179][MMC mmc_local_service_default.cpp:122 Start] Failed to init bm of local service local_service, error code -1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5805,
+      "level": "LOG",
+      "text": "[2026-11-06 03:14:59 DP5 PP0 TP5 EP5] Scheduler hit an exception: Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5851,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.569959 ERROR [1179-1179][MMC mmc_service.cpp:53 mmcs_local_service_start] create or start local service failed"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5852,
+      "level": "LOG",
+      "text": "2026-11-06 03:14:59.569974 ERROR [1179-1179][MMC mmc.cpp:324 mmc_init] failed to create or start local service"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5855,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5881,
+      "level": "LOG",
+      "text": "[2026-11-06 03:14:59 DP7 PP0 TP7 EP7] Scheduler hit an exception: Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5929,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5940,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 5956,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 6105,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 6115,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 6142,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 6226,
+      "level": "LOG",
+      "text": "##[error]Error: failed to run script step:"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 6227,
+      "level": "LOG",
+      "text": "✗ exit code: 1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 6243,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 6251,
+      "level": "LOG",
+      "text": "##[error]Process completed with exit code 1."
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 6252,
+      "level": "LOG",
+      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+    }
+  ],
+  "evidence": {
+    "files": [
+      "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt"
+    ],
+    "missing": [],
+    "github": {
+      "runId": 42088175169,
+      "repo": "sgl-project/sglang",
+      "displayTitle": "ci run",
+      "mode": "perjob",
+      "totalJobs": 15,
+      "failedJobs": [
+        {
+          "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+          "id": 127458874017,
+          "steps": [
+            {
+              "name": "Run test",
+              "conclusion": "failure"
+            }
+          ]
+        }
+      ],
+      "missing": [],
+      "complete": true
+    }
+  },
+  "counts": {
+    "tasks": 1,
+    "testTasks": 0,
+    "logTasks": 1,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 60,
+    "evidenceFiles": 1
+  },
+  "verdict": {
+    "category": "job_failure",
+    "text": "任务失败",
+    "confidence": 0.7,
+    "level": "中",
+    "basis": [
+      "任务 multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa 日志命中 60 条错误行（非编译特征），见 github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "基线 0.30",
+      "证据文件落盘 1 份 +0.25",
+      "任务日志命中错误行 +0.15"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "rootCause": "多个 rank 反复报 Unable to open library [libhcom.so]（cannot open shared object file），通信库在运行环境缺失，用例在初始化阶段即失败。",
+    "advice": "统一镜像内通信库版本，并在启动前加存在性校验（如 ldconfig -p 检索 libhcom）；修复镜像后重跑该 case。",
+    "cites": [
+      "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L2625",
+      "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L2658"
+    ],
+    "updatedAt": "2026-11-09 15:07:00",
+    "source": "agent"
+  }
+}

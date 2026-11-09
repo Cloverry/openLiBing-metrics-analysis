@@ -1,0 +1,692 @@
+﻿2026-11-06T09:53:49.9732705Z Current runner version: '2.338.0'
+2026-11-06T09:53:49.9739707Z Runner name: 'linux-aarch64-a3-800t-16-cn12-001-hwpcp-runner-pt66s'
+2026-11-06T09:53:49.9740807Z Runner group name: 'Default'
+2026-11-06T09:53:49.9742010Z Machine name: 'linux-aarch64-a3-800t-16-cn12-001-hwpcp-runner-pt66s'
+2026-11-06T09:53:49.9745499Z ##[group]GITHUB_TOKEN Permissions
+2026-11-06T09:53:49.9748088Z Contents: read
+2026-11-06T09:53:49.9748775Z Metadata: read
+2026-11-06T09:53:49.9749399Z Packages: read
+2026-11-06T09:53:49.9750034Z ##[endgroup]
+2026-11-06T09:53:49.9752274Z Secret source: None
+2026-11-06T09:53:49.9753212Z Cache mode: write
+2026-11-06T09:53:49.9754433Z Runner is running behind proxy server 'http://squid-cache.squid.svc.cluster.local:3128' for all HTTP requests.
+2026-11-06T09:53:49.9756028Z Runner is running behind proxy server 'http://squid-cache.squid.svc.cluster.local:3128' for all HTTPS requests.
+2026-11-06T09:53:49.9757204Z Prepare workflow directory
+2026-11-06T09:53:50.0636670Z Prepare all required actions
+2026-11-06T09:53:50.0687099Z Getting action download info
+2026-11-06T09:53:51.1996502Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-06T09:53:55.7967565Z Download action repository 'actions/github-script@v8' (SHA:ed597411d8f924073f98dfc5c65a23a2325f34cd)
+2026-11-06T09:54:00.8431021Z Uses: sgl-project/sglang/.github/workflows/_npu-single-node-test-stage.yml@refs/pull/48664/merge (f277c3ee576ea3cc021d25a6776b2a34d36a3674)
+2026-11-06T09:54:00.8435446Z ##[group] Inputs
+2026-11-06T09:54:00.8435946Z   runner: linux-aarch64-a3-800t-16
+2026-11-06T09:54:00.8436323Z   test_type: perf
+2026-11-06T09:54:00.8436653Z   test_suite: nightly-perf-16-npu-a3
+2026-11-06T09:54:00.8437281Z   image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann9.1.0-a3-B010
+2026-11-06T09:54:00.8438316Z   install_sglang_deps: false
+2026-11-06T09:54:00.8438700Z   device_type_for_deps: a3
+2026-11-06T09:54:00.8439112Z   transformers_version: 
+2026-11-06T09:54:00.8439788Z   run_start_metadata: {"branch_label": "shun8686-overlapschedule", "workflow_name": "Nightly Test (NPU)", "create_time": "20261106-1745"}
+2026-11-06T09:54:00.8440584Z   skip_pr_test_health_check: true
+2026-11-06T09:54:00.8440943Z   is_nightly_pipeline_job: true
+2026-11-06T09:54:00.8441327Z   partitions: {"size":1,"arr":[0]}
+2026-11-06T09:54:00.8441673Z   ref: 
+2026-11-06T09:54:00.8441922Z   github-token: 
+2026-11-06T09:54:00.8442227Z   test_timeout_minutes: 180
+2026-11-06T09:54:00.8442537Z   use_coverage_runner: false
+2026-11-06T09:54:00.8443235Z   only_tests: test/registered/npu/performance/deepseek_v4_flash/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap.py
+
+2026-11-06T09:54:00.8444029Z ##[endgroup]
+2026-11-06T09:54:00.8444413Z Complete job name: nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3
+2026-11-06T09:54:00.9320754Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T09:54:00.9325453Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T09:54:00.9326414Z ##[endgroup]
+2026-11-06T09:54:01.1747743Z (node:477) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T09:54:01.1748837Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T09:54:01.1938072Z (node:477) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T09:54:52.5567788Z (node:477) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-06T09:54:54.7727293Z ##[group]Run actions/checkout@v4
+2026-11-06T09:54:54.7727719Z with:
+2026-11-06T09:54:54.7727986Z   ref: f277c3ee576ea3cc021d25a6776b2a34d36a3674
+2026-11-06T09:54:54.7728346Z   repository: sgl-project/sglang
+2026-11-06T09:54:54.7731228Z   token: ***
+2026-11-06T09:54:54.7731460Z   ssh-strict: true
+2026-11-06T09:54:54.7732034Z   ssh-user: git
+2026-11-06T09:54:54.7732280Z   persist-credentials: true
+2026-11-06T09:54:54.7732553Z   clean: true
+2026-11-06T09:54:54.7732805Z   sparse-checkout-cone-mode: true
+2026-11-06T09:54:54.7733115Z   fetch-depth: 1
+2026-11-06T09:54:54.7733349Z   fetch-tags: false
+2026-11-06T09:54:54.7733597Z   show-progress: true
+2026-11-06T09:54:54.7733857Z   lfs: false
+2026-11-06T09:54:54.7734098Z   submodules: false
+2026-11-06T09:54:54.7734349Z   set-safe-directory: true
+2026-11-06T09:54:54.7734645Z   allow-unsafe-pr-checkout: false
+2026-11-06T09:54:54.7734935Z env:
+2026-11-06T09:54:54.7735169Z   SKIP_PR_TEST_HEALTH_CHECK: true
+2026-11-06T09:54:54.7735499Z ##[endgroup]
+2026-11-06T09:54:54.7835236Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T09:54:54.7836350Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T09:54:54.7836717Z ##[endgroup]
+2026-11-06T09:54:55.0173070Z (node:683) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T09:54:55.0174039Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T09:54:55.0390042Z (node:683) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T09:54:55.0904489Z (node:683) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-06T09:54:55.8499237Z Syncing repository: sgl-project/sglang
+2026-11-06T09:54:55.8500699Z ##[group]Getting Git version info
+2026-11-06T09:54:55.8501083Z Working directory is '/__w/sglang/sglang'
+2026-11-06T09:54:55.8501638Z [command]/usr/bin/git version
+2026-11-06T09:54:55.8501931Z git version 2.34.1
+2026-11-06T09:54:55.8502931Z ##[endgroup]
+2026-11-06T09:54:55.8506671Z Copying '/root/.gitconfig' to '/__w/_temp/286e8376-cb62-4925-9207-5d2ce30570dd/.gitconfig'
+2026-11-06T09:54:55.8507482Z Temporarily overriding HOME='/__w/_temp/286e8376-cb62-4925-9207-5d2ce30570dd' before making global git config changes
+2026-11-06T09:54:55.8508262Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-06T09:54:55.8508884Z [command]/usr/bin/git config --global --add safe.directory /__w/sglang/sglang
+2026-11-06T09:54:55.8520090Z Deleting the contents of '/__w/sglang/sglang'
+2026-11-06T09:54:55.8523253Z ##[group]Initializing the repository
+2026-11-06T09:54:55.8527058Z [command]/usr/bin/git init /__w/sglang/sglang
+2026-11-06T09:54:55.8687963Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-06T09:54:55.8688559Z hint: is subject to change. To configure the initial branch name to use in all
+2026-11-06T09:54:55.8689129Z hint: of your new repositories, which will suppress this warning, call:
+2026-11-06T09:54:55.8689543Z hint: 
+2026-11-06T09:54:55.8689882Z hint: 	git config --global init.defaultBranch <name>
+2026-11-06T09:54:55.8690234Z hint: 
+2026-11-06T09:54:55.8690566Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-06T09:54:55.8691136Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-06T09:54:55.8691571Z hint: 
+2026-11-06T09:54:55.8691799Z hint: 	git branch -m <name>
+2026-11-06T09:54:55.8694717Z Initialized empty Git repository in /__w/sglang/sglang/.git/
+2026-11-06T09:54:55.8703345Z [command]/usr/bin/git remote add origin https://github.com/sgl-project/sglang
+2026-11-06T09:54:55.8756626Z ##[endgroup]
+2026-11-06T09:54:55.8757080Z ##[group]Disabling automatic garbage collection
+2026-11-06T09:54:55.8761395Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-06T09:54:55.8795796Z ##[endgroup]
+2026-11-06T09:54:55.8796205Z ##[group]Setting up auth
+2026-11-06T09:54:55.8802522Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-06T09:54:55.8839607Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-06T09:54:55.9410017Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-06T09:54:55.9447990Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-06T09:54:55.9783499Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-06T09:54:55.9821934Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-06T09:54:56.0166224Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-06T09:54:56.0212058Z ##[endgroup]
+2026-11-06T09:54:56.0212485Z ##[group]Fetching the repository
+2026-11-06T09:54:56.0220407Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin f277c3ee576ea3cc021d25a6776b2a34d36a3674
+2026-11-06T09:54:56.5619813Z warning: redirecting to http://git-cdn-service.git-cdn.svc.cluster.local:8000/sgl-project/sglang.git/
+2026-11-06T09:55:06.8353759Z From http://git-cdn-service.git-cdn.svc.cluster.local:8000/sgl-project/sglang
+2026-11-06T09:55:06.8354459Z  * branch            f277c3ee576ea3cc021d25a6776b2a34d36a3674 -> FETCH_HEAD
+2026-11-06T09:55:06.8381565Z ##[endgroup]
+2026-11-06T09:55:06.8382191Z ##[group]Determining the checkout info
+2026-11-06T09:55:06.8387684Z ##[endgroup]
+2026-11-06T09:55:06.8388595Z [command]/usr/bin/git sparse-checkout disable
+2026-11-06T09:55:06.8494277Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-06T09:55:06.8495411Z ##[group]Checking out the ref
+2026-11-06T09:55:06.8495890Z [command]/usr/bin/git checkout --progress --force f277c3ee576ea3cc021d25a6776b2a34d36a3674
+2026-11-06T09:55:07.7135964Z Note: switching to 'f277c3ee576ea3cc021d25a6776b2a34d36a3674'.
+2026-11-06T09:55:07.7136259Z 
+2026-11-06T09:55:07.7136479Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-11-06T09:55:07.7137031Z changes and commit them, and you can discard any commits you make in this
+2026-11-06T09:55:07.7137623Z state without impacting any branches by switching back to a branch.
+2026-11-06T09:55:07.7137934Z 
+2026-11-06T09:55:07.7138133Z If you want to create a new branch to retain commits you create, you may
+2026-11-06T09:55:07.7138619Z do so (now or later) by using -c with the switch command. Example:
+2026-11-06T09:55:07.7138950Z 
+2026-11-06T09:55:07.7139068Z   git switch -c <new-branch-name>
+2026-11-06T09:55:07.7139250Z 
+2026-11-06T09:55:07.7139354Z Or undo this operation with:
+2026-11-06T09:55:07.7139521Z 
+2026-11-06T09:55:07.7139636Z   git switch -
+2026-11-06T09:55:07.7139762Z 
+2026-11-06T09:55:07.7139997Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-11-06T09:55:07.7140351Z 
+2026-11-06T09:55:07.7140721Z HEAD is now at f277c3e Merge 1acc63b817bc34de916a0b402e0b778b0131db37 into 27bc1a0615b6e49a19ed10b67fa7c07f8447547a
+2026-11-06T09:55:07.7191141Z ##[endgroup]
+2026-11-06T09:55:07.7235369Z [command]/usr/bin/git log -1 --format=%H
+2026-11-06T09:55:07.7310007Z f277c3ee576ea3cc021d25a6776b2a34d36a3674
+2026-11-06T09:55:08.3966298Z ##[group]Run actions/github-script@v8
+2026-11-06T09:55:08.3966642Z with:
+2026-11-06T09:55:08.3969672Z   github-token: ***
+2026-11-06T09:55:08.3985865Z   script: core.notice(`[health-check] START — event=${context.eventName}, runId=${context.runId}`);
+
+// Skip when explicitly requested via env var (e.g. release branch cut)
+if (process.env.SKIP_PR_TEST_HEALTH_CHECK === 'true') {
+  core.notice('[health-check] SKIP: SKIP_PR_TEST_HEALTH_CHECK=true');
+  return;
+}
+
+// Skip for scheduled runs — they should collect all failures, not fast-fail
+if (context.eventName === 'schedule') {
+  core.notice('[health-check] SKIP: scheduled run');
+  return;
+}
+
+// Check lint status from the separate Lint workflow (lint.yml).
+// listJobsForWorkflowRun only sees jobs within the SAME run, so we use
+// checks.listForRef which queries by commit SHA across ALL workflows.
+const ref = context.payload.pull_request?.head?.sha || context.sha;
+core.info(`[health-check] Checking lint for ref=${ref}`);
+const { data } = await github.rest.checks.listForRef({
+  owner: context.repo.owner,
+  repo: context.repo.repo,
+  ref: ref,
+  check_name: 'lint',
+});
+const lintRun = data.check_runs.find(
+  cr => cr.app?.slug === 'github-actions'
+);
+core.info(`[health-check] Lint check: status=${lintRun?.status}, conclusion=${lintRun?.conclusion}`);
+if (lintRun?.status === 'completed' && lintRun?.conclusion === 'failure') {
+  core.setFailed('Fast-fail: lint check failed');
+  return;
+}
+
+// Skip the jobs-failed check when the PR carries the bypass-fastfail label.
+// Lint check above still runs.
+let labels = [];
+if (context.payload.pull_request?.labels) {
+  labels = context.payload.pull_request.labels.map(l => l.name);
+} else {
+  const { data: prs } = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    commit_sha: ref,
+  });
+  if (prs.length > 0) {
+    labels = prs[0].labels.map(l => l.name);
+  }
+}
+core.info(`[health-check] PR labels: [${labels.join(', ')}]`);
+if (labels.includes('bypass-fastfail')) {
+  core.notice('[health-check] SKIP jobs-failed check: bypass-fastfail label present');
+  return;
+}
+
+const jobs = await github.paginate(github.rest.actions.listJobsForWorkflowRun, {
+  owner: context.repo.owner,
+  repo: context.repo.repo,
+  run_id: context.runId,
+  per_page: 100,
+});
+core.info(`[health-check] Total jobs in run: ${jobs.length}`);
+const failedJobs = jobs.filter(j => j.status === 'completed' && j.conclusion === 'failure');
+core.info(`[health-check] Failed jobs (before filtering): ${failedJobs.map(j => `${j.name}(${j.conclusion})`).join(', ') || 'none'}`);
+
+// Find jobs that failed from a real error, not from fast-fail cascade
+const rootCauseFailures = jobs.filter(j => {
+  if (j.status !== 'completed' || j.conclusion !== 'failure') return false;
+  // h20 runners are flaky (dirty GPU state from prior runs); their failures
+  // should not cascade fast-fail to other stages. j.name shape from
+  // listJobsForWorkflowRun: "<job-key>" + optional " / <reusable-job>"
+  // + optional " (<matrix>)". Split off the base job key before exact
+  // match so we cover both inline + reusable forms without confusing
+  // 'h20' with the 'h200' prefix.
+  const baseName = j.name.split(/[ /]/)[0];
+  if (baseName === 'base-c-test-8-gpu-h20') {
+    core.info(`[health-check] Filtered out h20 job: ${j.name}`);
+    return false;
+  }
+  // multimodal-gen NPU tests should not cascade fast-fail to perf/accuracy stages.
+  if (baseName === 'multimodal-gen-test-1-npu-a3' || baseName === 'multimodal-gen-test-4-npu-a3') {
+    core.info(`[health-check] Filtered out multimodal-gen NPU job: ${j.name}`);
+    return false;
+  }
+  // If the failing step is the health check, it's a cascade — skip it
+  const failedStep = (j.steps || []).find(s => s.conclusion === 'failure');
+  if (failedStep && (failedStep.name.includes('check-pr-test-health') || failedStep.name.includes('Check PR test health'))) {
+    core.info(`[health-check] Filtered out cascade failure: ${j.name} (failed step: ${failedStep.name})`);
+    return false;
+  }
+  return true;
+});
+core.info(`[health-check] Root cause failures (after filtering): ${rootCauseFailures.map(j => j.name).join(', ') || 'none'}`);
+
+if (rootCauseFailures.length > 0) {
+  core.setFailed(`Fast-fail: skipping — root cause job(s): ${rootCauseFailures.map(j => j.name).join(', ')}`);
+} else {
+  core.notice('[health-check] PASS: no root cause failures detected');
+}
+
+2026-11-06T09:55:08.4001868Z   debug: false
+2026-11-06T09:55:08.4002119Z   user-agent: actions/github-script
+2026-11-06T09:55:08.4002420Z   result-encoding: json
+2026-11-06T09:55:08.4002667Z   retries: 0
+2026-11-06T09:55:08.4003074Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-11-06T09:55:08.4003405Z env:
+2026-11-06T09:55:08.4003632Z   SKIP_PR_TEST_HEALTH_CHECK: true
+2026-11-06T09:55:08.4003916Z ##[endgroup]
+2026-11-06T09:55:08.4047752Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T09:55:08.4048845Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T09:55:08.4049199Z ##[endgroup]
+2026-11-06T09:55:08.6388871Z (node:721) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T09:55:08.6389651Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T09:55:08.6602817Z (node:721) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T09:55:08.7198480Z (node:721) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-06T09:55:09.5510938Z ##[notice][health-check] START — event=pull_request, runId=42197450049
+2026-11-06T09:55:09.5518298Z ##[notice][health-check] SKIP: SKIP_PR_TEST_HEALTH_CHECK=true
+2026-11-06T09:55:10.3120967Z ##[group]Run npu-smi info
+2026-11-06T09:55:10.3121393Z [36;1mnpu-smi info[0m
+2026-11-06T09:55:10.3128586Z shell: sh -e {0}
+2026-11-06T09:55:10.3128896Z env:
+2026-11-06T09:55:10.3129139Z   SKIP_PR_TEST_HEALTH_CHECK: true
+2026-11-06T09:55:10.3129445Z ##[endgroup]
+2026-11-06T09:55:10.3231727Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T09:55:10.3232775Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T09:55:10.3233126Z ##[endgroup]
+2026-11-06T09:55:10.5709296Z (node:768) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T09:55:10.5710038Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T09:55:10.5932566Z (node:768) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T09:55:10.6471854Z (node:768) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-06T09:55:13.0691664Z +------------------------------------------------------------------------------------------------+
+2026-11-06T09:55:13.0692464Z | npu-smi 25.2.1                   Version: 25.2.1                                               |
+2026-11-06T09:55:13.0693167Z +---------------------------+---------------+----------------------------------------------------+
+2026-11-06T09:55:13.0693776Z | NPU   Name                | Health        | Power(W)    Temp(C)           Hugepages-Usage(page)|
+2026-11-06T09:55:13.0694419Z | Chip  Phy-ID              | Bus-Id        | AICore(%)   Memory-Usage(MB)  HBM-Usage(MB)        |
+2026-11-06T09:55:13.0695022Z +===========================+===============+====================================================+
+2026-11-06T09:55:13.0695567Z | 0     Ascend910           | OK            | 162.1       33                0    / 0             |
+2026-11-06T09:55:13.0696097Z | 0     0                   | 0000:9D:00.0  | 0           0    / 0          3141 / 65536         |
+2026-11-06T09:55:13.0696632Z +------------------------------------------------------------------------------------------------+
+2026-11-06T09:55:13.0697182Z | 0     Ascend910           | OK            | -           33                0    / 0             |
+2026-11-06T09:55:13.0697700Z | 1     1                   | 0000:9F:00.0  | 0           0    / 0          2890 / 65536         |
+2026-11-06T09:55:13.0698169Z +===========================+===============+====================================================+
+2026-11-06T09:55:13.0698664Z | 1     Ascend910           | OK            | 169.7       32                0    / 0             |
+2026-11-06T09:55:13.0699733Z | 0     2                   | 0000:99:00.0  | 0           0    / 0          3148 / 65536         |
+2026-11-06T09:55:13.0700271Z +------------------------------------------------------------------------------------------------+
+2026-11-06T09:55:13.0700818Z | 1     Ascend910           | OK            | -           33                0    / 0             |
+2026-11-06T09:55:13.0701320Z | 1     3                   | 0000:9B:00.0  | 0           0    / 0          2879 / 65536         |
+2026-11-06T09:55:13.0701812Z +===========================+===============+====================================================+
+2026-11-06T09:55:13.0702295Z | 2     Ascend910           | OK            | 161.7       33                0    / 0             |
+2026-11-06T09:55:13.0702808Z | 0     4                   | 0000:95:00.0  | 0           0    / 0          3140 / 65536         |
+2026-11-06T09:55:13.0703343Z +------------------------------------------------------------------------------------------------+
+2026-11-06T09:55:13.0703889Z | 2     Ascend910           | OK            | -           32                0    / 0             |
+2026-11-06T09:55:13.0704792Z | 1     5                   | 0000:97:00.0  | 0           0    / 0          2892 / 65536         |
+2026-11-06T09:55:13.0705361Z +===========================+===============+====================================================+
+2026-11-06T09:55:13.0705852Z | 3     Ascend910           | OK            | 157.4       33                0    / 0             |
+2026-11-06T09:55:13.0706369Z | 0     6                   | 0000:91:00.0  | 0           0    / 0          3137 / 65536         |
+2026-11-06T09:55:13.0706903Z +------------------------------------------------------------------------------------------------+
+2026-11-06T09:55:13.0707449Z | 3     Ascend910           | OK            | -           32                0    / 0             |
+2026-11-06T09:55:13.0707953Z | 1     7                   | 0000:93:00.0  | 0           0    / 0          2892 / 65536         |
+2026-11-06T09:55:13.0708438Z +===========================+===============+====================================================+
+2026-11-06T09:55:13.0708938Z | 4     Ascend910           | OK            | 160.0       33                0    / 0             |
+2026-11-06T09:55:13.0709453Z | 0     8                   | 0000:8D:00.0  | 0           0    / 0          3145 / 65536         |
+2026-11-06T09:55:13.0709989Z +------------------------------------------------------------------------------------------------+
+2026-11-06T09:55:13.0710537Z | 4     Ascend910           | OK            | -           34                0    / 0             |
+2026-11-06T09:55:13.0711053Z | 1     9                   | 0000:8F:00.0  | 0           0    / 0          2884 / 65536         |
+2026-11-06T09:55:13.0711526Z +===========================+===============+====================================================+
+2026-11-06T09:55:13.0712017Z | 5     Ascend910           | OK            | 167.2       33                0    / 0             |
+2026-11-06T09:55:13.0712535Z | 0     10                  | 0000:89:00.0  | 0           0    / 0          3138 / 65536         |
+2026-11-06T09:55:13.0713072Z +------------------------------------------------------------------------------------------------+
+2026-11-06T09:55:13.0713618Z | 5     Ascend910           | OK            | -           34                0    / 0             |
+2026-11-06T09:55:13.0714125Z | 1     11                  | 0000:8B:00.0  | 0           0    / 0          2893 / 65536         |
+2026-11-06T09:55:13.3710550Z +===========================+===============+====================================================+
+2026-11-06T09:55:13.3711150Z | 6     Ascend910           | OK            | 162.3       32                0    / 0             |
+2026-11-06T09:55:13.3711665Z | 0     12                  | 0000:85:00.0  | 0           0    / 0          3140 / 65536         |
+2026-11-06T09:55:13.3712189Z +------------------------------------------------------------------------------------------------+
+2026-11-06T09:55:13.3713048Z | 6     Ascend910           | OK            | -           32                0    / 0             |
+2026-11-06T09:55:13.3713562Z | 1     13                  | 0000:87:00.0  | 0           0    / 0          2893 / 65536         |
+2026-11-06T09:55:13.3714042Z +===========================+===============+====================================================+
+2026-11-06T09:55:13.3714525Z | 7     Ascend910           | OK            | 161.8       32                0    / 0             |
+2026-11-06T09:55:13.3715034Z | 0     14                  | 0000:81:00.0  | 0           0    / 0          3140 / 65536         |
+2026-11-06T09:55:13.3715603Z +------------------------------------------------------------------------------------------------+
+2026-11-06T09:55:13.3716154Z | 7     Ascend910           | OK            | -           33                0    / 0             |
+2026-11-06T09:55:13.3716657Z | 1     15                  | 0000:83:00.0  | 0           0    / 0          2892 / 65536         |
+2026-11-06T09:55:13.3717132Z +===========================+===============+====================================================+
+2026-11-06T09:55:13.3717810Z +---------------------------+---------------+----------------------------------------------------+
+2026-11-06T09:55:13.3718412Z | NPU     Chip              | Process id    | Process name             | Process memory(MB)      |
+2026-11-06T09:55:13.3718933Z +===========================+===============+====================================================+
+2026-11-06T09:55:13.3719457Z | No running processes found in NPU 0                                                            |
+2026-11-06T09:55:13.3719974Z +===========================+===============+====================================================+
+2026-11-06T09:55:13.3720496Z | No running processes found in NPU 1                                                            |
+2026-11-06T09:55:13.3721017Z +===========================+===============+====================================================+
+2026-11-06T09:55:13.3721569Z | No running processes found in NPU 2                                                            |
+2026-11-06T09:55:13.3722085Z +===========================+===============+====================================================+
+2026-11-06T09:55:13.3722581Z | No running processes found in NPU 3                                                            |
+2026-11-06T09:55:13.3723079Z +===========================+===============+====================================================+
+2026-11-06T09:55:13.3723576Z | No running processes found in NPU 4                                                            |
+2026-11-06T09:55:13.3724074Z +===========================+===============+====================================================+
+2026-11-06T09:55:13.3724582Z | No running processes found in NPU 5                                                            |
+2026-11-06T09:55:13.3725081Z +===========================+===============+====================================================+
+2026-11-06T09:55:13.3725586Z | No running processes found in NPU 6                                                            |
+2026-11-06T09:55:13.3726083Z +===========================+===============+====================================================+
+2026-11-06T09:55:13.3726587Z | No running processes found in NPU 7                                                            |
+2026-11-06T09:55:13.3727079Z +===========================+===============+====================================================+
+2026-11-06T09:55:14.2428625Z ##[group]Run # Fail fast on any command error, undefined variable, or pipe failure.
+2026-11-06T09:55:14.2429616Z [36;1m# Fail fast on any command error, undefined variable, or pipe failure.[0m
+2026-11-06T09:55:14.2430056Z [36;1mset -euo pipefail[0m
+2026-11-06T09:55:14.2430300Z [36;1m[0m
+2026-11-06T09:55:14.2430517Z [36;1mTEST_LOG_DIR="/tmp/test-logs"[0m
+2026-11-06T09:55:14.2430822Z [36;1mmkdir -p "${TEST_LOG_DIR}"[0m
+2026-11-06T09:55:14.2431418Z [36;1m[0m
+2026-11-06T09:55:14.2431628Z [36;1msglang_source_path=$(pwd)[0m
+2026-11-06T09:55:14.2431963Z [36;1mecho "Source code path: ${sglang_source_path}"[0m
+2026-11-06T09:55:14.2432344Z [36;1mln -sf ${sglang_source_path} /root/sglang[0m
+2026-11-06T09:55:14.2432663Z [36;1m[0m
+2026-11-06T09:55:14.2433003Z [36;1m# Determine test mode: suite (run_suite.py --suite) or single case file.[0m
+2026-11-06T09:55:14.2433475Z [36;1mtest_suite="nightly-perf-16-npu-a3"[0m
+2026-11-06T09:55:14.2433861Z [36;1mecho "Test mode: suite (${test_suite})"[0m
+2026-11-06T09:55:14.2434183Z [36;1mtc_name="${test_suite}"[0m
+2026-11-06T09:55:14.2434436Z [36;1m[0m
+2026-11-06T09:55:14.2434703Z [36;1m# The ID is used to locate the current job instance,[0m
+2026-11-06T09:55:14.2435143Z [36;1m# size determines whether parallel execution is enabled.[0m
+2026-11-06T09:55:14.2435521Z [36;1mPARTITION_ID=0[0m
+2026-11-06T09:55:14.2435762Z [36;1mPARTITION_SIZE=1[0m
+2026-11-06T09:55:14.2436145Z [36;1m# Append directory suffixes when there are parallel partition jobs[0m
+2026-11-06T09:55:14.2436720Z [36;1m# within the test suite to prevent collision of result artifact directories.[0m
+2026-11-06T09:55:14.2437198Z [36;1mif [ "${PARTITION_SIZE}" -gt 1 ]; then[0m
+2026-11-06T09:55:14.2437559Z [36;1m  tc_name="${test_suite}-p${PARTITION_ID}"[0m
+2026-11-06T09:55:14.2437867Z [36;1mfi[0m
+2026-11-06T09:55:14.2438058Z [36;1m[0m
+2026-11-06T09:55:14.2438317Z [36;1m# Provided automatically by the GitHub server.[0m
+2026-11-06T09:55:14.2438738Z [36;1m# run_id is the unique identifier for the workflow run,[0m
+2026-11-06T09:55:14.2439222Z [36;1m# attempt represents the re‑run attempt count of the job.[0m
+2026-11-06T09:55:14.2439604Z [36;1mrun_id=42197450049[0m
+2026-11-06T09:55:14.2439849Z [36;1mrun_attempt=1[0m
+2026-11-06T09:55:14.2440072Z [36;1m[0m
+2026-11-06T09:55:14.2440393Z [36;1m# Parse run metadata (branch_label / workflow_name / create_time)[0m
+2026-11-06T09:55:14.2441041Z [36;1m# from run_start_metadata JSON input using GitHub fromJson expression, same as partitions input.[0m
+2026-11-06T09:55:14.2441682Z [36;1mbranch_label=$(echo "shun8686-overlapschedule" | tr '/:' '--')[0m
+2026-11-06T09:55:14.2442208Z [36;1mworkflow_name=$(echo "Nightly Test (NPU)" | tr ' ' '_' | tr -d '()')[0m
+2026-11-06T09:55:14.2442628Z [36;1mcreate_time="20261106-1745"[0m
+2026-11-06T09:55:14.2443079Z [36;1mif [ -z "${create_time}" ]; then create_time=$(date -u -d '+8 hours' +%Y%m%d-%H%M); fi[0m
+2026-11-06T09:55:14.2443682Z [36;1m# Append the image tag to the workflow-name segment so that runs with[0m
+2026-11-06T09:55:14.2444223Z [36;1m# different images (CANN 9.0.0/9.1.0, a3/a5) persist into distinct,[0m
+2026-11-06T09:55:14.2444668Z [36;1m# image-tagged output/log directories.[0m
+2026-11-06T09:55:14.2445378Z [36;1mimage_label=$(echo "swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann9.1.0-a3-B010" | sed 's#.*[/:]##')[0m
+2026-11-06T09:55:14.2446126Z [36;1mworkflow_name="${workflow_name}--${image_label}"[0m
+2026-11-06T09:55:14.2446459Z [36;1m[0m
+2026-11-06T09:55:14.2446733Z [36;1m# Print persistence‑directory‑prefix variables[0m
+2026-11-06T09:55:14.2447554Z [36;1mecho "Persistence prefix: run_id=${run_id} run_attempt=${run_attempt} branch_label=${branch_label} workflow_name=${workflow_name} create_time=${create_time}"[0m
+2026-11-06T09:55:14.2448290Z [36;1m[0m
+2026-11-06T09:55:14.2448497Z [36;1mif [ "true" = "true" ]; then[0m
+2026-11-06T09:55:14.2449401Z [36;1m  test_data_output_path=/root/.cache/tests/output/${branch_label}-${create_time}-${run_id}-${run_attempt}/${workflow_name}/perf/${tc_name}[0m
+2026-11-06T09:55:14.2450107Z [36;1m  mkdir -p ${test_data_output_path}[0m
+2026-11-06T09:55:14.2450401Z [36;1m[0m
+2026-11-06T09:55:14.2450772Z [36;1m  # Set and print the output path for test‑case results and metrics persistence.[0m
+2026-11-06T09:55:14.2451306Z [36;1m  export METRICS_DATA_FILE=${test_data_output_path}[0m
+2026-11-06T09:55:14.2451961Z [36;1m  export SGLANG_TEST_METRICS_OUTPUT=${test_data_output_path}/metrics[0m
+2026-11-06T09:55:14.2452431Z [36;1m  echo "METRICS_DATA_FILE=${METRICS_DATA_FILE}"[0m
+2026-11-06T09:55:14.2452879Z [36;1m  echo "SGLANG_TEST_METRICS_OUTPUT=${SGLANG_TEST_METRICS_OUTPUT}"[0m
+2026-11-06T09:55:14.2453269Z [36;1mfi[0m
+2026-11-06T09:55:14.2453458Z [36;1m[0m
+2026-11-06T09:55:14.2453703Z [36;1mexport TRANSFORMERS_VERSION_FOR_SGLANG=""[0m
+2026-11-06T09:55:14.2454041Z [36;1mPYTHON_FOR_SGLANG="python"[0m
+2026-11-06T09:55:14.2454328Z [36;1mPIP_FOR_SGLANG="pip"[0m
+2026-11-06T09:55:14.2454727Z [36;1m# Shared pip index list (huaweicloud mirror, then the tsinghua mirror).[0m
+2026-11-06T09:55:14.2455547Z [36;1mPIP_INDEXES=("https://repo.huaweicloud.com/repository/pypi/simple/" "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple")[0m
+2026-11-06T09:55:14.2456195Z [36;1m[0m
+2026-11-06T09:55:14.2456573Z [36;1m# Shared pip installer: try each index until one succeeds, fail the job if all fail.[0m
+2026-11-06T09:55:14.2457055Z [36;1minstall_pkg() {[0m
+2026-11-06T09:55:14.2457297Z [36;1m  local pkg="$1"[0m
+2026-11-06T09:55:14.2457529Z [36;1m  ok=0[0m
+2026-11-06T09:55:14.2457776Z [36;1m  for index in "${PIP_INDEXES[@]}"; do[0m
+2026-11-06T09:55:14.2458106Z [36;1m    echo "${pkg}: try via ${index}"[0m
+2026-11-06T09:55:14.2458554Z [36;1m    if ${PYTHON_FOR_SGLANG} -m pip install "${pkg}" --retries 3 --timeout 60 \[0m
+2026-11-06T09:55:14.2459001Z [36;1m        -i "${index}"; then[0m
+2026-11-06T09:55:14.2459270Z [36;1m      ok=1; break[0m
+2026-11-06T09:55:14.2459505Z [36;1m    fi[0m
+2026-11-06T09:55:14.2459707Z [36;1m  done[0m
+2026-11-06T09:55:14.2460013Z [36;1m  [ "${ok}" = "1" ] || { echo "ERROR: failed to install ${pkg}"; exit 1; }[0m
+2026-11-06T09:55:14.2460386Z [36;1m}[0m
+2026-11-06T09:55:14.2460580Z [36;1m[0m
+2026-11-06T09:55:14.2460999Z [36;1m# Transformers (pinned version): prefer the offline wheel cache, fall back to online install.[0m
+2026-11-06T09:55:14.2461581Z [36;1mif [ -n "${TRANSFORMERS_VERSION_FOR_SGLANG}" ];then[0m
+2026-11-06T09:55:14.2462025Z [36;1m  echo "===== Install transformers for sglang - Begin ====="[0m
+2026-11-06T09:55:14.2462644Z [36;1m  TRANSFORMERS_PKG_PATH_SOURCE=/root/.cache/.cache/transformers/${TRANSFORMERS_VERSION_FOR_SGLANG}[0m
+2026-11-06T09:55:14.2463246Z [36;1m  if [ ! -d "${TRANSFORMERS_PKG_PATH_SOURCE}" ]; then[0m
+2026-11-06T09:55:14.2463822Z [36;1m    echo "The dependent transformers package does not exist: ${TRANSFORMERS_PKG_PATH_SOURCE}."[0m
+2026-11-06T09:55:14.2464493Z [36;1m    echo "Install transformers ${TRANSFORMERS_VERSION_FOR_SGLANG} online."[0m
+2026-11-06T09:55:14.2465171Z [36;1m    install_pkg "transformers==${TRANSFORMERS_VERSION_FOR_SGLANG}"[0m
+2026-11-06T09:55:14.2465575Z [36;1m  else[0m
+2026-11-06T09:55:14.2465934Z [36;1m    echo "Install transformers ${TRANSFORMERS_VERSION_FOR_SGLANG} locally."[0m
+2026-11-06T09:55:14.2466567Z [36;1m    TRANSFORMERS_PKG_PATH_TARGET=/tmp/transformers/${TRANSFORMERS_VERSION_FOR_SGLANG}[0m
+2026-11-06T09:55:14.2467113Z [36;1m    mkdir -p "${TRANSFORMERS_PKG_PATH_TARGET}"[0m
+2026-11-06T09:55:14.2467590Z [36;1m    cp "${TRANSFORMERS_PKG_PATH_SOURCE}/"* "${TRANSFORMERS_PKG_PATH_TARGET}/"[0m
+2026-11-06T09:55:14.2468453Z [36;1m    ${PYTHON_FOR_SGLANG} -m pip install --no-index --find-links="${TRANSFORMERS_PKG_PATH_TARGET}" transformers=="${TRANSFORMERS_VERSION_FOR_SGLANG}"[0m
+2026-11-06T09:55:14.2469152Z [36;1m  fi[0m
+2026-11-06T09:55:14.2469488Z [36;1m  echo "===== Install transformers for sglang in virtual env - End ====="[0m
+2026-11-06T09:55:14.2470127Z [36;1mfi[0m
+2026-11-06T09:55:14.2470612Z [36;1mecho "Transformers version for sglang: $(${PIP_FOR_SGLANG} show transformers | grep Version | cut -d: -f2)"[0m
+2026-11-06T09:55:14.2471163Z [36;1m[0m
+2026-11-06T09:55:14.2471457Z [36;1m# Install missing python deps (skip if already importable)[0m
+2026-11-06T09:55:14.2471858Z [36;1mREQUIRED_PIP_PKGS=(tabulate)[0m
+2026-11-06T09:55:14.2472183Z [36;1mfor pkg in "${REQUIRED_PIP_PKGS[@]}"; do[0m
+2026-11-06T09:55:14.2472862Z [36;1m  ${PYTHON_FOR_SGLANG} -c "import ${pkg}" 2>/dev/null && { echo "${pkg}: available, skip"; continue; }[0m
+2026-11-06T09:55:14.2473387Z [36;1m  install_pkg "${pkg}"[0m
+2026-11-06T09:55:14.2473636Z [36;1mdone[0m
+2026-11-06T09:55:14.2473832Z [36;1m[0m
+2026-11-06T09:55:14.2474079Z [36;1mecho "scaling_governor performance num: \[0m
+2026-11-06T09:55:14.2474637Z [36;1m  $(cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor | grep performance | wc -l)"[0m
+2026-11-06T09:55:14.2475210Z [36;1mecho "swappiness: $(cat /proc/sys/vm/swappiness)"[0m
+2026-11-06T09:55:14.2475664Z [36;1mecho "numa_balancing: $(cat /proc/sys/kernel/numa_balancing)"[0m
+2026-11-06T09:55:14.2476222Z [36;1mecho "sched_migration_cost_ns: $(cat /proc/sys/kernel/sched_migration_cost_ns)"[0m
+2026-11-06T09:55:14.2476667Z [36;1m[0m
+2026-11-06T09:55:14.2476967Z [36;1mexport SGLANG_TEST_MAX_RETRY=0[0m
+2026-11-06T09:55:14.2477284Z [36;1mexport SGLANG_SET_CPU_AFFINITY=1[0m
+2026-11-06T09:55:14.2477671Z [36;1mecho "SGLANG_SET_CPU_AFFINITY: $SGLANG_SET_CPU_AFFINITY"[0m
+2026-11-06T09:55:14.2478039Z [36;1m[0m
+2026-11-06T09:55:14.2478220Z [36;1m[0m
+2026-11-06T09:55:14.2478632Z [36;1m# Copy the checked‑out test common utility code to the sglang installation directory.[0m
+2026-11-06T09:55:14.2479176Z [36;1msglang_pkg_path=/sgl-workspace/sglang/python[0m
+2026-11-06T09:55:14.2479609Z [36;1mascend_test_util_path=${sglang_pkg_path}/sglang/test/ascend[0m
+2026-11-06T09:55:14.2480035Z [36;1mmkdir -p ${ascend_test_util_path}[0m
+2026-11-06T09:55:14.2480420Z [36;1mmv ${ascend_test_util_path} ${ascend_test_util_path}_bak[0m
+2026-11-06T09:55:14.2480948Z [36;1mcp -r ${sglang_source_path}/python/sglang/test/ascend ${ascend_test_util_path}[0m
+2026-11-06T09:55:14.2481548Z [36;1m# Overlay the checkout test/ci package too: the checked-out run_suite.py[0m
+2026-11-06T09:55:14.2482121Z [36;1m# imports run_unittest_files from the installed sglang package, and the[0m
+2026-11-06T09:55:14.2482687Z [36;1m# image's preinstalled copy predates the fork_worker_preload kwarg.[0m
+2026-11-06T09:55:14.2483177Z [36;1mci_test_util_path=${sglang_pkg_path}/sglang/test/ci[0m
+2026-11-06T09:55:14.2483721Z [36;1mif [ -d "${ci_test_util_path}" ]; then mv "${ci_test_util_path}" "${ci_test_util_path}_bak"; fi[0m
+2026-11-06T09:55:14.2484331Z [36;1mcp -r ${sglang_source_path}/python/sglang/test/ci ${ci_test_util_path}[0m
+2026-11-06T09:55:14.2484741Z [36;1m[0m
+2026-11-06T09:55:14.2485082Z [36;1m# External env scripts may reference unset shell vars (e.g. ZSH_VERSION),[0m
+2026-11-06T09:55:14.2485653Z [36;1m# which abort the whole script under `set -u`. Temporarily disable -u.[0m
+2026-11-06T09:55:14.2486066Z [36;1mset +u[0m
+2026-11-06T09:55:14.2486341Z [36;1msource /usr/local/Ascend/cann/set_env.sh || true[0m
+2026-11-06T09:55:14.2486759Z [36;1msource /usr/local/Ascend/nnal/atb/set_env.sh || true[0m
+2026-11-06T09:55:14.2487355Z [36;1msource /usr/local/Ascend/ascend-toolkit/latest/opp/vendors/customize/bin/set_env.bash || true[0m
+2026-11-06T09:55:14.2488160Z [36;1msource /usr/local/Ascend/ascend-toolkit/latest/opp/vendors/custom_transformer/bin/set_env.bash || true[0m
+2026-11-06T09:55:14.2488841Z [36;1msource /usr/local/Ascend/ascend-toolkit/latest/set_env.sh || true[0m
+2026-11-06T09:55:14.2489247Z [36;1mset -u[0m
+2026-11-06T09:55:14.2489446Z [36;1m[0m
+2026-11-06T09:55:14.2489842Z [36;1m# Nightly log path mirrors the output layout; PR keeps the original {date}/{testcase}.[0m
+2026-11-06T09:55:14.2490335Z [36;1mif [ "true" = "true" ]; then[0m
+2026-11-06T09:55:14.2491152Z [36;1m  log_path="/root/.cache/tests/logs/log/${branch_label}-${create_time}-${run_id}-${run_attempt}/${workflow_name}/perf/${tc_name}/${HOSTNAME}"[0m
+2026-11-06T09:55:14.2491815Z [36;1melse[0m
+2026-11-06T09:55:14.2492078Z [36;1m  current_date=$(date -u -d '+8 hours' +%Y%m%d)[0m
+2026-11-06T09:55:14.2492564Z [36;1m  log_path="/root/.cache/tests/logs/log/${current_date}/${tc_name}/${HOSTNAME}"[0m
+2026-11-06T09:55:14.2493152Z [36;1mfi[0m
+2026-11-06T09:55:14.2493359Z [36;1mrm -rf "${log_path}"[0m
+2026-11-06T09:55:14.2493622Z [36;1mmkdir -p "${log_path}"[0m
+2026-11-06T09:55:14.2493898Z [36;1mecho "Log path: ${log_path}"[0m
+2026-11-06T09:55:14.2494165Z [36;1m[0m
+2026-11-06T09:55:14.2494375Z [36;1mecho "Running test: ${tc_name}"[0m
+2026-11-06T09:55:14.2494660Z [36;1mtest_exit_code=0[0m
+2026-11-06T09:55:14.2494892Z [36;1mcd test[0m
+2026-11-06T09:55:14.2495089Z [36;1m[0m
+2026-11-06T09:55:14.2495553Z [36;1m# Append `--nightly` and `--continue-on-error` arguments when the job belongs to the nightly pipeline.[0m
+2026-11-06T09:55:14.2496207Z [36;1m# --nightly: Collect test cases registered for nightly runs.[0m
+2026-11-06T09:55:14.2496734Z [36;1m# --continue-on-error: Keep running remaining cases even if one fails.[0m
+2026-11-06T09:55:14.2497164Z [36;1mNIGHTLY_FLAG=""[0m
+2026-11-06T09:55:14.2497409Z [36;1mif [ "true" = "true" ]; then[0m
+2026-11-06T09:55:14.2497739Z [36;1m  NIGHTLY_FLAG="--nightly --continue-on-error"[0m
+2026-11-06T09:55:14.2498067Z [36;1mfi[0m
+2026-11-06T09:55:14.2498255Z [36;1m[0m
+2026-11-06T09:55:14.2498672Z [36;1m# Append configuration arguments when the test suite is split into multiple parallel jobs.[0m
+2026-11-06T09:55:14.2499184Z [36;1mPARTITION_ARGS=""[0m
+2026-11-06T09:55:14.2499502Z [36;1mif [ "${PARTITION_SIZE}" -gt 1 ] 2>/dev/null; then[0m
+2026-11-06T09:55:14.2500087Z [36;1m  PARTITION_ARGS="--auto-partition-id ${PARTITION_ID} --auto-partition-size ${PARTITION_SIZE}"[0m
+2026-11-06T09:55:14.2500601Z [36;1mfi[0m
+2026-11-06T09:55:14.2500799Z [36;1m[0m
+2026-11-06T09:55:14.2501126Z [36;1m# Precision-test mode: run only the coverage-recommended files for[0m
+2026-11-06T09:55:14.2501660Z [36;1m# this suite. The bucketed list comes from recommend-tests-from-[0m
+2026-11-06T09:55:14.2502145Z [36;1m# coverage; empty input keeps the full-suite behavior.[0m
+2026-11-06T09:55:14.2502514Z [36;1mONLY_FILE_ARGS=""[0m
+2026-11-06T09:55:14.2502776Z [36;1mif [ -n "${ONLY_TESTS}" ]; then[0m
+2026-11-06T09:55:14.2503149Z [36;1m  printf '%s\n' "${ONLY_TESTS}" > /tmp/precision_tests.txt[0m
+2026-11-06T09:55:14.2503624Z [36;1m  ONLY_FILE_ARGS="--only-file-list /tmp/precision_tests.txt"[0m
+2026-11-06T09:55:14.2504199Z [36;1m  echo "Precision mode: running $(wc -l < /tmp/precision_tests.txt) recommended file(s)"[0m
+2026-11-06T09:55:14.2504672Z [36;1mfi[0m
+2026-11-06T09:55:14.2504863Z [36;1m[0m
+2026-11-06T09:55:14.2505323Z [36;1m# Append `--timeout-from-est‑time` when the job belongs to the nightly pipeline.[0m
+2026-11-06T09:55:14.2505888Z [36;1m# per‑case timeout is derived from each case's est_time.[0m
+2026-11-06T09:55:14.2506259Z [36;1mTIMEOUT_FLAG=""[0m
+2026-11-06T09:55:14.2506515Z [36;1mif [ "true" = "true" ]; then[0m
+2026-11-06T09:55:14.2506828Z [36;1m  TIMEOUT_FLAG="--timeout-from-est-time"[0m
+2026-11-06T09:55:14.2507135Z [36;1mfi[0m
+2026-11-06T09:55:14.2507326Z [36;1m[0m
+2026-11-06T09:55:14.2507698Z [36;1m# Nightly additionally persists the full suite log to ${log_path}/${tc_name}.log[0m
+2026-11-06T09:55:14.2508310Z [36;1m# under the structured path; PR runs tee to ${TEST_LOG_DIR}/${tc_name}.log.[0m
+2026-11-06T09:55:14.2508885Z [36;1m# Use an array so the extra target is omitted when empty: passing an empty[0m
+2026-11-06T09:55:14.2509471Z [36;1m# string arg makes GNU tee fail (exit code 1) and flips the pipeline exit code.[0m
+2026-11-06T09:55:14.2509985Z [36;1mLOG_TEE_TARGETS=("${TEST_LOG_DIR}/${tc_name}.log")[0m
+2026-11-06T09:55:14.2510342Z [36;1mif [ "true" = "true" ]; then[0m
+2026-11-06T09:55:14.2510846Z [36;1m  LOG_TEE_TARGETS+=("${log_path}/${tc_name}.log")[0m
+2026-11-06T09:55:14.2511184Z [36;1mfi[0m
+2026-11-06T09:55:14.2511369Z [36;1m[0m
+2026-11-06T09:55:14.2511810Z [36;1m# Optional: delegate execution to scripts/ci/npu/precise-test/run_tests_with_coverage.sh when the[0m
+2026-11-06T09:55:14.2512534Z [36;1m# caller sets use_coverage_runner=true. list_tests.py (same directory) enumerates the[0m
+2026-11-06T09:55:14.2513176Z [36;1m# selected test files; the original run_suite.py execution below is preserved[0m
+2026-11-06T09:55:14.2513804Z [36;1m# unchanged for the default (false) path.[0m
+2026-11-06T09:55:14.2514143Z [36;1mif [[ "false" == "true" ]]; then[0m
+2026-11-06T09:55:14.2514440Z [36;1m  pip install coverage==7.8.*[0m
+2026-11-06T09:55:14.2515137Z [36;1m  ${PYTHON_FOR_SGLANG} -u ../scripts/ci/npu/precise-test/list_tests.py --hw npu --suite ${test_suite} ${PARTITION_ARGS} -o /tmp/selected_tests.txt[0m
+2026-11-06T09:55:14.2515849Z [36;1m  echo "Selected test files:"[0m
+2026-11-06T09:55:14.2516150Z [36;1m  cat /tmp/selected_tests.txt[0m
+2026-11-06T09:55:14.2516474Z [36;1m  if [ -s /tmp/selected_tests.txt ]; then[0m
+2026-11-06T09:55:14.2517034Z [36;1m    bash ../scripts/ci/npu/precise-test/run_tests_with_coverage.sh $(cat /tmp/selected_tests.txt)[0m
+2026-11-06T09:55:14.2517547Z [36;1m  fi[0m
+2026-11-06T09:55:14.2517744Z [36;1m  exit 0[0m
+2026-11-06T09:55:14.2517947Z [36;1mfi[0m
+2026-11-06T09:55:14.2518136Z [36;1m[0m
+2026-11-06T09:55:14.2518370Z [36;1m# Run NPU test suite with run_suite.py.[0m
+2026-11-06T09:55:14.2518862Z [36;1m# Capture mode (--enable-retry --max-attempts 1) keeps test subprocesses off the[0m
+2026-11-06T09:55:14.2519481Z [36;1m# tee pipe, so leftover server processes cannot block the pipeline on exit.[0m
+2026-11-06T09:55:14.2520700Z [36;1m${PYTHON_FOR_SGLANG} -u run_suite.py --hw npu --suite ${test_suite} ${NIGHTLY_FLAG} ${PARTITION_ARGS} ${ONLY_FILE_ARGS} ${TIMEOUT_FLAG} --enable-retry --max-attempts 1 --timeout-per-file 7200 2>&1 | tee "${LOG_TEE_TARGETS[@]}" || test_exit_code=$?[0m
+2026-11-06T09:55:14.2521753Z [36;1m[0m
+2026-11-06T09:55:14.2521968Z [36;1mecho "Finished test: ${tc_name}"[0m
+2026-11-06T09:55:14.2522248Z [36;1m[0m
+2026-11-06T09:55:14.2522469Z [36;1mif [ "${test_exit_code}" = "0" ]; then[0m
+2026-11-06T09:55:14.2522782Z [36;1m  test_status="pass"[0m
+2026-11-06T09:55:14.2523042Z [36;1m  status_icon="✅"[0m
+2026-11-06T09:55:14.2523281Z [36;1melse[0m
+2026-11-06T09:55:14.2523497Z [36;1m  test_status="fail"[0m
+2026-11-06T09:55:14.2523759Z [36;1m  status_icon="❌"[0m
+2026-11-06T09:55:14.2523988Z [36;1mfi[0m
+2026-11-06T09:55:14.2524174Z [36;1m[0m
+2026-11-06T09:55:14.2524373Z [36;1mecho "tc_name=${tc_name}"[0m
+2026-11-06T09:55:14.2524658Z [36;1mexport test_status tc_name[0m
+2026-11-06T09:55:14.2525064Z [36;1mecho "## ${tc_name}  ${status_icon} ${test_status}" >> $GITHUB_STEP_SUMMARY[0m
+2026-11-06T09:55:14.2525498Z [36;1mecho "" >> $GITHUB_STEP_SUMMARY[0m
+2026-11-06T09:55:14.2525795Z [36;1mif [ "true" != "true" ]; then[0m
+2026-11-06T09:55:14.2526261Z [36;1m  metric_count=$(grep -c '\[METRIC\]' "${TEST_LOG_DIR}/${tc_name}.log" 2>/dev/null || echo 0)[0m
+2026-11-06T09:55:14.2526770Z [36;1m  if [ "${metric_count}" -gt 0 ]; then[0m
+2026-11-06T09:55:14.2527163Z [36;1m    echo "| Metric | Value | Pass |" >> $GITHUB_STEP_SUMMARY[0m
+2026-11-06T09:55:14.2527608Z [36;1m    echo "|--------|-------|------|" >> $GITHUB_STEP_SUMMARY[0m
+2026-11-06T09:55:14.2528119Z [36;1m    grep '\[METRIC\]' "${TEST_LOG_DIR}/${tc_name}.log" | while IFS= read -r line; do[0m
+2026-11-06T09:55:14.2528689Z [36;1m      metric_name=$(echo "$line" | sed -E 's/.*\[METRIC\] ([^=]+)=.*/\1/')[0m
+2026-11-06T09:55:14.2529226Z [36;1m      metric_value=$(echo "$line" | sed -E 's/.*\[METRIC\] [^=]+=([^ ]+).*/\1/')[0m
+2026-11-06T09:55:14.2529818Z [36;1m      echo "| ${metric_name} | ${metric_value} | ${status_icon} |" >> $GITHUB_STEP_SUMMARY[0m
+2026-11-06T09:55:14.2530274Z [36;1m    done[0m
+2026-11-06T09:55:14.2530475Z [36;1m  else[0m
+2026-11-06T09:55:14.2531138Z [36;1m    echo "No metrics collected (test may have failed before producing results)." >> $GITHUB_STEP_SUMMARY[0m
+2026-11-06T09:55:14.2531682Z [36;1m  fi[0m
+2026-11-06T09:55:14.2531916Z [36;1m  echo "" >> $GITHUB_STEP_SUMMARY[0m
+2026-11-06T09:55:14.2532195Z [36;1mfi[0m
+2026-11-06T09:55:14.2532408Z [36;1mexit ${test_exit_code}[0m
+2026-11-06T09:55:14.2532841Z shell: bash --noprofile --norc -e -o pipefail {0}
+2026-11-06T09:55:14.2533271Z env:
+2026-11-06T09:55:14.2533478Z   SKIP_PR_TEST_HEALTH_CHECK: true
+2026-11-06T09:55:14.2533754Z   SGLANG_USE_MODELSCOPE: true
+2026-11-06T09:55:14.2534039Z   HF_ENDPOINT: https://hf-mirror.com
+2026-11-06T09:55:14.2534320Z   SGLANG_IS_IN_CI: true
+2026-11-06T09:55:14.2534562Z   TRANSFORMERS_VERBOSITY: error
+2026-11-06T09:55:14.2534834Z   GDN_ATTN_BACKEND_TRITON: 1
+2026-11-06T09:55:14.2535411Z   ONLY_TESTS: test/registered/npu/performance/deepseek_v4_flash/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap.py
+
+2026-11-06T09:55:14.2536024Z ##[endgroup]
+2026-11-06T09:55:14.2647765Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T09:55:14.2648803Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T09:55:14.2649143Z ##[endgroup]
+2026-11-06T09:55:14.4986665Z (node:831) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T09:55:14.4987446Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T09:55:14.5200498Z (node:831) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T09:55:14.5693576Z (node:831) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-06T09:55:15.2721637Z Source code path: /__w/sglang/sglang
+2026-11-06T09:55:15.2732999Z Test mode: suite (nightly-perf-16-npu-a3)
+2026-11-06T09:55:15.2818660Z Persistence prefix: run_id=42197450049 run_attempt=1 branch_label=shun8686-overlapschedule workflow_name=Nightly_Test_NPU--cann9.1.0-a3-B010 create_time=20261106-1745
+2026-11-06T09:55:15.2957001Z METRICS_DATA_FILE=/root/.cache/tests/output/shun8686-overlapschedule-20261106-1745-42197450049-1/Nightly_Test_NPU--cann9.1.0-a3-B010/perf/nightly-perf-16-npu-a3
+2026-11-06T09:55:15.2958366Z SGLANG_TEST_METRICS_OUTPUT=/root/.cache/tests/output/shun8686-overlapschedule-20261106-1745-42197450049-1/Nightly_Test_NPU--cann9.1.0-a3-B010/perf/nightly-perf-16-npu-a3/metrics
+2026-11-06T09:55:16.0513820Z Transformers version for sglang:  5.19.0
+2026-11-06T09:55:16.1701627Z tabulate: available, skip
+2026-11-06T09:55:16.1821916Z scaling_governor performance num:   320
+2026-11-06T09:55:16.1836537Z swappiness: 0
+2026-11-06T09:55:16.1852009Z numa_balancing: 0
+2026-11-06T09:55:16.1867546Z sched_migration_cost_ns: 50000
+2026-11-06T09:55:16.1868639Z SGLANG_SET_CPU_AFFINITY: 1
+2026-11-06T09:55:34.7459799Z Log path: /root/.cache/tests/logs/log/shun8686-overlapschedule-20261106-1745-42197450049-1/Nightly_Test_NPU--cann9.1.0-a3-B010/perf/nightly-perf-16-npu-a3/linux-aarch64-a3-800t-16-cn12-001-hwpcp-runner-pt66s-workflow
+2026-11-06T09:55:34.7460917Z Running test: nightly-perf-16-npu-a3
+2026-11-06T09:55:34.7476881Z Precision mode: running 2 recommended file(s)
+2026-11-06T09:55:47.2140126Z Traceback (most recent call last):
+2026-11-06T09:55:47.2140600Z   File "/__w/sglang/sglang/test/run_suite.py", line 17, in <module>
+2026-11-06T09:55:47.2141062Z     from sglang.test.ci.ci_utils import run_unittest_files
+2026-11-06T09:55:47.2141602Z   File "/sgl-workspace/sglang/python/sglang/test/ci/ci_utils.py", line 12, in <module>
+2026-11-06T09:55:47.2142145Z     from sglang.srt.utils.process import kill_process_tree
+2026-11-06T09:55:47.2142608Z ModuleNotFoundError: No module named 'sglang.srt.utils.process'
+2026-11-06T09:55:47.2144108Z [ERROR] 2026-11-06-09:55:47 (PID:2641, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception
+2026-11-06T09:55:49.0863045Z Finished test: nightly-perf-16-npu-a3
+2026-11-06T09:55:49.0863382Z tc_name=nightly-perf-16-npu-a3
+2026-11-06T09:55:49.1608842Z ##[error]Error: failed to run script step:
+  ✗ exit code: 1
+  → your script exited with a non-zero code; please check your script for errors
+------------------------------------------------------------
+Last output:
+  SGLANG_TEST_METRICS_OUTPUT=/root/.cache/tests/output/shun8686-overlapschedule-20261106-1745-42197450049-1/Nightly_Test_NPU--cann9.1.0-a3-B010/perf/nightly-perf-16-npu-a3/metrics
+  Transformers version for sglang:  5.19.0
+  tabulate: available, skip
+  scaling_governor performance num:   320
+  swappiness: 0
+  numa_balancing: 0
+  sched_migration_cost_ns: 50000
+  SGLANG_SET_CPU_AFFINITY: 1
+  Log path: /root/.cache/tests/logs/log/shun8686-overlapschedule-20261106-1745-42197450049-1/Nightly_Test_NPU--cann9.1.0-a3-B010/perf/nightly-perf-16-npu-a3/linux-aarch64-a3-800t-16-cn12-001-hwpcp-runner-pt66s-workflow
+  Running test: nightly-perf-16-npu-a3
+  Precision mode: running 2 recommended file(s)
+  Traceback (most recent call last):
+    File "/__w/sglang/sglang/test/run_suite.py", line 17, in <module>
+      from sglang.test.ci.ci_utils import run_unittest_files
+    File "/sgl-workspace/sglang/python/sglang/test/ci/ci_utils.py", line 12, in <module>
+      from sglang.srt.utils.process import kill_process_tree
+  ModuleNotFoundError: No module named 'sglang.srt.utils.process'
+  [ERROR] 2026-11-06-09:55:47 (PID:2641, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception
+  Finished test: nightly-perf-16-npu-a3
+  tc_name=nightly-perf-16-npu-a3
+2026-11-06T09:55:49.1751335Z ##[error]Process completed with exit code 1.
+2026-11-06T09:55:49.1941651Z ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.
+2026-11-06T09:55:49.2753417Z Post job cleanup.
+2026-11-06T09:55:49.2782497Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T09:55:49.2783733Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T09:55:49.2784089Z ##[endgroup]
+2026-11-06T09:55:49.5116009Z (node:886) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T09:55:49.5116756Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T09:55:49.5328256Z (node:886) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T09:55:49.5819460Z (node:886) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-06T09:55:50.3867677Z [command]/usr/bin/git version
+2026-11-06T09:55:50.3906035Z git version 2.34.1
+2026-11-06T09:55:50.3930985Z Copying '/root/.gitconfig' to '/__w/_temp/0d016957-40ce-4e22-9432-20dc2e29fd4b/.gitconfig'
+2026-11-06T09:55:50.3943076Z Temporarily overriding HOME='/__w/_temp/0d016957-40ce-4e22-9432-20dc2e29fd4b' before making global git config changes
+2026-11-06T09:55:50.3943843Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-06T09:55:50.3954656Z [command]/usr/bin/git config --global --add safe.directory /__w/sglang/sglang
+2026-11-06T09:55:50.3997699Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-06T09:55:50.4036296Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-06T09:55:50.4390699Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-06T09:55:50.4419529Z http.https://github.com/.extraheader
+2026-11-06T09:55:50.4429156Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-06T09:55:50.4468474Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-06T09:55:50.4832084Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-06T09:55:50.4867336Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-06T09:55:51.6397964Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T09:55:51.6399042Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T09:55:51.6399368Z ##[endgroup]
+2026-11-06T09:55:51.8756973Z (node:979) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T09:55:51.8757731Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T09:55:51.8970063Z (node:979) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T09:55:52.0190815Z Cleaning up orphan processes
+2026-11-06T09:55:52.0320865Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

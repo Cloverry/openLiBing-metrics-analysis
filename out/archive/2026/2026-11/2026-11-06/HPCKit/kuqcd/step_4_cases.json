@@ -1,0 +1,60 @@
+{
+ "_doc": {
+  "step": "step_4_cases",
+  "title": "第 4 步 测试用例取证（T6）",
+  "source": "openLiBing 测试报告页 + 用例日志下载",
+  "criteria": "取失败任务的失败用例、错误信息、深度学习命中行，并下载用例日志到 case_logs/",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-09 15:06:59",
+  "component": "HPCKit",
+  "pipeline": "kuqcd",
+  "date": "2026-11-06"
+ },
+ "results": [
+  {
+   "route": "test",
+   "key": "HPCKit|kuqcd",
+   "pipeline": "kuqcd",
+   "pipelineName": "Nightly-CI-Component-pipeline_kuqcd",
+   "rn": 198,
+   "st": "11-06 00:31",
+   "projectId": 300073,
+   "pipelineId": "eeedf3e4794449969ad6d7f67691d0be",
+   "rid": "a36fec8406ed4de9ba4f868015c8f8e0",
+   "jobId": "51106a4afa194c74bdb0e822b05d6863",
+   "jobName": "Test_quqcd",
+   "stepIds": [
+    "a08464888427476bbcc286cc7bae1d0a"
+   ],
+   "steps": [
+    {
+     "id": "a08464888427476bbcc286cc7bae1d0a",
+     "name": "Test_quqcd",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "1f30dd76dda74aa28ada02455593e899",
+     "jobIdParam": "f61ea200f37e43228c6f7e7905bfd873"
+    }
+   ],
+   "jobErrMsg": "步骤Test_quqcd执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "f7faec702420496098230bf43f2d3f18",
+   "code": 200,
+   "summary": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "passRate": "0.00%"
+   },
+   "failedCases": [],
+   "empty": true
+  }
+ ],
+ "caseErrors": [],
+ "errors": [],
+ "counts": {
+  "tasks": 1,
+  "failedCases": 0,
+  "caseLogs": 0,
+  "caseErrors": 0
+ }
+}

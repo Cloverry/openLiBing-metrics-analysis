@@ -1,0 +1,235 @@
+{
+ "route": "github",
+ "key": "vllm-ascend|a3.yaml",
+ "rn": 16450,
+ "rid": "42063861754",
+ "st": "11-06 09:01",
+ "runId": 42063861754,
+ "repo": "vllm-project/vllm-ascend",
+ "displayTitle": "Nightly-A3 (scheduled)",
+ "event": "workflow_dispatch",
+ "status": "FAILED",
+ "duration": 112.63,
+ "runStatus": {
+  "status": "completed",
+  "conclusion": "cancelled",
+  "updatedAt": "2026-11-06T02:53:49Z",
+  "attempt": 2
+ },
+ "_v": 2,
+ "mode": "perjob",
+ "why": "失败 job 5 个（≤5，逐 job 精取）",
+ "totalJobs": 17,
+ "failedJobs": [
+  {
+   "name": "multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2-A3.yaml, tests/e2e/cases/models/configs/Kimi, 4) / Kimi-K3-MRV2-A3.yaml",
+   "id": 127640780266,
+   "steps": [
+    {
+     "name": "Wait for pods ready",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "multi-node (main, MiniMax-M3-w8a8-PP-prefix-PD, MiniMax-M3-w8a8-PP-prefix-PD.yaml, tests/e2e/case... / MiniMax-M3-w8a8-PP-prefix-PD.yaml",
+   "id": 127640784310,
+   "steps": [
+    {
+     "name": "Wait for pods ready",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "double-node (main, Kimi-K2.6-W4A8-64k-1k-TPOT50-PD, Kimi-K2.6-W4A8-64k-1k-TPOT50-PD.yaml, tests/e... / Kimi-K2.6-W4A8-64k-1k-TPOT50-PD.yaml",
+   "id": 127649607216,
+   "steps": [
+    {
+     "name": "Wait for pods ready",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "double-node (main, multi-node-GLM-5.1-W8A8C8-MTP-A3_198k_function, GLM-5.1-W8A8C8-A3_198k_functio... / GLM-5.1-W8A8C8-A3_198k_function.yaml",
+   "id": 127649607230,
+   "steps": [
+    {
+     "name": "Wait for pods ready",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "double-node (main, DeepSeek-V4.1-Flash-w8a8-PD-MRV2, DeepSeek-V4.1-Flash-w8a8-PD-MRV2.yaml, tests... / DeepSeek-V4.1-Flash-w8a8-PD-MRV2.yaml",
+   "id": 127657815823,
+   "steps": [
+    {
+     "name": "Wait for pods ready",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ ],
+ "cancelledJobs": [
+  {
+   "name": "double-node (main, DeepSeek-V4-flash-w8a8-PD-prefix-MRV2, DeepSeek-V4-flash-w8a8-PD-prefix-MRV2.y... / DeepSeek-V4-flash-w8a8-PD-prefix-MRV2.yaml",
+   "id": 127665949541
+  },
+  {
+   "name": "double-node (main, multi-node-GLM-5.1-W8A8C8-A3_128k_90_50, GLM-5.1-W8A8C8-A3_128k_90_50.yaml, te... / GLM-5.1-W8A8C8-A3_128k_90_50.yaml",
+   "id": 127672169057
+  }
+ ],
+ "jobs": [
+  {
+   "name": "multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2-A3.yaml, tests/e2e/cases/models/configs/Kimi, 4) / Kimi-K3-MRV2-A3.yaml",
+   "id": 127640780266,
+   "conclusion": "failure",
+   "startedAt": "2026-11-06T01:01:38Z",
+   "completedAt": "2026-11-06T01:24:11Z",
+   "logFile": "github_logs/gh_42063861754/127640780266_multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2-A3.yaml, tests_e2e_cases_models_~0bc925.txt",
+   "logBytes": 273738,
+   "logLines": 3124,
+   "errorLines": [
+    "L2143: ##[error]Error: failed to run script step:",
+    "L2144: ✗ exit code: 1",
+    "L2168: ##[error]Process completed with exit code 1.",
+    "L2169: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
+    "L2649: ##[error]Upload failed. See log:",
+    "L2678: ##[error]Error: failed to run script step:",
+    "L2679: ✗ exit code: 1",
+    "L2696: ##[error]Process completed with exit code 1.",
+    "L2697: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Wait for pods ready",
+     "conclusion": "failure"
+    }
+   ],
+   "isTestJob": true,
+   "testResults": null
+  },
+  {
+   "name": "multi-node (main, MiniMax-M3-w8a8-PP-prefix-PD, MiniMax-M3-w8a8-PP-prefix-PD.yaml, tests/e2e/case... / MiniMax-M3-w8a8-PP-prefix-PD.yaml",
+   "id": 127640784310,
+   "conclusion": "failure",
+   "startedAt": "2026-11-06T01:01:42Z",
+   "completedAt": "2026-11-06T01:23:29Z",
+   "logFile": "github_logs/gh_42063861754/127640784310_multi-node (main, MiniMax-M3-w8a8-PP-prefix-PD, MiniMax-M3-w8a8-PP-prefix-PD.yam~ace01f.txt",
+   "logBytes": 244236,
+   "logLines": 2632,
+   "errorLines": [
+    "L1686: ##[error]Error: failed to run script step:",
+    "L1687: ✗ exit code: 1",
+    "L1711: ##[error]Process completed with exit code 1.",
+    "L1712: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
+    "L2162: ##[error]Upload failed. See log:",
+    "L2186: ##[error]Error: failed to run script step:",
+    "L2187: ✗ exit code: 1",
+    "L2204: ##[error]Process completed with exit code 1.",
+    "L2205: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Wait for pods ready",
+     "conclusion": "failure"
+    }
+   ],
+   "isTestJob": true,
+   "testResults": null
+  },
+  {
+   "name": "double-node (main, Kimi-K2.6-W4A8-64k-1k-TPOT50-PD, Kimi-K2.6-W4A8-64k-1k-TPOT50-PD.yaml, tests/e... / Kimi-K2.6-W4A8-64k-1k-TPOT50-PD.yaml",
+   "id": 127649607216,
+   "conclusion": "failure",
+   "startedAt": "2026-11-06T01:24:38Z",
+   "completedAt": "2026-11-06T01:47:00Z",
+   "logFile": "github_logs/gh_42063861754/127649607216_double-node (main, Kimi-K2.6-W4A8-64k-1k-TPOT50-PD, Kimi-K2.6-W4A8-64k-1k-TPOT50~a9a56e.txt",
+   "logBytes": 250566,
+   "logLines": 2660,
+   "errorLines": [
+    "L1705: ##[error]Error: failed to run script step:",
+    "L1706: ✗ exit code: 1",
+    "L1730: ##[error]Process completed with exit code 1.",
+    "L1731: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
+    "L2189: ##[error]Upload failed. See log:",
+    "L2214: ##[error]Error: failed to run script step:",
+    "L2215: ✗ exit code: 1",
+    "L2232: ##[error]Process completed with exit code 1.",
+    "L2233: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Wait for pods ready",
+     "conclusion": "failure"
+    }
+   ],
+   "isTestJob": true,
+   "testResults": null
+  },
+  {
+   "name": "double-node (main, multi-node-GLM-5.1-W8A8C8-MTP-A3_198k_function, GLM-5.1-W8A8C8-A3_198k_functio... / GLM-5.1-W8A8C8-A3_198k_function.yaml",
+   "id": 127649607230,
+   "conclusion": "failure",
+   "startedAt": "2026-11-06T01:24:43Z",
+   "completedAt": "2026-11-06T01:46:49Z",
+   "logFile": "github_logs/gh_42063861754/127649607230_double-node (main, multi-node-GLM-5.1-W8A8C8-MTP-A3_198k_function, GLM-5.1-W8A8C~94dc9e.txt",
+   "logBytes": 244084,
+   "logLines": 2603,
+   "errorLines": [
+    "L1653: ##[error]Error: failed to run script step:",
+    "L1654: ✗ exit code: 1",
+    "L1678: ##[error]Process completed with exit code 1.",
+    "L1679: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
+    "L2127: ##[error]Upload failed. See log:",
+    "L2157: ##[error]Error: failed to run script step:",
+    "L2158: ✗ exit code: 1",
+    "L2175: ##[error]Process completed with exit code 1.",
+    "L2176: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Wait for pods ready",
+     "conclusion": "failure"
+    }
+   ],
+   "isTestJob": true,
+   "testResults": null
+  },
+  {
+   "name": "double-node (main, DeepSeek-V4.1-Flash-w8a8-PD-MRV2, DeepSeek-V4.1-Flash-w8a8-PD-MRV2.yaml, tests... / DeepSeek-V4.1-Flash-w8a8-PD-MRV2.yaml",
+   "id": 127657815823,
+   "conclusion": "failure",
+   "startedAt": "2026-11-06T01:47:26Z",
+   "completedAt": "2026-11-06T02:10:12Z",
+   "logFile": "github_logs/gh_42063861754/127657815823_double-node (main, DeepSeek-V4.1-Flash-w8a8-PD-MRV2, DeepSeek-V4.1-Flash-w8a8-PD~1151d1.txt",
+   "logBytes": 254166,
+   "logLines": 2648,
+   "errorLines": [
+    "L1686: ##[error]Error: failed to run script step:",
+    "L1687: ✗ exit code: 1",
+    "L1705: ##[error]Process completed with exit code 1.",
+    "L1706: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
+    "L2175: ##[error]Upload failed. See log:",
+    "L2202: ##[error]Error: failed to run script step:",
+    "L2203: ✗ exit code: 1",
+    "L2220: ##[error]Process completed with exit code 1.",
+    "L2221: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Wait for pods ready",
+     "conclusion": "failure"
+    }
+   ],
+   "isTestJob": true,
+   "testResults": null
+  }
+ ],
+ "missing": [],
+ "systemLogs": [],
+ "ghComplete": true
+}

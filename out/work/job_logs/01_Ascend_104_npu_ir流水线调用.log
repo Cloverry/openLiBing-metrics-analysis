@@ -1,0 +1,187 @@
+[2026/11/06 17:00:55.104 GMT+08:00] [INFO]  : [JobStatusPlugin] onStarted: j_QJxnpknI #1
+[2026/11/06 17:00:55.106 GMT+08:00] Resume disabled by user, switching to high-performance, low-durability mode.
+[2026/11/06 17:00:55.223 GMT+08:00] [INFO] [PRE_ENV:slave_create] : 该步骤开始执行
+[2026/11/06 17:00:55.224 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] resources pool message: 1b7be586dbe44b5ab8823482f584efcc
+[2026/11/06 17:00:55.226 GMT+08:00] [WARNING] [PRE_ENV:slave_create] : [slave] find empty runtime, location: PRE_ENV.slave_create
+[2026/11/06 17:00:55.226 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] Fixed content: No
+[2026/11/06 17:00:55.331 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] Find available executor node:agent_1788157648531-OQxelGZdbU
+[2026/11/06 17:00:55.380 GMT+08:00] [INFO] [PRE_ENV:slave_create] : 该步骤执行完成
+[2026/11/06 17:00:55.746 GMT+08:00] shell4.2.46-git2.23-zip-1.1.0: Pulling from *****
+[2026/11/06 17:00:55.746 GMT+08:00] Digest: sha256:cb2b80ace7897cf5b96f372c7fd4e34c834d5b22b3349018171f5de966334c9e
+[2026/11/06 17:00:55.746 GMT+08:00] Status: Image is up to date for************
+[2026/11/06 17:00:55.746 GMT+08:00]************
+[2026/11/06 17:00:56.408 GMT+08:00] [INFO] [代码检出:external_pre_checkout] : 该步骤开始执行
+[2026/11/06 17:00:56.409 GMT+08:00] [INFO] [代码检出:external_pre_checkout] : git plugin version: 1.12.5
+[2026/11/06 17:00:56.416 GMT+08:00] [INFO] [代码检出:external_pre_checkout] : 成功配置文件。
+[2026/11/06 17:00:56.649 GMT+08:00] [INFO] [代码检出:external_pre_checkout] : [WARN]DEV.CB.02101217,用户名或密码为空。
+[2026/11/06 17:00:56.649 GMT+08:00] [INFO] [代码检出:external_pre_checkout] : 创建gitcode代码访问凭证成功。
+[2026/11/06 17:00:56.650 GMT+08:00] [INFO] [代码检出:external_pre_checkout] : 该步骤执行完成
+[2026/11/06 17:00:56.682 GMT+08:00] No credentials specified
+[2026/11/06 17:00:56.683 GMT+08:00] set customize username password****           
+[2026/11/06 17:00:56.687 GMT+08:00] addDefaultCredentials
+[2026/11/06 17:00:56.690 GMT+08:00] git plugin version: 3.12.22-h1.cbu.codearts.build.r1
+[2026/11/06 17:00:56.693 GMT+08:00] Cloning the remote Git repository
+[2026/11/06 17:00:56.693 GMT+08:00] Using shallow clone
+[2026/11/06 17:00:56.693 GMT+08:00] Avoid fetching tags
+[2026/11/06 17:00:56.693 GMT+08:00] Honoring refspec on initial clone
+[2026/11/06 17:00:56.694 GMT+08:00] Cloning repository https://gitcode.com/BeiMing_Dev/build_project.git
+[2026/11/06 17:00:56.694 GMT+08:00]  > git init /opt/agent_1788157648531/workspace/j_QJxnpknI # timeout=10
+[2026/11/06 17:00:56.697 GMT+08:00] Fetching upstream changes from https://gitcode.com/BeiMing_Dev/build_project.git
+[2026/11/06 17:00:56.697 GMT+08:00]  > git --version # timeout=10
+[2026/11/06 17:00:56.698 GMT+08:00]  > git --version # 'git version 2.34.1'
+[2026/11/06 17:00:56.698 GMT+08:00] using GIT_ASKPASS to set credentials  username and password**** [2026/11/06 17:00:56.699 GMT+08:00] scmType is gitcode
+[2026/11/06 17:00:56.699 GMT+08:00]  > git -c *** fetch --no-tags --force --progress --depth=1 -- https://gitcode.com/BeiMing_Dev/build_project.git +refs/heads/main:refs/remotes/origin/main # timeout=120
+[2026/11/06 17:00:57.204 GMT+08:00]  > git config remote.origin.url https://gitcode.com/BeiMing_Dev/build_project.git # timeout=10
+[2026/11/06 17:00:57.206 GMT+08:00]  > git config --add remote.origin.fetch +refs/heads/main:refs/remotes/origin/main # timeout=10
+[2026/11/06 17:00:57.210 GMT+08:00]  > git config remote.origin.url https://gitcode.com/BeiMing_Dev/build_project.git # timeout=10
+[2026/11/06 17:00:57.215 GMT+08:00] Fetching upstream changes from https://gitcode.com/BeiMing_Dev/build_project.git
+[2026/11/06 17:00:57.215 GMT+08:00] using GIT_ASKPASS to set credentials  username and password**** [2026/11/06 17:00:57.215 GMT+08:00] scmType is gitcode
+[2026/11/06 17:00:57.215 GMT+08:00]  > git -c *** fetch --no-tags --force --progress --depth=1 -- https://gitcode.com/BeiMing_Dev/build_project.git +refs/heads/main:refs/remotes/origin/main # timeout=120
+[2026/11/06 17:00:57.686 GMT+08:00] Checking out Revision d29757b155dc5c4bf1e51be7bf15dced9d24408f (origin/main)
+[2026/11/06 17:00:57.686 GMT+08:00] Disable Git LFS pull
+[2026/11/06 17:00:57.700 GMT+08:00] Commit message: "修改了pod标签"
+[2026/11/06 17:00:57.700 GMT+08:00] First time build. Skipping changelog.
+[2026/11/06 17:00:57.742 GMT+08:00] [INFO] [代码检出:external_post_checkout] : 该步骤开始执行
+[2026/11/06 17:00:57.801 GMT+08:00] [INFO] [代码检出:external_post_checkout] : 该步骤执行完成
+[2026/11/06 17:00:57.680 GMT+08:00]  > git rev-parse origin/main^{commit} # timeout=10
+[2026/11/06 17:00:57.686 GMT+08:00]  > git config core.sparsecheckout # timeout=10
+[2026/11/06 17:00:57.687 GMT+08:00]  > git checkout -f d29757b155dc5c4bf1e51be7bf15dced9d24408f # timeout=120
+[2026/11/06 17:00:57.689 GMT+08:00]  > git branch -a -v --no-abbrev # timeout=10
+[2026/11/06 17:00:57.690 GMT+08:00]  > git checkout -b main d29757b155dc5c4bf1e51be7bf15dced9d24408f # timeout=120
+[2026/11/06 17:00:59.400 GMT+08:00] x86-v3: Pulling from triton-build/triton
+[2026/11/06 17:00:59.400 GMT+08:00] Digest: sha256:84ae7ccc286cd6979fee0e8cc86b9e316e0b4c5557a3ae438b9b3bd1d1f14443
+[2026/11/06 17:00:59.400 GMT+08:00] Status: Image is up to date for swr.cn-north-4.myhuaweicloud.com/triton-build/triton:x86-v3
+[2026/11/06 17:00:59.400 GMT+08:00] swr.cn-north-4.myhuaweicloud.com/triton-build/triton:x86-v3
+[2026/11/06 17:01:00.356 GMT+08:00] + set -e
+[2026/11/06 17:01:00.356 GMT+08:00] + git clone https://private-token:*****@codehub.devcloud.cn-north-4.huaweicloud.com/78e1e0c2148d4da1b5b21a6d159c9a31/triton_ci.git
+[2026/11/06 17:01:00.356 GMT+08:00] Cloning into 'triton_ci'...
+[2026/11/06 17:01:00.366 GMT+08:00] starting check in ***/@tmp/durable-a1a35a6d
+[2026/11/06 17:01:01.323 GMT+08:00] + cd ./triton_ci/triton
+[2026/11/06 17:01:01.323 GMT+08:00] + export TARGET_IAM_AK=*****
+[2026/11/06 17:01:01.323 GMT+08:00] + TARGET_IAM_AK=*****
+[2026/11/06 17:01:01.323 GMT+08:00] + export TARGET_IAM_SK=*****
+[2026/11/06 17:01:01.323 GMT+08:00] + TARGET_IAM_SK=*****
+[2026/11/06 17:01:01.323 GMT+08:00] + export TARGET_PROJECT_ID=1e20b309fcb34b00a0043a87e461c95a
+[2026/11/06 17:01:01.323 GMT+08:00] + TARGET_PROJECT_ID=1e20b309fcb34b00a0043a87e461c95a
+[2026/11/06 17:01:01.323 GMT+08:00] + export TARGET_PIPELINE_ID=ba10eb239aab4b14a59cf33f282c3ced
+[2026/11/06 17:01:01.323 GMT+08:00] + TARGET_PIPELINE_ID=ba10eb239aab4b14a59cf33f282c3ced
+[2026/11/06 17:01:01.323 GMT+08:00] + export REGION=cn-north-4
+[2026/11/06 17:01:01.323 GMT+08:00] + REGION=cn-north-4
+[2026/11/06 17:01:01.323 GMT+08:00] + export npuir_branch=stable
+[2026/11/06 17:01:01.323 GMT+08:00] + npuir_branch=stable
+[2026/11/06 17:01:01.323 GMT+08:00] + export B_SUFFIX=9.2.0.B110
+[2026/11/06 17:01:01.323 GMT+08:00] + B_SUFFIX=9.2.0.B110
+[2026/11/06 17:01:01.323 GMT+08:00] + python3 -m ensurepip --upgrade
+[2026/11/06 17:01:02.289 GMT+08:00] Looking in links: /tmp/tmpamxbuzor
+[2026/11/06 17:01:02.289 GMT+08:00] Requirement already satisfied: pip in /opt/python/cp312-cp312/lib/python3.12/site-packages (26.0.1)
+[2026/11/06 17:01:02.289 GMT+08:00] WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[2026/11/06 17:01:02.289 GMT+08:00] + python3 -m pip install --upgrade pip -i https://repo.huaweicloud.com/repository/pypi/simple
+[2026/11/06 17:01:02.558 GMT+08:00] Looking in indexes: https://repo.huaweicloud.com/repository/pypi/simple
+[2026/11/06 17:01:02.558 GMT+08:00] Requirement already satisfied: pip in /opt/python/cp312-cp312/lib/python3.12/site-packages (26.0.1)
+[2026/11/06 17:01:02.558 GMT+08:00] Collecting pip
+[2026/11/06 17:01:02.558 GMT+08:00]   Downloading https://repo.huaweicloud.com/repository/pypi/packages/07/25/ee8c38ae72d66b844ce8eb9711ba905dba21ca1a8a0c960057c41cd23337/pip-26.3-py3-none-any.whl (2.0 MB)
+[2026/11/06 17:01:02.912 GMT+08:00]      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 40.2 MB/s  0:00:00
+[2026/11/06 17:01:02.912 GMT+08:00] Installing collected packages: pip
+[2026/11/06 17:01:02.912 GMT+08:00]   Attempting uninstall: pip
+[2026/11/06 17:01:02.912 GMT+08:00]     Found existing installation: pip 26.0.1
+[2026/11/06 17:01:02.912 GMT+08:00]     Uninstalling pip-26.0.1:
+[2026/11/06 17:01:02.912 GMT+08:00]       Successfully uninstalled pip-26.0.1
+[2026/11/06 17:01:03.499 GMT+08:00] Successfully installed pip-26.3
+[2026/11/06 17:01:03.499 GMT+08:00] WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[2026/11/06 17:01:03.499 GMT+08:00] + python3 -m pip install -q huaweicloudsdkcore huaweicloudsdkcodeartspipeline -i https://repo.huaweicloud.com/repository/pypi/simple
+[2026/11/06 17:01:06.091 GMT+08:00] WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[2026/11/06 17:01:06.091 GMT+08:00] + python3 -
+[2026/11/06 17:01:06.091 GMT+08:00] 3.1.221
+[2026/11/06 17:01:06.091 GMT+08:00] + python3 build_npuir.py
+[2026/11/06 17:01:07.506 GMT+08:00] 开始启动流水线...
+[2026/11/06 17:01:07.506 GMT+08:00] 流水线变量: {'npuir_branch': 'stable', 'B_SUFFIX': '9.2.0.B110'}
+[2026/11/06 17:01:07.506 GMT+08:00] 流水线启动成功, pipeline_run_id: fcd7024bbe8541e1b6cf5a36ea9bd22f
+[2026/11/06 17:01:07.506 GMT+08:00] 开始观察流水线运行,轮询间隔 30s,最长等待 02:00:00
+[2026/11/06 17:01:07.506 GMT+08:00] 流水线: npu-ir_A3_A5_compile
+[2026/11/06 17:01:07.506 GMT+08:00] 运行编号: run#516
+[2026/11/06 17:01:07.506 GMT+08:00] 开始时间: 2026-11-06 17:01:06
+[2026/11/06 17:01:07.506 GMT+08:00] ----------------------------------------------------------------------
+[2026/11/06 17:01:07.506 GMT+08:00] [17:01:07] run#516 | INIT(初始化) | 已等待 00:00:00
+[2026/11/06 17:01:07.506 GMT+08:00]   · 阶段 [阶段_1] 当前状态: INIT(初始化)
+[2026/11/06 17:01:07.506 GMT+08:00]     任务 [Build_a3a5_x86] 当前状态: INIT(初始化)
+[2026/11/06 17:01:07.506 GMT+08:00]     任务 [Build_a3a5_arm] 当前状态: INIT(初始化)
+[2026/11/06 17:01:39.756 GMT+08:00] [17:01:37] run#516 | RUNNING(运行中) | 已等待 00:00:30
+[2026/11/06 17:01:39.757 GMT+08:00]   · 阶段 [阶段_1]: INIT(初始化) -> RUNNING(运行中)
+[2026/11/06 17:01:39.757 GMT+08:00]     任务 [Build_a3a5_x86]: INIT(初始化) -> RUNNING(运行中)
+[2026/11/06 17:01:39.757 GMT+08:00]     任务 [Build_a3a5_arm]: INIT(初始化) -> RUNNING(运行中)
+[2026/11/06 17:02:12.006 GMT+08:00] [17:02:07] run#516 | RUNNING(运行中) | 已等待 00:01:00
+[2026/11/06 17:02:38.713 GMT+08:00] [17:02:37] run#516 | RUNNING(运行中) | 已等待 00:01:30
+[2026/11/06 17:03:10.962 GMT+08:00] [17:03:08] run#516 | RUNNING(运行中) | 已等待 00:02:00
+[2026/11/06 17:03:43.211 GMT+08:00] [17:03:38] run#516 | RUNNING(运行中) | 已等待 00:02:31
+[2026/11/06 17:04:09.922 GMT+08:00] [17:04:08] run#516 | RUNNING(运行中) | 已等待 00:03:01
+[2026/11/06 17:04:42.180 GMT+08:00] [17:04:38] run#516 | RUNNING(运行中) | 已等待 00:03:31
+[2026/11/06 17:05:09.205 GMT+08:00] [17:05:09] run#516 | RUNNING(运行中) | 已等待 00:04:01
+[2026/11/06 17:05:41.458 GMT+08:00] [17:05:39] run#516 | RUNNING(运行中) | 已等待 00:04:32
+[2026/11/06 17:06:13.707 GMT+08:00] [17:06:09] run#516 | RUNNING(运行中) | 已等待 00:05:02
+[2026/11/06 17:06:40.416 GMT+08:00] [17:06:39] run#516 | RUNNING(运行中) | 已等待 00:05:32
+[2026/11/06 17:07:12.673 GMT+08:00] [17:07:09] run#516 | RUNNING(运行中) | 已等待 00:06:02
+[2026/11/06 17:07:44.922 GMT+08:00] [17:07:40] run#516 | RUNNING(运行中) | 已等待 00:06:32
+[2026/11/06 17:08:11.632 GMT+08:00] [17:08:10] run#516 | RUNNING(运行中) | 已等待 00:07:03
+[2026/11/06 17:08:43.888 GMT+08:00] [17:08:40] run#516 | RUNNING(运行中) | 已等待 00:07:33
+[2026/11/06 17:09:16.138 GMT+08:00] [17:09:10] run#516 | RUNNING(运行中) | 已等待 00:08:03
+[2026/11/06 17:09:42.850 GMT+08:00] [17:09:40] run#516 | RUNNING(运行中) | 已等待 00:08:33
+[2026/11/06 17:10:15.103 GMT+08:00] [17:10:10] run#516 | RUNNING(运行中) | 已等待 00:09:03
+[2026/11/06 17:10:41.817 GMT+08:00] [17:10:41] run#516 | RUNNING(运行中) | 已等待 00:09:33
+[2026/11/06 17:11:14.076 GMT+08:00] [17:11:11] run#516 | RUNNING(运行中) | 已等待 00:10:04
+[2026/11/06 17:11:46.334 GMT+08:00] [17:11:41] run#516 | RUNNING(运行中) | 已等待 00:10:34
+[2026/11/06 17:12:13.042 GMT+08:00] [17:12:11] run#516 | RUNNING(运行中) | 已等待 00:11:04
+[2026/11/06 17:12:45.291 GMT+08:00] [17:12:41] run#516 | RUNNING(运行中) | 已等待 00:11:34
+[2026/11/06 17:13:17.539 GMT+08:00] [17:13:12] run#516 | RUNNING(运行中) | 已等待 00:12:04
+[2026/11/06 17:13:44.247 GMT+08:00] [17:13:42] run#516 | RUNNING(运行中) | 已等待 00:12:35
+[2026/11/06 17:14:16.496 GMT+08:00] [17:14:12] run#516 | RUNNING(运行中) | 已等待 00:13:05
+[2026/11/06 17:14:43.203 GMT+08:00] [17:14:42] run#516 | RUNNING(运行中) | 已等待 00:13:35
+[2026/11/06 17:15:15.529 GMT+08:00] [17:15:12] run#516 | RUNNING(运行中) | 已等待 00:14:05
+[2026/11/06 17:15:48.106 GMT+08:00] [17:15:42] run#516 | RUNNING(运行中) | 已等待 00:14:35
+[2026/11/06 17:16:14.821 GMT+08:00] [17:16:13] run#516 | RUNNING(运行中) | 已等待 00:15:06
+[2026/11/06 17:16:47.081 GMT+08:00] [17:16:43] run#516 | RUNNING(运行中) | 已等待 00:15:36
+[2026/11/06 17:17:13.794 GMT+08:00] [17:17:13] run#516 | RUNNING(运行中) | 已等待 00:16:06
+[2026/11/06 17:17:46.045 GMT+08:00] [17:17:43] run#516 | RUNNING(运行中) | 已等待 00:16:36
+[2026/11/06 17:17:46.045 GMT+08:00]     任务 [Build_a3a5_arm]: RUNNING(运行中) -> FAILED(失败)
+[2026/11/06 17:18:18.304 GMT+08:00] [17:18:13] run#516 | RUNNING(运行中) | 已等待 00:17:06
+[2026/11/06 17:18:45.012 GMT+08:00] [17:18:44] run#516 | RUNNING(运行中) | 已等待 00:17:37
+[2026/11/06 17:19:17.271 GMT+08:00] [17:19:14] run#516 | RUNNING(运行中) | 已等待 00:18:07
+[2026/11/06 17:19:49.525 GMT+08:00] [17:19:44] run#516 | RUNNING(运行中) | 已等待 00:18:37
+[2026/11/06 17:20:16.240 GMT+08:00] [17:20:15] run#516 | RUNNING(运行中) | 已等待 00:19:07
+[2026/11/06 17:20:48.505 GMT+08:00] [17:20:45] run#516 | RUNNING(运行中) | 已等待 00:19:38
+[2026/11/06 17:21:21.054 GMT+08:00] [17:21:15] run#516 | RUNNING(运行中) | 已等待 00:20:08
+[2026/11/06 17:21:47.770 GMT+08:00] [17:21:45] run#516 | RUNNING(运行中) | 已等待 00:20:38
+[2026/11/06 17:22:20.024 GMT+08:00] [17:22:16] run#516 | RUNNING(运行中) | 已等待 00:21:08
+[2026/11/06 17:22:46.743 GMT+08:00] [17:22:46] run#516 | RUNNING(运行中) | 已等待 00:21:39
+[2026/11/06 17:23:19.004 GMT+08:00] [17:23:16] run#516 | RUNNING(运行中) | 已等待 00:22:09
+[2026/11/06 17:23:51.260 GMT+08:00] [17:23:46] run#516 | RUNNING(运行中) | 已等待 00:22:39
+[2026/11/06 17:24:17.971 GMT+08:00] [17:24:17] run#516 | RUNNING(运行中) | 已等待 00:23:09
+[2026/11/06 17:24:50.277 GMT+08:00] [17:24:47] run#516 | RUNNING(运行中) | 已等待 00:23:40
+[2026/11/06 17:25:22.535 GMT+08:00] [17:25:17] run#516 | RUNNING(运行中) | 已等待 00:24:10
+[2026/11/06 17:25:49.251 GMT+08:00] [17:25:47] run#516 | RUNNING(运行中) | 已等待 00:24:40
+[2026/11/06 17:26:21.511 GMT+08:00] [17:26:18] run#516 | FAILED(失败) | 已等待 00:25:10
+[2026/11/06 17:26:21.511 GMT+08:00]   · 阶段 [阶段_1]: RUNNING(运行中) -> FAILED(失败)
+[2026/11/06 17:26:21.511 GMT+08:00]     任务 [Build_a3a5_x86]: RUNNING(运行中) -> FAILED(失败)
+[2026/11/06 17:26:21.511 GMT+08:00] 
+[2026/11/06 17:26:21.511 GMT+08:00] ================ 执行结果 ================
+[2026/11/06 17:26:21.511 GMT+08:00] 流水线: npu-ir_A3_A5_compile
+[2026/11/06 17:26:21.511 GMT+08:00] 运行编号: run#516
+[2026/11/06 17:26:21.511 GMT+08:00] 最终状态: FAILED(失败)
+[2026/11/06 17:26:21.511 GMT+08:00] 开始时间: 2026-11-06 17:01:06
+[2026/11/06 17:26:21.511 GMT+08:00] 结束时间: 2026-11-06 17:25:59
+[2026/11/06 17:26:21.511 GMT+08:00] 持续时间: 00:24:53
+[2026/11/06 17:26:21.511 GMT+08:00]   [阶段] 阶段_1: FAILED(失败)
+[2026/11/06 17:26:21.511 GMT+08:00]     [任务] Build_a3a5_x86: FAILED(失败) | 持续时间: 00:24:51 | message: 步骤Build_a3a5_x86执行失败，错误信息：{"errorMessage":" 构建任务执行失败!","errorCode":"DEV-CODECI-35002"}
+[2026/11/06 17:26:21.511 GMT+08:00]     [任务] Build_a3a5_arm: FAILED(失败) | 持续时间: 00:16:31 | message: 步骤Build_a3a5_arm执行失败，错误信息：{"errorMessage":" 构建任务执行失败!","errorCode":"DEV-CODECI-35002"}
+[2026/11/06 17:26:21.511 GMT+08:00] 
+[2026/11/06 17:26:21.511 GMT+08:00] 失败/取消任务明细:
+[2026/11/06 17:26:21.511 GMT+08:00]   [阶段_1] Build_a3a5_x86: FAILED(失败)
+[2026/11/06 17:26:21.511 GMT+08:00]       message: 步骤Build_a3a5_x86执行失败，错误信息：{"errorMessage":" 构建任务执行失败!","errorCode":"DEV-CODECI-35002"}
+[2026/11/06 17:26:21.511 GMT+08:00]       step [Build_a3a5_x86]: FAILED(失败)
+[2026/11/06 17:26:21.511 GMT+08:00]           message: {"errorMessage":" 构建任务执行失败!","errorCode":"DEV-CODECI-35002"}
+[2026/11/06 17:26:21.511 GMT+08:00]   [阶段_1] Build_a3a5_arm: FAILED(失败)
+[2026/11/06 17:26:21.511 GMT+08:00]       message: 步骤Build_a3a5_arm执行失败，错误信息：{"errorMessage":" 构建任务执行失败!","errorCode":"DEV-CODECI-35002"}
+[2026/11/06 17:26:21.511 GMT+08:00]       step [Build_a3a5_arm]: FAILED(失败)
+[2026/11/06 17:26:21.511 GMT+08:00]           message: {"errorMessage":" 构建任务执行失败!","errorCode":"DEV-CODECI-35002"}
+[2026/11/06 17:26:21.529 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed
+[2026/11/06 17:26:22.849 GMT+08:00] [INFO]  : [JobStatusPlugin] onCompleted: j_QJxnpknI #1
+[2026/11/06 17:26:27.009 GMT+08:00] Finished: FAILURE

@@ -1,0 +1,354 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-09 15:07:00",
+    "component": "SgLang",
+    "pipeline": "nightly-test-npu.yml",
+    "date": "2026-11-06",
+    "recordId": "SgLang|nightly-test-npu.yml#2093"
+  },
+  "recordId": "SgLang|nightly-test-npu.yml#2093",
+  "date": "2026-11-06",
+  "component": "SgLang",
+  "pipeline": "nightly-test-npu.yml",
+  "pipelineName": "nightly-test-npu.yml",
+  "platform": "github",
+  "buildNumber": 2093,
+  "pipelineRunId": "42199356561",
+  "status": "FAILED",
+  "failedTaskType": null,
+  "startedAt": "2026-11-06T18:00:53",
+  "endedAt": "2026-11-06T18:38:37",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-06T18:38:37",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0,
+    "bsRate": null,
+    "dims": [
+      "va"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42199356561",
+    "detail": "https://github.com/sgl-project/sglang/actions/runs/42199356561",
+    "github": "https://github.com/sgl-project/sglang/actions/runs/42199356561"
+  },
+  "tasks": [
+    {
+      "jobName": "nightly-1-npu-a3 / run (0)",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt",
+      "logBytes": 106764,
+      "logLines": 985,
+      "download": "github-perjob",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L916: Traceback (most recent call last):",
+        "L929: ##[error]Error: failed to run script step:",
+        "L930: ✗ exit code: 1",
+        "L941: Traceback (most recent call last):",
+        "L954: ##[error]Process completed with exit code 1.",
+        "L955: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+      ],
+      "githubJob": {
+        "id": 127830580941,
+        "conclusion": "failure",
+        "startedAt": "2026-11-06T10:05:41Z",
+        "completedAt": "2026-11-06T10:07:58Z",
+        "steps": [
+          {
+            "name": "Run test",
+            "conclusion": "failure"
+          }
+        ]
+      }
+    },
+    {
+      "jobName": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42199356561/127830581265_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
+      "logBytes": 61138,
+      "logLines": 707,
+      "download": "github-perjob",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L636: Traceback (most recent call last):",
+        "L651: ##[error]Error: failed to run script step:",
+        "L652: ✗ exit code: 1",
+        "L661: Traceback (most recent call last):",
+        "L676: ##[error]Process completed with exit code 1.",
+        "L677: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+      ],
+      "githubJob": {
+        "id": 127830581265,
+        "conclusion": "failure",
+        "startedAt": "2026-11-06T10:10:17Z",
+        "completedAt": "2026-11-06T10:11:55Z",
+        "steps": [
+          {
+            "name": "Run test",
+            "conclusion": "failure"
+          }
+        ]
+      }
+    },
+    {
+      "jobName": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42199356561/127830581346_nightly-perf-16-npu-a3 _ nightly-perf~467fc30b.txt",
+      "logBytes": 59864,
+      "logLines": 707,
+      "download": "github-perjob",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L636: Traceback (most recent call last):",
+        "L651: ##[error]Error: failed to run script step:",
+        "L652: ✗ exit code: 1",
+        "L661: Traceback (most recent call last):",
+        "L676: ##[error]Process completed with exit code 1.",
+        "L677: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+      ],
+      "githubJob": {
+        "id": 127830581346,
+        "conclusion": "failure",
+        "startedAt": "2026-11-06T10:05:19Z",
+        "completedAt": "2026-11-06T10:08:36Z",
+        "steps": [
+          {
+            "name": "Run test",
+            "conclusion": "failure"
+          }
+        ]
+      }
+    }
+  ],
+  "cases": [],
+  "errorMessages": [
+    {
+      "task": "nightly-1-npu-a3 / run (0)",
+      "source": "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt",
+      "line": 916,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "nightly-1-npu-a3 / run (0)",
+      "source": "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt",
+      "line": 929,
+      "level": "LOG",
+      "text": "##[error]Error: failed to run script step:"
+    },
+    {
+      "task": "nightly-1-npu-a3 / run (0)",
+      "source": "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt",
+      "line": 930,
+      "level": "LOG",
+      "text": "✗ exit code: 1"
+    },
+    {
+      "task": "nightly-1-npu-a3 / run (0)",
+      "source": "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt",
+      "line": 941,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "nightly-1-npu-a3 / run (0)",
+      "source": "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt",
+      "line": 954,
+      "level": "LOG",
+      "text": "##[error]Process completed with exit code 1."
+    },
+    {
+      "task": "nightly-1-npu-a3 / run (0)",
+      "source": "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt",
+      "line": 955,
+      "level": "LOG",
+      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+    },
+    {
+      "task": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+      "source": "github_logs/gh_42199356561/127830581265_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
+      "line": 636,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+      "source": "github_logs/gh_42199356561/127830581265_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
+      "line": 651,
+      "level": "LOG",
+      "text": "##[error]Error: failed to run script step:"
+    },
+    {
+      "task": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+      "source": "github_logs/gh_42199356561/127830581265_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
+      "line": 652,
+      "level": "LOG",
+      "text": "✗ exit code: 1"
+    },
+    {
+      "task": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+      "source": "github_logs/gh_42199356561/127830581265_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
+      "line": 661,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+      "source": "github_logs/gh_42199356561/127830581265_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
+      "line": 676,
+      "level": "LOG",
+      "text": "##[error]Process completed with exit code 1."
+    },
+    {
+      "task": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+      "source": "github_logs/gh_42199356561/127830581265_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
+      "line": 677,
+      "level": "LOG",
+      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+    },
+    {
+      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+      "source": "github_logs/gh_42199356561/127830581346_nightly-perf-16-npu-a3 _ nightly-perf~467fc30b.txt",
+      "line": 636,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+      "source": "github_logs/gh_42199356561/127830581346_nightly-perf-16-npu-a3 _ nightly-perf~467fc30b.txt",
+      "line": 651,
+      "level": "LOG",
+      "text": "##[error]Error: failed to run script step:"
+    },
+    {
+      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+      "source": "github_logs/gh_42199356561/127830581346_nightly-perf-16-npu-a3 _ nightly-perf~467fc30b.txt",
+      "line": 652,
+      "level": "LOG",
+      "text": "✗ exit code: 1"
+    },
+    {
+      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+      "source": "github_logs/gh_42199356561/127830581346_nightly-perf-16-npu-a3 _ nightly-perf~467fc30b.txt",
+      "line": 661,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+      "source": "github_logs/gh_42199356561/127830581346_nightly-perf-16-npu-a3 _ nightly-perf~467fc30b.txt",
+      "line": 676,
+      "level": "LOG",
+      "text": "##[error]Process completed with exit code 1."
+    },
+    {
+      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+      "source": "github_logs/gh_42199356561/127830581346_nightly-perf-16-npu-a3 _ nightly-perf~467fc30b.txt",
+      "line": 677,
+      "level": "LOG",
+      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+    }
+  ],
+  "evidence": {
+    "files": [
+      "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt",
+      "github_logs/gh_42199356561/127830581265_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
+      "github_logs/gh_42199356561/127830581346_nightly-perf-16-npu-a3 _ nightly-perf~467fc30b.txt"
+    ],
+    "missing": [],
+    "github": {
+      "runId": 42199356561,
+      "repo": "sgl-project/sglang",
+      "displayTitle": "[Test][NPU] overlap-schedule validation: GLM5/Kimi/DSV4 case reconfig + TEMP nightly scoping",
+      "mode": "perjob",
+      "totalJobs": 15,
+      "failedJobs": [
+        {
+          "name": "nightly-1-npu-a3 / run (0)",
+          "id": 127830580941,
+          "steps": [
+            {
+              "name": "Run test",
+              "conclusion": "failure"
+            }
+          ]
+        },
+        {
+          "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+          "id": 127830581265,
+          "steps": [
+            {
+              "name": "Run test",
+              "conclusion": "failure"
+            }
+          ]
+        },
+        {
+          "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+          "id": 127830581346,
+          "steps": [
+            {
+              "name": "Run test",
+              "conclusion": "failure"
+            }
+          ]
+        }
+      ],
+      "missing": [],
+      "complete": true
+    }
+  },
+  "counts": {
+    "tasks": 3,
+    "testTasks": 0,
+    "logTasks": 3,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 18,
+    "evidenceFiles": 3
+  },
+  "verdict": {
+    "category": "job_failure",
+    "text": "任务失败",
+    "confidence": 0.7,
+    "level": "中",
+    "basis": [
+      "任务 nightly-1-npu-a3 / run (0) 日志命中 6 条错误行（非编译特征），见 github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt",
+      "基线 0.30",
+      "证据文件落盘 3 份 +0.25",
+      "任务日志命中错误行 +0.15"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "rootCause": "用例注册校验失败：ValueError: No CI registry found in .../kernels/ops/communication/test_mlu_communicator.py 与 .../kernels/ops/layernorm/test_layernorm_mlu.py，新增的 MLU 用例未在 CI registry 中登记，框架拒绝执行。",
+    "advice": "为上述 MLU 用例补充 CI registry 注册（注册装饰器或注册表条目），并在用例模板中默认带上注册，避免新增用例被判为未注册而整 job 失败。",
+    "cites": [
+      "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt:L927",
+      "github_logs/gh_42199356561/127830581265_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt:L647",
+      "github_logs/gh_42199356561/127830581346_nightly-perf-16-npu-a3 _ nightly-perf~467fc30b.txt:L647"
+    ],
+    "updatedAt": "2026-11-09 15:07:00",
+    "source": "agent"
+  }
+}

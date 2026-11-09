@@ -1,0 +1,14 @@
+2026-11-05T17:27:08.9250000Z Evaluating nightly-poc-multi-node-tests.if
+2026-11-05T17:27:08.9250000Z Evaluating: !cancelled()
+2026-11-05T17:27:08.9250000Z Expanded: !false
+2026-11-05T17:27:08.9250000Z Result: true
+2026-11-05T17:27:08.9250000Z Evaluating nightly-poc-multi-node-tests.deepseek_v4_flash_w8a8_1p.e2e.if
+2026-11-05T17:27:08.9250000Z Evaluating: success()
+2026-11-05T17:27:08.9250000Z Result: true
+2026-11-05T17:27:08.9280000Z Requested labels: linux-amd64-cpu-4
+2026-11-05T17:27:08.9280000Z Job defined at: sgl-project/sglang/.github/workflows/nightly-test-npu-e2e-multi-node.yml@refs/heads/main
+2026-11-05T17:27:08.9280000Z Reusable workflow chain:
+2026-11-05T17:27:08.9280000Z sgl-project/sglang/.github/workflows/nightly-test-npu.yml@refs/heads/main (e838360ffd706c1a45a390e30d4c9f01c56bf81c)
+2026-11-05T17:27:08.9280000Z -> sgl-project/sglang/.github/workflows/nightly-test-npu-e2e-multi-node.yml@refs/heads/main (e838360ffd706c1a45a390e30d4c9f01c56bf81c)
+2026-11-05T17:27:08.9280000Z Waiting for a runner to pick up this job...
+2026-11-05T17:27:10.0990000Z Job is about to start running on the runner: linux-amd64-cpu-4

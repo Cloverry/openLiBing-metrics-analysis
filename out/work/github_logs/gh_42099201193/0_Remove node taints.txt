@@ -1,0 +1,65 @@
+﻿2026-11-06T03:23:12.3024767Z Current runner version: '2.338.0'
+2026-11-06T03:23:12.3031850Z Runner name: 'linux-aarch64-a3-800t-0-xvxb7-runner-nzv9k'
+2026-11-06T03:23:12.3032942Z Runner group name: 'Default'
+2026-11-06T03:23:12.3034166Z Machine name: 'linux-aarch64-a3-800t-0-xvxb7-runner-nzv9k'
+2026-11-06T03:23:12.3037974Z ##[group]GITHUB_TOKEN Permissions
+2026-11-06T03:23:12.3041266Z Contents: read
+2026-11-06T03:23:12.3041938Z Issues: read
+2026-11-06T03:23:12.3042606Z Metadata: read
+2026-11-06T03:23:12.3043564Z PullRequests: read
+2026-11-06T03:23:12.3044208Z ##[endgroup]
+2026-11-06T03:23:12.3046724Z Secret source: Actions
+2026-11-06T03:23:12.3047754Z Cache mode: write
+2026-11-06T03:23:12.3049045Z Runner is running behind proxy server 'http://squid-cache.squid.svc.cluster.local:3128' for all HTTP requests.
+2026-11-06T03:23:12.3050640Z Runner is running behind proxy server 'http://squid-cache.squid.svc.cluster.local:3128' for all HTTPS requests.
+2026-11-06T03:23:12.3051929Z Prepare workflow directory
+2026-11-06T03:23:12.3748539Z Prepare all required actions
+2026-11-06T03:23:12.3822397Z Complete job name: Remove node taints
+2026-11-06T03:23:12.4931910Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T03:23:12.4967343Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T03:23:12.4968800Z ##[endgroup]
+2026-11-06T03:23:13.0257094Z (node:152) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T03:23:13.0258664Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T03:23:13.0480623Z (node:152) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T03:23:20.2552303Z (node:152) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-06T03:23:20.6079118Z ##[group]Run echo "***" | base64 -d > "$KUBECONFIG"
+2026-11-06T03:23:20.6137075Z [36;1mecho "***" | base64 -d > "$KUBECONFIG"[0m
+2026-11-06T03:23:20.6138002Z shell: bash -el {0}
+2026-11-06T03:23:20.6138369Z env:
+2026-11-06T03:23:20.6138761Z   ASCEND_LOG_PREFIX: /root/.cache/ascend-logs
+2026-11-06T03:23:20.6139184Z ##[endgroup]
+2026-11-06T03:23:20.6333256Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T03:23:20.6334705Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T03:23:20.6335172Z ##[endgroup]
+2026-11-06T03:23:20.8670942Z (node:174) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T03:23:20.8671889Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T03:23:20.8876453Z (node:174) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T03:23:20.9373160Z (node:174) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-06T03:23:21.6034385Z ##[group]Run kubectl taint nodes 172.22.5.7 172.22.5.24 172.22.5.36 172.22.5.45 172.22.5.112 172.22.5.119 172.22.5.165 172.22.5.206 dedicated- || true
+2026-11-06T03:23:21.6035581Z [36;1mkubectl taint nodes 172.22.5.7 172.22.5.24 172.22.5.36 172.22.5.45 172.22.5.112 172.22.5.119 172.22.5.165 172.22.5.206 dedicated- || true[0m
+2026-11-06T03:23:21.6036484Z shell: bash -el {0}
+2026-11-06T03:23:21.6036810Z env:
+2026-11-06T03:23:21.6037138Z   ASCEND_LOG_PREFIX: /root/.cache/ascend-logs
+2026-11-06T03:23:21.6037584Z ##[endgroup]
+2026-11-06T03:23:21.6147584Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T03:23:21.6148939Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T03:23:21.6149370Z ##[endgroup]
+2026-11-06T03:23:21.8431913Z (node:209) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T03:23:21.8433478Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T03:23:21.8640524Z (node:209) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T03:23:21.9127054Z (node:209) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-06T03:23:22.3130157Z taint "dedicated" not found
+2026-11-06T03:23:22.3130706Z taint "dedicated" not found
+2026-11-06T03:23:22.3131441Z taint "dedicated" not found
+2026-11-06T03:23:22.3131885Z taint "dedicated" not found
+2026-11-06T03:23:22.3132379Z taint "dedicated" not found
+2026-11-06T03:23:22.3132729Z taint "dedicated" not found
+2026-11-06T03:23:22.3133113Z taint "dedicated" not found
+2026-11-06T03:23:22.3133439Z taint "dedicated" not found
+2026-11-06T03:23:22.7900232Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-06T03:23:22.7901617Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-06T03:23:22.7902022Z ##[endgroup]
+2026-11-06T03:23:23.0274484Z (node:260) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-06T03:23:23.0275571Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-06T03:23:23.0480451Z (node:260) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-06T03:23:28.1685199Z Cleaning up orphan processes

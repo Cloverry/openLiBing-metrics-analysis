@@ -1,0 +1,49 @@
+{
+ "route": "github",
+ "key": "SgLang|nightly-test-npu.yml",
+ "rn": 2100,
+ "rid": "42220260407",
+ "st": "11-06 20:46",
+ "runId": 42220260407,
+ "repo": "sgl-project/sglang",
+ "displayTitle": "ci run",
+ "event": "pull_request",
+ "status": "FAILED",
+ "duration": 0.03,
+ "runStatus": {
+  "status": "completed",
+  "conclusion": "cancelled",
+  "updatedAt": "2026-11-06T12:46:42Z",
+  "attempt": 1
+ },
+ "_v": 2,
+ "mode": "perjob",
+ "why": "取消 job 2 个（≤5，逐 job 精取）",
+ "totalJobs": 15,
+ "failedJobs": [],
+ "cancelledJobs": [
+  {
+   "name": "set-image-config",
+   "id": 127900239233
+  },
+  {
+   "name": "check-all-jobs",
+   "id": 127900249627
+  }
+ ],
+ "jobs": [],
+ "missing": [
+  {
+   "job": "set-image-config",
+   "id": 127900239233,
+   "status": "404_not_retained"
+  },
+  {
+   "job": "check-all-jobs",
+   "id": 127900249627,
+   "status": "404_not_retained"
+  }
+ ],
+ "systemLogs": [],
+ "ghComplete": true
+}

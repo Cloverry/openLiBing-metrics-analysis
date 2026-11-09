@@ -1,0 +1,134 @@
+{
+ "_doc": {
+  "step": "step_4_cases",
+  "title": "第 4 步 测试用例取证（T6）",
+  "source": "openLiBing 测试报告页 + 用例日志下载",
+  "criteria": "取失败任务的失败用例、错误信息、深度学习命中行，并下载用例日志到 case_logs/",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-09 15:06:59",
+  "component": "HPCKit",
+  "pipeline": "kupl",
+  "date": "2026-11-06"
+ },
+ "results": [
+  {
+   "route": "test",
+   "key": "HPCKit|kupl",
+   "pipeline": "kupl",
+   "pipelineName": "Nightly-CI-Component-pipeline_kupl",
+   "rn": 297,
+   "st": "11-06 00:01",
+   "projectId": 300073,
+   "pipelineId": "ddb211b1e4a74f55a0e604fa95ef469e",
+   "rid": "d0720a2f2a054736a8966e49063b89dc",
+   "jobId": "4045c06725184de7b48a42da6c8d440f",
+   "jobName": "Test_kupl",
+   "stepIds": [
+    "2d5f5b553998494eaf1611bf698f477e"
+   ],
+   "steps": [
+    {
+     "id": "2d5f5b553998494eaf1611bf698f477e",
+     "name": "Test_kupl",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "f5d0af306d7f468b842d0f762c47c294",
+     "jobIdParam": "179b784b1f2f488595de68bfb2877fe8"
+    }
+   ],
+   "jobErrMsg": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "f1357070ee02435ea0176444ae3f02b5",
+   "code": 200,
+   "summary": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "passRate": "0.00%"
+   },
+   "failedCases": [],
+   "empty": true
+  },
+  {
+   "route": "test",
+   "key": "HPCKit|kupl",
+   "pipeline": "kupl",
+   "pipelineName": "Nightly-CI-Component-pipeline_kupl",
+   "rn": 298,
+   "st": "11-06 12:00",
+   "projectId": 300073,
+   "pipelineId": "ddb211b1e4a74f55a0e604fa95ef469e",
+   "rid": "0323dea18d954ecea0b5cc44c1c34696",
+   "jobId": "878efef62881418ab98220513a834dfc",
+   "jobName": "Test_kupl",
+   "stepIds": [
+    "b4ae9d9c622c42368d8d122134eafb34"
+   ],
+   "steps": [
+    {
+     "id": "b4ae9d9c622c42368d8d122134eafb34",
+     "name": "Test_kupl",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "5dc50b8421f64fe5b8e5497fb3b420ed",
+     "jobIdParam": "179b784b1f2f488595de68bfb2877fe8"
+    }
+   ],
+   "jobErrMsg": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "1aa89241bcc94a9aa964a9e22e10fddc",
+   "code": 200,
+   "summary": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "passRate": "0.00%"
+   },
+   "failedCases": [],
+   "empty": true
+  },
+  {
+   "route": "test",
+   "key": "HPCKit|kupl",
+   "pipeline": "kupl",
+   "pipelineName": "Nightly-CI-Component-pipeline_kupl",
+   "rn": 299,
+   "st": "11-06 13:30",
+   "projectId": 300073,
+   "pipelineId": "ddb211b1e4a74f55a0e604fa95ef469e",
+   "rid": "83e34fe2e1184610959638c360c41c45",
+   "jobId": "bb4373a54d9a4cc2b52a53177f551672",
+   "jobName": "Test_kupl",
+   "stepIds": [
+    "f6dc1f81bdcc4297ada3a4ae12194456"
+   ],
+   "steps": [
+    {
+     "id": "f6dc1f81bdcc4297ada3a4ae12194456",
+     "name": "Test_kupl",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "8ed9394a40c5486c8645ab332e010102",
+     "jobIdParam": "179b784b1f2f488595de68bfb2877fe8"
+    }
+   ],
+   "jobErrMsg": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "9aeeb8a852ea4a8dbf35e32b1c1cde17",
+   "code": 200,
+   "summary": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "passRate": "0.00%"
+   },
+   "failedCases": [],
+   "empty": true
+  }
+ ],
+ "caseErrors": [],
+ "errors": [],
+ "counts": {
+  "tasks": 3,
+  "failedCases": 0,
+  "caseLogs": 0,
+  "caseErrors": 0
+ }
+}

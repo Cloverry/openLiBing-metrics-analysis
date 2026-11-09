@@ -1,0 +1,148 @@
+{
+ "route": "github",
+ "key": "SgLang|nightly-test-npu.yml",
+ "rn": 2092,
+ "rid": "42197450049",
+ "st": "11-06 17:45",
+ "runId": 42197450049,
+ "repo": "sgl-project/sglang",
+ "displayTitle": "[Test][NPU] overlap-schedule validation: GLM5/Kimi/DSV4 case reconfig + TEMP nightly scoping",
+ "event": "pull_request",
+ "status": "FAILED",
+ "duration": 15.32,
+ "runStatus": {
+  "status": "completed",
+  "conclusion": "cancelled",
+  "updatedAt": "2026-11-06T10:00:55Z",
+  "attempt": 1
+ },
+ "_v": 2,
+ "mode": "perjob",
+ "why": "失败 job 3 个（≤5，逐 job 精取）",
+ "totalJobs": 15,
+ "failedJobs": [
+  {
+   "name": "nightly-1-npu-a3 / run (0)",
+   "id": 127824197172,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+   "id": 127824197865,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+   "id": 127824197899,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ ],
+ "cancelledJobs": [
+  {
+   "name": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap_fia_unset, 1, ... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap_fia_unset",
+   "id": 127830307390
+  },
+  {
+   "name": "check-all-jobs",
+   "id": 127830525266
+  }
+ ],
+ "jobs": [
+  {
+   "name": "nightly-1-npu-a3 / run (0)",
+   "id": 127824197172,
+   "conclusion": "failure",
+   "startedAt": "2026-11-06T09:48:34Z",
+   "completedAt": "2026-11-06T09:50:41Z",
+   "logFile": "github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt",
+   "logBytes": 105909,
+   "logLines": 971,
+   "errorLines": [
+    "L908: Traceback (most recent call last):",
+    "L913: ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
+    "L915: ##[error]Error: failed to run script step:",
+    "L916: ✗ exit code: 1",
+    "L933: Traceback (most recent call last):",
+    "L938: ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
+    "L940: ##[error]Process completed with exit code 1.",
+    "L941: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+   "id": 127824197865,
+   "conclusion": "failure",
+   "startedAt": "2026-11-06T09:53:47Z",
+   "completedAt": "2026-11-06T09:55:57Z",
+   "logFile": "github_logs/gh_42197450049/127824197865_nightly-perf-16-npu-a3 _ nightly-perf-16-npu-a3.txt",
+   "logBytes": 58499,
+   "logLines": 692,
+   "errorLines": [
+    "L627: Traceback (most recent call last):",
+    "L632: ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
+    "L636: ##[error]Error: failed to run script step:",
+    "L637: ✗ exit code: 1",
+    "L652: Traceback (most recent call last):",
+    "L657: ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
+    "L661: ##[error]Process completed with exit code 1.",
+    "L662: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+   "id": 127824197899,
+   "conclusion": "failure",
+   "startedAt": "2026-11-06T09:55:14Z",
+   "completedAt": "2026-11-06T10:00:25Z",
+   "logFile": "github_logs/gh_42197450049/127824197899_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
+   "logBytes": 59776,
+   "logLines": 692,
+   "errorLines": [
+    "L627: Traceback (most recent call last):",
+    "L632: ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
+    "L636: ##[error]Error: failed to run script step:",
+    "L637: ✗ exit code: 1",
+    "L652: Traceback (most recent call last):",
+    "L657: ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
+    "L661: ##[error]Process completed with exit code 1.",
+    "L662: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ ],
+ "missing": [],
+ "systemLogs": [],
+ "ghComplete": true
+}

@@ -1,0 +1,9 @@
+2026-11-06T05:15:29.6880000Z Evaluating check-all-jobs.if
+2026-11-06T05:15:29.6880000Z Evaluating: !cancelled()
+2026-11-06T05:15:29.6880000Z Expanded: !false
+2026-11-06T05:15:29.6880000Z Result: true
+2026-11-06T05:15:29.9150000Z Requested labels: ubuntu-latest
+2026-11-06T05:15:29.9150000Z Job defined at: sgl-project/sglang/.github/workflows/nightly-test-npu.yml@refs/heads/main
+2026-11-06T05:15:29.9150000Z Waiting for a runner to pick up this job...
+2026-11-06T05:15:30.8650000Z Job is waiting for a hosted runner to come online.
+2026-11-06T05:15:30.8660000Z Job is about to start running on the hosted runner: GitHub Actions 1005955349

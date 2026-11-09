@@ -1,0 +1,100 @@
+{
+ "_doc": {
+  "step": "step_9_pages",
+  "title": "第 9 步 生成展示页",
+  "source": "out/archive/（_index.json / _day.json / _manifest.json / records/run_*.json）",
+  "criteria": "只产出静态壳（样式 + 公共日期筛选组件 + 取数脚本）到 out/html/，HTML 内不内嵌任何业务数据；页面运行时按【执行结束时间】区间读取归档 JSON，首页与二级页共用 lib/ui.py 的同一份筛选组件，口径不会分叉",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-09 16:35:33",
+  "files": [
+   "index.html",
+   "detail.html"
+  ],
+  "dayCount": 1
+ },
+ "generatedAt": "2026-11-09 16:35:33",
+ "dayCount": 1,
+ "firstDay": "2026-11-06",
+ "lastDay": "2026-11-06",
+ "shell": {
+  "title": "openLiBing指标分析",
+  "subtitle": "夜间流水线工程指标 · 口径：执行结束时间 · 数据源 out/archive/",
+  "order": [
+   "品牌行（标题 + 一行副标题）",
+   "公共日期筛选条（吸顶 · 系统级全局筛选）",
+   "页面自身内容"
+  ],
+  "note": "首页与二级页共用 lib/ui.py 的同一份 header + toolbar，且都排在最前；筛选条 position:sticky 吸顶，切页/滚动都不动位置，语义始终是整个系统的数据筛选。首页表格行高在渲染后按「可用高度 / 行数」写入 --rowh，13 条数据刚好铺满表格区。"
+ },
+ "files": [
+  {
+   "name": "index.html",
+   "role": "首页（组件级概览）",
+   "reads": [
+    "archive/_index.json",
+    "archive/_products.json",
+    "archive/<年>/<年-月>/<日>/_day.json"
+   ],
+   "fields": [
+    "开源组件",
+    "版本可用度",
+    "编译成功率",
+    "口径内流水线",
+    "待分析（可用度）",
+    "待分析（编译）"
+   ],
+   "drilldown": "首页不做展开：只有「待分析流水线数」是非零时可点数字（同旧版 .lnk），点进二级页 ?comp=组件&dim=va|bs 看该组件的流水线清单；组件级清单里点比率数字弹「构建记录」、点「查看记录 →」进流水线明细（100% 的行显示 -- 不可点），流水线明细里点「共 N 条失败用例」/「证据」各自弹窗",
+   "note": "开源组件行取自 _products.json 的全量清单（无待分析流水线的显示 0）；表格版式与旧报告 table.ov 一致，不含任何展开/折叠行"
+  },
+  {
+   "name": "detail.html",
+   "role": "二级页（?comp=组件&dim=va|bs 组件级流水线清单 / ?key=组件|流水线 流水线级根因明细）",
+   "reads": [
+    "archive/<日>/_day.json",
+    "archive/<日>/<组件>/<流水线>/_manifest.json",
+    "…/records/run_<构建号>.json"
+   ],
+   "fields": [
+    "构建编号",
+    "任务",
+    "用例",
+    "错误信息",
+    "定性",
+    "根因",
+    "建议"
+   ],
+   "compFields": {
+    "dim=va": [
+     "流水线",
+     "平台",
+     "版本可用度",
+     "查看记录"
+    ],
+    "dim=bs": [
+     "流水线",
+     "平台",
+     "编译成功率",
+     "查看记录"
+    ]
+   },
+   "compNote": "组件级清单按维度下钻：dim=va 只渲染版本可用度列、dim=bs 只渲染编译成功率列，另一维度不渲染；不再展示归档日；比率显示为纯数字百分比（如 80.0%，取该流水线区间内各归档日流线级比率的算术平均），不带黄/绿/红圆点或灯色文字；比率数字本身可点 → 弹「构建记录」（点击时才按需读该流水线的 step_2_runs.json）；比率 100% 的行「查看记录」直接显示 --（不给链接、不响应点击），因为区间内没有失败记录可下钻",
+   "note": "版式同旧报告：一条流水线一个浅蓝底 h3 区块 + 一张 7 列固定列宽（8/11/11/22/7/24/17）的 table.rca，table-layout:fixed 保证列宽不随内容变化；每行 = 一条执行记录，第一列为「构建编号」（跳 openLiBing），已删除「根因编号」列；「用例」列展示第一条失败用例名 + 可点的「共 N 条失败用例」→ 弹窗逐条给用例详情；「错误信息」列只给真因原文 + 可点的「证据」→ 弹窗逐行输出日志/报告原始行（含时间/级别/位置）；已下线记录明细弹窗，弹窗只剩「失败用例」「日志证据」「构建记录」三个入口；不读 step_6_records.json（单份可达 80KB+），逐条读单条记录"
+  }
+ ],
+ "dataInline": false,
+ "dateBasis": {
+  "field": "pipelineRunEndtime",
+  "rule": "页面筛选与归档归属一致，均为执行结束时间"
+ },
+ "serving": "python run_pipeline.py --serve   # 或 python -m http.server 8765 --directory out",
+ "filesWritten": [
+  {
+   "file": "index.html",
+   "bytes": 35615
+  },
+  {
+   "file": "detail.html",
+   "bytes": 72669
+  }
+ ]
+}

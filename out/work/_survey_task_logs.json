@@ -1,0 +1,1886 @@
+[
+ {
+  "comp": "Ascend-CANN",
+  "pipe": "atb",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 175,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "Ascend-CANN",
+  "pipe": "hcomm",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 195,
+    "failedTaskType": "测试任务",
+    "errCount": 0,
+    "errs": []
+   },
+   {
+    "build": 196,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "Ascend-CANN",
+  "pipe": "ops-cv",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 167,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "Ascend-CANN",
+  "pipe": "ops-math",
+  "testTasks": [
+   [
+    "Test_ops-math",
+    "7fc13affce194f48b77150c8905c7c1f"
+   ]
+  ],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 18,
+  "testFailedCases": {
+   "Test_ops-math": 18
+  },
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 136,
+    "failedTaskType": "测试任务",
+    "errCount": 36,
+    "errs": [
+     {
+      "level": "CASE",
+      "src": "测试报告",
+      "task": "Test_ops-math",
+      "text": "aclnnBitwiseAndTensor accuracy not passed"
+     },
+     {
+      "level": "CASE",
+      "src": "测试报告",
+      "task": "Test_ops-math",
+      "text": "aclnnTopK accuracy not passed；AttributeError: 'MessageFactory' ob ..."
+     },
+     {
+      "level": "CASE",
+      "src": "测试报告",
+      "task": "Test_ops-math",
+      "text": "AssertionError: aclnnBitwiseNot算子Accu_O1_related测试失败: aclnnBitwiseNot accuracy not passed"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "comp": "Ascend-CANN",
+  "pipe": "ops-nn",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 165,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "Ascend-CANN",
+  "pipe": "ops-transformer",
+  "testTasks": [
+   [
+    "Test_ops-transformer",
+    "c72c95b2792146f79df6b073203e03ae"
+   ],
+   [
+    "Test_ops-transformer",
+    "009e3b00d36b453e82c522088af26b5d"
+   ],
+   [
+    "Test_ops-transformer",
+    "dccf380ee9394163ba36a8fd52156c64"
+   ],
+   [
+    "Test_ops-transformer",
+    "81438317d7f74e1ca4a4dda81760dc78"
+   ]
+  ],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 64,
+  "testFailedCases": {
+   "Test_ops-transformer": 19
+  },
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 159,
+    "failedTaskType": "测试任务",
+    "errCount": 30,
+    "errs": [
+     {
+      "level": "CASE",
+      "src": "测试报告",
+      "task": "Test_ops-transformer",
+      "text": "aclnnMatmulAllReduce accuracy not passe ..."
+     },
+     {
+      "level": "CASE",
+      "src": "测试报告",
+      "task": "Test_ops-transformer",
+      "text": "AssertionError: aclnnQuantMatmulAlltoAll功能精度测试(executor)失败: aclnnQuantMatmulAlltoAll accuracy not passed"
+     },
+     {
+      "level": "CASE",
+      "src": "测试报告",
+      "task": "Test_ops-transformer",
+      "text": "AssertionError: aclnnWeightQuantMatmulAllReduce功能精度测试(executor)失败: aclnnWeightQuantMatmulAllReduce accuracy not passed"
+     }
+    ]
+   },
+   {
+    "build": 160,
+    "failedTaskType": "测试任务",
+    "errCount": 30,
+    "errs": [
+     {
+      "level": "CASE",
+      "src": "测试报告",
+      "task": "Test_ops-transformer",
+      "text": "aclnnMatmulReduceScatterV2 accuracy not passed"
+     },
+     {
+      "level": "CASE",
+      "src": "测试报告",
+      "task": "Test_ops-transformer",
+      "text": "aclnnAlltoAllMatmul accuracy not passed"
+     },
+     {
+      "level": "CASE",
+      "src": "测试报告",
+      "task": "Test_ops-transformer",
+      "text": "AssertionError: aclnnMatmulAllReduce功能精度测试(executor)失败: aclnnMatmulAllReduce accuracy not passed"
+     }
+    ]
+   },
+   {
+    "build": 161,
+    "failedTaskType": "测试任务",
+    "errCount": 30,
+    "errs": [
+     {
+      "level": "CASE",
+      "src": "测试报告",
+      "task": "Test_ops-transformer",
+      "text": "AssertionError: aclnnAlltoAllQuantMatmul功能精度测试(executor)失败: aclnnAlltoAllQuantMatmul accuracy not passed"
+     },
+     {
+      "level": "CASE",
+      "src": "测试报告",
+      "task": "Test_ops-transformer",
+      "text": "aclnnWeightQuantMatmulAllReduce accuracy not pa ..."
+     },
+     {
+      "level": "CASE",
+      "src": "测试报告",
+      "task": "Test_ops-transformer",
+      "text": "AssertionError: aclnnMatmulReduceScatterV2功能精度测试(executor)失败: aclnnMatmulReduceScatterV2 accuracy not passed"
+     }
+    ]
+   },
+   {
+    "build": 162,
+    "failedTaskType": "测试任务",
+    "errCount": 38,
+    "errs": [
+     {
+      "level": "CASE",
+      "src": "测试报告",
+      "task": "Test_ops-transformer",
+      "text": "aclnnAllGatherMatmul accuracy not passed"
+     },
+     {
+      "level": "CASE",
+      "src": "测试报告",
+      "task": "Test_ops-transformer",
+      "text": "aclnnMoeDistributeDispatch_CombineV2 ..."
+     },
+     {
+      "level": "CASE",
+      "src": "测试报告",
+      "task": "Test_ops-transformer",
+      "text": "aclnnQuantMatmulAlltoAll accuracy not passed"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "comp": "Ascend-CANN",
+  "pipe": "os",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 140,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "Ascend-CANN",
+  "pipe": "shmem",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 136,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   },
+   {
+    "build": 137,
+    "failedTaskType": "测试任务",
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "Ascend-CANN",
+  "pipe": "sip",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 126,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "AscendForPyTorch",
+  "pipe": "master",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 71,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "boostkit",
+  "pipe": "avx2ki",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 35,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "boostkit",
+  "pipe": "Bigdata",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 41,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "boostkit",
+  "pipe": "KAE",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 357,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "boostkit",
+  "pipe": "kqmalloc",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 185,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "boostkit",
+  "pipe": "KTAG",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 147,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "boostkit",
+  "pipe": "Megascan",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 72,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "boostkit",
+  "pipe": "OmniStream",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 155,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   },
+   {
+    "build": 156,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "boostkit",
+  "pipe": "Ultrascan",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 293,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   },
+   {
+    "build": 294,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "HPCKit",
+  "pipe": "hmpi",
+  "testTasks": [
+   [
+    "Test_hmpi",
+    "52332eeed4bb46beb6dafb03d2aa1730"
+   ]
+  ],
+  "logTasks": [],
+  "jobLogFiles": [
+   "07_hmpi_210_Test_hmpi.log"
+  ],
+  "caseLogFiles": 0,
+  "testFailedCases": {
+   "Test_hmpi": 0
+  },
+  "testEmpty": [
+   "Test_hmpi"
+  ],
+  "jobLogEvidence": {
+   "Test_hmpi": {
+    "file": "job_logs/07_hmpi_210_Test_hmpi.log",
+    "lines": 144,
+    "truncated": false,
+    "errLines": 5,
+    "fallback": true
+   }
+  },
+  "records": [
+   {
+    "build": 210,
+    "failedTaskType": "测试任务",
+    "errCount": 7,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "job_logs/07_hmpi_210_Test_hmpi.log",
+      "task": "Test_hmpi",
+      "text": "[2026/11/06 01:11:47.479 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'"
+     },
+     {
+      "level": "LOG",
+      "src": "job_logs/07_hmpi_210_Test_hmpi.log",
+      "task": "Test_hmpi",
+      "text": "[2026/11/06 01:11:47.479 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'"
+     },
+     {
+      "level": "LOG",
+      "src": "job_logs/07_hmpi_210_Test_hmpi.log",
+      "task": "Test_hmpi",
+      "text": "[2026/11/06 01:11:47.479 GMT+08:00] [ERROR] git clone test_cases code fail"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "comp": "HPCKit",
+  "pipe": "kpex",
+  "testTasks": [
+   [
+    "Test_kpex",
+    "1f0b204bb4994e47ae518ba383a72705"
+   ]
+  ],
+  "logTasks": [],
+  "jobLogFiles": [
+   "05_kpex_139_Test_kpex.log"
+  ],
+  "caseLogFiles": 0,
+  "testFailedCases": {
+   "Test_kpex": 0
+  },
+  "testEmpty": [
+   "Test_kpex"
+  ],
+  "jobLogEvidence": {
+   "Test_kpex": {
+    "file": "job_logs/05_kpex_139_Test_kpex.log",
+    "lines": 144,
+    "truncated": false,
+    "errLines": 5,
+    "fallback": true
+   }
+  },
+  "records": [
+   {
+    "build": 139,
+    "failedTaskType": "测试任务",
+    "errCount": 7,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "job_logs/05_kpex_139_Test_kpex.log",
+      "task": "Test_kpex",
+      "text": "[2026/11/06 00:43:18.658 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'"
+     },
+     {
+      "level": "LOG",
+      "src": "job_logs/05_kpex_139_Test_kpex.log",
+      "task": "Test_kpex",
+      "text": "[2026/11/06 00:43:18.658 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'"
+     },
+     {
+      "level": "LOG",
+      "src": "job_logs/05_kpex_139_Test_kpex.log",
+      "task": "Test_kpex",
+      "text": "[2026/11/06 00:43:18.659 GMT+08:00] [ERROR] git clone test_cases code fail"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "comp": "HPCKit",
+  "pipe": "kudnn",
+  "testTasks": [
+   [
+    "Test_kudnn",
+    "ef833019ca2447c88170b4b84cecf5a6"
+   ]
+  ],
+  "logTasks": [],
+  "jobLogFiles": [
+   "02_kudnn_224_Test_kudnn.log"
+  ],
+  "caseLogFiles": 0,
+  "testFailedCases": {
+   "Test_kudnn": 0
+  },
+  "testEmpty": [
+   "Test_kudnn"
+  ],
+  "jobLogEvidence": {
+   "Test_kudnn": {
+    "file": "job_logs/02_kudnn_224_Test_kudnn.log",
+    "lines": 144,
+    "truncated": false,
+    "errLines": 5,
+    "fallback": true
+   }
+  },
+  "records": [
+   {
+    "build": 224,
+    "failedTaskType": "测试任务",
+    "errCount": 7,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "job_logs/02_kudnn_224_Test_kudnn.log",
+      "task": "Test_kudnn",
+      "text": "[2026/11/06 03:34:00.703 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'"
+     },
+     {
+      "level": "LOG",
+      "src": "job_logs/02_kudnn_224_Test_kudnn.log",
+      "task": "Test_kudnn",
+      "text": "[2026/11/06 03:34:00.703 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'"
+     },
+     {
+      "level": "LOG",
+      "src": "job_logs/02_kudnn_224_Test_kudnn.log",
+      "task": "Test_kudnn",
+      "text": "[2026/11/06 03:34:00.703 GMT+08:00] [ERROR] git clone test_cases code fail"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "comp": "HPCKit",
+  "pipe": "kupl",
+  "testTasks": [
+   [
+    "Test_kupl",
+    "4045c06725184de7b48a42da6c8d440f"
+   ],
+   [
+    "Test_kupl",
+    "878efef62881418ab98220513a834dfc"
+   ],
+   [
+    "Test_kupl",
+    "bb4373a54d9a4cc2b52a53177f551672"
+   ]
+  ],
+  "logTasks": [],
+  "jobLogFiles": [
+   "04_kupl_299_Test_kupl.log",
+   "08_kupl_298_Test_kupl.log",
+   "09_kupl_297_Test_kupl.log"
+  ],
+  "caseLogFiles": 0,
+  "testFailedCases": {
+   "Test_kupl": 0
+  },
+  "testEmpty": [
+   "Test_kupl",
+   "Test_kupl",
+   "Test_kupl"
+  ],
+  "jobLogEvidence": {
+   "Test_kupl": {
+    "file": "job_logs/04_kupl_299_Test_kupl.log",
+    "lines": 144,
+    "truncated": false,
+    "errLines": 5,
+    "fallback": true
+   }
+  },
+  "records": [
+   {
+    "build": 297,
+    "failedTaskType": "测试任务",
+    "errCount": 4,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "job_logs/09_kupl_297_Test_kupl.log",
+      "task": "Test_kupl",
+      "text": "[2026/11/06 00:02:23.210 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : [frame] query step status with error."
+     },
+     {
+      "level": "LOG",
+      "src": "job_logs/09_kupl_297_Test_kupl.log",
+      "task": "Test_kupl",
+      "text": "[2026/11/06 00:02:23.210 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : 错误信息: DEV-CODECI-35002, 构建任务执行失败!"
+     },
+     {
+      "level": "JOB",
+      "src": "job_logs/09_kupl_297_Test_kupl.log",
+      "task": "Test_kupl",
+      "text": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+     }
+    ]
+   },
+   {
+    "build": 298,
+    "failedTaskType": "测试任务",
+    "errCount": 4,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "job_logs/08_kupl_298_Test_kupl.log",
+      "task": "Test_kupl",
+      "text": "[2026/11/06 12:02:04.212 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : [frame] query step status with error."
+     },
+     {
+      "level": "LOG",
+      "src": "job_logs/08_kupl_298_Test_kupl.log",
+      "task": "Test_kupl",
+      "text": "[2026/11/06 12:02:04.213 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : 错误信息: DEV-CODECI-35002, 构建任务执行失败!"
+     },
+     {
+      "level": "JOB",
+      "src": "job_logs/08_kupl_298_Test_kupl.log",
+      "task": "Test_kupl",
+      "text": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+     }
+    ]
+   },
+   {
+    "build": 299,
+    "failedTaskType": "测试任务",
+    "errCount": 7,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "job_logs/04_kupl_299_Test_kupl.log",
+      "task": "Test_kupl",
+      "text": "[2026/11/06 13:32:03.681 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'"
+     },
+     {
+      "level": "LOG",
+      "src": "job_logs/04_kupl_299_Test_kupl.log",
+      "task": "Test_kupl",
+      "text": "[2026/11/06 13:32:03.681 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'"
+     },
+     {
+      "level": "LOG",
+      "src": "job_logs/04_kupl_299_Test_kupl.log",
+      "task": "Test_kupl",
+      "text": "[2026/11/06 13:32:03.681 GMT+08:00] [ERROR] git clone test_cases code fail"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "comp": "HPCKit",
+  "pipe": "kuqcd",
+  "testTasks": [
+   [
+    "Test_quqcd",
+    "51106a4afa194c74bdb0e822b05d6863"
+   ]
+  ],
+  "logTasks": [],
+  "jobLogFiles": [
+   "03_kuqcd_198_Test_quqcd.log"
+  ],
+  "caseLogFiles": 0,
+  "testFailedCases": {
+   "Test_quqcd": 0
+  },
+  "testEmpty": [
+   "Test_quqcd"
+  ],
+  "jobLogEvidence": {
+   "Test_quqcd": {
+    "file": "job_logs/03_kuqcd_198_Test_quqcd.log",
+    "lines": 144,
+    "truncated": false,
+    "errLines": 5,
+    "fallback": true
+   }
+  },
+  "records": [
+   {
+    "build": 198,
+    "failedTaskType": "测试任务",
+    "errCount": 7,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "job_logs/03_kuqcd_198_Test_quqcd.log",
+      "task": "Test_quqcd",
+      "text": "[2026/11/06 00:33:07.909 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'"
+     },
+     {
+      "level": "LOG",
+      "src": "job_logs/03_kuqcd_198_Test_quqcd.log",
+      "task": "Test_quqcd",
+      "text": "[2026/11/06 00:33:07.909 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'"
+     },
+     {
+      "level": "LOG",
+      "src": "job_logs/03_kuqcd_198_Test_quqcd.log",
+      "task": "Test_quqcd",
+      "text": "[2026/11/06 00:33:07.909 GMT+08:00] [ERROR] git clone test_cases code fail"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "comp": "MindCluster",
+  "pipe": "AgentSDK",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 60,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "MindCluster",
+  "pipe": "ascend-deployer",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 275,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "MindCluster",
+  "pipe": "IndexSDK",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 81,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "MindCluster",
+  "pipe": "MindCluster",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 543,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "MindCluster",
+  "pipe": "MultimodalSDK",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 76,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "MindCluster",
+  "pipe": "RAGSDK",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": []
+ },
+ {
+  "comp": "MindCluster",
+  "pipe": "RecSDK",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 70,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "MindCluster",
+  "pipe": "VisionSDK",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": []
+ },
+ {
+  "comp": "MindIE",
+  "pipe": "MindIE-Motor",
+  "testTasks": [
+   [
+    "Test_Pytest_MindIE-Motor_smoke_test",
+    "8bc5e442a3694e72b8da2119c75c7132"
+   ]
+  ],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 1,
+  "testFailedCases": {
+   "Test_Pytest_MindIE-Motor_smoke_test": 1
+  },
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 117,
+    "failedTaskType": "测试任务",
+    "errCount": 1,
+    "errs": [
+     {
+      "level": "CASE",
+      "src": "case_logs/case_0000.html",
+      "task": "Test_Pytest_MindIE-Motor_smoke_test",
+      "text": "FAILED due to ERROR/FAIL logs: testcase/mindie/motor/pymotor/ras/manual_scaling/test_manual_scaling.py::TestPyMotorRasUpDownScale::test_pymotor_ras_up_down_scal"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "comp": "MindIE",
+  "pipe": "MindIE-SD",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 102,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "MindSpeed",
+  "pipe": "master",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 96,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   },
+   {
+    "build": 96,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   },
+   {
+    "build": 96,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   },
+   {
+    "build": 96,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   },
+   {
+    "build": 96,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "MindStudio",
+  "pipe": "msmemscope",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 257,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "MindStudio",
+  "pipe": "msmodelslim",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 261,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "MindStudio",
+  "pipe": "msot",
+  "testTasks": [
+   [
+    "Test_msot_nightly_smoke_debug",
+    "590fe0c1d5564da28daa9b40f839d53a"
+   ],
+   [
+    "Test_msot_nightly_smoke_A3_debug",
+    "e5ef78c4e3cd453f8c716dc6734a0a53"
+   ],
+   [
+    "Test_msot_nightly_smoke",
+    "eb8d3863e0524a9c97d407e58e11abd0"
+   ],
+   [
+    "Test_msot_nightly_smoke_debug",
+    "10f6974be9f748e0bfa8c5b43f7baba0"
+   ]
+  ],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 6,
+  "testFailedCases": {
+   "Test_msot_nightly_smoke_debug": 2,
+   "Test_msot_nightly_smoke_A3_debug": 1,
+   "Test_msot_nightly_smoke": 2
+  },
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 261,
+    "failedTaskType": "测试任务",
+    "errCount": 2,
+    "errs": [
+     {
+      "level": "CASE",
+      "src": "case_logs/case_0001.html",
+      "task": "Test_msot_nightly_smoke_debug",
+      "text": "Test FAILED: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py::TestMssanitizerMc2::test_mssanitizer_support_shmem_allgather Exception: AssertionE"
+     },
+     {
+      "level": "CASE",
+      "src": "case_logs/case_0002.html",
+      "task": "Test_msot_nightly_smoke_A3_debug",
+      "text": "Test FAILED: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py::TestMssanitizerMc2::test_mssanitizer_mc2_0002 Exception: AssertionError Message: 工"
+     }
+    ]
+   },
+   {
+    "build": 262,
+    "failedTaskType": "测试任务",
+    "errCount": 4,
+    "errs": [
+     {
+      "level": "FAIL",
+      "src": "case_logs/case_0054.html",
+      "task": "Test_msot_nightly_smoke",
+      "text": "Test FAILED: testcase/mindstudio/op_tool/msopgen/test_msopgen_dynamic.py::TestMsopgenDynamic::test_msopst_paramType_dynamic_011 Exception: AssertionError Messag"
+     },
+     {
+      "level": "ERROR",
+      "src": "case_logs/case_0054.html",
+      "task": "Test_msot_nightly_smoke",
+      "text": "Traceback: testcase/mindstudio/op_tool/msopgen/test_msopgen_dynamic.py:123: in test_msopst_paramType_dynamic_011 assert \"success\" in result.lower() or \"success "
+     },
+     {
+      "level": "FAIL",
+      "src": "case_logs/case_0055.html",
+      "task": "Test_msot_nightly_smoke",
+      "text": "Test FAILED: testcase/mindstudio/op_tool/msopgen/test_msopgen_gen_basic.py::TestMsopgenGenBasic::test_pytorch_to_toolkit_001 Exception: AssertionError Message: "
+     }
+    ]
+   },
+   {
+    "build": 263,
+    "failedTaskType": "测试任务",
+    "errCount": 2,
+    "errs": [
+     {
+      "level": "CASE",
+      "src": "case_logs/case_0003.html",
+      "task": "Test_msot_nightly_smoke_debug",
+      "text": "Test FAILED: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_aclgraph_cube.py::TestMssanitizerAclGraph::test_mssanitizer_supports_aclgraph_scenarios_ve"
+     },
+     {
+      "level": "CASE",
+      "src": "case_logs/case_0004.html",
+      "task": "Test_msot_nightly_smoke_debug",
+      "text": "Test FAILED: testcase/mindstudio/op_tool/mssanitizer/test_mssanitizer_mc2.py::TestMssanitizerMc2::test_mssanitizer_mc2_0002 Exception: AssertionError Message: 工"
+     }
+    ]
+   },
+   {
+    "build": 264,
+    "failedTaskType": "测试任务",
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "MindStudio",
+  "pipe": "msprobe",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 257,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "MindStudio",
+  "pipe": "msprof",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 263,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "MindStudio",
+  "pipe": "msserviceprofiler",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 242,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "openUBMC",
+  "pipe": "openUBMC",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 2432,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   },
+   {
+    "build": 2433,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   },
+   {
+    "build": 2434,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   },
+   {
+    "build": 2435,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "SgLang",
+  "pipe": "nightly-test-npu.yml",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 2079,
+    "failedTaskType": null,
+    "errCount": 69,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42047810705/10_nightly-1-npu-a3 _ run (0).txt",
+      "task": "nightly-1-npu-a3 / run (0)",
+      "text": "Traceback (most recent call last):"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42047810705/10_nightly-1-npu-a3 _ run (0).txt",
+      "task": "nightly-1-npu-a3 / run (0)",
+      "text": "##[error]Error: failed to run script step:"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42047810705/10_nightly-1-npu-a3 _ run (0).txt",
+      "task": "nightly-1-npu-a3 / run (0)",
+      "text": "✗ exit code: 1"
+     }
+    ]
+   },
+   {
+    "build": 2081,
+    "failedTaskType": null,
+    "errCount": 96,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt",
+      "task": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
+      "text": "[2026-11-05 16:13:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellT"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt",
+      "task": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
+      "text": "Traceback (most recent call last):"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt",
+      "task": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
+      "text": "Traceback (most recent call last):"
+     }
+    ]
+   },
+   {
+    "build": 2083,
+    "failedTaskType": null,
+    "errCount": 15,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt",
+      "task": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test/registered/npu/pe... / glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms",
+      "text": "│ exit code: 1"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt",
+      "task": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test/registered/npu/pe... / glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms",
+      "text": "Traceback (most recent call last):"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt",
+      "task": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test/registered/npu/pe... / glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms",
+      "text": "Traceback (most recent call last):"
+     }
+    ]
+   },
+   {
+    "build": 2084,
+    "failedTaskType": null,
+    "errCount": 8,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42068844392/127390755997_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "text": "Traceback (most recent call last):"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42068844392/127390755997_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "text": "Traceback (most recent call last):"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42068844392/127390755997_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "text": "##[error]Error: failed to run script step:"
+     }
+    ]
+   },
+   {
+    "build": 2085,
+    "failedTaskType": null,
+    "errCount": 60,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "text": "Traceback (most recent call last):"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "text": "2026-11-06 01:24:33.556644 WARN [1185-1185][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object fil"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "text": "2026-11-06 01:24:33.558446 ERROR [1185-1185][HYBM hybm_entity_default.cpp:1324 InitDramSegment] dram segment does not support sdma in current environment, rankI"
+     }
+    ]
+   },
+   {
+    "build": 2086,
+    "failedTaskType": null,
+    "errCount": 60,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "text": "Traceback (most recent call last):"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "text": "2026-11-06 03:14:36.540596 WARN [881-881][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file:"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "text": "2026-11-06 03:14:36.540726 WARN [888-888][HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file:"
+     }
+    ]
+   },
+   {
+    "build": 2087,
+    "failedTaskType": null,
+    "errCount": 8,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt",
+      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+      "text": "[2026-11-06 01:45:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellT"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt",
+      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+      "text": "Traceback (most recent call last):"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt",
+      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+      "text": "Traceback (most recent call last):"
+     }
+    ]
+   },
+   {
+    "build": 2088,
+    "failedTaskType": null,
+    "errCount": 13,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt",
+      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+      "text": "[2026-11-06 13:32:41] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellT"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt",
+      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+      "text": "│ exit code: 1"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt",
+      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+      "text": "Traceback (most recent call last):"
+     }
+    ]
+   },
+   {
+    "build": 2091,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   },
+   {
+    "build": 2092,
+    "failedTaskType": null,
+    "errCount": 24,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt",
+      "task": "nightly-1-npu-a3 / run (0)",
+      "text": "Traceback (most recent call last):"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt",
+      "task": "nightly-1-npu-a3 / run (0)",
+      "text": "ModuleNotFoundError: No module named 'sglang.srt.utils.process'"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt",
+      "task": "nightly-1-npu-a3 / run (0)",
+      "text": "##[error]Error: failed to run script step:"
+     }
+    ]
+   },
+   {
+    "build": 2093,
+    "failedTaskType": null,
+    "errCount": 18,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt",
+      "task": "nightly-1-npu-a3 / run (0)",
+      "text": "Traceback (most recent call last):"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt",
+      "task": "nightly-1-npu-a3 / run (0)",
+      "text": "##[error]Error: failed to run script step:"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt",
+      "task": "nightly-1-npu-a3 / run (0)",
+      "text": "✗ exit code: 1"
+     }
+    ]
+   },
+   {
+    "build": 2094,
+    "failedTaskType": null,
+    "errCount": 9,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt",
+      "task": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_3... / glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa",
+      "text": "Traceback (most recent call last):"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt",
+      "task": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_3... / glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa",
+      "text": "Traceback (most recent call last):"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt",
+      "task": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_3... / glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa",
+      "text": "##[error]Error: failed to run script step:"
+     }
+    ]
+   },
+   {
+    "build": 2095,
+    "failedTaskType": null,
+    "errCount": 11,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt",
+      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+      "text": "[2026-11-06 10:53:49] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellT"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt",
+      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+      "text": "[2026-11-06 10:58:15] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellT"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt",
+      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+      "text": "Traceback (most recent call last):"
+     }
+    ]
+   },
+   {
+    "build": 2096,
+    "failedTaskType": null,
+    "errCount": 9,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt",
+      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+      "text": "[2026-11-06 11:20:37] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellT"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt",
+      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+      "text": "[2026-11-06 11:25:27] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellT"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt",
+      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+      "text": "Traceback (most recent call last):"
+     }
+    ]
+   },
+   {
+    "build": 2099,
+    "failedTaskType": null,
+    "errCount": 13,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt",
+      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+      "text": "[2026-11-06 23:06:44] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellT"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt",
+      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+      "text": "│ exit code: 1"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt",
+      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+      "text": "Traceback (most recent call last):"
+     }
+    ]
+   },
+   {
+    "build": 2100,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   },
+   {
+    "build": 2101,
+    "failedTaskType": null,
+    "errCount": 8,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "text": "Traceback (most recent call last):"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "text": "Traceback (most recent call last):"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "text": "Traceback (most recent call last):"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "comp": "Triton_Ascend",
+  "pipe": "Ascend",
+  "testTasks": [
+   [
+    "Test_Triton_Ascend",
+    "2f8ebba6f3024d659e6f27bd51a95b98"
+   ]
+  ],
+  "logTasks": [
+   [
+    "npu_ir流水线调用",
+    "5b0ba7feedf147a0a53594304b3c15b2"
+   ]
+  ],
+  "jobLogFiles": [
+   "01_Ascend_104_npu_ir流水线调用.log",
+   "06_Ascend_104_Test_Triton_Ascend.log"
+  ],
+  "caseLogFiles": 0,
+  "testFailedCases": {
+   "Test_Triton_Ascend": 0
+  },
+  "testEmpty": [
+   "Test_Triton_Ascend"
+  ],
+  "jobLogEvidence": {
+   "npu_ir流水线调用": {
+    "file": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
+    "lines": 187,
+    "truncated": false,
+    "errLines": 19,
+    "fallback": false
+   },
+   "Test_Triton_Ascend": {
+    "file": "job_logs/06_Ascend_104_Test_Triton_Ascend.log",
+    "lines": 130,
+    "truncated": false,
+    "errLines": 3,
+    "fallback": true
+   }
+  },
+  "records": [
+   {
+    "build": 103,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   },
+   {
+    "build": 104,
+    "failedTaskType": "测试任务",
+    "errCount": 26,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
+      "task": "npu_ir流水线调用",
+      "text": "[2026/11/06 17:17:46.045 GMT+08:00] 任务 [Build_a3a5_arm]: RUNNING(运行中) -> FAILED(失败)"
+     },
+     {
+      "level": "LOG",
+      "src": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
+      "task": "npu_ir流水线调用",
+      "text": "[2026/11/06 17:26:21.511 GMT+08:00] [17:26:18] run#516 | FAILED(失败) | 已等待 00:25:10"
+     },
+     {
+      "level": "LOG",
+      "src": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
+      "task": "npu_ir流水线调用",
+      "text": "[2026/11/06 17:26:21.511 GMT+08:00] · 阶段 [阶段_1]: RUNNING(运行中) -> FAILED(失败)"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "comp": "vllm-ascend",
+  "pipe": "a2.yaml",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 15517,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   },
+   {
+    "build": 15518,
+    "failedTaskType": null,
+    "errCount": 0,
+    "errs": []
+   }
+  ]
+ },
+ {
+  "comp": "vllm-ascend",
+  "pipe": "a3.yaml",
+  "testTasks": [],
+  "logTasks": [],
+  "jobLogFiles": [],
+  "caseLogFiles": 0,
+  "testFailedCases": {},
+  "testEmpty": [],
+  "jobLogEvidence": {},
+  "records": [
+   {
+    "build": 16450,
+    "failedTaskType": null,
+    "errCount": 45,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42063861754/127640780266_multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2~0bc925.txt",
+      "task": "multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2-A3.yaml, tests/e2e/cases/models/configs/Kimi, 4) / Kimi-K3-MRV2-A3.yaml",
+      "text": "##[error]Error: failed to run script step:"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42063861754/127640780266_multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2~0bc925.txt",
+      "task": "multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2-A3.yaml, tests/e2e/cases/models/configs/Kimi, 4) / Kimi-K3-MRV2-A3.yaml",
+      "text": "✗ exit code: 1"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42063861754/127640780266_multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2~0bc925.txt",
+      "task": "multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2-A3.yaml, tests/e2e/cases/models/configs/Kimi, 4) / Kimi-K3-MRV2-A3.yaml",
+      "text": "##[error]Process completed with exit code 1."
+     }
+    ]
+   },
+   {
+    "build": 16451,
+    "failedTaskType": null,
+    "errCount": 54,
+    "errs": [
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt",
+      "task": "double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C8-MTP-A3_198k_function, GLM-5.1-W8A8C8-A... / GLM-5.1-W8A8C8-A3_198k_function.yaml",
+      "text": "##[error]Error: failed to run script step:"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt",
+      "task": "double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C8-MTP-A3_198k_function, GLM-5.1-W8A8C8-A... / GLM-5.1-W8A8C8-A3_198k_function.yaml",
+      "text": "✗ exit code: 1"
+     },
+     {
+      "level": "LOG",
+      "src": "github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt",
+      "task": "double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C8-MTP-A3_198k_function, GLM-5.1-W8A8C8-A... / GLM-5.1-W8A8C8-A3_198k_function.yaml",
+      "text": "##[error]Process completed with exit code 1."
+     }
+    ]
+   }
+  ]
+ }
+]

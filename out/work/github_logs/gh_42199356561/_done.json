@@ -1,0 +1,142 @@
+{
+ "route": "github",
+ "key": "SgLang|nightly-test-npu.yml",
+ "rn": 2093,
+ "rid": "42199356561",
+ "st": "11-06 18:00",
+ "runId": 42199356561,
+ "repo": "sgl-project/sglang",
+ "displayTitle": "[Test][NPU] overlap-schedule validation: GLM5/Kimi/DSV4 case reconfig + TEMP nightly scoping",
+ "event": "pull_request",
+ "status": "FAILED",
+ "duration": 37.73,
+ "runStatus": {
+  "status": "completed",
+  "conclusion": "cancelled",
+  "updatedAt": "2026-11-06T10:38:37Z",
+  "attempt": 1
+ },
+ "_v": 2,
+ "mode": "perjob",
+ "why": "失败 job 3 个（≤5，逐 job 精取）",
+ "totalJobs": 15,
+ "failedJobs": [
+  {
+   "name": "nightly-1-npu-a3 / run (0)",
+   "id": 127830580941,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+   "id": 127830581265,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+   "id": 127830581346,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ ],
+ "cancelledJobs": [
+  {
+   "name": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap_fia_unset, 1, ... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms_overlap_fia_unset",
+   "id": 127835303206
+  },
+  {
+   "name": "check-all-jobs",
+   "id": 127846716964
+  }
+ ],
+ "jobs": [
+  {
+   "name": "nightly-1-npu-a3 / run (0)",
+   "id": 127830580941,
+   "conclusion": "failure",
+   "startedAt": "2026-11-06T10:05:41Z",
+   "completedAt": "2026-11-06T10:07:58Z",
+   "logFile": "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt",
+   "logBytes": 106764,
+   "logLines": 985,
+   "errorLines": [
+    "L916: Traceback (most recent call last):",
+    "L929: ##[error]Error: failed to run script step:",
+    "L930: ✗ exit code: 1",
+    "L941: Traceback (most recent call last):",
+    "L954: ##[error]Process completed with exit code 1.",
+    "L955: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+   "id": 127830581265,
+   "conclusion": "failure",
+   "startedAt": "2026-11-06T10:10:17Z",
+   "completedAt": "2026-11-06T10:11:55Z",
+   "logFile": "github_logs/gh_42199356561/127830581265_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
+   "logBytes": 61138,
+   "logLines": 707,
+   "errorLines": [
+    "L636: Traceback (most recent call last):",
+    "L651: ##[error]Error: failed to run script step:",
+    "L652: ✗ exit code: 1",
+    "L661: Traceback (most recent call last):",
+    "L676: ##[error]Process completed with exit code 1.",
+    "L677: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  },
+  {
+   "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+   "id": 127830581346,
+   "conclusion": "failure",
+   "startedAt": "2026-11-06T10:05:19Z",
+   "completedAt": "2026-11-06T10:08:36Z",
+   "logFile": "github_logs/gh_42199356561/127830581346_nightly-perf-16-npu-a3 _ nightly-perf-16-npu-a3.txt",
+   "logBytes": 59864,
+   "logLines": 707,
+   "errorLines": [
+    "L636: Traceback (most recent call last):",
+    "L651: ##[error]Error: failed to run script step:",
+    "L652: ✗ exit code: 1",
+    "L661: Traceback (most recent call last):",
+    "L676: ##[error]Process completed with exit code 1.",
+    "L677: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ ],
+ "missing": [],
+ "systemLogs": [],
+ "ghComplete": true
+}

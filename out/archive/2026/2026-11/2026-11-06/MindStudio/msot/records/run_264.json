@@ -1,0 +1,80 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-09 15:06:58",
+    "component": "MindStudio",
+    "pipeline": "msot",
+    "date": "2026-11-06",
+    "recordId": "MindStudio|msot#264"
+  },
+  "recordId": "MindStudio|msot#264",
+  "date": "2026-11-06",
+  "component": "MindStudio",
+  "pipeline": "msot",
+  "pipelineName": "Nightly-CI-Component-pipeline_msot",
+  "platform": "codearts",
+  "buildNumber": 264,
+  "pipelineRunId": "de011750aef244bda6d6359941b66e7b",
+  "status": "CANCELED",
+  "failedTaskType": "测试任务",
+  "startedAt": "2026-11-06T19:09:16",
+  "endedAt": "2026-11-06T22:00:18",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-06T22:00:18",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0,
+    "bsRate": null,
+    "dims": [
+      "va"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=b67d335347fa4646acd3b96d1c55573e&projectId=300037&pipelineRunId=de011750aef244bda6d6359941b66e7b",
+    "detail": null,
+    "github": null
+  },
+  "tasks": [],
+  "cases": [],
+  "errorMessages": [],
+  "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+  },
+  "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+  },
+  "verdict": {
+    "category": "evidence_missing",
+    "text": "证据缺失",
+    "confidence": 0.3,
+    "level": "低",
+    "basis": [
+      "该运行无 FAILED 任务证据（任务被取消或接口未返回失败任务）",
+      "基线 0.30"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "rootCause": "该运行无 FAILED 任务落盘（任务列表与用例列表均为空），也没有运行平台侧任务日志，无法确定失败点；从接口形态看更接近任务被取消或失败任务未返回。",
+    "advice": "确认该构建是否被取消或提前终止；若属真实失败，需要在采集侧补齐失败任务回填并保留日志，之后再单独分析。本条证据不足，结论待验证。",
+    "cites": [],
+    "updatedAt": "2026-11-09 15:07:00",
+    "source": "agent"
+  }
+}

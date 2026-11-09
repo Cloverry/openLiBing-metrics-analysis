@@ -1,0 +1,91 @@
+{
+ "_doc": {
+  "step": "step_6_records",
+  "title": "第 6 步 证据合并与执行记录",
+  "source": "第 2~5c 步归档产物",
+  "criteria": "以「一次执行」为最小单位合并任务、用例、错误信息、证据与构建编号，形成可直接展示与逐条分析的记录",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-09 15:06:58",
+  "component": "MindCluster",
+  "pipeline": "MindCluster",
+  "date": "2026-11-06",
+  "recordCount": 1
+ },
+ "date": "2026-11-06",
+ "component": "MindCluster",
+ "pipeline": "MindCluster",
+ "records": [
+  {
+   "recordId": "MindCluster|MindCluster#543",
+   "date": "2026-11-06",
+   "component": "MindCluster",
+   "pipeline": "MindCluster",
+   "pipelineName": "Nightly-CI-Component-pipeline_MindCluster",
+   "platform": "codearts",
+   "buildNumber": 543,
+   "pipelineRunId": "37457cb6c2024d74b520fea17bf733eb",
+   "status": "COMPLETED",
+   "failedTaskType": null,
+   "startedAt": "2026-11-06T00:35:18",
+   "endedAt": "2026-11-06T03:58:37",
+   "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-06T03:58:37",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+   },
+   "light": {
+    "vaRate": 1,
+    "bsRate": 1,
+    "dims": [
+     "va",
+     "bs"
+    ],
+    "track": "-"
+   },
+   "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=576d7d060dc24749951e0b3abd6a5dcc&projectId=300038&pipelineRunId=37457cb6c2024d74b520fea17bf733eb",
+    "detail": null,
+    "github": null
+   },
+   "tasks": [],
+   "cases": [],
+   "errorMessages": [],
+   "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+   },
+   "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+   },
+   "verdict": {
+    "category": "success",
+    "text": "执行成功",
+    "confidence": 1.0,
+    "level": "高",
+    "basis": [
+     "运行状态 COMPLETED，任务未失败，无需根因分析"
+    ]
+   },
+   "suggestions": [],
+   "analysis": {
+    "status": "na",
+    "rootCause": null,
+    "advice": null,
+    "cites": [],
+    "updatedAt": null,
+    "source": null
+   }
+  }
+ ],
+ "recordFiles": [
+  "records/run_543.json"
+ ],
+ "pathBase": "recordFiles 相对本目录（records/run_<构建号>.json）"
+}

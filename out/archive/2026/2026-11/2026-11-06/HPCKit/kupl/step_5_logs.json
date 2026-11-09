@@ -1,0 +1,99 @@
+{
+ "_doc": {
+  "step": "step_5_logs",
+  "title": "第 5 步 任务日志取证（T5）",
+  "source": "openLiBing 任务日志导出/分页接口",
+  "criteria": "对每个失败任务导出整份日志落 job_logs/，并按关键字扫描错误行",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-09 15:06:59",
+  "component": "HPCKit",
+  "pipeline": "kupl",
+  "date": "2026-11-06"
+ },
+ "results": [
+  {
+   "route": "log",
+   "key": "HPCKit|kupl",
+   "pipeline": "kupl",
+   "rn": 297,
+   "st": "11-06 00:01",
+   "rid": "d0720a2f2a054736a8966e49063b89dc",
+   "jobId": "4045c06725184de7b48a42da6c8d440f",
+   "jobName": "Test_kupl",
+   "fallback": true,
+   "stepErrMsgs": [
+    "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+   ],
+   "jobErrMsg": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "logFile": "job_logs/09_kupl_297_Test_kupl.log",
+   "logBytes": 1385,
+   "logLines": 13,
+   "download": "paging",
+   "truncated": true,
+   "excerpt": null,
+   "errorLines": [
+    "L11: [2026/11/06 00:02:23.210 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : [frame] query step status with error.",
+    "L12: [2026/11/06 00:02:23.210 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : 错误信息: DEV-CODECI-35002, 构建任务执行失败!"
+   ]
+  },
+  {
+   "route": "log",
+   "key": "HPCKit|kupl",
+   "pipeline": "kupl",
+   "rn": 298,
+   "st": "11-06 12:00",
+   "rid": "0323dea18d954ecea0b5cc44c1c34696",
+   "jobId": "878efef62881418ab98220513a834dfc",
+   "jobName": "Test_kupl",
+   "fallback": true,
+   "stepErrMsgs": [
+    "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+   ],
+   "jobErrMsg": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "logFile": "job_logs/08_kupl_298_Test_kupl.log",
+   "logBytes": 1385,
+   "logLines": 13,
+   "download": "paging",
+   "truncated": true,
+   "excerpt": null,
+   "errorLines": [
+    "L11: [2026/11/06 12:02:04.212 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : [frame] query step status with error.",
+    "L12: [2026/11/06 12:02:04.213 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : 错误信息: DEV-CODECI-35002, 构建任务执行失败!"
+   ]
+  },
+  {
+   "route": "log",
+   "key": "HPCKit|kupl",
+   "pipeline": "kupl",
+   "rn": 299,
+   "st": "11-06 13:30",
+   "rid": "83e34fe2e1184610959638c360c41c45",
+   "jobId": "bb4373a54d9a4cc2b52a53177f551672",
+   "jobName": "Test_kupl",
+   "fallback": true,
+   "stepErrMsgs": [
+    "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+   ],
+   "jobErrMsg": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "logFile": "job_logs/04_kupl_299_Test_kupl.log",
+   "logBytes": 16559,
+   "logLines": 144,
+   "download": "export",
+   "truncated": false,
+   "excerpt": null,
+   "errorLines": [
+    "L138: [2026/11/06 13:32:03.681 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+    "L139: [2026/11/06 13:32:03.681 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'",
+    "L140: [2026/11/06 13:32:03.681 GMT+08:00] [ERROR] git clone test_cases code fail",
+    "L142: [2026/11/06 13:32:03.846 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed",
+    "L144: [2026/11/06 13:32:06.815 GMT+08:00] Finished: FAILURE"
+   ]
+  }
+ ],
+ "errors": [],
+ "counts": {
+  "tasks": 3,
+  "logFiles": 3,
+  "errorLines": 9
+ }
+}

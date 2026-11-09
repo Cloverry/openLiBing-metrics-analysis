@@ -1,0 +1,87 @@
+{
+ "_doc": {
+  "step": "step_4_cases",
+  "title": "第 4 步 测试用例取证（T6）",
+  "source": "openLiBing 测试报告页 + 用例日志下载",
+  "criteria": "取失败任务的失败用例、错误信息、深度学习命中行，并下载用例日志到 case_logs/",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-09 15:06:58",
+  "component": "MindIE",
+  "pipeline": "MindIE-Motor",
+  "date": "2026-11-06"
+ },
+ "results": [
+  {
+   "route": "test",
+   "key": "MindIE|MindIE-Motor",
+   "pipeline": "MindIE-Motor",
+   "pipelineName": "Nightly-CI-Component-pipeline_MindIE-Motor",
+   "rn": 117,
+   "st": "11-06 07:04",
+   "projectId": 300036,
+   "pipelineId": "d05b26dfc2e5450e8fff23ddf4cd0eb6",
+   "rid": "c5a424f5e96646668648f056869831c1",
+   "jobId": "8bc5e442a3694e72b8da2119c75c7132",
+   "jobName": "Test_Pytest_MindIE-Motor_smoke_test",
+   "stepIds": [
+    "b29d803ec3084ea9acbdfd089875f144"
+   ],
+   "steps": [
+    {
+     "id": "b29d803ec3084ea9acbdfd089875f144",
+     "name": "Test_Pytest_MindIE-Motor_smoke_test",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "a6449e5f8e154605b3b3a4c69169ee54",
+     "jobIdParam": "35af558b239a4803948c2651933bc2bd"
+    }
+   ],
+   "jobErrMsg": "步骤Test_Pytest_MindIE-Motor_smoke_test执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "f9ff44c2f63c4cc291581a8ca88c2c1e",
+   "code": 200,
+   "summary": {
+    "total": 4,
+    "passed": 3,
+    "failed": 1,
+    "passRate": "75.00%"
+   },
+   "failedCases": [
+    {
+     "name": "test_pymotor_ras_up_down_scale",
+     "number": "test_pymotor_ras_up_down_scale",
+     "state": "failed",
+     "description": "TimeoutError: 服务启动超时，未找到成功日志!",
+     "beginTime": "2026-11-06 15:29:53",
+     "endTime": "2026-11-06 16:00:45",
+     "resultDownloadUrl": "https://mindie.obs.cn-north-4.myhuaweicloud.com/artifact/gitcode/smokeresult/MindIE-Motor/6a4fa7d010294da695be52110517c08b2026110620630/test_pymotor_ras_up_down_scale.html",
+     "envDownloadUrl": null
+    }
+   ],
+   "empty": false
+  }
+ ],
+ "caseErrors": [
+  {
+   "url": "https://mindie.obs.cn-north-4.myhuaweicloud.com/artifact/gitcode/smokeresult/MindIE-Motor/6a4fa7d010294da695be52110517c08b2026110620630/test_pymotor_ras_up_down_scale.html",
+   "file": "case_0000.html",
+   "localLog": "case_logs/case_0000.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/mindie/motor/pymotor/ras/manual_scaling/test_manual_scaling.py::TestPyMotorRasUpDownScale::test_pymotor_ras_up_down_scale",
+   "status": "Failed",
+   "duration": "1851.28s",
+   "fileBytes": 1404399,
+   "fileLines": 19786,
+   "errors": [],
+   "deepHits": [
+    "FAILED due to ERROR/FAIL logs: testcase/mindie/motor/pymotor/ras/manual_scaling/test_manual_scaling.py::TestPyMotorRasUpDownScale::test_pymotor_ras_up_down_scale"
+   ]
+  }
+ ],
+ "errors": [],
+ "counts": {
+  "tasks": 1,
+  "failedCases": 1,
+  "caseLogs": 1,
+  "caseErrors": 0
+ }
+}
