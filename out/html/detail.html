@@ -364,7 +364,27 @@ function rfEsc(s){ return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&am
 
 
 /* ================= 二级页：同口径区间 → 该流水线每天的归档目录 → 逐条执行记录 ================= */
-const BACK_TO = '../';
+/* 数据根：同首页，一律相对「当前文档」逐级探测 archive/_index.json，不写死域名和站点根 */
+let BACK_TO = '../';
+const ROOT_CANDIDATES = ['../', './', '../../', '../../../'];
+function probeRoot(){
+  let i = 0;
+  function step(){
+    if (i >= ROOT_CANDIDATES.length){
+      return Promise.reject(new Error('archive/_index.json → HTTP 404（已依次试过：'
+        + ROOT_CANDIDATES.join('  ') + '）'));
+    }
+    const cand = ROOT_CANDIDATES[i++];
+    return jget(cand + 'archive/_index.json').then(function(x){
+      BACK_TO = cand;            /* 命中后固定，后面所有归档请求都拼这个前缀 */
+      return x;
+    }).catch(function(e){
+      if (isNotFound(e)) return step();
+      throw e;
+    });
+  }
+  return step();
+}
 const CATS = {
   compile_failure: ['编译失败', 'red'],
   test_failure:    ['用例失败', 'red'],
@@ -465,10 +485,10 @@ function boot(){
   }
   /* 先把返回按钮按层级摆好（数据回来之前也不要显示错层级） */
   setBack(QS.get('from') || '', QS.get('to') || '');
-  jget(BACK_TO + 'archive/_index.json').then(function(idx){
+  probeRoot().then(function(idx){
     DAYS = (idx.days || []).slice().sort(function(a, b){ return a.date < b.date ? -1 : 1; });
     if (!DAYS.length){
-      failBox('归档区暂无数据：请先执行 <span class="mono">python run_pipeline.py</span>。');
+      failBox(emptyArchiveMsg());
       return;
     }
     rfInit({min: DAYS[0].date, max: DAYS[DAYS.length - 1].date, onChange: load});
@@ -476,7 +496,13 @@ function boot(){
     /* 归档区为空时 _index.json 本来就不存在（HTTP 404 / ENOENT）→ 提示去采集；
        file:// 直开被浏览器拦截（TypeError）才提示起本地服务 */
     if (isNotFound(e)){
-      failBox('归档区暂无数据：请先执行 <span class="mono">python run_pipeline.py</span> 采集并归档。');
+      failBox(emptyArchiveMsg());
+      return;
+    }
+    if (hostedSite()){
+      failBox('<b>读取归档索引失败</b><div class="mono" style="margin-top:6px">' + rfEsc(String(e)) + '</div>'
+        + '<div style="margin-top:8px">静态托管环境读不到 <span class="mono">archive/_index.json</span>，'
+        + '请确认文件已提交、仓库根目录有 <span class="mono">.nojekyll</span>、Pages 已重新部署。</div>');
       return;
     }
     failBox('<b>读取归档索引失败</b><div class="mono" style="margin-top:6px">' + rfEsc(String(e)) + '</div>'
