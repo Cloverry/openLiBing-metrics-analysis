@@ -265,8 +265,10 @@ function load(from, to){
      页面自身标题/副标题保持恒定，切页与改区间都不会让顶部内容跳动。 */
   const days = (IDX.days || []).filter(function(d){ return d.date >= from && d.date <= to; });
   if (!days.length){
-    tb.innerHTML = '<tr><td colspan="6" class="empty">该区间内没有归档日（' + rfEsc(from) + ' ~ ' + rfEsc(to) + '）</td></tr>';
-    paintNotes([], [], from, to);
+    /* 区间内没有归档日（最常见的是「昨天」落在周末/节假日，那天本来就不跑数）：
+       表格照常铺满全部开源组件，比率与待分析数一律显示 -- / 0，
+       不再用一行提示把整张表替换掉 —— 「不是工作日」就该看到 --，而不是别的日子。 */
+    render([], from, to);
     return;
   }
   tb.innerHTML = '<tr><td colspan="6" class="loading">正在读取 ' + days.length + ' 个归档日…</td></tr>';
@@ -369,7 +371,10 @@ function render(docs, from, to){
 
   const tb = document.getElementById('tb');
   if (!rows.length && !pipeList.length){
-    tb.innerHTML = '<tr><td colspan="6" class="empty">该区间内的归档日没有流水线进入待分析集合</td></tr>';
+    tb.innerHTML = '<tr><td colspan="6" class="empty">'
+      + (docs.length ? '该区间内的归档日没有流水线进入待分析集合'
+                     : '该区间内没有归档日（非工作日不跑数），指标显示 --')
+      + '</td></tr>';
     paintNotes(docs, [], from, to);
     return;
   }
@@ -462,7 +467,9 @@ function paintNotes(docs, rows, from, to){
     + '统计区间 <span class="mono">' + rfEsc(from) + ' ~ ' + rfEsc(to) + '</span>（归档 '
     + docs.length + ' 天）｜ 开源组件 ' + rows.length + ' 个（有待分析流水线 ' + comps
     + ' 个，红灯 ' + red + ' 个）｜ 待分析流水线 ' + pipes + ' 条（可用度 ' + badVA
-    + ' · 编译 ' + badBS + '）｜ 数据源 <span class="mono">out/archive/</span>';
+    + ' · 编译 ' + badBS + '）｜ 数据源 <span class="mono">out/archive/</span>'
+    /* 区间内一天归档都没有：说明白是「这天没跑数」，指标才显示 -- */
+    + (docs.length ? '' : ' ｜ <b>该区间内无归档日</b>（非工作日不跑数，指标显示 --）');
 }
 
 /* 说明：首页表格不做任何展开/下钻，只有「待分析流水线数」是可点数字，进二级页看该组件的流水线清单 */
@@ -500,6 +507,10 @@ DETAIL_EXTRA_CSS = """
 #back{margin:2px 0 8px;align-self:flex-start}
 /* 组件级流水线清单的比率：纯数字百分比（80.0%），不带圆点/灯色 */
 table.ov td.c-rate .pct{font-weight:600;font-variant-numeric:tabular-nums;color:#1b2739}
+/* 可点的比率（有运行历史、点了弹「构建记录」）必须显成链接色：
+   选择器要比上一行更具体才压得住，颜色与正文 a 标签、「查看记录 →」同一个 --acc */
+table.ov td.c-rate .pct.lnk{color:var(--acc);cursor:pointer}
+table.ov td.c-rate .pct.lnk:hover{text-decoration:underline}
 .crumb{margin:2px 0 4px;font-size:13px;color:#666}
 .crumb b{color:#222}
 /* 面包屑逐层可点：总览 › 组件（维度）› 流水线，点哪一层回哪一层 */
@@ -731,8 +742,12 @@ function load(from, to){
   document.getElementById('ttl').textContent = KEY.replace('|', ' / ');
   const days = DAYS.filter(function(d){ return d.date >= from && d.date <= to; });
   if (!days.length){
-    box.innerHTML = '<div class="empty">该区间内没有归档日（' + rfEsc(from) + ' ~ ' + rfEsc(to) + '）</div>';
-    renderHead(null, [], {dirs: [], days: days, from: from, to: to});
+    /* 这天没有归档（非工作日不跑数）：照样出区块头，比率 / 达标工作日一律 --，
+       不把「昨天」悄悄换成别的日子，也不留一张空表让人以为数据丢了 */
+    RUNS = [];
+    CTX = {dirs: [], days: days, from: from, to: to, runs: []};
+    renderHead(null, [], CTX);
+    renderRecs([], CTX);
     return;
   }
   /* 1) 逐日找该流水线的归档目录（同一条流水线在区间内可能每天一个目录） */
@@ -981,9 +996,14 @@ function loadComp(from, to){
   const dimTxt = DIMNAME[DIM] || '';
   const days = DAYS.filter(function(d){ return d.date >= from && d.date <= to; });
   if (!days.length){
-    box.innerHTML = '<div class="empty">该区间内没有归档日（' + rfEsc(from) + ' ~ ' + rfEsc(to) + '）</div>';
+    /* 没有归档日就列不出流水线清单（清单是当天归档带出来的），
+       但仍要把口径写清楚：这两列的比值这天就是 -- */
+    box.innerHTML = '<div class="empty">'
+      + rfEsc(from === to ? from : (from + ' ~ ' + to)) + ' 没有归档日（非工作日不跑数）'
+      + '<div class="dim" style="margin-top:6px">'
+      + rfEsc(dimTxt || '版本可用度') + ' 显示 <b>--</b>，换成有跑数的工作日即可看明细</div></div>';
     const meta0 = document.getElementById('meta');
-    if (meta0) meta0.textContent = '区间 ' + from + ' ~ ' + to + ' · 无归档日';
+    if (meta0) meta0.textContent = '区间 ' + from + ' ~ ' + to + ' · 无归档日 · 指标显示 --';
     return;
   }
   box.innerHTML = '<div class="loading">正在读取 ' + days.length + ' 个归档日…</div>';

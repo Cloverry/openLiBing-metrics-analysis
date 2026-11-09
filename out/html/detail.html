@@ -98,8 +98,9 @@ table.ov tbody tr{height:var(--rowh,auto)}
 .rate-line{display:inline-flex;align-items:center;gap:8px}
 .rate-line .pct{min-width:52px;font-weight:600;font-variant-numeric:tabular-nums;color:#1b2739}
 .rate-line .dot{margin:0}
-/* 可点击数字（同旧版 .lnk）：只在有待分析流水线时出现，点进二级页看明细 */
-.lnk{color:#1677ff;cursor:pointer}
+/* 可点击数字（同旧版 .lnk）：只在有待分析流水线时出现，点进二级页看明细。
+   颜色统一用页面链接色 --acc，和正文里的 a 标签、二级页的「查看记录 →」完全一致 */
+.lnk{color:var(--acc);cursor:pointer}
 .lnk:hover{text-decoration:underline}
 td.r,th.r{text-align:right}
 td.c,th.c{text-align:center}
@@ -141,6 +142,10 @@ td.c,th.c{text-align:center}
 #back{margin:2px 0 8px;align-self:flex-start}
 /* 组件级流水线清单的比率：纯数字百分比（80.0%），不带圆点/灯色 */
 table.ov td.c-rate .pct{font-weight:600;font-variant-numeric:tabular-nums;color:#1b2739}
+/* 可点的比率（有运行历史、点了弹「构建记录」）必须显成链接色：
+   选择器要比上一行更具体才压得住，颜色与正文 a 标签、「查看记录 →」同一个 --acc */
+table.ov td.c-rate .pct.lnk{color:var(--acc);cursor:pointer}
+table.ov td.c-rate .pct.lnk:hover{text-decoration:underline}
 .crumb{margin:2px 0 4px;font-size:13px;color:#666}
 .crumb b{color:#222}
 /* 面包屑逐层可点：总览 › 组件（维度）› 流水线，点哪一层回哪一层 */
@@ -273,10 +278,12 @@ function rfWorkdays(f, t){
 }
 function rfClamp(v){return (v && rfState.min && v<rfState.min) ? rfState.min : ((v && rfState.max && v>rfState.max) ? rfState.max : v);}
 
-/* 快捷段 → 实际区间：右端固定取归档最大日，左端不早于归档最小日（数据不足时自动收缩） */
+/* 快捷段 → 实际区间：7/30/90 以归档最大日为右端，左端不早于归档最小日（数据不足时自动收缩）；
+   「昨天」是唯一的例外 —— 它永远是「真实今天减一天」那一天，不吸附归档最大日、不跳过非工作日，
+   那天没跑数（周末/节假日）就由页面把指标显示成 -- */
 function rfSegRange(r){
   const max = rfState.max || rfYmd(new Date());
-  if (r === 'prev'){ const p = rfState.prev || rfShift(max, -1); return {f: p, t: p}; }
+  if (r === 'prev'){ const p = rfState.prev || rfShift(rfYmd(new Date()), -1); return {f: p, t: p}; }
   const n = Number(r);
   if (!n) return null;
   let f = rfShift(max, -(n - 1));
@@ -288,36 +295,42 @@ function rfInit(opts){
   opts = opts || {};
   rfState.min = opts.min || null;
   rfState.max = opts.max || null;
-  /* 「昨天」段的锚点：先取真实昨天，再夹到归档区间内。
-     每日跑数归档的是「前一日」，所以正常情况真实昨天 == 归档最大日；
-     若归档落后（例如今天补跑周五），则退到归档最大日，避免默认落在无数据的空档。 */
-  rfState.prev = (function(){
-    let p = rfShift(rfYmd(new Date()), -1);
-    if (rfState.max && p > rfState.max) p = rfState.max;
-    if (rfState.min && p < rfState.min) p = rfState.min;
-    return p;
-  })();
+  /* 「昨天」的锚点 = 真实今天减一天，不做任何夹取。
+     以前这里会把昨天吸附到「归档最大日」，于是周末/节假日点「昨天」，
+     看到的其实是上一个工作日的备份数据 —— 看起来就像页面自动跳过了工作日。
+     现在昨天就是昨天：那天没有归档，指标就显示 --（不再拿别的日子顶替）。 */
+  rfState.prev = rfShift(rfYmd(new Date()), -1);
   rfState.onChange = opts.onChange || null;   /* 不接上 onChange，页面就永远不会按区间取数 */
   const fromEl = document.getElementById('rf-from');
   const toEl   = document.getElementById('rf-to');
   if (rfState.min) { fromEl.min = rfState.min; toEl.min = rfState.min; }
-  if (rfState.max) { fromEl.max = rfState.max; toEl.max = rfState.max; }
+  /* 日期框上界放到「今天」（而不是归档最大日）：归档还没落到昨天时，
+     昨天也必须能在日历里选中，选中后由页面显示 -- */
+  const cap = (rfState.max && rfState.max > rfYmd(new Date())) ? rfState.max : rfYmd(new Date());
+  fromEl.max = cap; toEl.max = cap;
 
   const qs = new URLSearchParams(location.search);
+  const storedSeg = localStorage.getItem('rf_seg') || null;
   /* 每日跑数只归档「前一日」一个目录，所以默认段取「昨天」，与采集口径一致；
      历史多日归档仍然可用「近7/近30/近90天」或自定义区间回看 */
   const def = rfSegRange('prev') || {f: rfState.min, t: rfState.max};
-  let from = qs.get('from') || localStorage.getItem('rf_from') || def.f;
-  let to   = qs.get('to')   || localStorage.getItem('rf_to')   || def.t;
+  let from, to;
+  if (storedSeg === 'prev'){
+    /* 「昨天」是相对日期，每次打开都按当天重算，不沿用上次存下来的旧日期 */
+    from = def.f; to = def.t;
+  } else {
+    from = qs.get('from') || localStorage.getItem('rf_from') || def.f;
+    to   = qs.get('to')   || localStorage.getItem('rf_to')   || def.t;
+  }
+  /* 只兜最小日：右端不再夹到归档最大日，否则「昨天」会被悄悄换成别的日子 */
   if (rfState.min && from < rfState.min) from = rfState.min;
-  if (rfState.max && to > rfState.max)   to   = rfState.max;
   if (from > to) from = to;
   fromEl.value = from || ''; toEl.value = to || '';
 
   /* 选中态：seg 只在「当前区间仍是该段算出来的区间」时才算数。
      原实现的致命问题：paintSeg() 读的是 rfInit 的闭包变量 from/to，初始化后永不更新，
      所以点任何快捷段，高亮都停在初始那一段（表现为「点了没反应」）。 */
-  let seg = localStorage.getItem('rf_seg') || null;
+  let seg = storedSeg;
   function segHit(r, f, t){
     const rg = rfSegRange(r);
     return !!rg && rg.f === f && rg.t === t;
@@ -356,8 +369,11 @@ function rfInit(opts){
     const f = fromEl.value, t = toEl.value;
     const el = document.getElementById('rf-hint');
     if (!f || !t) { if (el) el.textContent = ''; return; }
-    if (el) el.innerHTML = '当前区间 <b>' + f + '</b> ~ <b>' + t + '</b> ｜ 工作日 '
-      + rfWorkdays(f, t) + ' 天';
+    const wd = rfWorkdays(f, t);
+    /* 单日且不是工作日：明确写清楚「不是跳过工作日，是这天本来就没跑数」 */
+    const idle = (f === t && wd === 0);
+    if (el) el.innerHTML = '当前区间 <b>' + f + '</b> ~ <b>' + t + '</b> ｜ 工作日 ' + wd + ' 天'
+      + (idle ? ' ｜ <span class="dim">非工作日，当日无跑数，指标显示 --</span>' : '');
   }
   rfState.paintHint = paintHint;
 
@@ -537,8 +553,12 @@ function load(from, to){
   document.getElementById('ttl').textContent = KEY.replace('|', ' / ');
   const days = DAYS.filter(function(d){ return d.date >= from && d.date <= to; });
   if (!days.length){
-    box.innerHTML = '<div class="empty">该区间内没有归档日（' + rfEsc(from) + ' ~ ' + rfEsc(to) + '）</div>';
-    renderHead(null, [], {dirs: [], days: days, from: from, to: to});
+    /* 这天没有归档（非工作日不跑数）：照样出区块头，比率 / 达标工作日一律 --，
+       不把「昨天」悄悄换成别的日子，也不留一张空表让人以为数据丢了 */
+    RUNS = [];
+    CTX = {dirs: [], days: days, from: from, to: to, runs: []};
+    renderHead(null, [], CTX);
+    renderRecs([], CTX);
     return;
   }
   /* 1) 逐日找该流水线的归档目录（同一条流水线在区间内可能每天一个目录） */
@@ -787,9 +807,14 @@ function loadComp(from, to){
   const dimTxt = DIMNAME[DIM] || '';
   const days = DAYS.filter(function(d){ return d.date >= from && d.date <= to; });
   if (!days.length){
-    box.innerHTML = '<div class="empty">该区间内没有归档日（' + rfEsc(from) + ' ~ ' + rfEsc(to) + '）</div>';
+    /* 没有归档日就列不出流水线清单（清单是当天归档带出来的），
+       但仍要把口径写清楚：这两列的比值这天就是 -- */
+    box.innerHTML = '<div class="empty">'
+      + rfEsc(from === to ? from : (from + ' ~ ' + to)) + ' 没有归档日（非工作日不跑数）'
+      + '<div class="dim" style="margin-top:6px">'
+      + rfEsc(dimTxt || '版本可用度') + ' 显示 <b>--</b>，换成有跑数的工作日即可看明细</div></div>';
     const meta0 = document.getElementById('meta');
-    if (meta0) meta0.textContent = '区间 ' + from + ' ~ ' + to + ' · 无归档日';
+    if (meta0) meta0.textContent = '区间 ' + from + ' ~ ' + to + ' · 无归档日 · 指标显示 --';
     return;
   }
   box.innerHTML = '<div class="loading">正在读取 ' + days.length + ' 个归档日…</div>';

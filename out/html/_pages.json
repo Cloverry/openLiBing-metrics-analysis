@@ -5,14 +5,14 @@
   "source": "out/archive/（_index.json / _day.json / _manifest.json / records/run_*.json）",
   "criteria": "只产出静态壳（样式 + 公共日期筛选组件 + 取数脚本）到 out/html/，HTML 内不内嵌任何业务数据；页面运行时按【执行结束时间】区间读取归档 JSON，首页与二级页共用 lib/ui.py 的同一份筛选组件，口径不会分叉",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-09 19:06:01",
+  "generatedAt": "2026-11-09 19:31:16",
   "files": [
    "index.html",
    "detail.html"
   ],
   "dayCount": 1
  },
- "generatedAt": "2026-11-09 19:06:01",
+ "generatedAt": "2026-11-09 19:31:16",
  "dayCount": 1,
  "firstDay": "2026-11-06",
  "lastDay": "2026-11-06",
@@ -90,11 +90,11 @@
  "filesWritten": [
   {
    "file": "index.html",
-   "bytes": 38956
+   "bytes": 40584
   },
   {
    "file": "detail.html",
-   "bytes": 75165
+   "bytes": 77147
   }
  ]
 }
