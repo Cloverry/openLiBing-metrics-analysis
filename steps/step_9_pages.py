@@ -537,15 +537,33 @@ table.rca td:nth-child(1) a{white-space:nowrap}
 .badge.green{background:#52c41a}.badge.yellow{background:#faad14}
 .badge.red{background:#f5222d}.badge.gray{background:#999}
 
-/* ---------- 弹窗骨架：只给「构建记录」用（记录明细页已下线） ---------- */
+/* ---------- 弹窗骨架：三个入口共用（失败用例 / 日志证据 / 构建记录） ----------
+   版式固定成「标题 → 表格区（唯一滚动区）→ 脚注」三段：
+   外框只做定高、overflow:hidden，所以弹窗自己永不出滚动条；
+   纵向滚动条贴着表格右边缘、横向滚动条贴着表格底边，滚动的始终是表格本身。 */
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;
-  align-items:flex-start;justify-content:center;padding:44px 16px;overflow:auto}
+  align-items:center;justify-content:center;padding:24px 16px;overflow:hidden}
 .modal.on{display:flex}
-.modal-box{background:#fff;border-radius:10px;width:min(1280px,96vw);max-height:82vh;overflow:auto;
-  padding:16px 20px;box-shadow:0 8px 30px rgba(16,32,64,.2)}
-.modal-hd{display:flex;justify-content:space-between;align-items:center;gap:10px;
+.modal-box{background:#fff;border-radius:10px;width:min(1280px,96vw);
+  max-height:calc(100vh - 48px);overflow:hidden;
+  padding:16px 20px;box-shadow:0 8px 30px rgba(16,32,64,.2);
+  display:flex;flex-direction:column}
+.modal-hd{display:flex;justify-content:space-between;align-items:center;gap:10px;flex:0 0 auto;
   font-weight:600;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--line2)}
 .modal-hd button{background:#fff;border:1px solid #ccc;border-radius:6px;padding:3px 12px;cursor:pointer;font:inherit}
+/* 弹窗正文 = 表格区（可滚，吃掉全部剩余高度）+ 脚注（固定不动） */
+#mbody{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+/* 表格独占的滚动容器：纵向滚动条在表格右侧、横向滚动条在表格下方，弹窗本身不滚 */
+.mtbl{flex:1 1 auto;min-height:0;overflow:auto}
+.mtbl table.rca{margin:0}
+/* 表头吸顶：表格内滚动时列名始终可见 */
+.mtbl table.rca thead th{position:sticky;top:0;z-index:2;background:#f7f9fc;
+  box-shadow:inset 0 -1px 0 #e3e6ea,inset 0 1px 0 #e3e6ea}
+/* 弹窗表格里的长内容列：一律在列宽内换行（长路径/用例名没有空格也能断），
+   绝不横向溢出到相邻列 —— 列宽由 colgroup 固定，行高随内容自然增长 */
+table.rca td.cw{white-space:normal;word-break:break-all;overflow-wrap:anywhere}
+/* 时间列：优先在「日期」和「时刻」之间的空格处折行，不要从毫秒中间断开 */
+table.rca td.cw1{white-space:normal;word-break:normal;overflow-wrap:anywhere}
 /* 定性分布：二级页字段，按执行记录计数 */
 .dist{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0 10px;
   padding:8px 12px;background:#fff;border:1px solid var(--line);border-radius:8px;font-size:12px}
@@ -553,7 +571,7 @@ table.rca td:nth-child(1) a{white-space:nowrap}
 .dist .dt{color:#374151;font-weight:600;margin-right:2px}
 .dist .sp{flex:1 1 auto}
 
-.mrec-note{margin-top:6px;color:#999;font-size:12px}
+.mrec-note{margin-top:6px;color:#999;font-size:12px;flex:0 0 auto}
 """
 
 DETAIL_JS = r"""
@@ -1308,19 +1326,19 @@ function openCases(i){
     return '<tr>'
       + '<td class="expr-txt"><span class="dim">' + (k + 1) + '</span> ' + rfEsc(nz(c.name)) + '</td>'
       + '<td class="nowrap">' + statusTag(c.state) + '</td>'
-      + '<td class="nowrap dim">' + rfEsc(nz(c.beginTime)) + '</td>'
-      + '<td class="nowrap dim">' + rfEsc(nz(c.endTime)) + '</td>'
+      + '<td class="cw1 dim">' + rfEsc(nz(c.beginTime)) + '</td>'
+      + '<td class="cw1 dim">' + rfEsc(nz(c.endTime)) + '</td>'
       + '<td class="expr-txt">' + rfEsc(nz(c.description)) + '</td>'
       + '<td class="nowrap">' + lgCell + '</td>'
       + '</tr>';
   }).join('');
   openModal('失败用例（' + cases.length + ' 条）｜#' + rfEsc(nz(r.buildNumber))
       + ' · ' + rfEsc(nz(r.pipeline)),
-    '<table class="rca"><colgroup><col style="width:21%"><col style="width:7%">'
-    + '<col style="width:11%"><col style="width:11%"><col style="width:43%"><col style="width:7%"></colgroup>'
+    '<div class="mtbl"><table class="rca"><colgroup><col style="width:21%"><col style="width:7%">'
+    + '<col style="width:13%"><col style="width:13%"><col style="width:39%"><col style="width:7%"></colgroup>'
     + '<thead><tr><th>用例</th><th>状态</th><th>开始时间</th><th>结束时间</th>'
     + '<th>失败详情（测试报告断言原文）</th><th>日志</th></tr></thead>'
-    + '<tbody>' + rows + '</tbody></table>'
+    + '<tbody>' + rows + '</tbody></table></div>'
     + '<div class="mrec-note">用例清单取自该次执行的测试报告 failedCases（共 ' + cases.length
     + ' 条全部失败用例），失败详情按原文完整输出、不做截断；'
     + '「用例日志」打开归档里的该用例 HTML 报告。日志原始错误行见「错误信息」列的「证据」。</div>');
@@ -1340,21 +1358,21 @@ function openEvidence(i){
       : (x.line == null ? '<span class="dim">--</span>' : 'L' + rfEsc(x.line));
     const who = [nz(x.task), x.case || ''].filter(function(s){ return s && s !== '--'; }).join(' / ');
     return '<tr>'
-      + '<td class="nowrap">' + (x.time ? rfEsc(x.time) : '<span class="dim">--</span>') + '</td>'
-      + '<td class="nowrap">' + (x.level && x.level !== '--'
+      + '<td class="cw1">' + (x.time ? rfEsc(x.time) : '<span class="dim">--</span>') + '</td>'
+      + '<td class="cw">' + (x.level && x.level !== '--'
           ? rfEsc(x.level) : '<span class="dim">--</span>') + '</td>'
-      + '<td class="nowrap dim">' + rfEsc(who || '--') + '</td>'
-      + '<td class="nowrap dim">' + loc + '</td>'
+      + '<td class="cw dim">' + rfEsc(who || '--') + '</td>'
+      + '<td class="cw dim">' + loc + '</td>'
       + '<td class="expr-txt">' + rfEsc(nz(x.text)) + '</td>'
       + '</tr>';
   }).join('');
   openModal('日志证据（' + evs.length + ' 行）｜#' + rfEsc(nz(r.buildNumber))
       + ' · ' + rfEsc(nz(r.pipeline)),
-    '<table class="rca"><colgroup><col style="width:13%"><col style="width:6%">'
-    + '<col style="width:20%"><col style="width:13%"><col style="width:48%"></colgroup>'
+    '<div class="mtbl"><table class="rca"><colgroup><col style="width:14%"><col style="width:5%">'
+    + '<col style="width:23%"><col style="width:14%"><col style="width:44%"></colgroup>'
     + '<thead><tr><th>时间</th><th>级别</th><th>任务 / 用例</th><th>位置</th>'
     + '<th>证据原文（整行，不截断）</th></tr></thead>'
-    + '<tbody>' + rows + '</tbody></table>'
+    + '<tbody>' + rows + '</tbody></table></div>'
     + '<div class="mrec-note">证据 = 采集到的日志/报告原始行，逐行完整输出。'
     + '用例级证据取自测试报告 errorMessages（自带时间与位置）；'
     + 'job 日志证据的源行本就带时间戳，已抽到「时间」列；'
@@ -1409,12 +1427,12 @@ function buildsTable(ctx, dim, recs, who){
   });
   openModal('构建记录（' + st.runs.length + ' 次运行）｜'
       + rfEsc(who ? who + ' · ' : '') + rfEsc(DIMNAME[dim] || '全部维度'),
-    '<table class="rca"><colgroup><col style="width:8%"><col style="width:9%">'
+    '<div class="mtbl"><table class="rca"><colgroup><col style="width:8%"><col style="width:9%">'
     + '<col style="width:12%"><col style="width:8%"><col style="width:11%">'
     + '<col style="width:9%"><col style="width:21.5%"><col style="width:21.5%"></colgroup>'
     + '<thead><tr><th>构建</th><th>状态</th><th>失败类型</th><th>版本可用</th><th>编译成功/次数</th>'
     + '<th>用例通过率</th><th>开始时间</th><th>结束时间</th></tr></thead>'
-    + '<tbody>' + rows.join('') + '</tbody></table>'
+    + '<tbody>' + rows.join('') + '</tbody></table></div>'
     + '<div class="mrec-note">区间 ' + rfEsc(ctx.from) + ' ~ ' + rfEsc(ctx.to)
     + ' · 区间内每一次运行逐条平铺（不按天汇总），运行来自归档 step_2_runs.json 的 runHistory'
     + '（按执行结束时间归属日期）· 统计区间一变即按新区间重新筛选、重新计算 · 执行成功也逐条列出'
@@ -1505,12 +1523,12 @@ function openBuildsLegacy(dim){
       + '</tr>';
   }).join('');
   openModal('构建记录（' + picked.length + ' 条）｜' + rfEsc(DIMNAME[dim] || '全部维度'),
-    '<table class="rca"><colgroup><col style="width:11%"><col style="width:11%">'
+    '<div class="mtbl"><table class="rca"><colgroup><col style="width:11%"><col style="width:11%">'
     + '<col style="width:15%"><col style="width:15%">'
     + '<col style="width:24%"><col style="width:24%"></colgroup>'
     + '<thead><tr><th>构建</th><th>状态</th><th>失败类型</th><th>定性</th>'
     + '<th>开始时间</th><th>结束时间</th></tr></thead>'
-    + '<tbody>' + rows + '</tbody></table>'
+    + '<tbody>' + rows + '</tbody></table></div>'
     + '<div class="mrec-note">归档里没有运行历史（step_2_runs.json），只列出当前维度的失败记录（共 '
     + picked.length + ' 条）。点构建号直接在 openLiBing 打开该次执行。</div>');
 }
