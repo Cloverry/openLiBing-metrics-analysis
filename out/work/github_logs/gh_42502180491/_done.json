@@ -1,0 +1,59 @@
+{
+ "route": "github",
+ "key": "SgLang|nightly-test-npu.yml",
+ "rn": 2125,
+ "rid": "42502180491",
+ "st": "11-09 00:53",
+ "runId": 42502180491,
+ "repo": "sgl-project/sglang",
+ "displayTitle": "L3cache",
+ "event": "pull_request",
+ "status": "FAILED",
+ "duration": 18.43,
+ "runStatus": {
+  "status": "completed",
+  "conclusion": "cancelled",
+  "updatedAt": "2026-11-08T17:12:02Z",
+  "attempt": 1
+ },
+ "_v": 2,
+ "mode": "perjob",
+ "why": "取消 job 2 个（≤5，逐 job 精取）",
+ "totalJobs": 15,
+ "failedJobs": [],
+ "cancelledJobs": [
+  {
+   "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+   "id": 128797142436
+  },
+  {
+   "name": "check-all-jobs",
+   "id": 128801839738
+  }
+ ],
+ "jobs": [
+  {
+   "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+   "id": 128797142436,
+   "conclusion": "cancelled",
+   "startedAt": "2026-11-08T16:54:07Z",
+   "completedAt": "2026-11-08T17:12:01Z",
+   "logFile": "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test_registe~6b37f9.txt",
+   "logBytes": 206236,
+   "logLines": 1033,
+   "errorLines": [],
+   "githubSteps": [],
+   "isTestJob": true,
+   "testResults": null
+  }
+ ],
+ "missing": [
+  {
+   "job": "check-all-jobs",
+   "id": 128801839738,
+   "status": "404_not_retained"
+  }
+ ],
+ "systemLogs": [],
+ "ghComplete": true
+}

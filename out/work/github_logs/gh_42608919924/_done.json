@@ -1,0 +1,74 @@
+{
+ "route": "github",
+ "key": "SgLang|nightly-test-npu.yml",
+ "rn": 2129,
+ "rid": "42608919924",
+ "st": "11-09 19:25",
+ "runId": 42608919924,
+ "repo": "sgl-project/sglang",
+ "displayTitle": "[Test] [NPU] kimi_k3: run the 128k decode prefix case at C4 with repeat_rate=1",
+ "event": "pull_request",
+ "status": "FAILED",
+ "duration": 53.85,
+ "runStatus": {
+  "status": "completed",
+  "conclusion": "failure",
+  "updatedAt": "2026-11-09T12:19:14Z",
+  "attempt": 1
+ },
+ "_v": 2,
+ "mode": "perjob",
+ "why": "失败 job 1 个（≤5，逐 job 精取）",
+ "totalJobs": 15,
+ "failedJobs": [
+  {
+   "name": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+   "id": 129131958688,
+   "steps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ ],
+ "cancelledJobs": [],
+ "jobs": [
+  {
+   "name": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+   "id": 129131958688,
+   "conclusion": "failure",
+   "startedAt": "2026-11-09T11:25:53Z",
+   "completedAt": "2026-11-09T12:19:13Z",
+   "logFile": "github_logs/gh_42608919924/129131958688_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test_reg~77367e.txt",
+   "logBytes": 1677751,
+   "logLines": 17314,
+   "errorLines": [
+    "L15335: [2026-11-09 19:51:04] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+    "L15452: │ exit code: 1",
+    "L17136: Traceback (most recent call last):",
+    "L17170: Traceback (most recent call last):",
+    "L17182: Traceback (most recent call last):",
+    "L17194: Traceback (most recent call last):",
+    "L17205: Traceback (most recent call last):",
+    "L17213: ##[error]Error: failed to run script step:",
+    "L17214: ✗ exit code: 1",
+    "L17219: Traceback (most recent call last):",
+    "L17230: Traceback (most recent call last):",
+    "L17238: ##[error]Process completed with exit code 1.",
+    "L17239: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Run test",
+     "conclusion": "failure"
+    }
+   ],
+   "isTestJob": true,
+   "testResults": null
+  }
+ ],
+ "missing": [],
+ "systemLogs": [],
+ "ghComplete": true
+}

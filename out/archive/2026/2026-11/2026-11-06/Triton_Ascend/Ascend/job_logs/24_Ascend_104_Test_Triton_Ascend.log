@@ -1,0 +1,130 @@
+[2026/11/06 17:26:26.683 GMT+08:00] [INFO]  : [JobStatusPlugin] onStarted: j_vYJjb1OR #1
+[2026/11/06 17:26:26.684 GMT+08:00] Resume disabled by user, switching to high-performance, low-durability mode.
+[2026/11/06 17:26:27.815 GMT+08:00] [INFO] [PRE_ENV:slave_create] : 该步骤开始执行
+[2026/11/06 17:26:27.817 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] resources pool message: de5a62529a4744b8877ef2407bbdc189
+[2026/11/06 17:26:27.819 GMT+08:00] [WARNING] [PRE_ENV:slave_create] : [slave] find empty runtime, location: PRE_ENV.slave_create
+[2026/11/06 17:26:27.819 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] Fixed content: No
+[2026/11/06 17:26:27.925 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] Find available executor node:agent_1788157832509-F2BYL7cldV
+[2026/11/06 17:26:27.966 GMT+08:00] [INFO] [PRE_ENV:slave_create] : 该步骤执行完成
+[2026/11/06 17:26:28.346 GMT+08:00] arm-shell4.2.46-git2.23-zip-1.1.0: Pulling from *****
+[2026/11/06 17:26:28.346 GMT+08:00] Digest: sha256:d0f5d8ada0e25daa60eabcc3eebe45eee5d7e532d07ff2367c487095356d0e0b
+[2026/11/06 17:26:28.346 GMT+08:00] Status: Image is up to date for************
+[2026/11/06 17:26:28.346 GMT+08:00]************
+[2026/11/06 17:26:29.116 GMT+08:00] [INFO] [代码检出:external_pre_checkout] : 该步骤开始执行
+[2026/11/06 17:26:29.118 GMT+08:00] [INFO] [代码检出:external_pre_checkout] : git plugin version: 1.12.5
+[2026/11/06 17:26:29.128 GMT+08:00] [INFO] [代码检出:external_pre_checkout] : 成功配置文件。
+[2026/11/06 17:26:29.312 GMT+08:00] [INFO] [代码检出:external_pre_checkout] : [WARN]DEV.CB.02101217,用户名或密码为空。
+[2026/11/06 17:26:29.312 GMT+08:00] [INFO] [代码检出:external_pre_checkout] : 创建gitcode代码访问凭证成功。
+[2026/11/06 17:26:29.313 GMT+08:00] [INFO] [代码检出:external_pre_checkout] : 该步骤执行完成
+[2026/11/06 17:26:29.348 GMT+08:00] No credentials specified
+[2026/11/06 17:26:29.348 GMT+08:00] set customize username password****           
+[2026/11/06 17:26:29.354 GMT+08:00] addDefaultCredentials
+[2026/11/06 17:26:29.359 GMT+08:00] git plugin version: 3.12.22-h1.cbu.codearts.build.r1
+[2026/11/06 17:26:29.364 GMT+08:00] Cloning the remote Git repository
+[2026/11/06 17:26:29.365 GMT+08:00] Using shallow clone
+[2026/11/06 17:26:29.365 GMT+08:00] Avoid fetching tags
+[2026/11/06 17:26:29.365 GMT+08:00] Honoring refspec on initial clone
+[2026/11/06 17:26:29.369 GMT+08:00] Cloning repository https://gitcode.com/BeiMing_Dev/build_project.git
+[2026/11/06 17:26:29.369 GMT+08:00]  > git init /opt/agent_1788157832509/workspace/j_vYJjb1OR # timeout=10
+[2026/11/06 17:26:29.373 GMT+08:00] Fetching upstream changes from https://gitcode.com/BeiMing_Dev/build_project.git
+[2026/11/06 17:26:29.373 GMT+08:00]  > git --version # timeout=10
+[2026/11/06 17:26:29.375 GMT+08:00]  > git --version # 'git version 2.34.1'
+[2026/11/06 17:26:29.375 GMT+08:00] using GIT_ASKPASS to set credentials  username and password**** [2026/11/06 17:26:29.375 GMT+08:00] scmType is gitcode
+[2026/11/06 17:26:29.375 GMT+08:00]  > git -c *** fetch --no-tags --force --progress --depth=1 -- https://gitcode.com/BeiMing_Dev/build_project.git +refs/heads/main:refs/remotes/origin/main # timeout=120
+[2026/11/06 17:26:29.980 GMT+08:00]  > git config remote.origin.url https://gitcode.com/BeiMing_Dev/build_project.git # timeout=10
+[2026/11/06 17:26:29.982 GMT+08:00]  > git config --add remote.origin.fetch +refs/heads/main:refs/remotes/origin/main # timeout=10
+[2026/11/06 17:26:29.989 GMT+08:00]  > git config remote.origin.url https://gitcode.com/BeiMing_Dev/build_project.git # timeout=10
+[2026/11/06 17:26:29.997 GMT+08:00] Fetching upstream changes from https://gitcode.com/BeiMing_Dev/build_project.git
+[2026/11/06 17:26:29.997 GMT+08:00] using GIT_ASKPASS to set credentials  username and password**** [2026/11/06 17:26:29.998 GMT+08:00] scmType is gitcode
+[2026/11/06 17:26:29.998 GMT+08:00]  > git -c *** fetch --no-tags --force --progress --depth=1 -- https://gitcode.com/BeiMing_Dev/build_project.git +refs/heads/main:refs/remotes/origin/main # timeout=120
+[2026/11/06 17:26:30.442 GMT+08:00] Checking out Revision d29757b155dc5c4bf1e51be7bf15dced9d24408f (origin/main)
+[2026/11/06 17:26:30.442 GMT+08:00] Disable Git LFS pull
+[2026/11/06 17:26:30.466 GMT+08:00] Commit message: "修改了pod标签"
+[2026/11/06 17:26:30.466 GMT+08:00] First time build. Skipping changelog.
+[2026/11/06 17:26:30.493 GMT+08:00] [INFO] [代码检出:external_post_checkout] : 该步骤开始执行
+[2026/11/06 17:26:30.558 GMT+08:00] [INFO] [代码检出:external_post_checkout] : 该步骤执行完成
+[2026/11/06 17:26:30.438 GMT+08:00]  > git rev-parse origin/main^{commit} # timeout=10
+[2026/11/06 17:26:30.446 GMT+08:00]  > git config core.sparsecheckout # timeout=10
+[2026/11/06 17:26:30.447 GMT+08:00]  > git checkout -f d29757b155dc5c4bf1e51be7bf15dced9d24408f # timeout=120
+[2026/11/06 17:26:30.451 GMT+08:00]  > git branch -a -v --no-abbrev # timeout=10
+[2026/11/06 17:26:30.453 GMT+08:00]  > git checkout -b main d29757b155dc5c4bf1e51be7bf15dced9d24408f # timeout=120
+[2026/11/06 17:26:32.200 GMT+08:00] arm64-v1: Pulling from triton-build/triton
+[2026/11/06 17:26:32.200 GMT+08:00] Digest: sha256:019f11e94a33f71e220052abe9cd24e582ec0a6abfb6e22cfc49169ff730f059
+[2026/11/06 17:26:32.200 GMT+08:00] Status: Image is up to date for swr.cn-north-4.myhuaweicloud.com/triton-build/triton:arm64-v1
+[2026/11/06 17:26:32.200 GMT+08:00] swr.cn-north-4.myhuaweicloud.com/triton-build/triton:arm64-v1
+[2026/11/06 17:26:33.284 GMT+08:00] + echo hello
+[2026/11/06 17:26:33.284 GMT+08:00] hello
+[2026/11/06 17:26:33.284 GMT+08:00] + echo PIPELINE_ID:9a4886d40e544cecb7da63c9597490a6
+[2026/11/06 17:26:33.284 GMT+08:00] PIPELINE_ID:9a4886d40e544cecb7da63c9597490a6
+[2026/11/06 17:26:33.284 GMT+08:00] + echo PIPELINE_RUN_ID:9ae1e7dda41c4a78957a5ba09d2e5b3c
+[2026/11/06 17:26:33.284 GMT+08:00] PIPELINE_RUN_ID:9ae1e7dda41c4a78957a5ba09d2e5b3c
+[2026/11/06 17:26:33.284 GMT+08:00] + yum install python3-pip -y
+[2026/11/06 17:26:33.299 GMT+08:00] starting check in ***/@tmp/durable-578ac3e0
+[2026/11/06 17:26:43.503 GMT+08:00] AlmaLinux 8 - BaseOS                             10 MB/s |  90 MB     00:08    
+[2026/11/06 17:26:58.663 GMT+08:00] AlmaLinux 8 - AppStream                         9.2 MB/s |  31 MB     00:03    
+[2026/11/06 17:27:05.440 GMT+08:00] AlmaLinux 8 - Extras                             11 kB/s |  22 kB     00:02    
+[2026/11/06 17:27:06.436 GMT+08:00] AlmaLinux 8 - PowerTools                        2.5 MB/s | 4.4 MB     00:01    
+[2026/11/06 17:27:09.863 GMT+08:00] Extra Packages for Enterprise Linux 8 - aarch64 6.1 MB/s |  14 MB     00:02    
+[2026/11/06 17:27:16.625 GMT+08:00] Dependencies resolved.
+[2026/11/06 17:27:16.625 GMT+08:00] =======================================================================================
+[2026/11/06 17:27:16.625 GMT+08:00]  Package               Arch     Version                                Repo        Size
+[2026/11/06 17:27:16.625 GMT+08:00] =======================================================================================
+[2026/11/06 17:27:16.625 GMT+08:00] Installing:
+[2026/11/06 17:27:16.625 GMT+08:00]  python3-pip           noarch   9.0.3-24.el8                           appstream   19 k
+[2026/11/06 17:27:16.625 GMT+08:00] Installing dependencies:
+[2026/11/06 17:27:16.626 GMT+08:00]  platform-python-pip   noarch   9.0.3-24.el8                           baseos     1.6 M
+[2026/11/06 17:27:16.626 GMT+08:00]  python3-setuptools    noarch   39.2.0-9.el8_10                        baseos     162 k
+[2026/11/06 17:27:16.626 GMT+08:00]  python36              aarch64  3.6.8-39.module_el8.10.0+3769+3838165b appstream   18 k
+[2026/11/06 17:27:16.626 GMT+08:00] Enabling module streams:
+[2026/11/06 17:27:16.626 GMT+08:00]  python36                       3.6                                                    
+[2026/11/06 17:27:16.626 GMT+08:00] 
+[2026/11/06 17:27:16.626 GMT+08:00] Transaction Summary
+[2026/11/06 17:27:16.626 GMT+08:00] =======================================================================================
+[2026/11/06 17:27:16.626 GMT+08:00] Install  4 Packages
+[2026/11/06 17:27:16.626 GMT+08:00] 
+[2026/11/06 17:27:16.626 GMT+08:00] Total download size: 1.8 M
+[2026/11/06 17:27:16.626 GMT+08:00] Installed size: 7.0 M
+[2026/11/06 17:27:16.626 GMT+08:00] Downloading Packages:
+[2026/11/06 17:27:23.391 GMT+08:00] (1/4): python3-pip-9.0.3-24.el8.noarch.rpm      185 kB/s |  19 kB     00:00    
+[2026/11/06 17:27:23.391 GMT+08:00] (2/4): python36-3.6.8-39.module_el8.10.0+3769+3 298 kB/s |  18 kB     00:00    
+[2026/11/06 17:27:23.391 GMT+08:00] (3/4): python3-setuptools-39.2.0-9.el8_10.noarc 892 kB/s | 162 kB     00:00    
+[2026/11/06 17:27:23.391 GMT+08:00] (4/4): platform-python-pip-9.0.3-24.el8.noarch. 5.3 MB/s | 1.6 MB     00:00    
+[2026/11/06 17:27:23.391 GMT+08:00] --------------------------------------------------------------------------------
+[2026/11/06 17:27:23.391 GMT+08:00] Total                                           297 kB/s | 1.8 MB     00:06     
+[2026/11/06 17:27:23.391 GMT+08:00] Running transaction check
+[2026/11/06 17:27:23.391 GMT+08:00] Transaction check succeeded.
+[2026/11/06 17:27:23.391 GMT+08:00] Running transaction test
+[2026/11/06 17:27:23.391 GMT+08:00] Transaction test succeeded.
+[2026/11/06 17:27:23.391 GMT+08:00] Running transaction
+[2026/11/06 17:27:23.391 GMT+08:00]   Preparing        :                                                        1/1 
+[2026/11/06 17:27:23.391 GMT+08:00]   Installing       : python3-setuptools-39.2.0-9.el8_10.noarch              1/4 
+[2026/11/06 17:27:23.391 GMT+08:00]   Installing       : platform-python-pip-9.0.3-24.el8.noarch                2/4 
+[2026/11/06 17:27:23.391 GMT+08:00]   Installing       : python36-3.6.8-39.module_el8.10.0+3769+3838165b.aarc   3/4 
+[2026/11/06 17:27:23.391 GMT+08:00]   Running scriptlet: python36-3.6.8-39.module_el8.10.0+3769+3838165b.aarc   3/4 
+[2026/11/06 17:27:23.391 GMT+08:00]   Installing       : python3-pip-9.0.3-24.el8.noarch                        4/4 
+[2026/11/06 17:27:23.391 GMT+08:00]   Running scriptlet: python3-pip-9.0.3-24.el8.noarch                        4/4 
+[2026/11/06 17:27:23.391 GMT+08:00]   Verifying        : platform-python-pip-9.0.3-24.el8.noarch                1/4 
+[2026/11/06 17:27:23.391 GMT+08:00]   Verifying        : python3-setuptools-39.2.0-9.el8_10.noarch              2/4 
+[2026/11/06 17:27:23.391 GMT+08:00]   Verifying        : python3-pip-9.0.3-24.el8.noarch                        3/4 
+[2026/11/06 17:27:23.391 GMT+08:00]   Verifying        : python36-3.6.8-39.module_el8.10.0+3769+3838165b.aarc   4/4 
+[2026/11/06 17:27:23.391 GMT+08:00] 
+[2026/11/06 17:27:23.391 GMT+08:00] Installed:
+[2026/11/06 17:27:23.391 GMT+08:00]   platform-python-pip-9.0.3-24.el8.noarch                                       
+[2026/11/06 17:27:23.391 GMT+08:00]   python3-pip-9.0.3-24.el8.noarch                                               
+[2026/11/06 17:27:23.391 GMT+08:00]   python3-setuptools-39.2.0-9.el8_10.noarch                                     
+[2026/11/06 17:27:23.391 GMT+08:00]   python36-3.6.8-39.module_el8.10.0+3769+3838165b.aarch64                       
+[2026/11/06 17:27:23.391 GMT+08:00] 
+[2026/11/06 17:27:23.391 GMT+08:00] Complete!
+[2026/11/06 17:27:23.391 GMT+08:00] + mkdir -p tmp_file
+[2026/11/06 17:27:23.391 GMT+08:00] + wget --no-check-certificate -r -np -nH -nd -P ***//tmp_file -A xml *****/openLiBing/pipeline_results/9a4886d40e544cecb7da63c9597490a6/9ae1e7dda41c4a78957a5ba09d2e5b3c/
+[2026/11/06 17:27:23.391 GMT+08:00] --2026-11-06 17:27:23--  *****/openLiBing/pipeline_results/9a4886d40e544cecb7da63c9597490a6/9ae1e7dda41c4a78957a5ba09d2e5b3c/
+[2026/11/06 17:27:23.391 GMT+08:00] Connecting to ***.***.***.69:51001... connected.
+[2026/11/06 17:27:23.672 GMT+08:00] WARNING: The certificate of ‘***.***.***.69’ is not trusted.
+[2026/11/06 17:27:23.672 GMT+08:00] WARNING: The certificate of ‘***.***.***.69’ hasn't got a known issuer.
+[2026/11/06 17:27:23.672 GMT+08:00] The certificate's owner does not match hostname ‘***.***.***.69’
+[2026/11/06 17:27:23.672 GMT+08:00] HTTP request sent, awaiting response... 404 Not Found
+[2026/11/06 17:27:23.672 GMT+08:00] 2026-11-06 17:27:23 ERROR 404: Not Found.
+[2026/11/06 17:27:23.672 GMT+08:00] 
+[2026/11/06 17:27:23.698 GMT+08:00] [ERROR]  : script returned exit code 8, exitMessage is: command run failed
+[2026/11/06 17:27:25.175 GMT+08:00] [INFO]  : [JobStatusPlugin] onCompleted: j_vYJjb1OR #1
+[2026/11/06 17:27:28.925 GMT+08:00] Finished: FAILURE

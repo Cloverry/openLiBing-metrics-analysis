@@ -1,0 +1,25 @@
+{
+ "totals": {
+  "days": 2,
+  "pipelines": 98,
+  "records": 167,
+  "evidenceRefs": 289,
+  "evidenceMissing": 0
+ },
+ "ok": true,
+ "stale": [
+  {
+   "path": "archive/2026/2026-11/2026-11-06/MindSpeed/master",
+   "date": "2026-11-06",
+   "component": "MindSpeed",
+   "pipeline": "master"
+  },
+  {
+   "path": "archive/2026/2026-11/2026-11-09/MindSpeed/master",
+   "date": "2026-11-09",
+   "component": "MindSpeed",
+   "pipeline": "master"
+  }
+ ],
+ "problems": []
+}

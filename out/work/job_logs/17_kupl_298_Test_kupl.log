@@ -1,0 +1,144 @@
+[2026/11/06 12:01:55.108 GMT+08:00] [INFO]  : [JobStatusPlugin] onStarted: j_T1DFF533 #1
+[2026/11/06 12:01:55.110 GMT+08:00] Resume disabled by user, switching to high-performance, low-durability mode.
+[2026/11/06 12:01:55.218 GMT+08:00] [INFO] [PRE_ENV:slave_create] : 该步骤开始执行
+[2026/11/06 12:01:55.220 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] resources pool message: d24ba9f2ec724223a66f85287ebe97c4
+[2026/11/06 12:01:55.221 GMT+08:00] [WARNING] [PRE_ENV:slave_create] : [slave] find empty runtime, location: PRE_ENV.slave_create
+[2026/11/06 12:01:55.221 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] Fixed content: No
+[2026/11/06 12:01:55.328 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] Find available executor node:123_60_114_33-hzRLibj4SY
+[2026/11/06 12:01:55.379 GMT+08:00] [INFO] [PRE_ENV:slave_create] : 该步骤执行完成
+[2026/11/06 12:01:55.418 GMT+08:00] [INFO] [代码检出:external_pre_checkout] : 该步骤开始执行
+[2026/11/06 12:01:55.420 GMT+08:00] [INFO] [代码检出:external_pre_checkout] : git plugin version: 1.12.5
+[2026/11/06 12:01:55.486 GMT+08:00] [INFO] [代码检出:external_pre_checkout] : 成功配置文件。
+[2026/11/06 12:01:55.770 GMT+08:00] [INFO] [代码检出:external_pre_checkout] : private key length: 2,455
+[2026/11/06 12:01:55.770 GMT+08:00] [INFO] [代码检出:external_pre_checkout] : get CodeArts Repo private key finished.
+[2026/11/06 12:01:55.770 GMT+08:00] [INFO] [代码检出:external_pre_checkout] : 成功创建CodeArts Repo的访问凭据。
+[2026/11/06 12:01:55.771 GMT+08:00] [INFO] [代码检出:external_pre_checkout] : 该步骤执行完成
+[2026/11/06 12:01:55.966 GMT+08:00] No credentials specified
+[2026/11/06 12:01:55.966 GMT+08:00] url:git@codehub.devcloud.cn-north-4.huaweicloud.com:b4ccaec8a6d24940a9857b941e3de748/HPCKit_JenkinsBuild.git
+[2026/11/06 12:01:55.966 GMT+08:00] set customize ssh credentials
+[2026/11/06 12:01:56.008 GMT+08:00] git plugin version: 3.12.22-h1.cbu.codearts.build.r1
+[2026/11/06 12:01:56.043 GMT+08:00] Cloning the remote Git repository
+[2026/11/06 12:01:56.043 GMT+08:00] Using shallow clone
+[2026/11/06 12:01:56.043 GMT+08:00] Avoid fetching tags
+[2026/11/06 12:01:56.043 GMT+08:00] Honoring refspec on initial clone
+[2026/11/06 12:02:51.352 GMT+08:00] Cloning repository git@codehub.devcloud.cn-north-4.huaweicloud.com:b4ccaec8a6d24940a9857b941e3de748/HPCKit_JenkinsBuild.git
+[2026/11/06 12:02:51.353 GMT+08:00]  > git init /opt/agent_1793698050692/workspace/j_T1DFF533 # timeout=10
+[2026/11/06 12:02:51.368 GMT+08:00] Fetching upstream changes from git@codehub.devcloud.cn-north-4.huaweicloud.com:b4ccaec8a6d24940a9857b941e3de748/HPCKit_JenkinsBuild.git
+[2026/11/06 12:02:51.369 GMT+08:00]  > git --version # timeout=10
+[2026/11/06 12:02:51.376 GMT+08:00]  > git --version # 'git version 2.33.0'
+[2026/11/06 12:02:51.393 GMT+08:00]  > git fetch --no-tags --force --progress --depth=1 -- git@codehub.devcloud.cn-north-4.huaweicloud.com:b4ccaec8a6d24940a9857b941e3de748/HPCKit_JenkinsBuild.git +refs/heads/master:refs/remotes/origin/master # timeout=120
+[2026/11/06 12:02:52.609 GMT+08:00]  > git config remote.origin.url git@codehub.devcloud.cn-north-4.huaweicloud.com:b4ccaec8a6d24940a9857b941e3de748/HPCKit_JenkinsBuild.git # timeout=10
+[2026/11/06 12:02:52.618 GMT+08:00]  > git config --add remote.origin.fetch +refs/heads/master:refs/remotes/origin/master # timeout=10
+[2026/11/06 12:02:52.664 GMT+08:00]  > git config remote.origin.url git@codehub.devcloud.cn-north-4.huaweicloud.com:b4ccaec8a6d24940a9857b941e3de748/HPCKit_JenkinsBuild.git # timeout=10
+[2026/11/06 12:02:52.710 GMT+08:00] Fetching upstream changes from git@codehub.devcloud.cn-north-4.huaweicloud.com:b4ccaec8a6d24940a9857b941e3de748/HPCKit_JenkinsBuild.git
+[2026/11/06 12:02:52.725 GMT+08:00]  > git fetch --no-tags --force --progress --depth=1 -- git@codehub.devcloud.cn-north-4.huaweicloud.com:b4ccaec8a6d24940a9857b941e3de748/HPCKit_JenkinsBuild.git +refs/heads/master:refs/remotes/origin/master # timeout=120
+[2026/11/06 12:01:58.655 GMT+08:00] Checking out Revision 47057feafd56498a6da719279b3c6185c450ca43 (origin/master)
+[2026/11/06 12:01:58.655 GMT+08:00] Disable Git LFS pull
+[2026/11/06 12:01:58.802 GMT+08:00] Commit message: "更新 build.sh"
+[2026/11/06 12:01:58.802 GMT+08:00] First time build. Skipping changelog.
+[2026/11/06 12:01:58.832 GMT+08:00] [INFO] [代码检出:external_post_checkout] : 该步骤开始执行
+[2026/11/06 12:01:58.893 GMT+08:00] [INFO] [代码检出:external_post_checkout] : 该步骤执行完成
+[2026/11/06 12:02:53.911 GMT+08:00]  > git rev-parse origin/master^{commit} # timeout=10
+[2026/11/06 12:02:53.956 GMT+08:00]  > git config core.sparsecheckout # timeout=10
+[2026/11/06 12:02:53.964 GMT+08:00]  > git checkout -f 47057feafd56498a6da719279b3c6185c450ca43 # timeout=120
+[2026/11/06 12:02:53.987 GMT+08:00]  > git branch -a -v --no-abbrev # timeout=10
+[2026/11/06 12:02:53.997 GMT+08:00]  > git checkout -b master 47057feafd56498a6da719279b3c6185c450ca43 # timeout=120
+[2026/11/06 12:01:59.626 GMT+08:00] + set -ex
+[2026/11/06 12:01:59.626 GMT+08:00] + git clone https://codehub.devcloud.cn-north-4.huaweicloud.com/b4ccaec8a6d24940a9857b941e3de748/HPCKit_JenkinsBuild.git
+[2026/11/06 12:01:59.626 GMT+08:00] Cloning into 'HPCKit_JenkinsBuild'...
+[2026/11/06 12:01:59.731 GMT+08:00] starting check in ***/@tmp/durable-b2c25596
+[2026/11/06 12:02:00.588 GMT+08:00] + echo '###################################'
+[2026/11/06 12:02:00.588 GMT+08:00] ###################################
+[2026/11/06 12:02:00.588 GMT+08:00] + dos2unix HPCKit_JenkinsBuild/script/common/test/start.sh
+[2026/11/06 12:02:00.588 GMT+08:00] dos2unix: converting file HPCKit_JenkinsBuild/script/common/test/start.sh to Unix format...
+[2026/11/06 12:02:00.588 GMT+08:00] + sh HPCKit_JenkinsBuild/script/common/test/start.sh
+[2026/11/06 12:02:00.588 GMT+08:00] + GIT_USER=*****
+[2026/11/06 12:02:00.588 GMT+08:00] + GIT_PWD=*****
+[2026/11/06 12:02:00.588 GMT+08:00] + PROJECT_ID=b4ccaec8a6d24940a9857b941e3de748
+[2026/11/06 12:02:00.588 GMT+08:00] + JOB_RUN_ID=179b784b1f2f488595de68bfb2877fe8_20261106_2
+[2026/11/06 12:02:00.588 GMT+08:00] + BASE_DIR=***//openlibing-pytest-executor-workspace
+[2026/11/06 12:02:00.588 GMT+08:00] + EXECUTOR_LOG_DIR=***//openlibing-pytest-executor-workspace/executor-log
+[2026/11/06 12:02:00.588 GMT+08:00] + EXECUTOR_LOG_FILE=***//openlibing-pytest-executor-workspace/executor-log/scheduler_framework.log
+[2026/11/06 12:02:00.588 GMT+08:00] + PYTEST_TESTKIT_DIR=***//openlibing-pytest-executor-workspace/openlibing-pytest-executor/openlibing-pytest-executor/pytest-testkit
+[2026/11/06 12:02:00.588 GMT+08:00] + TESTCASE_COLLETOR_DIR=***//openlibing-pytest-executor-workspace/openlibing-pytest-executor/openlibing-pytest-executor/pytest-testcase-collector
+[2026/11/06 12:02:00.588 GMT+08:00] + EXECUTOR_BRANCH=master
+[2026/11/06 12:02:00.588 GMT+08:00] + OBS_INFO='{ak:*****,sk:*****,bucket_name:hpckit-smoke,server:https://obs.cn-north-4.myhuaweicloud.com,base_url:https://hpckit-smoke.obs.cn-north-4.myhuaweicloud.com/kupl}'
+[2026/11/06 12:02:00.588 GMT+08:00] ++ date +%Y%m%d
+[2026/11/06 12:02:00.588 GMT+08:00] + TASK_ID=b4ccaec8a6d24940a9857b941e3de7482026110621646
+[2026/11/06 12:02:00.588 GMT+08:00] + MAX_WORKERS=2
+[2026/11/06 12:02:00.588 GMT+08:00] + echo '[INFO] clear workspace dir'
+[2026/11/06 12:02:00.588 GMT+08:00] [INFO] clear workspace dir
+[2026/11/06 12:02:00.588 GMT+08:00] + '[' -d ***//openlibing-pytest-executor-workspace ']'
+[2026/11/06 12:02:00.588 GMT+08:00] + echo '[INFO] workspace dir not exits'
+[2026/11/06 12:02:00.588 GMT+08:00] [INFO] workspace dir not exits
+[2026/11/06 12:02:00.588 GMT+08:00] + echo '[INFO] create work dir'
+[2026/11/06 12:02:00.588 GMT+08:00] [INFO] create work dir
+[2026/11/06 12:02:00.588 GMT+08:00] + mkdir -p ***//openlibing-pytest-executor-workspace
+[2026/11/06 12:02:00.588 GMT+08:00] + echo '[INFO] git clone openlibing-pytest-excutor...'
+[2026/11/06 12:02:00.588 GMT+08:00] [INFO] git clone openlibing-pytest-excutor...
+[2026/11/06 12:02:00.588 GMT+08:00] + GIT_TERMINAL_PROMPT=0
+[2026/11/06 12:02:00.588 GMT+08:00] + git clone --depth 1 -b master https://*****:*****@gitcode.com/openlibing/openlibing-pytest-executor.git ***//openlibing-pytest-executor-workspace/openlibing-pytest-executor
+[2026/11/06 12:02:00.588 GMT+08:00] Cloning into '***//openlibing-pytest-executor-workspace/openlibing-pytest-executor'...
+[2026/11/06 12:02:01.543 GMT+08:00] + mkdir -p ***//openlibing-pytest-executor-workspace/executor-log
+[2026/11/06 12:02:01.543 GMT+08:00] + mkdir -p ***//openlibing-pytest-executor-workspace/openlibing-pytest-executor/openlibing-pytest-executor/pytest-testkit
+[2026/11/06 12:02:01.544 GMT+08:00] + mkdir -p ***//openlibing-pytest-executor-workspace/openlibing-pytest-executor/openlibing-pytest-executor/pytest-testcase-collector
+[2026/11/06 12:02:01.544 GMT+08:00] + PYTEST_TESTKIT_FILE=***//openlibing-pytest-executor-workspace/openlibing-pytest-executor/openlibing-pytest-executor/pytest-testkit/pytest_testkit-1.0.0-py3-none-any.whl
+[2026/11/06 12:02:01.544 GMT+08:00] + cd ***//openlibing-pytest-executor-workspace/openlibing-pytest-executor/openlibing-pytest-executor/pytest-testkit
+[2026/11/06 12:02:01.544 GMT+08:00] + wget https://gitcode.com/openlibing/openlibing-pytest-executor/releases/download/v1.0.0-alpha/pytest_testkit-1.0.0-py3-none-any.whl
+[2026/11/06 12:02:01.544 GMT+08:00] --2026-11-06 12:02:56--  https://gitcode.com/openlibing/openlibing-pytest-executor/releases/download/v1.0.0-alpha/pytest_testkit-1.0.0-py3-none-any.whl
+[2026/11/06 12:02:01.544 GMT+08:00] Resolving gitcode.com (gitcode.com)... ***.***.***.180
+[2026/11/06 12:02:01.544 GMT+08:00] Connecting to gitcode.com (gitcode.com)|***.***.***.180|:443... connected.
+[2026/11/06 12:02:01.544 GMT+08:00] HTTP request sent, awaiting response... 302 Found
+[2026/11/06 12:02:01.544 GMT+08:00] Location: https://file-cdn.gitcode.com/9099034/releases/untagger_989714a6853343a9a6fa6e7786e099d7/pytest_testkit-1.0.0-py3-none-any.whl?auth_key=1793937721-8c8a4fd13b984314b18ab839c25d4017-0-dfa0b264c9b5d1d86b2a785a2d5a1933a1284b5cc8a2d4832e2fb431190076cc [following]
+[2026/11/06 12:02:01.544 GMT+08:00] --2026-11-06 12:02:56--  https://file-cdn.gitcode.com/9099034/releases/untagger_989714a6853343a9a6fa6e7786e099d7/pytest_testkit-1.0.0-py3-none-any.whl?auth_key=1793937721-8c8a4fd13b984314b18ab839c25d4017-0-dfa0b264c9b5d1d86b2a785a2d5a1933a1284b5cc8a2d4832e2fb431190076cc
+[2026/11/06 12:02:01.544 GMT+08:00] Resolving file-cdn.gitcode.com (file-cdn.gitcode.com)... ***.***.***.158, ***.***.***.160, ***.***.***.28
+[2026/11/06 12:02:01.544 GMT+08:00] Connecting to file-cdn.gitcode.com (file-cdn.gitcode.com)|***.***.***.158|:443... connected.
+[2026/11/06 12:02:01.995 GMT+08:00] HTTP request sent, awaiting response... 200 OK
+[2026/11/06 12:02:01.995 GMT+08:00] Length: 73936 (72K) [application/octet-stream]
+[2026/11/06 12:02:01.995 GMT+08:00] Saving to: ‘pytest_testkit-1.0.0-py3-none-any.whl’
+[2026/11/06 12:02:01.995 GMT+08:00] 
+[2026/11/06 12:02:01.995 GMT+08:00]      0K .......... .......... .......... .......... .......... 69% 2.53M 0s
+[2026/11/06 12:02:01.995 GMT+08:00]     50K .......... .......... ..                              100% 6.74M=0.02s
+[2026/11/06 12:02:01.995 GMT+08:00] 
+[2026/11/06 12:02:01.995 GMT+08:00] 2026-11-06 12:02:56 (3.13 MB/s) - ‘pytest_testkit-1.0.0-py3-none-any.whl’ saved [73936/73936]
+[2026/11/06 12:02:01.995 GMT+08:00] 
+[2026/11/06 12:02:01.995 GMT+08:00] + ls ***//openlibing-pytest-executor-workspace/openlibing-pytest-executor/openlibing-pytest-executor/pytest-testkit/pytest_testkit-1.0.0-py3-none-any.whl
+[2026/11/06 12:02:01.995 GMT+08:00] ***//openlibing-pytest-executor-workspace/openlibing-pytest-executor/openlibing-pytest-executor/pytest-testkit/pytest_testkit-1.0.0-py3-none-any.whl
+[2026/11/06 12:02:01.995 GMT+08:00] + TESTCASE_COLLETOR_FILE=***//openlibing-pytest-executor-workspace/openlibing-pytest-executor/openlibing-pytest-executor/pytest-testcase-collector/pytest_testcase_collector-1.0.0-py3-none-any.whl
+[2026/11/06 12:02:01.995 GMT+08:00] + cd ***//openlibing-pytest-executor-workspace/openlibing-pytest-executor/openlibing-pytest-executor/pytest-testcase-collector
+[2026/11/06 12:02:01.995 GMT+08:00] + wget https://gitcode.com/openlibing/openlibing-pytest-executor/releases/download/pytest-testcase-collector-1.0.0/pytest_testcase_collector-1.0.0-py3-none-any.whl
+[2026/11/06 12:02:01.995 GMT+08:00] --2026-11-06 12:02:56--  https://gitcode.com/openlibing/openlibing-pytest-executor/releases/download/pytest-testcase-collector-1.0.0/pytest_testcase_collector-1.0.0-py3-none-any.whl
+[2026/11/06 12:02:01.995 GMT+08:00] Resolving gitcode.com (gitcode.com)... ***.***.***.180
+[2026/11/06 12:02:01.995 GMT+08:00] Connecting to gitcode.com (gitcode.com)|***.***.***.180|:443... connected.
+[2026/11/06 12:02:01.995 GMT+08:00] HTTP request sent, awaiting response... 302 Found
+[2026/11/06 12:02:01.995 GMT+08:00] Location: https://file-cdn.gitcode.com/9099034/releases/untagger_3d1fa7a0e46f40b492369bcaf622daba/pytest_testcase_collector-1.0.0-py3-none-any.whl?auth_key=1793937721-0ab3a0ef25e1411dafbe742ad6323e92-0-13e85867ad312abf9eb428483ba42a45a98b714a08c9484e30d4ea7d0610230c [following]
+[2026/11/06 12:02:01.995 GMT+08:00] --2026-11-06 12:02:57--  https://file-cdn.gitcode.com/9099034/releases/untagger_3d1fa7a0e46f40b492369bcaf622daba/pytest_testcase_collector-1.0.0-py3-none-any.whl?auth_key=1793937721-0ab3a0ef25e1411dafbe742ad6323e92-0-13e85867ad312abf9eb428483ba42a45a98b714a08c9484e30d4ea7d0610230c
+[2026/11/06 12:02:01.995 GMT+08:00] Resolving file-cdn.gitcode.com (file-cdn.gitcode.com)... ***.***.***.158, ***.***.***.160, ***.***.***.28
+[2026/11/06 12:02:01.995 GMT+08:00] Connecting to file-cdn.gitcode.com (file-cdn.gitcode.com)|***.***.***.158|:443... connected.
+[2026/11/06 12:02:02.447 GMT+08:00] HTTP request sent, awaiting response... 200 OK
+[2026/11/06 12:02:02.447 GMT+08:00] Length: 15058 (15K) [application/octet-stream]
+[2026/11/06 12:02:02.447 GMT+08:00] Saving to: ‘pytest_testcase_collector-1.0.0-py3-none-any.whl’
+[2026/11/06 12:02:02.447 GMT+08:00] 
+[2026/11/06 12:02:02.447 GMT+08:00]      0K .......... ....                                       100% 69.6M=0s
+[2026/11/06 12:02:02.447 GMT+08:00] 
+[2026/11/06 12:02:02.447 GMT+08:00] 2026-11-06 12:02:57 (69.6 MB/s) - ‘pytest_testcase_collector-1.0.0-py3-none-any.whl’ saved [15058/15058]
+[2026/11/06 12:02:02.447 GMT+08:00] 
+[2026/11/06 12:02:02.447 GMT+08:00] + ls ***//openlibing-pytest-executor-workspace/openlibing-pytest-executor/openlibing-pytest-executor/pytest-testcase-collector/pytest_testcase_collector-1.0.0-py3-none-any.whl
+[2026/11/06 12:02:02.447 GMT+08:00] ***//openlibing-pytest-executor-workspace/openlibing-pytest-executor/openlibing-pytest-executor/pytest-testcase-collector/pytest_testcase_collector-1.0.0-py3-none-any.whl
+[2026/11/06 12:02:02.447 GMT+08:00] + echo '[INFO] git clone testcase code...'
+[2026/11/06 12:02:02.447 GMT+08:00] [INFO] git clone testcase code...
+[2026/11/06 12:02:02.447 GMT+08:00] + TEST_CASE_DIR=***//openlibing-pytest-executor-workspace/pytest-infra
+[2026/11/06 12:02:02.448 GMT+08:00] + mkdir -p ***//openlibing-pytest-executor-workspace/pytest-infra
+[2026/11/06 12:02:02.448 GMT+08:00] + CASE_BRANCH=main
+[2026/11/06 12:02:02.448 GMT+08:00] + GIT_TERMINAL_PROMPT=0
+[2026/11/06 12:02:02.448 GMT+08:00] + git clone --depth 1 -b main https://*****:*****@gitcode.com/kunpengcompute/hpckit-autotest.git ***//openlibing-pytest-executor-workspace/pytest-infra
+[2026/11/06 12:02:02.448 GMT+08:00] Cloning into '***//openlibing-pytest-executor-workspace/pytest-infra'...
+[2026/11/06 12:02:02.448 GMT+08:00] remote: <CH.00905401> HTTP Basic: Access denied.
+[2026/11/06 12:02:02.448 GMT+08:00] remote: The password-based authentication of Git has been removed. Please use your personal access token instead of the password. Request-id is wKsa9fYeFV.
+[2026/11/06 12:02:02.448 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'
+[2026/11/06 12:02:02.448 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'
+[2026/11/06 12:02:02.448 GMT+08:00] [ERROR] git clone test_cases code fail
+[2026/11/06 12:02:02.448 GMT+08:00] + exit 1
+[2026/11/06 12:02:02.625 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed
+[2026/11/06 12:02:02.695 GMT+08:00] [INFO]  : [JobStatusPlugin] onCompleted: j_T1DFF533 #1
+[2026/11/06 12:02:05.000 GMT+08:00] Finished: FAILURE

@@ -1,0 +1,74 @@
+{
+ "route": "github",
+ "key": "SgLang|nightly-test-npu.yml",
+ "rn": 2130,
+ "rid": "42611183075",
+ "st": "11-09 19:42",
+ "runId": 42611183075,
+ "repo": "sgl-project/sglang",
+ "displayTitle": "[Test] npu/glm5.3: Add 2P2D PCP EPLB GPQA accuracy test",
+ "event": "pull_request",
+ "status": "FAILED",
+ "duration": 17.23,
+ "runStatus": {
+  "status": "completed",
+  "conclusion": "cancelled",
+  "updatedAt": "2026-11-09T11:59:57Z",
+  "attempt": 1
+ },
+ "_v": 2,
+ "mode": "perjob",
+ "why": "取消 job 2 个（≤5，逐 job 精取）",
+ "totalJobs": 15,
+ "failedJobs": [],
+ "cancelledJobs": [
+  {
+   "name": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test/registered/npu/pe... / glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms",
+   "id": 129139754348
+  },
+  {
+   "name": "check-all-jobs",
+   "id": 129147126954
+  }
+ ],
+ "jobs": [
+  {
+   "name": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test/registered/npu/pe... / glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms",
+   "id": 129139754348,
+   "conclusion": "cancelled",
+   "startedAt": "2026-11-09T11:43:13Z",
+   "completedAt": "2026-11-09T11:59:56Z",
+   "logFile": "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test_~e59536.txt",
+   "logBytes": 34807,
+   "logLines": 335,
+   "errorLines": [
+    "L272: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
+    "L301: ##[error]Error: failed to run script step:",
+    "L302: ✗ exit code: 1",
+    "L304: ##[error]Process completed with exit code 1.",
+    "L305: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+   ],
+   "githubSteps": [
+    {
+     "name": "Prepare code for testing",
+     "conclusion": "failure"
+    },
+    {
+     "name": "Post process",
+     "conclusion": "failure"
+    }
+   ],
+   "isTestJob": true,
+   "testResults": null
+  }
+ ],
+ "missing": [
+  {
+   "job": "check-all-jobs",
+   "id": 129147126954,
+   "status": "404_not_retained"
+  }
+ ],
+ "systemLogs": [],
+ "ghComplete": true
+}

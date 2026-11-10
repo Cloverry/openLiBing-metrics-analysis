@@ -1,0 +1,695 @@
+[
+ {
+  "recordId": "Ascend-CANN|ops-math#136",
+  "keyError": "AssertionError: aclnnBitwiseNot算子Accu_O1_related测试失败: aclnnBitwiseNot accuracy not passed",
+  "rootCause": "Test_ops-math 任务 330 条用例跑出 312 通过、18 失败，pytest 汇总判任务失败，构建 #136 记 FAILED；18 条失败全是 executor 精度比对判不通过，没有一条落在编译、环境申请或调度层，所以失败点在精度比对这一环，而不在构建链路上（records/run_136.json）\n\n第一类（8 条，TopK / InplaceMul / GtScalar 三个算子的多种数据形态）：断言原文形如「AssertionError: aclnnBitwiseNot算子Accu_O1_related测试失败: aclnnBitwiseNot accuracy not passed」，AtkTaskResult 一致为 success=False、acc_pass_result='Failed'、is_acc_dc_pass='None'；同一算子在 O1_related、qwen3、pangu 数据集与 Smoke_Generalization 上同时不通过，偏差不随数据集变化，因此更像算子实现相对黄金数据的数值偏差，而非某一组用例数据本身不合格（case_logs/case_0073.html:L1693、case_logs/case_0072.html:L1589、case_logs/case_0080.html:L1677）\n\n第二类（10 条，精度结论后紧跟框架异常）：aclnnTopK、aclnnInplaceMul、aclnnInplaceNormal、aclnnInplaceRandom、aclnnLeScalar、aclnnBitwiseOrTensor、aclnnTrace 的断言文本后面还带「AttributeError: 'MessageFactory' object has no attribute …」，简报对该句做了截断；同一个异常横跨互不相关的算子和数据类型，更像精度比对框架的消息构造环节出错、把框架异常一并记成了精度不通过，而非算子数值本身出错（case_logs/case_0074.html:L1836）\n\n已排除的干扰项：有 8 条只报 accuracy not passed、不带 MessageFactory 异常，说明框架异常不是精度不通过的必要条件，两条线要分开修；本任务 logFile 为空、logTasks=0，没有 job 日志落盘，看不到 kernel 级报错，不能据此推断成编译或驱动问题",
+  "advice": "先把框架异常这条支线单独排掉：单跑 aclnnTopK、aclnnInplaceMul、aclnnInplaceNormal、aclnnInplaceRandom、aclnnLeScalar、aclnnBitwiseOrTensor、aclnnTrace 共 10 条用例，抓完整 traceback 拿到被截断的属性名，判断是 atk 比对框架的消息构造 bug，还是用例侧调用方式不对；若单跑不再复现，说明它与用例并发执行有关，先在框架侧修掉再看精度结论\n\n若去掉框架异常后精度仍不通过，再按算子定位：从 TopK 3 条、InplaceMul 3 条、GtScalar 2 条里各取一条导出 atk 比对明细（误差分布、阈值配置、黄金数据版本），误差同量级就按公共基线核对，单算子量级偏差按算子实现回归处理\n\n同时补证据：把 Test_ops-math 的 job 日志纳入归档（当前 logFile 为空），否则精度失败永远只能停在用例 HTML 这一层\n\n验证方式：重跑 Test_ops-math 全量 330 条用例，要求 18 条失败用例全部转通过、任务退出码为 0，且用例日志中不再出现 AttributeError: 'MessageFactory' 与 accuracy not passed",
+  "cites": [
+   "case_logs/case_0073.html:L1693",
+   "case_logs/case_0076.html:L1813",
+   "case_logs/case_0072.html:L1589",
+   "case_logs/case_0080.html:L1677",
+   "case_logs/case_0074.html:L1836"
+  ]
+ },
+ {
+  "recordId": "Ascend-CANN|ops-transformer#159",
+  "keyError": "AssertionError: aclnnQuantMatmulAlltoAll功能精度测试(executor)失败: aclnnQuantMatmulAlltoAll accuracy not passed",
+  "rootCause": "Test_ops-transformer 的 98 条用例跑出 83 通过、15 失败，pytest 判任务失败，构建 #159 记 FAILED；15 条全部停在 executor 精度比对，没有任何内核报错或编译错误，失败点在精度判定环节（records/run_159.json）\n\n第一类（8 条，Matmul 与集合通信融合）：aclnnMatmulAllReduce 及 V2、aclnnAllGatherMatmul、aclnnMatmulReduceScatter 及 V2、aclnnMatmulAlltoAll、aclnnAlltoAllMatmul，断言原文形如「AssertionError: aclnnQuantMatmulAlltoAll功能精度测试(executor)失败: aclnnQuantMatmulAlltoAll accuracy not passed」，AtkTaskResult 一致为 acc_pass_result='Failed'（case_logs/case_0021.html:L8562）\n\n第二类（4 条，量化变体）：aclnnWeightQuantMatmulAllReduce、aclnnQuantMatmulAllReduceV3 与 aclnnAlltoAllQuantMatmul 的 a16w4、a16w8 两档；量化与浮点两条路径同时被判失败，说明偏差不在某一类数据类型上（case_logs/case_0020.html:L16476）\n\n第三类（3 条，MoE 分发合并）：aclnnMoeDistributeDispatch_CombineV2 的两条用例；这一类本身是聚合/分发算子，数值链路与 Matmul 完全不同，却也落在同一次运行里同时失败\n\n三类算子的实现路径互不相同、却在同一轮运行里一起不通过，因此更像公共黄金数据、精度阈值或量化 scale 处理整体偏移，而非某个算子的逻辑缺陷；如果是单个算子回归，应该只看到一条或一族失败，不会横跨三类（case_logs/case_0027.html:L2199）\n\n已排除的干扰项：test 任务 logFile=-、logLines=-，logTasks 与 buildTasks 均为 0，日志里本来就没有内核级报错，所以不能反过来推断成编译或驱动问题；证据只有 15 份 case_logs 与测试报告断言两层",
+  "advice": "先切一刀定范围：固定镜像与黄金数据版本、只切换算子仓 commit 做二分，找出引入精度偏差的那次提交；若换回上一个 commit 15 条全部通过，即可判定是算子仓变更导致\n\n若与 commit 无关，再按公共基线核对：取 aclnnQuantMatmulAlltoAll 与 aclnnAllGatherMatmul 各一条用例的 atk 比对输出，看 15 条误差是否同量级；同量级就按黄金数据/阈值整体校准一次性修，不同量级则回到算子侧逐族排查\n\n量化一类单独看：比对 a16w4 与 a16w8 两档的 scale 计算路径是否共用同一段代码，量化路径的公共处理错会造成两档一起失败\n\n验证方式：重跑 Test_ops-transformer 全量 98 条用例，要求 15 条失败用例全部通过、任务退出码为 0，并且日志中不再出现 accuracy not passed；同时把该任务的完整执行日志纳入归档，补齐当前缺失的内核级证据",
+  "cites": [
+   "case_logs/case_0021.html:L8562",
+   "case_logs/case_0020.html:L16476",
+   "case_logs/case_0027.html:L2199",
+   "records/run_159.json"
+  ]
+ },
+ {
+  "recordId": "Ascend-CANN|ops-transformer#160",
+  "keyError": "AssertionError: aclnnMatmulAllReduce功能精度测试(executor)失败: aclnnMatmulAllReduce accuracy not passed",
+  "rootCause": "Test_ops-transformer 98 条用例 83 通过、15 失败，任务判失败，构建 #160 记 FAILED；15 条失败全部由 executor 精度比对给出，用例本身已完整执行，失败点不在拉起或执行阶段（records/run_160.json）\n\n第一类（8 条，集合通信与 Matmul 融合）：aclnnMatmulReduceScatterV2、aclnnAlltoAllMatmul、aclnnMatmulAllReduce、aclnnAllGatherMatmul、aclnnMatmulReduceScatter、aclnnMatmulAllReduceV2；断言上下文统一为 AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None')（case_logs/case_0007.html:L9807）\n\n第二类（4 条，量化与权重量化）：aclnnQuantMatmulAllReduceV3、aclnnQuantMatmulAlltoAll、aclnnWeightQuantMatmulAllReduce 与 aclnnAlltoAllQuantMatmul 的 a16w4/a16w8 两档，典型原文为「AssertionError: aclnnMatmulAllReduce功能精度测试(executor)失败: aclnnMatmulAllReduce accuracy not passed」（case_logs/case_0016.html:L8979）\n\n第三类（3 条，MoE 分发合并）：aclnnMoeDistributeDispatch_CombineV2 两条及聚合用例，与集合通信族的数值链路不同却同期失败（case_logs/case_0019.html:L15528）\n\n与同日 #159、#161 的失败集合高度重合、且本构建换了一个时段仍然 15 条失败，说明它随算子库版本稳定复现而不是环境抖动，因此更像代码/黄金数据一侧的确定性偏差，而非节点或驱动偶发问题\n\n已排除的干扰项：test 任务 logFile=-、logLines=-，logTasks=0、buildTasks=0，任务级日志全部缺失，不能据此推断编译或调度故障；简报未提供误差数值、阈值配置与参考实现版本，结论止于「精度比对不通过」",
+  "advice": "与同日 #159、#161 合并成一条主线处理，不要逐构建单独排查：先确认这三轮是否使用同一镜像与同一黄金数据版本，是则把失败集合当作一个稳定缺陷来修\n\n首选按公共基线核对：从集合通信与量化两条路径各取一条用例（aclnnAllGatherMatmul、aclnnQuantMatmulAllReduceV3）导出 atk 比对明细，看误差是否同量级；同量级说明偏差来自黄金数据或统一阈值\n\n若两条路径误差量级不同，再按算子族分开：通信融合族查 AllReduce/AllGather 的 reduce 累加顺序与分核策略，量化族查 scale 反量化链路是否与基线一致\n\n验证方式：修复后重跑 Test_ops-transformer 全量 98 条用例，要求 #159、#160、#161 三轮共有的 15 条失败全部通过、退出码为 0；同时保存 atk 比对输出与阈值配置作为附件，避免下次仍只有断言没有数值",
+  "cites": [
+   "case_logs/case_0007.html:L9807",
+   "case_logs/case_0016.html:L8979",
+   "case_logs/case_0019.html:L15528",
+   "records/run_160.json"
+  ]
+ },
+ {
+  "recordId": "Ascend-CANN|ops-transformer#161",
+  "keyError": "AssertionError: aclnnAlltoAllQuantMatmul功能精度测试(executor)失败: aclnnAlltoAllQuantMatmul accuracy not passed",
+  "rootCause": "Test_ops-transformer 98 条用例 83 通过、15 失败，任务判失败，构建 #161 记 FAILED；失败全部由 executor 精度比对给出，用例已跑到比对阶段（records/run_161.json）\n\n第一类（5 条，三档量化 Matmul）：aclnnAlltoAllQuantMatmul 的 a16w4、a16w8、a4w4 三档加 aclnnWeightQuantMatmulAllReduce、aclnnQuantMatmulAllReduceV3，断言原文形如「AssertionError: aclnnAlltoAllQuantMatmul功能精度测试(executor)失败: aclnnAlltoAllQuantMatmul accuracy not passed」；同一算子的三档量化权重位宽一起失败，更像量化 scale 的公共处理或反量化链路偏移，而不是某一档参数配错（case_logs/case_0056.html:L2151、case_logs/case_0068.html:L8863）\n\n第二类（7 条，集合通信融合）：aclnnMatmulReduceScatterV2、aclnnMatmulAllReduce 及 V2、aclnnMatmulReduceScatter、aclnnMatmulAlltoAll、aclnnAlltoAllMatmul、aclnnAllGatherMatmul（case_logs/case_0059.html:L2490）\n\n第三类（3 条，MoE 分发合并）：断言文本写的是「aclnnMoeDistributeDispatch功能精度测试(executor)失败: aclnnMoeDistributeDispatch_CombineV2 accuracy not passed」，而用例名指向 test_cann_accu_smk_aclnnmoedistributedispatchv2_2p，算子名与用例名对不上，说明断言消息由公共模板拼出来、并不携带这条用例的真实算子名，读日志时不能按断言里的算子名反查用例（case_logs/case_0089.html:L15734）\n\n已排除的干扰项：本记录没有任何内核报错、内存越界或超时行，失败纯粹来自数值比对；test 任务 logFile 为空，无法确认偏差是来自 kernel 还是阈值，结论止于用例层",
+  "advice": "先验量化这一支：单跑 aclnnAlltoAllQuantMatmul 的 a16w4、a16w8、a4w4 三档并导出 atk 比对明细，确认三档误差是否同量级；同量级就按量化 scale 的公共处理统一修，差异大则分档核对 scale 计算方式\n\n若量化侧修完仍失败，再按通信融合族处理：从 aclnnMatmulAllReduce 与 aclnnAllGatherMatmul 各取一条，比对 sum/累加顺序与基线是否一致\n\n顺手修掉断言模板：让 MoE 类用例打印真实算子名与用例名，避免 dispatch 与 combine 两类失败在统计上互相混淆，否则下次仍然要人工反查用例\n\n验证方式：重跑 Test_ops-transformer 全量 98 条用例，要求 15 条失败用例全部通过、退出码为 0，且用例日志中不再出现 accuracy not passed；同时为 Test_ops-transformer 的 test 任务补日志落盘，使精度失败可下钻到 kernel 与阈值层",
+  "cites": [
+   "case_logs/case_0056.html:L2151",
+   "case_logs/case_0059.html:L2490",
+   "case_logs/case_0068.html:L8863",
+   "case_logs/case_0089.html:L15734",
+   "records/run_161.json"
+  ]
+ },
+ {
+  "recordId": "Ascend-CANN|ops-transformer#162",
+  "keyError": "aclnnMoeTokenUnpermuteWithEpGrad accuracy not passed",
+  "rootCause": "Test_ops-transformer 98 条用例 79 通过、19 失败，比同日 #159/#160/#161 多出 4 条失败，任务判失败，构建 #162 记 FAILED；新增的失败落在 MoeTokenUnpermuteWithEpGrad，且 perf 前缀用例也报了同一段精度断言（records/run_162.json）\n\n第一类（12 条，通信融合算子）：aclnnAllGatherMatmul、aclnnMoeDistributeDispatch_CombineV2、aclnnQuantMatmulAlltoAll、aclnnMatmulReduceScatter 及 V2、aclnnAlltoAllMatmul、aclnnQuantMatmulAllReduceV3、aclnnMatmulAllReduce 及 V2、aclnnWeightQuantMatmulAllReduce、aclnnMatmulAlltoAll 与 aclnnAlltoAllQuantMatmul 三档；这一族与同日 #159～#161 的失败集合一致，属同一批确定性偏差，因此更像算子库或公共基线的持续性问题，而非本轮新引入（case_logs/case_0035.html:L8886）\n\n第二类（4 条，MoeTokenUnpermuteWithEpGrad 的四个变体）：test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad、同前缀 _probs_none、test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none 与 _probs_not_none，perf 与 accu 两组共用同一段断言「aclnnMoeTokenUnpermuteWithEpGrad功能精度测试(executor)失败: aclnnMoeTokenUnpermuteWithEpGrad accuracy not passed」，说明 perf 用例根本没跑到性能指标就倒在精度比对，性能数据不可用（case_logs/case_0042.html:L2500）\n\n第二类里 probs_none 与 probs_not_none 两条分支同时失败，说明与该算子可选输入的 prob 分支无关，更像 ep_grad 输出的排布/累加本身有偏差；如果是 prob 相关逻辑错，应该只有带 prob 的变体失败（case_logs/case_0041.html:L34364）\n\n已排除的干扰项：证据 19 份全部是 case_logs，errorMessages 30 条也全是 CASE/FAIL 行，没有任何内核错误；test 任务 logFile 为空，因此无法用「没有 kernel 报错」推断实现没问题，只能说证据未到那一层",
+  "advice": "先把新增的一族单独复现：单跑 MoeTokenUnpermuteWithEpGrad 的四个变体（perf、perf_probs_none、accu_probs_none、accu_probs_not_none），确认 probs 两条分支是否共用同一段累加逻辑；若两种情况都失败，直接按 ep_grad 输出排布查\n\n再把通信融合这一族按老问题处理：与 #159～#161 合并，从 aclnnAllGatherMatmul 与 aclnnMatmulReduceScatterV2 各取一条导出 atk 比对明细，判断误差是否同量级\n\n断言也要拆开：perf 与 accu 用例必须使用不同的断言文本，否则性能用例失败会被误报成精度不通过，掩盖真实的性能回归\n\n验证方式：重跑 Test_ops-transformer 全量 98 条用例，要求 19 条失败全部通过、退出码为 0；perf 前缀用例应产出性能结论而不是精度断言，日志中不再出现 accuracy not passed",
+  "cites": [
+   "case_logs/case_0035.html:L8886",
+   "case_logs/case_0041.html:L34364",
+   "case_logs/case_0042.html:L2500",
+   "records/run_162.json"
+  ]
+ },
+ {
+  "recordId": "Ascend-CANN|shmem#137",
+  "keyError": "运行平台只返回 failedTaskType=测试任务，未返回任何失败任务详情或日志（证据为空）",
+  "rootCause": "构建 #137 在 17:00:38 启动、17:38:24 结束，跑了 38 分钟后被判定失败，运行平台给出的唯一失败线索是 failedTaskType=测试任务；测试任务本身没有产出任何用例结果，所以失败停在「测试任务阶段」这一层，无法再往下定位到用例或算子（records/run_137.json）\n\n本次记录的 tasks、testTasks、logTasks、buildTasks、cases、errorMessages、evidenceFiles 全为 0，归档里没有任何日志文件，也没有断言原文；这不代表测试任务真的跑了用例全部通过，而是平台侧根本没有留存该构建的测试任务详情——证据缺口发生在采集/平台侧，而不是任务执行内部\n\n因此只能确认「失败由测试任务阶段产生、耗时约 38 分钟、非构建阶段中断」，更像测试任务被平台判定为失败但详情接口未返回，而非某个具体用例断言不过；要出真结论必须补齐该构建的测试任务日志（records/run_137.json）\n\n已排除的干扰项：构建阶段没有报错、结束时间相对启动时间正常，说明不是构建中断或排队超时被取消；结论边界停在任务类型，不作进一步推断",
+  "advice": "先补数据而不是猜原因：在采集侧对 shmem 流水线单独补取构建 #137 的测试任务详情接口，拿到失败用例名与 job 日志后再出根因\n\n同时给 Nightly-CI-Component-pipeline_shmem 的测试任务打开日志归档，避免再次出现计数全零、只能按任务类型定性的记录\n\n采集口径上加一条标注：failedTaskType=测试任务但 cases 与 logTasks 均为 0 的记录，单独标为「证据缺失」，不要与有用例级证据的记录按同一置信度进统计\n\n验证方式：补齐日志后重新归档 #137，要求 tasks 与 cases 计数非 0、能读到具体失败用例名或 job 日志报错，再据此重出根因结论",
+  "cites": [
+   "records/run_137.json"
+  ]
+ },
+ {
+  "recordId": "HPCKit|hmpi#210",
+  "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+  "rootCause": "Test_hmpi 任务启动后先做用例仓 clone，01:11:47.479 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，紧接着输出 [ERROR] git clone test_cases code fail，01:11:47.649 脚本以退出码 1 结束，01:11:53 Finished: FAILURE，整个 job 只跑了约 10 分钟就终止（job_logs/21_hmpi_210_Test_hmpi.log:L138、L140、L142）\n\n用例一条都没有拉起：Test_hmpi 标记 emptyTestResult，total=0、passed=0、failed=0，说明失败发生在用例执行之前，属于用例仓凭据失效这类环境问题，而不是用例断言不过（job_logs/21_hmpi_210_Test_hmpi.log:L144）\n\n鉴权失败到脚本退出只隔 0.17 秒、且没有重试记录，更像是凭据本身失效（token 过期或被回收），而非网络抖动或仓库不可达：如果是网络问题，报错会是 timeout/connection refused 而不是 Authentication failed\n\n已排除的干扰项：平台侧只有封装码 DEV-CODECI-35002「构建任务执行失败」，这是步骤失败后的统一封装，不能当作根因；本记录 evidence 里 missing=1，说明该测试任务自身的日志文件未被采集到，但整 job 日志 144 行完整、未截断，结论以整 job 日志为准",
+  "advice": "先把 hpckit-autotest 的 clone 凭据换成有效 access token，并以流水线凭据变量的方式注入，不要用明文账号密码；换完在同一个 runner 上手工 clone 一次验证权限已放开\n\n再在测试任务前置一步 git ls-remote 探活：探活失败就直接报「凭据失效并打印仓库地址与凭据别名」，不要让问题落到笼统的「构建任务执行失败」，否则每次都要人工回退整 job 日志\n\nHPCKit 各组件用的是同一个用例仓，凭据整改要覆盖 hmpi、kpex、kudnn、kupl、kuqcd 全部流水线，一次改完\n\n验证方式：用 #210 的参数重跑 hmpi 流水线，要求 clone 成功、用例统计 total 与 passed 均大于 0、脚本退出码为 0，日志中不再出现 Authentication failed 与 git clone test_cases code fail",
+  "cites": [
+   "job_logs/21_hmpi_210_Test_hmpi.log:L138",
+   "job_logs/21_hmpi_210_Test_hmpi.log:L140",
+   "job_logs/21_hmpi_210_Test_hmpi.log:L142",
+   "job_logs/21_hmpi_210_Test_hmpi.log:L144"
+  ]
+ },
+ {
+  "recordId": "HPCKit|kpex#139",
+  "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+  "rootCause": "Test_kpex 在用例仓拉取阶段中断：00:43:18.658 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，同刻输出 [ERROR] git clone test_cases code fail，00:43:18.661 脚本返回退出码 1，00:43:23 Finished: FAILURE，整个 job 仅运行约 2 分钟（job_logs/22_kpex_139_Test_kpex.log:L138、L139、L140、L142）\n\n用例一条未执行：Test_kpex 标记 emptyTestResult，total=0、passed=0、failed=0，失败点在执行之前，属用例仓凭据问题而非用例断言失败（job_logs/22_kpex_139_Test_kpex.log:L144）\n\n同一批 hmpi、kudnn、kuqcd 在 2026-11-06 凌晨的前后一小时内报的是同一个仓库、同一句 Authentication failed，四个组件共用 hpckit-autotest 这一个用例仓，因此更像一份共用凭据失效，而非 kpex 单条流水线的配置错误\n\n已排除的干扰项：平台封装码 DEV-CODECI-35002「构建任务执行失败」只是步骤失败的统一封装；日志里没有 timeout 或 DNS 解析失败，排除网络不可达，指向凭据本身无效",
+  "advice": "按共用凭据处理：把 hpckit-autotest 的 clone 凭据治理成一条流水线级凭据（access token），kpex 与同批 hmpi、kudnn、kuqcd 统一引用，避免逐条排查\n\n凭据注入方式改为平台凭据变量，并在 clone 前打印凭据来源与有效期，凭据过期时能第一时间看出来\n\n把凭据检查前移到流水线准备阶段，不要等跑到测试步骤才因 clone 失败退出\n\n验证方式：用 #139 参数重跑 kpex 流水线，要求 clone 成功、用例统计 total 大于 0、退出码为 0，日志中不再出现 Authentication failed；同批四个组件各跑一次确认全部恢复",
+  "cites": [
+   "job_logs/22_kpex_139_Test_kpex.log:L138",
+   "job_logs/22_kpex_139_Test_kpex.log:L140",
+   "job_logs/22_kpex_139_Test_kpex.log:L142",
+   "job_logs/22_kpex_139_Test_kpex.log:L144"
+  ]
+ },
+ {
+  "recordId": "HPCKit|kudnn#224",
+  "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+  "rootCause": "Test_kudnn 在 03:31:17 启动，03:34:00.703 做用例仓 clone 时报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，同刻输出 [ERROR] git clone test_cases code fail，03:34:00.883 脚本返回退出码 1，03:34:03 Finished: FAILURE，job 只活了约 3 分钟（job_logs/18_kudnn_224_Test_kudnn.log:L138、L139、L140、L142）\n\n用例未拉起：Test_kudnn 标记 emptyTestResult，total=0、passed=0、failed=0；失败位于用例执行之前，属环境/凭据层，不是编译失败也不是用例断言失败（job_logs/18_kudnn_224_Test_kudnn.log:L144）\n\n同一凌晨 hmpi #210（01:11）、kpex #139（00:43）、kuqcd #198（00:33）报的是同一个仓库同一句鉴权失败，kudnn 与它们共用 hpckit-autotest，更像一份公共凭据在当日失效，而非 kudnn 独有的配置问题\n\n已排除的干扰项：平台给出的 DEV-CODECI-35002「构建任务执行失败」是统一封装码，不构成根因；日志中没有超时或网络错误行，排除仓库不可达\n\n补充：本记录 evidence 里 missing=1，该测试任务自身日志未采集到，但整 job 日志完整未截断，结论以整 job 日志为准",
+  "advice": "先换凭据：为 hpckit-autotest 配置有效 access token 并以凭据变量注入，替换掉当前失效的账号/密码凭据，换完在 runner 上手工 clone 一次确认\n\n一次改完 HPCKit 全部流水线的用例仓认证方式（hmpi、kpex、kudnn、kupl、kuqcd），不要逐条修复\n\n在流水线准备阶段增加凭据有效性检查，把鉴权问题挡在测试任务之前，并在失败时直接打印「凭据失效」而不是封装码\n\n验证方式：用 #224 参数重跑 kudnn 流水线，要求 clone 成功、用例 total 大于 0、退出码为 0，日志中不再出现 Authentication failed 与 git clone test_cases code fail",
+  "cites": [
+   "job_logs/18_kudnn_224_Test_kudnn.log:L138",
+   "job_logs/18_kudnn_224_Test_kudnn.log:L140",
+   "job_logs/18_kudnn_224_Test_kudnn.log:L142",
+   "job_logs/18_kudnn_224_Test_kudnn.log:L144"
+  ]
+ },
+ {
+  "recordId": "HPCKit|kupl#297",
+  "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+  "rootCause": "Test_kupl 在 00:01:10 启动，00:02:22 用例仓 clone 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，随后 echo 与 [ERROR] git clone test_cases code fail 依次出现，00:02:22 脚本返回退出码 1，00:02:28 Finished: FAILURE，job 仅约 74 秒（job_logs/19_kupl_297_Test_kupl.log:L138、L139、L140、L142、L144）\n\n用例统计 total=0、passed=0、failed=0，测试结果为空：失败发生在用例执行之前，是用例仓凭据问题而不是用例断言失败\n\n从进入 clone 到鉴权失败只用了不到两分钟、且无重试，更像是凭据本身失效；如果是仓库不可达，报错应该是 connection timed out 之类的网络错误，而不是 Authentication failed\n\n已排除的干扰项：平台侧步骤错误信息只有「构建任务执行失败」与 DEV-CODECI-35002 封装码，属统一封装而非原因；本记录整 job 日志 144 行、truncated=False，证据完整，结论以该日志为准",
+  "advice": "把 hpckit-autotest 的 clone 凭据换成有效 access token，并以凭据注入方式在流水线中引用，不走明文密码；修完在 runner 上单独验证 clone 可用\n\n在测试任务前置阶段加仓库可达性与鉴权探测，探测失败即中止并打印仓库地址与凭据别名，缩短定位路径\n\n与同批 hmpi、kpex、kudnn、kuqcd 合并成一次凭据整改，不要逐条流水线重复排查\n\n验证方式：用 #297 参数重跑 kupl 流水线，要求用例能进入执行阶段（total 大于 0）、退出码为 0，日志中不再出现 Authentication failed",
+  "cites": [
+   "job_logs/19_kupl_297_Test_kupl.log:L138",
+   "job_logs/19_kupl_297_Test_kupl.log:L139",
+   "job_logs/19_kupl_297_Test_kupl.log:L140",
+   "job_logs/19_kupl_297_Test_kupl.log:L142",
+   "job_logs/19_kupl_297_Test_kupl.log:L144"
+  ]
+ },
+ {
+  "recordId": "HPCKit|kupl#298",
+  "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+  "rootCause": "Test_kupl 12:00:50 启动，12:02:02 用例仓 clone 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，同秒出现 [ERROR] git clone test_cases code fail，12:02:02 脚本返回退出码 1，12:02:05 Finished: FAILURE（job_logs/17_kupl_298_Test_kupl.log:L138、L139、L140、L142、L144）\n\n用例统计 total=0、passed=0、failed=0，Test_kupl 没有任何用例结果：失败停在 clone 环节，属环境/凭据未就绪而非用例失败\n\n同一条流水线在当日 00:02（#297）与 12:02（#298）相隔约 12 小时报同一个仓库、同一句鉴权失败，两次都是 70 秒左右就退出，说明不是单次网络抖动，而是凭据持续失效；若为偶发网络问题，两次不会在同一句 fatal 上对齐\n\n已排除的干扰项：平台仅给 DEV-CODECI-35002「构建任务执行失败」，是步骤失败的统一封装；整 job 日志 144 行完整，未出现连接超时或 DNS 错误，排除仓库不可达",
+  "advice": "与 #297 合并为一处修复：替换 hpckit-autotest 的 clone 凭据为有效 access token，修完再统一复跑，不要先做无效重跑\n\n在流水线变量层确认凭据版本，避免白天与夜间两轮定时任务继续撞同一个失效凭据\n\n加一条告警：同一仓库连续两次 clone 鉴权失败即通知流水线责任人，防止靠人工看板发现\n\n验证方式：凭据修复后以 #298 参数重跑 kupl 流水线，要求 clone 成功、用例 total 大于 0、退出码为 0，日志中不再出现 Authentication failed；#297 同参数复跑一并确认",
+  "cites": [
+   "job_logs/17_kupl_298_Test_kupl.log:L138",
+   "job_logs/17_kupl_298_Test_kupl.log:L139",
+   "job_logs/17_kupl_298_Test_kupl.log:L140",
+   "job_logs/17_kupl_298_Test_kupl.log:L142",
+   "job_logs/17_kupl_298_Test_kupl.log:L144"
+  ]
+ },
+ {
+  "recordId": "HPCKit|kupl#299",
+  "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+  "rootCause": "Test_kupl 13:30:50 启动，13:32:03 用例仓 clone 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，随后脚本回显 [ERROR] git clone test_cases code fail，13:32:03 返回退出码 1，13:32:06 Finished: FAILURE（job_logs/23_kupl_299_Test_kupl.log:L138、L139、L140、L142、L144）\n\n用例统计 total=0、passed=0、failed=0：失败发生在用例执行之前，属凭据失效而非用例断言失败，也不是编译问题\n\n同流水线当日 #297（00:02）、#298（12:02）、#299（13:32）三次报同一个仓库、同一句 fatal，且每次都在 74 秒左右退出，属稳定复现；三条记录的报错位置都在同一行（L138），说明脚本每次都卡在同一处 clone，因此更像凭据被固定为一份失效值，而非随机性网络故障\n\n已排除的干扰项：平台侧只有 DEV-CODECI-35002「构建任务执行失败」这一封装码，不带任何鉴权细节；日志中没有重试行，排除「重试耗尽」这一解释",
+  "advice": "按稳定复现处理：先修 hpckit-autotest 的 clone 凭据（换 access token），修好之前不再安排该流水线重跑，避免产生更多同形态失败记录\n\n在流水线定义里把凭据收敛为一条公共凭据，kupl 与 hmpi、kpex、kudnn、kuqcd 共用，换一次即全部生效\n\n修复后以 #299 参数跑一次完整 kupl 流水线，核对用例统计不再为 0\n\n验证方式：重跑后要求 clone 成功、用例 total 与 passed 均大于 0、退出码为 0，日志中不再出现 Authentication failed；把该仓库 clone 鉴权失败做成组件级指标，按组件统计出现次数",
+  "cites": [
+   "job_logs/23_kupl_299_Test_kupl.log:L138",
+   "job_logs/23_kupl_299_Test_kupl.log:L139",
+   "job_logs/23_kupl_299_Test_kupl.log:L140",
+   "job_logs/23_kupl_299_Test_kupl.log:L142",
+   "job_logs/23_kupl_299_Test_kupl.log:L144"
+  ]
+ },
+ {
+  "recordId": "HPCKit|kuqcd#198",
+  "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+  "rootCause": "Test_quqcd 00:31:53 启动，00:33:07 用例仓 clone 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，同秒出现 [ERROR] git clone test_cases code fail，00:33:08 脚本返回退出码 1，00:33:13 Finished: FAILURE（job_logs/20_kuqcd_198_Test_quqcd.log:L138、L139、L140、L142、L144）\n\n用例统计 total=0、passed=0、failed=0，测试任务结果为空：失败停在 clone，属环境/凭据未就绪\n\n本记录失败的仓库与同日 kudnn #224、kupl #297～#299 完全一致（都是 kunpengcompute/hpckit-autotest），四个组件在同一凌晨到午后反复撞同一句鉴权失败，更像多个流水线共用一份失效凭据，而非 kuqcd 单条流水线的配置错误\n\n已排除的干扰项：平台封装码 DEV-CODECI-35002「构建任务执行失败」是步骤失败后的统一封装，不带鉴权细节；日志中无超时行，排除网络不可达；简报未提供凭据配置细节，因此「共用同一凭据」按更可能而非定论表述",
+  "advice": "把 hpckit-autotest 的凭据治理成一份公共流水线凭据（access token），kuqcd 与 kudnn、kupl、hmpi、kpex 统一引用，改一次全生效\n\n修复后按组件逐个验证 clone 成功，再复跑 kuqcd 确认用例能正常拉起，不要只看 exit code\n\n在流水线开始处加仓库可达性预检，预检不通过直接失败并标注仓库地址与凭据别名，减少回退整 job 日志的人工成本\n\n验证方式：用 #198 参数重跑 kuqcd 流水线，要求 clone 成功、用例 total 大于 0、退出码为 0，日志中不再出现 Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+  "cites": [
+   "job_logs/20_kuqcd_198_Test_quqcd.log:L138",
+   "job_logs/20_kuqcd_198_Test_quqcd.log:L139",
+   "job_logs/20_kuqcd_198_Test_quqcd.log:L140",
+   "job_logs/20_kuqcd_198_Test_quqcd.log:L142",
+   "job_logs/20_kuqcd_198_Test_quqcd.log:L144"
+  ]
+ },
+ {
+  "recordId": "MindIE|MindIE-Motor#117",
+  "keyError": "TimeoutError: 服务启动超时，未找到成功日志!",
+  "rootCause": "Test_Pytest_MindIE-Motor_smoke_test 4 条用例跑出 3 通过、1 失败，pytest 汇总判任务失败，构建 #117 记 FAILED；唯一失败的是 RAS 上下伸缩用例，从 15:29:53 一直等到 16:00:45、耗时约 31 分钟，正好耗满等待窗口，说明用例没有崩，而是把超时时间等尽了（records/run_117.json）\n\n第一层（等待对象）：用例等的是 vllm coordinator 的一个固定 Pod 名，扩缩期间 kubectl 轮询反复查不到该 Pod，名字对不上就永远不会被判为就绪（case_logs/case_0000.html）\n\n第二层（就绪判据）：即使 Pod 已经 Running，用例还要等到「服务启动成功日志」出现才算就绪，而 RAS 先缩后扩、扩出来的 Pod 要重新拉起服务再打这条日志，只要日志窗口没覆盖到，判据就取不到；两层叠加后才是 TimeoutError: 服务启动超时，未找到成功日志!\n\n同任务其余 3 条用例全通过、失败只落在需要重新拉起服务的这一条，因此更像伸缩后服务没能在窗口内就绪（调度排队、拉镜像慢或就绪探针未通过），而非断言写错或被测逻辑错误\n\n已排除的干扰项：本次没有任何 FAIL 断言文本、没有内核或驱动类报错，同批次 smoker 用例正常，不是代码回归；任务级 job 日志未落盘，证据只有 1 份用例日志，无法再区分是调度慢还是服务起不来",
+  "advice": "先确认扩出来的 Pod 卡在哪一步：在 pymotor-vllm 命名空间按 label 而不是固定 Pod 名去查，把 describe 与 events 一并抓下来，判断是 Pending（资源/调度）、ContainerCreating（拉镜像慢）还是 Running 但 readiness 不过\n\n若 Pod 已经是 Running，问题就在就绪判据：把用例改成轮询任意一个匹配 label 的 Pod 成功日志，而不是绑死一个 Pod 名，并把超时从硬编码改成可配置，避免一次调度抖动就吞掉半小时\n\n同时给这条用例补落盘：把每轮 kubectl 输出与 Pod events 写进用例日志，否则下次仍然只能看到 TimeoutError 这一句\n\n验证方式：重跑 Test_Pytest_MindIE-Motor_smoke_test 全量 4 条用例，要求 test_pymotor_ras_up_down_scale 在超时窗口内转通过、任务退出码为 0，且用例日志里能看到扩缩后 Pod 的 kubectl events",
+  "cites": [
+   "case_logs/case_0000.html",
+   "records/run_117.json"
+  ]
+ },
+ {
+  "recordId": "MindStudio|msot#261",
+  "keyError": "AssertionError: 工具产生误报,不应该有内存越界",
+  "rootCause": "Test_msot_nightly_smoke_debug 与 Test_msot_nightly_smoke_A3_debug 各 29 条用例、各跑出 28 通过 1 失败，两个任务都判失败，构建 #261 记 FAILED；两次失败是 mssanitizer 的同一个判据被触发，而不是两处独立缺陷（records/run_261.json）\n\n第一类（shmem allgather）：test_mssanitizer_support_shmem_allgather 的断言原文为「工具产生误报,不应该有内存越界 assert 'ERROR' not in …」，用例把「工具输出里出现 ERROR」直接当成越界结论；旧分析记录里这一条命中的 ERROR 来自 example 依赖缺失（缺 ml_dtypes，example 根本没跑起来），本次摘录只能看到被 pytest 截断的断言体，无法逐字复核（case_logs/case_0001.html）\n\n第二类（mc2_0002）：同一条断言在 test_mssanitizer_mc2_0002 上再次触发，结束位置是 '... \\ntest pass'，即输出尾部已经是 test pass，ERROR 出现在中间段的提示信息里（case_logs/case_0002.html）\n\n两类都不是越界本身：一条的表象是依赖缺失，一条的表象是提示文本被当成错误，共同点是判据只有「输出里有没有 ERROR」这一个布尔量，因此更像用例的断言写得太粗、把非越界输出误判成越界，而非算子真的存在非法访存\n\n已排除的干扰项：两个任务里其余 28 条同族 mssanitizer 用例全部通过，说明工具链本身可用；日志里没有 illegal read / illegal write 这类真实越界报告，也没有编译或驱动报错",
+  "advice": "先把断言收紧：不要用「输出里出现 ERROR」当越界判据，改为匹配 sanitizer 的结构化结论（illegal read、illegal write、越界地址区间），并把「跳过检测」「依赖缺失」两类提示显式归为 skip 或 env 失败，而不是 FAIL\n\n再补环境：镜像里补齐 ml_dtypes 等 example 依赖，并在用例前置检查里 assert 依赖可 import，缺依赖就直接 skip，避免把环境问题记成被测对象的问题\n\n失败时保留原文：把工具输出的完整 ERROR 段落连同上下文写进用例日志，现在 pytest 只留了一行截断的 assert 文本，连 ERROR 来自哪都看不出来\n\n验证方式：重跑 Test_msot_nightly_smoke_debug 与 Test_msot_nightly_smoke_A3_debug 各 29 条用例，要求两条 mssanitizer 用例转为 pass 或按预期 skip、任务退出码为 0，且日志中不再出现「工具产生误报」",
+  "cites": [
+   "case_logs/case_0001.html",
+   "case_logs/case_0002.html",
+   "records/run_261.json"
+  ]
+ },
+ {
+  "recordId": "MindStudio|msot#262",
+  "keyError": "the path /mnt/share/autotest/mindstudio/autotestproperty/operator_project/lib/addn_case_20261106074025.json does not have permission to read. please check the path permission.",
+  "rootCause": "Test_msot_nightly_smoke 共 171 条用例跑出 169 通过、2 失败，任务判失败且运行状态为 CANCELED，构建 #262 记 CANCELED；两条失败都没跑到被测工具给出结论，而是卡在执行环境上（records/run_262.json）\n\n第一类（dynamic 用例，读权限）：test_msopst_paramType_dynamic_011 断言「输出里含 success」，而实际输出是「[error] the path /mnt/share/autotest/mindstudio/autotestproperty/operator_project/lib/addn_case_20261106074025.json does not have permission to read」，即共享目录里刚生成的用例文件读不了（case_logs/case_0054.html:L529）\n\n第二类（pytorch_to_toolkit 用例，路径不存在）：test_pytorch_to_toolkit_001 的输出是「-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory」紧跟「the path /home/runner/addn_case_20261106074104.json does not exist」，说明用例先在一个不存在的目录里 cd 失败，再到另一个前缀下找刚要生成的文件（case_logs/case_0055.html:L658）\n\n两条用例一条挂在 /mnt/share/autotest，一条挂在 /home/autotest 与 /home/runner，同一个「operator_project/lib」在三处前缀下出现，因此更像用例侧把工作路径写死、与实际挂载点不一致，而不是 msopst run 本身执行失败\n\n已排除的干扰项：171 条里 169 条同任务用例通过，未见工具崩溃、编译失败或算子报错；状态为 CANCELED 说明运行在中途被打断，后续补的证据不会再有，现有失败就是取消前已确定的 2 条",
+  "advice": "先把路径来源统一：用例里不要硬编码 /home/autotest、/mnt/share/autotest、/home/runner 三种前缀，改为从环境变量（挂载点）读，并在启动时校验目录存在，不存在就直接报环境错误而不是让 cd 失败\n\n再修权限：addn_case_*.json 是运行期生成的输入文件，把 operator_project/lib 的属主与权限改成 runner 用户可读，或在生成后显式 chmod 644\n\n顺带修断言：现在断言只判「输出里含 success」，路径类错误会被压成「多 dynamic 输入运行失败」，建议失败时把 stderr 原文与当前工作目录一并打印，便于下次一眼看出是路径还是工具问题\n\n验证方式：重跑 Test_msot_nightly_smoke 全量 171 条用例，要求 test_msopst_paramType_dynamic_011 与 test_pytorch_to_toolkit_001 转通过、任务退出码为 0，且用例日志中不再出现 does not have permission to read 与 no such file or directory",
+  "cites": [
+   "case_logs/case_0054.html:L529",
+   "case_logs/case_0055.html:L658",
+   "records/run_262.json"
+  ]
+ },
+ {
+  "recordId": "MindStudio|msot#263",
+  "keyError": "AssertionError: 工具发生误报，应该没有越界异常",
+  "rootCause": "Test_msot_nightly_smoke_debug 29 条用例跑出 27 通过、2 失败，任务判失败且状态为 CANCELED，构建 #263 记 CANCELED；两条失败都停在同一个断言上（records/run_263.json）\n\n第一类（aclgraph 用例）：test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003 断言 'ERROR' not in 工具输出，命中位置显示输出里确实存在 ERROR 段（case_logs/case_0003.html）\n\n第二类（mc2_0002）：test_mssanitizer_mc2_0002 用同一条断言再次失败，且断言体的尾部是 '... \\ntest pass'，即工具已经跑到 test pass 之后仍被判失败（case_logs/case_0004.html）\n\n两条共同的可确认事实是：命中的 ERROR 段落都被 pytest 的断言摘要截断（'...Full output truncated (7 lines hidden), use -vv to show'），看不到 ERROR 到底是真实的 illegal read/write 还是「跳过检测」「缺依赖」这类提示，因此现在只能判定失败发生在断言层，无法判定被断言对象到底存不存在越界——这本身就是要修的证据缺口\n\n更像用例判据与证据留存同时不足：判据侧只认「有没有 ERROR」一个布尔量，留存侧又不给完整输出，所以「工具误报」这个结论目前只是用例自述，未被证据支撑\n\n已排除的干扰项：同任务其余 27 条用例通过、无编译或驱动报错，工具链可用；状态 CANCELED 说明运行被打断，不会再补新证据",
+  "advice": "先按 -vv 重跑这两条用例，把被截断的 ERROR 段完整打出来，确认它是 real illegal read/write 还是跳过提示；这一步做完才知道该修用例还是修工具\n\n若确认是跳过检测或依赖缺失，按「非越界」处理：断言改为匹配结构化越界结论，并把跳过/缺依赖归为 skip 或 env 失败\n\n若确认是真的 illegal read/write，则带上完整地址、访存大小与核编号（GM/L1/UB）去对算子实现，而不是停在「误报」这个词上\n\n顺手补留存：在用例 teardown 里把 sanitizer 的原始输出落盘成附件，pytest 的断言摘要不适合承担证据职责\n\n验证方式：重跑 Test_msot_nightly_smoke_debug 全量 29 条用例，要求两条 mssanitizer 用例结论明确（pass 或 skip）、任务退出码为 0，且用例日志中能看到完整的 sanitizer 输出而不是 truncated",
+  "cites": [
+   "case_logs/case_0003.html",
+   "case_logs/case_0004.html",
+   "records/run_263.json"
+  ]
+ },
+ {
+  "recordId": "MindStudio|msot#264",
+  "keyError": "",
+  "rootCause": "构建 #264 的运行在 19:09:16 开始、22:00:18 结束，状态为 CANCELED、failedTaskType 为「测试任务」，即取消发生在 Test 任务执行期间；tasks=0、cases=0、errorMessages=0、evidenceFiles=0，所有明细层证据都是空的（records/run_264.json）\n\n唯一能确定的是层级：失败停在测试任务这一层，没有下探到 job 或用例，因此既不能说明是用例失败、也不能说明是环境问题\n\n从时长看，运行持续了约 2 小时 51 分钟才被取消，排除了「启动即失败」这一类；结合同级 #262、#263 也都是 CANCELED，更像是同一批夜间任务被统一取消/抢占，而不是这一条自身出错\n\n已排除的干扰项：没有任何内核、编译或断言文本，所以不做实现层推断；平台侧未留存任务日志与用例明细，本记录的可信度只到任务类型这一层",
+  "advice": "先补齐证据再谈根因：在该流水线的归档流程里，对 CANCELED 状态也要抓取 job 日志与已执行用例的明细，现在这类记录完全空白，分析无从下手\n\n再确认取消来源：查运行平台在 21:00 到 22:00 之间是否有统一的取消、抢占或超时回收动作，并核对 #262、#263、#264 三条的时间线是否连续，若连续则按「批次被回收」处理，不计入代码质量\n\n若确认是人为取消，请在取消注记里写明原因与关联单号，让归档能区分「主动停止」与「异常中断」\n\n验证方式：重跑该流水线的 Test 任务，要求任务跑到结束并产出 tasks 与 cases 明细（不再是 tasks=0），且构建状态为 SUCCESS 或在有日志的前提下明确失败点",
+  "cites": [
+   "records/run_264.json"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2079",
+  "keyError": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
+  "rootCause": "该 run 共 20 个 job、7 个失败，构建 #2079 从 2026-11-05 22:43:46 跑到 2026-11-06 09:38:47，记 FAILED；7 个失败 job 分别是 a3 的三个测试任务（nightly-1-npu-a3、nightly-perf-16-npu-a3、nightly-acc-16-npu-a3）与四个 multi-node-poc（deepseek_v4_flash 两档、deepseek_v4_pro_0813、glm_5_2）（records/run_2079.json）\n\n第一类（a3 三个测试任务）：失败链完全同构——先 Traceback，再 ##[error]Error: failed to run script step，再 ✗ exit code: 1，最后 Process completed with exit code 1 与「Executing the custom container implementation failed」（github_logs/gh_42047810705/10_nightly-1-npu-a3 _ run (0).txt:L918）\n\n第二类（四个 multi-node-poc）：日志里只看到 │ exit code: 1 这一层，没有 Traceback 正文，但收尾同样是容器实现执行失败（github_logs/gh_42047810705/7_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~db0591.txt:L604）\n\n单机 a3 与多机 POC 两类任务的镜像、资源规格、用例完全不同，却在同一个 run 里一起倒在「custom container implementation failed」这一句上，因此更像自托管 runner 的容器运行环境（自定义容器启动/挂载）在当前 run 内整体异常，而非某一族用例的断言失败\n\n已排除的干扰项：casess 为 0，日志中没有 pytest 汇总、没有 accuracy 断言、没有精度结果，说明用例根本没跑到判定阶段；另 13 个 job 通过，说明异常不是全平台性的，只落在需要自定义容器的这批 job 上",
+  "advice": "先查 runner 侧：按 runId 42047810705 找到这 7 个 job 的 runner 分配记录，看它们是否落在同一批机器上，并检查该时段自定义容器（docker/podman 拉镜像、挂载 NPU 设备）的启动日志，确认是镜像拉取失败、设备挂载失败还是容器运行时不可用\n\n若确认是容器环境问题，把这一批 job 单独重跑并换一组 runner 验证，与用例代码解耦，避免把环境故障记成 sglang 回归\n\n同时补日志：multi-node-poc 类任务现在只留 exit code 一行，脚本正文（Traceback 下文）没有进 evidence，后续无论谁分析都只能看到表层的 exit 1\n\n验证方式：重跑该 nightly 的全部 job，要求 7 个失败 job 全部转通过、run 结论为 success，且日志中不再出现 Executing the custom container implementation failed",
+  "cites": [
+   "github_logs/gh_42047810705/10_nightly-1-npu-a3 _ run (0).txt:L918",
+   "github_logs/gh_42047810705/10_nightly-1-npu-a3 _ run (0).txt:L955",
+   "github_logs/gh_42047810705/7_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~db0591.txt:L604",
+   "records/run_2079.json"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2084",
+  "keyError": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
+  "rootCause": "该 run 共 15 个 job、只有 1 个失败，构建 #2084 从 00:51:59 跑到 01:04:09（约 12 分钟）记 FAILED；失败的是 multi-node-poc 的 deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa 任务，其余 14 个 job 全部通过（records/run_2084.json）\n\n失败链是完整的五步：Traceback（L514）→ ##[error]Error: failed to run script step（L532）→ ✗ exit code: 1（L533）→ ##[error]Process completed with exit code 1（L557）→ ##[error]Executing the custom container implementation failed（L558），日志只留了这五行位置，Traceback 的异常正文没有进归档（github_logs/gh_42068844392/127390755997_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L514）\n\n同一 run 内另外 14 个 job 通过，因此可以排除 runner 与镜像的全局故障，失败范围收敛到这一个多机 POC 任务，更像该 gpqa 用例的启动脚本在准备阶段自己退出非零（容器随之被判失败），而非图像、驱动或调度层面的共性问题\n\n已排除的干扰项：cases 为 0，没有 pytest 汇总、没有精度断言、没有精度数值，说明用例根本没跑起来；失败只出现一次、且与 #2085/#2086 是不同 runId，不能直接套用「libhcom.so 缺失」那条结论",
+  "advice": "把这一条与 #2085、#2086 放在一起看：三次是同一类 job、同一个模型配置，其中 #2085 已经抓到 libhcom.so 与 dram segment 不支持的实锤，本条很可能只是同一环境问题在日志里没留正文，先按那条结论验证一次\n\n要区分开就抓 Traceback 正文：在 multi-node-poc 的启动脚本外层加 try/except 或 set -x，把 L514 之后的异常栈写进 stdout，现在只有行号没有内容，任何分析都只能猜\n\n若重跑后 14 个 job 仍通过、只有本条失败，则按该 gpqa 用例的启动配置单独排查（模型权重路径、节点数与 PD 比例、gpqa 数据集挂载）\n\n验证方式：重跑该 nightly，要求 multi-node-poc（deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa）转通过、run 结论为 success，且日志中能看到完整的异常栈而不是只有 Traceback 标题行",
+  "cites": [
+   "github_logs/gh_42068844392/127390755997_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L514",
+   "github_logs/gh_42068844392/127390755997_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L558",
+   "records/run_2084.json"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2085",
+  "keyError": "ERROR [1185-1185][HYBM hybm_entity_default.cpp:1324 InitDramSegment] dram segment does not support sdma in current environment, rankId: 0",
+  "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2085 从 01:16:55 跑到 01:28:24 记 FAILED；失败的仍是 multi-node-poc 的 deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa（records/run_2085.json）\n\n第一层（通信库）：01:24:33.556644 先出现 WARN [HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so]，libhcom.so 与 libhcom.so.0 都打不开，级别是 WARN（github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3378）\n\n第二层（段初始化）：同一秒稍后 01:24:33.558446 报 ERROR [HYBM hybm_entity_default.cpp:1324 InitDramSegment] dram segment does not support sdma in current environment, rankId: 0，紧接 558460 报 InitDramSegment() failed: -1，随后脚本步骤失败退出（同文件 L3389、L3390）\n\n真正把进程打死的是第二层：libhcom.so 只报 WARN、HYBM 继续往下执行，而 InitDramSegment 返回 -1 之后用例直接退出，因此更像当前机器/容器环境的 DRAM 段不具备 sdma 能力、与用例要求的通信路径不匹配，而非 gpqa 精度不达标或代码逻辑错\n\n已排除的干扰项：日志里没有 accuracy 断言、没有 pytest 汇总、没有任何用例级失败记录，失败发生在服务拉起阶段；另外 14 个 job 同 run 通过，说明不是节点整体不可用，而是这条 1p1d 16p 用例与当前机器的 sdma 能力冲突",
+  "advice": "先做能力探测再决定跑不跑：在任务启动脚本里读取设备是否支持 sdma，不支持时把这条 deepseek_v4_flash_0731 用例显式 skip 或改走非 sdma 的 DRAM 段初始化路径，避免每次夜间都在这一个点上失败 12 分钟\n\n若该用例必须走 sdma，则按机器型号挑节点：把 1p1d 16p 的 sdma 要求写进调度约束，交给能支持 sdma 的机器跑，而不是让它在任意 a3 机器上撞运气\n\n顺手补齐 libhcom.so：镜像里补上该库或把它所在路径加进 LD_LIBRARY_PATH，虽然本次只是 WARN，但通信库缺失会让 HYBM 退到更低效的路径，可能影响性能结论\n\n验证方式：重跑该 nightly，要求 multi-node-poc（deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa）或按能力探测跳过（记 skip 而非 fail）、run 结论为 success，且日志中不再出现 InitDramSegment() failed: -1",
+  "cites": [
+   "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3378",
+   "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3389",
+   "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3390",
+   "records/run_2085.json"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2086",
+  "keyError": "WARN [HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory",
+  "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2086 从 02:50:51 跑到 03:18:46 记 FAILED，失败任务仍是 multi-node-poc 的 deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa（records/run_2086.json）\n\n第一类（多 rank 同秒报同一句）：03:14:36.540596、540726、541321 三条 WARN 分别来自 [881-881]、[888-888]、[884-884] 三个 rank，内容完全一致，都是 libhcom.so 与 libhcom.so.0 打不开（github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L2625）\n\n第二类（脚本步骤退出）：日志随后收敛到 ✗ exit code: 1 与容器实现执行失败，中间没有 ERROR 级别的通信或段初始化报错（同文件 L6226、L6252）\n\n三个 rank 同时、同秒、同文本地缺同一个库，说明不是某个节点上的偶发挂载问题，而是这批机器的镜像里本来就没有 libhcom.so，或它所在目录不在 LD_LIBRARY_PATH 中，HYBM 建通信域失败后由脚本判退出，因此更像镜像/环境配置缺失，而非用例逻辑或精度问题\n\n与同日 #2085 对比：两次是同一个 job、同一台族机器，#2085 还叠加了 InitDramSegment 的 sdma 报错，本条只有 libhcom.so 一条线索，因此两条要分开归因，不能合并成一个结论\n\n已排除的干扰项：没有 pytest 汇总、没有 accuracy 断言、没有用例级失败记录，失败点在服务拉起阶段；另 14 个 job 通过，排除节点整体不可用",
+  "advice": "先补库：确认镜像构建脚本里是否应装 HCOM 通信库，缺则装上；若库已存在但不在默认搜索路径，把其目录写进 LD_LIBRARY_PATH 并在容器入口处 export，避免只在交互式 shell 里生效、到 CI 里就失效\n\n加载失败要给明确结论：HYBM 现在只打 WARN 就继续跑，最终以 exit code 1 收场，建议在 LoadLibrary 失败且该库为必需时直接给 ERROR 并带上是哪个库、期望路径、实际搜索路径，便于一次定位\n\n与 #2085 一起验证：同一天这台机器上两次失败都指向通信库与段初始化，修完镜像后两条一起重跑，避免只修一半\n\n验证方式：重跑该 nightly，要求 multi-node-poc（deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa）转通过、run 结论为 success，且日志中不再出现 Unable to open library [libhcom.so]",
+  "cites": [
+   "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L2625",
+   "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L6226",
+   "records/run_2086.json"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2092",
+  "keyError": "ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
+  "rootCause": "该 run 共 15 个 job、3 个失败，构建 #2092 从 17:45:36 跑到 18:00:55 记 FAILED；三个失败 job 是 nightly-1-npu-a3、nightly-perf-16-npu-a3、nightly-acc-16-npu-a3（records/run_2092.json）\n\n失败链在三个任务里逐字相同：Traceback（L908）→ ModuleNotFoundError: No module named 'sglang.srt.utils.process'（L913）→ ##[error]Error: failed to run script step（L915）→ ✗ exit code: 1（L916）→ 容器实现执行失败（L941），18 条 errorMessages 正好是 3 个任务 × 6 行（github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt:L913）\n\n用例引用的是 sglang.srt.utils.process，而当前安装的 sglang 包里没有这个模块，三个任务在 import 阶段就中断，一条用例都没跑到执行，因此更像代码与镜像版本不匹配（用例已跟到含该模块的主干，镜像里装的还是旧包），而不是运行环境随机故障\n\n如果只是某个任务配置写错，不会三个规格完全不同的任务（单机 1 卡、16 卡性能、16 卡精度）在同一处 import 上一起失败，这一点反过来支持「公共依赖版本」这个归因\n\n已排除的干扰项：没有任何断言失败或精度结论，失败在用例加载阶段；日志里没有驱动、通信库或调度报错",
+  "advice": "先对齐版本：确认镜像里 sglang 的安装方式与 commit，核对 sglang/srt/utils/process.py 是否存在；若用例已合入主干而镜像未更新，重新构建镜像或改为安装主干 wheel，一次修掉三个任务\n\n再加前置校验：在 CI 入口 import 一遍用例会用到的新模块，缺模块就直接报「镜像版本落后」并终止，而不是让三个任务各跑十几分钟再同一处失败\n\n若确认是上游把该模块改名/移走，则在用例侧改成新路径，并在 PR 里注明兼容的最低 sglang 版本，避免下一次镜像升级又反向炸掉\n\n验证方式：重跑该 nightly，要求三个 a3 测试任务全部转通过、run 结论为 success，且日志中不再出现 No module named 'sglang.srt.utils.process'",
+  "cites": [
+   "github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt:L913",
+   "github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt:L941",
+   "records/run_2092.json"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2093",
+  "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
+  "rootCause": "该 run 共 15 个 job、3 个失败，构建 #2093 从 18:00:53 跑到 18:38:37 记 FAILED；三个失败 job 是 nightly-1-npu-a3、nightly-acc-16-npu-a3、nightly-perf-16-npu-a3（records/run_2093.json）\n\n失败形态完全同构：15 条 errorMessages 正好是 3 个任务 × 5 行，每个任务都是 Traceback（L916）→ ##[error]Error: failed to run script step（L929）→ ✗ exit code: 1（L930）→ Process completed with exit code 1（L954）→ 容器实现执行失败（L955），没有任何一个任务留下异常类型或失败用例名（github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt:L916）\n\n这里能确定的只有两点：失败发生在任务脚本步骤这一层，且三个任务同时同形态，因此更像同一份脚本或同一入口在共同的前置步骤（环境准备、服务拉起）上出错，而不是三个任务各自的用例断言都失败\n\n与同日更早的 #2092 相比，那次留下了 ModuleNotFoundError、这次连异常正文都没有，说明脚本的失败路径上没有把 stderr 带出来，证据缺口比根因本身更值得先修\n\n已排除的干扰项：没有 pytest 汇总、没有 accuracy 断言、cases 为 0，用例根本没跑到判定阶段；日志里没有驱动、通信库或调度报错",
+  "advice": "先补可观测性：在 nightly 脚本入口加 set -x 与 trap，把失败时最后 50 行 stdout/stderr 打进日志，现在三个任务都只剩 exit code 1，下一次仍然无法定位\n\n再复现一次并盯入口：单独手动触发 nightly-1-npu-a3，看它在服务拉起前后哪一步退出；三个任务同形态失败，最可能出在它们共用的容器启动与环境准备段，优先查这一段\n\n修复后按任务分批重跑：先只跑 nightly-1-npu-a3 拿到真实异常，再放开 perf 与 acc 两个 16 卡任务，避免一次重跑三个大任务又都超时\n\n验证方式：重跑该 nightly，要求三个 a3 测试任务全部转通过、run 结论为 success，且日志中每个失败任务都能看到具体异常栈而不是只有 exit code 1",
+  "cites": [
+   "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt:L916",
+   "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt:L955",
+   "records/run_2093.json"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2094",
+  "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
+  "rootCause": "该 run 共 15 个 job、2 个失败，构建 #2094 从 18:22:37 跑到 19:05:15 记 FAILED；两个失败 job 是 multi-node-poc 的 glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa 与汇总任务 check-all-jobs（records/run_2094.json）\n\n第一类（主任务）：glm_5_3 多机精度任务按 Traceback（L825）→ ##[error]Error: failed to run script step（L843）→ ✗ exit code: 1（L844）→ Process completed with exit code 1（L868）→ 容器实现执行失败（L869）这条链退出，异常正文没有进归档（github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt:L825）\n\n第二类（汇总任务）：check-all-jobs 的失败步骤是 Generate results table，它的职责是汇总各 job 结果，上游主任务失败后它无从汇总，属于连带失败而不是独立缺陷\n\n因此这条记录的真实失败点只有一处：glm_5_3 的 2p2d 32p pcp_eplb 精度任务在脚本步骤退出，更像该用例自身启动/配置问题（新增的 pcp_eplb 组合），而非精度不达标——日志里没有任何打分或阈值输出\n\n已排除的干扰项：check-all-jobs 失败不单独归因；cases 为 0，没有 pytest 汇总与 accuracy 断言；另 13 个 job 同 run 通过，排除 runner 与环境全局故障",
+  "advice": "只查主任务，不要被 check-all-jobs 带偏：单独手动跑 glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa，把 L825 之后的异常栈完整打出来；这条用例是新合入的 2P2D 32P PCP+EPLB 组合，优先核对它与已有 2p2d 32p 配置的差异（EPLB 开关、PCP 切分、节点数）\n\n让汇总任务不再误伤：check-all-jobs 在检测到上游失败时直接标 skipped 或给出「上游 N 个 job 失败」的结论，而不是自己再失败一次，否则每次都会多出一条无意义的失败记录\n\n补日志留存：multi-node-poc 这类任务现在只留 exit code 一行，建议在脚本外层统一包装异常输出\n\n验证方式：重跑该 nightly，要求 multi-node-poc（glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa）转通过、check-all-jobs 正常产出结果表、run 结论为 success",
+  "cites": [
+   "github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt:L825",
+   "github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt:L844",
+   "records/run_2094.json"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2101",
+  "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
+  "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2101 从 20:46:40 跑到 21:37:07（约 50 分钟）记 FAILED；失败的是 multi-node-poc 的 deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa，其余 14 个 job 通过（records/run_2101.json）\n\n失败链是标准五步：Traceback（L977）→ ##[error]Error: failed to run script step（L1380）→ ✗ exit code: 1（L1381）→ Process completed with exit code 1（L1405）→ 容器实现执行失败（L1406），日志共 1473 行以上，但 Traceback 的异常正文没有被保留（github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L977）\n\n这条与同日 #2084、#2085、#2086 是同一类任务同一个模型配置，那三条分别抓到了 libhcom.so 缺失、dram segment 不支持 sdma 与本条相同的只有 exit code；四次都是这一条 1p1d 16p 用例失败，已经是可复现的模式而不是偶发\n\n因此更像该用例在 1p1d 16p 这套机器上的启动路径存在固定障碍（通信库缺、sdma 能力不匹配或配置写死），而非精度不达标\n\n已排除的干扰项：cases 为 0，没有 pytest 汇总与 accuracy 断言；其余 14 个 job 同 run 通过，排除节点与 runner 整体故障",
+  "advice": "按「同一用例已连续四次失败」处理：不要再逐构建单独排查，直接把 #2084、#2085、#2086、#2101 合并成一条线，用 #2085 抓到的 InitDramSegment 与 libhcom.so 两条实锤去验证\n\n加能力探测与兜底：在用例启动前检查 sdma 与 libhcom.so，两者不满足就跳过该配置或用替代路径，避免这类用例长期占着失败位\n\n补异常留存：把 L977 之后的栈写进日志，现在四条记录里三条都只有 exit code，白白浪费了四轮夜间的定位机会\n\n验证方式：修完后连续两个 nightly 观察该用例，要求 multi-node-poc（deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa）连续通过或按预期 skip、run 结论为 success",
+  "cites": [
+   "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L977",
+   "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1381",
+   "records/run_2101.json"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2081",
+  "keyError": "ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses'",
+  "rootCause": "该 run 共 26 个 job、8 个失败，构建 #2081 从 00:07:33 跑到 13:15:34（近 13 小时）记 FAILED；8 个失败 job 覆盖 a3 精度任务、五个 multi-node-poc 与一个 multi-node-mix-poc，外加汇总任务 check-all-jobs（records/run_2081.json）\n\n第一类（nightly-acc-2-npu-a3，依赖不匹配）：日志明确写出 [2026-11-05 16:13:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))，随后脚本步骤以 ✗ exit code: 255 退出（github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt:L986）\n\n第二类（multi-node-poc 与 mix-poc 六个任务）：只留下 │ exit code: 1 与 ✗ exit code: 1 两层，没有异常正文，无法判断具体失败点（同目录 9_multi-node-poc 系列日志 L578、L7157）\n\n第三类（check-all-jobs）：汇总任务在上游 7 个 job 失败后无法产出结果表，属连带失败\n\nopenai 包缺少 sglang 期望的符号，是典型的依赖版本不匹配：镜像里 openai 版本低于代码要求，服务初始化时 Responses API 被禁用、进程最终以 255 退出，因此第一类更像镜像依赖版本问题而非用例逻辑错\n\n已排除的干扰项：没有 pytest 汇总、没有 accuracy 断言与精度数值，说明这批失败都没跑到判定阶段；另外 18 个 job 通过，排除整体环境故障",
+  "advice": "先锁依赖：在镜像里把 openai 升到含 ResponseFunctionShellToolCall 的版本（或反向把 sglang 降到与当前 openai 匹配的版本），并在 requirements 里写死下界，避免这种符号缺失在夜间任务里反复出现\n\n第二类单独抓证据：六个 multi-node-poc/mix-poc 只留 exit code，建议在启动脚本里 set -x 并保留最后 50 行输出，否则这批任务永远只能停在「失败」两个字上\n\n汇总任务降噪：check-all-jobs 在上游失败时应输出「上游 N 个 job 失败」并置 skipped，不要自己再失败一次\n\n验证方式：重跑该 nightly，要求 8 个失败 job 全部转通过（或明确 skip）、check-all-jobs 正常产出结果表、run 结论为 success，且日志中不再出现 ResponseFunctionShellToolCall 的 ImportError",
+  "cites": [
+   "github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt:L986",
+   "github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt:L3787",
+   "github_logs/gh_42061473997/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt:L7157",
+   "records/run_2081.json"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2083",
+  "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
+  "rootCause": "该 run 共 16 个 job、2 个失败，构建 #2083 从 00:48:54 跑到 03:12:32（约 2 小时 24 分钟）记 FAILED；两个失败 job 是 multi-node-poc 的 glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms 与汇总任务 check-all-jobs（records/run_2083.json）\n\n第一类（主任务）：日志按 出现 exit code: 1（L608）→ Traceback（L1652）→ ##[error]Error: failed to run script step（L1889）→ ✗ exit code: 1（L1890）→ Process completed with exit code 1（L1914）→ 容器实现执行失败（L1915）的顺序收敛，异常正文未留存（github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L1652）\n\n第二类（汇总任务）：check-all-jobs 的 Generate results table 步骤失败，是上游主任务失败的连带结果，不是独立缺陷\n\n值得一提的是 L608 已经出现一次 exit code: 1，随后日志才跑到 L1652 的 Traceback：说明任务在前面已经有一次非零退出（大概率是某个子步骤或模型拉起），主脚本继续执行后才在真正的位置抛错，因此更像这条 2p2d 32p 性能用例的前置准备（服务拉起、权重加载）先失败，被测性能并未真正开始\n\n已排除的干扰项：没有任何性能指标或 accuracy 断言输出，说明用例没跑到测量阶段；另 14 个 job 通过，排除环境全局故障",
+  "advice": "先看第一次非零退出：把 L608 附近的上下文抓出来，确认是哪一步先失败（起服务、加载权重还是建通信域），这一步比 L1652 的 Traceback 更接近真实起点\n\n再区分性能与功能问题：如果用例根本没跑到压测阶段，就不该按性能回归处理，建议在脚本里加「未进入测量阶段」的显式标记，避免这类记录被当成性能劣化\n\n汇总任务降噪：check-all-jobs 上游失败时置 skipped\n\n验证方式：重跑该 nightly，要求 multi-node-poc（glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms）转通过并产出性能指标、run 结论为 success，且日志中能看到第一次非零退出的具体步骤名",
+  "cites": [
+   "github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L608",
+   "github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L1652",
+   "records/run_2083.json"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2087",
+  "keyError": "ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses'",
+  "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2087 从 09:35:37 跑到 10:10:44（约 35 分钟）记 FAILED；失败的是 nightly-perf-16-npu-a3，其余 14 个 job 通过（records/run_2087.json）\n\n第一类（明确报错点）：日志 L1988 直接写出 [2026-11-06 01:45:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))，说明镜像里的 openai 包版本比 sglang 代码要求的旧，服务侧 Responses 能力在初始化阶段就被禁用（github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt:L1988）\n\n第二类（退出链）：随后 L4629 Traceback → L4763 ##[error]Error: failed to run script step → L4764 ✗ exit code: 255 → L4788 Process completed with exit code 1 → L4789 容器实现执行失败，异常正文没进归档，但 255 这个退出码与依赖导入失败的表现一致\n\n同日 #2081、#2095、#2096、#2088、#2099 都带同一条 openai ImportError，说明这不是单条记录的偶发，而是当天 a3 镜像的统一版本问题，因此更像镜像依赖与 sglang 代码不匹配，而非这条性能用例本身逻辑错\n\n已排除的干扰项：cases 为 0、无 pytest 汇总与性能指标输出，用例没跑到测量阶段；另 14 个 job 同 run 通过，排除节点与 runner 整体故障",
+  "advice": "先修镜像依赖，这是当天六条记录的共同源头：把 openai 升到含 ResponseFunctionShellToolCall 的版本，或把 sglang 回退到与当前 openai 匹配的版本，并在 requirements 里写死下界，别让符号缺失每晚重演\n\n区分「能力被禁用」与「用例失败」：OpenAIServingResponses 初始化失败只会让 /v1/responses 走降级路径，若该用例依赖这条接口，就应在用例启动前显式断言接口可用并直接报清晰错误，而不是拖到 255 退出\n\n补异常留存：L4629 的 Traceback 正文要写进日志，现在只剩退出码，无法证伪「255 由依赖引起」这一推断\n\n验证方式：重跑该 nightly，要求日志中不再出现 ResponseFunctionShellToolCall 的 ImportError，且 nightly-perf-16-npu-a3 产出完整性能指标、run 结论为 success",
+  "cites": [
+   "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt:L1988",
+   "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt:L4764",
+   "records/run_2087.json"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2088",
+  "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
+  "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2088 从 12:01:04 跑到 14:00:54（约 2 小时）记 FAILED；失败的是 multi-node-mix-poc 的 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix，其余 14 个 job 通过（records/run_2088.json）\n\n第一类（先出现的非零退出）：L15680 已经出现 │ exit code: 1，位置在该任务 13:32:41 的 openai ImportError（L13563）之后约 2000 行，说明服务拉起或前置子步骤先失败了一次（github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15680）\n\n第二类（主脚本收敛）：接着 L17468 Traceback → L17545 ##[error]Error: failed to run script step → L17546 ✗ exit code: 1 → L17570 Process completed with exit code 1 → L17571 容器实现执行失败，异常正文未留存\n\n这条 run 的标题是「kimi_k3: run the decode perf case via the aisbench prefix mode」，是一条刚改用 aisbench prefix 模式的用例；两次非零退出叠在一起，更像新的 prefix 启动路径没跑通（服务没起来、aisbench 连不上），而不是 decode 性能本身劣化——日志里没有任何 tpot/吞吐输出\n\n已排除的干扰项：L13563 的 openai ImportError 属当天镜像的普遍问题，但只影响 /v1/responses 降级，不是本条的直接退出点；cases 为 0，无精度与性能断言",
+  "advice": "先定位第一次非零退出：把 L15680 上下 100 行拉出来，确认是拉起服务、加载权重还是启动 aisbench 这一步先失败，这比 L17468 的 Traceback 更接近真实起点\n\n针对新的 prefix 模式做一次单独验证：手动跑 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix，把 prefix 相关参数（repeat_rate、prefix 长度）打到日志头部，确认新路径的启动顺序与旧用例一致\n\n补异常留存：multi-node-mix-poc 这类任务现在只留 exit code 一行，建议在脚本外层统一包装，把最后 50 行 stdout/stderr 打进日志\n\n验证方式：重跑该 nightly，要求 multi-node-mix-poc（kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix）转通过并产出 decode 性能指标、run 结论为 success",
+  "cites": [
+   "github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15680",
+   "github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L17546",
+   "records/run_2088.json"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2091",
+  "keyError": "",
+  "rootCause": "该 run 共 15 个 job、0 个失败 job，但构建 #2091 只在 17:45:35 到 17:45:38 存活了 3 秒就记 FAILED；失败的两个任务 set-image-config（id 127824131767）与 check-all-jobs（id 127824144289）在运行平台侧都已 404_not_retained，归档内 files=0、errorMessages 为空（records/run_2091.json）\n\n第一类（失败层级）：证据只到 job 层，两个任务都停在 404_not_retained，既没有步骤级日志也没有用例明细，失败点本身在归档里不存在\n\n第二类（时间特征）：3 秒内结束，连镜像拉取与容器启动都来不及完成，更像 runner 在分配或配置阶段就退出（set-image-config 正是写入镜像配置的入口任务），而不是测试脚本内部报错\n\n因此这条记录的真实原因无法从现有证据确认，只能给出层级与时间上的推断：失败集中在入口配置这一步，且异常发生在容器真正运行之前\n\n已排除的干扰项：cases 为 0、errorMessages 为 0，不存在被淹没的断言或精度失败；失败 job 列表为空，说明平台侧没把它算进 job 级失败，属流程级中断",
+  "advice": "先把日志留存补上，这是本条唯一能推进的事：向平台侧确认 set-image-config 与 check-all-jobs 这类短命任务为何 404_not_retained，要求至少保留入口任务的 stdout\n\n再按时间窗回查：用 17:45:35~17:45:38 这个窗口去查同一 runner 上当时的调度记录，3 秒内退出基本可以锁定在镜像配置或 runner 分配环节\n\n降低影响面：把 set-image-config 的失败改成显式「配置未生效」结论并中止后续 job，避免整条 nightly 只留下一个 3 秒的空失败\n\n验证方式：重跑该 nightly，要求 set-image-config 与 check-all-jobs 均有日志落盘且结论为 success，run 整体不出现 3 秒内中断的记录",
+  "cites": [
+   "records/run_2091.json"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2100",
+  "keyError": "",
+  "rootCause": "构建 #2100 只在 20:46:40 到 20:46:42 存活 2 秒就记 FAILED；失败的 set-image-config（id 127900239233）与 check-all-jobs（id 127900249627）同样全部 404_not_retained，归档内 files=0、errorMessages 为空，run 的 displayTitle 仅为「ci run」（records/run_2100.json）\n\n第一类（失败层级）：与 #2091 完全同构，证据止于 job 层，没有任何脚本输出\n\n第二类（时间与入口）：2 秒比 #2091 的 3 秒更短，且这两次失败都发生在入口配置任务 set-image-config 上，说明 nightly 在写镜像配置阶段就被打断，后续 15 个测试 job 一个都没起来\n\n因此更像 nightly 的入口配置步骤在同一天内两次失败（17:45 与 20:46），是同一处流程问题重复出现，而非两次独立的用例失败\n\n已排除的干扰项：无 job 级失败、无用例明细，不存在精度或性能判定；2 秒的时长排除测试脚本执行的可能",
+  "advice": "与 #2091 合并成一条线处理，不要当两个问题：同一天两次都在 set-image-config 处 2~3 秒退出，先去查该任务的实现（镜像 tag 解析、配置写入、权限）\n\n补日志：要求平台保留 404 之前的入口任务输出，否则这类记录永远只能定性为「证据缺失」\n\n考虑快速失败与告警：入口配置失败应立刻发通知并跳过整条 nightly，现在只是记一条空失败，白占一个构建号\n\n验证方式：重跑该 nightly，要求 set-image-config 正常完成、日志可读、run 结论为 success，且不再出现 2 秒内中断的记录",
+  "cites": [
+   "records/run_2100.json"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2095",
+  "keyError": "FileNotFoundError: [Errno 2] No such file or directory: '/root/.cache/tests/output/shun8686-overlapschedule-20261106-1838-42204167966-1/Nightly_Test_NPU--cann9.1.0-a3-B010/perf/nightly-perf-16-npu-a3/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_fia_unset/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_pass1_metrics'",
+  "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2095 从 18:38:06 跑到 19:15:43（约 37 分钟）记 FAILED；失败的是 nightly-perf-16-npu-a3，其余 14 个 job 通过（records/run_2095.json）\n\n第一类（背景噪声）：L5477 与 L7692 各有一条 openai ImportError（10:53:49、10:58:15），与当天其他 SgLang 记录同源，属镜像依赖问题但不是本条的退出点\n\n第二类（真实失败点）：L8615 Traceback → L8633 FileNotFoundError，用例去读 test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_pass1_metrics 这个产物文件时目录不存在，随后 L8755/8756 以 ✗ exit code: 255 退出，L8780/8781 收尾（github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt:L8633）\n\n值得注意路径里同时出现 _fia_unset 与 _pass1_metrics 两级目录：前者是被测配置的开关后缀，后者是性能采样的产物名，更像是压测根本没跑到写 metrics 这一步（或用例拼路径时把 fia 开关与 pass 序号拼错），而不是 metrics 文件被误删\n\n已排除的干扰项：openai ImportError 只影响 /v1/responses 降级；cases 为 0，没有精度断言；另 14 个 job 同 run 通过，排除节点故障",
+  "advice": "先确认产物是否真的没生成：在同一次运行的 /root/.cache/tests/output/... 下逐级 ls，确认是 _fia_unset 这级缺失还是 _pass1_metrics 缺失，这一步能直接区分「路径拼错」与「压测未产出」\n\n再核对路径拼装逻辑：把 fia 开关后缀与 pass 序号从配置里显式读出来打印，现在两级后缀都写死在路径里，配置一改就会失配\n\n加前置校验：读 metrics 前先断言目录存在并给出「第 N 次 pass 未产出」的明确信息，而不是抛裸 FileNotFoundError\n\n验证方式：重跑该 nightly，要求 multi-node-poc 下该 deepseek_v4_flash 8p 用例产出 _pass1_metrics 文件并通过、run 结论为 success",
+  "cites": [
+   "github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt:L8633",
+   "github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt:L8756",
+   "records/run_2095.json"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2096",
+  "keyError": "##[error]Error: failed to run script step: ✗ exit code: 255",
+  "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2096 从 19:15:12 跑到 19:32:39（约 17 分钟）记 FAILED；失败的是 nightly-perf-16-npu-a3，与同日晚 18:38 的 #2095 是同一个 job（records/run_2096.json）\n\n第一类（背景噪声）：L1996 与 L4211 各有一条 openai ImportError（11:20:37、11:25:27），和当天其余 SgLang 记录同源\n\n第二类（退出链）：L5134 只有 Traceback 标题、正文缺失，然后 L5268 ##[error]Error: failed to run script step → L5269 ✗ exit code: 255 → L5293 Process completed with exit code 1 → L5294 容器实现执行失败（github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5268）\n\n这条与 #2095 相隔 37 分钟、同一 job、同样 255 退出，但 #2095 抓到了 FileNotFoundError；把两条放在一起看，更像该性能 job 在同一批产物目录上连续两次失败，#2096 只是没把异常正文留住的那一次\n\n因此单看本条只能确认失败在脚本步骤、且退出码 255 与 #2095 的 FileNotFoundError 路径一致；单独归因证据不足，应与 #2095 合并判断\n\n已排除的干扰项：cases 为 0，无性能与精度输出，用例没跑到测量阶段；另 14 个 job 同 run 通过",
+  "advice": "直接复用 #2095 的结论，不要单独排查这一条：先按 #2095 的办法确认 _fia_unset / _pass1_metrics 目录是否产出，两条记录大概率是同一个产物路径问题\n\n补异常留存：L5134 的 Traceback 正文必须落盘，否则每条记录都要靠相邻构建去猜，成本太高\n\n给 nightly-perf 加产物检查前置：跑之前先建好 output 目录并在结束时断言 metrics 存在，把「产物缺失」变成明确报错\n\n验证方式：重跑该 nightly，要求 nightly-perf-16-npu-a3 连续两次均通过并产出 metrics、run 结论为 success，日志中不再出现只有 Traceback 标题而无正文的情况",
+  "cites": [
+   "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5134",
+   "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5269",
+   "records/run_2096.json"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2099",
+  "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
+  "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2099 从 19:42:57 跑到 23:35:37（约 3 小时 53 分钟）记 FAILED；失败的是 multi-node-mix-poc 的 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix，与 #2088 是同一用例（records/run_2099.json）\n\n第一类（先出现的非零退出）：L13774 已出现 │ exit code: 1，位置在 L13659 的 openai ImportError（23:06:44）之后一千多行，说明服务拉起或前置子步骤先失败了一次（github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L13774）\n\n第二类（主脚本收敛）：L15551 Traceback → L15628 ##[error]Error: failed to run script step → L15629 ✗ exit code: 1 → L15653 Process completed with exit code 1 → L15654 容器实现执行失败，异常正文未留存\n\n这条的标题是「kimi_k3: tune the 128k decode prefix case to repeat_rate=0.99 / request_rate=0」，是同一天对该用例的第二次参数调整；#2088 与 #2099 都是两次非零退出、都没有性能指标输出，说明调整参数并没有解决启动路径的问题\n\n因此更像 kimi_k3 的 32p mix 128k decode prefix 用例在多机拉起环节存在固定障碍（节点数 4、prefix 模式），而非 repeat_rate 参数不当\n\n已排除的干扰项：openai ImportError 属当天镜像的普遍问题、不是本条退出点；cases 为 0，无 tpot/吞吐输出，用例未进入测量",
+  "advice": "停止继续调参，先修启动：同一天两次调 repeat_rate/request_rate 都没换来一次成功，说明瓶颈不在参数而在用例拉起，先把 L13774 的第一次非零退出上下文拉出来\n\n与 #2088 合并成一条线：两次失败形态、退出位置、缺失信息完全一致，按同一个缺陷跟踪，避免在两条记录上重复投入\n\n核对 4 节点 multi-node-mix-poc 的环境前提：通信库与 sdma 能力要事先探测（参考 #2085 抓到的 libhcom.so 缺失与 InitDramSegment 失败），不满足就明确 skip\n\n验证方式：重跑该 nightly，要求 multi-node-mix-poc（kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix）转通过并产出 decode 性能指标、run 结论为 success",
+  "cites": [
+   "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L13774",
+   "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15629",
+   "records/run_2099.json"
+  ]
+ },
+ {
+  "recordId": "Triton_Ascend|Ascend#104",
+  "keyError": "步骤Build_a3a5_arm执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+  "rootCause": "构建 #104 从 17:00:52 跑到 17:27:26（约 26 分钟）记 FAILED，失败任务类型为测试任务，证据只有 2 个 job 日志、另有 1 个缺失（records/run_104.json）\n\n第一类（上游构建子任务失败）：npu_ir流水线调用 日志显示任务 Build_a3a5_arm 由 RUNNING 转 FAILED（L144）、run#516 已等待 00:25:10（L161）、同阶段 Build_a3a5_x86 一并转 FAILED（L163），随后 L182 给出 message: 步骤Build_a3a5_arm执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}，L183 标记 step FAILED，L185 脚本以 exit code 1 退出（job_logs/16_Ascend_104_npu_ir流水线调用.log:L182）\n\n第二类（下游测试任务被连带）：Test_Triton_Ascend 日志里 L126 出现 ERROR 404: Not Found.、L128 以 exit code 8 退出，Test_Triton_Ascend 任务本身 total=0 pass=0 fail=0，说明用例一条都没拉起，属上游镜像没构建出来导致的连带失败（job_logs/24_Ascend_104_Test_Triton_Ascend.log:L126）\n\n因此真实失败点只有一个：云构建服务返回封装码 DEV-CODECI-35002 表示「构建任务执行失败」，具体编译错误被封装码吞掉，日志只到「等 25 分钟后超时失败」这一层\n\n已排除的干扰项：Test_Triton_Ascend 的 404 与 exit 8 是下游连带，不单独归因；用例外 0 条说明不是测试断言问题",
+  "advice": "把封装码还原成真实编译错误：拿 DEV-CODECI-35002 去云构建平台查该次 run#516 的详细构建日志，现在本地日志只留了「构建任务执行失败」这一句，26 分钟等待全白费\n\n区分 arm 与 x86 两条构建线：Build_a3a5_arm 与 Build_a3a5_x86 在同一阶段一起转 FAILED，更像共用基础镜像或共用依赖下载环节失败（网络、制品仓鉴权），先查这一层再查编译参数\n\n缩短空等：run 等待 25 分钟才判失败，建议加构建心跳与提前失败（如连续 N 分钟无输出即中止），避免 nightly 被一条构建拖住\n\n验证方式：重跑 Ascend 流水线，要求 npu_ir流水线调用的 Build_a3a5_arm / Build_a3a5_x86 步骤成功、Test_Triton_Ascend 能拉起用例并给出 total>0 的结果、run 结论为 success",
+  "cites": [
+   "job_logs/16_Ascend_104_npu_ir流水线调用.log:L182",
+   "job_logs/16_Ascend_104_npu_ir流水线调用.log:L161",
+   "job_logs/24_Ascend_104_Test_Triton_Ascend.log:L128",
+   "records/run_104.json"
+  ]
+ },
+ {
+  "recordId": "vllm-ascend|a3.yaml#16450",
+  "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
+  "rootCause": "该 run 共 17 个 job、5 个失败，构建 #16450 从 09:01:11 跑到 10:53:49（约 1 小时 52 分钟）记 FAILED；5 个失败 job 是 Kimi-K3-MRV2-A3、MiniMax-M3-w8a8-PP-prefix-PD、Kimi-K2.6-W4A8-64k-1k-TPOT50-PD、GLM-5.1-W8A8C8-A3_198k_function、DeepSeek-V4.1-Flash-w8a8-PD-MRV2，其余 12 个 job 通过（records/run_16450.json）\n\n第一类（关键结构信息）：5 个失败 job 的失败步骤全部是 Wait for pods ready，也就是 Pod 一直没起来、等待超时，用例脚本根本没开始执行——这是本条最有价值的信号，说明问题在集群侧而不是模型用例侧\n\n第二类（日志能看到的退出链）：以 Kimi-K3-MRV2-A3 为例，L2143 ##[error]Error: failed to run script step → L2144 ✗ exit code: 1 → L2168 Process completed with exit code 1 → L2169 容器实现执行失败，另有 L2649 ##[error]Upload failed. See log:，上传失败是脚本退出后的连带动作（github_logs/gh_42063861754/127640780266_multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2~0bc925.txt:L2143）\n\n5 个 job 覆盖不同模型与不同节点形态（multi-node 与 double-node 各占一部分），失败点却是同一个 Wait for pods ready，因此更像集群资源不足或调度/镜像拉取受阻，而非某一个模型的配置问题\n\n已排除的干扰项：Upload failed 是退出后的连带、不单独归因；cases 为 0，没有任何精度或性能断言；另 12 个 job 能起来并通过，说明不是全集群不可用而是部分节点/队列受限",
+  "advice": "先查集群侧，不要查模型：用这 5 个 job 的时间窗去核对 Pod 事件（调度失败、ImagePullBackOff、资源配额不足、节点 taint），Wait for pods ready 超时的根因几乎都在这里\n\n把等待改成有信息量的失败：现在超时后只报 exit code 1，建议在轮询里定期 dump kubectl describe pod 的 Events，让下一次超时能直接看到原因\n\n分批重跑而不是全量：修好后先只跑这 5 个超时 job，确认 Pod 能起来再加跑全量，避免又跑满两小时\n\n验证方式：重跑该 nightly，要求这 5 个 job 的 Wait for pods ready 步骤成功、用例实际执行并产出结果、run 结论为 success",
+  "cites": [
+   "github_logs/gh_42063861754/127640780266_multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2~0bc925.txt:L2143",
+   "github_logs/gh_42063861754/127640780266_multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2~0bc925.txt:L2144",
+   "records/run_16450.json"
+  ]
+ },
+ {
+  "recordId": "vllm-ascend|a3.yaml#16451",
+  "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
+  "rootCause": "该 run 共 25 个 job、6 个失败，构建 #16451 从 07:38:30 跑到 11:24:05（约 3 小时 45 分钟）记 FAILED；6 个失败 job 全部是 double-node 形态，分别对应 GLM-5.1-W8A8C8-A3_198k_function、Kimi-K2.6-W4A8-64k-1k-TPOT50-PD、GLM-5.3-Flash-W8A8-130k-PD、Minimax_m2.7_in128k_1k_prefix90_tpot50、DeepSeek-V4.1-Flash-w8a8-PD-MRV2、DeepSeek-V4-flash-w8a8-PD-prefix-MRV2（records/run_16451.json）\n\n第一类（关键结构信息）：6 个失败 job 的失败步骤同样是 Wait for pods ready，Pod 未就绪导致超时，用例脚本没开始跑\n\n第二类（日志退出链）：以 GLM-5.1-W8A8C8-A3_198k_function 为例，L1697 ##[error]Error: failed to run script step → L1698 ✗ exit code: 1 → L1719 Process completed with exit code 1 → L1720 容器实现执行失败，L2176 另有 ##[error]Upload failed. See log:（github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt:L1697）\n\n本次失败全部集中在 double-node 形态、且分支是 releases-v0.32.0rc，与 #16450 的 multi-node/double-node 混合失败不同：更像该 release 分支的 double-node 部署模板（每模型 2 节点）在 Pod 编排上有共同问题，而不是单模型配置错\n\n已排除的干扰项：Upload failed 与容器实现执行失败都是退出后的连带；cases 为 0，无用例级断言；同 run 另有 19 个 job 通过，排除集群整体不可用",
+  "advice": "按形态归因而非按模型：6 个失败全是 double-node + releases-v0.32.0rc，优先核对这条分支的 double-node 部署模板（Pod 数量、资源申请、节点选择器），而不是逐个模型查配置\n\n与 #16450 对照：同一个 a3.yaml、同一天、失败步骤同为 Wait for pods ready，说明这不是偶发，建议把两类失败合并成一条「Pod 就绪超时」的专项跟踪\n\n补可观测性：Wait for pods ready 超时时要输出 Pod 的 Events 与 pending 原因，现在只剩 exit code 1\n\n验证方式：重跑该 nightly，要求 6 个 double-node job 的 Wait for pods ready 通过、用例实际执行并产出结果、run 结论为 success",
+  "cites": [
+   "github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt:L1697",
+   "github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt:L1698",
+   "records/run_16451.json"
+  ]
+ },
+ {
+  "recordId": "Ascend-CANN|ops-nn#168",
+  "keyError": "AssertionError: aclnnFakeQuantPerChannelAffineCachemask功能精度测试(executor)失败: aclnnFakeQuantPerChannelAffineCachemask accuracy not passed",
+  "rootCause": "Test_ops-nn 任务 202 条用例跑出 200 通过、2 失败（通过率 99.01%），构建 #168 记 FAILED；失败的两条是 test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk 与 test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk，分别在 20:55:58~20:56:28 与 20:58:24~20:59:04 执行（case_logs/case_0129.html:L1844、case_logs/case_0130.html:L2195）\n\n第一类（per-channel 变体）：断言原文为 aclnnFakeQuantPerChannelAffineCachemask功能精度测试(executor)失败: aclnnFakeQuantPerChannelAffineCachemask accuracy not passed，上下文 AtkTaskResult(success=False, acc_pass_result='Failed')，说明用例已执行到 atk 精度比对并被判不通过\n\n第二类（per-tensor 变体）：同一算子的另一个量化粒度，断言形态与上下文完全一致，同样停在 acc_pass_result='Failed'\n\n两条失败集中在同一个 FakeQuant 算子的两个量化粒度上，其余 200 条用例全通过，因此更像该算子的量化/掩码实现相对黄金数据存在确定性数值偏差（两个粒度可能共用同一段 cachemask 生成逻辑），而非某组用例数据本身不合格\n\n已排除的干扰项：日志没有编译错误、镜像拉取失败或设备占用；失败用例都在 30 秒量级内结束，没有被环境拖住的迹象；构建从 02:02:30 跑到 22:06:32 属排队导致的长时长，与失败无关",
+  "advice": "先导出比对明细看误差量级：对 aclnnFakeQuantPerChannelAffineCachemask 与 PerTensor 各跑一次 atk，把误差分布与阈值一起打出来，确认是超阈值一点点还是量级错位，这一点决定了是数值细节还是实现错误\n\n再查两个粒度是否共用逻辑：两个变体同时失败，优先核对 cachemask 掩码生成与 scale/zero_point 反量化这条路径是否被同一处改动影响\n\n核 baseline：确认本轮黄金数据版本与算子仓 commit 是否同时变更，避免把基线漂移当成实现回退\n\n验证方式：重跑 Test_ops-nn 全量 202 条用例，要求这两个 FakeQuant 用例的 acc_pass_result 变为 Passed、通过率回到 100%",
+  "cites": [
+   "case_logs/case_0129.html:L1844",
+   "case_logs/case_0130.html:L2195",
+   "records/run_168.json"
+  ]
+ },
+ {
+  "recordId": "Ascend-CANN|ops-nn#169",
+  "keyError": "AssertionError: aclnnFakeQuantPerChannelAffineCachemask功能精度测试(executor)失败: aclnnFakeQuantPerChannelAffineCachemask accuracy not passed",
+  "rootCause": "Test_ops-nn 任务 202 条用例跑出 200 通过、2 失败（通过率 99.01%），构建 #169 记 FAILED；失败集合与同日 #168 完全一致，仍是 test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk 与 test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk，本次执行时间为 17:14:34~17:15:06 与 17:16:32~17:17:11（case_logs/case_0131.html:L1899、case_logs/case_0132.html:L2124）\n\n第一类（失败集合不变）：两条用例的断言原文与 AtkTaskResult(success=False, acc_pass_result='Failed') 上下文与 #168 逐字一致，两次运行相隔约 15 小时、跑在同一镜像上，结果不变\n\n第二类（可复现性）：同一天两个不同构建跑出同一批 2 条失败、其余 200 条全通过，这是确定性偏差的典型特征，不是环境抖动或资源竞争\n\n因此这不是新的失败，而是 #168 同一问题的第二次复现：更像 FakeQuant 算子的量化/掩码实现在当前版本上稳定偏离黄金数据，而非偶发\n\n已排除的干扰项：日志无编译错误、无镜像或设备异常；用例都在 30~40 秒内结束，无超时迹象",
+  "advice": "与 #168 合并成一条主线，不要再分两单：两次运行失败集合完全一致，正好可以用「固定镜像与黄金数据、只切算子仓 commit」的方式做二分，快速定位引入偏差的提交\n\n用第一次运行做对照：把 #168 与 #169 的误差数值并排比一下，若数值完全相同说明是纯实现偏差，若略有差异则更可能是随机种子或输入数据范围问题\n\n补落盘：Test_ops-nn 现在只留用例断言，建议把 atk 比对明细一起归档，后续同类问题不用再靠断言文本猜\n\n验证方式：重跑 Test_ops-nn，要求这两个 FakeQuant 用例连续两次运行均 Passed、通过率 100%",
+  "cites": [
+   "case_logs/case_0131.html:L1899",
+   "case_logs/case_0132.html:L2124",
+   "records/run_169.json"
+  ]
+ },
+ {
+  "recordId": "Ascend-CANN|ops-transformer#165",
+  "keyError": "AssertionError: aclnnMoeTokenUnpermuteWithEpGrad功能精度测试(executor)失败: aclnnMoeTokenUnpermuteWithEpGrad accuracy not passed",
+  "rootCause": "Test_ops-transformer 任务 98 条用例跑出 79 通过、19 失败（通过率 80.61%），构建 #165 从 02:05:47 跑到 04:42:33 记 FAILED；19 条失败全部是 acc_pass_result='Failed'（case_logs/case_0110.html:L3158、case_logs/case_0116.html:L2249）\n\n第一类（通信融合算子，占多数）：aclnnAlltoAllQuantMatmul 的 a16w8、a16w4、a4w4 三档量化，加 aclnnMatmulAlltoAll、aclnnMatmulAllReduce 及其 V2、aclnnMatmulReduceScatter 及其 V2、aclnnAlltoAllMatmul、aclnnQuantMatmulAlltoAll、aclnnQuantMatmulAllReduceV3、aclnnAllGatherMatmul、aclnnWeightQuantMatmulAllReduce、aclnnMoeDistributeDispatch_CombineV2，全部以「功能精度测试(executor)失败」收口（records/run_165.json）\n\n第二类（MoeTokenUnpermuteWithEpGrad 四个变体）：perf 与 accu 两条主线加 probs_none、probs_not_none 两个分支，其中 perf 用例也是被精度断言判死而非性能不达标——断言原文直接写 accuracy not passed，说明性能根本没进入判定\n\n19 条失败横跨通信融合与 MoE 两条完全不同的算子线，却都停在同一个 atk 精度比对上，这更像本轮黄金数据或比对基线整体偏移（一个共同的输入/阈值来源），而不是十几个算子同时实现回退\n\n已排除的干扰项：没有任何内核崩溃、编译错误或设备异常；test 任务 logFile 与 logLines 均为空、证据只有 19 份 case_logs，说明失败点确实在用例判定层",
+  "advice": "先验证是否基线偏移，这是投入产出最高的一步：固定镜像与算子仓 commit，只把黄金数据切回上一可用版本重跑这 19 条，若全转通过就是基线问题而非实现问题\n\n若确认是实现问题，再按算子线分组二分：先取 aclnnAlltoAllQuantMatmul a16w8 与 aclnnMatmulAlltoAll 各一条拿误差明细，再单独复跑 MoeTokenUnpermuteWithEpGrad 的 probs 与无 probs 两个分支，判断是否同一处累加逻辑\n\n补执行日志：Test_ops-transformer 目前只留 19 份用例 HTML，测试任务的 stdout 完全没落盘，任何一次排查都要重跑\n\n验证方式：重跑 Test_ops-transformer，要求这 19 条用例的 acc_pass_result 全部变为 Passed、通过率回到 100%",
+  "cites": [
+   "case_logs/case_0110.html:L3158",
+   "case_logs/case_0116.html:L2249",
+   "case_logs/case_0113.html:L8553",
+   "records/run_165.json"
+  ]
+ },
+ {
+  "recordId": "Ascend-CANN|ops-transformer#166",
+  "keyError": "AssertionError: aclnnMoeTokenUnpermuteWithEpGrad功能精度测试(executor)失败: aclnnMoeTokenUnpermuteWithEpGrad accuracy not passed",
+  "rootCause": "Test_ops-transformer 任务 98 条用例跑出 79 通过、19 失败（通过率 80.61%），构建 #166 从 12:35:58 跑到 16:39:55 记 FAILED；失败条数与 #165 完全相同，失败用例集合也基本重合（case_logs/case_0093.html:L3419、case_logs/case_0097.html:L1933）\n\n第一类（通信融合算子）：aclnnAlltoAllQuantMatmul 的 a16w8、a16w4、a4w4，加 aclnnMatmulAlltoAll、aclnnMatmulAllReduceV2、aclnnAlltoAllMatmul、aclnnQuantMatmulAllReduceV3、aclnnQuantMatmulAlltoAll、aclnnMoeDistributeDispatch_CombineV2、aclnnAllGatherMatmul、aclnnMatmulReduceScatter（及 V2）、aclnnWeightQuantMatmulAllReduce\n\n第二类（MoeTokenUnpermuteWithEpGrad）：四个变体同样以 acc_pass_result='Failed' 判死，没有内核崩溃或编译错误\n\n与 #165 相隔 10 小时、跑在同一镜像上、失败集合一致，这是确定性问题的第二次复现：更像共同的黄金数据/比对基线或某次共用底层改动带来的整体偏差，而非环境抖动\n\n已排除的干扰项：无用例级超时、无设备异常；19 份证据全为 case_logs HTML，说明失败点稳定停在 atk 精度判定层",
+  "advice": "与 #165 合并为一条主线：两次运行失败集合一致，是最适合做 commit 二分的情形，固定镜像与黄金数据、只切算子仓 commit，一轮就能锁定引入偏差的提交\n\n优先验证基线：先把黄金数据回退一个版本重跑这 19 条，若全通过则直接归因为基线漂移，避免在十几个算子上盲目投入\n\n按算子线补误差明细：至少取 aclnnAlltoAllQuantMatmul a16w8、aclnnMatmulAlltoAll、aclnnMoeTokenUnpermuteWithEpGrad 三条的 atk 比对数值，确认误差是否同量级\n\n验证方式：重跑 Test_ops-transformer，要求 19 条用例全部 Passed、通过率 100%，且与 #165 连续两次运行结果一致",
+  "cites": [
+   "case_logs/case_0093.html:L3419",
+   "case_logs/case_0097.html:L1933",
+   "case_logs/case_0091.html:L15599",
+   "records/run_166.json"
+  ]
+ },
+ {
+  "recordId": "Ascend-CANN|shmem#140",
+  "keyError": "AssertionError: SHMEM example [allgather] 存在失败组合 assert False",
+  "rootCause": "Test_shmem 任务 13 条用例跑出 12 通过、1 失败（通过率 92.31%），构建 #140 从 03:00:13 跑到 03:40:09 记 FAILED；唯一失败项是 test_example_allgather，执行时间 03:30:26~03:35:58，用例以汇总断言 assert False 收口（case_logs/case_0090.html）\n\n第一类（失败覆盖全部组合）：用例日志按 allgather_pes2_int32_t、allgather_pes2_float16_t、allgather_pes2_bfloat16_t 一直到 allgather_pes8_bfloat16_t 依次记录 9 条「SHMEM [allgather_pesN_type] 测试失败」，覆盖 2、4、8 三档 PE 与 int32、float16、bfloat16 三种数据类型\n\n第二类（失败与规模无关）：9 个组合全军覆没、没有一个小规模组合能跑通，失败与 PE 数、数据类型都没有对应关系，说明不是某一档卡数边界或某一种 dtype 的精度问题\n\n因此更像被测的 allgather example 二进制/shared memory 初始化在本次环境里整体跑不起来，而不是组合级缺陷；9 条全挂也解释了为什么用例最终只能用一个 assert False 汇总收口\n\n已排除的干扰项：同任务另外 12 条 shmem 用例全部通过，排除环境完全不可用；没有编译错误或超时记录",
+  "advice": "先手工跑一次最小组合：单独执行 allgather_pes2_int32_t，把 stdout/stderr 完整打出来——9 个组合全失败却只留一句汇总断言，说明 example 的报错没有被用例捕获，这一步能直接拿到真实错误\n\n再查 shared memory 与驱动前提：shmem example 依赖共享内存与设备访问，优先核对容器内 /dev/shm 大小、memlock 限制与驱动版本，这类前提不满足时所有卡数都会失败\n\n修用例的收口方式：把 9 个组合的失败原因分别记录并按组合汇总，而不是最后 assert False，否则每次只能看到「有失败组合」四个字\n\n验证方式：重跑 Test_shmem 全量 13 条用例，要求 allgather example 的 9 个组合全部通过、任务通过率 100%",
+  "cites": [
+   "case_logs/case_0090.html",
+   "records/run_140.json"
+  ]
+ },
+ {
+  "recordId": "Ascend-CANN|shmem#142",
+  "keyError": "AssertionError: SHMEM example [allgather] 存在失败组合 assert False",
+  "rootCause": "Test_shmem 任务 13 条用例跑出 12 通过、1 失败（通过率 92.31%），构建 #142 从 21:06:00 跑到 22:14:36 记 FAILED；失败项与 #140 完全相同，仍是 test_example_allgather，本次执行时间 22:04:25~22:10:31（case_logs/case_0133.html）\n\n第一类（同一批组合失败）：本用例日志同样从 allgather_pes2_int32_t 到 allgather_pes8_bfloat16_t 记录 9 个组合「测试失败」，组合集合与 #140 完全一致\n\n第二类（时段不同、结果相同）：#140 跑在 03:00~03:40，#142 跑在 21:06~22:14，两次相隔约 18 小时、跑在不同时段与不同机器实例上，失败组合却一个不差，属确定性复现而非环境抖动\n\n因此这条不是新问题，而是 #140 的第二次复现：更像 allgather example 在当前版本上稳定跑不通（共享内存初始化或 example 二进制问题），而非资源竞争\n\n已排除的干扰项：同任务 12 条其他用例两次都通过；无编译失败、无超时、无设备占用记录",
+  "advice": "与 #140 合并成一条线：两次时段不同、失败集合一致，直接按「稳定复现的缺陷」处理，不要再等第三次夜间跑\n\n用最小组合取证：手工单跑 allgather_pes2_int32_t 并把完整输出留下来，这是目前唯一缺的一环——9 条组合失败却只有一句汇总断言\n\n核对环境前提：检查 /dev/shm 容量、memlock 限制与共享内存驱动版本，三者任一不满足都会让所有组合同时失败\n\n验证方式：重跑 Test_shmem，要求 allgather example 的 9 个组合连续两次全部通过、任务通过率 100%",
+  "cites": [
+   "case_logs/case_0133.html",
+   "records/run_142.json"
+  ]
+ },
+ {
+  "recordId": "Ascend-CANN|shmem#141",
+  "keyError": "[ERROR]execute openlibing-pytest-executor. main.py fail, log file is ***//openlibing-pytest-executor-workspace/executor-log/scheduler_framework.log",
+  "rootCause": "构建 #141 从 17:00:38 跑到 18:18:35（约 1 小时 18 分钟）记 FAILED，失败任务类型为测试任务；Test_shmem 的 total=0、pass=0、fail=0，一条用例都没拉起（records/run_141.json）\n\n第一类（环境申请停在排队）：17:17:57 首次拿到 apply_env_res，内容为 env_id=lease-env-4691731745e8e12a13198efb904244c2、groups.nodes_1 为空数组、status=provisioning；随后 17:18:21、17:18:52、17:19:27 三次轮询 status 一直是 queued，节点列表始终为空，直到 18:18 都没有变成 ready（job_logs/25_shmem_141_Test_shmem.log:L241、L244、L247、L250）\n\n第二类（执行器最终放弃）：环境等了约一小时仍未就绪，18:18:25 输出 [ERROR]execute openlibing-pytest-executor. main.py fail，log file is ***//openlibing-pytest-executor-workspace/executor-log/scheduler_framework.log，18:18:25 脚本 exit code 1，18:18:28 Finished: FAILURE；job 与 step 层再包一层 DEV-CODECI-35002（job_logs/25_shmem_141_Test_shmem.log:L614、L617）\n\n因此失败点在「环境申请」这一步而不是用例：租不到节点导致执行器无法启动 pytest，包工码 DEV-CODECI-35002 只是对脚本退出的封装，真实信息在 scheduler_framework.log 里\n\n已排除的干扰项：total=0 说明没有任何用例执行，不存在精度或断言问题；同日的 #140、#142 在别的时段能拿到环境并跑到用例层，说明不是 shmem 用例本身坏掉",
+  "advice": "先看 scheduler_framework.log：这是本条唯一指向根因的文件，日志里只给了路径没给内容，优先把该文件捞出来确认是配额不足、节点被占还是租约创建失败\n\n排查节点池与租约：env 从 17:17 创建到 18:18 一直 queued、nodes_1 始终为空，典型的「无可用空闲节点」，建议核对当时段的节点池容量与是否有长任务占位\n\n缩短无效等待：现在环境排队一小时才放弃，建议在轮询里加超时上限（如 20 分钟）与明确失败原因，别让 nightly 被一个租约卡住 78 分钟\n\n验证方式：重跑 test 流水线，要求 Test_shmem 能拿到 ready 环境、拉起 13 条用例并给出结果，任务通过率 100%",
+  "cites": [
+   "job_logs/25_shmem_141_Test_shmem.log:L241",
+   "job_logs/25_shmem_141_Test_shmem.log:L250",
+   "job_logs/25_shmem_141_Test_shmem.log:L614",
+   "records/run_141.json"
+  ]
+ },
+ {
+  "recordId": "HPCKit|hmpi#213",
+  "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+  "rootCause": "构建 #213 从 01:01:55 跑到 01:11:50（约 10 分钟）记 FAILED，失败任务类型为测试任务；Test_hmpi 的 total=0、pass=0、fail=0，用例一条都没执行（records/run_213.json）\n\n第一类（用例仓拉取鉴权失败）：01:11:48.112 日志报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，紧接着脚本自己打印 [ERROR] git clone test_cases code fail，01:11:48.273 以 script returned exit code 1 退出，01:11:52 Finished: FAILURE（job_logs/28_hmpi_213_Test_hmpi.log:L138、L139、L140、L142）\n\n第二类（封装码不具备诊断价值）：job 与 step 层都只留了 步骤Test_hmpi执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}，真实原因完全在 clone 这一步\n\n因此失败在用例代码拉取环节：clone hpckit-autotest 时凭据无效或已过期，导致测试代码没下来、pytest 无法启动；这类问题是环境/凭据问题，不是被测组件 hmpi 的缺陷\n\n已排除的干扰项：total=0 与 10 分钟的短时长说明根本没进入用例执行；日志里没有任何编译错误或设备异常",
+  "advice": "先换有效凭据并复测：核对执行机上的 gitcode 凭证（token 是否过期、是否有该私有仓的读权限），这是本条唯一根因，修好后 clone 与用例执行应该立即恢复\n\n把凭据检查前置：在 clone 之前先做一次轻量鉴权探测（如 git ls-remote），失败时直接给「凭据无效」结论，而不是等 clone 报错再靠封装码收口\n\n同类批量排查：同批 kpex#142、kudnn#227、kupl#306、kuqcd#201 都是同一个仓库的同一句鉴权失败，建议一次改配置覆盖这五条流水线\n\n验证方式：重跑 hmpi 流水线，要求 git clone 成功、Test_hmpi 拉起用例并给出 total>0 的结果、任务通过率 100%",
+  "cites": [
+   "job_logs/28_hmpi_213_Test_hmpi.log:L138",
+   "job_logs/28_hmpi_213_Test_hmpi.log:L140",
+   "records/run_213.json"
+  ]
+ },
+ {
+  "recordId": "HPCKit|kpex#142",
+  "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+  "rootCause": "构建 #142 从 00:41:16 跑到 00:43:21（约 2 分钟）记 FAILED，失败任务类型为测试任务；Test_kpex 的 total=0、pass=0、fail=0，用例未执行（records/run_142.json）\n\n第一类（用例仓拉取鉴权失败）：00:43:18.191 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，脚本随即打印 [ERROR] git clone test_cases code fail，00:43:18.354 以 script returned exit code 1 退出，00:43:22 Finished: FAILURE（job_logs/29_kpex_142_Test_kpex.log:L138、L140、L142）\n\n第二类（封装码无诊断价值）：job 与 step 层只留 步骤Test_kpex执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}\n\n因此失败点与同批 HPCKit 记录完全一致：clone hpckit-autotest 时凭据无效或无权访问，测试代码没拉下来，pytest 起不来；属凭据/环境问题，不是 kpex 组件缺陷\n\n已排除的干扰项：total=0、2 分钟内结束，说明没进入任何用例；无编译错误与设备异常",
+  "advice": "与 hmpi#213 一起修凭据：同一天五条 HPCKit 流水线（hmpi#213、kpex#142、kudnn#227、kupl#306、kuqcd#201）都卡在同一个仓库的同一句鉴权失败，改一次执行机凭证就能一起解决\n\n把鉴权探测前置：在 clone 前用 git ls-remote 做一次轻量检查，失败直接给「凭据无效」结论并中止，避免每次都只留封装码\n\n考虑凭证托管而非写死：把 gitcode 读权限收到流水线密钥里并设置到期提醒，防止再次集体失效\n\n验证方式：重跑 kpex 流水线，要求 git clone 成功、Test_kpex 拉起用例并给出 total>0 的结果、任务通过率 100%",
+  "cites": [
+   "job_logs/29_kpex_142_Test_kpex.log:L138",
+   "job_logs/29_kpex_142_Test_kpex.log:L142",
+   "records/run_142.json"
+  ]
+ },
+ {
+  "recordId": "HPCKit|kudnn#227",
+  "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+  "rootCause": "构建 #227 从 03:31:17 跑到 03:34:03（约 3 分钟）记 FAILED，失败任务类型为测试任务；Test_kudnn 的 total=0、pass=0、fail=0，用例一条未跑（records/run_227.json）\n\n第一类（用例仓拉取鉴权失败）：03:34:01.663 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，脚本显式打印 [ERROR] git clone test_cases code fail，03:34:01.827 以 script returned exit code 1 退出，03:34:08 Finished: FAILURE（job_logs/26_kudnn_227_Test_kudnn.log:L138、L140、L142）\n\n第二类（封装码无诊断价值）：job 与 step 层仍只留 步骤Test_kudnn执行失败 与 DEV-CODECI-35002\n\n因此这是同一凭据问题的又一次复现：clone hpckit-autotest 鉴权失败导致用例未拉起，属环境/依赖未就绪，不是 kudnn 算子实现的问题\n\n已排除的干扰项：total=0 与 3 分钟时长说明未进入用例执行；无编译错误、无设备异常",
+  "advice": "并入同日 HPCKit 凭据问题一并处理：hmpi#213、kpex#142、kudnn#227、kupl#306、kuqcd#201 五条同因，一次修配置即可全部恢复\n\n在流水线里加明确失败原因：clone 失败时把「用例仓鉴权失败」作为结论输出，而不是让上层只看到构建任务执行失败\n\n加到期监控：凭证类问题通常成批爆发，建议对执行机 token 有效期做巡检告警\n\n验证方式：重跑 kudnn 流水线，要求 git clone 成功、Test_kudnn 拉起用例并给出 total>0 的结果、任务通过率 100%",
+  "cites": [
+   "job_logs/26_kudnn_227_Test_kudnn.log:L138",
+   "job_logs/26_kudnn_227_Test_kudnn.log:L142",
+   "records/run_227.json"
+  ]
+ },
+ {
+  "recordId": "HPCKit|kupl#306",
+  "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+  "rootCause": "构建 #306 从 00:01:10 跑到 00:02:24（约 74 秒）记 FAILED，失败任务类型为测试任务；Test_kupl 的 total=0、pass=0、fail=0，用例未执行（records/run_306.json）\n\n第一类（用例仓拉取鉴权失败）：00:02:21.746 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，脚本打印 [ERROR] git clone test_cases code fail，00:02:21.749 以 script returned exit code 1 退出，00:02:22.982 Finished: FAILURE（job_logs/30_kupl_306_Test_kupl.log:L138、L140、L142）\n\n第二类（封装码无诊断价值）：job 与 step 层只留 步骤Test_kupl执行失败 与 DEV-CODECI-35002\n\n74 秒是整个 HPCKit 同批记录里最短的一次：从启动到 clone 报错几乎无缝衔接，说明凭据在一次请求里就被拒，不存在网络超时或重试\n\n因此失败完全是凭据问题，kupl 组件本身没有被测到\n\n已排除的干扰项：total=0、无用例执行；无编译错误与设备异常；74 秒的时长排除环境排队与超时",
+  "advice": "与同批 HPCKit 记录合并修：五条流水线同因，优先改执行机 gitcode 凭据\n\n快速验证手段：在一台执行机上直接 git ls-remote https://gitcode.com/kunpengcompute/hpckit-autotest.git，几十秒内就能确认凭据是否有效，不必等夜间流水线\n\n把失败前置：clone 前做鉴权探测，失败即中止并输出「凭据无效」，避免整条流水线只留一个封装码\n\n验证方式：重跑 kupl 流水线，要求 git clone 成功、Test_kupl 拉起用例并给出 total>0 的结果、任务通过率 100%",
+  "cites": [
+   "job_logs/30_kupl_306_Test_kupl.log:L138",
+   "job_logs/30_kupl_306_Test_kupl.log:L142",
+   "records/run_306.json"
+  ]
+ },
+ {
+  "recordId": "HPCKit|kuqcd#201",
+  "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+  "rootCause": "构建 #201 从 00:31:53 跑到 20:59:29（约 20 小时 28 分钟）记 FAILED，失败任务类型为测试任务；Test_quqcd 的 total=0、pass=0、fail=0，用例一条未跑（records/run_201.json）\n\n第一类（长时间排队后才拿到执行机会）：真正开始执行的时间是 20:59:19，距构建启动 00:31:53 已过去 20 小时以上，说明这条构建绝大部分时间在等资源而不是在跑测试\n\n第二类（拿到机器后 3 秒内因鉴权失败退出）：20:59:19.175 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，脚本打印 [ERROR] git clone test_cases code fail，20:59:19.348 以 script returned exit code 1 退出，20:59:22.630 Finished: FAILURE（job_logs/27_kuqcd_201_Test_quqcd.log:L138、L140、L142）\n\n因此这条记录有两层问题：表层是与其他 HPCKit 记录同源的 clone 鉴权失败（3 秒即失败、用例未执行），底层是长达 20 小时的资源等待——两者叠加让这条记录完全失去测试价值\n\n已排除的干扰项：total=0，无用例执行；日志里没有任何编译错误或设备异常；鉴权失败与长时间排队无因果关系",
+  "advice": "先修凭据（与 hmpi#213、kpex#142、kudnn#227、kupl#306 同一根因），这一步能让本条立刻回到可测状态\n\n单独查 20 小时排队：00:31:53 提交、20:59:19 才开始执行，说明该流水线的队列或节点池长期被占，建议核对 kuqcd 对应节点池的容量与资源配额，这类长等待会让夜间结果失去时效性\n\n加超时策略：为「拿到执行机后立刻失败」的场景设置更短的排队上限与快速失败标记，避免一条构建占位一整天\n\n验证方式：重跑 kuqcd 流水线，要求从启动到开始执行在合理时长内（小时级以内）、git clone 成功、Test_quqcd 拉起用例并给出 total>0 的结果、任务通过率 100%",
+  "cites": [
+   "job_logs/27_kuqcd_201_Test_quqcd.log:L138",
+   "job_logs/27_kuqcd_201_Test_quqcd.log:L142",
+   "records/run_201.json"
+  ]
+ },
+ {
+  "recordId": "MindIE|MindIE-Motor#120",
+  "keyError": "",
+  "rootCause": "这是一条只有运行元数据、没有任何执行痕迹的失败：07:04:13 启动、07:43:59 结束（39 分 46 秒），status=FAILED、failedTaskType=「测试任务」，但 tasks=0、cases=0、errorMessages=0、证据文件 0 份，平台侧既没有返回失败任务详情，也没有任何可下钻的任务日志（records/run_120.json）\n\n失败停在测试任务这一层，推断更像用例确实开跑后中途失败、但日志与用例明细在接口侧未留存，而非用例断言不通过——若断言失败，cases 里至少应落到失败用例名与断言原文，实际却是 0 条；同样也不是构建问题，failedTaskType 指向测试任务，说明构建阶段已经过了。\n\n已排除的干扰项：本条不是取消，status 为 FAILED 而不是 CANCELED，与同日 #121、#124 的 CANCELED 性质不同，不能按「被中止」处理。",
+  "advice": "先补证据再定责：按构建号 120 在运行平台上人工打开该次运行，把测试任务的控制台日志导出回填归档，只有拿到失败步骤与报错原文才能判断是环境、用例还是产品缺陷\n\n同时给这条流水线打开任务日志与用例明细留存，确认下一次夜间运行能在归档侧落到 tasks 与 errorMessages，否则每晚会继续产出这种只有任务类型的低置信度记录\n\n采集侧对「FAILED 但 tasks=0 且 errorMessages=0」的记录单独标记为证据缺失，避免它被误当成用例失败计入质量统计\n\n验证方式：重跑一次该流水线，要求归档记录里 tasks 与 errorMessages 非空、失败用例名可见，且 list_pending 中不再出现只有任务类型的失败记录",
+  "cites": [
+   "records/run_120.json"
+  ]
+ },
+ {
+  "recordId": "MindIE|MindIE-Motor#121",
+  "keyError": "",
+  "rootCause": "运行在测试任务阶段被终止：14:11:17 启动、19:32:25 结束，持续 5 小时 21 分 8 秒后状态变为 CANCELED，failedTaskType 为「测试任务」，同时 tasks=0、testTasks=0、logTasks=0、buildTasks=0、cases=0、errorMessages=0，任务与用例都没有任何记录落盘（records/run_121.json）\n\n推断更像运行时长触发的中止（超时策略或人工介入），而非用例断言失败：取消发生在测试任务执行期间而不是构建期间，且五小时以上的挂起时长与典型的用例失败形态不符——如果是用例失败，进程会在断言处立刻退出并留下用例结果，不会拖到五小时后被取消。\n\n已排除的干扰项：取消发起方在归档里没有记录，人工中止、超时策略、上游依赖失败三种可能都无法从现有字段区分，因此本条只作运行取消处理，不归因到组件缺陷。",
+  "advice": "先向运行平台核实 #121 的取消发起方与取消原因，把结果补记成归档字段，避免同类记录长期以 CANCELED 无痕状态进入统计\n\n给该流水线的测试任务设置明确超时上限与临期告警，超过阈值未收敛时先打印当前执行阶段与已跑用例数再终止，用可复盘的日志替代现在这种一刀切取消\n\n核对该次运行是否与当日 #120 失败、#124 取消围绕同一次代码提交，如果是同一提交反复重跑，应先定位提交问题而不是反复重试\n\n验证方式：重跑后确认运行能正常收敛到完成状态，或超时终止时日志里能看到被中断的测试环节与用例进度，归档不再出现 tasks=0 的取消记录",
+  "cites": [
+   "records/run_121.json"
+  ]
+ },
+ {
+  "recordId": "MindIE|MindIE-Motor#124",
+  "keyError": "",
+  "rootCause": "构建刚启动就被取消：21:10:53 开始、21:10:59 结束，只活了 6 秒，状态 CANCELED，failedTaskType 为「构建任务」，且 tasks=0、buildTasks=0、testTasks=0、cases=0、errorMessages=0，既没有编译输出也没有产物记录（records/run_124.json）\n\n推断更像并发取消策略生效（同分支后一次提交顶掉前一次运行）或人工中止，而非构建失败：6 秒的时间窗口不足以完成任何编译动作，构建失败通常会留下编译命令与错误输出，这里一条都没有。\n\n已排除的干扰项：同一天 #120（07:04 FAILED）、#121（14:11 起跑 5 小时后 CANCELED）、#124（21:10 起跑 6 秒 CANCELED）三次运行集中在同一流水线，但三次的失败层级分别是测试任务、测试任务、构建任务，不能简单当成同一个缺陷。",
+  "advice": "先确认 21:10 这次取消的触发方：查流水线的并发与取消策略配置，看是否开启了「同分支新提交自动取消旧运行」，若是则该配置在夜间批量提交时会持续吞掉运行\n\n为构建任务打开步骤级日志与时间戳留存，让 6 秒即被取消的运行也能看到执行到哪一步，现在这种零记录状态无法复盘\n\n把当日三次运行按时间线对齐到同一提交，确认是否为同一提交反复重跑；确认后再决定是修提交还是修流水线配置\n\n验证方式：调整策略后重跑该流水线，要求构建能进入编译阶段、日志中有步骤时间戳，且当日不再出现 6 秒即 CANCELED 的运行",
+  "cites": [
+   "records/run_124.json"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2124",
+  "keyError": "[2026-11-08 16:13:50] Scheduler hit an exception: Traceback (most recent call last):",
+  "rootCause": "26 个 job、12 个失败、跨度近 9 小时（11-09 00:05:48 至 09:22:46），失败从服务进程层一路传导到 job 收尾层：nightly-1-npu-a3 在日志时间 16:13:50（日志为 UTC）先报「Scheduler hit an exception: Traceback (most recent call last):」（github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1286），同文件 L1256 另有一条 Traceback，nightly-8-npu-a3 在 TP0 EP0 与 TP7 EP7 两个 rank 上各报一次同类调度器异常（github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt:L3085、L3128），随后 job 尾部以「##[error]Error: failed to run script step:」「✗ exit code: 255」（github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L18171、L18172）→「Process completed with exit code 1.」→「Executing the custom container implementation failed.」（同文件 L18197）收尾，nightly-perf 与 multi-node-poc 的 deepseek_v4_flash_w8a8_1p1d_16p 也是同一组五行。\n\n按成因可归两类：第一类是服务侧调度器崩栈，同一 job 内多个 TP/EP rank 同时抛 Scheduler 异常、时间紧接 255 退出，失败是一个服务实例在多卡进程上一起崩；第二类是 runner 容器层收尾失败（L18197），它出现在 255 之后，属于外层连带。因此更像镜像内服务进程启动即崩导致整批 nightly 用例无结果，而非某个用例精度或性能不达标——12 个失败 job 的 total/pass/fail 全部为 None、cases=0，一条用例断言都没落下来。\n\n另有一条全批次重复的干扰项：「OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses'」（github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1108、L1437；github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt:L1380），它只把 /v1/responses 接口关掉，日志里没有它直接中断任务的证据，因此不作为本次失败主因，但它是镜像内 openai 版本与代码不匹配的确定问题，需单独修。",
+  "advice": "先收口范围：只复跑 nightly-1-npu-a3 与 nightly-8-npu-a3 这两个含 Scheduler 异常的任务，确认 exit 255 是否为调度器崩栈的连带结果；若这两个任务单跑仍崩，则其余 10 个 job 的失败可直接按同因合并处理，不必逐个排查\n\n同时把镜像内 openai 依赖固定到包含 ResponseFunctionShellToolCall 的版本，消除全批次重复的 OpenAIServingResponses ImportError，避免 /v1/responses 长期处于 disabled 状态掩盖问题\n\n若单跑不崩，再把 12 个失败 job 按节点分组对比 runner 与镜像 digest，重点查 255 退出前该节点上是否发生过容器重启或资源回收\n\n给 nightly 入口加容器拉起前置自检（镜像可拉取、脚本首行依赖可导入），容器失败时把 runner 侧的容器事件写进 job 输出，替代现在只有一句「Executing the custom container implementation failed」\n\n验证方式：重跑该 workflow，要求 nightly-1、nightly-8 两个 job 正常结束、日志中不再出现 Scheduler hit an exception，其余 job 的用例结果（total/pass/fail）能正常落盘，/v1/responses 不再报 ImportError",
+  "cites": [
+   "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1286",
+   "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L18171",
+   "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L18172",
+   "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L18197",
+   "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt:L3085",
+   "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt:L3128",
+   "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1108"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2125",
+  "keyError": "Found exist sglang job, sleeping for 30 seconds...",
+  "rootCause": "这个 job 根本没跑到用例：00:53:36 启动、01:12:02 结束（19 分钟），日志 1033 行主体是等待循环——先把「No sglang job exist, start test case...」打出来（github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L295），随后连续 5 次打印「Found exist sglang job, sleeping for 30 seconds...」（同文件 L993、L1003、L1032），再次打印「No sglang job exist」之后立刻进入「Post job cleanup.」与「Cleaning up orphan processes」，job 就这样收尾了；本记录 tasks=2、cases=0、errorMessages=0，一条用例结果都没有。\n\n推断更像同一 sglang 服务实例被同批次其它 job 占着、本 job 在等待期被清理结束，而非用例执行失败——如果真的跑过用例，cases 里应有用例名与阈值判定结果，实际是 0；日志里也没有任何断言或 Traceback，说明失败发生在执行之前。\n\n已排除的干扰项：另一个任务 check-all-jobs 在平台侧日志 404，因此「谁占用了服务、占用了多久」无法从本次证据确认，本条只定性为执行前的服务等待与调度问题。",
+  "advice": "先把无界等待改成有界等待：每次 sleeping 时打印占用者 job 名、已等待时长与剩余超时，超时直接失败并输出占用关系，用这些字段替代现在只有一句 sleeping for 30 seconds 的日志\n\n然后查夜间并发：同一时间段有多个 multi-node-poc 争抢同一个 sglang 服务实例，按用例分组串行或按服务实例分池，避免 job 在等待期被清理\n\n再补证据：为 check-all-jobs 打开日志留存（当前 404），否则这类「未执行即结束」的记录永远只能定性为 unknown\n\n验证方式：重跑同一批夜间用例，要求每个 job 日志里能看到占用者与被占用时长、没有任何 job 因等待被清理结束，且用例结果能正常落盘",
+  "cites": [
+   "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L295",
+   "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L993",
+   "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1003",
+   "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1032"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2126",
+  "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
+  "rootCause": "16 个 job 里 2 个 multi-node-poc 失败，两个不同模型的用例是同一形态：deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa 的日志尾部依次是「Traceback (most recent call last):」（github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L503）→「##[error]Error: failed to run script step:」→「✗ exit code: 1」（同文件 L521、L522）→「##[error]Process completed with exit code 1.」→「Executing the custom container implementation failed.」（同文件 L546、L547），deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa 的日志出现同一组五行（github_logs/gh_42503749318/128805033836_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L505、L549）。\n\n推断更像用例启动阶段的脚本层失败、用例未真正进入精度或性能判定，而不是断言不通过：两个任务的 total/pass/fail 全为 None、cases=0，说明一条用例结果都没产出；如果真是精度不达标，至少会落一条 failed 用例和断言原文。\n\n已排除的干扰项：Traceback 只有头行、没有异常正文，不能据此判定为代码 bug；末尾的容器实现执行失败出现在 exit 1 之后，是 runner 外层收尾的连带结果，不是独立故障。同一用例 pro_0813 在约一小时后（#2127）以完全相同形态再次失败，说明这不是单次抖动。",
+  "advice": "先定位脚本层停在哪一行：用同一 commit 单跑 deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa 这一个用例，并把启动脚本的 set -x 或每一步的时间戳打开，让 Traceback 后面的异常正文落到日志里——现在缺的正是这一段\n\n拿到正文后按两类分开处理：若是拉起服务时的依赖/配置异常（端口、ranktable、镜像内库版本），改启动脚本并与其他能跑通的 multi-node-poc 用例比对差异；若是用例代码异常，直接修用例\n\n同时把 deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa 一起核对，它在本轮与 #2127 都失败，优先确认这两个用例是否共用同一份启动模板\n\n验证方式：重跑该 workflow，要求两个 multi-node-poc 用例至少进入用例执行并落出 total/pass/fail，日志中不再出现只有头行的 Traceback 与 exit 1",
+  "cites": [
+   "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L503",
+   "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L521",
+   "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L522",
+   "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L547",
+   "github_logs/gh_42503749318/128805033836_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L505"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2127",
+  "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
+  "rootCause": "本次只有 1 个 job（multi-node-poc 的 deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa）参与日志留存，16 个 job 里也只它失败：日志尾部是「Traceback (most recent call last):」（github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L505）→「##[error]Error: failed to run script step:」→「✗ exit code: 1」（同文件 L523、L524）→「Process completed with exit code 1.」→「Executing the custom container implementation failed.」（同文件 L548、L549）。\n\n失败链与 #2126 完全一致：同一 deepseek_v4_pro_0813 用例、同一组五行、同样在用例执行前就非零退出，因此更像这两个 multi-node-poc 用例共用的启动脚本在拉起阶段就中断，而不是用例内部的精度或性能问题——本记录 cases=0、total/pass/fail 全为 None，没有一条用例结果。\n\n已排除的干扰项：与 #2126 相隔约 1 小时（02:15 起跑）仍以同一形态失败，可排除偶发资源竞争；Traceback 头行下没有正文，也不能归因到某个具体代码异常。",
+  "advice": "把它和 #2126 当成同一条主线处理，不要分两次排查：先确认这两个用例是否共用同一份 multi-node-poc 启动脚本与镜像 tag，共用则只需修一处\n\n然后单跑 deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa，把启动脚本的异常正文打出来；若日志仍只有 Traceback 头行，说明异常在子进程里被吞掉，需要在启动脚本里改为捕获并打印完整栈\n\n若确认是启动脚本的依赖或环境差异，优先与能够通过的 multi-node-poc 用例逐项比对启动参数\n\n验证方式：重跑后要求该用例进入执行阶段、日志里有完整异常正文与用例结果，不再出现 exit 1 与容器实现执行失败",
+  "cites": [
+   "github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L505",
+   "github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L523",
+   "github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L524",
+   "github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L549"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2128",
+  "keyError": "",
+  "rootCause": "运行了 1 小时 25 分钟（12:48:48 至 14:13:42）后 FAILED，但两个失败任务的全部证据都取不到：multi-node-mix-poc 的 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix 与 check-all-jobs 在平台侧均为 404_not_retained，归档侧 0 份证据文件、0 条 errorMessages、cases=0，任务字段的 logFile 与 logLines 都是「-」（records/run_2128.json）。\n\n能确认的只有失败位置在用例执行期间而不是入口：tasks=2、testTasks=0，运行持续了一个多小时才结束，说明 job 是真正跑起来后失败的；但失败步骤、报错原文、失败用例全部不在证据范围内，因此更像日志保留期或读取权限导致证据缺失，而不是可以归因的组件缺陷。\n\n已排除的干扰项：同一天 19:25 的 #2129 用同一 displayTitle（kimi_k3 的 128k decode prefix 用例）复跑仍然失败并留下了日志，说明该用例当天确实存在稳定问题，但本条自身证据不足以指认具体原因，只能与 #2129 合并判断。",
+  "advice": "先补证据链：把该仓库 job 日志的保留期延长到覆盖完整夜间周期，并确保 check-all-jobs 这类汇总任务一定留存日志，消除「失败但全 404」的记录\n\n在与 #2129 相同的 commit 下复跑 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix 并落盘用例级日志，再判定失败属于性能阈值、精度还是环境\n\n在采集侧把「FAILED 且 missing>0」的记录单独标记为证据缺失，避免它被当成用例失败计入可用度统计\n\n验证方式：复跑后要求该 job 的日志能正常下载（不再 404）、errorMessages 非空，并能给出用例级结论",
+  "cites": [
+   "records/run_2128.json"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2129",
+  "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
+  "rootCause": "15 个 job 里只有 1 个失败，就是 multi-node-mix-poc 的 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix，失败链从用例执行中期就开始了：日志中段 L15452 先出现一条「│ exit code: 1」，说明 job 内已经有子步骤以 1 退出（github_logs/gh_42608919924/129131958688_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15452），到尾部才依次出现「Traceback (most recent call last):」（L17136）→「##[error]Error: failed to run script step:」→「✗ exit code: 1」（L17213、L17214）→「Process completed with exit code 1.」与「Executing the custom container implementation failed.」（L17238、L17239）。\n\n推断更像用例脚本内部某个子步骤先失败、再由外层脚本收尾放大成 job 失败，而不是单次性能抖动：同一天 12:48 的 #2128 用同一 displayTitle 的 kimi_k3 用例运行 85 分钟后失败（证据 404），19:25 本条又失败，两个小时内两次落在同一用例上；但本轮证据里没有任何 tpot 或阈值断言行，如果真是性能回退，应能看到形如「36.1 not less than or equal to 31.0」的断言原文，实际没有，因此不能直接按性能劣化定性。\n\n已排除的干扰项：L15335 的「OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses'」（github_logs/gh_42608919924/129131958688_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15335）只关闭 /v1/responses 接口，同批次其它跑完的 job 里也大量出现，与本次退出无直接关系。",
+  "advice": "先补判定依据：把 retry 次数、实测 tpot 与 tpot 基线打进 job 输出，并在性能断言失败时打印「实测值 vs 阈值」的原文，先分清是阈值不达标还是脚本异常退出\n\n同时查 L15452 那条子步骤退出：它是本 job 最早的非零退出点，向上找它所属的子命令（服务启动校验、吞吐采样或统计汇总），把该子命令的 stderr 单独落盘——现在 Traceback 只有头行，异常正文被吞掉了\n\n若确认为稳定劣化，再按 decode 阶段拆解单卡耗时（overlap schedule、EPLB、prefix cache 命中率、w4a8 量化档），区分功能代价与性能回退，并把性能用例改为多次取样取中位数判定，减少单次抖动\n\n验证方式：重跑该 job，要求日志中同时出现实测 tpot、阈值与断言结果，kimi_k3 用例能给出通过/不通过的明确结论，不再出现只有头行的 Traceback",
+  "cites": [
+   "github_logs/gh_42608919924/129131958688_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15452",
+   "github_logs/gh_42608919924/129131958688_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L17136",
+   "github_logs/gh_42608919924/129131958688_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L17213",
+   "github_logs/gh_42608919924/129131958688_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15335"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2130",
+  "keyError": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
+  "rootCause": "失败停在容器拉起这一层，用例代码根本没进去：整个 job 日志只有 335 行，第一条错误行就是「##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.」（github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L272），之后才是「##[error]Error: failed to run script step:」与「✗ exit code: 1」（同文件 L301、L302）、「##[error]Process completed with exit code 1.」（L304）。\n\n推断更像 self-hosted runner 侧容器运行时或镜像拉起失败，而不是 glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms 这个用例本身有问题：容器失败行出现在脚本报错之前，是上游动作先失败；日志里没有用例名、没有 Python Traceback、也没有 pod 事件，说明容器内的进程从未启动。\n\n已排除的干扰项：另一个任务 check-all-jobs 在平台侧 404 未留存，只能依据 jobs 元数据（conclusion、时长、失败步骤）定性，本条置信度因此只有中；同一批次 #2133 也出现同一句容器实现失败，指向 runner 层共性问题而非单个用例。",
+  "advice": "先按 runner 容器层排查，不要先动用例：核对该 self-hosted runner 的容器运行时与镜像能否正常拉起，并与同批次能跑通的节点横向比对运行时版本、磁盘与镜像拉取结果\n\n把 runner 侧的容器事件写进 job 输出：镜像拉取结果、容器启动失败原因、运行时退出码，用这些替代现在唯一的一句容器实现失败\n\n若确认是镜像拉取慢或超时，给镜像预拉取与本地缓存加策略；若是运行时异常，先恢复该节点再重跑，并把节点从夜间调度池摘除\n\n验证方式：重跑该 job，要求日志出现容器启动成功的记录、glm_5_3 用例能进入执行并落出用例结果，不再出现容器实现执行失败",
+  "cites": [
+   "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L272",
+   "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L301",
+   "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L304"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2133",
+  "keyError": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
+  "rootCause": "整份日志 588 行，唯一的错误行是「##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.」（github_logs/gh_42620485286/129171078482_multi-node-poc (deepseek_v4_flash_0731_~ff27a8.txt:L523），既没有脚本步骤失败行，也没有 Traceback 或用例名，说明失败在容器拉起阶段就被截断，deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap_fia_unset 这个用例一次都没跑起来（本记录 tasks=2、cases=0）。\n\n推断更像 runner 容器层问题而不是 overlap-schedule 配置问题：本次证据里没有任何与 overlap、fia_unset 相关的参数校验输出或部署报错，失败点纯粹在容器拉起；同一工作流在 20:51:29 同一秒还触发了另一条运行 #2132（runId 42620484793），那条 2 秒即失败且两个任务全部 404，两条记录叠加起来更像该时间点整条工作流的调度与容器环境一起异常。\n\n已排除的干扰项：check-all-jobs 平台侧 404，只能依据 jobs 元数据定性；上一轮关于 decode pod 长时间 Pending 的说法在本轮证据行里没有对应内容，不能沿用。",
+  "advice": "先要 pod 侧证据：取该 job 对应 decode pod 的 describe 与 events，确认是资源不足、亲和性不满足还是镜像拉取超时，把结论回写进任务日志\n\n再把 pod 等待改成带明确超时的监控，超时时打印 pod events 与最近一次调度失败原因，替代现在只有一句容器实现失败\n\n同时核对 20:51:29 这个时间点的触发关系：#2132 与 #2133 同一秒起跑，先确认是否工作流被重复触发、入口配置是否冲突，再看容器层问题\n\n验证方式：重跑后要求该用例进入执行阶段、日志中出现容器启动与 pod 调度记录，且同一工作流不再出现同一秒的重复触发",
+  "cites": [
+   "github_logs/gh_42620485286/129171078482_multi-node-poc (deepseek_v4_flash_0731_~ff27a8.txt:L523"
+  ]
+ },
+ {
+  "recordId": "SgLang|nightly-test-npu.yml#2132",
+  "keyError": "",
+  "rootCause": "这是启动即失败的运行：20:51:29 开始、20:51:31 结束，只有 2 秒就判 FAILED，两个任务 set-image-config（入口镜像配置）与 check-all-jobs 在平台侧日志均为 404_not_retained，归档侧 0 份证据文件、0 条 errorMessages、cases=0（records/run_2132.json）。\n\n推断更像工作流入口步骤 set-image-config 在镜像或参数配置阶段就失败、并导致后续 job 没有日志，而不是用例执行失败：2 秒的时间窗口连服务都拉不起来，失败发生在容器之前——本记录里也确实没有出现 #2133 那句容器实现失败，说明它停得更早。\n\n已排除的干扰项：同一秒（20:51:29）该工作流还触发了另一条运行 #2133（runId 42620485286），那条表现为容器层失败，两条更像是同一时间点的重复触发与入口配置冲突，而不是两次独立的技术故障。",
+  "advice": "优先给入口步骤 set-image-config 打开日志留存，这一步失败会连带后续 job 全部无日志，现象正是「2 秒失败 + 全部 404」，不修留存则每晚都会重复出现这类无法归因的记录\n\n在该工作流入口增加镜像配置与夜间范围参数的合法性校验，配置错误在上游就拦下来并保存失败时的 job 元数据快照\n\n同时排查 20:51:29 的重复触发：核对触发源（定时、push、手动）与并发策略，避免同一工作流在同一秒起跑两条运行\n\n验证方式：修好后重跑，要求 set-image-config 有可下载日志、运行不再 2 秒即失败，该工作流单次触发只产生一条运行",
+  "cites": [
+   "records/run_2132.json"
+  ]
+ }
+]

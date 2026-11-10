@@ -1,0 +1,63 @@
+﻿完整日志: out/state/run_pipeline.log（终端只显示关键行）
+中间产物: out/work/  |  归档交付: out/archive/  |  状态缓存: out/state/
+== 目标区间: 2026-11-09 ~ 2026-11-09（config.date_range 显式指定）
+== 浏览器: 复用已就绪的调试端口 127.0.0.1:9222
+
+>>> 第 1 步 夜间统计与待分析圈定（step_1_nightly）
+  | == 第 1 步 夜间统计·双指标（区间 2026-11-09 ~ 2026-11-09，config.date_range 显式指定）==
+>>> step_1_nightly 完成，耗时 15.6s
+
+>>> 第 2 步【N2】执行记录圈定（step_2_runs）
+  | == 第 2 步【N2】执行记录·双轨道（区间 2026-11-09 ~ 2026-11-09 共 1 个工作日，config.date_range 显式指定）==
+>>> step_2_runs 完成，耗时 13.1s
+
+>>> 第 3 步【T4】失败任务分流（github 平台转第 5c 步）（step_3_tasks）
+  | == 第 3 步【T4】失败任务分流 ==
+>>> step_3_tasks 完成，耗时 6.5s
+
+>>> 第 4 步【T6】测试用例取证（step_4_testreport）
+  | == 第 4 步【T6】测试任务取证（12 项：缓存复用 0 / 新抓取 12）==
+>>> step_4_testreport 完成，耗时 204.7s
+
+>>> 第 5 步【T5】任务日志取证（step_5_logs）
+  | == 第 5 步【T5+E】任务日志取证（log 路线 0 项 + 空测试回退 6 项：缓存复用 0 / 新抓取 6）==
+>>> step_5_logs 完成，耗时 5.0s
+
+>>> 第 5b 步【T7】buildflow 子任务下钻（step_5b_subtasks）
+  | == 第 5b 步【T7】buildflow 子任务下钻（log 任务 0 项：缓存复用 0 / 新下钻 0）==
+>>> step_5b_subtasks 完成，耗时 0.2s
+
+>>> 第 5c 步【GitHub】github 平台运行日志取证（step_5c_github）
+  | == 第 5c 步【GitHub】github 平台运行取证（9 次）==
+>>> step_5c_github 完成，耗时 2.6s
+
+>>> 第 6 步 证据合并 → 逐条执行记录（step_6_records）
+  | == 第 6 步 逐条执行记录（一条执行一条记录）==
+>>> step_6_records 完成，耗时 0.1s
+
+>>> 第 7 步 逐层归档（日期/组件/流水线）（step_7_archive）
+  | == 第 7 步 逐层归档（年/年-月/日/开源组件/流水线）==
+>>> step_7_archive 完成，耗时 1.3s
+
+>>> 第 9 步 生成展示页（静态壳 → out/html/，数据运行时读归档）（step_9_pages）
+  | == 第 9 步 展示页已生成（只含静态壳，业务数据运行时读 out/archive/）
+  | == 首页   html/index.html  40.1 KB
+  | == 二级页 html/detail.html  75.3 KB
+  | == 数据源 out/archive/：2 个归档日（2026-11-06 ~ 2026-11-09）
+  | == 说明   _pages.json：记录生成方式/数据源/口径
+  | !! 直接双击 file:// 打开会被浏览器拦截 fetch，请用 python run_pipeline.py --serve 起本地服务访问
+>>> step_9_pages 完成，耗时 0.1s
+
+============================================================
+采集与归档完成，总耗时 249.2s。
+  归档目录（逐层可查）: C:\Users\Administrator\Downloads\openlibing看板导出与不达标分析_参考包\openlibing-nightly-rca\out\archive
+  单条记录: <年>/<年-月>/<日>/<开源组件名>/<流水线名>/records/run_<构建号>.json
+  展示页（静态壳，数据运行时读归档）: C:\Users\Administrator\Downloads\openlibing看板导出与不达标分析_参考包\openlibing-nightly-rca\out\html\index.html
+  预览: python run_pipeline.py --serve  → http://127.0.0.1:8765/html/index.html
+  下一步（唯一的 AI 环节，只写根因不碰页面）:
+    1) python tools/list_pending.py            # 脚本列出待分析记录与证据摘要
+    2) agent 按 agent/agent_task.md 逐条分析，产出结论 JSON
+    3) python tools/write_analysis.py --file <结论 JSON>   # 脚本原子写回
+    4) python run_pipeline.py --only step9     # 脚本重生成页面（无需重新采集）
+  完整采集日志: C:\Users\Administrator\Downloads\openlibing看板导出与不达标分析_参考包\openlibing-nightly-rca\out\state\run_pipeline.log
+============================================================

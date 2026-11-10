@@ -1,0 +1,2770 @@
+[
+ {
+  "id": 128784789024,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_CvuIA",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128784789024",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128784789024",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-08T16:05:50Z",
+  "started_at": "2026-11-08T16:05:53Z",
+  "completed_at": "2026-11-08T16:05:56Z",
+  "name": "set-image-config",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T16:05:53Z",
+    "completed_at": "2026-11-08T16:05:54Z"
+   },
+   {
+    "name": "Set image config",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T16:05:54Z",
+    "completed_at": "2026-11-08T16:05:54Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T16:05:54Z",
+    "completed_at": "2026-11-08T16:05:54Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128784789024",
+  "labels": [
+   "ubuntu-latest"
+  ],
+  "runner_id": 1006059111,
+  "runner_name": "GitHub Actions 1006059111",
+  "runner_group_id": 0,
+  "runner_group_name": "GitHub Actions"
+ },
+ {
+  "id": 128784818138,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_Cxf2g",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128784818138",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128784818138",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-11-08T16:05:57Z",
+  "started_at": "2026-11-08T16:06:29Z",
+  "completed_at": "2026-11-08T16:52:53Z",
+  "name": "nightly-1-npu-a3 / run (0)",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T16:06:31Z",
+    "completed_at": "2026-11-08T16:06:37Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T16:06:37Z",
+    "completed_at": "2026-11-08T16:07:50Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T16:07:50Z",
+    "completed_at": "2026-11-08T16:08:01Z"
+   },
+   {
+    "name": "Mark repository safe",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T16:08:01Z",
+    "completed_at": "2026-11-08T16:08:02Z"
+   },
+   {
+    "name": "Check PR test health",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T16:08:02Z",
+    "completed_at": "2026-11-08T16:08:03Z"
+   },
+   {
+    "name": "Install dependencies",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-08T16:08:03Z",
+    "completed_at": "2026-11-08T16:08:50Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "failure",
+    "number": 7,
+    "started_at": "2026-11-08T16:08:50Z",
+    "completed_at": "2026-11-08T16:52:40Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 13,
+    "started_at": "2026-11-08T16:52:40Z",
+    "completed_at": "2026-11-08T16:52:42Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 14,
+    "started_at": "2026-11-08T16:52:42Z",
+    "completed_at": "2026-11-08T16:52:43Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T16:52:43Z",
+    "completed_at": "2026-11-08T16:52:43Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128784818138",
+  "labels": [
+   "linux-aarch64-a3-2-"
+  ],
+  "runner_id": 1396609,
+  "runner_name": "linux-aarch64-a3-2-cn12-001-n7s9s-runner-nh4ks",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128784818156,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_Cxf7A",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128784818156",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128784818156",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-08T16:05:57Z",
+  "started_at": "2026-11-08T16:06:29Z",
+  "completed_at": "2026-11-08T16:39:54Z",
+  "name": "nightly-2-npu-a3 / run (0)",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T16:06:31Z",
+    "completed_at": "2026-11-08T16:06:36Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T16:06:36Z",
+    "completed_at": "2026-11-08T16:07:49Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T16:07:49Z",
+    "completed_at": "2026-11-08T16:07:58Z"
+   },
+   {
+    "name": "Mark repository safe",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T16:07:58Z",
+    "completed_at": "2026-11-08T16:07:59Z"
+   },
+   {
+    "name": "Check PR test health",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T16:07:59Z",
+    "completed_at": "2026-11-08T16:08:01Z"
+   },
+   {
+    "name": "Install dependencies",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-08T16:08:01Z",
+    "completed_at": "2026-11-08T16:08:45Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-08T16:08:45Z",
+    "completed_at": "2026-11-08T16:39:38Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 13,
+    "started_at": "2026-11-08T16:39:38Z",
+    "completed_at": "2026-11-08T16:39:40Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 14,
+    "started_at": "2026-11-08T16:39:40Z",
+    "completed_at": "2026-11-08T16:39:40Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T16:39:40Z",
+    "completed_at": "2026-11-08T16:39:40Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128784818156",
+  "labels": [
+   "linux-aarch64-a3-2-"
+  ],
+  "runner_id": 1396608,
+  "runner_name": "linux-aarch64-a3-2-cn12-001-n7s9s-runner-wc79g",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128784818189,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_CxgDQ",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128784818189",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128784818189",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-11-08T16:05:57Z",
+  "started_at": "2026-11-08T16:06:19Z",
+  "completed_at": "2026-11-08T16:19:15Z",
+  "name": "nightly-8-npu-a3 / run (0)",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T16:06:21Z",
+    "completed_at": "2026-11-08T16:06:28Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T16:06:28Z",
+    "completed_at": "2026-11-08T16:07:41Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T16:07:41Z",
+    "completed_at": "2026-11-08T16:07:48Z"
+   },
+   {
+    "name": "Mark repository safe",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T16:07:48Z",
+    "completed_at": "2026-11-08T16:07:49Z"
+   },
+   {
+    "name": "Check PR test health",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T16:07:49Z",
+    "completed_at": "2026-11-08T16:07:50Z"
+   },
+   {
+    "name": "Install dependencies",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-08T16:07:50Z",
+    "completed_at": "2026-11-08T16:08:47Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "failure",
+    "number": 7,
+    "started_at": "2026-11-08T16:08:47Z",
+    "completed_at": "2026-11-08T16:19:02Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 13,
+    "started_at": "2026-11-08T16:19:02Z",
+    "completed_at": "2026-11-08T16:19:03Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 14,
+    "started_at": "2026-11-08T16:19:03Z",
+    "completed_at": "2026-11-08T16:19:04Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T16:19:04Z",
+    "completed_at": "2026-11-08T16:19:04Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128784818189",
+  "labels": [
+   "linux-aarch64-a3-8-"
+  ],
+  "runner_id": 1396602,
+  "runner_name": "linux-aarch64-a3-8-cn12-001-hr6rt-runner-mdwbj",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128784818228,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_CxgNA",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128784818228",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128784818228",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-08T16:05:57Z",
+  "started_at": "2026-11-08T16:06:53Z",
+  "completed_at": "2026-11-08T16:55:17Z",
+  "name": "nightly-4-npu-a3 / run (0)",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T16:06:55Z",
+    "completed_at": "2026-11-08T16:07:00Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T16:07:00Z",
+    "completed_at": "2026-11-08T16:08:14Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T16:08:14Z",
+    "completed_at": "2026-11-08T16:08:21Z"
+   },
+   {
+    "name": "Mark repository safe",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T16:08:21Z",
+    "completed_at": "2026-11-08T16:08:22Z"
+   },
+   {
+    "name": "Check PR test health",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T16:08:22Z",
+    "completed_at": "2026-11-08T16:08:24Z"
+   },
+   {
+    "name": "Install dependencies",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-08T16:08:24Z",
+    "completed_at": "2026-11-08T16:09:09Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-08T16:09:09Z",
+    "completed_at": "2026-11-08T16:55:01Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 13,
+    "started_at": "2026-11-08T16:55:01Z",
+    "completed_at": "2026-11-08T16:55:02Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 14,
+    "started_at": "2026-11-08T16:55:02Z",
+    "completed_at": "2026-11-08T16:55:03Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T16:55:03Z",
+    "completed_at": "2026-11-08T16:55:03Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128784818228",
+  "labels": [
+   "linux-aarch64-a3-4-"
+  ],
+  "runner_id": 1396614,
+  "runner_name": "linux-aarch64-a3-4-cn12-001-ww8jf-runner-fzstp",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128784818270,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_CxgXg",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128784818270",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128784818270",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-08T16:05:57Z",
+  "started_at": "2026-11-08T16:06:54Z",
+  "completed_at": "2026-11-08T16:34:33Z",
+  "name": "nightly-4-npu-a3 / run (1)",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T16:06:56Z",
+    "completed_at": "2026-11-08T16:07:08Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T16:07:08Z",
+    "completed_at": "2026-11-08T16:07:25Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T16:07:25Z",
+    "completed_at": "2026-11-08T16:07:33Z"
+   },
+   {
+    "name": "Mark repository safe",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T16:07:33Z",
+    "completed_at": "2026-11-08T16:07:35Z"
+   },
+   {
+    "name": "Check PR test health",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T16:07:35Z",
+    "completed_at": "2026-11-08T16:07:37Z"
+   },
+   {
+    "name": "Install dependencies",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-08T16:07:37Z",
+    "completed_at": "2026-11-08T16:08:25Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-08T16:08:25Z",
+    "completed_at": "2026-11-08T16:34:21Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 13,
+    "started_at": "2026-11-08T16:34:21Z",
+    "completed_at": "2026-11-08T16:34:23Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 14,
+    "started_at": "2026-11-08T16:34:23Z",
+    "completed_at": "2026-11-08T16:34:23Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T16:34:23Z",
+    "completed_at": "2026-11-08T16:34:23Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128784818270",
+  "labels": [
+   "linux-aarch64-a3-4-"
+  ],
+  "runner_id": 1396615,
+  "runner_name": "linux-aarch64-a3-4-cn12-001-ww8jf-runner-cmb5m",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128784818446,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_CxhDg",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128784818446",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128784818446",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-08T16:05:57Z",
+  "started_at": "2026-11-08T16:06:22Z",
+  "completed_at": "2026-11-08T16:41:09Z",
+  "name": "nightly-16-npu-a3 / run (0)",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T16:06:24Z",
+    "completed_at": "2026-11-08T16:06:30Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T16:06:30Z",
+    "completed_at": "2026-11-08T16:08:04Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T16:08:04Z",
+    "completed_at": "2026-11-08T16:08:11Z"
+   },
+   {
+    "name": "Mark repository safe",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T16:08:11Z",
+    "completed_at": "2026-11-08T16:08:12Z"
+   },
+   {
+    "name": "Check PR test health",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T16:08:12Z",
+    "completed_at": "2026-11-08T16:08:14Z"
+   },
+   {
+    "name": "Install dependencies",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-08T16:08:14Z",
+    "completed_at": "2026-11-08T16:09:01Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-08T16:09:01Z",
+    "completed_at": "2026-11-08T16:40:56Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 13,
+    "started_at": "2026-11-08T16:40:56Z",
+    "completed_at": "2026-11-08T16:40:58Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 14,
+    "started_at": "2026-11-08T16:40:58Z",
+    "completed_at": "2026-11-08T16:40:58Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T16:40:58Z",
+    "completed_at": "2026-11-08T16:40:58Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128784818446",
+  "labels": [
+   "linux-aarch64-a3-16-"
+  ],
+  "runner_id": 1396604,
+  "runner_name": "linux-aarch64-a3-16-cn12-001-q7ss7-runner-p2wc8",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128784818471,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_CxhJw",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128784818471",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128784818471",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-11-08T16:05:57Z",
+  "started_at": "2026-11-08T16:06:37Z",
+  "completed_at": "2026-11-08T17:18:51Z",
+  "name": "nightly-perf-2-npu-a3 / nightly-perf-2-npu-a3",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T16:06:39Z",
+    "completed_at": "2026-11-08T16:06:50Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T16:06:50Z",
+    "completed_at": "2026-11-08T16:07:00Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T16:07:00Z",
+    "completed_at": "2026-11-08T16:07:08Z"
+   },
+   {
+    "name": "Check PR test health",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T16:07:08Z",
+    "completed_at": "2026-11-08T16:07:10Z"
+   },
+   {
+    "name": "Check npu info",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T16:07:10Z",
+    "completed_at": "2026-11-08T16:07:12Z"
+   },
+   {
+    "name": "Install sglang dependencies",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 6,
+    "started_at": "2026-11-08T16:07:12Z",
+    "completed_at": "2026-11-08T16:07:12Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "failure",
+    "number": 7,
+    "started_at": "2026-11-08T16:07:12Z",
+    "completed_at": "2026-11-08T17:18:39Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 13,
+    "started_at": "2026-11-08T17:18:39Z",
+    "completed_at": "2026-11-08T17:18:41Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 14,
+    "started_at": "2026-11-08T17:18:41Z",
+    "completed_at": "2026-11-08T17:18:42Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T17:18:42Z",
+    "completed_at": "2026-11-08T17:18:42Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128784818471",
+  "labels": [
+   "linux-aarch64-a3-800t-2"
+  ],
+  "runner_id": 1396606,
+  "runner_name": "linux-aarch64-a3-800t-2-cn12-001-m92n7-runner-lr59b",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128784818641,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_Cxh0Q",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128784818641",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128784818641",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-08T16:05:57Z",
+  "started_at": "2026-11-08T16:15:13Z",
+  "completed_at": "2026-11-08T17:49:47Z",
+  "name": "nightly-acc-4-npu-a5 / nightly-acc-4-npu-a5",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T16:14:39Z",
+    "completed_at": "2026-11-08T16:14:45Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T16:14:45Z",
+    "completed_at": "2026-11-08T16:16:05Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T16:16:05Z",
+    "completed_at": "2026-11-08T16:16:17Z"
+   },
+   {
+    "name": "Check PR test health",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T16:16:17Z",
+    "completed_at": "2026-11-08T16:16:18Z"
+   },
+   {
+    "name": "Check npu info",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T16:16:18Z",
+    "completed_at": "2026-11-08T16:16:21Z"
+   },
+   {
+    "name": "Install sglang dependencies",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 6,
+    "started_at": "2026-11-08T16:16:21Z",
+    "completed_at": "2026-11-08T16:16:21Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-08T16:16:21Z",
+    "completed_at": "2026-11-08T17:49:00Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 13,
+    "started_at": "2026-11-08T17:49:00Z",
+    "completed_at": "2026-11-08T17:49:02Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 14,
+    "started_at": "2026-11-08T17:49:02Z",
+    "completed_at": "2026-11-08T17:49:02Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T17:49:02Z",
+    "completed_at": "2026-11-08T17:49:02Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128784818641",
+  "labels": [
+   "linux-amd64-a5-4"
+  ],
+  "runner_id": 1396607,
+  "runner_name": "linux-amd64-a5-4-tjfpq-runner-hrs29",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128784818643,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_Cxh0w",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128784818643",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128784818643",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-11-08T16:05:57Z",
+  "started_at": "2026-11-08T16:06:49Z",
+  "completed_at": "2026-11-08T17:01:49Z",
+  "name": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T16:06:51Z",
+    "completed_at": "2026-11-08T16:06:57Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T16:06:57Z",
+    "completed_at": "2026-11-08T16:07:50Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T16:07:50Z",
+    "completed_at": "2026-11-08T16:07:59Z"
+   },
+   {
+    "name": "Check PR test health",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T16:07:59Z",
+    "completed_at": "2026-11-08T16:08:02Z"
+   },
+   {
+    "name": "Check npu info",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T16:08:02Z",
+    "completed_at": "2026-11-08T16:08:04Z"
+   },
+   {
+    "name": "Install sglang dependencies",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 6,
+    "started_at": "2026-11-08T16:08:04Z",
+    "completed_at": "2026-11-08T16:08:04Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "failure",
+    "number": 7,
+    "started_at": "2026-11-08T16:08:04Z",
+    "completed_at": "2026-11-08T17:01:36Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 13,
+    "started_at": "2026-11-08T17:01:36Z",
+    "completed_at": "2026-11-08T17:01:38Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 14,
+    "started_at": "2026-11-08T17:01:38Z",
+    "completed_at": "2026-11-08T17:01:38Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T17:01:38Z",
+    "completed_at": "2026-11-08T17:01:38Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128784818643",
+  "labels": [
+   "linux-aarch64-a3-2-"
+  ],
+  "runner_id": 1396613,
+  "runner_name": "linux-aarch64-a3-2-cn12-001-n7s9s-runner-bgvsj",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128784818648,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_Cxh2A",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128784818648",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128784818648",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-11-08T16:05:57Z",
+  "started_at": "2026-11-08T16:06:47Z",
+  "completed_at": "2026-11-08T16:16:19Z",
+  "name": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T16:06:49Z",
+    "completed_at": "2026-11-08T16:06:56Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T16:06:56Z",
+    "completed_at": "2026-11-08T16:07:49Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T16:07:49Z",
+    "completed_at": "2026-11-08T16:07:57Z"
+   },
+   {
+    "name": "Check PR test health",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T16:07:57Z",
+    "completed_at": "2026-11-08T16:08:02Z"
+   },
+   {
+    "name": "Check npu info",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T16:08:02Z",
+    "completed_at": "2026-11-08T16:08:04Z"
+   },
+   {
+    "name": "Install sglang dependencies",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 6,
+    "started_at": "2026-11-08T16:08:04Z",
+    "completed_at": "2026-11-08T16:08:04Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "failure",
+    "number": 7,
+    "started_at": "2026-11-08T16:08:04Z",
+    "completed_at": "2026-11-08T16:16:09Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 13,
+    "started_at": "2026-11-08T16:16:09Z",
+    "completed_at": "2026-11-08T16:16:10Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 14,
+    "started_at": "2026-11-08T16:16:10Z",
+    "completed_at": "2026-11-08T16:16:11Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T16:16:11Z",
+    "completed_at": "2026-11-08T16:16:11Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128784818648",
+  "labels": [
+   "linux-aarch64-a3-2-"
+  ],
+  "runner_id": 1396610,
+  "runner_name": "linux-aarch64-a3-2-cn12-001-n7s9s-runner-p5xbp",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128784818653,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_Cxh3Q",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128784818653",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128784818653",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-08T16:05:57Z",
+  "started_at": "2026-11-08T16:06:23Z",
+  "completed_at": "2026-11-08T17:11:16Z",
+  "name": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T16:06:25Z",
+    "completed_at": "2026-11-08T16:06:36Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T16:06:36Z",
+    "completed_at": "2026-11-08T16:06:54Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T16:06:54Z",
+    "completed_at": "2026-11-08T16:07:02Z"
+   },
+   {
+    "name": "Check PR test health",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T16:07:02Z",
+    "completed_at": "2026-11-08T16:07:04Z"
+   },
+   {
+    "name": "Check npu info",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T16:07:04Z",
+    "completed_at": "2026-11-08T16:07:08Z"
+   },
+   {
+    "name": "Install sglang dependencies",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 6,
+    "started_at": "2026-11-08T16:07:08Z",
+    "completed_at": "2026-11-08T16:07:08Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-08T16:07:08Z",
+    "completed_at": "2026-11-08T17:11:05Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 13,
+    "started_at": "2026-11-08T17:11:05Z",
+    "completed_at": "2026-11-08T17:11:07Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 14,
+    "started_at": "2026-11-08T17:11:07Z",
+    "completed_at": "2026-11-08T17:11:07Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T17:11:07Z",
+    "completed_at": "2026-11-08T17:11:07Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128784818653",
+  "labels": [
+   "linux-aarch64-a3-16-"
+  ],
+  "runner_id": 1396603,
+  "runner_name": "linux-aarch64-a3-16-cn12-001-q7ss7-runner-bk224",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128784818655,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_Cxh3w",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128784818655",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128784818655",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-08T16:05:57Z",
+  "started_at": "2026-11-08T16:06:31Z",
+  "completed_at": "2026-11-08T16:38:20Z",
+  "name": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T16:06:33Z",
+    "completed_at": "2026-11-08T16:06:42Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T16:06:42Z",
+    "completed_at": "2026-11-08T16:07:15Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T16:07:15Z",
+    "completed_at": "2026-11-08T16:07:23Z"
+   },
+   {
+    "name": "Check PR test health",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T16:07:23Z",
+    "completed_at": "2026-11-08T16:07:25Z"
+   },
+   {
+    "name": "Check npu info",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T16:07:25Z",
+    "completed_at": "2026-11-08T16:07:28Z"
+   },
+   {
+    "name": "Install sglang dependencies",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 6,
+    "started_at": "2026-11-08T16:07:28Z",
+    "completed_at": "2026-11-08T16:07:28Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-08T16:07:28Z",
+    "completed_at": "2026-11-08T16:38:07Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 13,
+    "started_at": "2026-11-08T16:38:07Z",
+    "completed_at": "2026-11-08T16:38:09Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 14,
+    "started_at": "2026-11-08T16:38:09Z",
+    "completed_at": "2026-11-08T16:38:09Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T16:38:09Z",
+    "completed_at": "2026-11-08T16:38:09Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128784818655",
+  "labels": [
+   "linux-aarch64-a3-800t-16"
+  ],
+  "runner_id": 1396605,
+  "runner_name": "linux-aarch64-a3-800t-16-cn12-001-hwpcp-runner-z4bjg",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128784818684,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_Cxh_A",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128784818684",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128784818684",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-08T16:05:57Z",
+  "started_at": "2026-11-08T16:06:37Z",
+  "completed_at": "2026-11-08T17:21:22Z",
+  "name": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T16:06:39Z",
+    "completed_at": "2026-11-08T16:06:44Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T16:06:44Z",
+    "completed_at": "2026-11-08T16:08:02Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T16:08:02Z",
+    "completed_at": "2026-11-08T16:08:09Z"
+   },
+   {
+    "name": "Check PR test health",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T16:08:09Z",
+    "completed_at": "2026-11-08T16:08:13Z"
+   },
+   {
+    "name": "Check npu info",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T16:08:13Z",
+    "completed_at": "2026-11-08T16:08:15Z"
+   },
+   {
+    "name": "Install sglang dependencies",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 6,
+    "started_at": "2026-11-08T16:08:15Z",
+    "completed_at": "2026-11-08T16:08:15Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-08T16:08:15Z",
+    "completed_at": "2026-11-08T17:21:09Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 13,
+    "started_at": "2026-11-08T17:21:09Z",
+    "completed_at": "2026-11-08T17:21:11Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 14,
+    "started_at": "2026-11-08T17:21:11Z",
+    "completed_at": "2026-11-08T17:21:11Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T17:21:11Z",
+    "completed_at": "2026-11-08T17:21:11Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128784818684",
+  "labels": [
+   "linux-aarch64-a3-2-"
+  ],
+  "runner_id": 1396611,
+  "runner_name": "linux-aarch64-a3-2-cn12-001-n7s9s-runner-qp4lz",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128784818749,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_CxiPQ",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128784818749",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128784818749",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-08T16:05:57Z",
+  "started_at": "2026-11-08T16:06:55Z",
+  "completed_at": "2026-11-08T16:23:02Z",
+  "name": "nightly-perf-4-npu-a3 / nightly-perf-4-npu-a3",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T16:06:57Z",
+    "completed_at": "2026-11-08T16:07:06Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T16:07:06Z",
+    "completed_at": "2026-11-08T16:07:24Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T16:07:24Z",
+    "completed_at": "2026-11-08T16:07:33Z"
+   },
+   {
+    "name": "Check PR test health",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T16:07:33Z",
+    "completed_at": "2026-11-08T16:07:35Z"
+   },
+   {
+    "name": "Check npu info",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T16:07:35Z",
+    "completed_at": "2026-11-08T16:07:38Z"
+   },
+   {
+    "name": "Install sglang dependencies",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 6,
+    "started_at": "2026-11-08T16:07:38Z",
+    "completed_at": "2026-11-08T16:07:38Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-08T16:07:38Z",
+    "completed_at": "2026-11-08T16:22:46Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 13,
+    "started_at": "2026-11-08T16:22:46Z",
+    "completed_at": "2026-11-08T16:22:49Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 14,
+    "started_at": "2026-11-08T16:22:49Z",
+    "completed_at": "2026-11-08T16:22:49Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T16:22:49Z",
+    "completed_at": "2026-11-08T16:22:49Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128784818749",
+  "labels": [
+   "linux-aarch64-a3-800t-4"
+  ],
+  "runner_id": 1396616,
+  "runner_name": "linux-aarch64-a3-800t-4-cn12-001-kgqhn-runner-jjzrv",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128784818756,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_CxiRA",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128784818756",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128784818756",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-11-08T16:05:57Z",
+  "started_at": "2026-11-08T16:06:52Z",
+  "completed_at": "2026-11-08T16:13:46Z",
+  "name": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T16:06:54Z",
+    "completed_at": "2026-11-08T16:07:00Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T16:07:00Z",
+    "completed_at": "2026-11-08T16:08:13Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T16:08:13Z",
+    "completed_at": "2026-11-08T16:08:21Z"
+   },
+   {
+    "name": "Check PR test health",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T16:08:21Z",
+    "completed_at": "2026-11-08T16:08:22Z"
+   },
+   {
+    "name": "Check npu info",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T16:08:22Z",
+    "completed_at": "2026-11-08T16:08:24Z"
+   },
+   {
+    "name": "Install sglang dependencies",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 6,
+    "started_at": "2026-11-08T16:08:24Z",
+    "completed_at": "2026-11-08T16:08:24Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "failure",
+    "number": 7,
+    "started_at": "2026-11-08T16:08:24Z",
+    "completed_at": "2026-11-08T16:13:35Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 13,
+    "started_at": "2026-11-08T16:13:35Z",
+    "completed_at": "2026-11-08T16:13:36Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 14,
+    "started_at": "2026-11-08T16:13:36Z",
+    "completed_at": "2026-11-08T16:13:37Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T16:13:37Z",
+    "completed_at": "2026-11-08T16:13:37Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128784818756",
+  "labels": [
+   "linux-aarch64-a3-2-"
+  ],
+  "runner_id": 1396612,
+  "runner_name": "linux-aarch64-a3-2-cn12-001-n7s9s-runner-q6fkp",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128804250725,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_VTkZQ",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128804250725",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128804250725",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-11-08T17:21:22Z",
+  "started_at": "2026-11-08T17:21:47Z",
+  "completed_at": "2026-11-08T17:56:13Z",
+  "name": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms, 1, 1, 1, test/registe... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T17:21:49Z",
+    "completed_at": "2026-11-08T17:21:55Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T17:21:55Z",
+    "completed_at": "2026-11-08T17:22:03Z"
+   },
+   {
+    "name": "Install dependencies",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T17:22:03Z",
+    "completed_at": "2026-11-08T17:22:18Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T17:22:18Z",
+    "completed_at": "2026-11-08T17:22:26Z"
+   },
+   {
+    "name": "Prepare code for testing",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T17:22:26Z",
+    "completed_at": "2026-11-08T17:23:54Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-08T17:23:54Z",
+    "completed_at": "2026-11-08T17:23:56Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "failure",
+    "number": 7,
+    "started_at": "2026-11-08T17:23:56Z",
+    "completed_at": "2026-11-08T17:49:44Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-08T17:49:44Z",
+    "completed_at": "2026-11-08T17:56:04Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T17:56:04Z",
+    "completed_at": "2026-11-08T17:56:07Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 16,
+    "started_at": "2026-11-08T17:56:07Z",
+    "completed_at": "2026-11-08T17:56:07Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 17,
+    "started_at": "2026-11-08T17:56:07Z",
+    "completed_at": "2026-11-08T17:56:07Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128804250725",
+  "labels": [
+   "linux-amd64-cpu-4"
+  ],
+  "runner_id": 1396736,
+  "runner_name": "linux-amd64-cpu-4-zxvvv-runner-2b9wk",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128812967524,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_dnmZA",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128812967524",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128812967524",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-11-08T17:56:14Z",
+  "started_at": "2026-11-08T17:56:39Z",
+  "completed_at": "2026-11-08T18:12:27Z",
+  "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T17:56:41Z",
+    "completed_at": "2026-11-08T17:56:46Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T17:56:46Z",
+    "completed_at": "2026-11-08T17:57:03Z"
+   },
+   {
+    "name": "Install dependencies",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T17:57:03Z",
+    "completed_at": "2026-11-08T17:57:17Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T17:57:17Z",
+    "completed_at": "2026-11-08T17:57:25Z"
+   },
+   {
+    "name": "Prepare code for testing",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T17:57:25Z",
+    "completed_at": "2026-11-08T17:58:52Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-08T17:58:52Z",
+    "completed_at": "2026-11-08T17:58:54Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "failure",
+    "number": 7,
+    "started_at": "2026-11-08T17:58:54Z",
+    "completed_at": "2026-11-08T18:09:02Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-08T18:09:02Z",
+    "completed_at": "2026-11-08T18:12:17Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T18:12:18Z",
+    "completed_at": "2026-11-08T18:12:20Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 16,
+    "started_at": "2026-11-08T18:12:20Z",
+    "completed_at": "2026-11-08T18:12:20Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 17,
+    "started_at": "2026-11-08T18:12:20Z",
+    "completed_at": "2026-11-08T18:12:20Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128812967524",
+  "labels": [
+   "linux-amd64-cpu-4"
+  ],
+  "runner_id": 1396777,
+  "runner_name": "linux-amd64-cpu-4-zxvvv-runner-z4qqc",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128817183125,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_ho5lQ",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128817183125",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128817183125",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-11-08T18:12:27Z",
+  "started_at": "2026-11-08T18:12:54Z",
+  "completed_at": "2026-11-08T18:33:39Z",
+  "name": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T18:12:56Z",
+    "completed_at": "2026-11-08T18:13:02Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T18:13:02Z",
+    "completed_at": "2026-11-08T18:13:19Z"
+   },
+   {
+    "name": "Install dependencies",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T18:13:19Z",
+    "completed_at": "2026-11-08T18:13:34Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T18:13:34Z",
+    "completed_at": "2026-11-08T18:13:42Z"
+   },
+   {
+    "name": "Prepare code for testing",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T18:13:42Z",
+    "completed_at": "2026-11-08T18:15:09Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-08T18:15:09Z",
+    "completed_at": "2026-11-08T18:15:11Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "failure",
+    "number": 7,
+    "started_at": "2026-11-08T18:15:11Z",
+    "completed_at": "2026-11-08T18:30:09Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-08T18:30:09Z",
+    "completed_at": "2026-11-08T18:33:30Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T18:33:30Z",
+    "completed_at": "2026-11-08T18:33:32Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 16,
+    "started_at": "2026-11-08T18:33:32Z",
+    "completed_at": "2026-11-08T18:33:33Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 17,
+    "started_at": "2026-11-08T18:33:33Z",
+    "completed_at": "2026-11-08T18:33:33Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128817183125",
+  "labels": [
+   "linux-amd64-cpu-4"
+  ],
+  "runner_id": 1396792,
+  "runner_name": "linux-amd64-cpu-4-zxvvv-runner-btj2w",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128822652327,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_m2tpw",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128822652327",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128822652327",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-11-08T18:33:39Z",
+  "started_at": "2026-11-08T18:34:06Z",
+  "completed_at": "2026-11-08T18:39:34Z",
+  "name": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_dcp_gpqa",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T18:34:08Z",
+    "completed_at": "2026-11-08T18:34:15Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T18:34:15Z",
+    "completed_at": "2026-11-08T18:34:32Z"
+   },
+   {
+    "name": "Install dependencies",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T18:34:32Z",
+    "completed_at": "2026-11-08T18:34:46Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T18:34:46Z",
+    "completed_at": "2026-11-08T18:34:54Z"
+   },
+   {
+    "name": "Prepare code for testing",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T18:34:54Z",
+    "completed_at": "2026-11-08T18:36:20Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-08T18:36:20Z",
+    "completed_at": "2026-11-08T18:36:22Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "failure",
+    "number": 7,
+    "started_at": "2026-11-08T18:36:22Z",
+    "completed_at": "2026-11-08T18:37:45Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-08T18:37:45Z",
+    "completed_at": "2026-11-08T18:39:25Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T18:39:25Z",
+    "completed_at": "2026-11-08T18:39:28Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 16,
+    "started_at": "2026-11-08T18:39:28Z",
+    "completed_at": "2026-11-08T18:39:28Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 17,
+    "started_at": "2026-11-08T18:39:28Z",
+    "completed_at": "2026-11-08T18:39:28Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128822652327",
+  "labels": [
+   "linux-amd64-cpu-4"
+  ],
+  "runner_id": 1396803,
+  "runner_name": "linux-amd64-cpu-4-zxvvv-runner-zzvzz",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128824124712,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAd_oQlKA",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128824124712",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128824124712",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-08T18:39:34Z",
+  "started_at": "2026-11-08T18:39:56Z",
+  "completed_at": "2026-11-08T20:59:06Z",
+  "name": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_pcp_gpqa",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T18:39:58Z",
+    "completed_at": "2026-11-08T18:40:04Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T18:40:04Z",
+    "completed_at": "2026-11-08T18:40:21Z"
+   },
+   {
+    "name": "Install dependencies",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T18:40:21Z",
+    "completed_at": "2026-11-08T18:40:35Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T18:40:35Z",
+    "completed_at": "2026-11-08T18:40:43Z"
+   },
+   {
+    "name": "Prepare code for testing",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T18:40:43Z",
+    "completed_at": "2026-11-08T18:42:10Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-08T18:42:10Z",
+    "completed_at": "2026-11-08T18:42:13Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-08T18:42:13Z",
+    "completed_at": "2026-11-08T20:55:40Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-08T20:55:40Z",
+    "completed_at": "2026-11-08T20:58:56Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T20:58:57Z",
+    "completed_at": "2026-11-08T20:58:59Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 16,
+    "started_at": "2026-11-08T20:58:59Z",
+    "completed_at": "2026-11-08T20:58:59Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 17,
+    "started_at": "2026-11-08T20:58:59Z",
+    "completed_at": "2026-11-08T20:58:59Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128824124712",
+  "labels": [
+   "linux-amd64-cpu-4"
+  ],
+  "runner_id": 1396805,
+  "runner_name": "linux-amd64-cpu-4-zxvvv-runner-nn7w6",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128859927922,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAeAKZ1cg",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128859927922",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128859927922",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-08T20:59:07Z",
+  "started_at": "2026-11-08T20:59:31Z",
+  "completed_at": "2026-11-08T23:23:55Z",
+  "name": "multi-node-mix-poc (kimi_k3_w4a8_32p_gpqa, 4, test/registered/npu/accuracy/kimi_k3/test_npu_kimi_... / kimi_k3_w4a8_32p_gpqa",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T20:59:33Z",
+    "completed_at": "2026-11-08T20:59:39Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T20:59:39Z",
+    "completed_at": "2026-11-08T20:59:55Z"
+   },
+   {
+    "name": "Install dependencies",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T20:59:55Z",
+    "completed_at": "2026-11-08T21:00:10Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T21:00:10Z",
+    "completed_at": "2026-11-08T21:00:18Z"
+   },
+   {
+    "name": "Prepare code for testing",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T21:00:18Z",
+    "completed_at": "2026-11-08T21:01:38Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-08T21:01:38Z",
+    "completed_at": "2026-11-08T21:01:40Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-08T21:01:40Z",
+    "completed_at": "2026-11-08T23:20:02Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-08T23:20:02Z",
+    "completed_at": "2026-11-08T23:23:45Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T23:23:45Z",
+    "completed_at": "2026-11-08T23:23:48Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 16,
+    "started_at": "2026-11-08T23:23:48Z",
+    "completed_at": "2026-11-08T23:23:48Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 17,
+    "started_at": "2026-11-08T23:23:48Z",
+    "completed_at": "2026-11-08T23:23:48Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128859927922",
+  "labels": [
+   "linux-amd64-cpu-4"
+  ],
+  "runner_id": 1396906,
+  "runner_name": "linux-amd64-cpu-4-zxvvv-runner-cxmvl",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128897178046,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAeAt7Zvg",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128897178046",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128897178046",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-08T23:23:55Z",
+  "started_at": "2026-11-08T23:24:19Z",
+  "completed_at": "2026-11-08T23:48:05Z",
+  "name": "multi-node-mix-poc (deepseek_v4_pro_16p_in128k_out1k_prefix90_20ms, 2, test/registered/npu/perfor... / deepseek_v4_pro_16p_in128k_out1k_prefix90_20ms",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T23:24:21Z",
+    "completed_at": "2026-11-08T23:24:26Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T23:24:26Z",
+    "completed_at": "2026-11-08T23:24:43Z"
+   },
+   {
+    "name": "Install dependencies",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T23:24:43Z",
+    "completed_at": "2026-11-08T23:24:57Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T23:24:57Z",
+    "completed_at": "2026-11-08T23:25:13Z"
+   },
+   {
+    "name": "Prepare code for testing",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T23:25:13Z",
+    "completed_at": "2026-11-08T23:26:37Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-08T23:26:37Z",
+    "completed_at": "2026-11-08T23:26:39Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-08T23:26:39Z",
+    "completed_at": "2026-11-08T23:44:44Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-08T23:44:44Z",
+    "completed_at": "2026-11-08T23:47:55Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-08T23:47:55Z",
+    "completed_at": "2026-11-08T23:47:57Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 16,
+    "started_at": "2026-11-08T23:47:57Z",
+    "completed_at": "2026-11-08T23:47:58Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 17,
+    "started_at": "2026-11-08T23:47:58Z",
+    "completed_at": "2026-11-08T23:47:58Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128897178046",
+  "labels": [
+   "linux-amd64-cpu-4"
+  ],
+  "runner_id": 1397120,
+  "runner_name": "linux-amd64-cpu-4-zxvvv-runner-4k2mp",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128903099383,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAeAzkz9w",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128903099383",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128903099383",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-08T23:48:05Z",
+  "started_at": "2026-11-08T23:48:30Z",
+  "completed_at": "2026-11-09T00:28:29Z",
+  "name": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1_prefill, 4, test/registered/npu/performance/... / kimi_k3_w4a8_32p_mix_in128k_out1_prefill",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-08T23:48:32Z",
+    "completed_at": "2026-11-08T23:48:38Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-08T23:48:38Z",
+    "completed_at": "2026-11-08T23:48:47Z"
+   },
+   {
+    "name": "Install dependencies",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-08T23:48:47Z",
+    "completed_at": "2026-11-08T23:49:01Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-08T23:49:01Z",
+    "completed_at": "2026-11-08T23:49:09Z"
+   },
+   {
+    "name": "Prepare code for testing",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-08T23:49:09Z",
+    "completed_at": "2026-11-08T23:50:33Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-08T23:50:33Z",
+    "completed_at": "2026-11-08T23:50:35Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-08T23:50:35Z",
+    "completed_at": "2026-11-09T00:22:05Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-09T00:22:05Z",
+    "completed_at": "2026-11-09T00:28:19Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-09T00:28:19Z",
+    "completed_at": "2026-11-09T00:28:22Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 16,
+    "started_at": "2026-11-09T00:28:22Z",
+    "completed_at": "2026-11-09T00:28:22Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 17,
+    "started_at": "2026-11-09T00:28:22Z",
+    "completed_at": "2026-11-09T00:28:22Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128903099383",
+  "labels": [
+   "linux-amd64-cpu-4"
+  ],
+  "runner_id": 1397136,
+  "runner_name": "linux-amd64-cpu-4-zxvvv-runner-5p2fd",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128913713161,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAeA9soCQ",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128913713161",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128913713161",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-11-09T00:28:29Z",
+  "started_at": "2026-11-09T00:28:55Z",
+  "completed_at": "2026-11-09T01:22:40Z",
+  "name": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-09T00:28:57Z",
+    "completed_at": "2026-11-09T00:29:03Z"
+   },
+   {
+    "name": "Initialize containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-09T00:29:03Z",
+    "completed_at": "2026-11-09T00:29:20Z"
+   },
+   {
+    "name": "Install dependencies",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-09T00:29:20Z",
+    "completed_at": "2026-11-09T00:29:34Z"
+   },
+   {
+    "name": "Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-09T00:29:34Z",
+    "completed_at": "2026-11-09T00:29:42Z"
+   },
+   {
+    "name": "Prepare code for testing",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-09T00:29:42Z",
+    "completed_at": "2026-11-09T00:31:05Z"
+   },
+   {
+    "name": "Clear resources",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-09T00:31:05Z",
+    "completed_at": "2026-11-09T00:31:07Z"
+   },
+   {
+    "name": "Run test",
+    "status": "completed",
+    "conclusion": "failure",
+    "number": 7,
+    "started_at": "2026-11-09T00:31:07Z",
+    "completed_at": "2026-11-09T01:16:11Z"
+   },
+   {
+    "name": "Post process",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-09T01:16:11Z",
+    "completed_at": "2026-11-09T01:22:31Z"
+   },
+   {
+    "name": "Post Checkout code",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-09T01:22:31Z",
+    "completed_at": "2026-11-09T01:22:33Z"
+   },
+   {
+    "name": "Stop containers",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 16,
+    "started_at": "2026-11-09T01:22:33Z",
+    "completed_at": "2026-11-09T01:22:33Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 17,
+    "started_at": "2026-11-09T01:22:33Z",
+    "completed_at": "2026-11-09T01:22:34Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128913713161",
+  "labels": [
+   "linux-amd64-cpu-4"
+  ],
+  "runner_id": 1397193,
+  "runner_name": "linux-amd64-cpu-4-zxvvv-runner-jm8xk",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+ },
+ {
+  "id": 128928729571,
+  "run_id": 42498125758,
+  "workflow_name": "Nightly Test (NPU)",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/sgl-project/sglang/actions/runs/42498125758",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOLCAjRs8AAAAeBMBJ4w",
+  "head_sha": "4003bf1077debcca3fccfa6e0d7b56ed584aa727",
+  "url": "https://api.github.com/repos/sgl-project/sglang/actions/jobs/128928729571",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/42498125758/job/128928729571",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-11-09T01:22:40Z",
+  "started_at": "2026-11-09T01:22:42Z",
+  "completed_at": "2026-11-09T01:22:45Z",
+  "name": "check-all-jobs",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-09T01:22:43Z",
+    "completed_at": "2026-11-09T01:22:43Z"
+   },
+   {
+    "name": "Generate results table",
+    "status": "completed",
+    "conclusion": "failure",
+    "number": 2,
+    "started_at": "2026-11-09T01:22:43Z",
+    "completed_at": "2026-11-09T01:22:43Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-09T01:22:43Z",
+    "completed_at": "2026-11-09T01:22:43Z"
+   }
+  ],
+  "check_run_url": "https://api.github.com/repos/sgl-project/sglang/check-runs/128928729571",
+  "labels": [
+   "ubuntu-latest"
+  ],
+  "runner_id": 1006067578,
+  "runner_name": "GitHub Actions 1006067578",
+  "runner_group_id": 0,
+  "runner_group_name": "GitHub Actions"
+ }
+]

@@ -1,0 +1,199 @@
+{
+  "_doc": "待 AI 分析清单（tools/list_pending.py 产出）",
+  "status": "pending",
+  "count": 24,
+  "records": [
+    {
+      "date": "2026-11-09",
+      "component": "Ascend-CANN",
+      "pipeline": "ops-nn",
+      "recordId": "Ascend-CANN|ops-nn#168",
+      "buildNumber": 168,
+      "file": "archive/2026/2026-11/2026-11-09/Ascend-CANN/ops-nn/records/run_168.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "Ascend-CANN",
+      "pipeline": "ops-nn",
+      "recordId": "Ascend-CANN|ops-nn#169",
+      "buildNumber": 169,
+      "file": "archive/2026/2026-11/2026-11-09/Ascend-CANN/ops-nn/records/run_169.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "Ascend-CANN",
+      "pipeline": "ops-transformer",
+      "recordId": "Ascend-CANN|ops-transformer#165",
+      "buildNumber": 165,
+      "file": "archive/2026/2026-11/2026-11-09/Ascend-CANN/ops-transformer/records/run_165.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "Ascend-CANN",
+      "pipeline": "ops-transformer",
+      "recordId": "Ascend-CANN|ops-transformer#166",
+      "buildNumber": 166,
+      "file": "archive/2026/2026-11/2026-11-09/Ascend-CANN/ops-transformer/records/run_166.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "Ascend-CANN",
+      "pipeline": "shmem",
+      "recordId": "Ascend-CANN|shmem#140",
+      "buildNumber": 140,
+      "file": "archive/2026/2026-11/2026-11-09/Ascend-CANN/shmem/records/run_140.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "Ascend-CANN",
+      "pipeline": "shmem",
+      "recordId": "Ascend-CANN|shmem#141",
+      "buildNumber": 141,
+      "file": "archive/2026/2026-11/2026-11-09/Ascend-CANN/shmem/records/run_141.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "Ascend-CANN",
+      "pipeline": "shmem",
+      "recordId": "Ascend-CANN|shmem#142",
+      "buildNumber": 142,
+      "file": "archive/2026/2026-11/2026-11-09/Ascend-CANN/shmem/records/run_142.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "HPCKit",
+      "pipeline": "hmpi",
+      "recordId": "HPCKit|hmpi#213",
+      "buildNumber": 213,
+      "file": "archive/2026/2026-11/2026-11-09/HPCKit/hmpi/records/run_213.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "HPCKit",
+      "pipeline": "kpex",
+      "recordId": "HPCKit|kpex#142",
+      "buildNumber": 142,
+      "file": "archive/2026/2026-11/2026-11-09/HPCKit/kpex/records/run_142.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "HPCKit",
+      "pipeline": "kudnn",
+      "recordId": "HPCKit|kudnn#227",
+      "buildNumber": 227,
+      "file": "archive/2026/2026-11/2026-11-09/HPCKit/kudnn/records/run_227.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "HPCKit",
+      "pipeline": "kupl",
+      "recordId": "HPCKit|kupl#306",
+      "buildNumber": 306,
+      "file": "archive/2026/2026-11/2026-11-09/HPCKit/kupl/records/run_306.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "HPCKit",
+      "pipeline": "kuqcd",
+      "recordId": "HPCKit|kuqcd#201",
+      "buildNumber": 201,
+      "file": "archive/2026/2026-11/2026-11-09/HPCKit/kuqcd/records/run_201.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "MindIE",
+      "pipeline": "MindIE-Motor",
+      "recordId": "MindIE|MindIE-Motor#120",
+      "buildNumber": 120,
+      "file": "archive/2026/2026-11/2026-11-09/MindIE/MindIE-Motor/records/run_120.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "MindIE",
+      "pipeline": "MindIE-Motor",
+      "recordId": "MindIE|MindIE-Motor#121",
+      "buildNumber": 121,
+      "file": "archive/2026/2026-11/2026-11-09/MindIE/MindIE-Motor/records/run_121.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "MindIE",
+      "pipeline": "MindIE-Motor",
+      "recordId": "MindIE|MindIE-Motor#124",
+      "buildNumber": 124,
+      "file": "archive/2026/2026-11/2026-11-09/MindIE/MindIE-Motor/records/run_124.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "SgLang",
+      "pipeline": "nightly-test-npu.yml",
+      "recordId": "SgLang|nightly-test-npu.yml#2124",
+      "buildNumber": 2124,
+      "file": "archive/2026/2026-11/2026-11-09/SgLang/nightly-test-npu.yml/records/run_2124.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "SgLang",
+      "pipeline": "nightly-test-npu.yml",
+      "recordId": "SgLang|nightly-test-npu.yml#2125",
+      "buildNumber": 2125,
+      "file": "archive/2026/2026-11/2026-11-09/SgLang/nightly-test-npu.yml/records/run_2125.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "SgLang",
+      "pipeline": "nightly-test-npu.yml",
+      "recordId": "SgLang|nightly-test-npu.yml#2126",
+      "buildNumber": 2126,
+      "file": "archive/2026/2026-11/2026-11-09/SgLang/nightly-test-npu.yml/records/run_2126.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "SgLang",
+      "pipeline": "nightly-test-npu.yml",
+      "recordId": "SgLang|nightly-test-npu.yml#2127",
+      "buildNumber": 2127,
+      "file": "archive/2026/2026-11/2026-11-09/SgLang/nightly-test-npu.yml/records/run_2127.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "SgLang",
+      "pipeline": "nightly-test-npu.yml",
+      "recordId": "SgLang|nightly-test-npu.yml#2128",
+      "buildNumber": 2128,
+      "file": "archive/2026/2026-11/2026-11-09/SgLang/nightly-test-npu.yml/records/run_2128.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "SgLang",
+      "pipeline": "nightly-test-npu.yml",
+      "recordId": "SgLang|nightly-test-npu.yml#2129",
+      "buildNumber": 2129,
+      "file": "archive/2026/2026-11/2026-11-09/SgLang/nightly-test-npu.yml/records/run_2129.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "SgLang",
+      "pipeline": "nightly-test-npu.yml",
+      "recordId": "SgLang|nightly-test-npu.yml#2130",
+      "buildNumber": 2130,
+      "file": "archive/2026/2026-11/2026-11-09/SgLang/nightly-test-npu.yml/records/run_2130.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "SgLang",
+      "pipeline": "nightly-test-npu.yml",
+      "recordId": "SgLang|nightly-test-npu.yml#2132",
+      "buildNumber": 2132,
+      "file": "archive/2026/2026-11/2026-11-09/SgLang/nightly-test-npu.yml/records/run_2132.json"
+    },
+    {
+      "date": "2026-11-09",
+      "component": "SgLang",
+      "pipeline": "nightly-test-npu.yml",
+      "recordId": "SgLang|nightly-test-npu.yml#2133",
+      "buildNumber": 2133,
+      "file": "archive/2026/2026-11/2026-11-09/SgLang/nightly-test-npu.yml/records/run_2133.json"
+    }
+  ]
+}

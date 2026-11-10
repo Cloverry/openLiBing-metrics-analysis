@@ -1,0 +1,383 @@
+{
+  "_doc": "2026-11-06 补采集前已有的 AI 根因结论（迁移用：重采集后按 recordId 原样写回）",
+  "items": [
+    {
+      "recordId": "Ascend-CANN|ops-math#136",
+      "rootCause": "本次 18 个精度用例全部失败，断言原文为 aclnnBitwiseNot / aclnnLinspace accuracy not passed，算子任务返回 acc_pass_result='Failed'；该运行 test 任务无日志落盘，无法下钻到算子内核实现与比对阈值层面的具体偏差。",
+      "advice": "用同镜像单独复跑 aclnnBitwiseNot、aclnnLinspace 等高失败率算子，导出 atk 精度比对明细（误差分布与阈值设置）；若多算子同时批量失败，优先核对该轮算子库版本与精度基线是否匹配当前 910 环境，并补齐 test 任务日志落盘配置。",
+      "cites": [
+        "records/run_136.json:L79",
+        "records/run_136.json:L112",
+        "records/run_136.json:L57"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "Ascend-CANN|ops-transformer#159",
+      "rootCause": "15 个通信融合算子的功能精度用例全部失败，断言原文为 aclnnQuantMatmulAllToAll / aclnnWeightQuantMatmulAllReduce / aclnnAllGatherMatmul accuracy not passed（executor 路径），算子任务的精度结果为 Failed；test 任务无日志落盘，无法定位到算子内核与阈值细节。",
+      "advice": "先单独复现 aclnnQuantMatmulAllToAll 与 aclnnAllGatherMatmul，确认是否与 executor 路径的参数或 dtype 组合相关；同时核对本轮算子库与精度基线文件是否同步更新，批量同时失败多为基线或环境整体偏移。",
+      "cites": [
+        "records/run_159.json:L68",
+        "records/run_159.json:L79",
+        "records/run_159.json:L101"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "Ascend-CANN|ops-transformer#160",
+      "rootCause": "15 个通信融合算子精度用例全部失败，断言原文为 aclnnMatmulAllReduce / aclnnQuantMatmulAllReduceV3 / aclnnQuantMatmulAllToAll accuracy not passed，算子任务精度结果为 Failed；test 任务无日志落盘，缺少内核级报错与比对明细。",
+      "advice": "与同一批次的 aclnnQuantMatmulAllToAll 失败一并排查（多构建号重复出现同一批算子），优先核对算子库版本与精度基线；单算子复现时保留 atk 比对输出以便定位阈值差异。",
+      "cites": [
+        "records/run_160.json:L79",
+        "records/run_160.json:L101",
+        "records/run_160.json:L112"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "Ascend-CANN|ops-transformer#161",
+      "rootCause": "15 个通信融合算子精度用例全部失败，断言原文为 aclnnAlltoAllQuantMatmul / aclnnMatmulReduceScatterV2 / aclnnMatmulAllReduce accuracy not passed，算子任务精度结果为 Failed；test 任务无日志落盘，无法进一步定位。",
+      "advice": "优先复跑 aclnnMatmulReduceScatterV2 与 aclnnAlltoAllQuantMatmul，核对该轮 A16W4 量化路径的 scale 配置与精度阈值；同时补充 test 任务日志落盘，避免后续同类失败只能靠用例断言定性。",
+      "cites": [
+        "records/run_161.json:L57",
+        "records/run_161.json:L79",
+        "records/run_161.json:L101"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "Ascend-CANN|ops-transformer#162",
+      "rootCause": "19 个精度用例全部失败，覆盖 allgather、moe 分发/合并与 QuantMatmulAllToAll 系列，断言原文为 aclnnMatmulReduceScatterV2 等算子 accuracy not passed，算子任务精度结果为 Failed；test 任务无日志落盘，缺少内核侧证据。",
+      "advice": "该流水线连续多个构建号都出现同一批算子精度失败，建议按算子逐个复现并在稳定复现的算子上抓取 atk 比对明细，同步核对算子库与精度基线是否与当前环境版本匹配。",
+      "cites": [
+        "records/run_162.json:L57",
+        "records/run_162.json:L134",
+        "records/run_162.json:L79"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "HPCKit|hmpi#210",
+      "rootCause": "用例代码拉取阶段即失败：整 job 日志报 fatal: Authentication failed for .../hpckit-autotest.git，随后 [ERROR] git clone test_cases code fail，脚本返回 exit code 1，用例一个都未拉起，测试任务用例结果为空。",
+      "advice": "重新注入运行节点访问用例仓库的凭据（令牌过期或未挂载可能性最大），并在 clone 失败时打印鉴权来源与凭据有效期；凭据修复后重跑整条流水线，其余同批次失败可一并验证。",
+      "cites": [
+        "job_logs/07_hmpi_210_Test_hmpi.log:L138",
+        "job_logs/07_hmpi_210_Test_hmpi.log:L140",
+        "job_logs/07_hmpi_210_Test_hmpi.log:L144"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "HPCKit|kpex#139",
+      "rootCause": "测试用例在拉取阶段失败：整 job 日志报 fatal: Authentication failed（用例仓库鉴权失败），用例未执行、测试任务用例结果为空，运行以脚本退出码 1 结束。",
+      "advice": "与同批次 hmpi、kudnn、kupl、kuqcd 的鉴权失败一并处理：修复运行节点访问用例仓库的凭据并验证 clone 可正常完成，随后重跑。",
+      "cites": [
+        "job_logs/05_kpex_139_Test_kpex.log:L138"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "HPCKit|kudnn#224",
+      "rootCause": "测试用例在拉取阶段失败：整 job 日志报 fatal: Authentication failed（用例仓库鉴权失败），用例未执行、测试任务用例结果为空，运行以脚本退出码 1 结束。",
+      "advice": "与同批次鉴权失败一并处理：修复凭据并验证 clone，随后重跑；建议把凭据检查前移到流水线准备阶段，避免每次都跑到测试步骤才失败。",
+      "cites": [
+        "job_logs/02_kudnn_224_Test_kudnn.log:L138"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "HPCKit|kupl#297",
+      "rootCause": "整 job 日志仅 13 行且已截断，只有平台封装信息：[ERROR] [real_stage:official_devcloud_cloudBuild] query step status with error 与 DEV-CODECI-35002 构建任务执行失败，日志中不存在任务内部真实报错，只能定位到云构建调度层。",
+      "advice": "按平台侧构建失败处理：先重跑确认是否偶发；若稳定复现，申请该 job 的完整构建日志与子任务日志以定位真实报错，同时排查平台侧查询步骤状态的接口超时。",
+      "cites": [
+        "job_logs/09_kupl_297_Test_kupl.log:L11",
+        "job_logs/09_kupl_297_Test_kupl.log:L12"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "HPCKit|kupl#298",
+      "rootCause": "整 job 日志同样只有平台封装信息：query step status with error 与 DEV-CODECI-35002 构建任务执行失败，无任务内部真实报错，失败点在云构建调度层而非用例本身。",
+      "advice": "与 #297 一并处理：重跑确认频率，稳定复现时取完整构建与子任务日志定位；关注同一时段平台侧步骤状态查询是否普遍异常。",
+      "cites": [
+        "job_logs/08_kupl_298_Test_kupl.log:L11",
+        "job_logs/08_kupl_298_Test_kupl.log:L12"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "HPCKit|kupl#299",
+      "rootCause": "测试用例在拉取阶段失败：整 job 日志报 fatal: Authentication failed（用例仓库鉴权失败），用例未执行、测试任务用例结果为空，运行以脚本退出码 1 结束。",
+      "advice": "与同批次鉴权失败一并处理：修复凭据、验证 clone 后重跑；建议流水线开始处加一次仓库可达性预检。",
+      "cites": [
+        "job_logs/04_kupl_299_Test_kupl.log:L138"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "HPCKit|kuqcd#198",
+      "rootCause": "测试用例在拉取阶段失败：整 job 日志报 fatal: Authentication failed（用例仓库鉴权失败），用例未执行、测试任务用例结果为空，运行以脚本退出码 1 结束。",
+      "advice": "与同批次鉴权失败一并处理：修复凭据、验证 clone 后重跑；该组件当天多条流水线同时失败，优先确认是否为同一凭据失效。",
+      "cites": [
+        "job_logs/03_kuqcd_198_Test_quqcd.log:L138"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "MindIE|MindIE-Motor#117",
+      "rootCause": "用例 test_pymotor_ras_up_down_scale 在等待服务启动成功日志时超时失败，报 TimeoutError: 服务启动超时，未找到成功日志；该运行无 test 任务日志落盘，无法确认是服务进程崩溃还是就绪判定/等待时长不足。",
+      "advice": "保留服务端 stdout 与启动日志后重跑该用例，核对就绪判定关键字与实际启动路径是否匹配；同时评估 RAS 上下伸缩场景下启动等待阈值是否需要放宽。",
+      "cites": [
+        "records/run_117.json:L57"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "MindStudio|msot#261",
+      "rootCause": "内存检测工具两个用例断言失败：工具在 shmem allgather 与 mc2 场景输出中包含 ERROR 越界标记，而用例期望无越界，报 AssertionError: 工具产生误报，不应该有内存越界；任务日志未落盘，无法判断是检测能力退化还是用例预期需要更新。",
+      "advice": "取出这两条用例的原始检测输出，逐项比对报出的内存访问是否落在合法地址区间；若确属误报，修正检测模块的地址/符号解析逻辑；若检测结论正确，则更新用例预期并定位真实越界点。",
+      "cites": [
+        "records/run_261.json:L56",
+        "records/run_261.json:L81"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "MindStudio|msot#262",
+      "rootCause": "两条用例断言失败：test_msopst_paramType_dynamic_011 报「多 dynamic 输入运行失败」，test_pytorch_to_toolkit_001 报「pytorch_to_toolkit 001 运行失败」；运行状态为 CANCELED，运行平台侧未留存任务日志，失败细节不可见。",
+      "advice": "单独复跑这两条用例并保留完整日志，定位 dynamic 输入场景的报错原文与 pytorch_to_toolkit 转换失败原因；同时确认本次取消是人工取消还是因前序失败联动取消。",
+      "cites": [
+        "records/run_262.json:L56",
+        "records/run_262.json:L67"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "MindStudio|msot#263",
+      "rootCause": "两条内存检测用例断言失败：test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003 与 test_mssanitizer_mc2_0002 均报「工具发生误报，应该没有越界异常」；运行状态为 CANCELED，无任务日志，无法定位误报来源。",
+      "advice": "与 #261 的误报问题合并排查：抓取 ac lgraph 场景下的检测输出，核对检测模块对图模式内存复用的建模是否正确；修复后回归这两条用例。",
+      "cites": [
+        "records/run_263.json:L56",
+        "records/run_263.json:L67"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "MindStudio|msot#264",
+      "rootCause": "该运行无 FAILED 任务落盘（任务列表与用例列表均为空），也没有运行平台侧任务日志，无法确定失败点；从接口形态看更接近任务被取消或失败任务未返回。",
+      "advice": "确认该构建是否被取消或提前终止；若属真实失败，需要在采集侧补齐失败任务回填并保留日志，之后再单独分析。本条证据不足，结论待验证。",
+      "cites": [],
+      "source": "agent"
+    },
+    {
+      "recordId": "SgLang|nightly-test-npu.yml#2079",
+      "rootCause": "a3 三个测试 job 的用例执行入口统一报 TypeError: run_unittest_files() got an unexpected keyword argument 'fork_worker_preload'（调度脚本向测试框架传了新参数，框架侧未同步支持），脚本步骤随后以 exit code 1 结束并触发容器执行失败；同一运行中 deepseek_v4_flash_w8a8_1p1d 的 16p 用例另有性能断言失败，实测 46.8 未小于等于阈值 21.0。",
+      "advice": "对齐调度脚本与测试框架的 run_unittest_files 签名（补齐 fork_worker_preload 参数或回退传参），先单 job 验证通过再全量跑；性能断言 46.8 与阈值 21.0 差距过大，需复核该模型在本轮镜像/驱动下的实测指标是否属于配置或环境降级。",
+      "cites": [
+        "github_logs/gh_42047810705/10_nightly-1-npu-a3 _ run (0).txt:L927",
+        "github_logs/gh_42047810705/10_nightly-1-npu-a3 _ run (0).txt:L930",
+        "github_logs/gh_42047810705/7_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~db0591.txt:L2915"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "SgLang|nightly-test-npu.yml#2081",
+      "rootCause": "多类问题并存：nightly-acc-2 的用例因 ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses'（依赖版本与用例代码不匹配）中断，并有精度断言 0.849 未达到 0.8527；多个 multi-node 用例在拉取阶段报 RPC failed; HTTP 500 与 fatal: error reading section header 'shallow-info'，Prometheus 指标端口报 Address already in use，压测侧出现 ConnectError 与 KVTransferError（prefill 实例疑似已死）。",
+      "advice": "固定 openai 依赖版本（requirements 锁定或在镜像预置匹配版本），并复核精度基线来源；multi-node 侧修复用例仓库拉取（改用完整克隆或加重试）与指标端口复用问题，压测开始前先做 prefill/decode 实例存活与端口占用检查。",
+      "cites": [
+        "github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt:L986",
+        "github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt:L3687",
+        "github_logs/gh_42061473997/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt:L221",
+        "github_logs/gh_42061473997/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt:L950",
+        "github_logs/gh_42061473997/7_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p~327148.txt:L1098"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "SgLang|nightly-test-npu.yml#2083",
+      "rootCause": "glm_5_3 多机用例在加载 tokenizer 时失败：ValueError: Tokenizer class TokenizersBackend does not exist or is not currently imported（transformers/tokenizers 版本与该模型 tokenizer 配置不匹配），随后 run_aisbench.sh --mode perf 以 CalledProcessError 退出，check-all-jobs 汇总为失败。",
+      "advice": "升级或固定 transformers/tokenizers 版本并显式使用 AutoTokenizer 加载，或在镜像中预置该模型 tokenizer 依赖；修复后先单跑该 case 再接入 nightly。",
+      "cites": [
+        "github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L1667",
+        "github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L1821",
+        "github_logs/gh_42068311537/127470975935_check-all-jobs.txt:L98"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "SgLang|nightly-test-npu.yml#2084",
+      "rootCause": "job 日志内只有脚本步骤失败链：##[error]Error: failed to run script step 与 exit code: 1，未见用例内部 traceback，仅残留 npu-smi: command not found 的环境噪声，无法定位到具体用例与失败断言。",
+      "advice": "让脚本步骤输出完整用例日志（set -x 或 tee 到文件）并修复镜像内 npu-smi 缺失；补齐证据后重新分析，本条结论置信度低。",
+      "cites": [
+        "github_logs/gh_42068844392/127390755997_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L532",
+        "github_logs/gh_42068844392/127390755997_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L533",
+        "github_logs/gh_42068844392/127390755997_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L459"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "SgLang|nightly-test-npu.yml#2085",
+      "rootCause": "运行库与环境能力缺失：日志持续报 Unable to open library [libhcom.so]（cannot open shared object file），随后报 dram segment does not support sdma in current environment、InitDramSegment() failed: -1、Failed to init segment，用例在通信/内存段初始化阶段即中断。",
+      "advice": "在镜像中补齐 libhcom.so 并确认 LD_LIBRARY_PATH 与驱动版本匹配；同时核对当前机器是否支持 dram 段 sdma（跨代机器或虚拟化环境常不支持），必要时更换节点或调整内存段配置后重跑。",
+      "cites": [
+        "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3378",
+        "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3389",
+        "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3391"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "SgLang|nightly-test-npu.yml#2086",
+      "rootCause": "多个 rank 反复报 Unable to open library [libhcom.so]（cannot open shared object file），通信库在运行环境缺失，用例在初始化阶段即失败。",
+      "advice": "统一镜像内通信库版本，并在启动前加存在性校验（如 ldconfig -p 检索 libhcom）；修复镜像后重跑该 case。",
+      "cites": [
+        "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L2625",
+        "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L2658"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "SgLang|nightly-test-npu.yml#2087",
+      "rootCause": "nightly-perf-16 的性能用例断言失败：实测 58.34 未小于等于阈值 51.0，性能不达标导致 job 失败；日志中另有 ImportError: cannot import name 'ResponseFunctionShellToolCall' 的依赖不匹配痕迹。",
+      "advice": "复核该模型本轮镜像/驱动下的实测指标与基线阈值来源，环境或配置变化时需刷新基线；同时固定 openai 依赖版本，避免导入错误掩盖真实性能结论。",
+      "cites": [
+        "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt:L4654",
+        "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt:L4746",
+        "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt:L1988"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "SgLang|nightly-test-npu.yml#2088",
+      "rootCause": "kimi_k3 多机 mix 用例性能断言失败：实测 41.6 未小于等于阈值 31.0，性能不达标；日志中另有 ImportError: ResponseFunctionShellToolCall 的依赖不匹配与脚本 exit code 1。",
+      "advice": "与环境/基线一并复核：混跑场景下资源争抢与频率降级会显著拉低压测指标，建议单跑该 case 取得干净基线后再判定是否刷新阈值；同时固定 openai 依赖版本。",
+      "cites": [
+        "github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L17496",
+        "github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L17509",
+        "github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15680"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "SgLang|nightly-test-npu.yml#2091",
+      "rootCause": "两个任务（set-image-config、check-all-jobs）的运行平台侧日志均未留存（接口返回 404），归档内无任务日志与用例明细，只能依据作业元数据中 conclusion 与失败步骤判断为运行平台侧失败，具体原因无法确认。",
+      "advice": "补齐该流水线作业日志采集与留存（或延长日志保留期），并在采集到 404 时记录作业元数据快照；日志可用后再重新分析，本条证据不完整、置信度低。",
+      "cites": [],
+      "source": "agent"
+    },
+    {
+      "recordId": "SgLang|nightly-test-npu.yml#2092",
+      "rootCause": "三个测试 job 均报 ModuleNotFoundError: No module named 'sglang.srt.utils.process'，用例仍引用已被移除或改名的模块（框架重构后用例未同步），测试在导入阶段即中断。",
+      "advice": "批量修正用例中对 sglang.srt.utils.process 的引用到新模块路径，并在 CI 加一条导入路径静态检查，避免框架重构后整批用例同时失效。",
+      "cites": [
+        "github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt:L913",
+        "github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt:L938",
+        "github_logs/gh_42197450049/127824197899_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt:L632"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "SgLang|nightly-test-npu.yml#2093",
+      "rootCause": "用例注册校验失败：ValueError: No CI registry found in .../kernels/ops/communication/test_mlu_communicator.py 与 .../kernels/ops/layernorm/test_layernorm_mlu.py，新增的 MLU 用例未在 CI registry 中登记，框架拒绝执行。",
+      "advice": "为上述 MLU 用例补充 CI registry 注册（注册装饰器或注册表条目），并在用例模板中默认带上注册，避免新增用例被判为未注册而整 job 失败。",
+      "cites": [
+        "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt:L927",
+        "github_logs/gh_42199356561/127830581265_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt:L647",
+        "github_logs/gh_42199356561/127830581346_nightly-perf-16-npu-a3 _ nightly-perf~467fc30b.txt:L647"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "SgLang|nightly-test-npu.yml#2094",
+      "rootCause": "job 日志内只有脚本步骤失败链：Error: failed to run script step 与 exit code: 1，未保留用例内部 traceback，仅残留 npu-smi: command not found，无法定位到具体失败用例。",
+      "advice": "保留脚本步骤完整 stdout 并修复镜像内 npu-smi 缺失；证据补齐后再定位，本条置信度低。",
+      "cites": [
+        "github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt:L843",
+        "github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt:L844",
+        "github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt:L764"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "SgLang|nightly-test-npu.yml#2095",
+      "rootCause": "用例读取测试产物失败：FileNotFoundError: No such file or directory: '/root/.cache/tests/output/.../Nightly_Test_NPU--cann9.1.0...'，上一阶段未产出该目录（产出步骤缺失或被清理），pytest 随即以 FAILED 结束。",
+      "advice": "在用例前置步骤显式校验产物目录存在并打印产出树；核对产出步骤使用的 CANN 版本目录名与本轮镜像是否一致，避免路径拼装失配。",
+      "cites": [
+        "github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt:L8633",
+        "github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt:L8738"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "SgLang|nightly-test-npu.yml#2096",
+      "rootCause": "用例代码类型错误：TypeError: can't multiply sequence by non-int of type 'float'，数值计算处把序列当数值参与乘法，测试直接抛异常并以 exit code 255 结束。",
+      "advice": "修正该处计算逻辑（先转 array 或改为逐元素运算），并补一条覆盖该分支的单测；修复后重跑 perf job 验证。",
+      "cites": [
+        "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5149",
+        "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5269"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "SgLang|nightly-test-npu.yml#2099",
+      "rootCause": "kimi_k3 多机 mix 用例性能断言失败：实测 39.9 未小于等于阈值 31.0，性能不达标导致 job 失败。",
+      "advice": "复核基线阈值与本轮实测环境（混跑资源争抢、频率降级），必要时单跑取得干净基线后再刷新阈值，并留存性能曲线作为判断依据。",
+      "cites": [
+        "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15579",
+        "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15592"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "SgLang|nightly-test-npu.yml#2100",
+      "rootCause": "两个任务（set-image-config、check-all-jobs）的运行平台侧日志均未留存（接口返回 404），归档内无任务日志与用例明细，只能依据作业元数据判断为运行平台侧失败，具体原因无法确认。",
+      "advice": "补齐该流水线作业日志采集与留存，并在 404 时保存作业元数据快照；日志可用后再分析，本条证据不完整、置信度低。",
+      "cites": [],
+      "source": "agent"
+    },
+    {
+      "recordId": "SgLang|nightly-test-npu.yml#2101",
+      "rootCause": "用例清理阶段依赖 sudo：日志报 /bin/bash: line 1: sudo: command not found，Command 'sync && echo 1 | sudo tee /proc/sys/vm/drop_caches' returned non-zero exit status 127，清理步骤失败导致用例以 FAILED (errors=1) 结束。",
+      "advice": "容器内已是 root 时去掉 sudo 前缀（直接 tee /proc/sys/vm/drop_caches），或在镜像安装 sudo 并配置免密；同时把清理步骤改为非致命，避免影响测试结论。",
+      "cites": [
+        "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1290",
+        "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1303",
+        "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1308"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "Triton_Ascend|Ascend#104",
+      "rootCause": "镜像构建子任务 Build_a3a5_arm 与 Build_a3a5_x86 在 RUNNING 后转 FAILED（Run#516 等待约 25 分钟后失败），任务 message 只有云构建封装码 {errorCode: DEV-CODECI-35002, 构建任务执行失败!}，日志中无子任务内部编译报错；测试任务日志同时返回 404 未留存，用例未拉起。",
+      "advice": "先重跑构建任务确认是否环境侧偶发；稳定复现时申请构建子任务的详细日志定位真实编译错误；同时补齐测试任务日志留存，避免后续只能靠封装码定性。",
+      "cites": [
+        "job_logs/01_Ascend_104_npu_ir流水线调用.log:L173",
+        "job_logs/01_Ascend_104_npu_ir流水线调用.log:L168",
+        "job_logs/06_Ascend_104_Test_Triton_Ascend.log:L126"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "vllm-ascend|a3.yaml#16450",
+      "rootCause": "5 个测试 job 均在测试脚本步骤失败（Error: failed to run script step 与 exit code: 1），随后连带出现 Upload failed 与容器实现执行失败；job 日志未保留脚本内部报错段，无法下钻到具体模型用例与断言。",
+      "advice": "让脚本步骤用 set -x 或 tee 保留完整 stdout/stderr，并把日志与结果上传与测试结论解耦（测试失败也应完成上传），补齐后再定位 5 个模型 case 的具体失败点。",
+      "cites": [
+        "github_logs/gh_42063861754/127640780266_multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2~0bc925.txt:L2143",
+        "github_logs/gh_42063861754/127640780266_multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2~0bc925.txt:L2649",
+        "github_logs/gh_42063861754/127640784310_multi-node (main, MiniMax-M3-w8a8-PP-prefix-PD,~ace01f.txt:L1686"
+      ],
+      "source": "agent"
+    },
+    {
+      "recordId": "vllm-ascend|a3.yaml#16451",
+      "rootCause": "6 个测试 job 均在同一失败形态下结束：测试脚本步骤失败并返回 exit code: 1，随后 Process completed with exit code 1 与 Upload failed；日志中缺少脚本内部真实报错，无法确认是环境准备、模型拉起还是用例断言导致。",
+      "advice": "保留脚本步骤完整输出并加失败阶段标记（准备/拉起/用例/上传），同时对 6 个 case 分别单跑以区分共性问题（镜像或依赖）与个别模型问题。",
+      "cites": [
+        "github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt:L1697",
+        "github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt:L2176",
+        "github_logs/gh_42099201193/14_double-node (releases-v0.32.0rc, Kimi-K2.6-W4A8-64k-1k-TP~7cba63.txt:L1661"
+      ],
+      "source": "agent"
+    }
+  ]
+}

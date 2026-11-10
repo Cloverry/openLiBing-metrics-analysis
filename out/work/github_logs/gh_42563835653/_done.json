@@ -1,0 +1,49 @@
+{
+ "route": "github",
+ "key": "SgLang|nightly-test-npu.yml",
+ "rn": 2128,
+ "rid": "42563835653",
+ "st": "11-09 12:48",
+ "runId": 42563835653,
+ "repo": "sgl-project/sglang",
+ "displayTitle": "[Test] [NPU] kimi_k3: run the 128k decode prefix case at C4 with repeat_rate=1",
+ "event": "pull_request",
+ "status": "FAILED",
+ "duration": 84.9,
+ "runStatus": {
+  "status": "completed",
+  "conclusion": "cancelled",
+  "updatedAt": "2026-11-09T06:13:42Z",
+  "attempt": 1
+ },
+ "_v": 2,
+ "mode": "perjob",
+ "why": "取消 job 2 个（≤5，逐 job 精取）",
+ "totalJobs": 15,
+ "failedJobs": [],
+ "cancelledJobs": [
+  {
+   "name": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+   "id": 128985919742
+  },
+  {
+   "name": "check-all-jobs",
+   "id": 129010475798
+  }
+ ],
+ "jobs": [],
+ "missing": [
+  {
+   "job": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+   "id": 128985919742,
+   "status": "404_not_retained"
+  },
+  {
+   "job": "check-all-jobs",
+   "id": 129010475798,
+   "status": "404_not_retained"
+  }
+ ],
+ "systemLogs": [],
+ "ghComplete": true
+}

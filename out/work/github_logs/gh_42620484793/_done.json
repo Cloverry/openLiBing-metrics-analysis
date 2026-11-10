@@ -1,0 +1,49 @@
+{
+ "route": "github",
+ "key": "SgLang|nightly-test-npu.yml",
+ "rn": 2132,
+ "rid": "42620484793",
+ "st": "11-09 20:51",
+ "runId": 42620484793,
+ "repo": "sgl-project/sglang",
+ "displayTitle": "[Test][NPU] overlap-schedule validation: GLM5/Kimi/DSV4 case reconfig + TEMP nightly scoping",
+ "event": "pull_request",
+ "status": "FAILED",
+ "duration": 0.03,
+ "runStatus": {
+  "status": "completed",
+  "conclusion": "cancelled",
+  "updatedAt": "2026-11-09T12:51:31Z",
+  "attempt": 1
+ },
+ "_v": 2,
+ "mode": "perjob",
+ "why": "取消 job 2 个（≤5，逐 job 精取）",
+ "totalJobs": 15,
+ "failedJobs": [],
+ "cancelledJobs": [
+  {
+   "name": "set-image-config",
+   "id": 129171021001
+  },
+  {
+   "name": "check-all-jobs",
+   "id": 129171030139
+  }
+ ],
+ "jobs": [],
+ "missing": [
+  {
+   "job": "set-image-config",
+   "id": 129171021001,
+   "status": "404_not_retained"
+  },
+  {
+   "job": "check-all-jobs",
+   "id": 129171030139,
+   "status": "404_not_retained"
+  }
+ ],
+ "systemLogs": [],
+ "ghComplete": true
+}
