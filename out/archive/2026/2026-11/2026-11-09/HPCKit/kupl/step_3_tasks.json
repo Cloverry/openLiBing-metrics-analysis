@@ -1,0 +1,53 @@
+{
+ "_doc": {
+  "step": "step_3_tasks",
+  "title": "第 3 步 失败任务分流（T4）",
+  "source": "openLiBing 流水线运行详情（任务列表）",
+  "criteria": "仅取状态为失败的任务；UNSELECTED/CANCELED/IGNORED/INIT 跳过；含测试结果的任务走测试取证（第 4 步），其余走日志取证（第 5 步），github 平台运行改走第 5c 步",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-10 14:57:28",
+  "component": "HPCKit",
+  "pipeline": "kupl",
+  "date": "2026-11-09"
+ },
+ "test": [
+  {
+   "key": "HPCKit|kupl",
+   "pipeline": "kupl",
+   "pipelineName": "Nightly-CI-Component-pipeline_kupl",
+   "projectId": 300073,
+   "pipelineId": "ddb211b1e4a74f55a0e604fa95ef469e",
+   "rid": "26bf4fe5f1344892abe80a21ff2ca906",
+   "rn": 306,
+   "st": "11-09 00:01",
+   "jobId": "d33d1d32a2044d2fbea4a0dbceba1979",
+   "jobName": "Test_kupl",
+   "stepIds": [
+    "d55a0ebf9b794c0ebdbde9c63708b540"
+   ],
+   "steps": [
+    {
+     "id": "d55a0ebf9b794c0ebdbde9c63708b540",
+     "name": "Test_kupl",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "0fbf01b1a5a342859035c26f9dc86c3f",
+     "jobIdParam": "179b784b1f2f488595de68bfb2877fe8"
+    }
+   ],
+   "jobErrMsg": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "1643c85ba4a84fc692b05691582376cd",
+   "route": "test",
+   "isBuild": false,
+   "buildJobId": "179b784b1f2f488595de68bfb2877fe8"
+  }
+ ],
+ "log": [],
+ "skipped": [],
+ "errors": [],
+ "counts": {
+  "test": 1,
+  "log": 0,
+  "skipped": 0
+ }
+}

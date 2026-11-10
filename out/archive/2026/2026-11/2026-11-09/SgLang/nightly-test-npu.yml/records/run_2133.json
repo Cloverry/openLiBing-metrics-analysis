@@ -1,0 +1,157 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-10 14:57:29",
+    "component": "SgLang",
+    "pipeline": "nightly-test-npu.yml",
+    "date": "2026-11-09",
+    "recordId": "SgLang|nightly-test-npu.yml#2133"
+  },
+  "recordId": "SgLang|nightly-test-npu.yml#2133",
+  "date": "2026-11-09",
+  "component": "SgLang",
+  "pipeline": "nightly-test-npu.yml",
+  "pipelineName": "nightly-test-npu.yml",
+  "platform": "github",
+  "buildNumber": 2133,
+  "pipelineRunId": "42620485286",
+  "status": "FAILED",
+  "failedTaskType": null,
+  "startedAt": "2026-11-09T20:51:29",
+  "endedAt": "2026-11-09T21:03:53",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-09T21:03:53",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0,
+    "bsRate": null,
+    "dims": [
+      "va"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42620485286",
+    "detail": "https://github.com/sgl-project/sglang/actions/runs/42620485286",
+    "github": "https://github.com/sgl-project/sglang/actions/runs/42620485286"
+  },
+  "tasks": [
+    {
+      "jobName": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap_fia_unset, 1, 1, 1, test/regist... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap_fia_unset",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42620485286/129171078482_multi-node-poc (deepseek_v4_flash_0731_~ff27a8.txt",
+      "logBytes": 62888,
+      "logLines": 588,
+      "download": "github-perjob",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L523: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+      ],
+      "githubJob": {
+        "id": 129171078482,
+        "conclusion": "cancelled",
+        "startedAt": "2026-11-09T12:52:01Z",
+        "completedAt": "2026-11-09T13:03:52Z",
+        "steps": [
+          {
+            "name": "Run test",
+            "conclusion": "failure"
+          }
+        ]
+      },
+      "isTestJob": true,
+      "testResults": null
+    },
+    {
+      "jobName": "check-all-jobs",
+      "type": "log",
+      "platform": "github",
+      "logFile": null,
+      "errorLines": [],
+      "download": "github-404",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "evidenceNote": "运行平台侧日志未留存（404），证据不完整；定性依据 jobs 元数据（conclusion/时长/失败步骤）"
+    }
+  ],
+  "cases": [],
+  "errorMessages": [
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap_fia_unset, 1, 1, 1, test/regist... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap_fia_unset",
+      "source": "github_logs/gh_42620485286/129171078482_multi-node-poc (deepseek_v4_flash_0731_~ff27a8.txt",
+      "line": 523,
+      "level": "LOG",
+      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+    }
+  ],
+  "evidence": {
+    "files": [
+      "github_logs/gh_42620485286/129171078482_multi-node-poc (deepseek_v4_flash_0731_~ff27a8.txt"
+    ],
+    "missing": [
+      "check-all-jobs"
+    ],
+    "github": {
+      "runId": 42620485286,
+      "repo": "sgl-project/sglang",
+      "displayTitle": "[Test][NPU] overlap-schedule validation: GLM5/Kimi/DSV4 case reconfig + TEMP nightly scoping",
+      "mode": "perjob",
+      "totalJobs": 15,
+      "failedJobs": [],
+      "missing": [
+        {
+          "job": "check-all-jobs",
+          "id": 129176843219,
+          "status": "404_not_retained"
+        }
+      ],
+      "complete": true
+    }
+  },
+  "counts": {
+    "tasks": 2,
+    "testTasks": 0,
+    "logTasks": 2,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 1,
+    "evidenceFiles": 1
+  },
+  "verdict": {
+    "category": "job_failure",
+    "text": "任务失败",
+    "confidence": 0.5,
+    "level": "中",
+    "basis": [
+      "任务 multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap_fia_unset, 1, 1, 1, test/regist... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap_fia_unset 日志命中 1 条错误行（非编译特征），见 github_logs/gh_42620485286/129171078482_multi-node-poc (deepseek_v4_flash_0731_~ff27a8.txt",
+      "基线 0.30",
+      "证据文件落盘 1 份 +0.25",
+      "任务日志命中错误行 +0.15",
+      "任务 check-all-jobs 无任何证据 −0.20"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "keyError": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
+    "rootCause": "整份日志 588 行，唯一的错误行是「##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.」（github_logs/gh_42620485286/129171078482_multi-node-poc (deepseek_v4_flash_0731_~ff27a8.txt:L523），既没有脚本步骤失败行，也没有 Traceback 或用例名，说明失败在容器拉起阶段就被截断，deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap_fia_unset 这个用例一次都没跑起来（本记录 tasks=2、cases=0）。\n\n推断更像 runner 容器层问题而不是 overlap-schedule 配置问题：本次证据里没有任何与 overlap、fia_unset 相关的参数校验输出或部署报错，失败点纯粹在容器拉起；同一工作流在 20:51:29 同一秒还触发了另一条运行 #2132（runId 42620484793），那条 2 秒即失败且两个任务全部 404，两条记录叠加起来更像该时间点整条工作流的调度与容器环境一起异常。\n\n已排除的干扰项：check-all-jobs 平台侧 404，只能依据 jobs 元数据定性；上一轮关于 decode pod 长时间 Pending 的说法在本轮证据行里没有对应内容，不能沿用。",
+    "advice": "先要 pod 侧证据：取该 job 对应 decode pod 的 describe 与 events，确认是资源不足、亲和性不满足还是镜像拉取超时，把结论回写进任务日志\n\n再把 pod 等待改成带明确超时的监控，超时时打印 pod events 与最近一次调度失败原因，替代现在只有一句容器实现失败\n\n同时核对 20:51:29 这个时间点的触发关系：#2132 与 #2133 同一秒起跑，先确认是否工作流被重复触发、入口配置是否冲突，再看容器层问题\n\n验证方式：重跑后要求该用例进入执行阶段、日志中出现容器启动与 pod 调度记录，且同一工作流不再出现同一秒的重复触发",
+    "cites": [
+      "github_logs/gh_42620485286/129171078482_multi-node-poc (deepseek_v4_flash_0731_~ff27a8.txt:L523"
+    ],
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
+    "source": "agent"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-10 14:57:26",
+    "component": "MindIE",
+    "pipeline": "MindIE-Motor",
+    "date": "2026-11-09",
+    "recordId": "MindIE|MindIE-Motor#121"
+  },
+  "recordId": "MindIE|MindIE-Motor#121",
+  "date": "2026-11-09",
+  "component": "MindIE",
+  "pipeline": "MindIE-Motor",
+  "pipelineName": "Nightly-CI-Component-pipeline_MindIE-Motor",
+  "platform": "codearts",
+  "buildNumber": 121,
+  "pipelineRunId": "36a8eec081e34d7fbcea9b8c32c369ba",
+  "status": "CANCELED",
+  "failedTaskType": "测试任务",
+  "startedAt": "2026-11-09T14:11:17",
+  "endedAt": "2026-11-09T19:32:25",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-09T19:32:25",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0.5,
+    "bsRate": 0.75,
+    "dims": [
+      "va",
+      "bs"
+    ],
+    "track": "bs"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=d05b26dfc2e5450e8fff23ddf4cd0eb6&projectId=300036&pipelineRunId=36a8eec081e34d7fbcea9b8c32c369ba",
+    "detail": null,
+    "github": null
+  },
+  "tasks": [],
+  "cases": [],
+  "errorMessages": [],
+  "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+  },
+  "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+  },
+  "verdict": {
+    "category": "cancelled",
+    "text": "运行被取消",
+    "confidence": 0.3,
+    "level": "低",
+    "basis": [
+      "运行状态 CANCELED（运行被取消，平台侧未留存任务日志）",
+      "运行平台标记失败任务类型为「测试任务」，取消发生在该任务执行期间",
+      "基线 0.30"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "keyError": null,
+    "rootCause": "运行在测试任务阶段被终止：14:11:17 启动、19:32:25 结束，持续 5 小时 21 分 8 秒后状态变为 CANCELED，failedTaskType 为「测试任务」，同时 tasks=0、testTasks=0、logTasks=0、buildTasks=0、cases=0、errorMessages=0，任务与用例都没有任何记录落盘（records/run_121.json）\n\n推断更像运行时长触发的中止（超时策略或人工介入），而非用例断言失败：取消发生在测试任务执行期间而不是构建期间，且五小时以上的挂起时长与典型的用例失败形态不符——如果是用例失败，进程会在断言处立刻退出并留下用例结果，不会拖到五小时后被取消。\n\n已排除的干扰项：取消发起方在归档里没有记录，人工中止、超时策略、上游依赖失败三种可能都无法从现有字段区分，因此本条只作运行取消处理，不归因到组件缺陷。",
+    "advice": "先向运行平台核实 #121 的取消发起方与取消原因，把结果补记成归档字段，避免同类记录长期以 CANCELED 无痕状态进入统计\n\n给该流水线的测试任务设置明确超时上限与临期告警，超过阈值未收敛时先打印当前执行阶段与已跑用例数再终止，用可复盘的日志替代现在这种一刀切取消\n\n核对该次运行是否与当日 #120 失败、#124 取消围绕同一次代码提交，如果是同一提交反复重跑，应先定位提交问题而不是反复重试\n\n验证方式：重跑后确认运行能正常收敛到完成状态，或超时终止时日志里能看到被中断的测试环节与用例进度，归档不再出现 tasks=0 的取消记录",
+    "cites": [
+      "records/run_121.json"
+    ],
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
+    "source": "agent"
+  }
+}

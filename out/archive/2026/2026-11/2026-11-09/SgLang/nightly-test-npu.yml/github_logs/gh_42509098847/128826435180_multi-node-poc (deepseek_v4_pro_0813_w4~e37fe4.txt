@@ -1,0 +1,624 @@
+﻿2026-11-08T18:49:22.3039940Z Current runner version: '2.338.0'
+2026-11-08T18:49:22.3047550Z Runner name: 'linux-amd64-cpu-4-zxvvv-runner-rgrjj'
+2026-11-08T18:49:22.3048511Z Runner group name: 'Default'
+2026-11-08T18:49:22.3049517Z Machine name: 'linux-amd64-cpu-4-zxvvv-runner-rgrjj'
+2026-11-08T18:49:22.3052902Z ##[group]GITHUB_TOKEN Permissions
+2026-11-08T18:49:22.3055792Z Contents: read
+2026-11-08T18:49:22.3056400Z Metadata: read
+2026-11-08T18:49:22.3057005Z Packages: read
+2026-11-08T18:49:22.3057512Z ##[endgroup]
+2026-11-08T18:49:22.3059994Z Secret source: None
+2026-11-08T18:49:22.3060856Z Cache mode: write
+2026-11-08T18:49:22.3062192Z Runner is running behind proxy server 'http://squid-cache.squid.svc.cluster.local:3128' for all HTTP requests.
+2026-11-08T18:49:22.3063542Z Runner is running behind proxy server 'http://squid-cache.squid.svc.cluster.local:3128' for all HTTPS requests.
+2026-11-08T18:49:22.3064517Z Prepare workflow directory
+2026-11-08T18:49:22.4103887Z Prepare all required actions
+2026-11-08T18:49:22.4158855Z Getting action download info
+2026-11-08T18:49:23.3419699Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-08T18:49:28.3696426Z Uses: sgl-project/sglang/.github/workflows/nightly-test-npu-e2e-multi-node.yml@refs/pull/49180/merge (8f296729e6699faaf161ad78ffa4ae331c318832)
+2026-11-08T18:49:28.3701558Z ##[group] Inputs
+2026-11-08T18:49:28.3702116Z   runner: linux-amd64-cpu-4
+2026-11-08T18:49:28.3702545Z   test_type: accuracy
+2026-11-08T18:49:28.3703071Z   test_config_name: deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa
+2026-11-08T18:49:28.3704360Z   prefill_size: 2
+2026-11-08T18:49:28.3704783Z   decode_size: 2
+2026-11-08T18:49:28.3705191Z   router_size: 1
+2026-11-08T18:49:28.3705582Z   node_size: 0
+2026-11-08T18:49:28.3706289Z   test_case: test/registered/npu/accuracy/deepseek_v4_pro/test_npu_deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa.py
+2026-11-08T18:49:28.3707240Z   image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann9.1.0-a3-B106
+2026-11-08T18:49:28.3708538Z   install_sglang_from_source: false
+2026-11-08T18:49:28.3709062Z   prefill_decode_deployment: separation
+2026-11-08T18:49:28.3709534Z   transformers_version: 
+2026-11-08T18:49:28.3710288Z   run_start_metadata: {"branch_label": "YZY00Raiser-pryzy115", "workflow_name": "Nightly Test (NPU)", "create_time": "20261109-0215"}
+2026-11-08T18:49:28.3711050Z ##[endgroup]
+2026-11-08T18:49:28.3712076Z Complete job name: multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa
+2026-11-08T18:49:28.4698792Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-08T18:49:28.4703185Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-08T18:49:28.4704157Z ##[endgroup]
+2026-11-08T18:49:28.7539174Z (node:108) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-08T18:49:28.7540289Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-08T18:49:28.7768412Z (node:108) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-08T18:49:44.0912898Z (node:108) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-08T18:49:45.3066493Z ##[group]Run pip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple jinja2
+2026-11-08T18:49:45.3067485Z [36;1mpip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple jinja2[0m
+2026-11-08T18:49:45.3189238Z [36;1mpip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple psutil[0m
+2026-11-08T18:49:45.3189836Z [36;1m# Install kubernetes[0m
+2026-11-08T18:49:45.3190335Z [36;1mpip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple kubernetes[0m
+2026-11-08T18:49:45.3190864Z [36;1mcp $KUBECTL /usr/local/sbin/[0m
+2026-11-08T18:49:45.3195210Z shell: sh -e {0}
+2026-11-08T18:49:45.3195508Z ##[endgroup]
+2026-11-08T18:49:45.3334468Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-08T18:49:45.3335758Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-08T18:49:45.3336092Z ##[endgroup]
+2026-11-08T18:49:45.5790114Z (node:230) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-08T18:49:45.5790961Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-08T18:49:45.6032929Z (node:230) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-08T18:49:45.6682327Z (node:230) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-08T18:49:46.4683271Z Looking in indexes: https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+2026-11-08T18:49:46.4684338Z Requirement already satisfied: jinja2 in /usr/local/python3.11.13/lib/python3.11/site-packages (3.1.6)
+2026-11-08T18:49:46.4693425Z Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from jinja2) (3.0.3)
+2026-11-08T18:49:46.8016870Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-11-08T18:49:46.9608484Z 
+2026-11-08T18:49:46.9608855Z [notice] A new release of pip is available: 25.3 -> 26.3
+2026-11-08T18:49:46.9609314Z [notice] To update, run: pip install --upgrade pip
+2026-11-08T18:49:47.3661801Z Looking in indexes: https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+2026-11-08T18:49:47.3662666Z Requirement already satisfied: psutil in /usr/local/python3.11.13/lib/python3.11/site-packages (6.0.0)
+2026-11-08T18:49:47.6928860Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-11-08T18:49:47.6971888Z 
+2026-11-08T18:49:47.6972162Z [notice] A new release of pip is available: 25.3 -> 26.3
+2026-11-08T18:49:47.6972658Z [notice] To update, run: pip install --upgrade pip
+2026-11-08T18:49:48.1540186Z Looking in indexes: https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+2026-11-08T18:49:48.2793740Z Collecting kubernetes
+2026-11-08T18:49:48.2883345Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/c8/9e/bb4b445924591c09e6451da66274ee4afd3acb783f15c17c3623b9a4824a/kubernetes-37.0.2-py2.py3-none-any.whl (7.5 MB)
+2026-11-08T18:49:48.3451394Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.5/7.5 MB 151.7 MB/s  0:00:00
+2026-11-08T18:49:48.3635232Z Requirement already satisfied: certifi>=2024.7.4 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (2025.10.5)
+2026-11-08T18:49:48.3760148Z Collecting python-dateutil>=3.0.0 (from kubernetes)
+2026-11-08T18:49:48.3783725Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/2f/a9/52b89563d154433d79b51ed1eb4842bf7334cb2696891a7fe135618853d7/python_dateutil-4.0.0-py3-none-any.whl (92 kB)
+2026-11-08T18:49:48.5424855Z Collecting pydantic>=2.14.2 (from kubernetes)
+2026-11-08T18:49:48.5437914Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/72/b8/b864503789ef5c58597d2a7b4adbee62c26440ab1e682581fc6838df8947/pydantic-2.14.3-py3-none-any.whl (494 kB)
+2026-11-08T18:49:48.5580880Z Requirement already satisfied: PyYAML>=6.0.3 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (6.0.3)
+2026-11-08T18:49:48.5918435Z Collecting websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 (from kubernetes)
+2026-11-08T18:49:48.5961359Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/d5/d2/cc4dc1271e464942db7ee278baae2daa99ee77cb2af744025c04da585a3e/websocket_client-1.9.2-py3-none-any.whl (95 kB)
+2026-11-08T18:49:48.6052942Z Requirement already satisfied: requests in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (2.32.5)
+2026-11-08T18:49:48.6187053Z Collecting requests-oauthlib (from kubernetes)
+2026-11-08T18:49:48.6220945Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/3b/5d/63d4ae3b9daea098d5d6f5da83984853c1bbacd5dc826764b249fe119d24/requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+2026-11-08T18:49:48.6427096Z Collecting oauthlib>=4.0.0 (from kubernetes)
+2026-11-08T18:49:48.6472527Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/df/ef/3b8adde1b32a6f540758bff734d3442c621734c83708e5f02b0ba2f43b84/oauthlib-4.0.1-py3-none-any.whl (161 kB)
+2026-11-08T18:49:48.6742614Z Collecting typing-extensions>=4.16.0 (from kubernetes)
+2026-11-08T18:49:48.6766206Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-11-08T18:49:48.7090444Z Collecting urllib3<3.0.0,>=2.8.0 (from kubernetes)
+2026-11-08T18:49:48.7118697Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/92/9d/c4e665119135114480843e7ab388fa94d8480650450e6f8e26b70d323a4c/urllib3-2.8.0-py3-none-any.whl (135 kB)
+2026-11-08T18:49:48.7290087Z Collecting durationpy>=0.11 (from kubernetes)
+2026-11-08T18:49:48.7313656Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/e6/c4/ebdf7837bc4ef6fd98cfb013c28855bb358467bf86c1af011bbc21e21df0/durationpy-0.11-py3-none-any.whl (4.1 kB)
+2026-11-08T18:49:49.3933649Z Collecting aiohttp<4.0.0,>=3.14.5 (from kubernetes)
+2026-11-08T18:49:49.3987226Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/42/74/2a2b22953de15c6c8a80debf26db3047e4e8a5a5db6dd7c2c6c01eec0605/aiohttp-3.14.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.9 MB)
+2026-11-08T18:49:49.4177574Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.9/1.9 MB 106.9 MB/s  0:00:00
+2026-11-08T18:49:49.4372032Z Collecting aiohttp-retry>=2.9.1 (from kubernetes)
+2026-11-08T18:49:49.4398476Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/1a/99/84ba7273339d0f3dfa57901b846489d2e5c2cd731470167757f1935fffbd/aiohttp_retry-2.9.1-py3-none-any.whl (10.0 kB)
+2026-11-08T18:49:49.4480406Z Requirement already satisfied: aiohappyeyeballs>=2.5.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.14.5->kubernetes) (2.6.1)
+2026-11-08T18:49:49.4482667Z Requirement already satisfied: aiosignal>=1.4.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.14.5->kubernetes) (1.4.0)
+2026-11-08T18:49:49.4483879Z Requirement already satisfied: attrs>=17.3.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.14.5->kubernetes) (25.4.0)
+2026-11-08T18:49:49.4484931Z Requirement already satisfied: frozenlist>=1.1.1 in /usr/local/python3.11.13/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.14.5->kubernetes) (1.8.0)
+2026-11-08T18:49:49.4488946Z Requirement already satisfied: multidict<8.0,>=4.5 in /usr/local/python3.11.13/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.14.5->kubernetes) (6.7.0)
+2026-11-08T18:49:49.4492659Z Requirement already satisfied: propcache>=0.2.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.14.5->kubernetes) (0.4.1)
+2026-11-08T18:49:49.7789501Z Collecting yarl<2.0,>=1.25.1 (from aiohttp<4.0.0,>=3.14.5->kubernetes)
+2026-11-08T18:49:49.7822115Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/95/0c/a71501bbc1a674ff72c4d6c2b75f4d9a5af819f5244c3a7558080a8802c5/yarl-1.25.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (117 kB)
+2026-11-08T18:49:49.8037385Z Requirement already satisfied: idna>=2.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from yarl<2.0,>=1.25.1->aiohttp<4.0.0,>=3.14.5->kubernetes) (3.11)
+2026-11-08T18:49:49.8170856Z Requirement already satisfied: annotated-types>=0.6.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from pydantic>=2.14.2->kubernetes) (0.7.0)
+2026-11-08T18:49:50.7339249Z Collecting pydantic-core==2.50.4 (from pydantic>=2.14.2->kubernetes)
+2026-11-08T18:49:50.7369828Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/56/51/cbb7a1bc0196ff94d3478d265eed7449f811759988eb760d41f4edd0893b/pydantic_core-2.50.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.3 MB)
+2026-11-08T18:49:50.7574664Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 115.9 MB/s  0:00:00
+2026-11-08T18:49:50.7734199Z Collecting typing-inspection>=0.4.4 (from pydantic>=2.14.2->kubernetes)
+2026-11-08T18:49:50.7793330Z   Downloading https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/de/0c/ea2544850a7c135e15033a5c7a8e7211136184b7ae63e2239d557c2b3019/typing_inspection-0.4.5-py3-none-any.whl (14 kB)
+2026-11-08T18:49:50.7886561Z Requirement already satisfied: tzdata in /usr/local/python3.11.13/lib/python3.11/site-packages (from python-dateutil>=3.0.0->kubernetes) (2025.2)
+2026-11-08T18:49:50.7977692Z Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/python3.11.13/lib/python3.11/site-packages (from requests->kubernetes) (3.4.4)
+2026-11-08T18:49:51.1856918Z Installing collected packages: durationpy, yarl, websocket-client, urllib3, typing-extensions, python-dateutil, oauthlib, typing-inspection, pydantic-core, requests-oauthlib, pydantic, aiohttp, aiohttp-retry, kubernetes
+2026-11-08T18:49:51.1935588Z   Attempting uninstall: yarl
+2026-11-08T18:49:51.1994724Z     Found existing installation: yarl 1.22.0
+2026-11-08T18:49:51.2025645Z     Uninstalling yarl-1.22.0:
+2026-11-08T18:49:51.2071802Z       Successfully uninstalled yarl-1.22.0
+2026-11-08T18:49:51.2970599Z   Attempting uninstall: urllib3
+2026-11-08T18:49:51.3006206Z     Found existing installation: urllib3 2.5.0
+2026-11-08T18:49:51.3045441Z     Uninstalling urllib3-2.5.0:
+2026-11-08T18:49:51.3139056Z       Successfully uninstalled urllib3-2.5.0
+2026-11-08T18:49:51.3869677Z   Attempting uninstall: typing-extensions
+2026-11-08T18:49:51.3906710Z     Found existing installation: typing_extensions 4.15.0
+2026-11-08T18:49:51.3920938Z     Uninstalling typing_extensions-4.15.0:
+2026-11-08T18:49:51.6791589Z       Successfully uninstalled typing_extensions-4.15.0
+2026-11-08T18:49:51.7100039Z   Attempting uninstall: python-dateutil
+2026-11-08T18:49:51.7142122Z     Found existing installation: python-dateutil 2.9.0.post0
+2026-11-08T18:49:51.7176971Z     Uninstalling python-dateutil-2.9.0.post0:
+2026-11-08T18:49:51.7242566Z       Successfully uninstalled python-dateutil-2.9.0.post0
+2026-11-08T18:49:51.8578644Z   Attempting uninstall: typing-inspection
+2026-11-08T18:49:51.8623525Z     Found existing installation: typing-inspection 0.4.2
+2026-11-08T18:49:51.8640283Z     Uninstalling typing-inspection-0.4.2:
+2026-11-08T18:49:51.8668282Z       Successfully uninstalled typing-inspection-0.4.2
+2026-11-08T18:49:51.8793546Z   Attempting uninstall: pydantic-core
+2026-11-08T18:49:51.8843195Z     Found existing installation: pydantic_core 2.41.5
+2026-11-08T18:49:51.8861328Z     Uninstalling pydantic_core-2.41.5:
+2026-11-08T18:49:51.8921381Z       Successfully uninstalled pydantic_core-2.41.5
+2026-11-08T18:49:51.9644142Z   Attempting uninstall: pydantic
+2026-11-08T18:49:51.9693056Z     Found existing installation: pydantic 2.12.4
+2026-11-08T18:49:51.9782017Z     Uninstalling pydantic-2.12.4:
+2026-11-08T18:49:52.0032425Z       Successfully uninstalled pydantic-2.12.4
+2026-11-08T18:49:52.2742015Z   Attempting uninstall: aiohttp
+2026-11-08T18:49:52.2781484Z     Found existing installation: aiohttp 3.13.2
+2026-11-08T18:49:52.2837025Z     Uninstalling aiohttp-3.13.2:
+2026-11-08T18:49:52.3017285Z       Successfully uninstalled aiohttp-3.13.2
+2026-11-08T18:49:58.6927933Z 
+2026-11-08T18:49:58.7021440Z Successfully installed aiohttp-3.14.5 aiohttp-retry-2.9.1 durationpy-0.11 kubernetes-37.0.2 oauthlib-4.0.1 pydantic-2.14.3 pydantic-core-2.50.4 python-dateutil-4.0.0 requests-oauthlib-2.0.0 typing-extensions-4.16.0 typing-inspection-0.4.5 urllib3-2.8.0 websocket-client-1.9.2 yarl-1.25.1
+2026-11-08T18:49:58.7023507Z ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+2026-11-08T18:49:58.7024686Z vllm 0.8.5.post1+empty requires xgrammar==0.1.18; platform_machine == "x86_64" or platform_machine == "aarch64", but you have xgrammar 0.1.25 which is incompatible.
+2026-11-08T18:49:58.7026524Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-11-08T18:49:58.7061067Z 
+2026-11-08T18:49:58.7062017Z [notice] A new release of pip is available: 25.3 -> 26.3
+2026-11-08T18:49:58.7062508Z [notice] To update, run: pip install --upgrade pip
+2026-11-08T18:49:59.9638475Z ##[group]Run actions/checkout@v4
+2026-11-08T18:49:59.9638838Z with:
+2026-11-08T18:49:59.9639135Z   repository: sgl-project/sglang
+2026-11-08T18:49:59.9642221Z   token: ***
+2026-11-08T18:49:59.9642476Z   ssh-strict: true
+2026-11-08T18:49:59.9642722Z   ssh-user: git
+2026-11-08T18:49:59.9642969Z   persist-credentials: true
+2026-11-08T18:49:59.9643236Z   clean: true
+2026-11-08T18:49:59.9643488Z   sparse-checkout-cone-mode: true
+2026-11-08T18:49:59.9643786Z   fetch-depth: 1
+2026-11-08T18:49:59.9644016Z   fetch-tags: false
+2026-11-08T18:49:59.9644275Z   show-progress: true
+2026-11-08T18:49:59.9644521Z   lfs: false
+2026-11-08T18:49:59.9644740Z   submodules: false
+2026-11-08T18:49:59.9644983Z   set-safe-directory: true
+2026-11-08T18:49:59.9645278Z   allow-unsafe-pr-checkout: false
+2026-11-08T18:49:59.9645571Z ##[endgroup]
+2026-11-08T18:49:59.9737295Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-08T18:49:59.9738570Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-08T18:49:59.9738988Z ##[endgroup]
+2026-11-08T18:50:00.2199032Z (node:271) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-08T18:50:00.2199806Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-08T18:50:00.2439223Z (node:271) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-08T18:50:00.3054928Z (node:271) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-08T18:50:01.1115245Z Syncing repository: sgl-project/sglang
+2026-11-08T18:50:01.1116738Z ##[group]Getting Git version info
+2026-11-08T18:50:01.1117089Z Working directory is '/__w/sglang/sglang'
+2026-11-08T18:50:01.1117600Z [command]/usr/bin/git version
+2026-11-08T18:50:01.1117894Z git version 2.34.1
+2026-11-08T18:50:01.1118895Z ##[endgroup]
+2026-11-08T18:50:01.1122962Z Copying '/root/.gitconfig' to '/__w/_temp/2dc45068-1348-4d78-b099-d94167141c8f/.gitconfig'
+2026-11-08T18:50:01.1123703Z Temporarily overriding HOME='/__w/_temp/2dc45068-1348-4d78-b099-d94167141c8f' before making global git config changes
+2026-11-08T18:50:01.1124418Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-08T18:50:01.1124998Z [command]/usr/bin/git config --global --add safe.directory /__w/sglang/sglang
+2026-11-08T18:50:01.1137948Z Deleting the contents of '/__w/sglang/sglang'
+2026-11-08T18:50:01.1140640Z ##[group]Initializing the repository
+2026-11-08T18:50:01.1145225Z [command]/usr/bin/git init /__w/sglang/sglang
+2026-11-08T18:50:01.1193778Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-08T18:50:01.1194344Z hint: is subject to change. To configure the initial branch name to use in all
+2026-11-08T18:50:01.1194880Z hint: of your new repositories, which will suppress this warning, call:
+2026-11-08T18:50:01.1195250Z hint: 
+2026-11-08T18:50:01.1195526Z hint: 	git config --global init.defaultBranch <name>
+2026-11-08T18:50:01.1195844Z hint: 
+2026-11-08T18:50:01.1196177Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-08T18:50:01.1196717Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-08T18:50:01.1197128Z hint: 
+2026-11-08T18:50:01.1197353Z hint: 	git branch -m <name>
+2026-11-08T18:50:01.1197726Z Initialized empty Git repository in /__w/sglang/sglang/.git/
+2026-11-08T18:50:01.1201613Z [command]/usr/bin/git remote add origin https://github.com/sgl-project/sglang
+2026-11-08T18:50:01.1239646Z ##[endgroup]
+2026-11-08T18:50:01.1240057Z ##[group]Disabling automatic garbage collection
+2026-11-08T18:50:01.1243321Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-08T18:50:01.1273364Z ##[endgroup]
+2026-11-08T18:50:01.1273749Z ##[group]Setting up auth
+2026-11-08T18:50:01.1279200Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-08T18:50:01.1312579Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-08T18:50:01.1596723Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-08T18:50:01.1628399Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-08T18:50:01.1915654Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-08T18:50:01.1952887Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-08T18:50:01.2241637Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-08T18:50:01.2287831Z ##[endgroup]
+2026-11-08T18:50:01.2288222Z ##[group]Fetching the repository
+2026-11-08T18:50:01.2292446Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +8f296729e6699faaf161ad78ffa4ae331c318832:refs/remotes/pull/49180/merge
+2026-11-08T18:50:03.4600909Z warning: redirecting to http://git-cdn-service.git-cdn.svc.cluster.local:8000/sgl-project/sglang.git/
+2026-11-08T18:50:09.7639702Z From http://git-cdn-service.git-cdn.svc.cluster.local:8000/sgl-project/sglang
+2026-11-08T18:50:09.7640389Z  * [new ref]         8f296729e6699faaf161ad78ffa4ae331c318832 -> pull/49180/merge
+2026-11-08T18:50:09.7667003Z ##[endgroup]
+2026-11-08T18:50:09.7667500Z ##[group]Determining the checkout info
+2026-11-08T18:50:09.7668008Z ##[endgroup]
+2026-11-08T18:50:09.7673621Z [command]/usr/bin/git sparse-checkout disable
+2026-11-08T18:50:09.7717115Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-08T18:50:09.7757494Z ##[group]Checking out the ref
+2026-11-08T18:50:09.7767890Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/49180/merge
+2026-11-08T18:50:10.5953089Z Note: switching to 'refs/remotes/pull/49180/merge'.
+2026-11-08T18:50:10.5953549Z 
+2026-11-08T18:50:10.5953785Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-11-08T18:50:10.5954339Z changes and commit them, and you can discard any commits you make in this
+2026-11-08T18:50:10.5954851Z state without impacting any branches by switching back to a branch.
+2026-11-08T18:50:10.5955611Z 
+2026-11-08T18:50:10.5955828Z If you want to create a new branch to retain commits you create, you may
+2026-11-08T18:50:10.5956322Z do so (now or later) by using -c with the switch command. Example:
+2026-11-08T18:50:10.5956593Z 
+2026-11-08T18:50:10.5956728Z   git switch -c <new-branch-name>
+2026-11-08T18:50:10.5956933Z 
+2026-11-08T18:50:10.5957073Z Or undo this operation with:
+2026-11-08T18:50:10.5957258Z 
+2026-11-08T18:50:10.5957360Z   git switch -
+2026-11-08T18:50:10.5957502Z 
+2026-11-08T18:50:10.5957731Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-11-08T18:50:10.5958061Z 
+2026-11-08T18:50:10.5985498Z HEAD is now at 8f29672 Merge d8b80d0544592475610b09f1b084de90fc40c3dc into 4003bf1077debcca3fccfa6e0d7b56ed584aa727
+2026-11-08T18:50:10.5986678Z ##[endgroup]
+2026-11-08T18:50:10.6027593Z [command]/usr/bin/git log -1 --format=%H
+2026-11-08T18:50:10.6056266Z 8f296729e6699faaf161ad78ffa4ae331c318832
+2026-11-08T18:50:11.3638282Z ##[group]Run # copy source code to shared-disk
+2026-11-08T18:50:11.3638813Z [36;1m# copy source code to shared-disk[0m
+2026-11-08T18:50:11.3639234Z [36;1m# Append run_id to isolate concurrent runs sharing the same PVC.[0m
+2026-11-08T18:50:11.3639655Z [36;1mcurrent_path=$(pwd)[0m
+2026-11-08T18:50:11.3639996Z [36;1mtarget_path=/root/.cache/tests/sglang-42509098847[0m
+2026-11-08T18:50:11.3640374Z [36;1mrm -rf ${target_path}[0m
+2026-11-08T18:50:11.3640663Z [36;1mmkdir -p ${target_path}[0m
+2026-11-08T18:50:11.3640983Z [36;1mcp -r ${current_path}/* ${target_path}/[0m
+2026-11-08T18:50:11.3641644Z shell: sh -e {0}
+2026-11-08T18:50:11.3641887Z ##[endgroup]
+2026-11-08T18:50:11.3746197Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-08T18:50:11.3747779Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-08T18:50:11.3748329Z ##[endgroup]
+2026-11-08T18:50:11.6248312Z (node:321) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-08T18:50:11.6249170Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-08T18:50:11.6497930Z (node:321) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-08T18:50:11.7198502Z (node:321) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-08T18:51:35.9841902Z ##[group]Run cd ${ASCEND_E2E_TEST_CONFIG_PATH}
+2026-11-08T18:51:35.9842419Z [36;1mcd ${ASCEND_E2E_TEST_CONFIG_PATH}[0m
+2026-11-08T18:51:35.9842882Z [36;1mkubectl delete -f ./k8s_multi_pd_*.yaml --ignore-not-found=true || true[0m
+2026-11-08T18:51:35.9843316Z [36;1m[0m
+2026-11-08T18:51:35.9843572Z [36;1mpod_name_prefix="${KUBE_JOB_NAME}-"[0m
+2026-11-08T18:51:35.9844018Z [36;1mecho "kube name space: $NAMESPACE, pod name prefix: ${pod_name_prefix}"[0m
+2026-11-08T18:51:35.9844480Z [36;1mwhile true; do[0m
+2026-11-08T18:51:35.9844862Z [36;1m  if kubectl get po -A -n $NAMESPACE | grep -q "${pod_name_prefix}"; then[0m
+2026-11-08T18:51:35.9845367Z [36;1m    echo "Found exist sglang job, sleeping for 30 seconds..."[0m
+2026-11-08T18:51:35.9845751Z [36;1m    sleep 30[0m
+2026-11-08T18:51:35.9846249Z [36;1m    kubectl get pods | grep "${pod_name_prefix}" | awk '{print $1}' | xargs kubectl delete pod -n $NAMESPACE || true[0m
+2026-11-08T18:51:35.9846777Z [36;1m  else[0m
+2026-11-08T18:51:35.9847134Z [36;1m    echo "No sglang job exist, start test case..."[0m
+2026-11-08T18:51:35.9847476Z [36;1m    break[0m
+2026-11-08T18:51:35.9847710Z [36;1m  fi[0m
+2026-11-08T18:51:35.9847937Z [36;1mdone[0m
+2026-11-08T18:51:35.9848336Z shell: sh -e {0}
+2026-11-08T18:51:35.9848583Z ##[endgroup]
+2026-11-08T18:51:35.9950175Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-08T18:51:35.9951978Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-08T18:51:35.9952892Z ##[endgroup]
+2026-11-08T18:51:36.2550013Z (node:406) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-08T18:51:36.2550824Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-08T18:51:36.2795011Z (node:406) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-08T18:51:36.3397832Z (node:406) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-08T18:51:36.9157951Z error: the path "./k8s_multi_pd_*.yaml" does not exist
+2026-11-08T18:51:36.9173718Z kube name space: sgl-project, pod name prefix: ascend-42509098847-
+2026-11-08T18:51:37.2320467Z No sglang job exist, start test case...
+2026-11-08T18:51:38.2494054Z ##[group]Run # sglang_source_relative_path is shared-disk path
+2026-11-08T18:51:38.2494677Z [36;1m# sglang_source_relative_path is shared-disk path[0m
+2026-11-08T18:51:38.2495194Z [36;1m# Append run_id so concurrent runs do not overwrite each other on the shared PVC.[0m
+2026-11-08T18:51:38.2495734Z [36;1msglang_source_relative_path=tests/sglang-42509098847[0m
+2026-11-08T18:51:38.2496212Z [36;1msglang_source_path=/root/.cache/${sglang_source_relative_path}[0m
+2026-11-08T18:51:38.2496681Z [36;1mecho "Source code path: ${sglang_source_path}"[0m
+2026-11-08T18:51:38.2497017Z [36;1m[0m
+2026-11-08T18:51:38.2497513Z [36;1mtest_case="test/registered/npu/accuracy/deepseek_v4_pro/test_npu_deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa.py"[0m
+2026-11-08T18:51:38.2498149Z [36;1mif [ ! -f "${sglang_source_path}/${test_case}" ]; then[0m
+2026-11-08T18:51:38.2498628Z [36;1m  echo "The testcase does not exit: ${sglang_source_path}/${test_case}"[0m
+2026-11-08T18:51:38.2499126Z [36;1m  exit 1[0m
+2026-11-08T18:51:38.2499362Z [36;1mfi[0m
+2026-11-08T18:51:38.2499581Z [36;1m[0m
+2026-11-08T18:51:38.2499894Z [36;1m# prepare for output data[0m
+2026-11-08T18:51:38.2500201Z [36;1mtc_name=${test_case##*/}[0m
+2026-11-08T18:51:38.2500497Z [36;1mtc_name=${tc_name%.*}[0m
+2026-11-08T18:51:38.2500763Z [36;1m[0m
+2026-11-08T18:51:38.2501036Z [36;1m# Provided automatically by the GitHub server.[0m
+2026-11-08T18:51:38.2501653Z [36;1m# run_id is the unique identifier for the workflow run,[0m
+2026-11-08T18:51:38.2502176Z [36;1m# attempt represents the re‑run attempt count of the job.[0m
+2026-11-08T18:51:38.2502558Z [36;1mrun_id=42509098847[0m
+2026-11-08T18:51:38.2502827Z [36;1mrun_attempt=1[0m
+2026-11-08T18:51:38.2503078Z [36;1m[0m
+2026-11-08T18:51:38.2503412Z [36;1m# Parse run metadata (branch_label / workflow_name / create_time)[0m
+2026-11-08T18:51:38.2504037Z [36;1m# from run_start_metadata JSON input using GitHub fromJson expression, same as partitions input.[0m
+2026-11-08T18:51:38.2504657Z [36;1mbranch_label=$(echo "YZY00Raiser-pryzy115" | tr '/:' '--')[0m
+2026-11-08T18:51:38.2505171Z [36;1mworkflow_name=$(echo "Nightly Test (NPU)" | tr ' ' '_' | tr -d '()')[0m
+2026-11-08T18:51:38.2505589Z [36;1mcreate_time="20261109-0215"[0m
+2026-11-08T18:51:38.2506028Z [36;1mif [ -z "${create_time}" ]; then create_time=$(date -u -d '+8 hours' +%Y%m%d-%H%M); fi[0m
+2026-11-08T18:51:38.2506592Z [36;1m# Append the image tag to the workflow-name segment so that runs with[0m
+2026-11-08T18:51:38.2507107Z [36;1m# different images (CANN 9.0.0/9.1.0, a3/a5) persist into distinct,[0m
+2026-11-08T18:51:38.2507546Z [36;1m# image-tagged output/log directories.[0m
+2026-11-08T18:51:38.2508222Z [36;1mimage_label=$(echo "swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann9.1.0-a3-B106" | sed 's#.*[/:]##')[0m
+2026-11-08T18:51:38.2508931Z [36;1mworkflow_name="${workflow_name}--${image_label}"[0m
+2026-11-08T18:51:38.2509268Z [36;1m[0m
+2026-11-08T18:51:38.2510010Z [36;1m# Print persistence‑directory‑prefix variables[0m
+2026-11-08T18:51:38.2510791Z [36;1mecho "Persistence prefix: run_id=${run_id} run_attempt=${run_attempt} branch_label=${branch_label} workflow_name=${workflow_name} create_time=${create_time}"[0m
+2026-11-08T18:51:38.2511648Z [36;1m[0m
+2026-11-08T18:51:38.2512247Z [36;1msglang_test_results_output_path=/root/.cache/tests/output/${branch_label}-${create_time}-${run_id}-${run_attempt}/${workflow_name}/accuracy/${tc_name}[0m
+2026-11-08T18:51:38.2512964Z [36;1mmkdir -p ${sglang_test_results_output_path}[0m
+2026-11-08T18:51:38.2513406Z [36;1mecho "Metrics file path: ${sglang_test_results_output_path}"[0m
+2026-11-08T18:51:38.2513781Z [36;1m[0m
+2026-11-08T18:51:38.2514039Z [36;1mprefill_decode_deployment="separation"[0m
+2026-11-08T18:51:38.2514370Z [36;1mkube_job_type=""[0m
+2026-11-08T18:51:38.2514706Z [36;1mif [ "$prefill_decode_deployment" = "separation" ];then[0m
+2026-11-08T18:51:38.2515106Z [36;1m  kube_job_type=multi-pd-separation[0m
+2026-11-08T18:51:38.2515657Z [36;1melif [ "$prefill_decode_deployment" = "mix" ];then[0m
+2026-11-08T18:51:38.2516032Z [36;1m  kube_job_type=multi-pd-mix[0m
+2026-11-08T18:51:38.2516374Z [36;1melse[0m
+2026-11-08T18:51:38.2516729Z [36;1m  echo "Unsupported deployment type: ${prefill_decode_deployment}"[0m
+2026-11-08T18:51:38.2517129Z [36;1m  exit 1[0m
+2026-11-08T18:51:38.2517354Z [36;1mfi[0m
+2026-11-08T18:51:38.2517560Z [36;1m[0m
+2026-11-08T18:51:38.2517784Z [36;1mtransformers_version=""[0m
+2026-11-08T18:51:38.2518084Z [36;1mcd ${ASCEND_E2E_TEST_CONFIG_PATH}[0m
+2026-11-08T18:51:38.2518423Z [36;1mCMD="python3 -u run_npu_e2e_test.py \[0m
+2026-11-08T18:51:38.2518749Z [36;1m  --env ci \[0m
+2026-11-08T18:51:38.2519248Z [36;1m  --image swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann9.1.0-a3-B106 \[0m
+2026-11-08T18:51:38.2519990Z [36;1m  --sglang-source-relative-path ${sglang_source_relative_path} \[0m
+2026-11-08T18:51:38.2520493Z [36;1m  --metrics-data-file ${sglang_test_results_output_path} \[0m
+2026-11-08T18:51:38.2520881Z [36;1m  --test-case ${test_case} \[0m
+2026-11-08T18:51:38.2521293Z [36;1m  --kube-name-space ${NAMESPACE} \[0m
+2026-11-08T18:51:38.2521666Z [36;1m  --kube-job-type ${kube_job_type} \[0m
+2026-11-08T18:51:38.2522025Z [36;1m  --kube-job-name-prefix ${KUBE_JOB_NAME} \[0m
+2026-11-08T18:51:38.2522376Z [36;1m  --run-id 42509098847"[0m
+2026-11-08T18:51:38.2522790Z [36;1m[0m
+2026-11-08T18:51:38.2523095Z [36;1mif [ "$prefill_decode_deployment" = "separation" ];then[0m
+2026-11-08T18:51:38.2523474Z [36;1m  CMD="${CMD} \[0m
+2026-11-08T18:51:38.2523755Z [36;1m    --prefill-size 2 \[0m
+2026-11-08T18:51:38.2524055Z [36;1m    --decode-size 2 \[0m
+2026-11-08T18:51:38.2524334Z [36;1m    --router-size 1"[0m
+2026-11-08T18:51:38.2524680Z [36;1melif [ "$prefill_decode_deployment" = "mix" ];then[0m
+2026-11-08T18:51:38.2525049Z [36;1m  CMD="${CMD} --node-size 0"[0m
+2026-11-08T18:51:38.2525335Z [36;1melse[0m
+2026-11-08T18:51:38.2525700Z [36;1m  echo "Unsupported deployment type: ${prefill_decode_deployment}"[0m
+2026-11-08T18:51:38.2526108Z [36;1m  exit 1[0m
+2026-11-08T18:51:38.2526331Z [36;1mfi[0m
+2026-11-08T18:51:38.2526557Z [36;1m[0m
+2026-11-08T18:51:38.2526880Z [36;1mif [ "$SGLANG_IS_IN_CI" = "true" ] || [ "$SGLANG_IS_IN_CI" = "True" ];then[0m
+2026-11-08T18:51:38.2527288Z [36;1m  echo "Run test in ci."[0m
+2026-11-08T18:51:38.2527603Z [36;1m  CMD="${CMD} --sglang-is-in-ci"[0m
+2026-11-08T18:51:38.2527907Z [36;1mfi[0m
+2026-11-08T18:51:38.2528113Z [36;1m[0m
+2026-11-08T18:51:38.2528344Z [36;1minstall_sglang_from_source="false"[0m
+2026-11-08T18:51:38.2528834Z [36;1mif [ "$install_sglang_from_source" = "true" ] || [ "$install_sglang_from_source" = "True" ];then[0m
+2026-11-08T18:51:38.2529338Z [36;1m  echo "Install sglang from source."[0m
+2026-11-08T18:51:38.2529696Z [36;1m  CMD="${CMD} --install-sglang-from-source"[0m
+2026-11-08T18:51:38.2530167Z [36;1m  commit_id=8f296729e6699faaf161ad78ffa4ae331c318832[0m
+2026-11-08T18:51:38.2530963Z [36;1m  echo "commit id: ${commit_id}" > "$(dirname "${sglang_test_results_output_path}")/commit_id"[0m
+2026-11-08T18:51:38.2531708Z [36;1melse[0m
+2026-11-08T18:51:38.2532250Z [36;1m  echo "Use sglang from image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann9.1.0-a3-B106"[0m
+2026-11-08T18:51:38.2532846Z [36;1mfi[0m
+2026-11-08T18:51:38.2533064Z [36;1m[0m
+2026-11-08T18:51:38.2533316Z [36;1mif [ "$transformers_version" != "" ];then[0m
+2026-11-08T18:51:38.2533738Z [36;1m  CMD="${CMD} --transformers-version ${transformers_version}"[0m
+2026-11-08T18:51:38.2534120Z [36;1melse[0m
+2026-11-08T18:51:38.2534403Z [36;1m  echo "Use default transformers version in image."[0m
+2026-11-08T18:51:38.2534747Z [36;1mfi[0m
+2026-11-08T18:51:38.2534956Z [36;1m[0m
+2026-11-08T18:51:38.2535179Z [36;1mecho "Run command: ${CMD}"[0m
+2026-11-08T18:51:38.2535466Z [36;1meval "${CMD}"[0m
+2026-11-08T18:51:38.2535937Z shell: sh -e {0}
+2026-11-08T18:51:38.2536180Z ##[endgroup]
+2026-11-08T18:51:38.2654814Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-08T18:51:38.2655931Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-08T18:51:38.2656275Z ##[endgroup]
+2026-11-08T18:51:38.5406631Z (node:488) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-08T18:51:38.5407426Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-08T18:51:38.5633096Z (node:488) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-08T18:51:38.6183528Z (node:488) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-08T18:51:39.1506927Z Source code path: /root/.cache/tests/sglang-42509098847
+2026-11-08T18:51:39.1610590Z Persistence prefix: run_id=42509098847 run_attempt=1 branch_label=YZY00Raiser-pryzy115 workflow_name=Nightly_Test_NPU--cann9.1.0-a3-B106 create_time=20261109-0215
+2026-11-08T18:51:39.1752262Z Metrics file path: /root/.cache/tests/output/YZY00Raiser-pryzy115-20261109-0215-42509098847-1/Nightly_Test_NPU--cann9.1.0-a3-B106/accuracy/test_npu_deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa
+2026-11-08T18:51:39.1753107Z Run test in ci.
+2026-11-08T18:51:39.1753630Z Use sglang from image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann9.1.0-a3-B106
+2026-11-08T18:51:39.1754233Z Use default transformers version in image.
+2026-11-08T18:51:39.1757020Z Run command: python3 -u run_npu_e2e_test.py   --env ci   --image swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann9.1.0-a3-B106   --sglang-source-relative-path tests/sglang-42509098847   --metrics-data-file /root/.cache/tests/output/YZY00Raiser-pryzy115-20261109-0215-42509098847-1/Nightly_Test_NPU--cann9.1.0-a3-B106/accuracy/test_npu_deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa   --test-case test/registered/npu/accuracy/deepseek_v4_pro/test_npu_deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa.py   --kube-name-space sgl-project   --kube-job-type multi-pd-separation   --kube-job-name-prefix ascend-42509098847   --run-id 42509098847     --prefill-size 2     --decode-size 2     --router-size 1 --sglang-is-in-ci
+2026-11-08T18:51:39.4636397Z 2026-11-08 18:51:39,462 - INFO - KUBE_CONFIG: /root/.cache/.cache/kb.yaml
+2026-11-08T18:51:40.1238267Z 2026-11-08 18:51:40,122 - INFO - Apply k8s yaml... KUBE_NAME_SPACE:sgl-project, KUBE_CONFIG_MAP:sglang-configmap-754269ab3dqxrdf4, KUBE_JOB_TYPE:multi-pd-separation, KUBE_YAML_FILE:k8s_multi_pd_separation_754269ab3dqxrdf4.yaml
+2026-11-08T18:51:40.1404448Z 2026-11-08 18:51:40,139 - INFO - Pod YAML written to k8s_multi_pd_separation_754269ab3dqxrdf4.yaml
+2026-11-08T18:51:40.1845752Z 2026-11-08 18:51:40,183 - INFO - ConfigMap sglang-configmap-754269ab3dqxrdf4 is created
+2026-11-08T18:51:40.2558056Z 2026-11-08 18:51:40,254 - INFO - Volcano job ascend-42509098847-754269ab3dqxrdf4 is created
+2026-11-08T18:51:40.2558640Z 2026-11-08 18:51:40,254 - INFO - Waiting all pods to running...
+2026-11-08T18:51:40.3225773Z 2026-11-08 18:51:40,321 - INFO - No sglang pod, waiting...
+2026-11-08T18:51:45.4060348Z 2026-11-08 18:51:45,404 - INFO - Pod: ascend-42509098847-754269ab3dqxrdf4-sglang-decode-0, status: Pending
+2026-11-08T18:51:50.4792381Z 2026-11-08 18:51:50,474 - INFO - Pod: ascend-42509098847-754269ab3dqxrdf4-sglang-decode-0, status: Pending
+2026-11-08T18:51:55.5511064Z 2026-11-08 18:51:55,549 - INFO - Pod: ascend-42509098847-754269ab3dqxrdf4-sglang-decode-0, status: Running
+2026-11-08T18:51:55.5511941Z 2026-11-08 18:51:55,550 - INFO - Pod: ascend-42509098847-754269ab3dqxrdf4-sglang-decode-1, status: Running
+2026-11-08T18:51:55.5512627Z 2026-11-08 18:51:55,550 - INFO - Pod: ascend-42509098847-754269ab3dqxrdf4-sglang-prefill-0, status: Running
+2026-11-08T18:51:55.5513759Z 2026-11-08 18:51:55,550 - INFO - Pod: ascend-42509098847-754269ab3dqxrdf4-sglang-prefill-1, status: Running
+2026-11-08T18:51:55.5514474Z 2026-11-08 18:51:55,550 - INFO - Pod: ascend-42509098847-754269ab3dqxrdf4-sglang-router-0, status: Running
+2026-11-08T18:51:55.5515032Z 2026-11-08 18:51:55,550 - INFO - All sglang Pod is Running !
+2026-11-08T18:51:55.6662554Z 2026-11-08 18:51:55,661 - INFO - ConfigMap sglang-configmap-754269ab3dqxrdf4 already exists. Updating...
+2026-11-08T18:51:55.6704255Z 2026-11-08 18:51:55,669 - INFO - ConfigMap sglang-configmap-754269ab3dqxrdf4 updated successfully.
+2026-11-08T18:51:55.6707026Z 2026-11-08 18:51:55,669 - INFO - api_version='v1' binary_data=None data={'ascend-42509098847-754269ab3dqxrdf4-sglang-decode-0': '172.22.3.95', 'ascend-42509098847-754269ab3dqxrdf4-sglang-decode-1': '172.22.3.166', 'ascend-42509098847-754269ab3dqxrdf4-sglang-prefill-0': '172.22.3.181', 'ascend-42509098847-754269ab3dqxrdf4-sglang-prefill-1': '172.22.3.138', 'ascend-42509098847-754269ab3dqxrdf4-sglang-router-0': '172.22.3.158'} immutable=None kind='ConfigMap' metadata={'annotations': None,
+2026-11-08T18:51:55.6709019Z  'creation_timestamp': datetime.datetime(2026, 11, 8, 18, 51, 40, tzinfo=TzInfo(0)),
+2026-11-08T18:51:55.6709529Z  'deletion_grace_period_seconds': None,
+2026-11-08T18:51:55.6709843Z  'deletion_timestamp': None,
+2026-11-08T18:51:55.6710175Z  'finalizers': None,
+2026-11-08T18:51:55.6710428Z  'generate_name': None,
+2026-11-08T18:51:55.6710676Z  'generation': None,
+2026-11-08T18:51:55.6710915Z  'labels': None,
+2026-11-08T18:51:55.6711147Z  'managed_fields': None,
+2026-11-08T18:51:55.6711585Z  'name': 'sglang-configmap-754269ab3dqxrdf4',
+2026-11-08T18:51:55.6711922Z  'namespace': 'sgl-project',
+2026-11-08T18:51:55.6712197Z  'owner_references': None,
+2026-11-08T18:51:55.6712469Z  'resource_version': '485436209',
+2026-11-08T18:51:55.6712739Z  'self_link': None,
+2026-11-08T18:51:55.6713025Z  'uid': 'eb4f165d-c791-4025-a77f-61e5e0428ed6'}
+2026-11-08T18:51:55.6714008Z 2026-11-08 18:51:55,670 - INFO - Starting to monitor logs for Pod: ascend-42509098847-754269ab3dqxrdf4-sglang-router-0
+2026-11-08T18:51:55.7725478Z /root/sglang/python/sglang/test/ascend/e2e/run_npu_testcase.sh: line 14: npu-smi: command not found
+2026-11-08T18:51:55.7726077Z NPU info:
+2026-11-08T18:51:55.7726311Z ===== Install kubernetes - Begin =====
+2026-11-08T18:51:55.7726672Z Install kubernetes locally.
+2026-11-08T18:51:55.7726996Z Looking in links: /tmp/kubernetes/
+2026-11-08T18:51:55.7834590Z Processing /tmp/kubernetes/kubernetes-35.0.0-py2.py3-none-any.whl
+2026-11-08T18:51:55.7835901Z Requirement already satisfied: certifi>=14.05.14 in /usr/local/python3.12.13/lib/python3.12/site-packages (from kubernetes) (2026.7.22)
+2026-11-08T18:51:55.7837689Z Requirement already satisfied: six>=1.9.0 in /usr/local/python3.12.13/lib/python3.12/site-packages (from kubernetes) (1.17.0)
+2026-11-08T18:51:55.7839497Z Requirement already satisfied: python-dateutil>=2.5.3 in /usr/local/python3.12.13/lib/python3.12/site-packages (from kubernetes) (3.0.0)
+2026-11-08T18:51:55.7841125Z Requirement already satisfied: pyyaml>=5.4.1 in /usr/local/python3.12.13/lib/python3.12/site-packages (from kubernetes) (6.0.1)
+2026-11-08T18:51:55.7842104Z Processing /tmp/kubernetes/websocket_client-1.9.0-py3-none-any.whl (from kubernetes)
+2026-11-08T18:51:55.7843295Z Requirement already satisfied: requests in /usr/local/python3.12.13/lib/python3.12/site-packages (from kubernetes) (2.34.2)
+2026-11-08T18:51:55.7844677Z Processing /tmp/kubernetes/requests_oauthlib-2.0.0-py2.py3-none-any.whl (from kubernetes)
+2026-11-08T18:51:55.7845847Z Requirement already satisfied: urllib3!=2.6.0,>=1.24.2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from kubernetes) (2.7.0)
+2026-11-08T18:51:55.7847237Z Processing /tmp/kubernetes/durationpy-0.10-py3-none-any.whl (from kubernetes)
+2026-11-08T18:51:55.7848742Z Requirement already satisfied: tzdata in /usr/local/python3.12.13/lib/python3.12/site-packages (from python-dateutil>=2.5.3->kubernetes) (2026.5)
+2026-11-08T18:51:55.7850875Z Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/python3.12.13/lib/python3.12/site-packages (from requests->kubernetes) (3.4.9)
+2026-11-08T18:51:55.7852741Z Requirement already satisfied: idna<4,>=2.5 in /usr/local/python3.12.13/lib/python3.12/site-packages (from requests->kubernetes) (3.18)
+2026-11-08T18:51:55.7854304Z Processing /tmp/kubernetes/oauthlib-3.3.1-py3-none-any.whl (from requests-oauthlib->kubernetes)
+2026-11-08T18:51:55.7855725Z Installing collected packages: durationpy, websocket-client, oauthlib, requests-oauthlib, kubernetes
+2026-11-08T18:51:55.7856511Z 
+2026-11-08T18:51:55.7857217Z Successfully installed durationpy-0.10 kubernetes-35.0.0 oauthlib-3.3.1 requests-oauthlib-2.0.0 websocket-client-1.9.0
+2026-11-08T18:51:55.7860561Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-11-08T18:51:55.7863473Z ===== Install kubernetes - End =====
+2026-11-08T18:51:55.7864018Z Transformers version for sglang:  5.12.1
+2026-11-08T18:51:55.7864531Z performance
+2026-11-08T18:51:55.7864919Z vm.swappiness = 0
+2026-11-08T18:51:55.7865356Z kernel.numa_balancing = 0
+2026-11-08T18:51:55.7865859Z kernel.sched_migration_cost_ns = 50000
+2026-11-08T18:51:55.7866404Z ASCEND_VISIBLE_DEVICES=
+2026-11-08T18:51:55.7866882Z Use sglang from docker image
+2026-11-08T18:51:55.7867387Z can not use command: npu-smi info
+2026-11-08T18:51:58.6484255Z Running test case test/registered/npu/accuracy/deepseek_v4_pro/test_npu_deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa.py
+2026-11-08T18:51:58.6640627Z Log path: /root/.cache/tests/logs/log/YZY00Raiser-pryzy115-20261109-0215-42509098847-1/Nightly_Test_NPU--cann9.1.0-a3-B106/test_npu_deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa/ascend-42509098847-754269ab3dqxrdf4-sglang-router-0
+2026-11-08T18:52:01.0526532Z can not use command: npu-smi info
+2026-11-08T18:52:09.0350388Z 2026-11-09 02:52:09,032 - INFO - get env NAMESPACE = sgl-project
+2026-11-08T18:52:09.0350999Z 2026-11-09 02:52:09,032 - INFO - get env KUBE_CONFIG_MAP = sglang-configmap-754269ab3dqxrdf4
+2026-11-08T18:52:09.0375039Z 2026-11-09 02:52:09,034 - INFO - The nic name matched is enp23s0f3
+2026-11-08T18:52:09.0375518Z 2026-11-09 02:52:09,035 - INFO - PYTHON_FOR_TEST_TOOL: python3
+2026-11-08T18:52:09.0523139Z 2026-11-09 02:52:09,050 - INFO - PYTHON_FOR_TEST_TOOL: python3
+2026-11-08T18:52:09.0574763Z 2026-11-09 02:52:09,055 - INFO - get env LANGUAGE = en_US:en
+2026-11-08T18:52:09.0602720Z 2026-11-09 02:52:09,057 - INFO - get env POD_IP = 172.22.3.158
+2026-11-08T18:52:09.0603301Z 2026-11-09 02:52:09,057 - INFO - get env HOSTNAME = ascend-42509098847-754269ab3dqxrdf4-sglang-router-0
+2026-11-08T18:52:09.0603894Z 2026-11-09 02:52:09,057 - INFO - Init 172.22.3.158 cls.role='router'!
+2026-11-08T18:52:09.0604467Z 2026-11-09 02:52:09,057 - INFO - The current node is router, skip this function start_pd_server.
+2026-11-08T18:52:09.0605500Z 2026-11-09 02:52:09,057 - INFO - Starting router in thread...
+2026-11-08T18:52:09.0605908Z 2026-11-09 02:52:09,058 - INFO - launch_router start ......
+2026-11-08T18:52:09.0606462Z 2026-11-09 02:52:09,058 - INFO - Waiting for router to be ready at http://172.22.3.158:6677/health
+2026-11-08T18:52:09.0607106Z 2026-11-09 02:52:09,058 - INFO - Waiting for the server to start at http://172.22.3.158:6677/health...
+2026-11-08T18:52:09.4558563Z 2026-11-09 02:52:09,453 - INFO - get env KUBECONFIG = /root/.cache/.cache/kb.yaml
+2026-11-08T18:52:09.6620608Z 2026-11-09 02:52:09,660 - INFO - Discovered 8 worker nodes (prefill: 4, decode: 4)
+2026-11-08T18:52:09.6994252Z 2026-11-09 02:52:09,695 - INFO - Successfully queried ConfigMap sglang-configmap-754269ab3dqxrdf4 in namespace sgl-project
+2026-11-08T18:52:09.7021028Z 2026-11-09 02:52:09,697 - INFO - Retrieved ConfigMap data: {'ascend-42509098847-754269ab3dqxrdf4-sglang-decode-0': '172.22.3.95', 'ascend-42509098847-754269ab3dqxrdf4-sglang-decode-1': '172.22.3.166', 'ascend-42509098847-754269ab3dqxrdf4-sglang-prefill-0': '172.22.3.181', 'ascend-42509098847-754269ab3dqxrdf4-sglang-prefill-1': '172.22.3.138', 'ascend-42509098847-754269ab3dqxrdf4-sglang-router-0': '172.22.3.158'}
+2026-11-08T18:52:09.7023273Z 2026-11-09 02:52:09,697 - INFO - ConfigMap monitoring complete: prefill_url=['172.22.3.181:8000'], decode_url=['172.22.3.95:8000'], bootstrap_ports=['8995'], node_ip_list=['172.22.3.95', '172.22.3.181']
+2026-11-08T18:58:54.7217900Z 2026-11-09 02:58:54,719 - INFO - Node 172.22.3.181:8000 is ready
+2026-11-08T18:58:54.7218442Z 2026-11-09 02:58:54,719 - INFO - Waiting for 1 more nodes to be ready...
+2026-11-08T18:59:57.8413011Z 2026-11-08 18:59:57,840 - ERROR - Pod ascend-42509098847-754269ab3dqxrdf4-sglang-decode-1 is not running, status: Succeeded
+2026-11-08T18:59:57.8417077Z 2026-11-08 18:59:57,840 - ERROR - Some pods are not running properly. Please check the sglang logs on these pods. Exiting...
+2026-11-08T18:59:57.8596663Z 2026-11-08 18:59:57,857 - ERROR - Test case failed: test/registered/npu/accuracy/deepseek_v4_pro/test_npu_deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa.py
+2026-11-08T18:59:57.8597483Z Traceback (most recent call last):
+2026-11-08T18:59:57.8598107Z   File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 737, in run_npu_e2e_test_case
+2026-11-08T18:59:57.8598738Z     monitor_pod_logs(
+2026-11-08T18:59:57.8599215Z   File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 489, in monitor_pod_logs
+2026-11-08T18:59:57.8599850Z     raise Exception("Monitoring ended but target pattern was not detected")
+2026-11-08T18:59:57.8600350Z Exception: Monitoring ended but target pattern was not detected
+2026-11-08T18:59:57.8758425Z 2026-11-08 18:59:57,874 - INFO - Metrics JSON written to /root/.cache/tests/output/YZY00Raiser-pryzy115-20261109-0215-42509098847-1/Nightly_Test_NPU--cann9.1.0-a3-B106/accuracy/test_npu_deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa/metrics.json
+2026-11-08T18:59:57.9425288Z ConfigMap sglang-configmap-754269ab3dqxrdf4 is deleted.
+2026-11-08T18:59:57.9875900Z 2026-11-08 18:59:57,986 - INFO - Deleted job ascend-42509098847-754269ab3dqxrdf4
+2026-11-08T18:59:57.9879264Z 2026-11-08 18:59:57,986 - INFO - Response status: {'conditions': [{'lastTransitionTime': '2026-11-08T18:51:40Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-08T18:51:40Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-08T18:51:42Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-08T18:51:50Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-08T18:51:51Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-08T18:51:51Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-08T18:51:52Z', 'status': 'Running'}, {'lastTransitionTime': '2026-11-08T18:59:57Z', 'status': 'Running'}], 'minAvailable': 5, 'running': 4, 'state': {'lastTransitionTime': '2026-11-08T18:59:57Z', 'phase': 'Running'}, 'succeeded': 1, 'taskStatusCount': {'sglang-decode': {'phase': {'Running': 1, 'Succeeded': 1}}, 'sglang-prefill': {'phase': {'Running': 2}}, 'sglang-router': {'phase': {'Running': 1}}}}
+2026-11-08T18:59:57.9882786Z Traceback (most recent call last):
+2026-11-08T18:59:57.9883294Z   File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 933, in <module>
+2026-11-08T18:59:57.9883821Z     run_npu_e2e_test_case(
+2026-11-08T18:59:57.9884336Z   File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 737, in run_npu_e2e_test_case
+2026-11-08T18:59:57.9884865Z     monitor_pod_logs(
+2026-11-08T18:59:57.9885333Z   File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 489, in monitor_pod_logs
+2026-11-08T18:59:57.9885964Z     raise Exception("Monitoring ended but target pattern was not detected")
+2026-11-08T18:59:57.9886460Z Exception: Monitoring ended but target pattern was not detected
+2026-11-08T18:59:58.1217052Z ##[error]Error: failed to run script step:
+  ✗ exit code: 1
+  → your script exited with a non-zero code; please check your script for errors
+------------------------------------------------------------
+Last output:
+  2026-11-08 18:59:57,840 - ERROR - Some pods are not running properly. Please check the sglang logs on these pods. Exiting...
+  2026-11-08 18:59:57,857 - ERROR - Test case failed: test/registered/npu/accuracy/deepseek_v4_pro/test_npu_deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa.py
+  Traceback (most recent call last):
+    File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 737, in run_npu_e2e_test_case
+      monitor_pod_logs(
+    File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 489, in monitor_pod_logs
+      raise Exception("Monitoring ended but target pattern was not detected")
+  Exception: Monitoring ended but target pattern was not detected
+  2026-11-08 18:59:57,874 - INFO - Metrics JSON written to /root/.cache/tests/output/YZY00Raiser-pryzy115-20261109-0215-42509098847-1/Nightly_Test_NPU--cann9.1.0-a3-B106/accuracy/test_npu_deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa/metrics.json
+  ConfigMap sglang-configmap-754269ab3dqxrdf4 is deleted.
+  2026-11-08 18:59:57,986 - INFO - Deleted job ascend-42509098847-754269ab3dqxrdf4
+  2026-11-08 18:59:57,986 - INFO - Response status: {'conditions': [{'lastTransitionTime': '2026-11-08T18:51:40Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-08T18:51:40Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-08T18:51:42Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-08T18:51:50Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-08T18:51:51Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-08T18:51:51Z', 'status': 'Pending'}, {'lastTransitionTime': '2026-11-08T18:51:52Z', 'status': 'Running'}, {'lastTransitionTime': '2026-11-08T18:59:57Z', 'status': 'Running'}], 'minAvailable': 5, 'running': 4, 'state': {'lastTransitionTime': '2026-11-08T18:59:57Z', 'phase': 'Running'}, 'succeeded': 1, 'taskStatusCount': {'sglang-decode': {'phase': {'Running': 1, 'Succeeded': 1}}, 'sglang-prefill': {'phase': {'Running': 2}}, 'sglang-router': {'phase': {'Running': 1}}}}
+  Traceback (most recent call last):
+    File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 933, in <module>
+      run_npu_e2e_test_case(
+    File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 737, in run_npu_e2e_test_case
+      monitor_pod_logs(
+    File "/__w/sglang/sglang/python/sglang/test/ascend/e2e/run_npu_e2e_test.py", line 489, in monitor_pod_logs
+      raise Exception("Monitoring ended but target pattern was not detected")
+  Exception: Monitoring ended but target pattern was not detected
+2026-11-08T18:59:58.1235081Z ##[error]Process completed with exit code 1.
+2026-11-08T18:59:58.1412677Z ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.
+2026-11-08T18:59:58.2003164Z ##[group]Run cd ${ASCEND_E2E_TEST_CONFIG_PATH}
+2026-11-08T18:59:58.2003593Z [36;1mcd ${ASCEND_E2E_TEST_CONFIG_PATH}[0m
+2026-11-08T18:59:58.2004191Z [36;1mkubectl get pods -n $NAMESPACE | grep $KUBE_JOB_NAME[0m
+2026-11-08T18:59:58.2004727Z [36;1mkubectl delete -f ./k8s_multi_pd_*.yaml --ignore-not-found=true || true[0m
+2026-11-08T18:59:58.2005144Z [36;1m[0m
+2026-11-08T18:59:58.2005382Z [36;1mpod_name_prefix="${KUBE_JOB_NAME}-"[0m
+2026-11-08T18:59:58.2005818Z [36;1mecho "kube name space: $NAMESPACE, pod name prefix: ${pod_name_prefix}"[0m
+2026-11-08T18:59:58.2006236Z [36;1mwhile true; do[0m
+2026-11-08T18:59:58.2006608Z [36;1m  if kubectl get po -A -n $NAMESPACE | grep -q "${pod_name_prefix}"; then[0m
+2026-11-08T18:59:58.2007102Z [36;1m    echo "Found exist sglang job, sleeping for 30 seconds..."[0m
+2026-11-08T18:59:58.2007473Z [36;1m    sleep 30[0m
+2026-11-08T18:59:58.2008100Z [36;1m    kubectl get pods | grep "${pod_name_prefix}" | awk '{print $1}' | xargs kubectl delete pod -n $NAMESPACE || true[0m
+2026-11-08T18:59:58.2008617Z [36;1m  else[0m
+2026-11-08T18:59:58.2008904Z [36;1m    echo "No sglang job exist, start test case..."[0m
+2026-11-08T18:59:58.2009247Z [36;1m    break[0m
+2026-11-08T18:59:58.2009473Z [36;1m  fi[0m
+2026-11-08T18:59:58.2009685Z [36;1mdone[0m
+2026-11-08T18:59:58.2010022Z [36;1m# Cleanup the run-scoped source code directory on the shared PVC.[0m
+2026-11-08T18:59:58.2010484Z [36;1mrm -rf /root/.cache/tests/sglang-42509098847 || true[0m
+2026-11-08T18:59:58.2010943Z shell: sh -e {0}
+2026-11-08T18:59:58.2011300Z ##[endgroup]
+2026-11-08T18:59:58.2102325Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-08T18:59:58.2103324Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-08T18:59:58.2103651Z ##[endgroup]
+2026-11-08T18:59:58.4600154Z (node:604) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-08T18:59:58.4600957Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-08T18:59:58.4860344Z (node:604) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-08T18:59:58.5416970Z (node:604) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-08T18:59:59.2435002Z ascend-42509098847-754269ab3dqxrdf4-sglang-decode-0    0/1     Terminating   0          8m19s
+2026-11-08T18:59:59.2435826Z ascend-42509098847-754269ab3dqxrdf4-sglang-prefill-0   1/1     Terminating   0          8m19s
+2026-11-08T18:59:59.2436504Z ascend-42509098847-754269ab3dqxrdf4-sglang-prefill-1   1/1     Terminating   0          8m19s
+2026-11-08T18:59:59.2437170Z ascend-42509098847-754269ab3dqxrdf4-sglang-router-0    1/1     Terminating   0          8m19s
+2026-11-08T18:59:59.2766373Z error: the path "./k8s_multi_pd_*.yaml" does not exist
+2026-11-08T18:59:59.2776723Z kube name space: sgl-project, pod name prefix: ascend-42509098847-
+2026-11-08T18:59:59.5366609Z Found exist sglang job, sleeping for 30 seconds...
+2026-11-08T19:00:29.7175497Z error: resource(s) were provided, but no name was specified
+2026-11-08T19:00:30.0719541Z Found exist sglang job, sleeping for 30 seconds...
+2026-11-08T19:01:00.3495564Z error: resource(s) were provided, but no name was specified
+2026-11-08T19:01:00.6284017Z Found exist sglang job, sleeping for 30 seconds...
+2026-11-08T19:01:30.7887494Z error: resource(s) were provided, but no name was specified
+2026-11-08T19:01:31.0692652Z Found exist sglang job, sleeping for 30 seconds...
+2026-11-08T19:02:01.2500912Z error: resource(s) were provided, but no name was specified
+2026-11-08T19:02:01.5314032Z Found exist sglang job, sleeping for 30 seconds...
+2026-11-08T19:02:31.7052561Z error: resource(s) were provided, but no name was specified
+2026-11-08T19:02:31.9685196Z No sglang job exist, start test case...
+2026-11-08T19:03:13.5289439Z Post job cleanup.
+2026-11-08T19:03:13.5337921Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-08T19:03:13.5339400Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-08T19:03:13.5339740Z ##[endgroup]
+2026-11-08T19:03:13.7836322Z (node:738) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-08T19:03:13.7837130Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-08T19:03:13.8063543Z (node:738) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-08T19:03:13.8687833Z (node:738) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-08T19:03:14.5713147Z [command]/usr/bin/git version
+2026-11-08T19:03:14.5752038Z git version 2.34.1
+2026-11-08T19:03:14.5781091Z Copying '/root/.gitconfig' to '/__w/_temp/f9543198-ac74-4d36-b777-452fbc522e5f/.gitconfig'
+2026-11-08T19:03:14.5791064Z Temporarily overriding HOME='/__w/_temp/f9543198-ac74-4d36-b777-452fbc522e5f' before making global git config changes
+2026-11-08T19:03:14.5792293Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-08T19:03:14.5795370Z [command]/usr/bin/git config --global --add safe.directory /__w/sglang/sglang
+2026-11-08T19:03:14.5836167Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-08T19:03:14.5871519Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-08T19:03:14.6191679Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-08T19:03:14.6219206Z http.https://github.com/.extraheader
+2026-11-08T19:03:14.6228345Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-08T19:03:14.6264740Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-08T19:03:14.6584236Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-08T19:03:14.6620391Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-08T19:03:16.0472351Z ##[group]Run '/home/runner/k8s/index.js'
+2026-11-08T19:03:16.0473907Z shell: /home/runner/externals/node24/bin/node {0}
+2026-11-08T19:03:16.0474506Z ##[endgroup]
+2026-11-08T19:03:16.2909823Z (node:867) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-08T19:03:16.3152834Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-08T19:03:16.3154019Z (node:867) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-08T19:03:16.5810663Z Cleaning up orphan processes
+2026-11-08T19:03:16.5895884Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

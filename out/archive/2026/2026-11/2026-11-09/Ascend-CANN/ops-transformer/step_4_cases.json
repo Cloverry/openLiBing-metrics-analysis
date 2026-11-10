@@ -1,0 +1,1278 @@
+{
+ "_doc": {
+  "step": "step_4_cases",
+  "title": "第 4 步 测试用例取证（T6）",
+  "source": "openLiBing 测试报告页 + 用例日志下载",
+  "criteria": "取失败任务的失败用例、错误信息、深度学习命中行，并下载用例日志到 case_logs/",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-10 14:57:27",
+  "component": "Ascend-CANN",
+  "pipeline": "ops-transformer",
+  "date": "2026-11-09"
+ },
+ "results": [
+  {
+   "route": "test",
+   "key": "Ascend-CANN|ops-transformer",
+   "pipeline": "ops-transformer",
+   "pipelineName": "Nightly-CI-Component-pipeline_ops-transformer",
+   "rn": 165,
+   "st": "11-09 02:05",
+   "projectId": 300057,
+   "pipelineId": "309180d5c2904adf942f5678d9356d99",
+   "rid": "22f234949d4b427c815dfb8ed6761359",
+   "jobId": "a7f8dc4a23bd42369796a5530d58297b",
+   "jobName": "Test_ops-transformer",
+   "stepIds": [
+    "a0c1718994e74cb287091d356dad3f0f"
+   ],
+   "steps": [
+    {
+     "id": "a0c1718994e74cb287091d356dad3f0f",
+     "name": "Test_ops-transformer",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "cf976753231748cba046f87748a16e89",
+     "jobIdParam": "37823397fab445fa9626582d68281207"
+    }
+   ],
+   "jobErrMsg": "步骤Test_ops-transformer执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "333a952f8e8d4e74803f7d07586c15c2",
+   "code": 200,
+   "summary": {
+    "total": 98,
+    "passed": 79,
+    "failed": 19,
+    "passRate": "80.61%"
+   },
+   "failedCases": [
+    {
+     "name": "test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad",
+     "number": "test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad",
+     "state": "failed",
+     "description": "AssertionError: aclnnMoeTokenUnpermuteWithEpGrad功能精度测试(executor)失败: aclnnMoeTokenUnpermuteWithEpGrad accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMoeTokenUnpermuteWithEpGrad_with_prob_Perf_2026-11-09-04-35-21-317401/report/aclnnM",
+     "beginTime": "2026-11-09 03:22:00",
+     "endTime": "2026-11-09 03:23:00",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnalltoallquantmatmul_a16w8",
+     "number": "test_cann_accu_smk_aclnnalltoallquantmatmul_a16w8",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnAlltoAllQuantMatmul_a16w8_Smoke_2026-11-09-03-32-56-984620/report/aclnnAlltoAllQuantMatmul_a16w8_Smoke_reports_accuracy_2026-11-09-03-32-58.xlsx', error_msg='aclnnAlltoAllQuantMatmul accuracy not passed', ",
+     "beginTime": "2026-11-09 03:22:00",
+     "endTime": "2026-11-09 03:24:37",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnalltoallquantmatmul_a16w8.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnalltoallquantmatmul_a16w8_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnalltoallquantmatmul_a4w4",
+     "number": "test_cann_accu_smk_aclnnalltoallquantmatmul_a4w4",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnAlltoAllQuantMatmul_a4w4_Smoke_2026-11-09-03-35-34-494217/report/aclnnAlltoAllQuantMatmul_a4w4_Smoke_reports_accuracy_2026-11-09-03-35-35.xlsx', error_msg='aclnnAlltoAllQuantMatmul accuracy not passed', ra",
+     "beginTime": "2026-11-09 03:22:00",
+     "endTime": "2026-11-09 03:24:41",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnalltoallquantmatmul_a4w4.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnalltoallquantmatmul_a4w4_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnmatmulalltoall",
+     "number": "test_cann_accu_smk_aclnnmatmulalltoall",
+     "state": "failed",
+     "description": "AssertionError: aclnnMatmulAlltoAll功能精度测试(executor)失败: aclnnMatmulAlltoAll accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-09-03-25-10-556091/report/aclnnMatmulAlltoAll_Smoke_reports_accuracy_2026-11-09-",
+     "beginTime": "2026-11-09 03:22:00",
+     "endTime": "2026-11-09 03:24:32",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmatmulalltoall.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmatmulalltoall_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnalltoallquantmatmul_a16w4",
+     "number": "test_cann_accu_smk_aclnnalltoallquantmatmul_a16w4",
+     "state": "failed",
+     "description": "AssertionError: aclnnAlltoAllQuantMatmul功能精度测试(executor)失败: aclnnAlltoAllQuantMatmul accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnAlltoAllQuantMatmul_a16w4_Smoke_2026-11-09-03-28-18-092776/report/aclnnAlltoAllQuantMatmul_a16w4_Sm",
+     "beginTime": "2026-11-09 03:22:00",
+     "endTime": "2026-11-09 03:26:39",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnalltoallquantmatmul_a16w4.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnalltoallquantmatmul_a16w4_log.zip"
+    },
+    {
+     "name": "test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad_probs_none",
+     "number": "test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad_probs_none",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMoeTokenUnpermuteWithEpGrad_without_prob_Perf_2026-11-09-04-32-48-195022/report/aclnnMoeTokenUnpermuteWithEpGrad_without_prob_Perf_reports_accuracy_2026-11-09-04-32-49.xlsx', error_msg='aclnnMoeTokenUnperm",
+     "beginTime": "2026-11-09 03:22:00",
+     "endTime": "2026-11-09 03:24:33",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad_probs_none.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad_probs_none_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_not_none",
+     "number": "test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_not_none",
+     "state": "failed",
+     "description": "AssertionError: aclnnMoeTokenUnpermuteWithEpGrad功能精度测试(executor)失败: aclnnMoeTokenUnpermuteWithEpGrad accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMoeTokenUnpermuteWithEpGrad_with_prob_modelcase_2026-11-09-04-31-26-852602/report/a",
+     "beginTime": "2026-11-09 03:22:00",
+     "endTime": "2026-11-09 03:22:45",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_not_none.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_not_none_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none",
+     "number": "test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none",
+     "state": "failed",
+     "description": "AssertionError: aclnnMoeTokenUnpermuteWithEpGrad功能精度测试(executor)失败: aclnnMoeTokenUnpermuteWithEpGrad accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMoeTokenUnpermuteWithEpGrad_without_prob_modelcase_2026-11-09-04-32-11-040541/repor",
+     "beginTime": "2026-11-09 03:22:00",
+     "endTime": "2026-11-09 03:22:37",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnmatmulallreducev2",
+     "number": "test_cann_accu_smk_aclnnmatmulallreducev2",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMatmulAllReduceV2_Accu_Generalization_2026-11-09-03-41-39-618219/report/aclnnMatmulAllReduceV2_Accu_Generalization_reports_accuracy_2026-11-09-03-41-41.xlsx', error_msg='aclnnMatmulAllReduceV2 accuracy not",
+     "beginTime": "2026-11-09 03:22:01",
+     "endTime": "2026-11-09 03:26:42",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmatmulallreducev2.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmatmulallreducev2_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnmatmulreducescatter",
+     "number": "test_cann_accu_smk_aclnnmatmulreducescatter",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMatmulReduceScatter_Accu_Generalization_2026-11-09-03-47-15-472049/report/aclnnMatmulReduceScatter_Accu_Generalization_reports_accuracy_2026-11-09-03-47-16.xlsx', error_msg='aclnnMatmulReduceScatter accura",
+     "beginTime": "2026-11-09 03:22:01",
+     "endTime": "2026-11-09 03:26:39",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmatmulreducescatter.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmatmulreducescatter_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnalltoallmatmul",
+     "number": "test_cann_accu_smk_aclnnalltoallmatmul",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnAlltoAllMatmul_Smoke_2026-11-09-04-08-47-762201/report/aclnnAlltoAllMatmul_Smoke_reports_accuracy_2026-11-09-04-08-48.xlsx', error_msg='aclnnAlltoAllMatmul accuracy not passed', raw_output='AttributeError:",
+     "beginTime": "2026-11-09 03:22:01",
+     "endTime": "2026-11-09 03:22:37",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnalltoallmatmul.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnalltoallmatmul_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnmoedistributecombinev2_2p",
+     "number": "test_cann_accu_smk_aclnnmoedistributecombinev2_2p",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMoeDistributeCombineV2Fullmesh_Smoke_2026-11-09-04-10-08-591877/report/aclnnMoeDistributeCombineV2Fullmesh_Smoke_reports_accuracy_2026-11-09-04-10-10.xlsx', error_msg='aclnnMoeDistributeDispatch_CombineV2 ",
+     "beginTime": "2026-11-09 03:22:01",
+     "endTime": "2026-11-09 03:24:45",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmoedistributecombinev2_2p.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmoedistributecombinev2_2p_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnquantmatmulalltoall",
+     "number": "test_cann_accu_smk_aclnnquantmatmulalltoall",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnQuantMatmulAlltoAll_Smoke_2026-11-09-04-06-12-776408/report/aclnnQuantMatmulAlltoAll_Smoke_reports_accuracy_2026-11-09-04-06-13.xlsx', error_msg='aclnnQuantMatmulAlltoAll accuracy not passed', raw_output='",
+     "beginTime": "2026-11-09 03:22:01",
+     "endTime": "2026-11-09 03:24:36",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnquantmatmulalltoall.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnquantmatmulalltoall_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnquantmatmulallreducev3",
+     "number": "test_cann_accu_smk_aclnnquantmatmulallreducev3",
+     "state": "failed",
+     "description": "AssertionError: aclnnQuantMatmulAllReduceV3功能精度测试(executor)失败: aclnnQuantMatmulAllReduceV3 accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnQuantMatmulAllReduceV3_Accu_Generalization_2026-11-09-03-56-36-054019/report/aclnnQuantMatmul",
+     "beginTime": "2026-11-09 03:22:01",
+     "endTime": "2026-11-09 03:30:11",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnquantmatmulallreducev3.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnquantmatmulallreducev3_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnallgathermatmul",
+     "number": "test_cann_accu_smk_aclnnallgathermatmul",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnAllGatherMatmul_Accu_2026-11-09-03-36-14-705505/report/aclnnAllGatherMatmul_Accu_reports_accuracy_2026-11-09-03-36-16.xlsx', error_msg='aclnnAllGatherMatmul accuracy not passed', raw_output='AttributeError",
+     "beginTime": "2026-11-09 03:22:01",
+     "endTime": "2026-11-09 03:26:40",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnallgathermatmul.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnallgathermatmul_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnweightquantmatmulallreduce",
+     "number": "test_cann_accu_smk_aclnnweightquantmatmulallreduce",
+     "state": "failed",
+     "description": "AssertionError: aclnnWeightQuantMatmulAllReduce功能精度测试(executor)失败: aclnnWeightQuantMatmulAllReduce accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnWeightQuantMatmulAllReduce_Accu_2026-11-09-03-55-58-065226/report/aclnnWeightQuantMat",
+     "beginTime": "2026-11-09 03:22:01",
+     "endTime": "2026-11-09 03:22:39",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnweightquantmatmulallreduce.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnweightquantmatmulallreduce_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnmoedistributedispatchv2_2p",
+     "number": "test_cann_accu_smk_aclnnmoedistributedispatchv2_2p",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMoeDistributeDispatchV2Fullmesh_Smoke_2026-11-09-04-09-23-845977/report/aclnnMoeDistributeDispatchV2Fullmesh_Smoke_reports_accuracy_2026-11-09-04-09-25.xlsx', error_msg='aclnnMoeDistributeDispatch_CombineV",
+     "beginTime": "2026-11-09 03:22:01",
+     "endTime": "2026-11-09 03:22:45",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmoedistributedispatchv2_2p.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmoedistributedispatchv2_2p_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnmatmulreducescatterv2",
+     "number": "test_cann_accu_smk_aclnnmatmulreducescatterv2",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMatmulReduceScatterV2_Accu_2026-11-09-04-12-52-411397/report/aclnnMatmulReduceScatterV2_Accu_reports_accuracy_2026-11-09-04-12-54.xlsx', error_msg='aclnnMatmulReduceScatterV2 accuracy not passed', raw_outp",
+     "beginTime": "2026-11-09 03:22:01",
+     "endTime": "2026-11-09 03:22:44",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmatmulreducescatterv2.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmatmulreducescatterv2_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnmatmulallreduce",
+     "number": "test_cann_accu_smk_aclnnmatmulallreduce",
+     "state": "failed",
+     "description": "AssertionError: aclnnMatmulAllReduce功能精度测试(executor)失败: aclnnMatmulAllReduce accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMatmulAllReduce_Accu_Generalization_2026-11-09-03-46-20-508741/report/aclnnMatmulAllReduce_Accu_Generalizat",
+     "beginTime": "2026-11-09 03:22:01",
+     "endTime": "2026-11-09 03:22:56",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmatmulallreduce.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmatmulallreduce_log.zip"
+    }
+   ],
+   "empty": false
+  },
+  {
+   "route": "test",
+   "key": "Ascend-CANN|ops-transformer",
+   "pipeline": "ops-transformer",
+   "pipelineName": "Nightly-CI-Component-pipeline_ops-transformer",
+   "rn": 166,
+   "st": "11-09 12:35",
+   "projectId": 300057,
+   "pipelineId": "309180d5c2904adf942f5678d9356d99",
+   "rid": "df2c5e14e99a45ba8762bff7bdbcddae",
+   "jobId": "cf4a539f402b48b28ccb66c16fb3f5f1",
+   "jobName": "Test_ops-transformer",
+   "stepIds": [
+    "ba7ac34d35864ff681a63d741d134727"
+   ],
+   "steps": [
+    {
+     "id": "ba7ac34d35864ff681a63d741d134727",
+     "name": "Test_ops-transformer",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "6e0c6b7354c84d0991e991104ba8bd00",
+     "jobIdParam": "37823397fab445fa9626582d68281207"
+    }
+   ],
+   "jobErrMsg": "步骤Test_ops-transformer执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "7869f807c8ed47309b02bd633a20fb16",
+   "code": 200,
+   "summary": {
+    "total": 98,
+    "passed": 79,
+    "failed": 19,
+    "passRate": "80.61%"
+   },
+   "failedCases": [
+    {
+     "name": "test_cann_accu_smk_aclnnalltoallquantmatmul_a16w8",
+     "number": "test_cann_accu_smk_aclnnalltoallquantmatmul_a16w8",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnAlltoAllQuantMatmul_a16w8_Smoke_2026-11-09-15-19-41-664911/report/aclnnAlltoAllQuantMatmul_a16w8_Smoke_reports_accuracy_2026-11-09-15-19-42.xlsx', error_msg='aclnnAlltoAllQuantMatmul accuracy not passed', ",
+     "beginTime": "2026-11-09 15:10:32",
+     "endTime": "2026-11-09 15:15:13",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnalltoallquantmatmul_a16w8.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnalltoallquantmatmul_a16w8_log.zip"
+    },
+    {
+     "name": "test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad_probs_none",
+     "number": "test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad_probs_none",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMoeTokenUnpermuteWithEpGrad_without_prob_Perf_2026-11-09-16-21-16-690819/report/aclnnMoeTokenUnpermuteWithEpGrad_without_prob_Perf_reports_accuracy_2026-11-09-16-21-17.xlsx', error_msg='aclnnMoeTokenUnperm",
+     "beginTime": "2026-11-09 15:10:32",
+     "endTime": "2026-11-09 15:13:07",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad_probs_none.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad_probs_none_log.zip"
+    },
+    {
+     "name": "test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad",
+     "number": "test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad",
+     "state": "failed",
+     "description": "AssertionError: aclnnMoeTokenUnpermuteWithEpGrad功能精度测试(executor)失败: aclnnMoeTokenUnpermuteWithEpGrad accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMoeTokenUnpermuteWithEpGrad_with_prob_Perf_2026-11-09-16-23-51-496000/report/aclnnM",
+     "beginTime": "2026-11-09 15:10:32",
+     "endTime": "2026-11-09 15:11:35",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_not_none",
+     "number": "test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_not_none",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMoeTokenUnpermuteWithEpGrad_with_prob_modelcase_2026-11-09-16-19-51-162190/report/aclnnMoeTokenUnpermuteWithEpGrad_with_prob_modelcase_reports_accuracy_2026-11-09-16-19-52.xlsx', error_msg='aclnnMoeTokenUn",
+     "beginTime": "2026-11-09 15:10:32",
+     "endTime": "2026-11-09 15:11:17",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_not_none.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_not_none_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none",
+     "number": "test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMoeTokenUnpermuteWithEpGrad_without_prob_modelcase_2026-11-09-16-20-35-486860/report/aclnnMoeTokenUnpermuteWithEpGrad_without_prob_modelcase_reports_accuracy_2026-11-09-16-20-36.xlsx', error_msg='aclnnMoeT",
+     "beginTime": "2026-11-09 15:10:32",
+     "endTime": "2026-11-09 15:11:13",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnalltoallquantmatmul_a16w4",
+     "number": "test_cann_accu_smk_aclnnalltoallquantmatmul_a16w4",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnAlltoAllQuantMatmul_a16w4_Smoke_2026-11-09-15-15-03-523426/report/aclnnAlltoAllQuantMatmul_a16w4_Smoke_reports_accuracy_2026-11-09-15-15-04.xlsx', error_msg='aclnnAlltoAllQuantMatmul accuracy not passed', ",
+     "beginTime": "2026-11-09 15:10:32",
+     "endTime": "2026-11-09 15:15:08",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnalltoallquantmatmul_a16w4.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnalltoallquantmatmul_a16w4_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnmatmulalltoall",
+     "number": "test_cann_accu_smk_aclnnmatmulalltoall",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMatmulAlltoAll_Smoke_2026-11-09-15-13-51-596419/report/aclnnMatmulAlltoAll_Smoke_reports_accuracy_2026-11-09-15-13-52.xlsx', error_msg='aclnnMatmulAlltoAll accuracy not passed', raw_output='AttributeError:",
+     "beginTime": "2026-11-09 15:10:32",
+     "endTime": "2026-11-09 15:11:07",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmatmulalltoall.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmatmulalltoall_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnalltoallquantmatmul_a4w4",
+     "number": "test_cann_accu_smk_aclnnalltoallquantmatmul_a4w4",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnAlltoAllQuantMatmul_a4w4_Smoke_2026-11-09-15-24-22-047101/report/aclnnAlltoAllQuantMatmul_a4w4_Smoke_reports_accuracy_2026-11-09-15-24-23.xlsx', error_msg='aclnnAlltoAllQuantMatmul accuracy not passed', ra",
+     "beginTime": "2026-11-09 15:10:32",
+     "endTime": "2026-11-09 15:15:13",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnalltoallquantmatmul_a4w4.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnalltoallquantmatmul_a4w4_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnmatmulallreducev2",
+     "number": "test_cann_accu_smk_aclnnmatmulallreducev2",
+     "state": "failed",
+     "description": "AssertionError: aclnnMatmulAllReduceV2功能精度测试(executor)失败: aclnnMatmulAllReduceV2 accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMatmulAllReduceV2_Accu_Generalization_2026-11-09-15-34-37-100536/report/aclnnMatmulAllReduceV2_Accu_Gen",
+     "beginTime": "2026-11-09 15:16:03",
+     "endTime": "2026-11-09 15:20:43",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmatmulallreducev2.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmatmulallreducev2_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnalltoallmatmul",
+     "number": "test_cann_accu_smk_aclnnalltoallmatmul",
+     "state": "failed",
+     "description": "AssertionError: aclnnAlltoAllMatmul功能精度测试(executor)失败: aclnnAlltoAllMatmul accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnAlltoAllMatmul_Smoke_2026-11-09-16-06-15-926277/report/aclnnAlltoAllMatmul_Smoke_reports_accuracy_2026-11-09-",
+     "beginTime": "2026-11-09 15:16:03",
+     "endTime": "2026-11-09 15:16:36",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnalltoallmatmul.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnalltoallmatmul_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnquantmatmulallreducev3",
+     "number": "test_cann_accu_smk_aclnnquantmatmulallreducev3",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnQuantMatmulAllReduceV3_Accu_Generalization_2026-11-09-15-53-53-168467/report/aclnnQuantMatmulAllReduceV3_Accu_Generalization_reports_accuracy_2026-11-09-15-53-54.xlsx', error_msg='aclnnQuantMatmulAllReduce",
+     "beginTime": "2026-11-09 15:16:03",
+     "endTime": "2026-11-09 15:24:30",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnquantmatmulallreducev3.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnquantmatmulallreducev3_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnquantmatmulalltoall",
+     "number": "test_cann_accu_smk_aclnnquantmatmulalltoall",
+     "state": "failed",
+     "description": "AssertionError: aclnnQuantMatmulAlltoAll功能精度测试(executor)失败: aclnnQuantMatmulAlltoAll accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnQuantMatmulAlltoAll_Smoke_2026-11-09-16-03-41-691723/report/aclnnQuantMatmulAlltoAll_Smoke_reports_",
+     "beginTime": "2026-11-09 15:16:03",
+     "endTime": "2026-11-09 15:18:38",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnquantmatmulalltoall.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnquantmatmulalltoall_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnmoedistributecombinev2_2p",
+     "number": "test_cann_accu_smk_aclnnmoedistributecombinev2_2p",
+     "state": "failed",
+     "description": "AssertionError: aclnnMoeDistributeDispatch功能精度测试(executor)失败: aclnnMoeDistributeDispatch_CombineV2 accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMoeDistributeCombineV2Fullmesh_Smoke_2026-11-09-16-09-32-606990/report/aclnnMoeDistri",
+     "beginTime": "2026-11-09 15:16:03",
+     "endTime": "2026-11-09 15:18:48",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmoedistributecombinev2_2p.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmoedistributecombinev2_2p_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnallgathermatmul",
+     "number": "test_cann_accu_smk_aclnnallgathermatmul",
+     "state": "failed",
+     "description": "AssertionError: aclnnAllGatherMatmul功能精度测试(executor)失败: aclnnAllGatherMatmul accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnAllGatherMatmul_Accu_2026-11-09-15-31-18-824615/report/aclnnAllGatherMatmul_Accu_reports_accuracy_2026-11-0",
+     "beginTime": "2026-11-09 15:16:03",
+     "endTime": "2026-11-09 15:18:41",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnallgathermatmul.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnallgathermatmul_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnmatmulreducescatterv2",
+     "number": "test_cann_accu_smk_aclnnmatmulreducescatterv2",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMatmulReduceScatterV2_Accu_2026-11-09-16-12-16-703884/report/aclnnMatmulReduceScatterV2_Accu_reports_accuracy_2026-11-09-16-12-18.xlsx', error_msg='aclnnMatmulReduceScatterV2 accuracy not passed', raw_outp",
+     "beginTime": "2026-11-09 15:16:03",
+     "endTime": "2026-11-09 15:16:47",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmatmulreducescatterv2.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmatmulreducescatterv2_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnmoedistributedispatchv2_2p",
+     "number": "test_cann_accu_smk_aclnnmoedistributedispatchv2_2p",
+     "state": "failed",
+     "description": "AssertionError: aclnnMoeDistributeDispatch功能精度测试(executor)失败: aclnnMoeDistributeDispatch_CombineV2 accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMoeDistributeDispatchV2Fullmesh_Smoke_2026-11-09-16-06-49-346232/report/aclnnMoeDistr",
+     "beginTime": "2026-11-09 15:16:03",
+     "endTime": "2026-11-09 15:18:46",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmoedistributedispatchv2_2p.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmoedistributedispatchv2_2p_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnmatmulallreduce",
+     "number": "test_cann_accu_smk_aclnnmatmulallreduce",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMatmulAllReduce_Accu_Generalization_2026-11-09-15-39-15-780586/report/aclnnMatmulAllReduce_Accu_Generalization_reports_accuracy_2026-11-09-15-39-16.xlsx', error_msg='aclnnMatmulAllReduce accuracy not passe",
+     "beginTime": "2026-11-09 15:16:03",
+     "endTime": "2026-11-09 15:23:00",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmatmulallreduce.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmatmulallreduce_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnweightquantmatmulallreduce",
+     "number": "test_cann_accu_smk_aclnnweightquantmatmulallreduce",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnWeightQuantMatmulAllReduce_Accu_2026-11-09-15-51-14-117422/report/aclnnWeightQuantMatmulAllReduce_Accu_reports_accuracy_2026-11-09-15-51-15.xlsx', error_msg='aclnnWeightQuantMatmulAllReduce accuracy not pa",
+     "beginTime": "2026-11-09 15:16:03",
+     "endTime": "2026-11-09 15:18:43",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnweightquantmatmulallreduce.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnweightquantmatmulallreduce_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnmatmulreducescatter",
+     "number": "test_cann_accu_smk_aclnnmatmulreducescatter",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnMatmulReduceScatter_Accu_Generalization_2026-11-09-15-46-12-835839/report/aclnnMatmulReduceScatter_Accu_Generalization_reports_accuracy_2026-11-09-15-46-14.xlsx', error_msg='aclnnMatmulReduceScatter accura",
+     "beginTime": "2026-11-09 15:16:03",
+     "endTime": "2026-11-09 15:16:42",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmatmulreducescatter.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmatmulreducescatter_log.zip"
+    }
+   ],
+   "empty": false
+  }
+ ],
+ "caseErrors": [
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad.html",
+   "file": "case_0110.html",
+   "localLog": "case_logs/case_0110.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad",
+   "status": "Failed",
+   "duration": "59.35s",
+   "fileBytes": 396148,
+   "fileLines": 3289,
+   "errors": [
+    {
+     "time": "2026-11-09 04:36:01.807",
+     "level": "FAIL",
+     "line": 3158,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnalltoallquantmatmul_a16w8.html",
+   "file": "case_0111.html",
+   "localLog": "case_logs/case_0111.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnalltoallquantmatmul_a16w8",
+   "status": "Failed",
+   "duration": "156.88s",
+   "fileBytes": 1045160,
+   "fileLines": 8872,
+   "errors": [
+    {
+     "time": "2026-11-09 03:35:14.236",
+     "level": "FAIL",
+     "line": 8741,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnalltoallquantmatmul_a16w8"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnalltoallquantmatmul_a4w4.html",
+   "file": "case_0112.html",
+   "localLog": "case_logs/case_0112.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnalltoallquantmatmul_a4w4",
+   "status": "Failed",
+   "duration": "160.83s",
+   "fileBytes": 1059728,
+   "fileLines": 9079,
+   "errors": [
+    {
+     "time": "2026-11-09 03:37:55.576",
+     "level": "FAIL",
+     "line": 8948,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnalltoallquantmatmul_a4w4"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmatmulalltoall.html",
+   "file": "case_0113.html",
+   "localLog": "case_logs/case_0113.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnmatmulalltoall",
+   "status": "Failed",
+   "duration": "151.61s",
+   "fileBytes": 1009672,
+   "fileLines": 8684,
+   "errors": [
+    {
+     "time": "2026-11-09 03:27:26.352",
+     "level": "FAIL",
+     "line": 8553,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnmatmulalltoall"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnalltoallquantmatmul_a16w4.html",
+   "file": "case_0114.html",
+   "localLog": "case_logs/case_0114.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnalltoallquantmatmul_a16w4",
+   "status": "Failed",
+   "duration": "277.93s",
+   "fileBytes": 1901285,
+   "fileLines": 15660,
+   "errors": [
+    {
+     "time": "2026-11-09 03:32:36.868",
+     "level": "FAIL",
+     "line": 15529,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnalltoallquantmatmul_a16w4"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad_probs_none.html",
+   "file": "case_0115.html",
+   "localLog": "case_logs/case_0115.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad_probs_none",
+   "status": "Failed",
+   "duration": "152.23s",
+   "fileBytes": 1077671,
+   "fileLines": 8058,
+   "errors": [
+    {
+     "time": "2026-11-09 04:35:04.136",
+     "level": "FAIL",
+     "line": 7927,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad_probs_none"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_not_none.html",
+   "file": "case_0116.html",
+   "localLog": "case_logs/case_0116.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_not_none",
+   "status": "Failed",
+   "duration": "44.12s",
+   "fileBytes": 271793,
+   "fileLines": 2380,
+   "errors": [
+    {
+     "time": "2026-11-09 04:31:51.822",
+     "level": "FAIL",
+     "line": 2249,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_not_none"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none.html",
+   "file": "case_0117.html",
+   "localLog": "case_logs/case_0117.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none",
+   "status": "Failed",
+   "duration": "36.89s",
+   "fileBytes": 244148,
+   "fileLines": 2214,
+   "errors": [
+    {
+     "time": "2026-11-09 04:32:31.927",
+     "level": "FAIL",
+     "line": 2083,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmatmulallreducev2.html",
+   "file": "case_0118.html",
+   "localLog": "case_logs/case_0118.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnmatmulallreducev2",
+   "status": "Failed",
+   "duration": "280.50s",
+   "fileBytes": 1861235,
+   "fileLines": 15686,
+   "errors": [
+    {
+     "time": "2026-11-09 03:46:00.496",
+     "level": "FAIL",
+     "line": 15555,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnmatmulallreducev2"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmatmulreducescatter.html",
+   "file": "case_0119.html",
+   "localLog": "case_logs/case_0119.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnmatmulreducescatter",
+   "status": "Failed",
+   "duration": "277.73s",
+   "fileBytes": 1889059,
+   "fileLines": 15646,
+   "errors": [
+    {
+     "time": "2026-11-09 03:51:34.701",
+     "level": "FAIL",
+     "line": 15515,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnmatmulreducescatter"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnalltoallmatmul.html",
+   "file": "case_0120.html",
+   "localLog": "case_logs/case_0120.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnalltoallmatmul",
+   "status": "Failed",
+   "duration": "35.99s",
+   "fileBytes": 195877,
+   "fileLines": 2111,
+   "errors": [
+    {
+     "time": "2026-11-09 04:09:04.663",
+     "level": "FAIL",
+     "line": 1980,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnalltoallmatmul"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmoedistributecombinev2_2p.html",
+   "file": "case_0121.html",
+   "localLog": "case_logs/case_0121.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnmoedistributecombinev2_2p",
+   "status": "Failed",
+   "duration": "163.67s",
+   "fileBytes": 1066706,
+   "fileLines": 9194,
+   "errors": [
+    {
+     "time": "2026-11-09 04:12:32.385",
+     "level": "FAIL",
+     "line": 9063,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnmoedistributecombinev2_2p"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnquantmatmulalltoall.html",
+   "file": "case_0122.html",
+   "localLog": "case_logs/case_0122.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnquantmatmulalltoall",
+   "status": "Failed",
+   "duration": "155.02s",
+   "fileBytes": 1044463,
+   "fileLines": 8851,
+   "errors": [
+    {
+     "time": "2026-11-09 04:08:30.549",
+     "level": "FAIL",
+     "line": 8720,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnquantmatmulalltoall"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnquantmatmulallreducev3.html",
+   "file": "case_0123.html",
+   "localLog": "case_logs/case_0123.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnquantmatmulallreducev3",
+   "status": "Failed",
+   "duration": "489.17s",
+   "fileBytes": 3336898,
+   "fileLines": 27292,
+   "errors": [
+    {
+     "time": "2026-11-09 04:04:25.913",
+     "level": "FAIL",
+     "line": 27161,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnquantmatmulallreducev3"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnallgathermatmul.html",
+   "file": "case_0124.html",
+   "localLog": "case_logs/case_0124.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnallgathermatmul",
+   "status": "Failed",
+   "duration": "278.74s",
+   "fileBytes": 1897244,
+   "fileLines": 15750,
+   "errors": [
+    {
+     "time": "2026-11-09 03:40:35.737",
+     "level": "FAIL",
+     "line": 15619,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnallgathermatmul"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnweightquantmatmulallreduce.html",
+   "file": "case_0125.html",
+   "localLog": "case_logs/case_0125.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnweightquantmatmulallreduce",
+   "status": "Failed",
+   "duration": "38.09s",
+   "fileBytes": 203124,
+   "fileLines": 2201,
+   "errors": [
+    {
+     "time": "2026-11-09 03:56:16.464",
+     "level": "FAIL",
+     "line": 2070,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnweightquantmatmulallreduce"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmoedistributedispatchv2_2p.html",
+   "file": "case_0126.html",
+   "localLog": "case_logs/case_0126.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnmoedistributedispatchv2_2p",
+   "status": "Failed",
+   "duration": "44.25s",
+   "fileBytes": 257047,
+   "fileLines": 2523,
+   "errors": [
+    {
+     "time": "2026-11-09 04:09:48.905",
+     "level": "FAIL",
+     "line": 2392,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnmoedistributedispatchv2_2p"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmatmulreducescatterv2.html",
+   "file": "case_0127.html",
+   "localLog": "case_logs/case_0127.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnmatmulreducescatterv2",
+   "status": "Failed",
+   "duration": "43.59s",
+   "fileBytes": 261048,
+   "fileLines": 2647,
+   "errors": [
+    {
+     "time": "2026-11-09 04:13:19.236",
+     "level": "FAIL",
+     "line": 2516,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnmatmulreducescatterv2"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611092706/test_cann_accu_smk_aclnnmatmulallreduce.html",
+   "file": "case_0128.html",
+   "localLog": "case_logs/case_0128.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnmatmulallreduce",
+   "status": "Failed",
+   "duration": "54.88s",
+   "fileBytes": 319558,
+   "fileLines": 3142,
+   "errors": [
+    {
+     "time": "2026-11-09 03:46:57.448",
+     "level": "FAIL",
+     "line": 3011,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnmatmulallreduce"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnalltoallquantmatmul_a16w8.html",
+   "file": "case_0091.html",
+   "localLog": "case_logs/case_0091.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnalltoallquantmatmul_a16w8",
+   "status": "Failed",
+   "duration": "279.92s",
+   "fileBytes": 1888160,
+   "fileLines": 15730,
+   "errors": [
+    {
+     "time": "2026-11-09 15:24:01.575",
+     "level": "FAIL",
+     "line": 15599,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnalltoallquantmatmul_a16w8"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad_probs_none.html",
+   "file": "case_0092.html",
+   "localLog": "case_logs/case_0092.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad_probs_none",
+   "status": "Failed",
+   "duration": "154.37s",
+   "fileBytes": 1075452,
+   "fileLines": 8054,
+   "errors": [
+    {
+     "time": "2026-11-09 16:23:32.759",
+     "level": "FAIL",
+     "line": 7923,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad_probs_none"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad.html",
+   "file": "case_0093.html",
+   "localLog": "case_logs/case_0093.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad",
+   "status": "Failed",
+   "duration": "62.92s",
+   "fileBytes": 418912,
+   "fileLines": 3550,
+   "errors": [
+    {
+     "time": "2026-11-09 16:24:36.298",
+     "level": "FAIL",
+     "line": 3419,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_not_none.html",
+   "file": "case_0094.html",
+   "localLog": "case_logs/case_0094.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_not_none",
+   "status": "Failed",
+   "duration": "45.09s",
+   "fileBytes": 276462,
+   "fileLines": 2404,
+   "errors": [
+    {
+     "time": "2026-11-09 16:20:16.926",
+     "level": "FAIL",
+     "line": 2273,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_not_none"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none.html",
+   "file": "case_0095.html",
+   "localLog": "case_logs/case_0095.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none",
+   "status": "Failed",
+   "duration": "41.18s",
+   "fileBytes": 259883,
+   "fileLines": 2401,
+   "errors": [
+    {
+     "time": "2026-11-09 16:21:00.039",
+     "level": "FAIL",
+     "line": 2270,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnalltoallquantmatmul_a16w4.html",
+   "file": "case_0096.html",
+   "localLog": "case_logs/case_0096.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnalltoallquantmatmul_a16w4",
+   "status": "Failed",
+   "duration": "275.78s",
+   "fileBytes": 1885027,
+   "fileLines": 15615,
+   "errors": [
+    {
+     "time": "2026-11-09 15:19:21.202",
+     "level": "FAIL",
+     "line": 15484,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnalltoallquantmatmul_a16w4"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmatmulalltoall.html",
+   "file": "case_0097.html",
+   "localLog": "case_logs/case_0097.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnmatmulalltoall",
+   "status": "Failed",
+   "duration": "34.98s",
+   "fileBytes": 185349,
+   "fileLines": 2064,
+   "errors": [
+    {
+     "time": "2026-11-09 15:14:08.031",
+     "level": "FAIL",
+     "line": 1933,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnmatmulalltoall"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnalltoallquantmatmul_a4w4.html",
+   "file": "case_0098.html",
+   "localLog": "case_logs/case_0098.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnalltoallquantmatmul_a4w4",
+   "status": "Failed",
+   "duration": "280.27s",
+   "fileBytes": 1886552,
+   "fileLines": 15755,
+   "errors": [
+    {
+     "time": "2026-11-09 15:28:42.428",
+     "level": "FAIL",
+     "line": 15624,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnalltoallquantmatmul_a4w4"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmatmulallreducev2.html",
+   "file": "case_0099.html",
+   "localLog": "case_logs/case_0099.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnmatmulallreducev2",
+   "status": "Failed",
+   "duration": "278.99s",
+   "fileBytes": 1864053,
+   "fileLines": 15659,
+   "errors": [
+    {
+     "time": "2026-11-09 15:38:57.106",
+     "level": "FAIL",
+     "line": 15528,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnmatmulallreducev2"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnalltoallmatmul.html",
+   "file": "case_0100.html",
+   "localLog": "case_logs/case_0100.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnalltoallmatmul",
+   "status": "Failed",
+   "duration": "33.20s",
+   "fileBytes": 191548,
+   "fileLines": 2111,
+   "errors": [
+    {
+     "time": "2026-11-09 16:06:32.666",
+     "level": "FAIL",
+     "line": 1980,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnalltoallmatmul"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnquantmatmulallreducev3.html",
+   "file": "case_0101.html",
+   "localLog": "case_logs/case_0101.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnquantmatmulallreducev3",
+   "status": "Failed",
+   "duration": "505.41s",
+   "fileBytes": 3445000,
+   "fileLines": 28168,
+   "errors": [
+    {
+     "time": "2026-11-09 16:01:58.416",
+     "level": "FAIL",
+     "line": 28037,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnquantmatmulallreducev3"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnquantmatmulalltoall.html",
+   "file": "case_0102.html",
+   "localLog": "case_logs/case_0102.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnquantmatmulalltoall",
+   "status": "Failed",
+   "duration": "154.34s",
+   "fileBytes": 1035049,
+   "fileLines": 8711,
+   "errors": [
+    {
+     "time": "2026-11-09 16:05:57.410",
+     "level": "FAIL",
+     "line": 8580,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnquantmatmulalltoall"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmoedistributecombinev2_2p.html",
+   "file": "case_0103.html",
+   "localLog": "case_logs/case_0103.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnmoedistributecombinev2_2p",
+   "status": "Failed",
+   "duration": "164.44s",
+   "fileBytes": 1069033,
+   "fileLines": 9254,
+   "errors": [
+    {
+     "time": "2026-11-09 16:11:58.063",
+     "level": "FAIL",
+     "line": 9123,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnmoedistributecombinev2_2p"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnallgathermatmul.html",
+   "file": "case_0104.html",
+   "localLog": "case_logs/case_0104.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnallgathermatmul",
+   "status": "Failed",
+   "duration": "157.65s",
+   "fileBytes": 1044629,
+   "fileLines": 8969,
+   "errors": [
+    {
+     "time": "2026-11-09 15:33:38.437",
+     "level": "FAIL",
+     "line": 8838,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnallgathermatmul"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmatmulreducescatterv2.html",
+   "file": "case_0105.html",
+   "localLog": "case_logs/case_0105.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnmatmulreducescatterv2",
+   "status": "Failed",
+   "duration": "43.81s",
+   "fileBytes": 258080,
+   "fileLines": 2621,
+   "errors": [
+    {
+     "time": "2026-11-09 16:12:43.640",
+     "level": "FAIL",
+     "line": 2490,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnmatmulreducescatterv2"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmoedistributedispatchv2_2p.html",
+   "file": "case_0106.html",
+   "localLog": "case_logs/case_0106.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnmoedistributedispatchv2_2p",
+   "status": "Failed",
+   "duration": "162.36s",
+   "fileBytes": 1058794,
+   "fileLines": 9182,
+   "errors": [
+    {
+     "time": "2026-11-09 16:09:13.271",
+     "level": "FAIL",
+     "line": 9051,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part7.py::TestCannOpsTransformerPart7::test_cann_accu_smk_aclnnmoedistributedispatchv2_2p"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmatmulallreduce.html",
+   "file": "case_0107.html",
+   "localLog": "case_logs/case_0107.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnmatmulallreduce",
+   "status": "Failed",
+   "duration": "415.63s",
+   "fileBytes": 2829814,
+   "fileLines": 23198,
+   "errors": [
+    {
+     "time": "2026-11-09 15:45:52.294",
+     "level": "FAIL",
+     "line": 23067,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnmatmulallreduce"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnweightquantmatmulallreduce.html",
+   "file": "case_0108.html",
+   "localLog": "case_logs/case_0108.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnweightquantmatmulallreduce",
+   "status": "Failed",
+   "duration": "159.17s",
+   "fileBytes": 1057601,
+   "fileLines": 8960,
+   "errors": [
+    {
+     "time": "2026-11-09 15:53:33.097",
+     "level": "FAIL",
+     "line": 8829,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnweightquantmatmulallreduce"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a202611091540/test_cann_accu_smk_aclnnmatmulreducescatter.html",
+   "file": "case_0109.html",
+   "localLog": "case_logs/case_0109.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnmatmulreducescatter",
+   "status": "Failed",
+   "duration": "38.77s",
+   "fileBytes": 218893,
+   "fileLines": 2358,
+   "errors": [
+    {
+     "time": "2026-11-09 15:46:34.904",
+     "level": "FAIL",
+     "line": 2227,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnmatmulreducescatter"
+    }
+   ],
+   "deepHits": []
+  }
+ ],
+ "errors": [],
+ "counts": {
+  "tasks": 2,
+  "failedCases": 38,
+  "caseLogs": 38,
+  "caseErrors": 38
+ }
+}

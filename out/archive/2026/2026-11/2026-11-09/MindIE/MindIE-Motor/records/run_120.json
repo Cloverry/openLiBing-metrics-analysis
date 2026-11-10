@@ -1,0 +1,87 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-10 14:57:26",
+    "component": "MindIE",
+    "pipeline": "MindIE-Motor",
+    "date": "2026-11-09",
+    "recordId": "MindIE|MindIE-Motor#120"
+  },
+  "recordId": "MindIE|MindIE-Motor#120",
+  "date": "2026-11-09",
+  "component": "MindIE",
+  "pipeline": "MindIE-Motor",
+  "pipelineName": "Nightly-CI-Component-pipeline_MindIE-Motor",
+  "platform": "codearts",
+  "buildNumber": 120,
+  "pipelineRunId": "c14186884ce04bfe9f5197ddb8f59bd9",
+  "status": "FAILED",
+  "failedTaskType": "测试任务",
+  "startedAt": "2026-11-09T07:04:13",
+  "endedAt": "2026-11-09T07:43:59",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-09T07:43:59",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0.5,
+    "bsRate": 0.75,
+    "dims": [
+      "va",
+      "bs"
+    ],
+    "track": "bs"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=d05b26dfc2e5450e8fff23ddf4cd0eb6&projectId=300036&pipelineRunId=c14186884ce04bfe9f5197ddb8f59bd9",
+    "detail": null,
+    "github": null
+  },
+  "tasks": [],
+  "cases": [],
+  "errorMessages": [],
+  "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+  },
+  "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+  },
+  "verdict": {
+    "category": "test_failure",
+    "text": "用例失败",
+    "confidence": 0.3,
+    "level": "低",
+    "basis": [
+      "运行平台标记失败任务类型为「测试任务」，据此定性为「用例失败」",
+      "接口未返回失败任务详情（无 job 日志 / 失败用例明细），证据止于任务类型这一层",
+      "基线 0.30"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "keyError": null,
+    "rootCause": "这是一条只有运行元数据、没有任何执行痕迹的失败：07:04:13 启动、07:43:59 结束（39 分 46 秒），status=FAILED、failedTaskType=「测试任务」，但 tasks=0、cases=0、errorMessages=0、证据文件 0 份，平台侧既没有返回失败任务详情，也没有任何可下钻的任务日志（records/run_120.json）\n\n失败停在测试任务这一层，推断更像用例确实开跑后中途失败、但日志与用例明细在接口侧未留存，而非用例断言不通过——若断言失败，cases 里至少应落到失败用例名与断言原文，实际却是 0 条；同样也不是构建问题，failedTaskType 指向测试任务，说明构建阶段已经过了。\n\n已排除的干扰项：本条不是取消，status 为 FAILED 而不是 CANCELED，与同日 #121、#124 的 CANCELED 性质不同，不能按「被中止」处理。",
+    "advice": "先补证据再定责：按构建号 120 在运行平台上人工打开该次运行，把测试任务的控制台日志导出回填归档，只有拿到失败步骤与报错原文才能判断是环境、用例还是产品缺陷\n\n同时给这条流水线打开任务日志与用例明细留存，确认下一次夜间运行能在归档侧落到 tasks 与 errorMessages，否则每晚会继续产出这种只有任务类型的低置信度记录\n\n采集侧对「FAILED 但 tasks=0 且 errorMessages=0」的记录单独标记为证据缺失，避免它被误当成用例失败计入质量统计\n\n验证方式：重跑一次该流水线，要求归档记录里 tasks 与 errorMessages 非空、失败用例名可见，且 list_pending 中不再出现只有任务类型的失败记录",
+    "cites": [
+      "records/run_120.json"
+    ],
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
+    "source": "agent"
+  }
+}

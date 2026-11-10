@@ -1,0 +1,53 @@
+{
+ "_doc": {
+  "step": "step_3_tasks",
+  "title": "第 3 步 失败任务分流（T4）",
+  "source": "openLiBing 流水线运行详情（任务列表）",
+  "criteria": "仅取状态为失败的任务；UNSELECTED/CANCELED/IGNORED/INIT 跳过；含测试结果的任务走测试取证（第 4 步），其余走日志取证（第 5 步），github 平台运行改走第 5c 步",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-10 14:57:28",
+  "component": "HPCKit",
+  "pipeline": "kuqcd",
+  "date": "2026-11-09"
+ },
+ "test": [
+  {
+   "key": "HPCKit|kuqcd",
+   "pipeline": "kuqcd",
+   "pipelineName": "Nightly-CI-Component-pipeline_kuqcd",
+   "projectId": 300073,
+   "pipelineId": "eeedf3e4794449969ad6d7f67691d0be",
+   "rid": "e710e7a44622472784b4187e1928c525",
+   "rn": 201,
+   "st": "11-09 00:31",
+   "jobId": "608acd7872ba4698984c8ec4d28bff44",
+   "jobName": "Test_quqcd",
+   "stepIds": [
+    "508b6dc082784c3ca9df8a87655e0f91"
+   ],
+   "steps": [
+    {
+     "id": "508b6dc082784c3ca9df8a87655e0f91",
+     "name": "Test_quqcd",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "767362fc5f0c47b68a0a75913bdf7484",
+     "jobIdParam": "f61ea200f37e43228c6f7e7905bfd873"
+    }
+   ],
+   "jobErrMsg": "步骤Test_quqcd执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "14d4e0c6d1f3437289d53dfe7c9f05cb",
+   "route": "test",
+   "isBuild": false,
+   "buildJobId": "f61ea200f37e43228c6f7e7905bfd873"
+  }
+ ],
+ "log": [],
+ "skipped": [],
+ "errors": [],
+ "counts": {
+  "test": 1,
+  "log": 0,
+  "skipped": 0
+ }
+}

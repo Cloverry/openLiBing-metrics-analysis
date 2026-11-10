@@ -1,0 +1,187 @@
+{
+ "_doc": {
+  "step": "step_4_cases",
+  "title": "第 4 步 测试用例取证（T6）",
+  "source": "openLiBing 测试报告页 + 用例日志下载",
+  "criteria": "取失败任务的失败用例、错误信息、深度学习命中行，并下载用例日志到 case_logs/",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-10 14:57:27",
+  "component": "Ascend-CANN",
+  "pipeline": "shmem",
+  "date": "2026-11-09"
+ },
+ "results": [
+  {
+   "route": "test",
+   "key": "Ascend-CANN|shmem",
+   "pipeline": "shmem",
+   "pipelineName": "Nightly-CI-Component-pipeline_shmem",
+   "rn": 140,
+   "st": "11-09 03:00",
+   "projectId": 300057,
+   "pipelineId": "93831fdaa3234c8a9dd0b8a0c220f939",
+   "rid": "74f836243f844e459bc977ea77f46ee5",
+   "jobId": "99e5e65e0a634cee8cb98d75a6731930",
+   "jobName": "Test_shmem",
+   "stepIds": [
+    "1b6293b01f144aa984575acfbf4fc3b2"
+   ],
+   "steps": [
+    {
+     "id": "1b6293b01f144aa984575acfbf4fc3b2",
+     "name": "Test_shmem",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "71e07cf4246047bf96638fd9b812039d",
+     "jobIdParam": "5980e84e76f64a07b30c063bbe5a3d8e"
+    }
+   ],
+   "jobErrMsg": "步骤Test_shmem执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "8ce1a8eeb29f4817ba9987b4b8635db8",
+   "code": 200,
+   "summary": {
+    "total": 13,
+    "passed": 12,
+    "failed": 1,
+    "passRate": "92.31%"
+   },
+   "failedCases": [
+    {
+     "name": "test_example_allgather",
+     "number": "test_example_allgather",
+     "state": "failed",
+     "description": "AssertionError: SHMEM example [allgather] 存在失败组合\nassert False",
+     "beginTime": "2026-11-09 03:30:26",
+     "endTime": "2026-11-09 03:35:58",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110826575/test_example_allgather.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110826575/test_example_allgather_log.zip"
+    }
+   ],
+   "empty": false
+  },
+  {
+   "route": "test",
+   "key": "Ascend-CANN|shmem",
+   "pipeline": "shmem",
+   "pipelineName": "Nightly-CI-Component-pipeline_shmem",
+   "rn": 141,
+   "st": "11-09 17:00",
+   "projectId": 300057,
+   "pipelineId": "93831fdaa3234c8a9dd0b8a0c220f939",
+   "rid": "1d9de9577bf44a6bb63b1c43cbf44afb",
+   "jobId": "578a07179f064a07bf84835cda0c28b0",
+   "jobName": "Test_shmem",
+   "stepIds": [
+    "df57dd21d48548f9b2efe5fb9e7e2675"
+   ],
+   "steps": [
+    {
+     "id": "df57dd21d48548f9b2efe5fb9e7e2675",
+     "name": "Test_shmem",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "3e823bb279d94da98027bb9988681406",
+     "jobIdParam": "5980e84e76f64a07b30c063bbe5a3d8e"
+    }
+   ],
+   "jobErrMsg": "步骤Test_shmem执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "04d0278b226b4fba827236f3659f2cff",
+   "code": 200,
+   "summary": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "passRate": "0.00%"
+   },
+   "failedCases": [],
+   "empty": true
+  },
+  {
+   "route": "test",
+   "key": "Ascend-CANN|shmem",
+   "pipeline": "shmem",
+   "pipelineName": "Nightly-CI-Component-pipeline_shmem",
+   "rn": 142,
+   "st": "11-09 21:06",
+   "projectId": 300057,
+   "pipelineId": "93831fdaa3234c8a9dd0b8a0c220f939",
+   "rid": "e323943fa22546e0a389be8571625771",
+   "jobId": "74f29cc3ebee4480bc83f9ab6a1323d3",
+   "jobName": "Test_shmem",
+   "stepIds": [
+    "b9525474c78e4831b208d9e3d962d885"
+   ],
+   "steps": [
+    {
+     "id": "b9525474c78e4831b208d9e3d962d885",
+     "name": "Test_shmem",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "0012c66eb9ec4b0abe7f03dcd326c94b",
+     "jobIdParam": "5980e84e76f64a07b30c063bbe5a3d8e"
+    }
+   ],
+   "jobErrMsg": "步骤Test_shmem执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "73563239e23042da8b8a2d363c203dda",
+   "code": 200,
+   "summary": {
+    "total": 13,
+    "passed": 12,
+    "failed": 1,
+    "passRate": "92.31%"
+   },
+   "failedCases": [
+    {
+     "name": "test_example_allgather",
+     "number": "test_example_allgather",
+     "state": "failed",
+     "description": "AssertionError: SHMEM example [allgather] 存在失败组合\nassert False",
+     "beginTime": "2026-11-09 22:04:25",
+     "endTime": "2026-11-09 22:10:31",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110916257/test_example_allgather.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110916257/test_example_allgather_log.zip"
+    }
+   ],
+   "empty": false
+  }
+ ],
+ "caseErrors": [
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110826575/test_example_allgather.html",
+   "file": "case_0090.html",
+   "localLog": "case_logs/case_0090.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/shmem/test_example_allgather.py::TestShmemExampleAllgather::test_example_allgather",
+   "status": "Failed",
+   "duration": "332.08s",
+   "fileBytes": 431120,
+   "fileLines": 4604,
+   "errors": [],
+   "deepHits": [
+    "FAILED due to ERROR/FAIL logs: testcase/cann/shmem/test_example_allgather.py::TestShmemExampleAllgather::test_example_allgather"
+   ]
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110916257/test_example_allgather.html",
+   "file": "case_0133.html",
+   "localLog": "case_logs/case_0133.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/shmem/test_example_allgather.py::TestShmemExampleAllgather::test_example_allgather",
+   "status": "Failed",
+   "duration": "365.73s",
+   "fileBytes": 431630,
+   "fileLines": 4607,
+   "errors": [],
+   "deepHits": [
+    "FAILED due to ERROR/FAIL logs: testcase/cann/shmem/test_example_allgather.py::TestShmemExampleAllgather::test_example_allgather"
+   ]
+  }
+ ],
+ "errors": [],
+ "counts": {
+  "tasks": 3,
+  "failedCases": 2,
+  "caseLogs": 2,
+  "caseErrors": 0
+ }
+}

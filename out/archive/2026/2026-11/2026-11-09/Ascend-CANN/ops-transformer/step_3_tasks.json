@@ -1,0 +1,83 @@
+{
+ "_doc": {
+  "step": "step_3_tasks",
+  "title": "第 3 步 失败任务分流（T4）",
+  "source": "openLiBing 流水线运行详情（任务列表）",
+  "criteria": "仅取状态为失败的任务；UNSELECTED/CANCELED/IGNORED/INIT 跳过；含测试结果的任务走测试取证（第 4 步），其余走日志取证（第 5 步），github 平台运行改走第 5c 步",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-10 14:57:27",
+  "component": "Ascend-CANN",
+  "pipeline": "ops-transformer",
+  "date": "2026-11-09"
+ },
+ "test": [
+  {
+   "key": "Ascend-CANN|ops-transformer",
+   "pipeline": "ops-transformer",
+   "pipelineName": "Nightly-CI-Component-pipeline_ops-transformer",
+   "projectId": 300057,
+   "pipelineId": "309180d5c2904adf942f5678d9356d99",
+   "rid": "22f234949d4b427c815dfb8ed6761359",
+   "rn": 165,
+   "st": "11-09 02:05",
+   "jobId": "a7f8dc4a23bd42369796a5530d58297b",
+   "jobName": "Test_ops-transformer",
+   "stepIds": [
+    "a0c1718994e74cb287091d356dad3f0f"
+   ],
+   "steps": [
+    {
+     "id": "a0c1718994e74cb287091d356dad3f0f",
+     "name": "Test_ops-transformer",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "cf976753231748cba046f87748a16e89",
+     "jobIdParam": "37823397fab445fa9626582d68281207"
+    }
+   ],
+   "jobErrMsg": "步骤Test_ops-transformer执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "333a952f8e8d4e74803f7d07586c15c2",
+   "route": "test",
+   "isBuild": false,
+   "buildJobId": "37823397fab445fa9626582d68281207"
+  },
+  {
+   "key": "Ascend-CANN|ops-transformer",
+   "pipeline": "ops-transformer",
+   "pipelineName": "Nightly-CI-Component-pipeline_ops-transformer",
+   "projectId": 300057,
+   "pipelineId": "309180d5c2904adf942f5678d9356d99",
+   "rid": "df2c5e14e99a45ba8762bff7bdbcddae",
+   "rn": 166,
+   "st": "11-09 12:35",
+   "jobId": "cf4a539f402b48b28ccb66c16fb3f5f1",
+   "jobName": "Test_ops-transformer",
+   "stepIds": [
+    "ba7ac34d35864ff681a63d741d134727"
+   ],
+   "steps": [
+    {
+     "id": "ba7ac34d35864ff681a63d741d134727",
+     "name": "Test_ops-transformer",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "6e0c6b7354c84d0991e991104ba8bd00",
+     "jobIdParam": "37823397fab445fa9626582d68281207"
+    }
+   ],
+   "jobErrMsg": "步骤Test_ops-transformer执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "7869f807c8ed47309b02bd633a20fb16",
+   "route": "test",
+   "isBuild": false,
+   "buildJobId": "37823397fab445fa9626582d68281207"
+  }
+ ],
+ "log": [],
+ "skipped": [],
+ "errors": [],
+ "counts": {
+  "test": 2,
+  "log": 0,
+  "skipped": 0
+ }
+}

@@ -1,0 +1,261 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-10 14:57:27",
+    "component": "Ascend-CANN",
+    "pipeline": "shmem",
+    "date": "2026-11-09",
+    "recordId": "Ascend-CANN|shmem#141"
+  },
+  "recordId": "Ascend-CANN|shmem#141",
+  "date": "2026-11-09",
+  "component": "Ascend-CANN",
+  "pipeline": "shmem",
+  "pipelineName": "Nightly-CI-Component-pipeline_shmem",
+  "platform": "codearts",
+  "buildNumber": 141,
+  "pipelineRunId": "1d9de9577bf44a6bb63b1c43cbf44afb",
+  "status": "FAILED",
+  "failedTaskType": "测试任务",
+  "startedAt": "2026-11-09T17:00:38",
+  "endedAt": "2026-11-09T18:18:35",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-09T18:18:35",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0.5,
+    "bsRate": 1,
+    "dims": [
+      "va",
+      "bs"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=93831fdaa3234c8a9dd0b8a0c220f939&projectId=300057&pipelineRunId=1d9de9577bf44a6bb63b1c43cbf44afb",
+    "detail": null,
+    "github": null
+  },
+  "tasks": [
+    {
+      "jobName": "Test_shmem",
+      "type": "test",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "passRate": "0.00%"
+      },
+      "cases": [],
+      "emptyTestResult": true,
+      "stepErrMsgs": []
+    },
+    {
+      "jobName": "Test_shmem",
+      "type": "log",
+      "fallback": true,
+      "logFile": "job_logs/25_shmem_141_Test_shmem.log",
+      "logBytes": 389180,
+      "logLines": 619,
+      "download": "export",
+      "truncated": false,
+      "excerpt": null,
+      "stepErrMsgs": [
+        "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+      ],
+      "jobErrMsg": "步骤Test_shmem执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+      "errorLines": [
+        "L241: [2026/11/09 17:17:57.004 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'provisioning', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf4",
+        "L244: [2026/11/09 17:18:21.761 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L247: [2026/11/09 17:18:52.486 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L250: [2026/11/09 17:19:27.526 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L253: [2026/11/09 17:19:57.050 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L256: [2026/11/09 17:20:26.331 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L259: [2026/11/09 17:20:55.790 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L262: [2026/11/09 17:21:25.564 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L265: [2026/11/09 17:21:54.899 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L268: [2026/11/09 17:22:24.411 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L472: [2026/11/09 17:56:46.308 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L475: [2026/11/09 17:57:15.530 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L478: [2026/11/09 17:57:44.883 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L481: [2026/11/09 17:58:15.559 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L484: [2026/11/09 17:58:50.964 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L487: [2026/11/09 17:59:20.276 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L490: [2026/11/09 17:59:49.844 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L493: [2026/11/09 18:00:19.078 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L496: [2026/11/09 18:00:48.299 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L499: [2026/11/09 18:01:17.521 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L502: [2026/11/09 18:01:52.429 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L505: [2026/11/09 18:02:21.652 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L508: [2026/11/09 18:02:51.170 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L511: [2026/11/09 18:03:20.551 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L514: [2026/11/09 18:03:49.911 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L517: [2026/11/09 18:04:19.132 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L520: [2026/11/09 18:04:48.349 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L523: [2026/11/09 18:05:23.255 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L526: [2026/11/09 18:05:52.699 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L529: [2026/11/09 18:06:22.115 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L532: [2026/11/09 18:06:51.654 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L535: [2026/11/09 18:07:21.046 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L538: [2026/11/09 18:07:50.307 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L541: [2026/11/09 18:08:25.579 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L544: [2026/11/09 18:08:50.333 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L547: [2026/11/09 18:09:25.395 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L550: [2026/11/09 18:09:54.653 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L553: [2026/11/09 18:10:23.962 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L556: [2026/11/09 18:10:53.570 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L559: [2026/11/09 18:11:24.092 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L562: [2026/11/09 18:11:54.795 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L565: [2026/11/09 18:12:25.557 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L568: [2026/11/09 18:12:55.025 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L571: [2026/11/09 18:13:25.059 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L574: [2026/11/09 18:13:54.575 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L577: [2026/11/09 18:14:24.023 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L580: [2026/11/09 18:14:53.666 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L583: [2026/11/09 18:15:23.558 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L586: [2026/11/09 18:15:58.476 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L589: [2026/11/09 18:16:27.702 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L593: [2026/11/09 18:16:57.242 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L596: [2026/11/09 18:17:26.680 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L599: [2026/11/09 18:17:56.109 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6",
+        "L602: [2026/11/09 18:18:25.338 GMT+08:00] [281473170207008] [ERROR] Environment allocation failed for env_id: cann_single_A3_device_cover_single_type-nodes_1-A3",
+        "L604: [2026/11/09 18:18:25.339 GMT+08:00] [281473223618592] [ERROR] Failed to execute cases for env_id: cann_single_A3_device_cover_single_type-nodes_1-A3",
+        "L612: [2026/11/09 18:18:25.339 GMT+08:00] [281473223618592] [ERROR] No test case result found. Exiting.",
+        "L614: [2026/11/09 18:18:25.339 GMT+08:00] + echo '[ERROR]execute openlibing-pytest-executor. main.py fail, log file is ***//openlibing-pytest-executor-workspace/executor-log/scheduler_framework.log'",
+        "L615: [2026/11/09 18:18:25.339 GMT+08:00] [ERROR]execute openlibing-pytest-executor. main.py fail, log file is ***//openlibing-pytest-executor-workspace/executor-log/scheduler_framework.log",
+        "L617: [2026/11/09 18:18:25.479 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed",
+        "L619: [2026/11/09 18:18:28.344 GMT+08:00] Finished: FAILURE"
+      ],
+      "subTasks": []
+    }
+  ],
+  "cases": [],
+  "errorMessages": [
+    {
+      "task": "Test_shmem",
+      "source": "job_logs/25_shmem_141_Test_shmem.log",
+      "line": 241,
+      "level": "LOG",
+      "text": "[2026/11/09 17:17:57.004 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'provisioning', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf4"
+    },
+    {
+      "task": "Test_shmem",
+      "source": "job_logs/25_shmem_141_Test_shmem.log",
+      "line": 244,
+      "level": "LOG",
+      "text": "[2026/11/09 17:18:21.761 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6"
+    },
+    {
+      "task": "Test_shmem",
+      "source": "job_logs/25_shmem_141_Test_shmem.log",
+      "line": 247,
+      "level": "LOG",
+      "text": "[2026/11/09 17:18:52.486 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6"
+    },
+    {
+      "task": "Test_shmem",
+      "source": "job_logs/25_shmem_141_Test_shmem.log",
+      "line": 250,
+      "level": "LOG",
+      "text": "[2026/11/09 17:19:27.526 GMT+08:00] [281473170207008] [INFO] apply_env_res: {'env_id': 'lease-env-4691731745e8e12a13198efb904244c2', 'groups': {'nodes_1': []}, 'status': 'queued', 'name': 'env', 'created_at': '2026-11-09T09:17:50Z', 'expires_at': '2026-11-09T15:17:50Z', 'ttl': '21600', 'topology': '', 'extend_env_comments': {'job_info': 'codearts-93831fdaa3234c8a9dd0b8a0c220f939-1d9de9577bf44a6bb6"
+    },
+    {
+      "task": "Test_shmem",
+      "source": "job_logs/25_shmem_141_Test_shmem.log",
+      "line": 614,
+      "level": "LOG",
+      "text": "[2026/11/09 18:18:25.339 GMT+08:00] + echo '[ERROR]execute openlibing-pytest-executor. main.py fail, log file is ***//openlibing-pytest-executor-workspace/executor-log/scheduler_framework.log'"
+    },
+    {
+      "task": "Test_shmem",
+      "source": "job_logs/25_shmem_141_Test_shmem.log",
+      "line": 615,
+      "level": "LOG",
+      "text": "[2026/11/09 18:18:25.339 GMT+08:00] [ERROR]execute openlibing-pytest-executor. main.py fail, log file is ***//openlibing-pytest-executor-workspace/executor-log/scheduler_framework.log"
+    },
+    {
+      "task": "Test_shmem",
+      "source": "job_logs/25_shmem_141_Test_shmem.log",
+      "line": 617,
+      "level": "LOG",
+      "text": "[2026/11/09 18:18:25.479 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed"
+    },
+    {
+      "task": "Test_shmem",
+      "source": "job_logs/25_shmem_141_Test_shmem.log",
+      "line": 619,
+      "level": "LOG",
+      "text": "[2026/11/09 18:18:28.344 GMT+08:00] Finished: FAILURE"
+    },
+    {
+      "task": "Test_shmem",
+      "source": "job_logs/25_shmem_141_Test_shmem.log",
+      "line": null,
+      "level": "JOB",
+      "text": "步骤Test_shmem执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+      "isWrapper": true
+    },
+    {
+      "task": "Test_shmem",
+      "source": "job_logs/25_shmem_141_Test_shmem.log",
+      "line": null,
+      "level": "STEP",
+      "text": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+      "isWrapper": true
+    }
+  ],
+  "evidence": {
+    "files": [
+      "job_logs/25_shmem_141_Test_shmem.log"
+    ],
+    "missing": [
+      "Test_shmem"
+    ],
+    "github": null
+  },
+  "counts": {
+    "tasks": 2,
+    "testTasks": 1,
+    "logTasks": 1,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 10,
+    "evidenceFiles": 1
+  },
+  "verdict": {
+    "category": "env_not_ready",
+    "text": "用例未拉起（测试环境异常）",
+    "confidence": 0.5,
+    "level": "中",
+    "basis": [
+      "test 任务 Test_shmem 测试结果为空（用例未拉起），已回退整 job 日志",
+      "基线 0.30",
+      "证据文件落盘 1 份 +0.25",
+      "任务日志命中错误行 +0.15",
+      "任务 Test_shmem 无任何证据 −0.20"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "keyError": "[ERROR]execute openlibing-pytest-executor. main.py fail, log file is ***//openlibing-pytest-executor-workspace/executor-log/scheduler_framework.log",
+    "rootCause": "构建 #141 从 17:00:38 跑到 18:18:35（约 1 小时 18 分钟）记 FAILED，失败任务类型为测试任务；Test_shmem 的 total=0、pass=0、fail=0，一条用例都没拉起（records/run_141.json）\n\n第一类（环境申请停在排队）：17:17:57 首次拿到 apply_env_res，内容为 env_id=lease-env-4691731745e8e12a13198efb904244c2、groups.nodes_1 为空数组、status=provisioning；随后 17:18:21、17:18:52、17:19:27 三次轮询 status 一直是 queued，节点列表始终为空，直到 18:18 都没有变成 ready（job_logs/25_shmem_141_Test_shmem.log:L241、L244、L247、L250）\n\n第二类（执行器最终放弃）：环境等了约一小时仍未就绪，18:18:25 输出 [ERROR]execute openlibing-pytest-executor. main.py fail，log file is ***//openlibing-pytest-executor-workspace/executor-log/scheduler_framework.log，18:18:25 脚本 exit code 1，18:18:28 Finished: FAILURE；job 与 step 层再包一层 DEV-CODECI-35002（job_logs/25_shmem_141_Test_shmem.log:L614、L617）\n\n因此失败点在「环境申请」这一步而不是用例：租不到节点导致执行器无法启动 pytest，包工码 DEV-CODECI-35002 只是对脚本退出的封装，真实信息在 scheduler_framework.log 里\n\n已排除的干扰项：total=0 说明没有任何用例执行，不存在精度或断言问题；同日的 #140、#142 在别的时段能拿到环境并跑到用例层，说明不是 shmem 用例本身坏掉",
+    "advice": "先看 scheduler_framework.log：这是本条唯一指向根因的文件，日志里只给了路径没给内容，优先把该文件捞出来确认是配额不足、节点被占还是租约创建失败\n\n排查节点池与租约：env 从 17:17 创建到 18:18 一直 queued、nodes_1 始终为空，典型的「无可用空闲节点」，建议核对当时段的节点池容量与是否有长任务占位\n\n缩短无效等待：现在环境排队一小时才放弃，建议在轮询里加超时上限（如 20 分钟）与明确失败原因，别让 nightly 被一个租约卡住 78 分钟\n\n验证方式：重跑 test 流水线，要求 Test_shmem 能拿到 ready 环境、拉起 13 条用例并给出结果，任务通过率 100%",
+    "cites": [
+      "job_logs/25_shmem_141_Test_shmem.log:L241",
+      "job_logs/25_shmem_141_Test_shmem.log:L250",
+      "job_logs/25_shmem_141_Test_shmem.log:L614",
+      "records/run_141.json"
+    ],
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
+    "source": "agent"
+  }
+}

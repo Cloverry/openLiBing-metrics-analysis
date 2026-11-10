@@ -1,0 +1,262 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-10 14:57:29",
+    "component": "SgLang",
+    "pipeline": "nightly-test-npu.yml",
+    "date": "2026-11-09",
+    "recordId": "SgLang|nightly-test-npu.yml#2126"
+  },
+  "recordId": "SgLang|nightly-test-npu.yml#2126",
+  "date": "2026-11-09",
+  "component": "SgLang",
+  "pipeline": "nightly-test-npu.yml",
+  "pipelineName": "nightly-test-npu.yml",
+  "platform": "github",
+  "buildNumber": 2126,
+  "pipelineRunId": "42503749318",
+  "status": "FAILED",
+  "failedTaskType": null,
+  "startedAt": "2026-11-09T01:11:56",
+  "endedAt": "2026-11-09T01:38:49",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-09T01:38:49",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0,
+    "bsRate": null,
+    "dims": [
+      "va"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42503749318",
+    "detail": "https://github.com/sgl-project/sglang/actions/runs/42503749318",
+    "github": "https://github.com/sgl-project/sglang/actions/runs/42503749318"
+  },
+  "tasks": [
+    {
+      "jobName": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "logBytes": 64387,
+      "logLines": 620,
+      "download": "github-perjob",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L503: Traceback (most recent call last):",
+        "L521: ##[error]Error: failed to run script step:",
+        "L522: ✗ exit code: 1",
+        "L546: ##[error]Process completed with exit code 1.",
+        "L547: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+      ],
+      "githubJob": {
+        "id": 128801862265,
+        "conclusion": "failure",
+        "startedAt": "2026-11-08T17:12:27Z",
+        "completedAt": "2026-11-08T17:24:28Z",
+        "steps": [
+          {
+            "name": "Run test",
+            "conclusion": "failure"
+          }
+        ]
+      },
+      "isTestJob": true,
+      "testResults": null
+    },
+    {
+      "jobName": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42503749318/128805033836_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt",
+      "logBytes": 65374,
+      "logLines": 624,
+      "download": "github-perjob",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L505: Traceback (most recent call last):",
+        "L523: ##[error]Error: failed to run script step:",
+        "L524: ✗ exit code: 1",
+        "L548: ##[error]Process completed with exit code 1.",
+        "L549: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+      ],
+      "githubJob": {
+        "id": 128805033836,
+        "conclusion": "failure",
+        "startedAt": "2026-11-08T17:24:50Z",
+        "completedAt": "2026-11-08T17:38:48Z",
+        "steps": [
+          {
+            "name": "Run test",
+            "conclusion": "failure"
+          }
+        ]
+      },
+      "isTestJob": true,
+      "testResults": null
+    }
+  ],
+  "cases": [],
+  "errorMessages": [
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 503,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 521,
+      "level": "LOG",
+      "text": "##[error]Error: failed to run script step:"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 522,
+      "level": "LOG",
+      "text": "✗ exit code: 1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 546,
+      "level": "LOG",
+      "text": "##[error]Process completed with exit code 1."
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "source": "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "line": 547,
+      "level": "LOG",
+      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
+      "source": "github_logs/gh_42503749318/128805033836_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt",
+      "line": 505,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
+      "source": "github_logs/gh_42503749318/128805033836_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt",
+      "line": 523,
+      "level": "LOG",
+      "text": "##[error]Error: failed to run script step:"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
+      "source": "github_logs/gh_42503749318/128805033836_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt",
+      "line": 524,
+      "level": "LOG",
+      "text": "✗ exit code: 1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
+      "source": "github_logs/gh_42503749318/128805033836_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt",
+      "line": 548,
+      "level": "LOG",
+      "text": "##[error]Process completed with exit code 1."
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
+      "source": "github_logs/gh_42503749318/128805033836_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt",
+      "line": 549,
+      "level": "LOG",
+      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+    }
+  ],
+  "evidence": {
+    "files": [
+      "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "github_logs/gh_42503749318/128805033836_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt"
+    ],
+    "missing": [],
+    "github": {
+      "runId": 42503749318,
+      "repo": "sgl-project/sglang",
+      "displayTitle": "L3cache",
+      "mode": "perjob",
+      "totalJobs": 16,
+      "failedJobs": [
+        {
+          "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+          "id": 128801862265,
+          "steps": [
+            {
+              "name": "Run test",
+              "conclusion": "failure"
+            }
+          ]
+        },
+        {
+          "name": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
+          "id": 128805033836,
+          "steps": [
+            {
+              "name": "Run test",
+              "conclusion": "failure"
+            }
+          ]
+        }
+      ],
+      "missing": [],
+      "complete": true
+    }
+  },
+  "counts": {
+    "tasks": 2,
+    "testTasks": 0,
+    "logTasks": 2,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 10,
+    "evidenceFiles": 2
+  },
+  "verdict": {
+    "category": "job_failure",
+    "text": "任务失败",
+    "confidence": 0.7,
+    "level": "中",
+    "basis": [
+      "任务 multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa 日志命中 5 条错误行（非编译特征），见 github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "基线 0.30",
+      "证据文件落盘 2 份 +0.25",
+      "任务日志命中错误行 +0.15"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
+    "rootCause": "16 个 job 里 2 个 multi-node-poc 失败，两个不同模型的用例是同一形态：deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa 的日志尾部依次是「Traceback (most recent call last):」（github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L503）→「##[error]Error: failed to run script step:」→「✗ exit code: 1」（同文件 L521、L522）→「##[error]Process completed with exit code 1.」→「Executing the custom container implementation failed.」（同文件 L546、L547），deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa 的日志出现同一组五行（github_logs/gh_42503749318/128805033836_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L505、L549）。\n\n推断更像用例启动阶段的脚本层失败、用例未真正进入精度或性能判定，而不是断言不通过：两个任务的 total/pass/fail 全为 None、cases=0，说明一条用例结果都没产出；如果真是精度不达标，至少会落一条 failed 用例和断言原文。\n\n已排除的干扰项：Traceback 只有头行、没有异常正文，不能据此判定为代码 bug；末尾的容器实现执行失败出现在 exit 1 之后，是 runner 外层收尾的连带结果，不是独立故障。同一用例 pro_0813 在约一小时后（#2127）以完全相同形态再次失败，说明这不是单次抖动。",
+    "advice": "先定位脚本层停在哪一行：用同一 commit 单跑 deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa 这一个用例，并把启动脚本的 set -x 或每一步的时间戳打开，让 Traceback 后面的异常正文落到日志里——现在缺的正是这一段\n\n拿到正文后按两类分开处理：若是拉起服务时的依赖/配置异常（端口、ranktable、镜像内库版本），改启动脚本并与其他能跑通的 multi-node-poc 用例比对差异；若是用例代码异常，直接修用例\n\n同时把 deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa 一起核对，它在本轮与 #2127 都失败，优先确认这两个用例是否共用同一份启动模板\n\n验证方式：重跑该 workflow，要求两个 multi-node-poc 用例至少进入用例执行并落出 total/pass/fail，日志中不再出现只有头行的 Traceback 与 exit 1",
+    "cites": [
+      "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L503",
+      "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L521",
+      "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L522",
+      "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L547",
+      "github_logs/gh_42503749318/128805033836_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L505"
+    ],
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
+    "source": "agent"
+  }
+}

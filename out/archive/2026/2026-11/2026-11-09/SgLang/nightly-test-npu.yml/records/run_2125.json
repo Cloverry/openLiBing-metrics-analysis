@@ -1,0 +1,144 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-10 14:57:29",
+    "component": "SgLang",
+    "pipeline": "nightly-test-npu.yml",
+    "date": "2026-11-09",
+    "recordId": "SgLang|nightly-test-npu.yml#2125"
+  },
+  "recordId": "SgLang|nightly-test-npu.yml#2125",
+  "date": "2026-11-09",
+  "component": "SgLang",
+  "pipeline": "nightly-test-npu.yml",
+  "pipelineName": "nightly-test-npu.yml",
+  "platform": "github",
+  "buildNumber": 2125,
+  "pipelineRunId": "42502180491",
+  "status": "FAILED",
+  "failedTaskType": null,
+  "startedAt": "2026-11-09T00:53:36",
+  "endedAt": "2026-11-09T01:12:02",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-09T01:12:02",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0,
+    "bsRate": null,
+    "dims": [
+      "va"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42502180491",
+    "detail": "https://github.com/sgl-project/sglang/actions/runs/42502180491",
+    "github": "https://github.com/sgl-project/sglang/actions/runs/42502180491"
+  },
+  "tasks": [
+    {
+      "jobName": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "logBytes": 206236,
+      "logLines": 1033,
+      "download": "github-perjob",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [],
+      "githubJob": {
+        "id": 128797142436,
+        "conclusion": "cancelled",
+        "startedAt": "2026-11-08T16:54:07Z",
+        "completedAt": "2026-11-08T17:12:01Z",
+        "steps": []
+      },
+      "isTestJob": true,
+      "testResults": null
+    },
+    {
+      "jobName": "check-all-jobs",
+      "type": "log",
+      "platform": "github",
+      "logFile": null,
+      "errorLines": [],
+      "download": "github-404",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "evidenceNote": "运行平台侧日志未留存（404），证据不完整；定性依据 jobs 元数据（conclusion/时长/失败步骤）"
+    }
+  ],
+  "cases": [],
+  "errorMessages": [],
+  "evidence": {
+    "files": [
+      "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt"
+    ],
+    "missing": [
+      "check-all-jobs"
+    ],
+    "github": {
+      "runId": 42502180491,
+      "repo": "sgl-project/sglang",
+      "displayTitle": "L3cache",
+      "mode": "perjob",
+      "totalJobs": 15,
+      "failedJobs": [],
+      "missing": [
+        {
+          "job": "check-all-jobs",
+          "id": 128801839738,
+          "status": "404_not_retained"
+        }
+      ],
+      "complete": true
+    }
+  },
+  "counts": {
+    "tasks": 2,
+    "testTasks": 0,
+    "logTasks": 2,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 1
+  },
+  "verdict": {
+    "category": "unknown",
+    "text": "证据不足待人工确认",
+    "confidence": 0.35,
+    "level": "低",
+    "basis": [
+      "失败任务已取到日志但未命中错误特征，需按日志尾部人工确认",
+      "基线 0.30",
+      "证据文件落盘 1 份 +0.25",
+      "任务 check-all-jobs 无任何证据 −0.20"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "keyError": "Found exist sglang job, sleeping for 30 seconds...",
+    "rootCause": "这个 job 根本没跑到用例：00:53:36 启动、01:12:02 结束（19 分钟），日志 1033 行主体是等待循环——先把「No sglang job exist, start test case...」打出来（github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L295），随后连续 5 次打印「Found exist sglang job, sleeping for 30 seconds...」（同文件 L993、L1003、L1032），再次打印「No sglang job exist」之后立刻进入「Post job cleanup.」与「Cleaning up orphan processes」，job 就这样收尾了；本记录 tasks=2、cases=0、errorMessages=0，一条用例结果都没有。\n\n推断更像同一 sglang 服务实例被同批次其它 job 占着、本 job 在等待期被清理结束，而非用例执行失败——如果真的跑过用例，cases 里应有用例名与阈值判定结果，实际是 0；日志里也没有任何断言或 Traceback，说明失败发生在执行之前。\n\n已排除的干扰项：另一个任务 check-all-jobs 在平台侧日志 404，因此「谁占用了服务、占用了多久」无法从本次证据确认，本条只定性为执行前的服务等待与调度问题。",
+    "advice": "先把无界等待改成有界等待：每次 sleeping 时打印占用者 job 名、已等待时长与剩余超时，超时直接失败并输出占用关系，用这些字段替代现在只有一句 sleeping for 30 seconds 的日志\n\n然后查夜间并发：同一时间段有多个 multi-node-poc 争抢同一个 sglang 服务实例，按用例分组串行或按服务实例分池，避免 job 在等待期被清理\n\n再补证据：为 check-all-jobs 打开日志留存（当前 404），否则这类「未执行即结束」的记录永远只能定性为 unknown\n\n验证方式：重跑同一批夜间用例，要求每个 job 日志里能看到占用者与被占用时长、没有任何 job 因等待被清理结束，且用例结果能正常落盘",
+    "cites": [
+      "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L295",
+      "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L993",
+      "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1003",
+      "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1032"
+    ],
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
+    "source": "agent"
+  }
+}

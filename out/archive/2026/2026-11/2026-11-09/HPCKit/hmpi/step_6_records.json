@@ -1,0 +1,195 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "以「一次执行」为最小单位合并任务、用例、错误信息、证据与构建编号，形成可直接展示与逐条分析的记录",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-10 14:57:28",
+    "component": "HPCKit",
+    "pipeline": "hmpi",
+    "date": "2026-11-09",
+    "recordCount": 1
+  },
+  "date": "2026-11-09",
+  "component": "HPCKit",
+  "pipeline": "hmpi",
+  "records": [
+    {
+      "recordId": "HPCKit|hmpi#213",
+      "date": "2026-11-09",
+      "component": "HPCKit",
+      "pipeline": "hmpi",
+      "pipelineName": "Nightly-CI-Component-pipeline_hmpi",
+      "platform": "codearts",
+      "buildNumber": 213,
+      "pipelineRunId": "2f71f7f0cb6643dfa23b3d5f8ebb9755",
+      "status": "FAILED",
+      "failedTaskType": "测试任务",
+      "startedAt": "2026-11-09T01:01:55",
+      "endedAt": "2026-11-09T01:11:50",
+      "dateBasis": {
+        "field": "pipelineRunEndtime",
+        "value": "2026-11-09T01:11:50",
+        "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+      },
+      "light": {
+        "vaRate": 0,
+        "bsRate": 1,
+        "dims": [
+          "va",
+          "bs"
+        ],
+        "track": "va"
+      },
+      "links": {
+        "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=ffe131425ad84d4b8b6c17c4c09476d9&projectId=300073&pipelineRunId=2f71f7f0cb6643dfa23b3d5f8ebb9755",
+        "detail": null,
+        "github": null
+      },
+      "tasks": [
+        {
+          "jobName": "Test_hmpi",
+          "type": "test",
+          "summary": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "passRate": "0.00%"
+          },
+          "cases": [],
+          "emptyTestResult": true,
+          "stepErrMsgs": []
+        },
+        {
+          "jobName": "Test_hmpi",
+          "type": "log",
+          "fallback": true,
+          "logFile": "job_logs/28_hmpi_213_Test_hmpi.log",
+          "logBytes": 16564,
+          "logLines": 144,
+          "download": "export",
+          "truncated": false,
+          "excerpt": null,
+          "stepErrMsgs": [
+            "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+          ],
+          "jobErrMsg": "步骤Test_hmpi执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+          "errorLines": [
+            "L138: [2026/11/09 01:11:48.112 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+            "L139: [2026/11/09 01:11:48.112 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'",
+            "L140: [2026/11/09 01:11:48.112 GMT+08:00] [ERROR] git clone test_cases code fail",
+            "L142: [2026/11/09 01:11:48.273 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed",
+            "L144: [2026/11/09 01:11:52.501 GMT+08:00] Finished: FAILURE"
+          ],
+          "subTasks": []
+        }
+      ],
+      "cases": [],
+      "errorMessages": [
+        {
+          "task": "Test_hmpi",
+          "source": "job_logs/28_hmpi_213_Test_hmpi.log",
+          "line": 138,
+          "level": "LOG",
+          "text": "[2026/11/09 01:11:48.112 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'"
+        },
+        {
+          "task": "Test_hmpi",
+          "source": "job_logs/28_hmpi_213_Test_hmpi.log",
+          "line": 139,
+          "level": "LOG",
+          "text": "[2026/11/09 01:11:48.112 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'"
+        },
+        {
+          "task": "Test_hmpi",
+          "source": "job_logs/28_hmpi_213_Test_hmpi.log",
+          "line": 140,
+          "level": "LOG",
+          "text": "[2026/11/09 01:11:48.112 GMT+08:00] [ERROR] git clone test_cases code fail"
+        },
+        {
+          "task": "Test_hmpi",
+          "source": "job_logs/28_hmpi_213_Test_hmpi.log",
+          "line": 142,
+          "level": "LOG",
+          "text": "[2026/11/09 01:11:48.273 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed"
+        },
+        {
+          "task": "Test_hmpi",
+          "source": "job_logs/28_hmpi_213_Test_hmpi.log",
+          "line": 144,
+          "level": "LOG",
+          "text": "[2026/11/09 01:11:52.501 GMT+08:00] Finished: FAILURE"
+        },
+        {
+          "task": "Test_hmpi",
+          "source": "job_logs/28_hmpi_213_Test_hmpi.log",
+          "line": null,
+          "level": "JOB",
+          "text": "步骤Test_hmpi执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+          "isWrapper": true
+        },
+        {
+          "task": "Test_hmpi",
+          "source": "job_logs/28_hmpi_213_Test_hmpi.log",
+          "line": null,
+          "level": "STEP",
+          "text": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+          "isWrapper": true
+        }
+      ],
+      "evidence": {
+        "files": [
+          "job_logs/28_hmpi_213_Test_hmpi.log"
+        ],
+        "missing": [
+          "Test_hmpi"
+        ],
+        "github": null
+      },
+      "counts": {
+        "tasks": 2,
+        "testTasks": 1,
+        "logTasks": 1,
+        "buildTasks": 0,
+        "cases": 0,
+        "errorMessages": 7,
+        "evidenceFiles": 1
+      },
+      "verdict": {
+        "category": "env_not_ready",
+        "text": "用例未拉起（测试环境异常）",
+        "confidence": 0.5,
+        "level": "中",
+        "basis": [
+          "test 任务 Test_hmpi 测试结果为空（用例未拉起），已回退整 job 日志",
+          "基线 0.30",
+          "证据文件落盘 1 份 +0.25",
+          "任务日志命中错误行 +0.15",
+          "任务 Test_hmpi 无任何证据 −0.20"
+        ]
+      },
+      "suggestions": [],
+      "analysis": {
+        "status": "done",
+        "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+        "rootCause": "构建 #213 从 01:01:55 跑到 01:11:50（约 10 分钟）记 FAILED，失败任务类型为测试任务；Test_hmpi 的 total=0、pass=0、fail=0，用例一条都没执行（records/run_213.json）\n\n第一类（用例仓拉取鉴权失败）：01:11:48.112 日志报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，紧接着脚本自己打印 [ERROR] git clone test_cases code fail，01:11:48.273 以 script returned exit code 1 退出，01:11:52 Finished: FAILURE（job_logs/28_hmpi_213_Test_hmpi.log:L138、L139、L140、L142）\n\n第二类（封装码不具备诊断价值）：job 与 step 层都只留了 步骤Test_hmpi执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}，真实原因完全在 clone 这一步\n\n因此失败在用例代码拉取环节：clone hpckit-autotest 时凭据无效或已过期，导致测试代码没下来、pytest 无法启动；这类问题是环境/凭据问题，不是被测组件 hmpi 的缺陷\n\n已排除的干扰项：total=0 与 10 分钟的短时长说明根本没进入用例执行；日志里没有任何编译错误或设备异常",
+        "advice": "先换有效凭据并复测：核对执行机上的 gitcode 凭证（token 是否过期、是否有该私有仓的读权限），这是本条唯一根因，修好后 clone 与用例执行应该立即恢复\n\n把凭据检查前置：在 clone 之前先做一次轻量鉴权探测（如 git ls-remote），失败时直接给「凭据无效」结论，而不是等 clone 报错再靠封装码收口\n\n同类批量排查：同批 kpex#142、kudnn#227、kupl#306、kuqcd#201 都是同一个仓库的同一句鉴权失败，建议一次改配置覆盖这五条流水线\n\n验证方式：重跑 hmpi 流水线，要求 git clone 成功、Test_hmpi 拉起用例并给出 total>0 的结果、任务通过率 100%",
+        "cites": [
+          "job_logs/28_hmpi_213_Test_hmpi.log:L138",
+          "job_logs/28_hmpi_213_Test_hmpi.log:L140",
+          "records/run_213.json"
+        ],
+        "updatedAt": "2026-11-10 17:27:42",
+        "firstAnalyzedAt": "2026-11-10 15:21:02",
+        "revisions": 2,
+        "source": "agent"
+      }
+    }
+  ],
+  "recordFiles": [
+    "records/run_213.json"
+  ],
+  "pathBase": "recordFiles 相对本目录（records/run_<构建号>.json）"
+}

@@ -1,0 +1,137 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-10 14:57:29",
+    "component": "SgLang",
+    "pipeline": "nightly-test-npu.yml",
+    "date": "2026-11-09",
+    "recordId": "SgLang|nightly-test-npu.yml#2132"
+  },
+  "recordId": "SgLang|nightly-test-npu.yml#2132",
+  "date": "2026-11-09",
+  "component": "SgLang",
+  "pipeline": "nightly-test-npu.yml",
+  "pipelineName": "nightly-test-npu.yml",
+  "platform": "github",
+  "buildNumber": 2132,
+  "pipelineRunId": "42620484793",
+  "status": "FAILED",
+  "failedTaskType": null,
+  "startedAt": "2026-11-09T20:51:29",
+  "endedAt": "2026-11-09T20:51:31",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-09T20:51:31",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0,
+    "bsRate": null,
+    "dims": [
+      "va"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42620484793",
+    "detail": "https://github.com/sgl-project/sglang/actions/runs/42620484793",
+    "github": "https://github.com/sgl-project/sglang/actions/runs/42620484793"
+  },
+  "tasks": [
+    {
+      "jobName": "set-image-config",
+      "type": "log",
+      "platform": "github",
+      "logFile": null,
+      "errorLines": [],
+      "download": "github-404",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "evidenceNote": "运行平台侧日志未留存（404），证据不完整；定性依据 jobs 元数据（conclusion/时长/失败步骤）"
+    },
+    {
+      "jobName": "check-all-jobs",
+      "type": "log",
+      "platform": "github",
+      "logFile": null,
+      "errorLines": [],
+      "download": "github-404",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "evidenceNote": "运行平台侧日志未留存（404），证据不完整；定性依据 jobs 元数据（conclusion/时长/失败步骤）"
+    }
+  ],
+  "cases": [],
+  "errorMessages": [],
+  "evidence": {
+    "files": [],
+    "missing": [
+      "check-all-jobs",
+      "set-image-config"
+    ],
+    "github": {
+      "runId": 42620484793,
+      "repo": "sgl-project/sglang",
+      "displayTitle": "[Test][NPU] overlap-schedule validation: GLM5/Kimi/DSV4 case reconfig + TEMP nightly scoping",
+      "mode": "perjob",
+      "totalJobs": 15,
+      "failedJobs": [],
+      "missing": [
+        {
+          "job": "set-image-config",
+          "id": 129171021001,
+          "status": "404_not_retained"
+        },
+        {
+          "job": "check-all-jobs",
+          "id": 129171030139,
+          "status": "404_not_retained"
+        }
+      ],
+      "complete": true
+    }
+  },
+  "counts": {
+    "tasks": 2,
+    "testTasks": 0,
+    "logTasks": 2,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+  },
+  "verdict": {
+    "category": "evidence_missing",
+    "text": "证据缺失",
+    "confidence": 0.1,
+    "level": "低",
+    "basis": [
+      "全部失败任务均无日志落盘",
+      "运行平台侧日志未留存（404），证据不完整；定性依据 jobs 元数据（conclusion/时长/失败步骤）",
+      "运行平台侧日志未留存（404），证据不完整；定性依据 jobs 元数据（conclusion/时长/失败步骤）",
+      "基线 0.30",
+      "任务 set-image-config 无任何证据 −0.20",
+      "任务 check-all-jobs 无任何证据 −0.20"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "keyError": null,
+    "rootCause": "这是启动即失败的运行：20:51:29 开始、20:51:31 结束，只有 2 秒就判 FAILED，两个任务 set-image-config（入口镜像配置）与 check-all-jobs 在平台侧日志均为 404_not_retained，归档侧 0 份证据文件、0 条 errorMessages、cases=0（records/run_2132.json）。\n\n推断更像工作流入口步骤 set-image-config 在镜像或参数配置阶段就失败、并导致后续 job 没有日志，而不是用例执行失败：2 秒的时间窗口连服务都拉不起来，失败发生在容器之前——本记录里也确实没有出现 #2133 那句容器实现失败，说明它停得更早。\n\n已排除的干扰项：同一秒（20:51:29）该工作流还触发了另一条运行 #2133（runId 42620485286），那条表现为容器层失败，两条更像是同一时间点的重复触发与入口配置冲突，而不是两次独立的技术故障。",
+    "advice": "优先给入口步骤 set-image-config 打开日志留存，这一步失败会连带后续 job 全部无日志，现象正是「2 秒失败 + 全部 404」，不修留存则每晚都会重复出现这类无法归因的记录\n\n在该工作流入口增加镜像配置与夜间范围参数的合法性校验，配置错误在上游就拦下来并保存失败时的 job 元数据快照\n\n同时排查 20:51:29 的重复触发：核对触发源（定时、push、手动）与并发策略，避免同一工作流在同一秒起跑两条运行\n\n验证方式：修好后重跑，要求 set-image-config 有可下载日志、运行不再 2 秒即失败，该工作流单次触发只产生一条运行",
+    "cites": [
+      "records/run_2132.json"
+    ],
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
+    "source": "agent"
+  }
+}

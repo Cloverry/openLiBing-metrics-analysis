@@ -1,0 +1,195 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "以「一次执行」为最小单位合并任务、用例、错误信息、证据与构建编号，形成可直接展示与逐条分析的记录",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-10 14:57:28",
+    "component": "HPCKit",
+    "pipeline": "kpex",
+    "date": "2026-11-09",
+    "recordCount": 1
+  },
+  "date": "2026-11-09",
+  "component": "HPCKit",
+  "pipeline": "kpex",
+  "records": [
+    {
+      "recordId": "HPCKit|kpex#142",
+      "date": "2026-11-09",
+      "component": "HPCKit",
+      "pipeline": "kpex",
+      "pipelineName": "Nightly-CI-Component-pipeline_kpex",
+      "platform": "codearts",
+      "buildNumber": 142,
+      "pipelineRunId": "62a8b0fdea804558b0321f6b09c49dc2",
+      "status": "FAILED",
+      "failedTaskType": "测试任务",
+      "startedAt": "2026-11-09T00:41:16",
+      "endedAt": "2026-11-09T00:43:21",
+      "dateBasis": {
+        "field": "pipelineRunEndtime",
+        "value": "2026-11-09T00:43:21",
+        "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+      },
+      "light": {
+        "vaRate": 0,
+        "bsRate": 1,
+        "dims": [
+          "va",
+          "bs"
+        ],
+        "track": "va"
+      },
+      "links": {
+        "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=fec036d3c59f4d27bb506138f273f113&projectId=300073&pipelineRunId=62a8b0fdea804558b0321f6b09c49dc2",
+        "detail": null,
+        "github": null
+      },
+      "tasks": [
+        {
+          "jobName": "Test_kpex",
+          "type": "test",
+          "summary": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "passRate": "0.00%"
+          },
+          "cases": [],
+          "emptyTestResult": true,
+          "stepErrMsgs": []
+        },
+        {
+          "jobName": "Test_kpex",
+          "type": "log",
+          "fallback": true,
+          "logFile": "job_logs/29_kpex_142_Test_kpex.log",
+          "logBytes": 16563,
+          "logLines": 144,
+          "download": "export",
+          "truncated": false,
+          "excerpt": null,
+          "stepErrMsgs": [
+            "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+          ],
+          "jobErrMsg": "步骤Test_kpex执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+          "errorLines": [
+            "L138: [2026/11/09 00:43:18.191 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+            "L139: [2026/11/09 00:43:18.191 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'",
+            "L140: [2026/11/09 00:43:18.191 GMT+08:00] [ERROR] git clone test_cases code fail",
+            "L142: [2026/11/09 00:43:18.354 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed",
+            "L144: [2026/11/09 00:43:22.158 GMT+08:00] Finished: FAILURE"
+          ],
+          "subTasks": []
+        }
+      ],
+      "cases": [],
+      "errorMessages": [
+        {
+          "task": "Test_kpex",
+          "source": "job_logs/29_kpex_142_Test_kpex.log",
+          "line": 138,
+          "level": "LOG",
+          "text": "[2026/11/09 00:43:18.191 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'"
+        },
+        {
+          "task": "Test_kpex",
+          "source": "job_logs/29_kpex_142_Test_kpex.log",
+          "line": 139,
+          "level": "LOG",
+          "text": "[2026/11/09 00:43:18.191 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'"
+        },
+        {
+          "task": "Test_kpex",
+          "source": "job_logs/29_kpex_142_Test_kpex.log",
+          "line": 140,
+          "level": "LOG",
+          "text": "[2026/11/09 00:43:18.191 GMT+08:00] [ERROR] git clone test_cases code fail"
+        },
+        {
+          "task": "Test_kpex",
+          "source": "job_logs/29_kpex_142_Test_kpex.log",
+          "line": 142,
+          "level": "LOG",
+          "text": "[2026/11/09 00:43:18.354 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed"
+        },
+        {
+          "task": "Test_kpex",
+          "source": "job_logs/29_kpex_142_Test_kpex.log",
+          "line": 144,
+          "level": "LOG",
+          "text": "[2026/11/09 00:43:22.158 GMT+08:00] Finished: FAILURE"
+        },
+        {
+          "task": "Test_kpex",
+          "source": "job_logs/29_kpex_142_Test_kpex.log",
+          "line": null,
+          "level": "JOB",
+          "text": "步骤Test_kpex执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+          "isWrapper": true
+        },
+        {
+          "task": "Test_kpex",
+          "source": "job_logs/29_kpex_142_Test_kpex.log",
+          "line": null,
+          "level": "STEP",
+          "text": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+          "isWrapper": true
+        }
+      ],
+      "evidence": {
+        "files": [
+          "job_logs/29_kpex_142_Test_kpex.log"
+        ],
+        "missing": [
+          "Test_kpex"
+        ],
+        "github": null
+      },
+      "counts": {
+        "tasks": 2,
+        "testTasks": 1,
+        "logTasks": 1,
+        "buildTasks": 0,
+        "cases": 0,
+        "errorMessages": 7,
+        "evidenceFiles": 1
+      },
+      "verdict": {
+        "category": "env_not_ready",
+        "text": "用例未拉起（测试环境异常）",
+        "confidence": 0.5,
+        "level": "中",
+        "basis": [
+          "test 任务 Test_kpex 测试结果为空（用例未拉起），已回退整 job 日志",
+          "基线 0.30",
+          "证据文件落盘 1 份 +0.25",
+          "任务日志命中错误行 +0.15",
+          "任务 Test_kpex 无任何证据 −0.20"
+        ]
+      },
+      "suggestions": [],
+      "analysis": {
+        "status": "done",
+        "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+        "rootCause": "构建 #142 从 00:41:16 跑到 00:43:21（约 2 分钟）记 FAILED，失败任务类型为测试任务；Test_kpex 的 total=0、pass=0、fail=0，用例未执行（records/run_142.json）\n\n第一类（用例仓拉取鉴权失败）：00:43:18.191 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，脚本随即打印 [ERROR] git clone test_cases code fail，00:43:18.354 以 script returned exit code 1 退出，00:43:22 Finished: FAILURE（job_logs/29_kpex_142_Test_kpex.log:L138、L140、L142）\n\n第二类（封装码无诊断价值）：job 与 step 层只留 步骤Test_kpex执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}\n\n因此失败点与同批 HPCKit 记录完全一致：clone hpckit-autotest 时凭据无效或无权访问，测试代码没拉下来，pytest 起不来；属凭据/环境问题，不是 kpex 组件缺陷\n\n已排除的干扰项：total=0、2 分钟内结束，说明没进入任何用例；无编译错误与设备异常",
+        "advice": "与 hmpi#213 一起修凭据：同一天五条 HPCKit 流水线（hmpi#213、kpex#142、kudnn#227、kupl#306、kuqcd#201）都卡在同一个仓库的同一句鉴权失败，改一次执行机凭证就能一起解决\n\n把鉴权探测前置：在 clone 前用 git ls-remote 做一次轻量检查，失败直接给「凭据无效」结论并中止，避免每次都只留封装码\n\n考虑凭证托管而非写死：把 gitcode 读权限收到流水线密钥里并设置到期提醒，防止再次集体失效\n\n验证方式：重跑 kpex 流水线，要求 git clone 成功、Test_kpex 拉起用例并给出 total>0 的结果、任务通过率 100%",
+        "cites": [
+          "job_logs/29_kpex_142_Test_kpex.log:L138",
+          "job_logs/29_kpex_142_Test_kpex.log:L142",
+          "records/run_142.json"
+        ],
+        "updatedAt": "2026-11-10 17:27:42",
+        "firstAnalyzedAt": "2026-11-10 15:21:02",
+        "revisions": 2,
+        "source": "agent"
+      }
+    }
+  ],
+  "recordFiles": [
+    "records/run_142.json"
+  ],
+  "pathBase": "recordFiles 相对本目录（records/run_<构建号>.json）"
+}

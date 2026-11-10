@@ -1,0 +1,144 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-10 14:57:27",
+    "component": "Ascend-CANN",
+    "pipeline": "shmem",
+    "date": "2026-11-09",
+    "recordId": "Ascend-CANN|shmem#142"
+  },
+  "recordId": "Ascend-CANN|shmem#142",
+  "date": "2026-11-09",
+  "component": "Ascend-CANN",
+  "pipeline": "shmem",
+  "pipelineName": "Nightly-CI-Component-pipeline_shmem",
+  "platform": "codearts",
+  "buildNumber": 142,
+  "pipelineRunId": "e323943fa22546e0a389be8571625771",
+  "status": "FAILED",
+  "failedTaskType": "测试任务",
+  "startedAt": "2026-11-09T21:06:00",
+  "endedAt": "2026-11-09T22:14:36",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-09T22:14:36",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0.5,
+    "bsRate": 1,
+    "dims": [
+      "va",
+      "bs"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=93831fdaa3234c8a9dd0b8a0c220f939&projectId=300057&pipelineRunId=e323943fa22546e0a389be8571625771",
+    "detail": null,
+    "github": null
+  },
+  "tasks": [
+    {
+      "jobName": "Test_shmem",
+      "type": "test",
+      "summary": {
+        "total": 13,
+        "passed": 12,
+        "failed": 1,
+        "passRate": "92.31%"
+      },
+      "cases": [
+        {
+          "name": "test_example_allgather",
+          "state": "failed",
+          "description": "AssertionError: SHMEM example [allgather] 存在失败组合\nassert False",
+          "beginTime": "2026-11-09 22:04:25",
+          "endTime": "2026-11-09 22:10:31",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110916257/test_example_allgather.html",
+          "localLog": "case_logs/case_0133.html",
+          "errorMessages": [],
+          "deepHits": [
+            "FAILED due to ERROR/FAIL logs: testcase/cann/shmem/test_example_allgather.py::TestShmemExampleAllgather::test_example_allgather"
+          ]
+        }
+      ],
+      "emptyTestResult": false,
+      "stepErrMsgs": []
+    }
+  ],
+  "cases": [
+    {
+      "task": "Test_shmem",
+      "name": "test_example_allgather",
+      "state": "failed",
+      "description": "AssertionError: SHMEM example [allgather] 存在失败组合\nassert False",
+      "beginTime": "2026-11-09 22:04:25",
+      "endTime": "2026-11-09 22:10:31",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110916257/test_example_allgather.html",
+      "localLog": "case_logs/case_0133.html",
+      "errorCount": 0,
+      "errorMessages": [],
+      "deepHits": [
+        "FAILED due to ERROR/FAIL logs: testcase/cann/shmem/test_example_allgather.py::TestShmemExampleAllgather::test_example_allgather"
+      ]
+    }
+  ],
+  "errorMessages": [
+    {
+      "task": "Test_shmem",
+      "case": "test_example_allgather",
+      "source": "case_logs/case_0133.html",
+      "line": null,
+      "level": "CASE",
+      "text": "FAILED due to ERROR/FAIL logs: testcase/cann/shmem/test_example_allgather.py::TestShmemExampleAllgather::test_example_allgather",
+      "assertion": true
+    }
+  ],
+  "evidence": {
+    "files": [
+      "case_logs/case_0133.html"
+    ],
+    "missing": [],
+    "github": null
+  },
+  "counts": {
+    "tasks": 1,
+    "testTasks": 1,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 1,
+    "errorMessages": 1,
+    "evidenceFiles": 1
+  },
+  "verdict": {
+    "category": "test_failure",
+    "text": "用例失败",
+    "confidence": 0.55,
+    "level": "中",
+    "basis": [
+      "test 任务 Test_shmem 取到 1 条失败用例（无 job 日志，证据来自测试报告/用例日志）",
+      "基线 0.30",
+      "证据文件落盘 1 份 +0.25"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "keyError": "AssertionError: SHMEM example [allgather] 存在失败组合 assert False",
+    "rootCause": "Test_shmem 任务 13 条用例跑出 12 通过、1 失败（通过率 92.31%），构建 #142 从 21:06:00 跑到 22:14:36 记 FAILED；失败项与 #140 完全相同，仍是 test_example_allgather，本次执行时间 22:04:25~22:10:31（case_logs/case_0133.html）\n\n第一类（同一批组合失败）：本用例日志同样从 allgather_pes2_int32_t 到 allgather_pes8_bfloat16_t 记录 9 个组合「测试失败」，组合集合与 #140 完全一致\n\n第二类（时段不同、结果相同）：#140 跑在 03:00~03:40，#142 跑在 21:06~22:14，两次相隔约 18 小时、跑在不同时段与不同机器实例上，失败组合却一个不差，属确定性复现而非环境抖动\n\n因此这条不是新问题，而是 #140 的第二次复现：更像 allgather example 在当前版本上稳定跑不通（共享内存初始化或 example 二进制问题），而非资源竞争\n\n已排除的干扰项：同任务 12 条其他用例两次都通过；无编译失败、无超时、无设备占用记录",
+    "advice": "与 #140 合并成一条线：两次时段不同、失败集合一致，直接按「稳定复现的缺陷」处理，不要再等第三次夜间跑\n\n用最小组合取证：手工单跑 allgather_pes2_int32_t 并把完整输出留下来，这是目前唯一缺的一环——9 条组合失败却只有一句汇总断言\n\n核对环境前提：检查 /dev/shm 容量、memlock 限制与共享内存驱动版本，三者任一不满足都会让所有组合同时失败\n\n验证方式：重跑 Test_shmem，要求 allgather example 的 9 个组合连续两次全部通过、任务通过率 100%",
+    "cites": [
+      "case_logs/case_0133.html",
+      "records/run_142.json"
+    ],
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
+    "source": "agent"
+  }
+}

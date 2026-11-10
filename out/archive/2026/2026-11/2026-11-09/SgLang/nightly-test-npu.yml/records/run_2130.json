@@ -1,0 +1,187 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-10 14:57:29",
+    "component": "SgLang",
+    "pipeline": "nightly-test-npu.yml",
+    "date": "2026-11-09",
+    "recordId": "SgLang|nightly-test-npu.yml#2130"
+  },
+  "recordId": "SgLang|nightly-test-npu.yml#2130",
+  "date": "2026-11-09",
+  "component": "SgLang",
+  "pipeline": "nightly-test-npu.yml",
+  "pipelineName": "nightly-test-npu.yml",
+  "platform": "github",
+  "buildNumber": 2130,
+  "pipelineRunId": "42611183075",
+  "status": "FAILED",
+  "failedTaskType": null,
+  "startedAt": "2026-11-09T19:42:43",
+  "endedAt": "2026-11-09T19:59:57",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-09T19:59:57",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0,
+    "bsRate": null,
+    "dims": [
+      "va"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42611183075",
+    "detail": "https://github.com/sgl-project/sglang/actions/runs/42611183075",
+    "github": "https://github.com/sgl-project/sglang/actions/runs/42611183075"
+  },
+  "tasks": [
+    {
+      "jobName": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test/registered/npu/pe... / glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt",
+      "logBytes": 34807,
+      "logLines": 335,
+      "download": "github-perjob",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L272: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
+        "L301: ##[error]Error: failed to run script step:",
+        "L302: ✗ exit code: 1",
+        "L304: ##[error]Process completed with exit code 1."
+      ],
+      "githubJob": {
+        "id": 129139754348,
+        "conclusion": "cancelled",
+        "startedAt": "2026-11-09T11:43:13Z",
+        "completedAt": "2026-11-09T11:59:56Z",
+        "steps": [
+          {
+            "name": "Prepare code for testing",
+            "conclusion": "failure"
+          },
+          {
+            "name": "Post process",
+            "conclusion": "failure"
+          }
+        ]
+      },
+      "isTestJob": true,
+      "testResults": null
+    },
+    {
+      "jobName": "check-all-jobs",
+      "type": "log",
+      "platform": "github",
+      "logFile": null,
+      "errorLines": [],
+      "download": "github-404",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "evidenceNote": "运行平台侧日志未留存（404），证据不完整；定性依据 jobs 元数据（conclusion/时长/失败步骤）"
+    }
+  ],
+  "cases": [],
+  "errorMessages": [
+    {
+      "task": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test/registered/npu/pe... / glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms",
+      "source": "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt",
+      "line": 272,
+      "level": "LOG",
+      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+    },
+    {
+      "task": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test/registered/npu/pe... / glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms",
+      "source": "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt",
+      "line": 301,
+      "level": "LOG",
+      "text": "##[error]Error: failed to run script step:"
+    },
+    {
+      "task": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test/registered/npu/pe... / glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms",
+      "source": "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt",
+      "line": 302,
+      "level": "LOG",
+      "text": "✗ exit code: 1"
+    },
+    {
+      "task": "multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test/registered/npu/pe... / glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms",
+      "source": "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt",
+      "line": 304,
+      "level": "LOG",
+      "text": "##[error]Process completed with exit code 1."
+    }
+  ],
+  "evidence": {
+    "files": [
+      "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt"
+    ],
+    "missing": [
+      "check-all-jobs"
+    ],
+    "github": {
+      "runId": 42611183075,
+      "repo": "sgl-project/sglang",
+      "displayTitle": "[Test] npu/glm5.3: Add 2P2D PCP EPLB GPQA accuracy test",
+      "mode": "perjob",
+      "totalJobs": 15,
+      "failedJobs": [],
+      "missing": [
+        {
+          "job": "check-all-jobs",
+          "id": 129147126954,
+          "status": "404_not_retained"
+        }
+      ],
+      "complete": true
+    }
+  },
+  "counts": {
+    "tasks": 2,
+    "testTasks": 0,
+    "logTasks": 2,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 4,
+    "evidenceFiles": 1
+  },
+  "verdict": {
+    "category": "job_failure",
+    "text": "任务失败",
+    "confidence": 0.5,
+    "level": "中",
+    "basis": [
+      "任务 multi-node-poc (glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms, 2, 2, 1, test/registered/npu/pe... / glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms 日志命中 4 条错误行（非编译特征），见 github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt",
+      "基线 0.30",
+      "证据文件落盘 1 份 +0.25",
+      "任务日志命中错误行 +0.15",
+      "任务 check-all-jobs 无任何证据 −0.20"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "keyError": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
+    "rootCause": "失败停在容器拉起这一层，用例代码根本没进去：整个 job 日志只有 335 行，第一条错误行就是「##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.」（github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L272），之后才是「##[error]Error: failed to run script step:」与「✗ exit code: 1」（同文件 L301、L302）、「##[error]Process completed with exit code 1.」（L304）。\n\n推断更像 self-hosted runner 侧容器运行时或镜像拉起失败，而不是 glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms 这个用例本身有问题：容器失败行出现在脚本报错之前，是上游动作先失败；日志里没有用例名、没有 Python Traceback、也没有 pod 事件，说明容器内的进程从未启动。\n\n已排除的干扰项：另一个任务 check-all-jobs 在平台侧 404 未留存，只能依据 jobs 元数据（conclusion、时长、失败步骤）定性，本条置信度因此只有中；同一批次 #2133 也出现同一句容器实现失败，指向 runner 层共性问题而非单个用例。",
+    "advice": "先按 runner 容器层排查，不要先动用例：核对该 self-hosted runner 的容器运行时与镜像能否正常拉起，并与同批次能跑通的节点横向比对运行时版本、磁盘与镜像拉取结果\n\n把 runner 侧的容器事件写进 job 输出：镜像拉取结果、容器启动失败原因、运行时退出码，用这些替代现在唯一的一句容器实现失败\n\n若确认是镜像拉取慢或超时，给镜像预拉取与本地缓存加策略；若是运行时异常，先恢复该节点再重跑，并把节点从夜间调度池摘除\n\n验证方式：重跑该 job，要求日志出现容器启动成功的记录、glm_5_3 用例能进入执行并落出用例结果，不再出现容器实现执行失败",
+    "cites": [
+      "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L272",
+      "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L301",
+      "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L304"
+    ],
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
+    "source": "agent"
+  }
+}

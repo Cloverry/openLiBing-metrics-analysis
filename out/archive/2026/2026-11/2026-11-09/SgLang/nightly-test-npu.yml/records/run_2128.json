@@ -1,0 +1,137 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-10 14:57:29",
+    "component": "SgLang",
+    "pipeline": "nightly-test-npu.yml",
+    "date": "2026-11-09",
+    "recordId": "SgLang|nightly-test-npu.yml#2128"
+  },
+  "recordId": "SgLang|nightly-test-npu.yml#2128",
+  "date": "2026-11-09",
+  "component": "SgLang",
+  "pipeline": "nightly-test-npu.yml",
+  "pipelineName": "nightly-test-npu.yml",
+  "platform": "github",
+  "buildNumber": 2128,
+  "pipelineRunId": "42563835653",
+  "status": "FAILED",
+  "failedTaskType": null,
+  "startedAt": "2026-11-09T12:48:48",
+  "endedAt": "2026-11-09T14:13:42",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-09T14:13:42",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0,
+    "bsRate": null,
+    "dims": [
+      "va"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42563835653",
+    "detail": "https://github.com/sgl-project/sglang/actions/runs/42563835653",
+    "github": "https://github.com/sgl-project/sglang/actions/runs/42563835653"
+  },
+  "tasks": [
+    {
+      "jobName": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+      "type": "log",
+      "platform": "github",
+      "logFile": null,
+      "errorLines": [],
+      "download": "github-404",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "evidenceNote": "运行平台侧日志未留存（404），证据不完整；定性依据 jobs 元数据（conclusion/时长/失败步骤）"
+    },
+    {
+      "jobName": "check-all-jobs",
+      "type": "log",
+      "platform": "github",
+      "logFile": null,
+      "errorLines": [],
+      "download": "github-404",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "evidenceNote": "运行平台侧日志未留存（404），证据不完整；定性依据 jobs 元数据（conclusion/时长/失败步骤）"
+    }
+  ],
+  "cases": [],
+  "errorMessages": [],
+  "evidence": {
+    "files": [],
+    "missing": [
+      "check-all-jobs",
+      "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix"
+    ],
+    "github": {
+      "runId": 42563835653,
+      "repo": "sgl-project/sglang",
+      "displayTitle": "[Test] [NPU] kimi_k3: run the 128k decode prefix case at C4 with repeat_rate=1",
+      "mode": "perjob",
+      "totalJobs": 15,
+      "failedJobs": [],
+      "missing": [
+        {
+          "job": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+          "id": 128985919742,
+          "status": "404_not_retained"
+        },
+        {
+          "job": "check-all-jobs",
+          "id": 129010475798,
+          "status": "404_not_retained"
+        }
+      ],
+      "complete": true
+    }
+  },
+  "counts": {
+    "tasks": 2,
+    "testTasks": 0,
+    "logTasks": 2,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+  },
+  "verdict": {
+    "category": "evidence_missing",
+    "text": "证据缺失",
+    "confidence": 0.1,
+    "level": "低",
+    "basis": [
+      "全部失败任务均无日志落盘",
+      "运行平台侧日志未留存（404），证据不完整；定性依据 jobs 元数据（conclusion/时长/失败步骤）",
+      "运行平台侧日志未留存（404），证据不完整；定性依据 jobs 元数据（conclusion/时长/失败步骤）",
+      "基线 0.30",
+      "任务 multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix 无任何证据 −0.20",
+      "任务 check-all-jobs 无任何证据 −0.20"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "keyError": null,
+    "rootCause": "运行了 1 小时 25 分钟（12:48:48 至 14:13:42）后 FAILED，但两个失败任务的全部证据都取不到：multi-node-mix-poc 的 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix 与 check-all-jobs 在平台侧均为 404_not_retained，归档侧 0 份证据文件、0 条 errorMessages、cases=0，任务字段的 logFile 与 logLines 都是「-」（records/run_2128.json）。\n\n能确认的只有失败位置在用例执行期间而不是入口：tasks=2、testTasks=0，运行持续了一个多小时才结束，说明 job 是真正跑起来后失败的；但失败步骤、报错原文、失败用例全部不在证据范围内，因此更像日志保留期或读取权限导致证据缺失，而不是可以归因的组件缺陷。\n\n已排除的干扰项：同一天 19:25 的 #2129 用同一 displayTitle（kimi_k3 的 128k decode prefix 用例）复跑仍然失败并留下了日志，说明该用例当天确实存在稳定问题，但本条自身证据不足以指认具体原因，只能与 #2129 合并判断。",
+    "advice": "先补证据链：把该仓库 job 日志的保留期延长到覆盖完整夜间周期，并确保 check-all-jobs 这类汇总任务一定留存日志，消除「失败但全 404」的记录\n\n在与 #2129 相同的 commit 下复跑 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix 并落盘用例级日志，再判定失败属于性能阈值、精度还是环境\n\n在采集侧把「FAILED 且 missing>0」的记录单独标记为证据缺失，避免它被当成用例失败计入可用度统计\n\n验证方式：复跑后要求该 job 的日志能正常下载（不再 404）、errorMessages 非空，并能给出用例级结论",
+    "cites": [
+      "records/run_2128.json"
+    ],
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
+    "source": "agent"
+  }
+}

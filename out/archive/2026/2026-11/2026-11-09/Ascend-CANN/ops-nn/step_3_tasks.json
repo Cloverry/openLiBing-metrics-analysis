@@ -1,0 +1,83 @@
+{
+ "_doc": {
+  "step": "step_3_tasks",
+  "title": "第 3 步 失败任务分流（T4）",
+  "source": "openLiBing 流水线运行详情（任务列表）",
+  "criteria": "仅取状态为失败的任务；UNSELECTED/CANCELED/IGNORED/INIT 跳过；含测试结果的任务走测试取证（第 4 步），其余走日志取证（第 5 步），github 平台运行改走第 5c 步",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-10 14:57:27",
+  "component": "Ascend-CANN",
+  "pipeline": "ops-nn",
+  "date": "2026-11-09"
+ },
+ "test": [
+  {
+   "key": "Ascend-CANN|ops-nn",
+   "pipeline": "ops-nn",
+   "pipelineName": "Nightly-CI-Component-pipeline_ops-nn",
+   "projectId": 300057,
+   "pipelineId": "6d402b76f9b14451872ef07ac1f864ba",
+   "rid": "b3e7f0586b3a4520ba153704e0664367",
+   "rn": 169,
+   "st": "11-09 12:00",
+   "jobId": "1b3f4a0aa25042aa875f33af6362433c",
+   "jobName": "Test_ops-nn",
+   "stepIds": [
+    "30d626baba024b6abb02588f304d1053"
+   ],
+   "steps": [
+    {
+     "id": "30d626baba024b6abb02588f304d1053",
+     "name": "Test_ops-nn",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "d87f77d68e0a4a2bbeefac97e236d699",
+     "jobIdParam": "b3f37e72e8b7427a8b07180dea237918"
+    }
+   ],
+   "jobErrMsg": "步骤Test_ops-nn执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "c59111b25a7d47b6846d007fda8a9f92",
+   "route": "test",
+   "isBuild": false,
+   "buildJobId": "b3f37e72e8b7427a8b07180dea237918"
+  },
+  {
+   "key": "Ascend-CANN|ops-nn",
+   "pipeline": "ops-nn",
+   "pipelineName": "Nightly-CI-Component-pipeline_ops-nn",
+   "projectId": 300057,
+   "pipelineId": "6d402b76f9b14451872ef07ac1f864ba",
+   "rid": "9e9d3670df3b4da5be52ac669bc6f7a5",
+   "rn": 168,
+   "st": "11-09 02:02",
+   "jobId": "2d1799813a8543f893ab7aad6e236b09",
+   "jobName": "Test_ops-nn",
+   "stepIds": [
+    "05b8b0223d764ee785d3ec8d3c939cfe"
+   ],
+   "steps": [
+    {
+     "id": "05b8b0223d764ee785d3ec8d3c939cfe",
+     "name": "Test_ops-nn",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "89ffc07a5889460e8a3a970dd8db8d22",
+     "jobIdParam": "b3f37e72e8b7427a8b07180dea237918"
+    }
+   ],
+   "jobErrMsg": "步骤Test_ops-nn执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "fa499ec54cbf4075a7fbbef0d20dbb3c",
+   "route": "test",
+   "isBuild": false,
+   "buildJobId": "b3f37e72e8b7427a8b07180dea237918"
+  }
+ ],
+ "log": [],
+ "skipped": [],
+ "errors": [],
+ "counts": {
+  "test": 2,
+  "log": 0,
+  "skipped": 0
+ }
+}

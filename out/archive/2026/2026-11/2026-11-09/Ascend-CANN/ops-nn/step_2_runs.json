@@ -1,0 +1,156 @@
+{
+ "_doc": {
+  "step": "step_2_runs",
+  "title": "第 2 步 执行记录圈定（N2）",
+  "source": "openLiBing 流水线 N2 执行列表",
+  "criteria": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）；仅保留工作日；VA 轨道=当日无 isVersionAvailable=true 的待查运行，BS 轨道=豁免日补圈的 Build* 失败运行",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-10 14:57:27",
+  "component": "Ascend-CANN",
+  "pipeline": "ops-nn",
+  "date": "2026-11-09"
+ },
+ "dateRange": {
+  "start": "2026-11-06",
+  "end": "2026-11-09"
+ },
+ "date": "2026-11-09",
+ "dateBasis": {
+  "field": "pipelineRunEndtime",
+  "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+ },
+ "failedRuns": [
+  {
+   "rn": 169,
+   "rid": "b3e7f0586b3a4520ba153704e0664367",
+   "status": "FAILED",
+   "start": "11-09 12:00",
+   "startISO": "2026-11-09T12:00:04",
+   "endISO": "2026-11-09T18:29:51",
+   "detailUrl": null,
+   "openlibingUrl": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=6d402b76f9b14451872ef07ac1f864ba&projectId=300057&pipelineRunId=b3e7f0586b3a4520ba153704e0664367",
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "track": "va",
+   "ftt": "测试任务",
+   "cached": false
+  },
+  {
+   "rn": 168,
+   "rid": "9e9d3670df3b4da5be52ac669bc6f7a5",
+   "status": "FAILED",
+   "start": "11-09 02:02",
+   "startISO": "2026-11-09T02:02:30",
+   "endISO": "2026-11-09T22:06:32",
+   "detailUrl": null,
+   "openlibingUrl": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=6d402b76f9b14451872ef07ac1f864ba&projectId=300057&pipelineRunId=9e9d3670df3b4da5be52ac669bc6f7a5",
+   "dims": [
+    "va",
+    "bs"
+   ],
+   "track": "va",
+   "ftt": "测试任务",
+   "cached": false
+  }
+ ],
+ "days": {
+  "11-09": [
+   "FAILED",
+   "FAILED"
+  ]
+ },
+ "runs": [
+  {
+   "rn": 165,
+   "pipelineRunId": "c8553a4602484ef4aaeb9a56c30e981c",
+   "start": "2026-11-06 02:02:53",
+   "end": "2026-11-06 12:17:24",
+   "status": "COMPLETED",
+   "endedDate": "2026-11-06",
+   "included": false,
+   "reason": "结束时间属 2026-11-06，已归档到该日期目录"
+  },
+  {
+   "rn": 169,
+   "pipelineRunId": "b3e7f0586b3a4520ba153704e0664367",
+   "start": "2026-11-09 12:00:04",
+   "end": "2026-11-09 18:29:51",
+   "status": "FAILED",
+   "endedDate": "2026-11-09",
+   "included": true,
+   "reason": "结束时间在归档日内，纳入当日待分析（失败/取消，取证）"
+  },
+  {
+   "rn": 168,
+   "pipelineRunId": "9e9d3670df3b4da5be52ac669bc6f7a5",
+   "start": "2026-11-09 02:02:30",
+   "end": "2026-11-09 22:06:32",
+   "status": "FAILED",
+   "endedDate": "2026-11-09",
+   "included": true,
+   "reason": "结束时间在归档日内，纳入当日待分析（失败/取消，取证）"
+  }
+ ],
+ "runHistory": [
+  {
+   "rn": 165,
+   "start": "2026-11-06 02:02:53",
+   "end": "2026-11-06 12:17:24",
+   "status": "COMPLETED",
+   "rid": "c8553a4602484ef4aaeb9a56c30e981c",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=6d402b76f9b14451872ef07ac1f864ba&projectId=300057&pipelineRunId=c8553a4602484ef4aaeb9a56c30e981c",
+   "bc": 1,
+   "bpc": 1,
+   "cpr": 100,
+   "iva": true,
+   "ftt": null
+  },
+  {
+   "rn": 169,
+   "start": "2026-11-09 12:00:04",
+   "end": "2026-11-09 18:29:51",
+   "status": "FAILED",
+   "rid": "b3e7f0586b3a4520ba153704e0664367",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=6d402b76f9b14451872ef07ac1f864ba&projectId=300057&pipelineRunId=b3e7f0586b3a4520ba153704e0664367",
+   "bc": 1,
+   "bpc": 1,
+   "cpr": 99.57,
+   "iva": false,
+   "ftt": "测试任务"
+  },
+  {
+   "rn": 168,
+   "start": "2026-11-09 02:02:30",
+   "end": "2026-11-09 22:06:32",
+   "status": "FAILED",
+   "rid": "9e9d3670df3b4da5be52ac669bc6f7a5",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=6d402b76f9b14451872ef07ac1f864ba&projectId=300057&pipelineRunId=9e9d3670df3b4da5be52ac669bc6f7a5",
+   "bc": 1,
+   "bpc": 1,
+   "cpr": 99.57,
+   "iva": false,
+   "ftt": "测试任务"
+  }
+ ],
+ "meta": {
+  "workdays": [
+   "2026-11-06",
+   "2026-11-09"
+  ],
+  "workdayCount": 2,
+  "skippedNonWorkdayRuns": 123,
+  "skippedRunningRuns": 0,
+  "workdayNotes": [
+   "法定工作日历: timor.tech API（1 年）"
+  ],
+  "vaDayRule": "VA 日可用口径（双指标）：当天任一次运行 服务端 isVersionAvailable=true（任务构建成功且测试用例通过率 100%，casePassRate 为空/-- 视为失败）→ 当天可用；scheduledOnly 产品（config.analysis_policy.scheduled_only）先剔除全部含 PR 的运行，仅以定时任务运行（displayTitle 含 (scheduled)）判定 —— 当天有成功的定时运行才算可用，否则当天全部失败的定时运行都进入根因分析；执行记录即 N2 nightly-dashboard-detail 逐运行明细（同运行多条评估记录保留结束时间最新一条）",
+  "dashFailed": [],
+  "rule": "执行记录取自 N2 nightly-dashboard-detail 逐运行明细（不再调流水线执行历史接口），按结束时间归属统计周期与日期（跨午夜运行归到结束日，无结束时间不纳入），仅统计工作日（含法定调休补班），周末与法定假不分析；VA 轨道按 isVersionAvailable 双指标口径按天豁免，BS 轨道任务级语义补圈豁免日失败运行（dims=bs）；N2 失败的流水线无执行记录（记 dashFailed 待办）；runHistory 附编译次数/编译成功次数/失败任务类型（未失败为 null）与构建号跳转链接（github 平台流水线不计算编译成功率，bc/bpc 置 null 不展示）；缓存复用前校准运行状态（N2 状态/结束时间与缓存记录比对，重试重跑变更即重抓）"
+ },
+ "keptRuns": 2,
+ "keptFailedRuns": 2,
+ "excludedRuns": 1,
+ "note": null
+}

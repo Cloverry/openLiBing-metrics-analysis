@@ -1,0 +1,184 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-10 14:57:28",
+    "component": "HPCKit",
+    "pipeline": "kudnn",
+    "date": "2026-11-09",
+    "recordId": "HPCKit|kudnn#227"
+  },
+  "recordId": "HPCKit|kudnn#227",
+  "date": "2026-11-09",
+  "component": "HPCKit",
+  "pipeline": "kudnn",
+  "pipelineName": "Nightly-CI-Component-pipeline_kudnn",
+  "platform": "codearts",
+  "buildNumber": 227,
+  "pipelineRunId": "35c821a147eb4aee80d6703eb422ca12",
+  "status": "FAILED",
+  "failedTaskType": "测试任务",
+  "startedAt": "2026-11-09T03:31:17",
+  "endedAt": "2026-11-09T03:34:03",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-09T03:34:03",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0,
+    "bsRate": 1,
+    "dims": [
+      "va",
+      "bs"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=ca83efb8c37648db8084e31b1e88b62c&projectId=300073&pipelineRunId=35c821a147eb4aee80d6703eb422ca12",
+    "detail": null,
+    "github": null
+  },
+  "tasks": [
+    {
+      "jobName": "Test_kudnn",
+      "type": "test",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "passRate": "0.00%"
+      },
+      "cases": [],
+      "emptyTestResult": true,
+      "stepErrMsgs": []
+    },
+    {
+      "jobName": "Test_kudnn",
+      "type": "log",
+      "fallback": true,
+      "logFile": "job_logs/26_kudnn_227_Test_kudnn.log",
+      "logBytes": 16565,
+      "logLines": 144,
+      "download": "export",
+      "truncated": false,
+      "excerpt": null,
+      "stepErrMsgs": [
+        "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+      ],
+      "jobErrMsg": "步骤Test_kudnn执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+      "errorLines": [
+        "L138: [2026/11/09 03:34:01.663 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+        "L139: [2026/11/09 03:34:01.663 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'",
+        "L140: [2026/11/09 03:34:01.663 GMT+08:00] [ERROR] git clone test_cases code fail",
+        "L142: [2026/11/09 03:34:01.827 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed",
+        "L144: [2026/11/09 03:34:08.126 GMT+08:00] Finished: FAILURE"
+      ],
+      "subTasks": []
+    }
+  ],
+  "cases": [],
+  "errorMessages": [
+    {
+      "task": "Test_kudnn",
+      "source": "job_logs/26_kudnn_227_Test_kudnn.log",
+      "line": 138,
+      "level": "LOG",
+      "text": "[2026/11/09 03:34:01.663 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'"
+    },
+    {
+      "task": "Test_kudnn",
+      "source": "job_logs/26_kudnn_227_Test_kudnn.log",
+      "line": 139,
+      "level": "LOG",
+      "text": "[2026/11/09 03:34:01.663 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'"
+    },
+    {
+      "task": "Test_kudnn",
+      "source": "job_logs/26_kudnn_227_Test_kudnn.log",
+      "line": 140,
+      "level": "LOG",
+      "text": "[2026/11/09 03:34:01.663 GMT+08:00] [ERROR] git clone test_cases code fail"
+    },
+    {
+      "task": "Test_kudnn",
+      "source": "job_logs/26_kudnn_227_Test_kudnn.log",
+      "line": 142,
+      "level": "LOG",
+      "text": "[2026/11/09 03:34:01.827 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed"
+    },
+    {
+      "task": "Test_kudnn",
+      "source": "job_logs/26_kudnn_227_Test_kudnn.log",
+      "line": 144,
+      "level": "LOG",
+      "text": "[2026/11/09 03:34:08.126 GMT+08:00] Finished: FAILURE"
+    },
+    {
+      "task": "Test_kudnn",
+      "source": "job_logs/26_kudnn_227_Test_kudnn.log",
+      "line": null,
+      "level": "JOB",
+      "text": "步骤Test_kudnn执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+      "isWrapper": true
+    },
+    {
+      "task": "Test_kudnn",
+      "source": "job_logs/26_kudnn_227_Test_kudnn.log",
+      "line": null,
+      "level": "STEP",
+      "text": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+      "isWrapper": true
+    }
+  ],
+  "evidence": {
+    "files": [
+      "job_logs/26_kudnn_227_Test_kudnn.log"
+    ],
+    "missing": [
+      "Test_kudnn"
+    ],
+    "github": null
+  },
+  "counts": {
+    "tasks": 2,
+    "testTasks": 1,
+    "logTasks": 1,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 7,
+    "evidenceFiles": 1
+  },
+  "verdict": {
+    "category": "env_not_ready",
+    "text": "用例未拉起（测试环境异常）",
+    "confidence": 0.5,
+    "level": "中",
+    "basis": [
+      "test 任务 Test_kudnn 测试结果为空（用例未拉起），已回退整 job 日志",
+      "基线 0.30",
+      "证据文件落盘 1 份 +0.25",
+      "任务日志命中错误行 +0.15",
+      "任务 Test_kudnn 无任何证据 −0.20"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+    "rootCause": "构建 #227 从 03:31:17 跑到 03:34:03（约 3 分钟）记 FAILED，失败任务类型为测试任务；Test_kudnn 的 total=0、pass=0、fail=0，用例一条未跑（records/run_227.json）\n\n第一类（用例仓拉取鉴权失败）：03:34:01.663 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，脚本显式打印 [ERROR] git clone test_cases code fail，03:34:01.827 以 script returned exit code 1 退出，03:34:08 Finished: FAILURE（job_logs/26_kudnn_227_Test_kudnn.log:L138、L140、L142）\n\n第二类（封装码无诊断价值）：job 与 step 层仍只留 步骤Test_kudnn执行失败 与 DEV-CODECI-35002\n\n因此这是同一凭据问题的又一次复现：clone hpckit-autotest 鉴权失败导致用例未拉起，属环境/依赖未就绪，不是 kudnn 算子实现的问题\n\n已排除的干扰项：total=0 与 3 分钟时长说明未进入用例执行；无编译错误、无设备异常",
+    "advice": "并入同日 HPCKit 凭据问题一并处理：hmpi#213、kpex#142、kudnn#227、kupl#306、kuqcd#201 五条同因，一次修配置即可全部恢复\n\n在流水线里加明确失败原因：clone 失败时把「用例仓鉴权失败」作为结论输出，而不是让上层只看到构建任务执行失败\n\n加到期监控：凭证类问题通常成批爆发，建议对执行机 token 有效期做巡检告警\n\n验证方式：重跑 kudnn 流水线，要求 git clone 成功、Test_kudnn 拉起用例并给出 total>0 的结果、任务通过率 100%",
+    "cites": [
+      "job_logs/26_kudnn_227_Test_kudnn.log:L138",
+      "job_logs/26_kudnn_227_Test_kudnn.log:L142",
+      "records/run_227.json"
+    ],
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
+    "source": "agent"
+  }
+}

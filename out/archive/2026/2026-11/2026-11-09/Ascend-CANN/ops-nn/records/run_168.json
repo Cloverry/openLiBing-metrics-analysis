@@ -1,0 +1,226 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-10 14:57:27",
+    "component": "Ascend-CANN",
+    "pipeline": "ops-nn",
+    "date": "2026-11-09",
+    "recordId": "Ascend-CANN|ops-nn#168"
+  },
+  "recordId": "Ascend-CANN|ops-nn#168",
+  "date": "2026-11-09",
+  "component": "Ascend-CANN",
+  "pipeline": "ops-nn",
+  "pipelineName": "Nightly-CI-Component-pipeline_ops-nn",
+  "platform": "codearts",
+  "buildNumber": 168,
+  "pipelineRunId": "9e9d3670df3b4da5be52ac669bc6f7a5",
+  "status": "FAILED",
+  "failedTaskType": "测试任务",
+  "startedAt": "2026-11-09T02:02:30",
+  "endedAt": "2026-11-09T22:06:32",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-09T22:06:32",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0.5,
+    "bsRate": 1,
+    "dims": [
+      "va",
+      "bs"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=6d402b76f9b14451872ef07ac1f864ba&projectId=300057&pipelineRunId=9e9d3670df3b4da5be52ac669bc6f7a5",
+    "detail": null,
+    "github": null
+  },
+  "tasks": [
+    {
+      "jobName": "Test_ops-nn",
+      "type": "test",
+      "summary": {
+        "total": 202,
+        "passed": 200,
+        "failed": 2,
+        "passRate": "99.01%"
+      },
+      "cases": [
+        {
+          "name": "test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk",
+          "state": "failed",
+          "description": "AssertionError: aclnnFakeQuantPerChannelAffineCachemask功能精度测试(executor)失败: aclnnFakeQuantPerChannelAffineCachemask accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnFakeQuantPerChannelAffineCachemask_Smoke_2026-11-09-21-52-43-668199/r",
+          "beginTime": "2026-11-09 20:55:58",
+          "endTime": "2026-11-09 20:56:28",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110917877/test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk.html",
+          "localLog": "case_logs/case_0129.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-09 21:52:58.647",
+              "level": "FAIL",
+              "line": 1844,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-nn/test_ops_nn_8.py::TestCannOpsNn::test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk"
+            }
+          ],
+          "deepHits": []
+        },
+        {
+          "name": "test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk",
+          "state": "failed",
+          "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnFakeQuantPerTensorAffineCachemask_Smoke_2026-11-09-21-09-50-328377/report/aclnnFakeQuantPerTensorAffineCachemask_Smoke_reports_accuracy_2026-11-09-21-09-51.xlsx', error_msg='aclnnFakeQuantPerTensorAffineCa",
+          "beginTime": "2026-11-09 20:58:24",
+          "endTime": "2026-11-09 20:59:04",
+          "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110917877/test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk.html",
+          "localLog": "case_logs/case_0130.html",
+          "errorMessages": [
+            {
+              "time": "2026-11-09 21:10:12.242",
+              "level": "FAIL",
+              "line": 2195,
+              "loc": "plugin.py:999",
+              "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-nn/test_ops_nn_12.py::TestCannOpsNn::test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk"
+            }
+          ],
+          "deepHits": []
+        }
+      ],
+      "emptyTestResult": false,
+      "stepErrMsgs": []
+    }
+  ],
+  "cases": [
+    {
+      "task": "Test_ops-nn",
+      "name": "test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk",
+      "state": "failed",
+      "description": "AssertionError: aclnnFakeQuantPerChannelAffineCachemask功能精度测试(executor)失败: aclnnFakeQuantPerChannelAffineCachemask accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnFakeQuantPerChannelAffineCachemask_Smoke_2026-11-09-21-52-43-668199/r",
+      "beginTime": "2026-11-09 20:55:58",
+      "endTime": "2026-11-09 20:56:28",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110917877/test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk.html",
+      "localLog": "case_logs/case_0129.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-09 21:52:58.647",
+          "level": "FAIL",
+          "line": 1844,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-nn/test_ops_nn_8.py::TestCannOpsNn::test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk"
+        }
+      ],
+      "deepHits": []
+    },
+    {
+      "task": "Test_ops-nn",
+      "name": "test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk",
+      "state": "failed",
+      "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnFakeQuantPerTensorAffineCachemask_Smoke_2026-11-09-21-09-50-328377/report/aclnnFakeQuantPerTensorAffineCachemask_Smoke_reports_accuracy_2026-11-09-21-09-51.xlsx', error_msg='aclnnFakeQuantPerTensorAffineCa",
+      "beginTime": "2026-11-09 20:58:24",
+      "endTime": "2026-11-09 20:59:04",
+      "logUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110917877/test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk.html",
+      "localLog": "case_logs/case_0130.html",
+      "errorCount": 1,
+      "errorMessages": [
+        {
+          "time": "2026-11-09 21:10:12.242",
+          "level": "FAIL",
+          "line": 2195,
+          "loc": "plugin.py:999",
+          "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-nn/test_ops_nn_12.py::TestCannOpsNn::test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk"
+        }
+      ],
+      "deepHits": []
+    }
+  ],
+  "errorMessages": [
+    {
+      "task": "Test_ops-nn",
+      "case": "test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "AssertionError: aclnnFakeQuantPerChannelAffineCachemask功能精度测试(executor)失败: aclnnFakeQuantPerChannelAffineCachemask accuracy not passed",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-nn",
+      "case": "test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk",
+      "source": "测试报告",
+      "line": null,
+      "level": "CASE",
+      "text": "aclnnFakeQuantPerTensorAffineCa ...",
+      "assertion": true
+    },
+    {
+      "task": "Test_ops-nn",
+      "case": "test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk",
+      "source": "case_logs/case_0129.html",
+      "line": 1844,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-nn/test_ops_nn_8.py::TestCannOpsNn::test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk",
+      "isSummary": true
+    },
+    {
+      "task": "Test_ops-nn",
+      "case": "test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk",
+      "source": "case_logs/case_0130.html",
+      "line": 2195,
+      "level": "FAIL",
+      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-nn/test_ops_nn_12.py::TestCannOpsNn::test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk",
+      "isSummary": true
+    }
+  ],
+  "evidence": {
+    "files": [
+      "case_logs/case_0129.html",
+      "case_logs/case_0130.html"
+    ],
+    "missing": [],
+    "github": null
+  },
+  "counts": {
+    "tasks": 1,
+    "testTasks": 1,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 2,
+    "errorMessages": 4,
+    "evidenceFiles": 2
+  },
+  "verdict": {
+    "category": "test_failure",
+    "text": "用例失败",
+    "confidence": 0.75,
+    "level": "高",
+    "basis": [
+      "test 任务 Test_ops-nn 取到 2 条失败用例、2 条用例级 ERROR/FAIL 消息（无 job 日志，证据来自测试报告/用例日志）",
+      "基线 0.30",
+      "证据文件落盘 2 份 +0.25",
+      "用例级错误消息 2 条 +0.20"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "keyError": "AssertionError: aclnnFakeQuantPerChannelAffineCachemask功能精度测试(executor)失败: aclnnFakeQuantPerChannelAffineCachemask accuracy not passed",
+    "rootCause": "Test_ops-nn 任务 202 条用例跑出 200 通过、2 失败（通过率 99.01%），构建 #168 记 FAILED；失败的两条是 test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk 与 test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk，分别在 20:55:58~20:56:28 与 20:58:24~20:59:04 执行（case_logs/case_0129.html:L1844、case_logs/case_0130.html:L2195）\n\n第一类（per-channel 变体）：断言原文为 aclnnFakeQuantPerChannelAffineCachemask功能精度测试(executor)失败: aclnnFakeQuantPerChannelAffineCachemask accuracy not passed，上下文 AtkTaskResult(success=False, acc_pass_result='Failed')，说明用例已执行到 atk 精度比对并被判不通过\n\n第二类（per-tensor 变体）：同一算子的另一个量化粒度，断言形态与上下文完全一致，同样停在 acc_pass_result='Failed'\n\n两条失败集中在同一个 FakeQuant 算子的两个量化粒度上，其余 200 条用例全通过，因此更像该算子的量化/掩码实现相对黄金数据存在确定性数值偏差（两个粒度可能共用同一段 cachemask 生成逻辑），而非某组用例数据本身不合格\n\n已排除的干扰项：日志没有编译错误、镜像拉取失败或设备占用；失败用例都在 30 秒量级内结束，没有被环境拖住的迹象；构建从 02:02:30 跑到 22:06:32 属排队导致的长时长，与失败无关",
+    "advice": "先导出比对明细看误差量级：对 aclnnFakeQuantPerChannelAffineCachemask 与 PerTensor 各跑一次 atk，把误差分布与阈值一起打出来，确认是超阈值一点点还是量级错位，这一点决定了是数值细节还是实现错误\n\n再查两个粒度是否共用逻辑：两个变体同时失败，优先核对 cachemask 掩码生成与 scale/zero_point 反量化这条路径是否被同一处改动影响\n\n核 baseline：确认本轮黄金数据版本与算子仓 commit 是否同时变更，避免把基线漂移当成实现回退\n\n验证方式：重跑 Test_ops-nn 全量 202 条用例，要求这两个 FakeQuant 用例的 acc_pass_result 变为 Passed、通过率回到 100%",
+    "cites": [
+      "case_logs/case_0129.html:L1844",
+      "case_logs/case_0130.html:L2195",
+      "records/run_168.json"
+    ],
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
+    "source": "agent"
+  }
+}

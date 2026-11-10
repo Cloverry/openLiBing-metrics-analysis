@@ -1,0 +1,60 @@
+{
+ "_doc": {
+  "step": "step_4_cases",
+  "title": "第 4 步 测试用例取证（T6）",
+  "source": "openLiBing 测试报告页 + 用例日志下载",
+  "criteria": "取失败任务的失败用例、错误信息、深度学习命中行，并下载用例日志到 case_logs/",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-10 14:57:28",
+  "component": "HPCKit",
+  "pipeline": "kpex",
+  "date": "2026-11-09"
+ },
+ "results": [
+  {
+   "route": "test",
+   "key": "HPCKit|kpex",
+   "pipeline": "kpex",
+   "pipelineName": "Nightly-CI-Component-pipeline_kpex",
+   "rn": 142,
+   "st": "11-09 00:41",
+   "projectId": 300073,
+   "pipelineId": "fec036d3c59f4d27bb506138f273f113",
+   "rid": "62a8b0fdea804558b0321f6b09c49dc2",
+   "jobId": "cea87cd4b803423c9e531de8bff62ec4",
+   "jobName": "Test_kpex",
+   "stepIds": [
+    "6a40695a75e04abbb95427e2f1a2d6c2"
+   ],
+   "steps": [
+    {
+     "id": "6a40695a75e04abbb95427e2f1a2d6c2",
+     "name": "Test_kpex",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "fb408e0d63354df18631c42d846128ff",
+     "jobIdParam": "c42eae717a2e4bf496f89ffc8070b535"
+    }
+   ],
+   "jobErrMsg": "步骤Test_kpex执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "4303a976a63440e9a91ec5d3148ff4e2",
+   "code": 200,
+   "summary": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "passRate": "0.00%"
+   },
+   "failedCases": [],
+   "empty": true
+  }
+ ],
+ "caseErrors": [],
+ "errors": [],
+ "counts": {
+  "tasks": 1,
+  "failedCases": 0,
+  "caseLogs": 0,
+  "caseErrors": 0
+ }
+}

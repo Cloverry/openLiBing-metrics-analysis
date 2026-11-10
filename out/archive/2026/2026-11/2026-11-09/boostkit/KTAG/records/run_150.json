@@ -1,0 +1,80 @@
+{
+ "_doc": {
+  "step": "step_6_records",
+  "title": "第 6 步 证据合并与执行记录",
+  "source": "第 2~5c 步归档产物",
+  "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-10 14:57:28",
+  "component": "boostkit",
+  "pipeline": "KTAG",
+  "date": "2026-11-09",
+  "recordId": "boostkit|KTAG#150"
+ },
+ "recordId": "boostkit|KTAG#150",
+ "date": "2026-11-09",
+ "component": "boostkit",
+ "pipeline": "KTAG",
+ "pipelineName": "Nightly-CI-Component-pipeline_KTAG",
+ "platform": "codearts",
+ "buildNumber": 150,
+ "pipelineRunId": "aabea2055e2f4dddbfd006b55a411e48",
+ "status": "COMPLETED",
+ "failedTaskType": null,
+ "startedAt": "2026-11-09T03:17:40",
+ "endedAt": "2026-11-09T03:22:25",
+ "dateBasis": {
+  "field": "pipelineRunEndtime",
+  "value": "2026-11-09T03:22:25",
+  "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+ },
+ "light": {
+  "vaRate": 1,
+  "bsRate": 1,
+  "dims": [
+   "va",
+   "bs"
+  ],
+  "track": "-"
+ },
+ "links": {
+  "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=a8c3dbdd3feb4c4ab4a4a336e1323ce3&projectId=300059&pipelineRunId=aabea2055e2f4dddbfd006b55a411e48",
+  "detail": null,
+  "github": null
+ },
+ "tasks": [],
+ "cases": [],
+ "errorMessages": [],
+ "evidence": {
+  "files": [],
+  "missing": [],
+  "github": null
+ },
+ "counts": {
+  "tasks": 0,
+  "testTasks": 0,
+  "logTasks": 0,
+  "buildTasks": 0,
+  "cases": 0,
+  "errorMessages": 0,
+  "evidenceFiles": 0
+ },
+ "verdict": {
+  "category": "success",
+  "text": "执行成功",
+  "confidence": 1.0,
+  "level": "高",
+  "basis": [
+   "运行状态 COMPLETED，任务未失败，无需根因分析"
+  ]
+ },
+ "suggestions": [],
+ "analysis": {
+  "status": "na",
+  "rootCause": null,
+  "advice": null,
+  "cites": [],
+  "updatedAt": null,
+  "source": null
+ }
+}

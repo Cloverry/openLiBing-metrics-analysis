@@ -1,0 +1,850 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-10 14:57:29",
+    "component": "SgLang",
+    "pipeline": "nightly-test-npu.yml",
+    "date": "2026-11-09",
+    "recordId": "SgLang|nightly-test-npu.yml#2124"
+  },
+  "recordId": "SgLang|nightly-test-npu.yml#2124",
+  "date": "2026-11-09",
+  "component": "SgLang",
+  "pipeline": "nightly-test-npu.yml",
+  "pipelineName": "nightly-test-npu.yml",
+  "platform": "github",
+  "buildNumber": 2124,
+  "pipelineRunId": "42498125758",
+  "status": "FAILED",
+  "failedTaskType": null,
+  "startedAt": "2026-11-09T00:05:48",
+  "endedAt": "2026-11-09T09:22:46",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-09T09:22:46",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0,
+    "bsRate": null,
+    "dims": [
+      "va"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42498125758",
+    "detail": "https://github.com/sgl-project/sglang/actions/runs/42498125758",
+    "github": "https://github.com/sgl-project/sglang/actions/runs/42498125758"
+  },
+  "tasks": [
+    {
+      "jobName": "nightly-1-npu-a3 / run (0)",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt",
+      "logBytes": 2880561,
+      "logLines": 18227,
+      "download": "github-zip",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L1108: [2026-11-08 16:11:45] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L1256: Traceback (most recent call last):",
+        "L1286: [2026-11-08 16:13:50] Scheduler hit an exception: Traceback (most recent call last):",
+        "L1437: [2026-11-08 16:14:57] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L1443: [2026-11-08 16:14:58] Scheduler hit an exception: Traceback (most recent call last):",
+        "L1500: 0: No such file or directory (os error 2)",
+        "L1501: 1: No such file or directory (os error 2)",
+        "L1638: [2026-11-08 16:17:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L4319: [2026-11-08 16:26:02] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L7491: [2026-11-08 16:34:16] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L10326: [2026-11-08 16:38:37] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L13130: [2026-11-08 16:41:32] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L15585: [2026-11-08 16:48:24] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L18171: ##[error]Error: failed to run script step:",
+        "L18172: ✗ exit code: 255",
+        "L18196: ##[error]Process completed with exit code 1.",
+        "L18197: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+      ],
+      "githubJob": {
+        "id": 128784818138,
+        "conclusion": "failure",
+        "startedAt": "2026-11-08T16:06:29Z",
+        "completedAt": "2026-11-08T16:52:53Z",
+        "steps": [
+          {
+            "name": "Run test",
+            "conclusion": "failure"
+          }
+        ]
+      }
+    },
+    {
+      "jobName": "nightly-8-npu-a3 / run (0)",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt",
+      "logBytes": 826016,
+      "logLines": 5487,
+      "download": "github-zip",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L1380: [2026-11-08 16:11:50] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L3079: [2026-11-08 16:17:36] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L3085: [2026-11-08 16:17:37 TP0 EP0] Scheduler hit an exception: Traceback (most recent call last):",
+        "L3128: [2026-11-08 16:17:38 TP7 EP7] Scheduler hit an exception: Traceback (most recent call last):",
+        "L4074: [2026-11-08 16:17:46 TP2 EP2] Scheduler hit an exception: Traceback (most recent call last):",
+        "L4163: Traceback (most recent call last):",
+        "L4238: [2026-11-08 16:17:46 TP4 EP4] Scheduler hit an exception: Traceback (most recent call last):",
+        "L4402: [2026-11-08 16:17:46 TP5 EP5] Scheduler hit an exception: Traceback (most recent call last):",
+        "L4566: [2026-11-08 16:17:46 TP1 EP1] Scheduler hit an exception: Traceback (most recent call last):",
+        "L4730: [2026-11-08 16:17:46 TP6 EP6] Scheduler hit an exception: Traceback (most recent call last):",
+        "L4894: [2026-11-08 16:17:46 TP3 EP3] Scheduler hit an exception: Traceback (most recent call last):",
+        "L5370: 0: No such file or directory (os error 2)",
+        "L5371: 1: No such file or directory (os error 2)",
+        "L5431: ##[error]Error: failed to run script step:",
+        "L5432: ✗ exit code: 255",
+        "L5456: ##[error]Process completed with exit code 1.",
+        "L5457: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+      ],
+      "githubJob": {
+        "id": 128784818189,
+        "conclusion": "failure",
+        "startedAt": "2026-11-08T16:06:19Z",
+        "completedAt": "2026-11-08T16:19:15Z",
+        "steps": [
+          {
+            "name": "Run test",
+            "conclusion": "failure"
+          }
+        ]
+      }
+    },
+    {
+      "jobName": "nightly-perf-2-npu-a3 / nightly-perf-2-npu-a3",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42498125758/17_nightly-perf-2-npu-a3 _ nightly-perf-2-npu-a3.txt",
+      "logBytes": 1707911,
+      "logLines": 10268,
+      "download": "github-zip",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L982: [2026-11-08 16:09:53] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L1743: [2026-11-08 16:18:43] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L2912: [2026-11-08 16:26:11] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L3952: [2026-11-08 16:32:29] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L4593: [2026-11-08 16:35:40] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L4685: [2026-11-08 16:36:53 TP1] Scheduler hit an exception: Traceback (most recent call last):",
+        "L4788: [2026-11-08 16:36:54 TP0] Scheduler hit an exception: Traceback (most recent call last):",
+        "L5341: [2026-11-08 16:39:00] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L7602: [2026-11-08 16:59:06] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L8321: [2026-11-08 17:05:29] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L8896: [2026-11-08 17:10:03] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L9568: [2026-11-08 17:14:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L10212: ##[error]Error: failed to run script step:",
+        "L10213: ✗ exit code: 255",
+        "L10237: ##[error]Process completed with exit code 1.",
+        "L10238: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+      ],
+      "githubJob": {
+        "id": 128784818471,
+        "conclusion": "failure",
+        "startedAt": "2026-11-08T16:06:37Z",
+        "completedAt": "2026-11-08T17:18:51Z",
+        "steps": [
+          {
+            "name": "Run test",
+            "conclusion": "failure"
+          }
+        ]
+      }
+    },
+    {
+      "jobName": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42498125758/16_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt",
+      "logBytes": 781711,
+      "logLines": 4202,
+      "download": "github-zip",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L995: [2026-11-08 16:12:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))"
+      ],
+      "githubJob": {
+        "id": 128784818643,
+        "conclusion": "failure",
+        "startedAt": "2026-11-08T16:06:49Z",
+        "completedAt": "2026-11-08T17:01:49Z",
+        "steps": [
+          {
+            "name": "Run test",
+            "conclusion": "failure"
+          }
+        ]
+      }
+    },
+    {
+      "jobName": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42498125758/16_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt",
+      "logBytes": 781711,
+      "logLines": 4202,
+      "download": "github-zip",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L995: [2026-11-08 16:12:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))"
+      ],
+      "githubJob": {
+        "id": 128784818648,
+        "conclusion": "failure",
+        "startedAt": "2026-11-08T16:06:47Z",
+        "completedAt": "2026-11-08T16:16:19Z",
+        "steps": [
+          {
+            "name": "Run test",
+            "conclusion": "failure"
+          }
+        ]
+      }
+    },
+    {
+      "jobName": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42498125758/16_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt",
+      "logBytes": 781711,
+      "logLines": 4202,
+      "download": "github-zip",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L995: [2026-11-08 16:12:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))"
+      ],
+      "githubJob": {
+        "id": 128784818756,
+        "conclusion": "failure",
+        "startedAt": "2026-11-08T16:06:52Z",
+        "completedAt": "2026-11-08T16:13:46Z",
+        "steps": [
+          {
+            "name": "Run test",
+            "conclusion": "failure"
+          }
+        ]
+      }
+    },
+    {
+      "jobName": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms, 1, 1, 1, test/registe... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42498125758/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt",
+      "logBytes": 516987,
+      "logLines": 2749,
+      "download": "github-zip",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L604: │ exit code: 1",
+        "L2555: Traceback (most recent call last):",
+        "L2649: ##[error]Error: failed to run script step:",
+        "L2650: ✗ exit code: 1",
+        "L2674: ##[error]Process completed with exit code 1.",
+        "L2675: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+      ],
+      "githubJob": {
+        "id": 128804250725,
+        "conclusion": "failure",
+        "startedAt": "2026-11-08T17:21:47Z",
+        "completedAt": "2026-11-08T17:56:13Z",
+        "steps": [
+          {
+            "name": "Run test",
+            "conclusion": "failure"
+          }
+        ]
+      },
+      "isTestJob": true,
+      "testResults": null
+    },
+    {
+      "jobName": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42498125758/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
+      "logBytes": 1159124,
+      "logLines": 4179,
+      "download": "github-zip",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L886: Traceback (most recent call last):",
+        "L4079: ##[error]Error: failed to run script step:",
+        "L4080: ✗ exit code: 1",
+        "L4104: ##[error]Process completed with exit code 1.",
+        "L4105: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+      ],
+      "githubJob": {
+        "id": 128812967524,
+        "conclusion": "failure",
+        "startedAt": "2026-11-08T17:56:39Z",
+        "completedAt": "2026-11-08T18:12:27Z",
+        "steps": [
+          {
+            "name": "Run test",
+            "conclusion": "failure"
+          }
+        ]
+      },
+      "isTestJob": true,
+      "testResults": null
+    },
+    {
+      "jobName": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42498125758/7_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p~327148.txt",
+      "logBytes": 710139,
+      "logLines": 2801,
+      "download": "github-zip",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L914: Traceback (most recent call last):",
+        "L2699: ##[error]Error: failed to run script step:",
+        "L2700: ✗ exit code: 1",
+        "L2724: ##[error]Process completed with exit code 1.",
+        "L2725: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+      ],
+      "githubJob": {
+        "id": 128817183125,
+        "conclusion": "failure",
+        "startedAt": "2026-11-08T18:12:54Z",
+        "completedAt": "2026-11-08T18:33:39Z",
+        "steps": [
+          {
+            "name": "Run test",
+            "conclusion": "failure"
+          }
+        ]
+      },
+      "isTestJob": true,
+      "testResults": null
+    },
+    {
+      "jobName": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_dcp_gpqa",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42498125758/6_multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2,~83db7b.txt",
+      "logBytes": 65970,
+      "logLines": 604,
+      "download": "github-zip",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L492: Traceback (most recent call last):",
+        "L510: ##[error]Error: failed to run script step:",
+        "L511: ✗ exit code: 1",
+        "L535: ##[error]Process completed with exit code 1.",
+        "L536: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+      ],
+      "githubJob": {
+        "id": 128822652327,
+        "conclusion": "failure",
+        "startedAt": "2026-11-08T18:34:06Z",
+        "completedAt": "2026-11-08T18:39:34Z",
+        "steps": [
+          {
+            "name": "Run test",
+            "conclusion": "failure"
+          }
+        ]
+      },
+      "isTestJob": true,
+      "testResults": null
+    },
+    {
+      "jobName": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42498125758/1_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_ou~afd684.txt",
+      "logBytes": 1690947,
+      "logLines": 17239,
+      "download": "github-zip",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L15168: [2026-11-09 08:54:26] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
+        "L15281: │ exit code: 1",
+        "L17059: Traceback (most recent call last):",
+        "L17136: ##[error]Error: failed to run script step:",
+        "L17137: ✗ exit code: 1",
+        "L17161: ##[error]Process completed with exit code 1.",
+        "L17162: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+      ],
+      "githubJob": {
+        "id": 128913713161,
+        "conclusion": "failure",
+        "startedAt": "2026-11-09T00:28:55Z",
+        "completedAt": "2026-11-09T01:22:40Z",
+        "steps": [
+          {
+            "name": "Run test",
+            "conclusion": "failure"
+          }
+        ]
+      },
+      "isTestJob": true,
+      "testResults": null
+    },
+    {
+      "jobName": "check-all-jobs",
+      "type": "log",
+      "platform": "github",
+      "logFile": "github_logs/gh_42498125758/0_check-all-jobs.txt",
+      "logBytes": 6495,
+      "logLines": 99,
+      "download": "github-zip",
+      "truncated": false,
+      "stepErrMsgs": [],
+      "jobErrMsg": null,
+      "errorLines": [
+        "L98: ##[error]Process completed with exit code 1."
+      ],
+      "githubJob": {
+        "id": 128928729571,
+        "conclusion": "failure",
+        "startedAt": "2026-11-09T01:22:42Z",
+        "completedAt": "2026-11-09T01:22:45Z",
+        "steps": [
+          {
+            "name": "Generate results table",
+            "conclusion": "failure"
+          }
+        ]
+      }
+    }
+  ],
+  "cases": [],
+  "errorMessages": [
+    {
+      "task": "nightly-1-npu-a3 / run (0)",
+      "source": "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt",
+      "line": 1108,
+      "level": "LOG",
+      "text": "[2026-11-08 16:11:45] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))"
+    },
+    {
+      "task": "nightly-1-npu-a3 / run (0)",
+      "source": "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt",
+      "line": 1256,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "nightly-1-npu-a3 / run (0)",
+      "source": "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt",
+      "line": 1286,
+      "level": "LOG",
+      "text": "[2026-11-08 16:13:50] Scheduler hit an exception: Traceback (most recent call last):"
+    },
+    {
+      "task": "nightly-1-npu-a3 / run (0)",
+      "source": "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt",
+      "line": 1437,
+      "level": "LOG",
+      "text": "[2026-11-08 16:14:57] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))"
+    },
+    {
+      "task": "nightly-1-npu-a3 / run (0)",
+      "source": "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt",
+      "line": 18171,
+      "level": "LOG",
+      "text": "##[error]Error: failed to run script step:"
+    },
+    {
+      "task": "nightly-1-npu-a3 / run (0)",
+      "source": "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt",
+      "line": 18172,
+      "level": "LOG",
+      "text": "✗ exit code: 255"
+    },
+    {
+      "task": "nightly-1-npu-a3 / run (0)",
+      "source": "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt",
+      "line": 18196,
+      "level": "LOG",
+      "text": "##[error]Process completed with exit code 1."
+    },
+    {
+      "task": "nightly-1-npu-a3 / run (0)",
+      "source": "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt",
+      "line": 18197,
+      "level": "LOG",
+      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+    },
+    {
+      "task": "nightly-8-npu-a3 / run (0)",
+      "source": "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt",
+      "line": 1380,
+      "level": "LOG",
+      "text": "[2026-11-08 16:11:50] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))"
+    },
+    {
+      "task": "nightly-8-npu-a3 / run (0)",
+      "source": "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt",
+      "line": 3079,
+      "level": "LOG",
+      "text": "[2026-11-08 16:17:36] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))"
+    },
+    {
+      "task": "nightly-8-npu-a3 / run (0)",
+      "source": "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt",
+      "line": 3085,
+      "level": "LOG",
+      "text": "[2026-11-08 16:17:37 TP0 EP0] Scheduler hit an exception: Traceback (most recent call last):"
+    },
+    {
+      "task": "nightly-8-npu-a3 / run (0)",
+      "source": "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt",
+      "line": 3128,
+      "level": "LOG",
+      "text": "[2026-11-08 16:17:38 TP7 EP7] Scheduler hit an exception: Traceback (most recent call last):"
+    },
+    {
+      "task": "nightly-8-npu-a3 / run (0)",
+      "source": "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt",
+      "line": 5431,
+      "level": "LOG",
+      "text": "##[error]Error: failed to run script step:"
+    },
+    {
+      "task": "nightly-8-npu-a3 / run (0)",
+      "source": "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt",
+      "line": 5432,
+      "level": "LOG",
+      "text": "✗ exit code: 255"
+    },
+    {
+      "task": "nightly-8-npu-a3 / run (0)",
+      "source": "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt",
+      "line": 5456,
+      "level": "LOG",
+      "text": "##[error]Process completed with exit code 1."
+    },
+    {
+      "task": "nightly-8-npu-a3 / run (0)",
+      "source": "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt",
+      "line": 5457,
+      "level": "LOG",
+      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+    },
+    {
+      "task": "nightly-perf-2-npu-a3 / nightly-perf-2-npu-a3",
+      "source": "github_logs/gh_42498125758/17_nightly-perf-2-npu-a3 _ nightly-perf-2-npu-a3.txt",
+      "line": 982,
+      "level": "LOG",
+      "text": "[2026-11-08 16:09:53] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))"
+    },
+    {
+      "task": "nightly-perf-2-npu-a3 / nightly-perf-2-npu-a3",
+      "source": "github_logs/gh_42498125758/17_nightly-perf-2-npu-a3 _ nightly-perf-2-npu-a3.txt",
+      "line": 1743,
+      "level": "LOG",
+      "text": "[2026-11-08 16:18:43] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))"
+    },
+    {
+      "task": "nightly-perf-2-npu-a3 / nightly-perf-2-npu-a3",
+      "source": "github_logs/gh_42498125758/17_nightly-perf-2-npu-a3 _ nightly-perf-2-npu-a3.txt",
+      "line": 2912,
+      "level": "LOG",
+      "text": "[2026-11-08 16:26:11] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))"
+    },
+    {
+      "task": "nightly-perf-2-npu-a3 / nightly-perf-2-npu-a3",
+      "source": "github_logs/gh_42498125758/17_nightly-perf-2-npu-a3 _ nightly-perf-2-npu-a3.txt",
+      "line": 3952,
+      "level": "LOG",
+      "text": "[2026-11-08 16:32:29] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))"
+    },
+    {
+      "task": "nightly-perf-2-npu-a3 / nightly-perf-2-npu-a3",
+      "source": "github_logs/gh_42498125758/17_nightly-perf-2-npu-a3 _ nightly-perf-2-npu-a3.txt",
+      "line": 10212,
+      "level": "LOG",
+      "text": "##[error]Error: failed to run script step:"
+    },
+    {
+      "task": "nightly-perf-2-npu-a3 / nightly-perf-2-npu-a3",
+      "source": "github_logs/gh_42498125758/17_nightly-perf-2-npu-a3 _ nightly-perf-2-npu-a3.txt",
+      "line": 10213,
+      "level": "LOG",
+      "text": "✗ exit code: 255"
+    },
+    {
+      "task": "nightly-perf-2-npu-a3 / nightly-perf-2-npu-a3",
+      "source": "github_logs/gh_42498125758/17_nightly-perf-2-npu-a3 _ nightly-perf-2-npu-a3.txt",
+      "line": 10237,
+      "level": "LOG",
+      "text": "##[error]Process completed with exit code 1."
+    },
+    {
+      "task": "nightly-perf-2-npu-a3 / nightly-perf-2-npu-a3",
+      "source": "github_logs/gh_42498125758/17_nightly-perf-2-npu-a3 _ nightly-perf-2-npu-a3.txt",
+      "line": 10238,
+      "level": "LOG",
+      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+    },
+    {
+      "task": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
+      "source": "github_logs/gh_42498125758/16_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt",
+      "line": 995,
+      "level": "LOG",
+      "text": "[2026-11-08 16:12:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))"
+    },
+    {
+      "task": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
+      "source": "github_logs/gh_42498125758/16_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt",
+      "line": 995,
+      "level": "LOG",
+      "text": "[2026-11-08 16:12:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))"
+    },
+    {
+      "task": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
+      "source": "github_logs/gh_42498125758/16_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt",
+      "line": 995,
+      "level": "LOG",
+      "text": "[2026-11-08 16:12:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms, 1, 1, 1, test/registe... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms",
+      "source": "github_logs/gh_42498125758/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt",
+      "line": 604,
+      "level": "LOG",
+      "text": "│ exit code: 1"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms, 1, 1, 1, test/registe... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms",
+      "source": "github_logs/gh_42498125758/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt",
+      "line": 2555,
+      "level": "LOG",
+      "text": "Traceback (most recent call last):"
+    },
+    {
+      "task": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms, 1, 1, 1, test/registe... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms",
+      "source": "github_logs/gh_42498125758/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt",
+      "line": 2649,
+      "level": "LOG",
+      "text": "##[error]Error: failed to run script step:"
+    }
+  ],
+  "evidence": {
+    "files": [
+      "github_logs/gh_42498125758/0_check-all-jobs.txt",
+      "github_logs/gh_42498125758/16_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt",
+      "github_logs/gh_42498125758/17_nightly-perf-2-npu-a3 _ nightly-perf-2-npu-a3.txt",
+      "github_logs/gh_42498125758/1_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_ou~afd684.txt",
+      "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt",
+      "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt",
+      "github_logs/gh_42498125758/6_multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2,~83db7b.txt",
+      "github_logs/gh_42498125758/7_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p~327148.txt",
+      "github_logs/gh_42498125758/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
+      "github_logs/gh_42498125758/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt"
+    ],
+    "missing": [],
+    "github": {
+      "runId": 42498125758,
+      "repo": "sgl-project/sglang",
+      "displayTitle": "Nightly Test (NPU)",
+      "mode": "zip",
+      "totalJobs": 26,
+      "failedJobs": [
+        {
+          "name": "nightly-1-npu-a3 / run (0)",
+          "id": 128784818138,
+          "steps": [
+            {
+              "name": "Run test",
+              "conclusion": "failure"
+            }
+          ]
+        },
+        {
+          "name": "nightly-8-npu-a3 / run (0)",
+          "id": 128784818189,
+          "steps": [
+            {
+              "name": "Run test",
+              "conclusion": "failure"
+            }
+          ]
+        },
+        {
+          "name": "nightly-perf-2-npu-a3 / nightly-perf-2-npu-a3",
+          "id": 128784818471,
+          "steps": [
+            {
+              "name": "Run test",
+              "conclusion": "failure"
+            }
+          ]
+        },
+        {
+          "name": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
+          "id": 128784818643,
+          "steps": [
+            {
+              "name": "Run test",
+              "conclusion": "failure"
+            }
+          ]
+        },
+        {
+          "name": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
+          "id": 128784818648,
+          "steps": [
+            {
+              "name": "Run test",
+              "conclusion": "failure"
+            }
+          ]
+        },
+        {
+          "name": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
+          "id": 128784818756,
+          "steps": [
+            {
+              "name": "Run test",
+              "conclusion": "failure"
+            }
+          ]
+        },
+        {
+          "name": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms, 1, 1, 1, test/registe... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms",
+          "id": 128804250725,
+          "steps": [
+            {
+              "name": "Run test",
+              "conclusion": "failure"
+            }
+          ]
+        },
+        {
+          "name": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
+          "id": 128812967524,
+          "steps": [
+            {
+              "name": "Run test",
+              "conclusion": "failure"
+            }
+          ]
+        },
+        {
+          "name": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
+          "id": 128817183125,
+          "steps": [
+            {
+              "name": "Run test",
+              "conclusion": "failure"
+            }
+          ]
+        },
+        {
+          "name": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_dcp_gpqa",
+          "id": 128822652327,
+          "steps": [
+            {
+              "name": "Run test",
+              "conclusion": "failure"
+            }
+          ]
+        },
+        {
+          "name": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
+          "id": 128913713161,
+          "steps": [
+            {
+              "name": "Run test",
+              "conclusion": "failure"
+            }
+          ]
+        },
+        {
+          "name": "check-all-jobs",
+          "id": 128928729571,
+          "steps": [
+            {
+              "name": "Generate results table",
+              "conclusion": "failure"
+            }
+          ]
+        }
+      ],
+      "missing": [],
+      "complete": true
+    }
+  },
+  "counts": {
+    "tasks": 12,
+    "testTasks": 0,
+    "logTasks": 12,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 30,
+    "evidenceFiles": 10
+  },
+  "verdict": {
+    "category": "job_failure",
+    "text": "任务失败",
+    "confidence": 0.7,
+    "level": "中",
+    "basis": [
+      "任务 nightly-1-npu-a3 / run (0) 日志命中 17 条错误行（非编译特征），见 github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt",
+      "基线 0.30",
+      "证据文件落盘 10 份 +0.25",
+      "任务日志命中错误行 +0.15"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "keyError": "[2026-11-08 16:13:50] Scheduler hit an exception: Traceback (most recent call last):",
+    "rootCause": "26 个 job、12 个失败、跨度近 9 小时（11-09 00:05:48 至 09:22:46），失败从服务进程层一路传导到 job 收尾层：nightly-1-npu-a3 在日志时间 16:13:50（日志为 UTC）先报「Scheduler hit an exception: Traceback (most recent call last):」（github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1286），同文件 L1256 另有一条 Traceback，nightly-8-npu-a3 在 TP0 EP0 与 TP7 EP7 两个 rank 上各报一次同类调度器异常（github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt:L3085、L3128），随后 job 尾部以「##[error]Error: failed to run script step:」「✗ exit code: 255」（github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L18171、L18172）→「Process completed with exit code 1.」→「Executing the custom container implementation failed.」（同文件 L18197）收尾，nightly-perf 与 multi-node-poc 的 deepseek_v4_flash_w8a8_1p1d_16p 也是同一组五行。\n\n按成因可归两类：第一类是服务侧调度器崩栈，同一 job 内多个 TP/EP rank 同时抛 Scheduler 异常、时间紧接 255 退出，失败是一个服务实例在多卡进程上一起崩；第二类是 runner 容器层收尾失败（L18197），它出现在 255 之后，属于外层连带。因此更像镜像内服务进程启动即崩导致整批 nightly 用例无结果，而非某个用例精度或性能不达标——12 个失败 job 的 total/pass/fail 全部为 None、cases=0，一条用例断言都没落下来。\n\n另有一条全批次重复的干扰项：「OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses'」（github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1108、L1437；github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt:L1380），它只把 /v1/responses 接口关掉，日志里没有它直接中断任务的证据，因此不作为本次失败主因，但它是镜像内 openai 版本与代码不匹配的确定问题，需单独修。",
+    "advice": "先收口范围：只复跑 nightly-1-npu-a3 与 nightly-8-npu-a3 这两个含 Scheduler 异常的任务，确认 exit 255 是否为调度器崩栈的连带结果；若这两个任务单跑仍崩，则其余 10 个 job 的失败可直接按同因合并处理，不必逐个排查\n\n同时把镜像内 openai 依赖固定到包含 ResponseFunctionShellToolCall 的版本，消除全批次重复的 OpenAIServingResponses ImportError，避免 /v1/responses 长期处于 disabled 状态掩盖问题\n\n若单跑不崩，再把 12 个失败 job 按节点分组对比 runner 与镜像 digest，重点查 255 退出前该节点上是否发生过容器重启或资源回收\n\n给 nightly 入口加容器拉起前置自检（镜像可拉取、脚本首行依赖可导入），容器失败时把 runner 侧的容器事件写进 job 输出，替代现在只有一句「Executing the custom container implementation failed」\n\n验证方式：重跑该 workflow，要求 nightly-1、nightly-8 两个 job 正常结束、日志中不再出现 Scheduler hit an exception，其余 job 的用例结果（total/pass/fail）能正常落盘，/v1/responses 不再报 ImportError",
+    "cites": [
+      "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1286",
+      "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L18171",
+      "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L18172",
+      "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L18197",
+      "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt:L3085",
+      "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt:L3128",
+      "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1108"
+    ],
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
+    "source": "agent"
+  }
+}

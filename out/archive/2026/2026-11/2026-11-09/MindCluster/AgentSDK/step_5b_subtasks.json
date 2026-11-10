@@ -1,0 +1,20 @@
+{
+ "_doc": {
+  "step": "step_5b_subtasks",
+  "title": "第 5b 步 buildflow 子任务下钻（T7）",
+  "source": "openLiBing buildflow 子任务页",
+  "criteria": "对 buildflow 任务的失败子任务逐个取真实编译报错与子任务日志",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-10 14:57:27",
+  "component": "MindCluster",
+  "pipeline": "AgentSDK",
+  "date": "2026-11-09"
+ },
+ "items": [],
+ "counts": {
+  "tasks": 0,
+  "subTasks": 0,
+  "failed": 0,
+  "logs": 0
+ }
+}

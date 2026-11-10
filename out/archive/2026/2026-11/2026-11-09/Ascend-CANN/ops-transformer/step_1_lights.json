@@ -1,0 +1,69 @@
+{
+ "_doc": {
+  "step": "step_1_lights",
+  "title": "第 1 步 夜间统计与待分析圈定",
+  "source": "openLiBing 夜间统计看板（产品维度指标）",
+  "criteria": "默认取「前一个工作日」单日（跳过周末与法定节假日，config.date_range 留空时生效）：取 config.products 指定的开源组件在该日的版本可用度/编译成功率，比率按我们采集到的执行记录重算（归档只存数值，不存黄/绿/红）；本产品下任一指标未达 100%（或版本不可用）的流水线进入待分析集合",
+  "dateField": "统计区间（start~end，含端点）",
+  "generatedAt": "2026-11-10 14:57:27",
+  "component": "Ascend-CANN",
+  "pipeline": "ops-transformer",
+  "date": "2026-11-09"
+ },
+ "dateRange": {
+  "start": "2026-11-06",
+  "end": "2026-11-09"
+ },
+ "product": {
+  "product": "Ascend-CANN",
+  "projectId": 300057,
+  "versionAvailabilityRate": 0.7222222222222222,
+  "buildSuccessRate": 1.0,
+  "pipelineCount": 9,
+  "badPipelineCount": 4,
+  "badPipelineCountVA": 4,
+  "badPipelineCountBS": 0,
+  "analyze": true,
+  "collectedPipelineCount": 9,
+  "rateRule": "runs",
+  "recompute": true,
+  "scheduledOnly": false,
+  "versionAvailabilityDetail": {
+   "availDays": 13,
+   "daysInPeriod": 18,
+   "rule": "按采集到的全部运行重算：Σ可用日 / Σ有运行日（不看板 versionAvail；当日有 iva=true 的运行才算可用）"
+  },
+  "buildSuccessDetail": {
+   "buildPassCount": 73,
+   "buildCount": 73,
+   "rule": "按采集到的全部运行重算：Σ编译通过 / Σ编译次数（不看板 buildSuccess；github 平台无该口径不参与）"
+  }
+ },
+ "pipeline": {
+  "key": "Ascend-CANN|ops-transformer",
+  "product": "Ascend-CANN",
+  "projectId": 300057,
+  "pipelineName": "Nightly-CI-Component-pipeline_ops-transformer",
+  "pipelineShortName": "ops-transformer",
+  "pipelineId": "309180d5c2904adf942f5678d9356d99",
+  "platform": "codearts",
+  "versionAvailabilityRate": 0,
+  "buildSuccessRate": 1,
+  "dims": [
+   "va",
+   "bs"
+  ],
+  "rateRule": "runs",
+  "recompute": true,
+  "scheduledOnly": false
+ },
+ "selection": {
+  "inBadPipelines": true,
+  "dims": [
+   "va",
+   "bs"
+  ],
+  "rateRule": "runs",
+  "reason": "全量采集：该流水线区间内共 6 次运行（当日 2 次），其中 2 次失败/取消进入根因取证；版本可用度与编译成功率一律按全部运行逐日重算（不看板返回值）"
+ }
+}

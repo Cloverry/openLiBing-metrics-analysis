@@ -1,0 +1,62 @@
+{
+ "_doc": {
+  "step": "step_1_lights",
+  "title": "第 1 步 夜间统计与待分析圈定",
+  "source": "openLiBing 夜间统计看板（产品维度指标）",
+  "criteria": "默认取「前一个工作日」单日（跳过周末与法定节假日，config.date_range 留空时生效）：取 config.products 指定的开源组件在该日的版本可用度/编译成功率，比率按我们采集到的执行记录重算（归档只存数值，不存黄/绿/红）；本产品下任一指标未达 100%（或版本不可用）的流水线进入待分析集合",
+  "dateField": "统计区间（start~end，含端点）",
+  "generatedAt": "2026-11-10 14:57:28",
+  "component": "MindSpeed",
+  "pipeline": "MindSpeed-LLM_master",
+  "date": "2026-11-09"
+ },
+ "dateRange": {
+  "start": "2026-11-06",
+  "end": "2026-11-09"
+ },
+ "product": {
+  "product": "MindSpeed",
+  "projectId": 300091,
+  "versionAvailabilityRate": 1.0,
+  "buildSuccessRate": null,
+  "pipelineCount": 5,
+  "badPipelineCount": 0,
+  "badPipelineCountVA": 0,
+  "badPipelineCountBS": 0,
+  "analyze": true,
+  "collectedPipelineCount": 5,
+  "rateRule": "runs",
+  "recompute": true,
+  "scheduledOnly": false,
+  "versionAvailabilityDetail": {
+   "availDays": 10,
+   "daysInPeriod": 10,
+   "rule": "按采集到的全部运行重算：Σ可用日 / Σ有运行日（不看板 versionAvail；当日有 iva=true 的运行才算可用）"
+  }
+ },
+ "pipeline": {
+  "key": "MindSpeed|MindSpeed-LLM_master",
+  "product": "MindSpeed",
+  "projectId": 300091,
+  "pipelineName": "Nightly-CI-Component-pipeline_MindSpeed-LLM_master",
+  "pipelineShortName": "MindSpeed-LLM_master",
+  "pipelineId": "b30f40b85cce4153b175379589793abc",
+  "platform": "codearts",
+  "versionAvailabilityRate": 1,
+  "buildSuccessRate": null,
+  "dims": [
+   "va"
+  ],
+  "rateRule": "runs",
+  "recompute": true,
+  "scheduledOnly": false
+ },
+ "selection": {
+  "inBadPipelines": true,
+  "dims": [
+   "va"
+  ],
+  "rateRule": "runs",
+  "reason": "全量采集：该流水线区间内共 2 次运行（当日 1 次），其中 0 次失败/取消进入根因取证；版本可用度与编译成功率一律按全部运行逐日重算（不看板返回值）"
+ }
+}

@@ -1,0 +1,184 @@
+{
+  "_doc": {
+    "step": "step_6_records",
+    "title": "第 6 步 证据合并与执行记录",
+    "source": "第 2~5c 步归档产物",
+    "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+    "dateField": "pipelineRunEndtime",
+    "generatedAt": "2026-11-10 14:57:28",
+    "component": "HPCKit",
+    "pipeline": "kuqcd",
+    "date": "2026-11-09",
+    "recordId": "HPCKit|kuqcd#201"
+  },
+  "recordId": "HPCKit|kuqcd#201",
+  "date": "2026-11-09",
+  "component": "HPCKit",
+  "pipeline": "kuqcd",
+  "pipelineName": "Nightly-CI-Component-pipeline_kuqcd",
+  "platform": "codearts",
+  "buildNumber": 201,
+  "pipelineRunId": "e710e7a44622472784b4187e1928c525",
+  "status": "FAILED",
+  "failedTaskType": "测试任务",
+  "startedAt": "2026-11-09T00:31:53",
+  "endedAt": "2026-11-09T20:59:29",
+  "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-09T20:59:29",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+  },
+  "light": {
+    "vaRate": 0,
+    "bsRate": 1,
+    "dims": [
+      "va",
+      "bs"
+    ],
+    "track": "va"
+  },
+  "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=eeedf3e4794449969ad6d7f67691d0be&projectId=300073&pipelineRunId=e710e7a44622472784b4187e1928c525",
+    "detail": null,
+    "github": null
+  },
+  "tasks": [
+    {
+      "jobName": "Test_quqcd",
+      "type": "test",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "passRate": "0.00%"
+      },
+      "cases": [],
+      "emptyTestResult": true,
+      "stepErrMsgs": []
+    },
+    {
+      "jobName": "Test_quqcd",
+      "type": "log",
+      "fallback": true,
+      "logFile": "job_logs/27_kuqcd_201_Test_quqcd.log",
+      "logBytes": 16555,
+      "logLines": 144,
+      "download": "export",
+      "truncated": false,
+      "excerpt": null,
+      "stepErrMsgs": [
+        "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
+      ],
+      "jobErrMsg": "步骤Test_quqcd执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+      "errorLines": [
+        "L138: [2026/11/09 20:59:19.175 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+        "L139: [2026/11/09 20:59:19.175 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'",
+        "L140: [2026/11/09 20:59:19.175 GMT+08:00] [ERROR] git clone test_cases code fail",
+        "L142: [2026/11/09 20:59:19.348 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed",
+        "L144: [2026/11/09 20:59:22.630 GMT+08:00] Finished: FAILURE"
+      ],
+      "subTasks": []
+    }
+  ],
+  "cases": [],
+  "errorMessages": [
+    {
+      "task": "Test_quqcd",
+      "source": "job_logs/27_kuqcd_201_Test_quqcd.log",
+      "line": 138,
+      "level": "LOG",
+      "text": "[2026/11/09 20:59:19.175 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'"
+    },
+    {
+      "task": "Test_quqcd",
+      "source": "job_logs/27_kuqcd_201_Test_quqcd.log",
+      "line": 139,
+      "level": "LOG",
+      "text": "[2026/11/09 20:59:19.175 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'"
+    },
+    {
+      "task": "Test_quqcd",
+      "source": "job_logs/27_kuqcd_201_Test_quqcd.log",
+      "line": 140,
+      "level": "LOG",
+      "text": "[2026/11/09 20:59:19.175 GMT+08:00] [ERROR] git clone test_cases code fail"
+    },
+    {
+      "task": "Test_quqcd",
+      "source": "job_logs/27_kuqcd_201_Test_quqcd.log",
+      "line": 142,
+      "level": "LOG",
+      "text": "[2026/11/09 20:59:19.348 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed"
+    },
+    {
+      "task": "Test_quqcd",
+      "source": "job_logs/27_kuqcd_201_Test_quqcd.log",
+      "line": 144,
+      "level": "LOG",
+      "text": "[2026/11/09 20:59:22.630 GMT+08:00] Finished: FAILURE"
+    },
+    {
+      "task": "Test_quqcd",
+      "source": "job_logs/27_kuqcd_201_Test_quqcd.log",
+      "line": null,
+      "level": "JOB",
+      "text": "步骤Test_quqcd执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+      "isWrapper": true
+    },
+    {
+      "task": "Test_quqcd",
+      "source": "job_logs/27_kuqcd_201_Test_quqcd.log",
+      "line": null,
+      "level": "STEP",
+      "text": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+      "isWrapper": true
+    }
+  ],
+  "evidence": {
+    "files": [
+      "job_logs/27_kuqcd_201_Test_quqcd.log"
+    ],
+    "missing": [
+      "Test_quqcd"
+    ],
+    "github": null
+  },
+  "counts": {
+    "tasks": 2,
+    "testTasks": 1,
+    "logTasks": 1,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 7,
+    "evidenceFiles": 1
+  },
+  "verdict": {
+    "category": "env_not_ready",
+    "text": "用例未拉起（测试环境异常）",
+    "confidence": 0.5,
+    "level": "中",
+    "basis": [
+      "test 任务 Test_quqcd 测试结果为空（用例未拉起），已回退整 job 日志",
+      "基线 0.30",
+      "证据文件落盘 1 份 +0.25",
+      "任务日志命中错误行 +0.15",
+      "任务 Test_quqcd 无任何证据 −0.20"
+    ]
+  },
+  "suggestions": [],
+  "analysis": {
+    "status": "done",
+    "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+    "rootCause": "构建 #201 从 00:31:53 跑到 20:59:29（约 20 小时 28 分钟）记 FAILED，失败任务类型为测试任务；Test_quqcd 的 total=0、pass=0、fail=0，用例一条未跑（records/run_201.json）\n\n第一类（长时间排队后才拿到执行机会）：真正开始执行的时间是 20:59:19，距构建启动 00:31:53 已过去 20 小时以上，说明这条构建绝大部分时间在等资源而不是在跑测试\n\n第二类（拿到机器后 3 秒内因鉴权失败退出）：20:59:19.175 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，脚本打印 [ERROR] git clone test_cases code fail，20:59:19.348 以 script returned exit code 1 退出，20:59:22.630 Finished: FAILURE（job_logs/27_kuqcd_201_Test_quqcd.log:L138、L140、L142）\n\n因此这条记录有两层问题：表层是与其他 HPCKit 记录同源的 clone 鉴权失败（3 秒即失败、用例未执行），底层是长达 20 小时的资源等待——两者叠加让这条记录完全失去测试价值\n\n已排除的干扰项：total=0，无用例执行；日志里没有任何编译错误或设备异常；鉴权失败与长时间排队无因果关系",
+    "advice": "先修凭据（与 hmpi#213、kpex#142、kudnn#227、kupl#306 同一根因），这一步能让本条立刻回到可测状态\n\n单独查 20 小时排队：00:31:53 提交、20:59:19 才开始执行，说明该流水线的队列或节点池长期被占，建议核对 kuqcd 对应节点池的容量与资源配额，这类长等待会让夜间结果失去时效性\n\n加超时策略：为「拿到执行机后立刻失败」的场景设置更短的排队上限与快速失败标记，避免一条构建占位一整天\n\n验证方式：重跑 kuqcd 流水线，要求从启动到开始执行在合理时长内（小时级以内）、git clone 成功、Test_quqcd 拉起用例并给出 total>0 的结果、任务通过率 100%",
+    "cites": [
+      "job_logs/27_kuqcd_201_Test_quqcd.log:L138",
+      "job_logs/27_kuqcd_201_Test_quqcd.log:L142",
+      "records/run_201.json"
+    ],
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
+    "source": "agent"
+  }
+}

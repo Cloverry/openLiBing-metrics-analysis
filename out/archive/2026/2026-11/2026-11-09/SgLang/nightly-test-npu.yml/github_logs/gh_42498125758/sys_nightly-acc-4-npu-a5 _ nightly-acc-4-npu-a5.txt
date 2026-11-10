@@ -1,0 +1,20 @@
+2026-11-08T16:05:57.7680000Z Evaluating nightly-acc-4-npu-a5.if
+2026-11-08T16:05:57.7680000Z Evaluating: !cancelled()
+2026-11-08T16:05:57.7680000Z Expanded: !false
+2026-11-08T16:05:57.7680000Z Result: true
+2026-11-08T16:05:57.7680000Z Evaluating nightly-acc-4-npu-a5.e2e.if
+2026-11-08T16:05:57.7680000Z Evaluating: success()
+2026-11-08T16:05:57.7680000Z Result: true
+2026-11-08T16:05:57.7690000Z Requested labels: linux-amd64-a5-4
+2026-11-08T16:05:57.7690000Z Job defined at: sgl-project/sglang/.github/workflows/_npu-single-node-test-stage.yml@refs/heads/main
+2026-11-08T16:05:57.7690000Z Reusable workflow chain:
+2026-11-08T16:05:57.7690000Z sgl-project/sglang/.github/workflows/nightly-test-npu.yml@refs/heads/main (4003bf1077debcca3fccfa6e0d7b56ed584aa727)
+2026-11-08T16:05:57.7690000Z -> sgl-project/sglang/.github/workflows/_npu-single-node-test-stage.yml@refs/heads/main (4003bf1077debcca3fccfa6e0d7b56ed584aa727)
+2026-11-08T16:05:57.7690000Z Waiting for a runner to pick up this job...
+2026-11-08T16:05:58.2260000Z Job is about to start running on the runner: linux-amd64-a5-4
+2026-11-08T16:10:58.3960000Z Requested labels: linux-amd64-a5-4
+2026-11-08T16:10:58.3960000Z Job defined at: sgl-project/sglang/.github/workflows/_npu-single-node-test-stage.yml@refs/heads/main
+2026-11-08T16:10:58.3960000Z Reusable workflow chain:
+2026-11-08T16:10:58.3960000Z sgl-project/sglang/.github/workflows/nightly-test-npu.yml@refs/heads/main (4003bf1077debcca3fccfa6e0d7b56ed584aa727)
+2026-11-08T16:10:58.3960000Z -> sgl-project/sglang/.github/workflows/_npu-single-node-test-stage.yml@refs/heads/main (4003bf1077debcca3fccfa6e0d7b56ed584aa727)
+2026-11-08T16:10:58.3960000Z Waiting for a runner to pick up this job...

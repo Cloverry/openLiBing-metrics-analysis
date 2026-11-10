@@ -1,0 +1,224 @@
+{
+ "_doc": {
+  "step": "step_4_cases",
+  "title": "第 4 步 测试用例取证（T6）",
+  "source": "openLiBing 测试报告页 + 用例日志下载",
+  "criteria": "取失败任务的失败用例、错误信息、深度学习命中行，并下载用例日志到 case_logs/",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-10 14:57:27",
+  "component": "Ascend-CANN",
+  "pipeline": "ops-nn",
+  "date": "2026-11-09"
+ },
+ "results": [
+  {
+   "route": "test",
+   "key": "Ascend-CANN|ops-nn",
+   "pipeline": "ops-nn",
+   "pipelineName": "Nightly-CI-Component-pipeline_ops-nn",
+   "rn": 169,
+   "st": "11-09 12:00",
+   "projectId": 300057,
+   "pipelineId": "6d402b76f9b14451872ef07ac1f864ba",
+   "rid": "b3e7f0586b3a4520ba153704e0664367",
+   "jobId": "1b3f4a0aa25042aa875f33af6362433c",
+   "jobName": "Test_ops-nn",
+   "stepIds": [
+    "30d626baba024b6abb02588f304d1053"
+   ],
+   "steps": [
+    {
+     "id": "30d626baba024b6abb02588f304d1053",
+     "name": "Test_ops-nn",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "d87f77d68e0a4a2bbeefac97e236d699",
+     "jobIdParam": "b3f37e72e8b7427a8b07180dea237918"
+    }
+   ],
+   "jobErrMsg": "步骤Test_ops-nn执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "c59111b25a7d47b6846d007fda8a9f92",
+   "code": 200,
+   "summary": {
+    "total": 202,
+    "passed": 200,
+    "failed": 2,
+    "passRate": "99.01%"
+   },
+   "failedCases": [
+    {
+     "name": "test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk",
+     "number": "test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk",
+     "state": "failed",
+     "description": "AssertionError: aclnnFakeQuantPerChannelAffineCachemask功能精度测试(executor)失败: aclnnFakeQuantPerChannelAffineCachemask accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnFakeQuantPerChannelAffineCachemask_Smoke_2026-11-09-18-19-01-258140/r",
+     "beginTime": "2026-11-09 17:14:34",
+     "endTime": "2026-11-09 17:15:06",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110911052/test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110911052/test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk",
+     "number": "test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnFakeQuantPerTensorAffineCachemask_Smoke_2026-11-09-17-27-48-174760/report/aclnnFakeQuantPerTensorAffineCachemask_Smoke_reports_accuracy_2026-11-09-17-27-49.xlsx', error_msg='aclnnFakeQuantPerTensorAffineCa",
+     "beginTime": "2026-11-09 17:16:32",
+     "endTime": "2026-11-09 17:17:11",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110911052/test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110911052/test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk_log.zip"
+    }
+   ],
+   "empty": false
+  },
+  {
+   "route": "test",
+   "key": "Ascend-CANN|ops-nn",
+   "pipeline": "ops-nn",
+   "pipelineName": "Nightly-CI-Component-pipeline_ops-nn",
+   "rn": 168,
+   "st": "11-09 02:02",
+   "projectId": 300057,
+   "pipelineId": "6d402b76f9b14451872ef07ac1f864ba",
+   "rid": "9e9d3670df3b4da5be52ac669bc6f7a5",
+   "jobId": "2d1799813a8543f893ab7aad6e236b09",
+   "jobName": "Test_ops-nn",
+   "stepIds": [
+    "05b8b0223d764ee785d3ec8d3c939cfe"
+   ],
+   "steps": [
+    {
+     "id": "05b8b0223d764ee785d3ec8d3c939cfe",
+     "name": "Test_ops-nn",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "89ffc07a5889460e8a3a970dd8db8d22",
+     "jobIdParam": "b3f37e72e8b7427a8b07180dea237918"
+    }
+   ],
+   "jobErrMsg": "步骤Test_ops-nn执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "fa499ec54cbf4075a7fbbef0d20dbb3c",
+   "code": 200,
+   "summary": {
+    "total": 202,
+    "passed": 200,
+    "failed": 2,
+    "passRate": "99.01%"
+   },
+   "failedCases": [
+    {
+     "name": "test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk",
+     "number": "test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk",
+     "state": "failed",
+     "description": "AssertionError: aclnnFakeQuantPerChannelAffineCachemask功能精度测试(executor)失败: aclnnFakeQuantPerChannelAffineCachemask accuracy not passed; +  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnFakeQuantPerChannelAffineCachemask_Smoke_2026-11-09-21-52-43-668199/r",
+     "beginTime": "2026-11-09 20:55:58",
+     "endTime": "2026-11-09 20:56:28",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110917877/test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110917877/test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk_log.zip"
+    },
+    {
+     "name": "test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk",
+     "number": "test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk",
+     "state": "failed",
+     "description": "+  where False = AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None', is_e2e_perf_pass='None', is_device_perf_pass='None', is_device_memory_pass='None', is_memory_check_pass='None', excel_file='/autotest/atk_output/aclnnFakeQuantPerTensorAffineCachemask_Smoke_2026-11-09-21-09-50-328377/report/aclnnFakeQuantPerTensorAffineCachemask_Smoke_reports_accuracy_2026-11-09-21-09-51.xlsx', error_msg='aclnnFakeQuantPerTensorAffineCa",
+     "beginTime": "2026-11-09 20:58:24",
+     "endTime": "2026-11-09 20:59:04",
+     "resultDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110917877/test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk.html",
+     "envDownloadUrl": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110917877/test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk_log.zip"
+    }
+   ],
+   "empty": false
+  }
+ ],
+ "caseErrors": [
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110911052/test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk.html",
+   "file": "case_0131.html",
+   "localLog": "case_logs/case_0131.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-nn/test_ops_nn_8.py::TestCannOpsNn::test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk",
+   "status": "Failed",
+   "duration": "32.77s",
+   "fileBytes": 176309,
+   "fileLines": 1981,
+   "errors": [
+    {
+     "time": "2026-11-09 18:19:15.983",
+     "level": "FAIL",
+     "line": 1899,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-nn/test_ops_nn_8.py::TestCannOpsNn::test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110911052/test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk.html",
+   "file": "case_0132.html",
+   "localLog": "case_logs/case_0132.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-nn/test_ops_nn_12.py::TestCannOpsNn::test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk",
+   "status": "Failed",
+   "duration": "38.98s",
+   "fileBytes": 199022,
+   "fileLines": 2206,
+   "errors": [
+    {
+     "time": "2026-11-09 17:28:07.301",
+     "level": "FAIL",
+     "line": 2124,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-nn/test_ops_nn_12.py::TestCannOpsNn::test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110917877/test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk.html",
+   "file": "case_0129.html",
+   "localLog": "case_logs/case_0129.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-nn/test_ops_nn_8.py::TestCannOpsNn::test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk",
+   "status": "Failed",
+   "duration": "29.72s",
+   "fileBytes": 169251,
+   "fileLines": 1926,
+   "errors": [
+    {
+     "time": "2026-11-09 21:52:58.647",
+     "level": "FAIL",
+     "line": 1844,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-nn/test_ops_nn_8.py::TestCannOpsNn::test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk"
+    }
+   ],
+   "deepHits": []
+  },
+  {
+   "url": "https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/version_smoke/1e20b309fcb34b00a0043a87e461c95a2026110917877/test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk.html",
+   "file": "case_0130.html",
+   "localLog": "case_logs/case_0130.html",
+   "downloadStatus": "ok",
+   "caseId": "testcase/cann/ops-nn/test_ops_nn_12.py::TestCannOpsNn::test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk",
+   "status": "Failed",
+   "duration": "39.94s",
+   "fileBytes": 208564,
+   "fileLines": 2277,
+   "errors": [
+    {
+     "time": "2026-11-09 21:10:12.242",
+     "level": "FAIL",
+     "line": 2195,
+     "loc": "plugin.py:999",
+     "msg": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-nn/test_ops_nn_12.py::TestCannOpsNn::test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk"
+    }
+   ],
+   "deepHits": []
+  }
+ ],
+ "errors": [],
+ "counts": {
+  "tasks": 2,
+  "failedCases": 4,
+  "caseLogs": 4,
+  "caseErrors": 4
+ }
+}

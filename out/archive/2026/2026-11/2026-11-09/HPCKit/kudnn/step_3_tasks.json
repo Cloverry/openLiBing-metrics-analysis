@@ -1,0 +1,53 @@
+{
+ "_doc": {
+  "step": "step_3_tasks",
+  "title": "第 3 步 失败任务分流（T4）",
+  "source": "openLiBing 流水线运行详情（任务列表）",
+  "criteria": "仅取状态为失败的任务；UNSELECTED/CANCELED/IGNORED/INIT 跳过；含测试结果的任务走测试取证（第 4 步），其余走日志取证（第 5 步），github 平台运行改走第 5c 步",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-10 14:57:28",
+  "component": "HPCKit",
+  "pipeline": "kudnn",
+  "date": "2026-11-09"
+ },
+ "test": [
+  {
+   "key": "HPCKit|kudnn",
+   "pipeline": "kudnn",
+   "pipelineName": "Nightly-CI-Component-pipeline_kudnn",
+   "projectId": 300073,
+   "pipelineId": "ca83efb8c37648db8084e31b1e88b62c",
+   "rid": "35c821a147eb4aee80d6703eb422ca12",
+   "rn": 227,
+   "st": "11-09 03:31",
+   "jobId": "56c06bf142de495ea9ff164606f43f5d",
+   "jobName": "Test_kudnn",
+   "stepIds": [
+    "55626164ba334a1984be64a5ef191e76"
+   ],
+   "steps": [
+    {
+     "id": "55626164ba334a1984be64a5ef191e76",
+     "name": "Test_kudnn",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "feb532c01e71437ea257fe742d960aae",
+     "jobIdParam": "c3e0b38ec60143498e2e6f164be6651c"
+    }
+   ],
+   "jobErrMsg": "步骤Test_kudnn执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "d30af9ce5c5c470ca3a9d870dde44525",
+   "route": "test",
+   "isBuild": false,
+   "buildJobId": "c3e0b38ec60143498e2e6f164be6651c"
+  }
+ ],
+ "log": [],
+ "skipped": [],
+ "errors": [],
+ "counts": {
+  "test": 1,
+  "log": 0,
+  "skipped": 0
+ }
+}

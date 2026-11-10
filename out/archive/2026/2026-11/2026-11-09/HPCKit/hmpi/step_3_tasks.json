@@ -1,0 +1,53 @@
+{
+ "_doc": {
+  "step": "step_3_tasks",
+  "title": "第 3 步 失败任务分流（T4）",
+  "source": "openLiBing 流水线运行详情（任务列表）",
+  "criteria": "仅取状态为失败的任务；UNSELECTED/CANCELED/IGNORED/INIT 跳过；含测试结果的任务走测试取证（第 4 步），其余走日志取证（第 5 步），github 平台运行改走第 5c 步",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-10 14:57:28",
+  "component": "HPCKit",
+  "pipeline": "hmpi",
+  "date": "2026-11-09"
+ },
+ "test": [
+  {
+   "key": "HPCKit|hmpi",
+   "pipeline": "hmpi",
+   "pipelineName": "Nightly-CI-Component-pipeline_hmpi",
+   "projectId": 300073,
+   "pipelineId": "ffe131425ad84d4b8b6c17c4c09476d9",
+   "rid": "2f71f7f0cb6643dfa23b3d5f8ebb9755",
+   "rn": 213,
+   "st": "11-09 01:01",
+   "jobId": "980fd922fd814bd695cbb7cb0590b26a",
+   "jobName": "Test_hmpi",
+   "stepIds": [
+    "3fd6bf12145b4877925fbb43ea5d1496"
+   ],
+   "steps": [
+    {
+     "id": "3fd6bf12145b4877925fbb43ea5d1496",
+     "name": "Test_hmpi",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "d53d91fb08364ad087a2e19806dc6827",
+     "jobIdParam": "215162ed521b406e9e13eb0c9f2ac64e"
+    }
+   ],
+   "jobErrMsg": "步骤Test_hmpi执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "000c9dfd937046acaac092dd1932d87f",
+   "route": "test",
+   "isBuild": false,
+   "buildJobId": "215162ed521b406e9e13eb0c9f2ac64e"
+  }
+ ],
+ "log": [],
+ "skipped": [],
+ "errors": [],
+ "counts": {
+  "test": 1,
+  "log": 0,
+  "skipped": 0
+ }
+}
