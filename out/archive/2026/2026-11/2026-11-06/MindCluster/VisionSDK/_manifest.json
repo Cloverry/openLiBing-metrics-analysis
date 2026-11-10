@@ -5,7 +5,7 @@
   "source": "第 1~6 步中间产物（out/work/）",
   "criteria": "本目录内每一步的来源/口径/文件/计数与证据文件，逐条可核对",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-09 15:06:58",
+  "generatedAt": "2026-11-10 12:36:00",
   "component": "MindCluster",
   "pipeline": "VisionSDK",
   "date": "2026-11-06"
@@ -114,7 +114,7 @@
  },
  "source": {
   "workDir": "work",
-  "generatedAt": "2026-11-09 15:06:58",
+  "generatedAt": "2026-11-10 12:36:00",
   "note": "由 steps/step_7_archive.py 从第 1~6 步产物逐层归档"
  }
 }

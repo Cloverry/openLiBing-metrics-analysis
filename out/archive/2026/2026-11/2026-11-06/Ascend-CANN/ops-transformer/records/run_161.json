@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:06:59",
+    "generatedAt": "2026-11-10 14:57:27",
     "component": "Ascend-CANN",
     "pipeline": "ops-transformer",
     "date": "2026-11-06",
@@ -977,14 +977,19 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "15 个通信融合算子精度用例全部失败，断言原文为 aclnnAlltoAllQuantMatmul / aclnnMatmulReduceScatterV2 / aclnnMatmulAllReduce accuracy not passed，算子任务精度结果为 Failed；test 任务无日志落盘，无法进一步定位。",
-    "advice": "优先复跑 aclnnMatmulReduceScatterV2 与 aclnnAlltoAllQuantMatmul，核对该轮 A16W4 量化路径的 scale 配置与精度阈值；同时补充 test 任务日志落盘，避免后续同类失败只能靠用例断言定性。",
+    "keyError": "AssertionError: aclnnAlltoAllQuantMatmul功能精度测试(executor)失败: aclnnAlltoAllQuantMatmul accuracy not passed",
+    "rootCause": "Test_ops-transformer 98 条用例 83 通过、15 失败，任务判失败，构建 #161 记 FAILED；失败全部由 executor 精度比对给出，用例已跑到比对阶段（records/run_161.json）\n\n第一类（5 条，三档量化 Matmul）：aclnnAlltoAllQuantMatmul 的 a16w4、a16w8、a4w4 三档加 aclnnWeightQuantMatmulAllReduce、aclnnQuantMatmulAllReduceV3，断言原文形如「AssertionError: aclnnAlltoAllQuantMatmul功能精度测试(executor)失败: aclnnAlltoAllQuantMatmul accuracy not passed」；同一算子的三档量化权重位宽一起失败，更像量化 scale 的公共处理或反量化链路偏移，而不是某一档参数配错（case_logs/case_0056.html:L2151、case_logs/case_0068.html:L8863）\n\n第二类（7 条，集合通信融合）：aclnnMatmulReduceScatterV2、aclnnMatmulAllReduce 及 V2、aclnnMatmulReduceScatter、aclnnMatmulAlltoAll、aclnnAlltoAllMatmul、aclnnAllGatherMatmul（case_logs/case_0059.html:L2490）\n\n第三类（3 条，MoE 分发合并）：断言文本写的是「aclnnMoeDistributeDispatch功能精度测试(executor)失败: aclnnMoeDistributeDispatch_CombineV2 accuracy not passed」，而用例名指向 test_cann_accu_smk_aclnnmoedistributedispatchv2_2p，算子名与用例名对不上，说明断言消息由公共模板拼出来、并不携带这条用例的真实算子名，读日志时不能按断言里的算子名反查用例（case_logs/case_0089.html:L15734）\n\n已排除的干扰项：本记录没有任何内核报错、内存越界或超时行，失败纯粹来自数值比对；test 任务 logFile 为空，无法确认偏差是来自 kernel 还是阈值，结论止于用例层",
+    "advice": "先验量化这一支：单跑 aclnnAlltoAllQuantMatmul 的 a16w4、a16w8、a4w4 三档并导出 atk 比对明细，确认三档误差是否同量级；同量级就按量化 scale 的公共处理统一修，差异大则分档核对 scale 计算方式\n\n若量化侧修完仍失败，再按通信融合族处理：从 aclnnMatmulAllReduce 与 aclnnAllGatherMatmul 各取一条，比对 sum/累加顺序与基线是否一致\n\n顺手修掉断言模板：让 MoE 类用例打印真实算子名与用例名，避免 dispatch 与 combine 两类失败在统计上互相混淆，否则下次仍然要人工反查用例\n\n验证方式：重跑 Test_ops-transformer 全量 98 条用例，要求 15 条失败用例全部通过、退出码为 0，且用例日志中不再出现 accuracy not passed；同时为 Test_ops-transformer 的 test 任务补日志落盘，使精度失败可下钻到 kernel 与阈值层",
     "cites": [
-      "records/run_161.json:L57",
-      "records/run_161.json:L79",
-      "records/run_161.json:L101"
+      "case_logs/case_0056.html:L2151",
+      "case_logs/case_0059.html:L2490",
+      "case_logs/case_0068.html:L8863",
+      "case_logs/case_0089.html:L15734",
+      "records/run_161.json"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

@@ -1,5 +1,5 @@
 {
- "version": 13,
+ "version": 15,
  "analysis": {
   "classification": {
    "环境/资源": "节点/镜像/依赖缺陷（conda 缺失、运行库缺失、模型仓文件缺失）、网络、机器、排队、磁盘",
@@ -16,7 +16,11 @@
    "全文不出现外部平台/品牌名与「需到 XX 平台查看」类跨平台说辞：github 平台流水线在根因描述中以「运行平台」指代其执行平台，不出现外部平台品牌名；全部证据已由采集脚本落盘本地（openLiBing 接口证据 + buildflow 子任务下钻日志 + github 运行取证日志，均在归档记录同级目录），只引用本地落盘证据",
    "不写「与…一致 / 计算一致 / 复算一致」类描述：指标数值由脚本按归档逐运行明细计算，AI 不复述计算过程、不评价口径，只对非 1 指标给出真实失败原因",
    "测试用例通过率未达 100% 导致的不达标（VA 双指标口径）作为一条根因：错误信息写实际问题（如哪几天通过率为空、具体失败用例与断言），原因与建议写清楚，不写复算类描述",
-   "只呈现结论与异常，不复述指标计算过程"
+   "只呈现结论与异常，不复述指标计算过程",
+   "根因必须是散文式推断，不能只罗列现象：rootCause 第一段讲失败链（哪一步先坏、怎么传导、最终阶段结果与退出码，带 文件名:行号）；之后按同一成因把失败归成若干类，一类一段，段首写「第N类（M 个用例，共性描述）：」并直接接着叙述，段内必须包含首个报错原文、规模证据（同一签名出现次数/时间跨度/覆盖用例清单，带 文件名:行号）与「因此更像…而非…」的成因推断，必要时补反证（若是另一种原因应还看到什么现象而日志里没有）；结尾写「已排除的干扰项：」并给出排除理由（仅当日志里确实存在易混淆告警时才写）",
+   "修复建议必须是优先级递进的分段叙述：advice 首段写最可能原因对应的核对/修改动作与判定标准，次段以「若…仍复现，再…」写下一步，再写定点修复位置（文件:行号 / 配置项 / 校验点），最后一段固定以「验证方式：」开头写复跑范围、通过标准、日志中不应再出现的报错与阶段/退出码要求；建议与根因的归组一一对应",
+   "禁止「一、」「二、」「1.」等序号分点、禁止「分析过程：」「判定依据：」类标签、禁止「建议排查 / 建议关注」空话、禁止 markdown 语法（* - 1. 表格）；段与段之间用换行分隔（JSON 里写 \\n\\n），段内不换行；页面按行渲染，行首「…：」的短语会自动加粗成小标题",
+   "推测必须基于日志中出现的现象，不确定的写「更像 / 疑似」，不得把推测写成事实；只写「哪些用例失败、报哪个错、共 N 个」属于现象罗列，不算根因"
   ],
   "dimensions": {
    "va": {
@@ -45,6 +49,7 @@
    "procedure": "凭 record 内 errorLines 行号 / errorMessages[].line / stepErrMsgs 回同级 job_logs/ 全量日志 grep -n 定位错误上下文（前后 10~30 行），把根因下钻到具体报错原文；truncated=true 的日志只有局部内容，结论注明证据不完整；github 平台任务（platform=github）凭 errorLines 行号回同级 github_logs/ 的 job 日志按同一规则定位，evidenceNote 非空（运行平台日志未留存 404）时以 jobs 元数据（conclusion/时长/失败步骤）定性并注明证据不完整",
    "citation_format": "文件名:行号（如 01_msot_242_Test_msot_nightly_smoke_A3.log:L58213）；行号必须来自全量日志，摘录文件行号不连续",
    "wrapper_code_policy": "封装码（DEV-CODECI-*）出现时，先在整 job 全量日志中找任务内部真实报错；buildflow 任务再下钻失败子任务日志；确实无有效错误才定性平台/基础设施+置信度低",
+   "failed_task_type_policy": "记录内 ftt（服务端 failedTaskType，如「测试任务」「构建任务」）本身就是可核对的定性依据：tasks 为空或 counts.logTasks=0 时先按 ftt 定性（含「测试」→test_failure、含「构建/编译」→compile_failure、含「部署/环境」→env_not_ready、含「取消」→cancelled），status=CANCELED 时定性 cancelled；此时 rootCause 的结论写「失败在<类型>阶段，平台侧未留存任务日志与失败用例明细，证据止于任务类型这一层」，不得写成「证据缺失」，也不得说无法判断失败类型；只有 ftt 为空、status 非 CANCELED、且确实没有任何日志与用例时才用 evidence_missing",
    "pending_timeline": "排队类根因（Pending/queued 等资源等待）必须举证完整等待时间线：环境申请开始时间 → 首次查询状态（status: Pending/queued、progress ready/pending）→ 轮询总次数与每轮间隔 → 放弃/分配失败时间，四个节点逐点括注 file:line；等待时长=起止时间差（如 约 1h44m），不得用「轮询次数×30s」推算（各流水线每轮间隔不同，查询耗时+等待时间不一）；调度器返回的结构化原因须摘录关键细节（reason code 如 INSUFFICIENT_NPU、requested 规格、observed 候选节点剩余资源、预留占用 lease-cap 等）；禁止只写「资源调度失败/排队超时」等无时长、无日志行举证的笼统结论",
    "subtask_drilldown": "buildflow 任务（subTasks 非空）的失败子任务真实编译报错以 subTasks[].logFile（同级 job_logs/ 目录，文件名含子任务名）与 subTasks[].errorLines 为准，凭行号回子任务全量日志定位错误上下文；整 job 日志中的 build_flow 调度层记录（Follow jobs are failed 等）仅作调度上下文，不得作为最终报错；subTasks=[] 为普通任务，直接以整 job 日志为准；子任务日志 truncated=true 为尾部窗口，结论注明证据不完整",
    "github_evidence": "github 平台流水线取证：根因行任务列写 github job 名；运行标识以流水线名+构建号呈现；jobs 元数据（githubMeta.failedJobs 含失败步骤名与 conclusion、任务级 githubJob.steps）作为运行平台日志未留存（404）时的定性依据；取消 job（githubMeta.cancelledJobs）不编根因行，仅作运行失败形态说明；github 测试 job（isTestJob=true）根因定位到具体用例/模型：优先引用任务 testResults（failedModels 逐模型失败/aisbenchFailed 失败用例/benchmarkFailed/failedTagTests/pytestFailed，各条目带 line 行号），错误信息写用例/模型名与失败原因，行号回 job 日志原文印证；testResults 为 null 时退回 errorLines 定性；github 流水线 buildSuccess 恒为 null（BS 维度无数据），仅 VA 维度分析"

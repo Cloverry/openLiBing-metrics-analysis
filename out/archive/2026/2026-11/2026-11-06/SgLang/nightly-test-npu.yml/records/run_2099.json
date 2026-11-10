@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:07:00",
+    "generatedAt": "2026-11-10 14:57:29",
     "component": "SgLang",
     "pipeline": "nightly-test-npu.yml",
     "date": "2026-11-06",
@@ -57,14 +57,8 @@
         "L13659: [2026-11-06 23:06:44] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
         "L13774: │ exit code: 1",
         "L15551: Traceback (most recent call last):",
-        "L15585: Traceback (most recent call last):",
-        "L15596: Traceback (most recent call last):",
-        "L15609: Traceback (most recent call last):",
-        "L15620: Traceback (most recent call last):",
         "L15628: ##[error]Error: failed to run script step:",
         "L15629: ✗ exit code: 1",
-        "L15634: Traceback (most recent call last):",
-        "L15645: Traceback (most recent call last):",
         "L15653: ##[error]Process completed with exit code 1.",
         "L15654: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
       ],
@@ -110,34 +104,6 @@
     {
       "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
       "source": "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt",
-      "line": 15585,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
-      "source": "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt",
-      "line": 15596,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
-      "source": "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt",
-      "line": 15609,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
-      "source": "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt",
-      "line": 15620,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
-      "source": "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt",
       "line": 15628,
       "level": "LOG",
       "text": "##[error]Error: failed to run script step:"
@@ -148,20 +114,6 @@
       "line": 15629,
       "level": "LOG",
       "text": "✗ exit code: 1"
-    },
-    {
-      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
-      "source": "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt",
-      "line": 15634,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
-      "source": "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt",
-      "line": 15645,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
     },
     {
       "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
@@ -211,7 +163,7 @@
     "logTasks": 1,
     "buildTasks": 0,
     "cases": 0,
-    "errorMessages": 13,
+    "errorMessages": 7,
     "evidenceFiles": 1
   },
   "verdict": {
@@ -220,7 +172,7 @@
     "confidence": 0.7,
     "level": "中",
     "basis": [
-      "任务 multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix 日志命中 13 条错误行（非编译特征），见 github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt",
+      "任务 multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix 日志命中 7 条错误行（非编译特征），见 github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt",
       "基线 0.30",
       "证据文件落盘 1 份 +0.25",
       "任务日志命中错误行 +0.15"
@@ -229,13 +181,17 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "kimi_k3 多机 mix 用例性能断言失败：实测 39.9 未小于等于阈值 31.0，性能不达标导致 job 失败。",
-    "advice": "复核基线阈值与本轮实测环境（混跑资源争抢、频率降级），必要时单跑取得干净基线后再刷新阈值，并留存性能曲线作为判断依据。",
+    "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
+    "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2099 从 19:42:57 跑到 23:35:37（约 3 小时 53 分钟）记 FAILED；失败的是 multi-node-mix-poc 的 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix，与 #2088 是同一用例（records/run_2099.json）\n\n第一类（先出现的非零退出）：L13774 已出现 │ exit code: 1，位置在 L13659 的 openai ImportError（23:06:44）之后一千多行，说明服务拉起或前置子步骤先失败了一次（github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L13774）\n\n第二类（主脚本收敛）：L15551 Traceback → L15628 ##[error]Error: failed to run script step → L15629 ✗ exit code: 1 → L15653 Process completed with exit code 1 → L15654 容器实现执行失败，异常正文未留存\n\n这条的标题是「kimi_k3: tune the 128k decode prefix case to repeat_rate=0.99 / request_rate=0」，是同一天对该用例的第二次参数调整；#2088 与 #2099 都是两次非零退出、都没有性能指标输出，说明调整参数并没有解决启动路径的问题\n\n因此更像 kimi_k3 的 32p mix 128k decode prefix 用例在多机拉起环节存在固定障碍（节点数 4、prefix 模式），而非 repeat_rate 参数不当\n\n已排除的干扰项：openai ImportError 属当天镜像的普遍问题、不是本条退出点；cases 为 0，无 tpot/吞吐输出，用例未进入测量",
+    "advice": "停止继续调参，先修启动：同一天两次调 repeat_rate/request_rate 都没换来一次成功，说明瓶颈不在参数而在用例拉起，先把 L13774 的第一次非零退出上下文拉出来\n\n与 #2088 合并成一条线：两次失败形态、退出位置、缺失信息完全一致，按同一个缺陷跟踪，避免在两条记录上重复投入\n\n核对 4 节点 multi-node-mix-poc 的环境前提：通信库与 sdma 能力要事先探测（参考 #2085 抓到的 libhcom.so 缺失与 InitDramSegment 失败），不满足就明确 skip\n\n验证方式：重跑该 nightly，要求 multi-node-mix-poc（kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix）转通过并产出 decode 性能指标、run 结论为 success",
     "cites": [
-      "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15579",
-      "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15592"
+      "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L13774",
+      "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15629",
+      "records/run_2099.json"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

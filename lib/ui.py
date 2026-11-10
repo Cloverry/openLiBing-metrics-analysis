@@ -12,6 +12,8 @@
   这里只产出**静态壳**（样式 + 空容器 + 取数脚本），页面运行时用 fetch 读
   ../archive/... 下的 JSON。HTML 里不内嵌任何业务数据，归档目录才是唯一数据源。
 """
+import json
+
 from lib.paths import DATE_FIELD, DATE_RULE
 
 # 日期口径徽标文案（首页/二级页都显示，避免"这个日期到底按什么算"的误解）
@@ -98,7 +100,7 @@ label.sw{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#37
 /* 组件级概览表：版式对齐旧报告 table.ov（表头浅蓝底、单元格细右分隔线、行高 7px/14px） */
 table.ov{margin:0;border-collapse:separate;border-spacing:0;width:100%;font-size:13px}
 table.ov thead th{position:sticky;top:0;z-index:3;background:#f4f7fb;color:#3b4a60;font-weight:600;
-  font-size:12.5px;text-align:left;padding:8px 14px;border:0;border-bottom:1px solid #e6ebf2;
+  font-size:12.5px;text-align:center;padding:8px 14px;border:0;border-bottom:1px solid #e6ebf2;
   border-right:1px solid #eef2f7;white-space:nowrap}
 table.ov thead th:last-child{border-right:0}
 table.ov tbody td{padding:7px 14px;line-height:1.45;border:0;border-bottom:1px solid #eef2f7;
@@ -141,7 +143,7 @@ td.c,th.c{text-align:center}
 .rec-sec{margin-top:11px}
 .rec-sec .t{font-size:12px;color:var(--dim);margin-bottom:5px}
 .rec-sec table{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px}
-.rec-sec th{text-align:left;color:#4b5563;font-weight:600;background:#fafbfc;padding:6px 9px;
+.rec-sec th{text-align:center;color:#4b5563;font-weight:600;background:#fafbfc;padding:6px 9px;
   border-bottom:1px solid var(--line);white-space:nowrap;position:static}
 .rec-sec td{padding:6px 9px;border-bottom:1px solid var(--line2);vertical-align:top}
 .empty{color:var(--dim);padding:26px 0;text-align:center}
@@ -207,7 +209,8 @@ const rfState = {min:null, max:null, prev:null, seg:null, onChange:null};
 
 function rfYmd(d){const p=n=>String(n).padStart(2,'0');return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate());}
 function rfShift(ymd, days){const d=new Date(ymd+'T00:00:00');d.setDate(d.getDate()+days);return rfYmd(d);}
-/* 区间内工作日数（周一~周五），顶部「工作日 N 天」用 */
+/* 区间内工作日数（周一~周五）。只是**兜底**：真正的法定工作日（含节假日/调休补班）
+   由第 9 步把 lib/workdays.py 算出的日历注入成 WD_CAL，见下面的 wdInRange()。 */
 function rfWorkdays(f, t){
   if (!f || !t) return 0;
   let d = new Date(f + 'T00:00:00'), end = new Date(t + 'T00:00:00'), n = 0;
@@ -217,6 +220,20 @@ function rfWorkdays(f, t){
     d.setDate(d.getDate() + 1);
   }
   return n;
+}
+/* 区间内「法定工作日数」= 版本可用度的分母（顶部「工作日 N 天」也用它）。
+   WD_CAL 由第 9 步注入（lib/workdays.build_workday_set 的结果，含节假日与调休补班），
+   与后端 step_2/step_7 的分母同源；只有区间超出日历覆盖范围
+   （早于归档首日 / 晚于今天）时才退回周一~周五估算。 */
+function wdInRange(f, t){
+  if (!f || !t) return 0;
+  const cal = (typeof WD_CAL !== 'undefined' && WD_CAL && WD_CAL.length) ? WD_CAL : null;
+  if (cal && f >= cal[0] && t <= cal[cal.length - 1]){
+    let n = 0;
+    for (let i = 0; i < cal.length; i++){ const d = cal[i]; if (d >= f && d <= t) n++; }
+    return n;
+  }
+  return rfWorkdays(f, t);
 }
 function rfClamp(v){return (v && rfState.min && v<rfState.min) ? rfState.min : ((v && rfState.max && v>rfState.max) ? rfState.max : v);}
 
@@ -311,7 +328,7 @@ function rfInit(opts){
     const f = fromEl.value, t = toEl.value;
     const el = document.getElementById('rf-hint');
     if (!f || !t) { if (el) el.textContent = ''; return; }
-    const wd = rfWorkdays(f, t);
+    const wd = wdInRange(f, t);
     /* 单日且不是工作日：明确写清楚「不是跳过工作日，是这天本来就没跑数」 */
     const idle = (f === t && wd === 0);
     if (el) el.innerHTML = '当前区间 <b>' + f + '</b> ~ <b>' + t + '</b> ｜ 工作日 ' + wd + ' 天'
@@ -340,13 +357,19 @@ function rfEsc(s){ return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&am
 """.replace("__FIELD__", DATE_FIELD)
 
 
-def page(title, body, script, extra_head=""):
-    """拼一个自包含页面：样式 + 公共组件 + 空容器 + 取数脚本（不内嵌业务数据）。"""
+def page(title, body, script, extra_head="", workdays=None):
+    """拼一个自包含页面：样式 + 公共组件 + 空容器 + 取数脚本（不内嵌业务数据）。
+
+    workdays 是 lib/workdays.build_workday_set 算出的**法定工作日日历**（ISO 字符串升序），
+    作为版本可用度的分母来源注入成 WD_CAL：页面按用户所选区间就地数工作日，
+    与后端 step_2/step_7 的分母同源，跨长假（含调休补班）也不会算错。
+    """
+    cal = "const WD_CAL = " + json.dumps([str(x) for x in (workdays or [])]) + ";"
     return (
         "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n"
         "<meta charset=\"utf-8\">\n"
         "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
         "<title>" + title + "</title>\n<style>" + CSS + extra_head + "</style>\n"
-        "</head>\n<body>\n" + body + "\n<script>\n" + RANGE_JS + "\n" + script + "\n</script>\n"
+        "</head>\n<body>\n" + body + "\n<script>\n" + cal + "\n" + RANGE_JS + "\n" + script + "\n</script>\n"
         "</body>\n</html>\n"
     )

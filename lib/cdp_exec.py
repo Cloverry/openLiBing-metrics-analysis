@@ -20,10 +20,28 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 
+def _deep_merge(base, over):
+    """递归合并：over 的 dict 逐键合并，其余直接覆盖。用于本地私有配置叠加到 config.json。"""
+    for k, v in (over or {}).items():
+        if isinstance(v, dict) and isinstance(base.get(k), dict):
+            _deep_merge(base[k], v)
+        else:
+            base[k] = v
+    return base
+
+
 def load_config():
-    """读取 config.json；环境变量 RCA_START / RCA_END / RCA_PRODUCTS / RCA_FRESH 可临时覆盖（run_pipeline 传入）。"""
+    """读取 config.json；环境变量 RCA_START / RCA_END / RCA_PRODUCTS / RCA_FRESH 可临时覆盖（run_pipeline 传入）。
+
+    私有凭据走 config.local.json（已在 .gitignore 中，不进仓库）：其任意字段递归覆盖 config.json；
+    github.token 另支持环境变量 RCA_GH_TOKEN，优先级 config.local.json > RCA_GH_TOKEN > config.json。
+    """
     with open(SKILL_ROOT / "config.json", encoding="utf-8") as f:
         cfg = json.load(f)
+    local_path = SKILL_ROOT / "config.local.json"
+    if local_path.exists():
+        with open(local_path, encoding="utf-8") as f:
+            _deep_merge(cfg, json.load(f))
     env = os.environ
     if env.get("RCA_START"):
         cfg.setdefault("date_range", {})["start"] = env["RCA_START"]
@@ -33,6 +51,8 @@ def load_config():
         cfg["products"] = [x.strip() for x in env["RCA_PRODUCTS"].split(",") if x.strip()]
     if env.get("RCA_FRESH"):
         cfg.setdefault("cache", {})["enabled"] = False
+    if env.get("RCA_GH_TOKEN") and not (cfg.get("github") or {}).get("token"):
+        cfg.setdefault("github", {})["token"] = env["RCA_GH_TOKEN"].strip()
     return cfg
 
 

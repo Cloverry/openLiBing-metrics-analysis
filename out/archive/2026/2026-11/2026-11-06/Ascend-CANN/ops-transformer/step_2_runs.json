@@ -5,14 +5,14 @@
   "source": "openLiBing 流水线 N2 执行列表",
   "criteria": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）；仅保留工作日；VA 轨道=当日无 isVersionAvailable=true 的待查运行，BS 轨道=豁免日补圈的 Build* 失败运行",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-09 15:06:59",
+  "generatedAt": "2026-11-10 14:57:27",
   "component": "Ascend-CANN",
   "pipeline": "ops-transformer",
   "date": "2026-11-06"
  },
  "dateRange": {
   "start": "2026-11-06",
-  "end": "2026-11-06"
+  "end": "2026-11-09"
  },
  "date": "2026-11-06",
  "dateBasis": {
@@ -35,7 +35,7 @@
    ],
    "track": "va",
    "ftt": "测试任务",
-   "cached": false
+   "cached": true
   },
   {
    "rn": 160,
@@ -52,7 +52,7 @@
    ],
    "track": "va",
    "ftt": "测试任务",
-   "cached": false
+   "cached": true
   },
   {
    "rn": 161,
@@ -69,7 +69,7 @@
    ],
    "track": "va",
    "ftt": "测试任务",
-   "cached": false
+   "cached": true
   },
   {
    "rn": 162,
@@ -86,7 +86,7 @@
    ],
    "track": "va",
    "ftt": "测试任务",
-   "cached": false
+   "cached": true
   }
  ],
  "days": {
@@ -137,6 +137,26 @@
    "endedDate": "2026-11-06",
    "included": true,
    "reason": "结束时间在归档日内，纳入当日待分析（失败/取消，取证）"
+  },
+  {
+   "rn": 166,
+   "pipelineRunId": "df2c5e14e99a45ba8762bff7bdbcddae",
+   "start": "2026-11-09 12:35:58",
+   "end": "2026-11-09 16:39:55",
+   "status": "FAILED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
+  },
+  {
+   "rn": 165,
+   "pipelineRunId": "22f234949d4b427c815dfb8ed6761359",
+   "start": "2026-11-09 02:05:47",
+   "end": "2026-11-09 04:42:33",
+   "status": "FAILED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
   }
  ],
  "runHistory": [
@@ -191,14 +211,41 @@
    "cpr": 84.69,
    "iva": false,
    "ftt": "测试任务"
+  },
+  {
+   "rn": 166,
+   "start": "2026-11-09 12:35:58",
+   "end": "2026-11-09 16:39:55",
+   "status": "FAILED",
+   "rid": "df2c5e14e99a45ba8762bff7bdbcddae",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=309180d5c2904adf942f5678d9356d99&projectId=300057&pipelineRunId=df2c5e14e99a45ba8762bff7bdbcddae",
+   "bc": 2,
+   "bpc": 2,
+   "cpr": 80.61,
+   "iva": false,
+   "ftt": "测试任务"
+  },
+  {
+   "rn": 165,
+   "start": "2026-11-09 02:05:47",
+   "end": "2026-11-09 04:42:33",
+   "status": "FAILED",
+   "rid": "22f234949d4b427c815dfb8ed6761359",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=309180d5c2904adf942f5678d9356d99&projectId=300057&pipelineRunId=22f234949d4b427c815dfb8ed6761359",
+   "bc": 2,
+   "bpc": 2,
+   "cpr": 80.61,
+   "iva": false,
+   "ftt": "测试任务"
   }
  ],
  "meta": {
   "workdays": [
-   "2026-11-06"
+   "2026-11-06",
+   "2026-11-09"
   ],
-  "workdayCount": 1,
-  "skippedNonWorkdayRuns": 0,
+  "workdayCount": 2,
+  "skippedNonWorkdayRuns": 123,
   "skippedRunningRuns": 0,
   "workdayNotes": [
    "法定工作日历: timor.tech API（1 年）"
@@ -209,6 +256,6 @@
  },
  "keptRuns": 4,
  "keptFailedRuns": 4,
- "excludedRuns": 0,
+ "excludedRuns": 2,
  "note": null
 }

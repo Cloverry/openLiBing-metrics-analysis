@@ -23,13 +23,16 @@
 ⚠ 直接用 file:// 双击打开时，浏览器会拦截 fetch 读取本地 JSON（CORS）。
    请用入口起本地服务：python run_pipeline.py --serve
 """
+import datetime
 import json
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from lib import ui  # noqa: E402
+from lib.cdp_exec import load_config  # noqa: E402
 from lib.paths import DATE_RULE, HTML_DIR, doc, iter_archive_days, rel  # noqa: E402
+from lib.workdays import build_workday_set  # noqa: E402
 
 INDEX_NAME = "index.html"
 DETAIL_NAME = "detail.html"
@@ -53,7 +56,7 @@ INDEX_BODY = (
     '        <th>开源组件</th>\n'
     '        <th>版本可用度</th>\n'
     '        <th>编译成功率</th>\n'
-    '        <th>口径内流水线数</th>\n'
+    '        <th>流水线数</th>\n'
     '        <th>待分析流水线数（版本可用度）</th>\n'
     '        <th>待分析流水线数（编译成功率）</th>\n'
     '      </tr></thead>\n'
@@ -62,10 +65,56 @@ INDEX_BODY = (
     '  </div>\n'
     '  <p class="tnote" id="tnote"></p>\n'
     '  <footer id="foot"></footer>\n'
+    '</div>\n'
+    # 「流水线数」列的弹窗：列出该组件全部流水线 + 各自的版本可用度/编译成功率。
+    # 版式与二级页同一个弹窗骨架：外框定高不滚，滚动条只出现在表格里
+    '<div class="modal" id="mrec">\n'
+    '  <div class="modal-box">\n'
+    '    <div class="modal-hd"><span id="mttl"></span>'
+    '<button type="button" id="mclose">关闭</button></div>\n'
+    '    <div id="mbody"></div>\n'
+    '  </div>\n'
     '</div>'
 )
 
-INDEX_EXTRA_CSS = """
+# 弹窗骨架 + table.rca 版式：首页（流水线清单弹窗）与二级页（失败用例/日志证据/构建记录）共用。
+# 版式固定成「标题 → 表格区（唯一滚动区）→ 脚注」三段：
+# 外框只做定高、overflow:hidden，所以弹窗自己永不出滚动条；
+# 纵向滚动条贴着表格右边缘、横向滚动条贴着表格底边，滚动的始终是表格本身。
+SHARED_MODAL_CSS = """
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;
+  align-items:center;justify-content:center;padding:24px 16px;overflow:hidden}
+.modal.on{display:flex}
+.modal-box{background:#fff;border-radius:10px;width:min(1280px,96vw);
+  max-height:calc(100vh - 48px);overflow:hidden;
+  padding:16px 20px;box-shadow:0 8px 30px rgba(16,32,64,.2);
+  display:flex;flex-direction:column}
+.modal-hd{display:flex;justify-content:space-between;align-items:center;gap:10px;flex:0 0 auto;
+  font-weight:600;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--line2)}
+.modal-hd button{background:#fff;border:1px solid #ccc;border-radius:6px;padding:3px 12px;cursor:pointer;font:inherit}
+/* 弹窗正文 = 表格区（可滚，吃掉全部剩余高度）+ 脚注（固定不动） */
+#mbody{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+/* 表格独占的滚动容器：纵向滚动条在表格右侧、横向滚动条在表格下方，弹窗本身不滚 */
+.mtbl{flex:1 1 auto;min-height:0;overflow:auto}
+.mtbl table.rca{margin:0}
+/* 表头吸顶：表格内滚动时列名始终可见 */
+.mtbl table.rca thead th{position:sticky;top:0;z-index:2;background:#f7f9fc;text-align:center;
+  box-shadow:inset 0 -1px 0 #e3e6ea,inset 0 1px 0 #e3e6ea}
+.mrec-note{margin-top:6px;color:#999;font-size:12px;flex:0 0 auto}
+/* ---------- 弹窗内的通用表格（同旧报告 table.rca） ---------- */
+table.rca{table-layout:fixed;width:100%;border-collapse:collapse;font-size:13px;margin:8px 0 4px}
+table.rca th,table.rca td{border:1px solid #e3e6ea;padding:7px 9px;text-align:left;
+  vertical-align:top;line-height:1.55;word-break:break-word;overflow-wrap:anywhere}
+table.rca th{background:#f7f9fc;font-weight:600;white-space:nowrap;color:#3b4a60;text-align:center}
+table.rca tbody tr:nth-child(even) td{background:#fafbfc}
+/* 弹窗表格里的长内容列：一律在列宽内换行（长路径/用例名没有空格也能断），
+   绝不横向溢出到相邻列 —— 列宽由 colgroup 固定，行高随内容自然增长 */
+table.rca td.cw{white-space:normal;word-break:break-all;overflow-wrap:anywhere}
+/* 时间列：优先在「日期」和「时刻」之间的空格处折行，不要从毫秒中间断开 */
+table.rca td.cw1{white-space:normal;word-break:normal;overflow-wrap:anywhere}
+"""
+
+INDEX_EXTRA_CSS = SHARED_MODAL_CSS + """
 /* 首页整页固定成一屏：html/body 的滚动全部关掉，页面本身永远不出滚动条。
    之前只给 .wrap 定了高，卡片底部那 12px 外边距会溢出 body，页面就多出 12px 的滚动条
    （右侧那条细滚动条就是这么来的）；现在把滚动彻底关在首页之外。 */
@@ -112,6 +161,7 @@ const DETAIL_PAGE = '__DETAIL__';   /* 二级页文件名（构建时注入，�
 const LIGHT_RANK = {'红': 3, '黄': 2, '绿': 1};
 let IDX = null;
 let CATALOG = [];        /* archive/_products.json：全部开源组件（含无待分析流水线的） */
+let ROWS = [];           /* 最近一次 render 的组件行：点「流水线数」时从这里取该组件的流水线清单 */
 
 function jget(p){
   return fetch(p, {cache: 'no-store'}).then(function(r){
@@ -143,13 +193,14 @@ function worstLight(a, b){
   if (!b || b === '无数据') return a;
   return (LIGHT_RANK[b] || 0) > (LIGHT_RANK[a] || 0) ? b : a;
 }
-/* 归档里分子/分母的中文名（区间重算说明用） */
+/* 归档里分子/分母的中文名（区间重算说明用；版本可用度已改口径，不再走 accRate） */
 const DET_LABEL = {availDays: '可用日', daysInPeriod: '有运行日',
                    buildPassCount: '编译通过', buildCount: '编译次数'};
 
-/* 区间重算：把逐日的分子/分母各自累加后相除（Σ可用日/Σ有运行日、Σ编译通过/Σ编译次数）。
+/* 区间重算：把逐日的分子/分母各自累加后相除（Σ编译通过/Σ编译次数）。
    逐日比率的算术平均会被「分母不同的日期」带偏，统计区间一变必须按分子分母重算。
-   老归档没有 *Detail 字段时退回逐日比率平均，并标记 mixed=true 说明口径。 */
+   老归档没有 *Detail 字段时退回逐日比率平均，并标记 mixed=true 说明口径。
+   注意：版本可用度**不再**走这里——它的分母是区间法定工作日数（wdInRange），不是有运行的天数。 */
 function accRate(dayDocs, rateKey, detKey, numKey, denKey){
   let num = 0, den = 0, mixed = false;
   const vals = [];
@@ -181,6 +232,33 @@ function rateTitle(label, acc, dayLines){
   return lines.concat(dayLines).join('\n');
 }
 function dotOf(l){ const m = {'绿': 'green', '黄': 'yellow', '红': 'red'}; return m[l] ? '<span class="dot ' + m[l] + '"></span>' : ''; }
+
+/* 组件级版本可用度的 title：把「哪几条流水线、各是多少、加起来除以几条」摊开写，
+   口径变了要能一眼核对 —— 组件级 = Σ各流水线版本可用度 ÷ 流水线条数。 */
+function vaTitleOf(mineVA, vals, rate, wdN, from, to){
+  const lines = ['版本可用度（组件级 = 各流水线版本可用度之和 ÷ 流水线条数）',
+                 '统计区间 ' + from + ' ~ ' + to + ' ｜ 法定工作日 ' + wdN + ' 天'];
+  if (!vals.length){
+    lines.push(mineVA.length
+      ? '该组件的流水线在本区间内都没有执行记录，可用度显示 --（不纳入统计）'
+      : '该区间内没有带版本可用度维度的流水线，比值取自归档当日值');
+    return lines.join('\n');
+  }
+  let sum = 0;
+  vals.forEach(function(v){ sum += Number(v); });
+  mineVA.forEach(function(p){
+    const skipped = (p.vaRate === null || p.vaRate === undefined || isNaN(p.vaRate));
+    lines.push('  ' + p.pipeline + (skipped
+      ? '  区间内无执行记录 → --（不纳入统计）'
+      : '  可用日 ' + p.vaA + ' / ' + wdN + ' → ' + fmtPct(p.vaRate)));
+  });
+  lines.push('合计 ' + fmtPct(sum) + ' ÷ ' + vals.length + ' 条流水线 = ' + fmtPct(rate)
+    + (mineVA.length > vals.length
+      ? '（另有 ' + (mineVA.length - vals.length) + ' 条区间内无执行记录，已排除）' : ''));
+  lines.push('流水线级口径：当日存在任一条成功运行即算「当天有可用版本」，'
+             + '分母是区间法定工作日数（不是有运行的天数）');
+  return lines.join('\n');
+}
 function failBox(msg){
   const box = document.getElementById('tb');
   if (box) box.innerHTML = '<tr><td colspan="6"><div class="err">' + msg + '</div></td></tr>';
@@ -335,44 +413,66 @@ function render(docs, from, to){
   });
 
   const pipeList = Array.from(pipes.values());
-  /* 流水线级区间重算：Σ可用日/Σ有运行日、Σ编译通过/Σ编译次数；灯色只按重算比率判档 */
+  /* 版本可用度的分母 = **区间法定工作日数**（不是「这区间里有几天跑了数」）。
+     wdInRange 数的是注入进来的法定工作日历（含节假日/调休补班），
+     与后端 step_2 采集、step_7 归档用的分母同源：区间从 1 天拉到 5 天，分母就变 5。
+     例：5 个工作日里只有 2 天出过可用版本 → 2/5 = 40%。 */
+  const wdN = wdInRange(from, to);
   pipeList.forEach(function(p){
-    p.vaRate = p.vaN > 0 ? p.vaA / p.vaN : avgOf(p.vaVals);
-    p.bsRate = p.bsC > 0 ? p.bsP / p.bsC : avgOf(p.bsVals);
-    p.vaLight = lightByRate(p.vaRate, 'va') || p.vaLightOld;
-    p.bsLight = lightByRate(p.bsRate, 'bs') || p.bsLightOld;
+    /* 流水线级：分子 = 可用日（当日存在任一条 iva=true 的运行即算「当天有可用版本」），
+       分母 = 区间工作日数；编译成功率仍是 Σ编译通过 / Σ编译次数。
+       **区间内完全没有执行记录**的流水线（RAGSDK、VisionSDK 这类只有看板配置、一次都没跑过的）
+       不参与任何计算：既不能算 0%（会被当成「全部不可用」并拉低组件均值），也不能算 100%，
+       比率一律给 null → 页面显示 --，组件级平均与「流水线条数」都不含它。
+       判据只看分子分母有没有落过数（vaN>0 / vaA>0 / 比率数组非空），与归档同源。 */
+    const noVA = !(p.vaN > 0 || p.vaVals.length);
+    const noBS = !(p.bsC > 0 || p.bsVals.length);
+    p.noRun = noVA && noBS;                 /* 两个维度都没有任何运行 = 该流水线无执行记录 */
+    p.vaRate = noVA ? null : (wdN > 0 ? Math.min(1, p.vaA / wdN) : avgOf(p.vaVals));
+    p.bsRate = noBS ? null : (p.bsC > 0 ? p.bsP / p.bsC : avgOf(p.bsVals));
+    p.vaLight = lightByRate(p.vaRate, 'va') || (noVA ? null : p.vaLightOld);
+    p.bsLight = lightByRate(p.bsRate, 'bs') || (noBS ? null : p.bsLightOld);
   });
 
   const rows = Array.from(prods.values()).map(function(r){
     const ds = Object.keys(r.days).sort();
     const dayDocs = ds.map(function(d){ return r.days[d]; });
     const mine = pipeList.filter(function(p){ return p.component === r.name; });
-    /* 组件级同样按区间重算：分子分母逐日累加后相除（归档里带 *Detail 字段） */
-    const vaAcc = accRate(dayDocs, 'versionAvailabilityRate',
-                          'versionAvailabilityDetail', 'availDays', 'daysInPeriod');
+    /* 组件级版本可用度 = 该组件各流水线版本可用度的**算术平均**
+       （Σ流水线可用度 ÷ 流水线条数），不是「Σ可用日 / Σ有运行日」。
+       只统计带版本可用度维度的流水线：只做编译的流水线不该被算成 0%。 */
+    const mineVA = mine.filter(function(p){ return p.dims.va; });
+    const vaVals = mineVA.map(function(p){ return p.vaRate; })
+                        .filter(function(v){ return v !== null && v !== undefined && !isNaN(v); });
+    const vaRate = vaVals.length ? avgOf(vaVals) : null;
+    /* 区间内一次都没跑过的流水线：在清单里照常列出（它不是不存在），但不计入上面那个平均 */
+    const noRun = mine.filter(function(p){ return p.noRun; });
+    /* 编译成功率这一维度没改口径：区间内 Σ编译通过 / Σ编译次数（归档里带 *Detail 字段） */
     const bsAcc = accRate(dayDocs, 'buildSuccessRate',
                           'buildSuccessDetail', 'buildPassCount', 'buildCount');
-    const vaRate = vaAcc ? vaAcc.rate : null;
     const bsRate = bsAcc ? bsAcc.rate : null;
     return {
       name: r.name,
       nd: ds.length,
       days: ds,
+      from: from, to: to, wdN: wdN,
       vaRate: vaRate,
       bsRate: bsRate,
       vaLight: lightByRate(vaRate, 'va') || ds.reduce(function(a, d){ return worstLight(a, r.days[d].vaLight); }, null),
       bsLight: lightByRate(bsRate, 'bs') || ds.reduce(function(a, d){ return worstLight(a, r.days[d].bsLight); }, null),
-      vaTitle: rateTitle('版本可用度', vaAcc, ds.map(function(d, i){
-        return d + '  ' + fmtPct(dayDocs[i].versionAvailabilityRate); })),
+      vaTitle: vaTitleOf(mineVA, vaVals, vaRate, wdN, from, to),
       bsTitle: rateTitle('编译成功率', bsAcc, ds.map(function(d, i){
         return d +  '  ' + fmtPct(dayDocs[i].buildSuccessRate); })),
       pipes: mine,
       pipeCount: mine.length,
+      pipeNoRun: noRun.length,
+      noRunNames: noRun.map(function(p){ return p.pipeline; }),
       badVA: mine.filter(function(p){ return p.dims.va && p.vaLight && p.vaLight !== '绿'; }).length,
       badBS: mine.filter(function(p){ return p.dims.bs && p.bsLight && p.bsLight !== '绿'; }).length
     };
   });
   rows.sort(function(a, b){ return ((b.badVA + b.badBS) - (a.badVA + a.badBS)) || (a.name < b.name ? -1 : 1); });
+  ROWS = rows;                     /* 供「流水线数」弹窗按行号取该组件的流水线清单 */
 
   const tb = document.getElementById('tb');
   if (!rows.length && !pipeList.length){
@@ -383,7 +483,7 @@ function render(docs, from, to){
     paintNotes(docs, [], from, to);
     return;
   }
-  const html = rows.map(function(r){ return prodRow(r, from, to); }).join('');
+  const html = rows.map(function(r, i){ return prodRow(r, i, from, to); }).join('');
   tb.innerHTML = html + (broken.length
     ? '<tr><td colspan="6"><div class="err" style="margin:8px 0">'
       + broken.length + ' 个归档日的 _day.json 读取失败：'
@@ -435,14 +535,25 @@ function numCell(n, comp, dim, q){
     + '&dim=' + dim + q + '">' + n + '</a>';
 }
 
+/* 「流水线数」：蓝色可点数字（0 不可点），点开弹窗看该组件全部流水线的
+   版本可用度与编译成功率（数据来自 render 已经算好的 r.pipes，不额外取数） */
+function pipeCountCell(r, i){
+  if (!r.pipeCount) return '0';
+  return '<span class="lnk" data-pipes="' + i + '"'
+    + ' title="点击查看该组件 ' + r.pipeCount + ' 条流水线的版本可用度与编译成功率'
+    + (r.pipeNoRun ? '（其中 ' + r.pipeNoRun + ' 条区间内无执行记录，显示 -- 且不纳入统计：'
+        + rfEsc(r.noRunNames.join('、')) + '）' : '') + '">'
+    + r.pipeCount + '</span>';
+}
+
 /* 组件行：严格对齐旧版 6 列，不做任何展开（明细一律在二级页看） */
-function prodRow(r, from, to){
+function prodRow(r, i, from, to){
   const q = '&from=' + encodeURIComponent(from) + '&to=' + encodeURIComponent(to);
   return '<tr>'
     + '<td class="c-name">' + rfEsc(r.name) + '</td>'
     + '<td class="c-rate">' + rateCell(r.vaLight, r.vaTitle, r.vaRate) + '</td>'
     + '<td class="c-rate">' + rateCell(r.bsLight, r.bsTitle, r.bsRate) + '</td>'
-    + '<td class="c-num">' + r.pipeCount + '</td>'
+    + '<td class="c-num">' + pipeCountCell(r, i) + '</td>'
     + '<td class="c-num">' + numCell(r.badVA, r.name, 'va', q) + '</td>'
     + '<td class="c-num">' + numCell(r.badBS, r.name, 'bs', q) + '</td>'
     + '</tr>';
@@ -460,8 +571,13 @@ function paintNotes(docs, rows, from, to){
   const rule = document.getElementById('rule');
   if (note) note.innerHTML =
     '口径：<b>' + (rule ? rule.textContent : '') + '</b>，即流水线执行结束时间（GitHub <span class="mono">run.updated_at</span>）'
-    + '落在统计区间内才计入；版本可用度 = Σ可用日 / Σ有运行日，编译成功率 = Σ编译通过 / Σ编译次数，'
-    + '<b>统计区间一变即按新区间的分子分母重算</b>（不是逐日比率取平均），'
+    + '落在统计区间内才计入；<b>版本可用度（流水线）= 可用日 ÷ 区间法定工作日数</b>'
+    + '（当日存在任一条成功运行即算当天有可用版本；5 个工作日里只有 2 天可用 = 40%），'
+    + '<b>版本可用度（组件）= 各流水线版本可用度之和 ÷ 流水线条数</b>；'
+    + '<b>区间内没有任何执行记录的流水线（只有看板配置、一次都没跑过）显示 <span class="mono">--</span>，'
+    + '不参与上面的平均、也不计入「待分析流水线数」</b>；'
+    + '编译成功率 = Σ编译通过 / Σ编译次数；'
+    + '<b>统计区间一变即按新区间重算</b>（不是逐日比率取平均），'
     + '灯色不落库、按重算后的比率就地判档（可用度 &ge;90% 绿 / &ge;80% 黄 / 否则红；'
     + '编译成功率 100% 绿 / &ge;95% 黄 / 否则红），区间内只出这一档。'
     + '「待分析流水线数」= 该组件在区间内进入待分析集合、且对应维度重算后未达标的流水线条数，'
@@ -477,7 +593,88 @@ function paintNotes(docs, rows, from, to){
     + (docs.length ? '' : ' ｜ <b>该区间内无归档日</b>（非工作日不跑数，指标显示 --）');
 }
 
-/* 说明：首页表格不做任何展开/下钻，只有「待分析流水线数」是可点数字，进二级页看该组件的流水线清单 */
+/* ================= 「流水线数」弹窗：该组件全部流水线的版本可用度 / 编译成功率 =================
+   数据不用现取：render() 已按当前统计区间把每条流水线重算好放进 rows[i].pipes，
+   这里只管排版。骨架与二级页同一套（外框定高不滚，滚动条只出现在表格里）。 */
+function openModal(title, html){
+  const m = document.getElementById('mrec');
+  const t = document.getElementById('mttl');
+  const b = document.getElementById('mbody');
+  if (!m || !b) return;
+  if (t) t.innerHTML = title || '';
+  b.innerHTML = html || '';
+  m.classList.add('on');
+}
+function closeModal(){
+  const m = document.getElementById('mrec');
+  if (m) m.classList.remove('on');
+}
+/* 一行 = 一条流水线：版本可用度（可用日/区间工作日）与编译成功率（编译通过/编译次数）。
+   没有该维度（dims 里没有 va / bs）的显示 --：它们不参与该维度的比较，也不该被当成 0%。 */
+function pipesModal(i){
+  const r = ROWS[i];
+  if (!r) return;
+  const list = (r.pipes || []).slice().sort(function(a, b){ return a.pipeline < b.pipeline ? -1 : 1; });
+  if (!list.length){
+    openModal('流水线｜' + rfEsc(r.name),
+      '<div class="dim">该组件在当前统计区间内没有进入待分析集合的流水线。</div>');
+    return;
+  }
+  const wdN = r.wdN || 0;
+  /* 分母只数「真的能算出可用度」的流水线：区间内一次都没跑过的（无执行记录）显示 --，
+     既不进这个平均、也不算条数，否则一条没跑过的流水线会把组件均值直接拉成 0% */
+  const vaList = list.filter(function(p){ return p.dims.va && p.vaRate !== null && p.vaRate !== undefined; });
+  const trs = list.map(function(p){
+    const hasVA = !!p.dims.va, hasBS = !!p.dims.bs;
+    const va = (hasVA && p.vaRate !== null && p.vaRate !== undefined) ? fmtPct(p.vaRate) : '--';
+    const bs = (hasBS && p.bsRate !== null && p.bsRate !== undefined) ? fmtPct(p.bsRate) : '--';
+    const vaT = !hasVA ? '该流水线在区间内没有版本可用度维度'
+      : (p.noRun || p.vaRate === null || p.vaRate === undefined)
+        ? '该流水线在区间内没有执行记录 → 显示 --，不纳入统计'
+        : ('可用日 ' + p.vaA + ' / 区间工作日 ' + wdN + ' = ' + va);
+    const bsT = hasBS
+      ? ('编译通过 ' + p.bsP + ' / 编译次数 ' + p.bsC + ' = ' + bs)
+      : '该流水线在区间内没有编译成功率维度';
+    return '<tr>'
+      + '<td class="cw">' + rfEsc(p.pipeline)
+        + ((p.name && p.name !== p.pipeline)
+            ? '<div class="dim" style="font-size:11px">' + rfEsc(p.name) + '</div>' : '')
+        + (p.noRun ? '<div class="dim" style="font-size:11px">区间内无执行记录 · 不纳入统计</div>' : '')
+        + '</td>'
+      + '<td>' + rfEsc(p.platform || '--') + '</td>'
+      + '<td class="nowrap" title="' + rfEsc(vaT) + '">' + va + '</td>'
+      + '<td class="nowrap" title="' + rfEsc(bsT) + '">' + bs + '</td>'
+      + '</tr>';
+  }).join('');
+  openModal('流水线（' + list.length + ' 条）｜' + rfEsc(r.name),
+    '<div class="mtbl"><table class="rca"><colgroup><col style="width:46%"><col style="width:18%">'
+    + '<col style="width:18%"><col style="width:18%"></colgroup>'
+    + '<thead><tr><th>流水线</th><th>平台</th><th>版本可用度</th><th>编译成功率</th></tr></thead>'
+    + '<tbody>' + trs + '</tbody></table></div>'
+    + '<div class="mrec-note">区间 ' + rfEsc(r.from) + ' ~ ' + rfEsc(r.to)
+    + ' · 法定工作日 ' + wdN + ' 天 ｜ 版本可用度 = 可用日 ÷ 区间工作日数'
+    + '（本组件 ' + fmtPct(r.vaRate) + ' = 各流水线之和 ÷ ' + vaList.length + ' 条可统计流水线'
+    + (list.length > vaList.length ? '，另有 ' + (list.length - vaList.length) + ' 条无执行记录已排除' : '')
+    + '）'
+    + ' ｜ 编译成功率 = Σ编译通过 ÷ Σ编译次数（本组件 ' + fmtPct(r.bsRate) + '）'
+    + ' ｜ 该流水线没有的维度显示 --。</div>');
+}
+
+/* 首页表格的点按入口：「流水线数」数字（可点）+ 弹窗关闭（关闭按钮 / 点遮罩 / Esc） */
+document.addEventListener('click', function(ev){
+  const t = ev.target;
+  const el = (t && t.closest) ? t.closest('[data-pipes]') : null;
+  if (el){
+    ev.preventDefault();
+    pipesModal(Number(el.getAttribute('data-pipes')));
+    return;
+  }
+  if (t && (t.id === 'mrec' || t.id === 'mclose')) closeModal();   /* 遮罩/关闭按钮都关，点表格内容不关 */
+});
+document.addEventListener('keydown', function(ev){ if (ev.key === 'Escape') closeModal(); });
+
+/* 说明：首页表格不做任何展开/下钻；「流水线数」点开看该组件全部流水线的两个比率，
+   「待分析流水线数」是可点数字，进二级页看该组件的流水线清单 */
 
 boot();
 """.replace("__DETAIL__", DETAIL_NAME)
@@ -534,7 +731,7 @@ table.ov td.c-rate .pct.lnk:hover{text-decoration:underline}
 table.rca{table-layout:fixed;width:100%;border-collapse:collapse;font-size:13px;margin:8px 0 4px}
 table.rca th,table.rca td{border:1px solid #e3e6ea;padding:7px 9px;text-align:left;
   vertical-align:top;line-height:1.55;word-break:break-word;overflow-wrap:anywhere}
-table.rca th{background:#f7f9fc;font-weight:600;white-space:nowrap;color:#3b4a60}
+table.rca th{background:#f7f9fc;font-weight:600;white-space:nowrap;color:#3b4a60;text-align:center}
 table.rca tbody tr:nth-child(even) td{background:#fafbfc}
 table.rca td.err-cell{font-size:12.5px}
 /* 错误信息列：日志原文必须在列宽内换行（长路径 testcase/cann/... 没有空格，
@@ -543,11 +740,32 @@ table.rca td.err-cell .err-text{display:-webkit-box;-webkit-box-orient:vertical;
   overflow:hidden;white-space:normal;word-break:break-all;overflow-wrap:anywhere}
 /* 「证据」链接单独一行、不参与上面的行数截断，保证永远可点 */
 table.rca td.err-cell .ev-lnk{display:inline-block;margin-top:3px}
+/* 根因 / 建议列：内容按行分点渲染（richPoints 输出 .pt / .pt-lead / .pt-item / .pt-sub / .pt-gap），
+   每条问题单独一行，避免一大段文字糊在一起看不出「哪有问题」 */
+table.rca td .pt{display:block;line-height:1.6}
+table.rca td .pt-hd{display:block;font-weight:600;color:#16233a;line-height:1.6}
+table.rca td .pt-gap{display:block;height:5px}
+/* 【结论】行：整体加粗，标签用深色块标出来，一眼看到结论在哪 */
+table.rca td .pt-lead{display:block;line-height:1.6;font-weight:600;color:#16233a}
+table.rca td .pt-lead .pt-tag{color:#1a4b8c;margin-right:2px}
+/* 一、二、三 分点：小标题单独一行加粗，编号与正文之间留白 */
+table.rca td .pt-item{display:block;line-height:1.6;font-weight:600;color:#16233a;margin-top:3px}
+/* 分析过程 / 验证方式：事实行左缩进 + 标签降一级灰度，与上面小标题形成层级 */
+table.rca td .pt-sub{display:block;line-height:1.6;padding-left:14px;color:#39485c}
+table.rca td .pt-sub .pt-lab{color:#8a94a6}
+/* 「第一类（…）：正文」这种散文段：冒号前的短语当小标题加粗，正文直接跟在同一行，
+   保证一段话读下来是连贯叙述，而不是被拆成「标题 + 正文」两行 */
+table.rca td .pt-sec{display:block;line-height:1.7;color:#39485c}
+table.rca td .pt-sec .pt-sec-hd{font-weight:600;color:#16233a;margin-right:2px}
 /* 弹窗里的长文本（用例失败详情 / 日志证据原文）：整行完整输出，不截断、不溢出 */
 table.rca td.expr-txt{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;
   font-family:Consolas,Menlo,monospace;font-size:12px;line-height:1.5}
 /* 第 1 列「构建编号」里的构建号链接不折行 */
 table.rca td:nth-child(1) a{white-space:nowrap}
+/* 第 1 列「构建编号」：一条记录只有一个构建号，不折行；错误/失败标记另起一行 */
+table.rca td.bldg-cell{white-space:normal}
+table.rca td.bldg-cell .bldgs a,
+table.rca td.bldg-cell .bldgs span.mono{display:inline-block;margin:0 8px 2px 0;white-space:nowrap}
 .exec-sub{display:block;color:#999;font-size:11px;margin-top:2px}
 .badge{display:inline-block;padding:1px 9px;border-radius:10px;color:#fff;font-size:12px;vertical-align:1px}
 .badge.green{background:#52c41a}.badge.yellow{background:#faad14}
@@ -573,7 +791,7 @@ table.rca td:nth-child(1) a{white-space:nowrap}
 .mtbl{flex:1 1 auto;min-height:0;overflow:auto}
 .mtbl table.rca{margin:0}
 /* 表头吸顶：表格内滚动时列名始终可见 */
-.mtbl table.rca thead th{position:sticky;top:0;z-index:2;background:#f7f9fc;
+.mtbl table.rca thead th{position:sticky;top:0;z-index:2;background:#f7f9fc;text-align:center;
   box-shadow:inset 0 -1px 0 #e3e6ea,inset 0 1px 0 #e3e6ea}
 /* 弹窗表格里的长内容列：一律在列宽内换行（长路径/用例名没有空格也能断），
    绝不横向溢出到相邻列 —— 列宽由 colgroup 固定，行高随内容自然增长 */
@@ -586,6 +804,8 @@ table.rca td.cw1{white-space:normal;word-break:normal;overflow-wrap:anywhere}
 .dist:empty{display:none}
 .dist .dt{color:#374151;font-weight:600;margin-right:2px}
 .dist .sp{flex:1 1 auto}
+/* 根因表：开始/结束时间列字号比正文略大一点（13px 表内正文 → 12.5px 等宽，比原先 11px 好读） */
+table.rca td.dt-c{font-size:12.5px;color:#16233a;letter-spacing:.2px}
 
 .mrec-note{margin-top:6px;color:#999;font-size:12px;flex:0 0 auto}
 """
@@ -698,7 +918,9 @@ function crumbHead(from, to){
 function statusTag(s){
   const v = String(s || '').toUpperCase();
   if (v === 'FAILED' || v === 'FAILURE') return '<span class="tag red">' + rfEsc(s) + '</span>';
-  if (v === 'SUCCESS' || v === 'SUCCEEDED') return '<span class="tag green">' + rfEsc(s) + '</span>';
+  /* openLiBing 的流水线状态用 COMPLETED 表示成功（SUCCESS/SUCCEEDED 是别的接口的叫法），
+     三种都按绿色显示，和 FAILED（红）、CANCELED（灰）区分开 */
+  if (v === 'SUCCESS' || v === 'SUCCEEDED' || v === 'COMPLETED') return '<span class="tag green">' + rfEsc(s) + '</span>';
   return '<span class="tag">' + rfEsc(s || '--') + '</span>';
 }
 function failBox(msg){
@@ -809,6 +1031,10 @@ function load(from, to){
           const list = (mf.records || []).slice();
           let chain3 = Promise.resolve();
           list.forEach(function(r){
+            /* 执行成功（verdict.category=success）的运行：不做根因分析，也不进根因表。
+               它只是「构建记录」里的一天历史运行，要看就点「查看构建记录」。
+               归档里仍保留这条轻量记录，这里只是不取、不渲染（少一次 fetch）。 */
+            if (r.category === 'success') return;
             chain3 = chain3.then(function(){
               return jget(BACK_TO + d.path + '/' + r.file).then(function(rec){
                 rec.__base = BACK_TO + d.path + '/';
@@ -827,7 +1053,11 @@ function load(from, to){
       });
     });
     chain2.then(function(){
-      recs.sort(function(a, b){ return String(a.endedAt || '') < String(b.endedAt || '') ? 1 : -1; });
+      /* 行序：**按结束时间降序**（最近结束的那次构建排最上面，和「从最新往回看」的排查习惯一致）。
+         时间一律解析成毫秒再比，不做字符串比较——归档里的时间串有带毫秒/时区的、也有缺字段的，
+         字符串比大小会错位。结束时间缺失的用开始时间兜底，两者都没有的排到最后；
+         时间完全相同时按构建号降序，保证每次刷新顺序稳定。 */
+      recs.sort(function(a, b){ return cmpByEndDesc(a, b); });
       runs.sort(function(a, b){ return String(a.end || '') < String(b.end || '') ? 1 : -1; });
       RUNS = runs;
       CTX = {dirs: dirs, days: days, from: from, to: to, runs: runs};
@@ -866,9 +1096,10 @@ function dayLights(ctx){
   return out;
 }
 /* 区间重算：只统计「执行结束时间落在当前统计区间内」的运行，逐日判定是否达标。
-   比率 = 达标日 / 有运行的工作日（与第 2 步 recompute 口径一致：可用日 / 有记录日）；
-   区间一变，分子分母同时按新区间重算，不再沿用归档当日写死的比率。
-   dim=va：当天任一次运行 iva=true 才算可用；dim=bs：当天全部运行的编译成功次数 = 编译次数。 */
+   dim=va：比率 = 达标日 / **区间法定工作日数**（用户口径：当日任一条运行 iva=true 即算当天可用；
+           5 个工作日只有 2 天可用 = 2/5 = 40%，分母不含「这天有没有跑数」）
+   dim=bs：比率 = Σ编译通过 / Σ编译次数（该维度口径未改）
+   区间一变，分子分母同时按新区间重算，不再沿用归档当日写死的比率。 */
 function rangeStats(ctx, dim){
   ctx = ctx || {};
   const from = ctx.from || '', to = ctx.to || '';
@@ -900,11 +1131,15 @@ function rangeStats(ctx, dim){
     Object.keys(dayRuns).forEach(function(k){
       dayRuns[k].sort(function(a, b){ return String(a.end || '') < String(b.end || '') ? 1 : -1; });
     });
+    /* dim=va 的分母是区间工作日数（与首页、与采集口径同一个数）；
+       只有日历拿不到（wdInRange 返回 0）时才退回「有运行的天数」，保证不会出现 0/0 */
+    const wdN = wdInRange(from, to);
+    const total = (dim === 'bs') ? dayList.length : (wdN > 0 ? wdN : dayList.length);
     return {source: 'runs', runs: inRange, byDay: byDay, dayRuns: dayRuns, dayList: dayList,
-            dayOk: dayOk, total: dayList.length, availDays: okDays,
-            bc: bc, bpc: bpc,
+            dayOk: dayOk, total: total, workdays: wdN, availDays: okDays,
+            ranDays: dayList.length, bc: bc, bpc: bpc,
             rate: (dim === 'bs') ? (bc > 0 ? bpc / bc : null)
-                                 : (dayList.length ? okDays / dayList.length : null)};
+                                 : (total ? Math.min(1, okDays / total) : null)};
   }
   /* 兜底：老归档没有 step_2_runs.json 的运行历史时，退回「归档日逐日灯态」口径（灯态由比率就地算）。
      只统计有灯态的日子：既没有比率也没有灯色字段的日子不计入分母，避免被当成达标日。 */
@@ -922,6 +1157,56 @@ function rootCauseOf(r){
   const an = r.analysis || {};
   return an.rootCause || '';
 }
+/* 根因 / 建议是多行文本，单元格按行渲染、分档给样式，形成层级（两种写法都兼容）：
+     【结论】xxx            → .pt-lead（整行加粗，标签单独着色）
+     一、xxx / 二、xxx      → .pt-item（旧的分点小标题，加粗）
+     第一类（…）：xxx       → .pt-sec（冒号前短语当小标题加粗，正文同一行接着读，散文式）
+     已排除的干扰项：       → .pt-item（整行就是标题）
+     分析过程：/验证方式：  → .pt-sub（左缩进、标签灰一档）
+   空行 → .pt-gap 留间距。改版前 td 不带 pre-wrap，换行会被吃掉，整段糊在一起 */
+function richPoints(s){
+  const lines = String(s == null ? '' : s).replace(/\r\n?/g, '\n').split('\n');
+  const out = [];
+  lines.forEach(function(ln){
+    const t = String(ln == null ? '' : ln).replace(/\s+$/, '');
+    const tt = t.trim();
+    if (!tt){ out.push('<div class="pt-gap"></div>'); return; }
+    /* 【结论】后面带正文：标签与正文分开渲染，保证结论行整行是重点 */
+    const hd = tt.match(/^(【[^】]{1,8}】)([\s\S]*)$/);
+    if (hd && hd[2]) {
+      out.push('<div class="pt-lead"><span class="pt-tag">' + rfEsc(hd[1]) + '</span>'
+        + rfEsc(hd[2].replace(/^\s+/, '')) + '</div>');
+      return;
+    }
+    if (/^【.+】$/.test(tt)){ out.push('<div class="pt-hd">' + rfEsc(tt) + '</div>'); return; }
+    /* 一、二、三（含中文序号到十）：旧的分点小标题 */
+    if (/^[一二三四五六七八九十]{1,2}、/.test(tt)){ out.push('<div class="pt-item">' + rfEsc(tt) + '</div>'); return; }
+    /* 分析过程 / 判定依据 / 验证方式：事实行，与正文错开一层 */
+    const lab = tt.match(/^(分析过程|判定依据|依据|证据|验证方式|验证方法)([:：])([\s\S]*)$/);
+    if (lab) {
+      out.push('<div class="pt-sub"><span class="pt-lab">' + rfEsc(lab[1] + lab[2]) + '</span>'
+        + rfEsc(lab[3].replace(/^\s+/, '')) + '</div>');
+      return;
+    }
+    /* 散文分段：「第一类（15 个用例，MC2 多卡通信类算子）：最早在 …」——
+       冒号前是短语小标题（不含句末标点，避免把长句里的冒号误判成标题），
+       冒号后是同一段的正文 → 标题加粗内联，正文紧跟其后，读起来是一段话 */
+    const sec = tt.match(/^([^。！？；\n]{2,30}?)([：:])([\s\S]*)$/);
+    if (sec) {
+      const body = sec[3].replace(/^\s+/, '');
+      if (body) {
+        out.push('<div class="pt-sec"><span class="pt-sec-hd">'
+          + rfEsc(sec[1] + sec[2]) + '</span>' + rfEsc(body) + '</div>');
+      } else {
+        /* 冒号后没内容 = 单独一行的段落标题，如「已排除的干扰项：」 */
+        out.push('<div class="pt-item">' + rfEsc(tt) + '</div>');
+      }
+      return;
+    }
+    out.push('<div class="pt">' + rfEsc(t) + '</div>');
+  });
+  return out.join('');
+}
 function cut(s, n){
   const t = String(s == null ? '' : s).replace(/\s+/g, ' ').trim();
   if (!t) return '--';
@@ -931,6 +1216,40 @@ function cut(s, n){
 function tm(s){
   const v = String(s == null ? '' : s).replace('T', ' ');
   return v ? v.slice(0, 19) : '--';
+}
+/* 根因表的「开始/结束时间」列：归档里是 2026-11-09T02:05:47（ISO，可能带毫秒/时区），
+   统一压成 yyyy-MM-dd hh:mm:ss（2026-11-09 02:05:47）——标准可读格式，列内等宽对齐、扫一眼就能定位，
+   需要精确到毫秒的原始值在构建记录弹窗 / 归档 JSON 里看。 */
+function ymd(s){
+  const m = String(s == null ? '' : s)
+    .match(/(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})[ T](\d{1,2}):(\d{2})(?::(\d{2}))?/);
+  if (!m) return '--';
+  const p2 = function(x){ return ('0' + x).slice(-2); };
+  return m[1] + '-' + p2(m[2]) + '-' + p2(m[3]) + ' ' + p2(m[4]) + ':' + m[5] + ':' + (m[6] == null ? '00' : m[6]);
+}
+/* 一条执行记录的「排序时间」：优先结束时间，缺失/非法就用开始时间，都没有返回 null。
+   归档里可能带毫秒或时区（2026-11-09T21:03:53.000Z），一律用 Date.parse 归一成毫秒。 */
+function recEndMs(r){
+  const cand = [r && r.endedAt, r && r.startedAt];
+  for (let i = 0; i < cand.length; i++){
+    const s = String(cand[i] == null ? '' : cand[i]).trim();
+    if (!s) continue;
+    const t = Date.parse(s.indexOf(' ') > 0 && s.indexOf('T') < 0 ? s.replace(' ', 'T') : s);
+    if (!isNaN(t)) return t;
+  }
+  return null;
+}
+/* 根因表行序比较器：按结束时间**降序**（最新在上）；时间相同按构建号降序，保证顺序稳定 */
+function cmpByEndDesc(a, b){
+  const ta = recEndMs(a), tb = recEndMs(b);
+  if (ta !== tb){
+    if (ta === null) return 1;    /* 没有时间的排到最后，不要插在最前面挡住最新构建 */
+    if (tb === null) return -1;
+    return tb - ta;
+  }
+  const na = Number(a && a.buildNumber), nb = Number(b && b.buildNumber);
+  if (!isNaN(na) && !isNaN(nb) && na !== nb) return nb - na;
+  return String((b && b.buildNumber) || '').localeCompare(String((a && a.buildNumber) || ''));
 }
 /* 错误信息里常见 {"errorMessage":..,"errorCode":..} 的 JSON 原文，表格单元格里压成一句话 */
 function errText(t){
@@ -957,17 +1276,18 @@ function timeFromLine(s){
   return m[1] + '-' + p2(m[2]) + '-' + p2(m[3]) + ' ' + m[4];
 }
 /* 一条记录的「证据」行 = 用例级 errorMessages（带 time/loc，测试报告路线）
-   + 顶层 errorMessages（job 日志扫描出的错误行，时间在行首），逐行去重、逐行完整保留。
-   用例级证据排前面并按时间升序（同一次执行的日志时间线），
-   没有时间的「测试报告断言」保持原序排在后面，不丢任何一行。 */
+   + 顶层 errorMessages（脚本筛过的「重要节点」：同构行已去重、按任务/用例限条）。
+   两个来源会有同一行（用例断言既在 cases[] 也在 errorMessages[]），按「同一用例 + 同一文本」
+   去重，保留带 loc/time 的那条；不同用例的同一条消息不合并（那是不同的失败点）。 */
 function evidenceRows(r){
   if (!r) return [];
   if (r.__ev) return r.__ev;
   const out = [], seen = new Set();
+  const sig = function(s){ return String(s == null ? '' : s).replace(/\s+/g, ' ').trim(); };
   const push = function(o){
-    const k = [o.time || '', o.level || '', o.loc || '',
-               (o.line == null ? '' : o.line), o.text || ''].join('|');
-    if (seen.has(k)) return;
+    const body = sig(o.text);
+    const k = (o.case || o.task || '') + '|' + body;
+    if (body && seen.has(k)) return;
     seen.add(k);
     out.push(o);
   };
@@ -988,6 +1308,33 @@ function evidenceRows(r){
   r.__ev = withT.concat(noT);
   return r.__ev;
 }
+
+/* 错误信息去重（同一 level + 同一原文算一条） */
+function uniqErrs(r){
+  const seen = new Set(), out = [];
+  ((r || {}).errorMessages || []).forEach(function(e){
+    const k = (e.level || '') + '|' + (e.text || '');
+    if (seen.has(k)) return;
+    seen.add(k);
+    out.push(e);
+  });
+  return out;
+}
+/* 「真因错误」：跳过平台封装文案（STEP/JOB，如「构建任务执行失败!(DEV-CODECI-35002)」），
+   直接给行级/用例级错误；全都只有封装码时才回退首条。错误信息列展示用这一个函数。 */
+function trueErrOf(r){
+  const uniq = uniqErrs(r);
+  const cand = uniq.filter(function(e){
+    return !e.isWrapper && e.level !== 'STEP' && e.level !== 'JOB';
+  });
+  return cand[0] || uniq[0] || null;
+}
+
+/* ===== 一行 = 一条执行记录（不再做「同日同报错」聚合） =====
+   用户口径：构建拆开看，一次构建一行，靠「开始/结束时间」列定位，
+   同一天同一报错的几次构建各自成行、各自带自己的根因/建议（分析本来就是按记录写的）。
+   所以这里不再按报错指纹分组，原有 groupRecs / errSigOf / groupCases / groupEvidenceRows /
+   groupAnalyses 一族聚合函数已下线。 */
 
 /* ---------- 组件级：首页「待分析流水线数」点进来的流水线清单（不展开、单独一页） ----------
    这一页是**按维度下钻**来的：dim=va 就只列版本可用度，dim=bs 就只列编译成功率，
@@ -1035,10 +1382,16 @@ function loadComp(from, to){
           const vd = pl.vaDetail, bd = pl.bsDetail;
           if (vd && Number(vd.daysInPeriod) > 0){
             r.vaA += Number(vd.availDays) || 0; r.vaN += Number(vd.daysInPeriod) || 0;
-          } else { r.vaVals.push(pl.vaRate); }
+          } else if (pl.vaRate !== null && pl.vaRate !== undefined && !isNaN(pl.vaRate)){
+            /* 只收「真的算出过比率」的值：区间内一次都没跑过的流水线归档里 vaRate=null，
+               推 null 进来会让「有没有落过数」的判空失效，进而被当成 0% 拉低组件均值 */
+            r.vaVals.push(Number(pl.vaRate));
+          }
           if (bd && Number(bd.buildCount) > 0){
             r.bsP += Number(bd.buildPassCount) || 0; r.bsC += Number(bd.buildCount) || 0;
-          } else { r.bsVals.push(pl.bsRate); }
+          } else if (pl.bsRate !== null && pl.bsRate !== undefined && !isNaN(pl.bsRate)){
+            r.bsVals.push(Number(pl.bsRate));
+          }
           /* 只记当日运行数：比率按统计区间重算，逐日再贴一遍同一个比率只会误导 */
           r.runs.push({date: d.date, n: pl.runsToday || 0, fail: pl.failedRunsToday || 0});
           r.totalRuns = Math.max(r.totalRuns || 0, pl.runsInPeriod || 0);
@@ -1048,14 +1401,27 @@ function loadComp(from, to){
   });
   chain.then(function(){
     const list = Array.from(map.values()).sort(function(a, b){ return a.pipeline < b.pipeline ? -1 : 1; });
-    /* 流水线级比率同样按统计区间重算：Σ可用日/Σ有运行日、Σ编译通过/Σ编译次数 */
+    /* 流水线级比率同样按统计区间重算：
+       版本可用度 = 可用日 ÷ **区间法定工作日数**（与首页、与采集同源，不是「有运行的天数」），
+       编译成功率 = Σ编译通过 / Σ编译次数 */
+    const wdN = wdInRange(from, to);
     list.forEach(function(p){
-      p.vaRate = p.vaN > 0 ? p.vaA / p.vaN : avgNum(p.vaVals);
-      p.bsRate = p.bsC > 0 ? p.bsP / p.bsC : avgNum(p.bsVals);
-      p.vaAcc = p.vaN > 0 ? ('Σ可用日 / Σ有运行日 = ' + p.vaA + ' / ' + p.vaN) : '归档无分子/分母，退回归档比率';
-      p.bsAcc = p.bsC > 0 ? ('Σ编译通过 / Σ编译次数 = ' + p.bsP + ' / ' + p.bsC) : '归档无分子/分母，退回归档比率';
-      const head = '区间内共 ' + (p.totalRuns || 0) + ' 次运行（成功与失败都采集）'
-        + '，比率按本统计区间重算（区间一变即重算，不是逐日比率取平均）';
+      /* 区间内完全没有执行记录的流水线（RAGSDK / VisionSDK 这类只有看板配置、一次都没跑过的）
+         不给 0%，也不给 100%：比率一律 null → 单元格显示 --，并且不参与组件级平均、
+         不计入「待分析流水线」。判据只看分子分母有没有落过数，与首页、与归档同源。 */
+      const noVA = !(p.vaN > 0 || p.vaVals.length);
+      const noBS = !(p.bsC > 0 || p.bsVals.length);
+      p.noRun = noVA && noBS;
+      p.vaRate = noVA ? null : (wdN > 0 ? Math.min(1, p.vaA / wdN) : avgNum(p.vaVals));
+      p.bsRate = noBS ? null : (p.bsC > 0 ? p.bsP / p.bsC : avgNum(p.bsVals));
+      p.vaAcc = noVA ? '区间内无执行记录 → --（不纳入统计）'
+        : (wdN > 0 ? ('可用日 / 区间法定工作日 = ' + p.vaA + ' / ' + wdN) : '归档无可用日，退回归档比率');
+      p.bsAcc = noBS ? '区间内无编译次数 → --（不纳入统计）'
+        : (p.bsC > 0 ? ('Σ编译通过 / Σ编译次数 = ' + p.bsP + ' / ' + p.bsC) : '归档无分子/分母，退回归档比率');
+      const head = p.noRun
+        ? '区间内该流水线没有任何执行记录（runsInPeriod = 0），不参与任何比率计算'
+        : ('区间内共 ' + (p.totalRuns || 0) + ' 次运行（成功与失败都采集）'
+           + '，比率按本统计区间重算（区间一变即重算，不是逐日比率取平均）');
       const dd = (p.runs || []).map(function(x){
         return x.date + '  当日 ' + x.n + ' 次运行'
           + (x.fail ? '（失败/取消 ' + x.fail + '）' : '');
@@ -1064,13 +1430,19 @@ function loadComp(from, to){
       p.bsTitle = '编译成功率（流水线级）\n' + head + '\n' + p.bsAcc + '\n' + dd.join('\n');
     });
     const cols = DIM ? [DIM] : ['va', 'bs'];
+    /* 区间内一条执行记录都没有的流水线只占一行「--」占位，不算「待分析」：
+       它们没有运行，就谈不上达标与否，也不进任何平均与条数统计 */
+    const noRunList = list.filter(function(p){ return p.noRun; });
+    const cntTip = (list.length - noRunList.length) + ' 条待分析流水线'
+      + (noRunList.length ? '（另有 ' + noRunList.length + ' 条区间内无执行记录，显示 --，不纳入统计：'
+          + rfEsc(noRunList.map(function(p){ return p.pipeline; }).join('、')) + '）' : '');
     const meta = document.getElementById('meta');
     if (meta) meta.textContent = '区间 ' + from + ' ~ ' + to
       + (dimTxt ? ' · 维度仅 ' + dimTxt : '')
-      + ' · 待分析流水线 ' + list.length + ' 条 · 数据源 out/archive/';
+      + ' · ' + cntTip + ' · 数据源 out/archive/';
     const crumb = document.getElementById('crumb');
     if (crumb) crumb.innerHTML = crumbHead(from, to) + '<b>' + rfEsc(COMP) + '</b>（' + rfEsc(dimTxt || '全部维度')
-      + ' · ' + list.length + ' 条待分析流水线'
+      + ' · ' + cntTip
       + (list.length ? '：' + rfEsc(list.map(function(p){ return p.name; }).join('、')) : '')
       + '）';
     const dist = document.getElementById('dist');
@@ -1093,7 +1465,13 @@ function compRow(p, from, to, cols){
   /* 下钻链接带上 comp + dim：流水线页才知道上一层是哪个组件的哪个维度，能逐层退回来 */
   const q = levelQS({key: p.key, comp: COMP, dim: DIM}, from, to);
   let tds = '<td class="c-name">' + rfEsc(p.pipeline)
-    + '<div class="dim" style="font-size:11px;font-weight:400">' + rfEsc(p.name) + '</div></td>'
+    + '<div class="dim" style="font-size:11px;font-weight:400">' + rfEsc(p.name) + '</div>'
+    + (p.noRun
+      ? '<div class="dim" style="font-size:11px;font-weight:400"'
+        + ' title="区间内该流水线没有任何执行记录，可用度/编译成功率不参与统计">'
+        + '区间内无执行记录 · 不纳入统计</div>'
+      : '')
+    + '</td>'
     + '<td>' + rfEsc(p.platform || '--') + '</td>';
   cols.forEach(function(d){
     tds += '<td class="c-rate">'
@@ -1102,15 +1480,18 @@ function compRow(p, from, to, cols){
       + '</td>';
   });
   /* 本页展示的维度比率全部 100% = 这区间内没有需要下钻的失败记录：
-     「查看记录」直接显示 --（不给链接、不响应点击），避免点进去看到一张空表 */
+     「查看记录」直接显示 --（不给链接、不响应点击），避免点进去看到一张空表。
+     区间内一条记录都没有的流水线同理：没有可下钻的记录，只给 --。 */
   let full = cols.length > 0;
   cols.forEach(function(d){
     const v = d === 'va' ? p.vaRate : p.bsRate;
     if (v === null || v === undefined || v === '' || isNaN(v) || Number(v) < 1) full = false;
   });
   tds += '<td class="nowrap">'
-    + (full ? '<span class="dim" title="该维度比率 100%，区间内没有失败记录可下钻">--</span>'
-            : '<a class="lnk" href="' + q + '">查看记录 →</a>')
+    + (p.noRun
+        ? '<span class="dim" title="区间内没有执行记录，没有可下钻的失败记录">--</span>'
+        : (full ? '<span class="dim" title="该维度比率 100%，区间内没有失败记录可下钻">--</span>'
+                : '<a class="lnk" href="' + q + '">查看记录 →</a>'))
     + '</td>';
   return '<tr>' + tds + '</tr>';
 }
@@ -1160,18 +1541,21 @@ function renderHead(meta, recs, ctx){
   }
   if (el) el.textContent = '区间 ' + ctx.from + ' ~ ' + ctx.to
     + (meta && meta.pl ? ' · 平台 ' + (meta.pl.platform || '--') : '')
-    + ' · 执行记录 ' + recs.length + ' · 任务 ' + tasks + ' · 用例 ' + cases
+    + ' · 需根因执行记录 ' + recs.length + ' · 任务 ' + tasks + ' · 用例 ' + cases
     + ' · 错误信息 ' + errs + ' · 证据 ' + evs;
   renderDist(recs);
 }
 
-/* 定性分布：二级页字段，按执行记录计数（含占比） */
+/* 定性分布：二级页字段，按执行记录计数（含占比）。纯展示、不可点 —— 行序由根因表自己按结束时间排 */
+function catOfRec(r){
+  return (r.verdict || {}).category || r.category || 'unknown';
+}
 function renderDist(recs){
   const el = document.getElementById('dist');
   if (!el) return;
   const byCat = {};
   recs.forEach(function(r){
-    const k = (r.verdict || {}).category || r.category || 'unknown';
+    const k = catOfRec(r);
     byCat[k] = (byCat[k] || 0) + 1;
   });
   const ks = Object.keys(byCat).sort(function(a, b){ return byCat[b] - byCat[a]; });
@@ -1179,20 +1563,20 @@ function renderDist(recs){
   const tags = ks.map(function(k){
     const c = CATS[k] || [k, ''];
     const p = (byCat[k] / total * 100).toFixed(byCat[k] === total ? 0 : 1);
-    return '<span class="tag ' + c[1] + '">' + c[0] + ' ' + byCat[k]
+    return '<span class="tag ' + c[1] + '">'
+      + rfEsc(c[0]) + ' ' + byCat[k]
       + ' <span class="dim">' + p + '%</span></span>';
   }).join('');
   el.innerHTML = '<span class="dt">定性分布</span>'
     + (ks.length ? tags : '<span class="dim">--</span>')
-    + '<span class="sp"></span>'
-    + '<span class="dim">按执行记录计数，共 ' + recs.length + ' 条</span>';
+    + '<span class="sp"></span><span class="dim">按执行记录计数，共 ' + recs.length + ' 条</span>';
 }
 
-let RECS = [];
+let RECS = [];      /* 区间内该流水线的全部失败执行记录（平铺，一条记录一行） */
 let RUNS = [];      /* 区间内该流水线的全部运行（每日 step_2_runs.json 的 runHistory，按构建号去重） */
 let CTX = null;     /* 当前统计区间上下文：dirs / days / from / to / runs */
 
-/* ===== 流水线级：一条流水线一个区块（h3 浅蓝区块头）+ 一张 10 列固定列宽的根因明细表 ===== */
+/* ===== 流水线级：一条流水线一个区块（h3 浅蓝区块头）+ 一张 9 列固定列宽的根因明细表 ===== */
 function renderRecs(recs, ctx){
   const box = document.getElementById('recs');
   RECS = recs;
@@ -1205,9 +1589,16 @@ function renderRecs(recs, ctx){
   /* 流水线级只看数字（85.71%），不带黄/绿/红标记：
      灯色只在首页组件级出现，往下钻一律看数字 + 达标工作日数。 */
   const okWord = dim === 'bs' ? '达标' : '可用';
+  /* dim=va 的分母是「区间法定工作日数」：区间内没跑数的工作日也要算进分母（没出可用版本就是不可用），
+     所以区块头写「区间法定工作日 N 天」，不写成「有运行的工作日 N 天」 */
+  const denomTip = (dim === 'bs')
+    ? ('区间内有运行的工作日 ' + total + ' 天，其中 ' + okDays + ' 天' + okWord)
+    : ('区间法定工作日 ' + total + ' 天，其中 ' + okDays + ' 天' + okWord);
+  const denomRule = (dim === 'bs')
+    ? '分母 = 区间内有运行的工作日数'
+    : '分母 = 区间法定工作日数（不是有运行的天数）';
   const h3 = '<h3 title="' + DIMNAME[dim] + '：' + (st.source === 'runs'
-      ? '区间内有运行的工作日 ' + total + ' 天，其中 ' + okDays + ' 天' + okWord
-        + '（逐日按执行结果重算，统计区间一变即重算）'
+      ? denomTip + '（逐日按执行结果重算，统计区间一变即重算；' + denomRule + '）'
       : '区间内归档 ' + total + ' 天，其中 ' + okDays + ' 天该流水线在此维度上没有黄/红')
     + '">' + rfEsc(pl.pipelineName || pl.pipeline || KEY)
     + ' ｜ ' + DIMNAME[dim] + ' ' + (rate == null ? '--' : (rate * 100).toFixed(2) + '%')
@@ -1221,11 +1612,13 @@ function renderRecs(recs, ctx){
       + '</div></div>';
     return;
   }
-  /* 7 列：构建编号 → 任务 → 用例 → 错误信息 → 定性 → 根因 → 建议
-     （「根因编号」列已删除，构建号本身就跳 openLiBing，编号没有额外信息量；
-       原 8/6/9/9/20/7/24/17 里腾出的 6% 并给用例、错误信息、根因，合计仍是 100%） */
-  const cols = ['8%', '11%', '11%', '22%', '7%', '24%', '17%'];
-  const ths = ['构建编号', '任务', '用例', '错误信息', '定性', '根因', '建议'];
+  /* 9 列：构建编号 → 开始时间 → 结束时间 → 任务 → 用例 → 错误信息 → 定性 → 根因 → 建议
+     一条执行记录一行（不再把同日同报错聚合成一行），开始/结束时间给出 yyyy-MM-dd hh:mm:ss，
+     行序由 recs 自己带过来（加载时已按结束时间降序排好，见 cmpByEndDesc），
+     所以同一条流水线的多次构建是「最近结束的在最上面」，方便从最新往回看。
+     根因列给到 20.5%：这一列是这张表的结论本身，内容完整输出、不截断，长文本在列宽内换行 */
+  const cols = ['6.5%', '11.5%', '11.5%', '7.5%', '9%', '14%', '6%', '20.5%', '13.5%'];
+  const ths = ['构建编号', '开始时间', '结束时间', '任务', '用例', '错误信息', '定性', '根因', '建议'];
   const table = '<table class="rca"><colgroup>'
     + cols.map(function(w){ return '<col style="width:' + w + '">'; }).join('')
     + '</colgroup><thead><tr>' + ths.map(function(t){ return '<th>' + t + '</th>'; }).join('') + '</tr></thead>'
@@ -1233,22 +1626,31 @@ function renderRecs(recs, ctx){
   box.innerHTML = '<div class="subview">' + h3 + table + '</div>';
 }
 
-/* 一行 = 一条执行记录（内容口径与改版前完全一致，只是换成表格一行） */
+/* 一行 = 一条执行记录（一次构建）
+   任务取该记录自己的任务列表（多任务时列首条 + 「共 N 个任务」），
+   用例与证据都只取这一条记录，根因/建议也只取这一条记录的分析结论——不再跨构建合并，
+   避免「一行的结论其实来自另一次构建」这种对不上的情况。 */
 function recRow(r, i){
   const v = r.verdict || {};
-  const cov = r.counts || {};
   const an = r.analysis || {};
-  const links = r.links || {};
 
-  const tasks = r.tasks || [];
-  const taskCell = tasks.length
-    ? '<b>' + rfEsc(nz(tasks[0].jobName)) + '</b>'
-      + (tasks.length > 1 ? '<span class="exec-sub">共 ' + tasks.length + ' 个任务</span>' : '')
+  /* 任务：该记录内的任务名去重（一次构建可能跑多个 job，都算这条记录的上下文） */
+  const tnames = [], tseen = new Set();
+  (r.tasks || []).forEach(function(t){
+    const n = String(t.jobName || '');
+    if (!n || tseen.has(n)) return;
+    tseen.add(n);
+    tnames.push(n);
+  });
+  const taskCell = tnames.length
+    ? '<b>' + rfEsc(nz(tnames[0])) + '</b>'
+      + (tnames.length > 1 ? '<span class="exec-sub">共 ' + tnames.length + ' 个任务</span>' : '')
     : '<span class="dim">--</span>';
 
-  /* 成功运行也落记录（全量采集），但它没有失败用例，不能套用「setup 阶段批量失败」的兜底文案 */
+  /* 用例列：没有失败用例就只显示 --（成功运行、编译失败、日志类失败都没有用例，
+     不套任何解释文案——「setup 阶段批量失败」这种说法对编译任务/日志任务本来就是错的） */
   const isOk = (v.category === 'success');
-  const cases = r.cases || [];
+  const cases = (r.cases || []).filter(function(c){ return c && c.name; });
   let caseCell;
   if (cases.length){
     /* 用例列：第一条用例名打头，「共 N 条失败用例」是可点链接 → 弹窗里逐条给用例详情
@@ -1257,57 +1659,54 @@ function recRow(r, i){
       + '<span class="lnk exec-sub" data-cases="' + i + '"'
       + ' title="点击查看 ' + cases.length + ' 条失败用例的详情">共 '
       + cases.length + ' 条失败用例</span>';
-  } else if (isOk){
-    caseCell = '<span class="dim">--（执行成功，无失败用例）</span>';
   } else {
-    caseCell = '<span class="dim">—（setup 阶段批量失败，未产出有效用例记录）</span>';
+    caseCell = '<span class="dim">--</span>';
   }
 
-  const seen = new Set();
-  const uniq = [];
-  (r.errorMessages || []).forEach(function(e){
-    const k = (e.level || '') + '|' + (e.text || '');
-    if (seen.has(k)) return;
-    seen.add(k);
-    uniq.push(e);
-  });
-  /* 证据行：用例级 errorMessages（带时间/位置）+ job 日志扫描出的错误行，逐行完整保留 */
+  /* 证据行：这条记录的用例级 errorMessages（带时间/位置）+ job 日志错误行，按用例/任务 + 原文去重 */
   const evs = evidenceRows(r);
+  /* 错误信息列优先展示 AI 筛出的「最有价值报错点」（analysis.keyError）：
+     归档里的 errorMessages 往往是一串同构噪音（重试行、多卡重复打印、封装码），
+     AI 在根因分析时已经判断过哪一行才是真正决定失败的那句，这里直接用它的结论；
+     没有 keyError（老数据 / 未分析 / 成功运行）才退回按规则挑的「真因错误」 */
+  const keyErr = String((an.keyError || '')).trim();
+  const e0 = trueErrOf(r);
   let errCell = '<span class="dim">--</span>';
-  if (uniq.length){
-    /* 优先展示真因：跳过平台封装文案（STEP/JOB，如「构建任务执行失败!(DEV-CODECI-35002)」），
-       直接给行级/用例级错误；全都只有封装码时才回退首条。
-       出处标签（Test_ops-math · 测试报告 · CASE）不再堆在单元格里，改成「证据」链接看原始行 */
-    const cand = uniq.filter(function(e){
-      return !e.isWrapper && e.level !== 'STEP' && e.level !== 'JOB';
-    });
-    const e0 = cand[0] || uniq[0];
-    errCell = '<div class="err-text">' + rfEsc(cut(errText(e0.text), 220)) + '</div>'
+  const shown = keyErr || (e0 ? errText(e0.text) : '');
+  if (shown){
+    errCell = '<div class="err-text"'
+      + (keyErr ? ' title="AI 从本次执行的日志与报错里筛出的最有价值报错点"' : '')
+      + '>' + rfEsc(cut(shown, 220)) + '</div>'
       + (evs.length
         ? '<div><span class="lnk ev-lnk" data-evidence="' + i + '" title="点击查看日志证据：'
           + evs.length + ' 行（时间 / 级别 / 位置 / 原文）">证据</span></div>'
         : '<div><span class="dim ev-lnk">证据 --</span></div>');
   }
 
-  const buildCell = links.openlibing
-    ? '<a href="' + rfEsc(links.openlibing) + '" target="_blank" rel="noopener">#' + rfEsc(nz(r.buildNumber)) + '</a>'
-    : '#' + rfEsc(nz(r.buildNumber));
+  /* 构建编号：单条记录的构建号，跳 openLiBing */
+  const lb = (r.links || {}).openlibing;
+  const bn = nz(r.buildNumber);
+  const buildCell = (lb
+      ? '<a href="' + rfEsc(lb) + '" target="_blank" rel="noopener" title="在 openLiBing 查看构建 #'
+        + rfEsc(bn) + '">#' + rfEsc(bn) + '</a>'
+      : '<span class="mono">#' + rfEsc(bn) + '</span>')
+    + (r.__err ? '<span class="exec-sub" style="color:#f5222d">记录读取失败</span>' : '');
 
-  /* 根因：插在「建议」前一列，方便一眼看出这条记录为什么失败；
-     不做 AI 分析的记录（成功运行 / 指标达标的失败运行，analysis.status=na）显示 -- */
+  /* 根因：不做 AI 分析的记录（成功运行 / 指标达标的失败运行，analysis.status=na）显示 --；
+     内容按行渲染（见 richPoints），行高随内容自然增长，不做任何字符截断 */
   const noAI = isOk || an.status === 'na';
-  const rc = rootCauseOf(r);
-  const rcCell = rc ? rfEsc(cut(rc, 120))
+  const rc = an.rootCause || '';
+  const rcCell = rc ? richPoints(rc)
     : (noAI ? '<span class="dim">--</span>' : '<span class="dim">待 AI 根因分析</span>');
 
-  const adv = an.advice || ((r.suggestions || [])[0] || '');
-  const advCell = adv ? rfEsc(cut(adv, 160))
+  const adv = an.advice || (((r.suggestions || [])[0]) || '');
+  const advCell = adv ? richPoints(adv)
     : (noAI ? '<span class="dim">--</span>' : '<span class="dim">待 AI 根因分析</span>');
 
-  /* 根因编号列已删除：构建号本身就在第一列且直接跳 openLiBing，编号（AC-BS-01）没有额外信息量 */
   return '<tr>'
-    + '<td class="nowrap">' + buildCell
-      + (r.__err ? '<span class="exec-sub" style="color:#f5222d">记录读取失败</span>' : '') + '</td>'
+    + '<td class="bldg-cell">' + buildCell + '</td>'
+    + '<td class="nowrap mono dt-c">' + rfEsc(ymd(r.startedAt)) + '</td>'
+    + '<td class="nowrap mono dt-c">' + rfEsc(ymd(r.endedAt)) + '</td>'
     + '<td>' + taskCell + '</td>'
     + '<td>' + caseCell + '</td>'
     + '<td class="err-cell">' + errCell + '</td>'
@@ -1315,6 +1714,12 @@ function recRow(r, i){
     + '<td>' + rcCell + '</td>'
     + '<td>' + advCell + '</td>'
     + '</tr>';
+}
+
+/* 单条记录的定位标签：#168 · 20261109 02:05:47，弹窗标题用（一条记录一行后不再有组标签） */
+function buildTag(r){
+  const t = ymd((r || {}).endedAt);
+  return '#' + nz((r || {}).buildNumber) + (t === '--' ? '' : ' · ' + t);
 }
 
 /* ===== 弹窗骨架：三个入口共用（失败用例 / 日志证据 / 构建记录） ===== */
@@ -1334,12 +1739,13 @@ function closeModal(){
 }
 
 /* ===== 用例列「共 N 条失败用例」→ 弹窗逐条给出用例详情 =====
-   数据源 = 该执行记录 records/run_<构建号>.json 的 cases[]（测试报告 failedCases）：
+   数据源 = 该行执行记录 records/run_<构建号>.json 的 cases[]（测试报告 failedCases）：
    name / state / beginTime / endTime / description（报告里的断言原文）/ localLog（归档的用例 HTML）。
+   一条记录一行后，这里只列这一次构建的失败用例，不再跨构建合并。
    这里只做「有哪些用例失败、失败在哪一步」，日志原文行在「证据」弹窗里看。 */
 function openCases(i){
   const r = RECS[i] || {};
-  const cases = r.cases || [];
+  const cases = (r.cases || []).filter(function(c){ return c && c.name; });
   if (!cases.length) return;
   const base = r.__base || '';
   const rows = cases.map(function(c, k){
@@ -1357,21 +1763,21 @@ function openCases(i){
       + '<td class="nowrap">' + lgCell + '</td>'
       + '</tr>';
   }).join('');
-  openModal('失败用例（' + cases.length + ' 条）｜#' + rfEsc(nz(r.buildNumber))
+  openModal('失败用例（' + cases.length + ' 条）｜' + rfEsc(buildTag(r))
       + ' · ' + rfEsc(nz(r.pipeline)),
     '<div class="mtbl"><table class="rca"><colgroup><col style="width:21%"><col style="width:7%">'
     + '<col style="width:13%"><col style="width:13%"><col style="width:39%"><col style="width:7%"></colgroup>'
     + '<thead><tr><th>用例</th><th>状态</th><th>开始时间</th><th>结束时间</th>'
     + '<th>失败详情（测试报告断言原文）</th><th>日志</th></tr></thead>'
     + '<tbody>' + rows + '</tbody></table></div>'
-    + '<div class="mrec-note">用例清单取自该次执行的测试报告 failedCases（共 ' + cases.length
-    + ' 条全部失败用例），失败详情按原文完整输出、不做截断；'
+    + '<div class="mrec-note">用例清单取自测试报告 failedCases（本次构建共 '
+    + cases.length + ' 条全部失败用例），失败详情按原文完整输出、不做截断；'
     + '「用例日志」打开归档里的该用例 HTML 报告。日志原始错误行见「错误信息」列的「证据」。</div>');
 }
 
 /* ===== 错误信息列「证据」→ 弹窗逐行输出日志证据（时间 / 级别 / 位置 / 整行原文） =====
    行级信息（time / level / loc / line / 原文）直接从归档记录里取，不再堆在单元格里，
-   单元格只留「证据」两个字。 */
+   单元格只留「证据」两个字。证据只取这一行对应的那一次构建。 */
 function openEvidence(i){
   const r = RECS[i] || {};
   const evs = evidenceRows(r);
@@ -1391,18 +1797,21 @@ function openEvidence(i){
       + '<td class="expr-txt">' + rfEsc(nz(x.text)) + '</td>'
       + '</tr>';
   }).join('');
-  openModal('日志证据（' + evs.length + ' 行）｜#' + rfEsc(nz(r.buildNumber))
+  openModal('日志证据（' + evs.length + ' 行）｜' + rfEsc(buildTag(r))
       + ' · ' + rfEsc(nz(r.pipeline)),
     '<div class="mtbl"><table class="rca"><colgroup><col style="width:14%"><col style="width:5%">'
     + '<col style="width:23%"><col style="width:14%"><col style="width:44%"></colgroup>'
     + '<thead><tr><th>时间</th><th>级别</th><th>任务 / 用例</th><th>位置</th>'
     + '<th>证据原文（整行，不截断）</th></tr></thead>'
     + '<tbody>' + rows + '</tbody></table></div>'
-    + '<div class="mrec-note">证据 = 采集到的日志/报告原始行，逐行完整输出。'
+    + '<div class="mrec-note">证据只留「重要节点」：同一行重复刷屏（重试、多卡并行打印）已去重，'
+    + '行级错误行每任务最多 8 条（首尾各取一半，尾部通常是致命行），用例级消息每用例最多 3 条，'
+    + 'pytest 汇总行不计入（它只列失败用例名、不含原因）。'
     + '用例级证据取自测试报告 errorMessages（自带时间与位置）；'
-    + 'job 日志证据的源行本就带时间戳，已抽到「时间」列；'
-    + '没有时间戳的「测试报告」断言显示 --。pytest 汇总行不计入证据。</div>');
+    + 'job 日志证据的源行本就带时间戳，已抽到「时间」列；没有时间戳的「测试报告」断言显示 --。'
+    + '需要完整原文时按「位置」列的行号回归档 job_logs/ 查看。</div>');
 }
+
 /* ===== 构建记录：区间内该流水线的**每一次运行** =====
    数据源 = 归档里每日 step_2_runs.json 的 runHistory（整区间全部运行，按结束时间归属日期），
    所以区间一变就按新区间重新筛、重新统计；不是只看被点灯/待查的那几条失败记录。
@@ -1560,9 +1969,11 @@ function openBuildsLegacy(dim){
 
 /* 弹窗入口（记录明细页已下线，点构建号直接跳 openLiBing）：
    data-builds      → 流水线页「查看记录」/「构建记录」按钮 → 本页构建记录弹窗
-   data-cases       → 根因表「共 N 条失败用例」→ 失败用例详情
-   data-evidence    → 根因表「证据」→ 日志证据逐行
-   data-builds-of   → 组件级清单里的比率数字 → 该流水线按需拉运行历史再弹窗 */
+   data-cases       → 根因表「共 N 条失败用例」→ 该次构建的失败用例详情
+   data-evidence    → 根因表「证据」→ 该次构建的日志证据逐行
+   data-builds-of   → 组件级清单里的比率数字 → 该流水线按需拉运行历史再弹窗
+   注意：data-cases / data-evidence 的取值是「记录下标」（RECS[i]）——
+   表格已拆成一条构建一行，不再有聚合行 */
 document.addEventListener('click', function(ev){
   const el = (ev.target && ev.target.closest)
     ? ev.target.closest('[data-builds],[data-cases],[data-evidence],[data-builds-of],#mclose,#mrec')
@@ -1585,17 +1996,49 @@ boot();
 """.replace("__INDEX__", INDEX_NAME)
 
 
-def write_page(path, title, body, script, extra_css):
-    path.write_text(ui.page(title, body, script, extra_css), encoding="utf-8")
+def workday_cal(days):
+    """页面可选区间（归档首日 ~ 今天）的**法定工作日日历**，注入成页面的 WD_CAL。
+
+    版本可用度的分母是「区间法定工作日数」，前端按用户所选子区间就地数工作日，
+    所以这份日历必须覆盖用户能选到的全部范围：筛选条把最小日夹到归档首日、
+    最大日放到「今天」，因此取 [min(归档首日, 今天), max(归档末日, 今天)]。
+
+    数据源与采集同源（lib/workdays.build_workday_set：法定节假日 + 调休补班，
+    优先 config.workday_overrides），这样「首页/二级页按子区间算出来的分母」
+    与「后端 step_2 采集、step_7 归档写下的分母」永远是同一份口径，跨长假也不会分叉。
+    取不到就返回空列表，页面自动退回周一~周五（见 lib/ui.py 的 wdInRange）。
+    """
+    if not days:
+        return []
+    today = datetime.date.today().isoformat()
+    first = min(days[0][0], today)
+    last = max(days[-1][0], today)
+    try:
+        wds, notes = build_workday_set(first, last, load_config())
+    except Exception as e:                       # 日历拿不到不能挡住出页
+        print("!! 工作日日历计算失败，页面退回周一~周五：%s" % e)
+        return []
+    cal = sorted(str(x) for x in wds)
+    print("== 工作日日历 %s ~ %s：%d 个工作日（%s）"
+          % (first, last, len(cal), "；".join(notes)))
+    return cal
+
+
+def write_page(path, title, body, script, extra_css, workdays=None):
+    path.write_text(ui.page(title, body, script, extra_css, workdays), encoding="utf-8")
     return path
 
 
 def main():
     HTML_DIR.mkdir(parents=True, exist_ok=True)
-    idx = write_page(HTML_DIR / INDEX_NAME, INDEX_TITLE, INDEX_BODY, INDEX_JS, INDEX_EXTRA_CSS)
-    det = write_page(HTML_DIR / DETAIL_NAME, DETAIL_TITLE, DETAIL_BODY, DETAIL_JS, DETAIL_EXTRA_CSS)
-
     days = iter_archive_days()
+    # 两页共用同一份工作日日历：首页的分母、二级页的分母、筛选条上的「工作日 N 天」必须是同一个数
+    wd_cal = workday_cal(days)
+    idx = write_page(HTML_DIR / INDEX_NAME, INDEX_TITLE, INDEX_BODY, INDEX_JS,
+                     INDEX_EXTRA_CSS, wd_cal)
+    det = write_page(HTML_DIR / DETAIL_NAME, DETAIL_TITLE, DETAIL_BODY, DETAIL_JS,
+                     DETAIL_EXTRA_CSS, wd_cal)
+
     page_doc = doc("step_9_pages", files=[INDEX_NAME, DETAIL_NAME], dayCount=len(days))
     meta = {
         "_doc": page_doc,
@@ -1612,9 +2055,10 @@ def main():
             {"name": INDEX_NAME, "role": "首页（组件级概览）",
              "reads": ["archive/_index.json", "archive/_products.json",
                        "archive/<年>/<年-月>/<日>/_day.json"],
-             "fields": ["开源组件", "版本可用度", "编译成功率", "口径内流水线",
+             "fields": ["开源组件", "版本可用度", "编译成功率", "流水线数",
                         "待分析（可用度）", "待分析（编译）"],
-             "drilldown": "首页不做展开：只有「待分析流水线数」是非零时可点数字（同旧版 .lnk），"
+             "drilldown": "首页不做展开：「流水线数」是蓝色可点数字，点开弹窗列出该组件全部流水线的"
+                          "版本可用度与编译成功率；「待分析流水线数」非零时也可点（同旧版 .lnk），"
                           "点进二级页 ?comp=组件&dim=va|bs 看该组件的流水线清单；"
                           "组件级清单里点比率数字弹「构建记录」、点「查看记录 →」进流水线明细（100% 的行显示 -- 不可点），"
                           "流水线明细里点「共 N 条失败用例」/「证据」各自弹窗",
@@ -1623,20 +2067,30 @@ def main():
             {"name": DETAIL_NAME, "role": "二级页（?comp=组件&dim=va|bs 组件级流水线清单 / ?key=组件|流水线 流水线级根因明细）",
              "reads": ["archive/<日>/_day.json", "archive/<日>/<组件>/<流水线>/_manifest.json",
                        "…/records/run_<构建号>.json"],
-             "fields": ["构建编号", "任务", "用例", "错误信息", "定性", "根因", "建议"],
+             "fields": ["构建编号", "开始时间", "结束时间", "任务", "用例", "错误信息", "定性", "根因", "建议"],
              "compFields": {"dim=va": ["流水线", "平台", "版本可用度", "查看记录"],
                             "dim=bs": ["流水线", "平台", "编译成功率", "查看记录"]},
              "compNote": "组件级清单按维度下钻：dim=va 只渲染版本可用度列、dim=bs 只渲染编译成功率列，"
                          "另一维度不渲染；不再展示归档日；比率显示为纯数字百分比（如 80.0%，"
-                         "取该流水线区间内各归档日流线级比率的算术平均），不带黄/绿/红圆点或灯色文字；"
+                         "版本可用度 = 可用日 ÷ 区间法定工作日数，编译成功率 = Σ编译通过 ÷ Σ编译次数），"
+                         "不带黄/绿/红圆点或灯色文字；"
+                         "区间内没有任何执行记录的流水线（只有看板配置、一次都没跑过）比率显示 --，"
+                         "不参与组件级平均、也不计入「待分析流水线」条数，行内标注「区间内无执行记录 · 不纳入统计」；"
                          "比率数字本身可点 → 弹「构建记录」（点击时才按需读该流水线的 step_2_runs.json）；"
-                         "比率 100% 的行「查看记录」直接显示 --（不给链接、不响应点击），因为区间内没有失败记录可下钻",
-             "note": "版式同旧报告：一条流水线一个浅蓝底 h3 区块 + 一张 7 列固定列宽（8/11/11/22/7/24/17）的 table.rca，"
-                     "table-layout:fixed 保证列宽不随内容变化；每行 = 一条执行记录，第一列为「构建编号」（跳 openLiBing），"
-                     "已删除「根因编号」列；"
-                     "「用例」列展示第一条失败用例名 + 可点的「共 N 条失败用例」→ 弹窗逐条给用例详情；"
-                     "「错误信息」列只给真因原文 + 可点的「证据」→ 弹窗逐行输出日志/报告原始行（含时间/级别/位置）；"
-                     "已下线记录明细弹窗，弹窗只剩「失败用例」「日志证据」「构建记录」三个入口；"
+                         "比率 100% 或不纳入统计的行「查看记录」直接显示 --（不给链接、不响应点击）",
+             "note": "版式同旧报告：一条流水线一个浅蓝底 h3 区块 + 一张 9 列固定列宽（6.5/11.5/11.5/7.5/9/14/6/20.5/13.5）的 table.rca，"
+                     "table-layout:fixed 保证列宽不随内容变化；"
+                     "每行 = 一次执行记录（一条构建一行，不做任何聚合）：同一天同一流水线的多次构建各自成行，"
+                     "各自带本次构建的用例、证据与 AI 根因/建议；已删除「根因编号」列；"
+                     "行序按「结束时间降序」（最近结束的构建在最上面，时间缺失的排最后，同一时间按构建号降序）；"
+                     "「开始时间 / 结束时间」两列取自记录的 startedAt / endedAt，格式化为 yyyy-MM-dd hh:mm:ss"
+                     "（如 2026-11-09 02:05:47），字号 12.5px 略大于表内正文，用于直接定位是哪一次构建；"
+                     "「定性分布」是纯展示的计数条（各类定性条数 + 占比），不响应点击、不做表内筛选；"
+                     "「构建编号」列单条构建号，各自跳 openLiBing；"
+                     "「用例」列展示第一条失败用例名 + 可点的「共 N 条失败用例」→ 弹窗列本次构建的全部失败用例；"
+                     "「错误信息」列优先展示 AI 从本次执行里筛出的最有价值报错点（analysis.keyError），"
+                     "没有该字段才退回按规则挑的真因错误；后面跟可点的「证据」→ 弹窗逐行输出日志/报告原始行（含时间/级别/位置）；"
+                     "弹窗共 3 个入口（失败用例 / 日志证据 / 构建记录），同组分析对比入口已随拆行下线；"
                      "不读 step_6_records.json（单份可达 80KB+），逐条读单条记录"},
         ],
         "dataInline": False,

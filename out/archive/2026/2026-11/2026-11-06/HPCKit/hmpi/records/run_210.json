@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:06:59",
+    "generatedAt": "2026-11-10 14:57:28",
     "component": "HPCKit",
     "pipeline": "hmpi",
     "date": "2026-11-06",
@@ -60,7 +60,7 @@
       "jobName": "Test_hmpi",
       "type": "log",
       "fallback": true,
-      "logFile": "job_logs/07_hmpi_210_Test_hmpi.log",
+      "logFile": "job_logs/21_hmpi_210_Test_hmpi.log",
       "logBytes": 16562,
       "logLines": 144,
       "download": "export",
@@ -84,42 +84,42 @@
   "errorMessages": [
     {
       "task": "Test_hmpi",
-      "source": "job_logs/07_hmpi_210_Test_hmpi.log",
+      "source": "job_logs/21_hmpi_210_Test_hmpi.log",
       "line": 138,
       "level": "LOG",
       "text": "[2026/11/06 01:11:47.479 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'"
     },
     {
       "task": "Test_hmpi",
-      "source": "job_logs/07_hmpi_210_Test_hmpi.log",
+      "source": "job_logs/21_hmpi_210_Test_hmpi.log",
       "line": 139,
       "level": "LOG",
       "text": "[2026/11/06 01:11:47.479 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'"
     },
     {
       "task": "Test_hmpi",
-      "source": "job_logs/07_hmpi_210_Test_hmpi.log",
+      "source": "job_logs/21_hmpi_210_Test_hmpi.log",
       "line": 140,
       "level": "LOG",
       "text": "[2026/11/06 01:11:47.479 GMT+08:00] [ERROR] git clone test_cases code fail"
     },
     {
       "task": "Test_hmpi",
-      "source": "job_logs/07_hmpi_210_Test_hmpi.log",
+      "source": "job_logs/21_hmpi_210_Test_hmpi.log",
       "line": 142,
       "level": "LOG",
       "text": "[2026/11/06 01:11:47.649 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed"
     },
     {
       "task": "Test_hmpi",
-      "source": "job_logs/07_hmpi_210_Test_hmpi.log",
+      "source": "job_logs/21_hmpi_210_Test_hmpi.log",
       "line": 144,
       "level": "LOG",
       "text": "[2026/11/06 01:11:53.246 GMT+08:00] Finished: FAILURE"
     },
     {
       "task": "Test_hmpi",
-      "source": "job_logs/07_hmpi_210_Test_hmpi.log",
+      "source": "job_logs/21_hmpi_210_Test_hmpi.log",
       "line": null,
       "level": "JOB",
       "text": "步骤Test_hmpi执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
@@ -127,7 +127,7 @@
     },
     {
       "task": "Test_hmpi",
-      "source": "job_logs/07_hmpi_210_Test_hmpi.log",
+      "source": "job_logs/21_hmpi_210_Test_hmpi.log",
       "line": null,
       "level": "STEP",
       "text": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
@@ -136,7 +136,7 @@
   ],
   "evidence": {
     "files": [
-      "job_logs/07_hmpi_210_Test_hmpi.log"
+      "job_logs/21_hmpi_210_Test_hmpi.log"
     ],
     "missing": [
       "Test_hmpi"
@@ -168,14 +168,18 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "用例代码拉取阶段即失败：整 job 日志报 fatal: Authentication failed for .../hpckit-autotest.git，随后 [ERROR] git clone test_cases code fail，脚本返回 exit code 1，用例一个都未拉起，测试任务用例结果为空。",
-    "advice": "重新注入运行节点访问用例仓库的凭据（令牌过期或未挂载可能性最大），并在 clone 失败时打印鉴权来源与凭据有效期；凭据修复后重跑整条流水线，其余同批次失败可一并验证。",
+    "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+    "rootCause": "Test_hmpi 任务启动后先做用例仓 clone，01:11:47.479 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，紧接着输出 [ERROR] git clone test_cases code fail，01:11:47.649 脚本以退出码 1 结束，01:11:53 Finished: FAILURE，整个 job 只跑了约 10 分钟就终止（job_logs/21_hmpi_210_Test_hmpi.log:L138、L140、L142）\n\n用例一条都没有拉起：Test_hmpi 标记 emptyTestResult，total=0、passed=0、failed=0，说明失败发生在用例执行之前，属于用例仓凭据失效这类环境问题，而不是用例断言不过（job_logs/21_hmpi_210_Test_hmpi.log:L144）\n\n鉴权失败到脚本退出只隔 0.17 秒、且没有重试记录，更像是凭据本身失效（token 过期或被回收），而非网络抖动或仓库不可达：如果是网络问题，报错会是 timeout/connection refused 而不是 Authentication failed\n\n已排除的干扰项：平台侧只有封装码 DEV-CODECI-35002「构建任务执行失败」，这是步骤失败后的统一封装，不能当作根因；本记录 evidence 里 missing=1，说明该测试任务自身的日志文件未被采集到，但整 job 日志 144 行完整、未截断，结论以整 job 日志为准",
+    "advice": "先把 hpckit-autotest 的 clone 凭据换成有效 access token，并以流水线凭据变量的方式注入，不要用明文账号密码；换完在同一个 runner 上手工 clone 一次验证权限已放开\n\n再在测试任务前置一步 git ls-remote 探活：探活失败就直接报「凭据失效并打印仓库地址与凭据别名」，不要让问题落到笼统的「构建任务执行失败」，否则每次都要人工回退整 job 日志\n\nHPCKit 各组件用的是同一个用例仓，凭据整改要覆盖 hmpi、kpex、kudnn、kupl、kuqcd 全部流水线，一次改完\n\n验证方式：用 #210 的参数重跑 hmpi 流水线，要求 clone 成功、用例统计 total 与 passed 均大于 0、脚本退出码为 0，日志中不再出现 Authentication failed 与 git clone test_cases code fail",
     "cites": [
-      "job_logs/07_hmpi_210_Test_hmpi.log:L138",
-      "job_logs/07_hmpi_210_Test_hmpi.log:L140",
-      "job_logs/07_hmpi_210_Test_hmpi.log:L144"
+      "job_logs/21_hmpi_210_Test_hmpi.log:L138",
+      "job_logs/21_hmpi_210_Test_hmpi.log:L140",
+      "job_logs/21_hmpi_210_Test_hmpi.log:L142",
+      "job_logs/21_hmpi_210_Test_hmpi.log:L144"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

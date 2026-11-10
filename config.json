@@ -38,21 +38,23 @@
   "collect": {
     "t1_page_size": 100,
     "nightly_detail_page_size": 10,
+    "detail_retry_times": 3,
+    "detail_retry_backoff_ms": [1000, 2000],
     "n2_page_size": 100,
     "t5_log_limit": 300,
     "t6_page_size": 100,
     "case_log_concurrency": 8,
     "case_log_timeout_ms": 60000,
-    "max_error_rows_per_case": 60,
+    "max_error_rows_per_case": 20,
     "max_error_msg_chars": 600,
     "big_file_threshold_bytes": 4000000,
     "export_poll_timeout_ms": 180000,
     "export_download_timeout_ms": 600000,
     "job_log_max_error_lines": 60,
     "excerpt_threshold_bytes": 5000000,
-    "excerpt_head_lines": 100,
-    "excerpt_error_max_lines": 3000,
-    "excerpt_tail_lines": 1500,
+    "excerpt_head_lines": 80,
+    "excerpt_error_max_lines": 400,
+    "excerpt_tail_lines": 400,
     "log_download_concurrency": 4
   },
   "cache": {
@@ -65,12 +67,13 @@
     "task_doc": "agent/agent_task.md"
   },
   "github": {
-    "_comment": "GitHub API 鉴权（platform=github 流水线的运行日志下载：GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs，302→zip）。classic PAT 勾选 public_repo 即可；仅本地保存，不写入任何报告。concurrency=并发采集的运行数（含 API 调用与 blob 下载）",
-    "token": "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",
+    "_comment": "GitHub API 鉴权（platform=github 流水线的运行日志下载：GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs，302→zip）。concurrency=并发采集的运行数（含 API 调用与 blob 下载）。【token 不要写在本文件】本文件在 git 里且仓库公开，ghp_ 开头的 token 写进来会被 GitHub secret scanning 自动吊销；token 放 config.local.json（已 gitignore）或环境变量 RCA_GH_TOKEN，repos 缺省时靠 N2 的 repoUrl 解析",
+    "token": "",
     "api_base": "https://api.github.com",
     "concurrency": 6,
     "repos": {
-      "vllm-ascend": "vllm-project/vllm-ascend"
+      "vllm-ascend": "vllm-project/vllm-ascend",
+      "SgLang": "sgl-project/sglang"
     }
   }
 }

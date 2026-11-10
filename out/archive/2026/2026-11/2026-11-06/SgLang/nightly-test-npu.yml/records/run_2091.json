@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:07:00",
+    "generatedAt": "2026-11-10 14:57:29",
     "component": "SgLang",
     "pipeline": "nightly-test-npu.yml",
     "date": "2026-11-06",
@@ -123,10 +123,15 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "两个任务（set-image-config、check-all-jobs）的运行平台侧日志均未留存（接口返回 404），归档内无任务日志与用例明细，只能依据作业元数据中 conclusion 与失败步骤判断为运行平台侧失败，具体原因无法确认。",
-    "advice": "补齐该流水线作业日志采集与留存（或延长日志保留期），并在采集到 404 时记录作业元数据快照；日志可用后再重新分析，本条证据不完整、置信度低。",
-    "cites": [],
-    "updatedAt": "2026-11-09 15:07:00",
+    "keyError": null,
+    "rootCause": "该 run 共 15 个 job、0 个失败 job，但构建 #2091 只在 17:45:35 到 17:45:38 存活了 3 秒就记 FAILED；失败的两个任务 set-image-config（id 127824131767）与 check-all-jobs（id 127824144289）在运行平台侧都已 404_not_retained，归档内 files=0、errorMessages 为空（records/run_2091.json）\n\n第一类（失败层级）：证据只到 job 层，两个任务都停在 404_not_retained，既没有步骤级日志也没有用例明细，失败点本身在归档里不存在\n\n第二类（时间特征）：3 秒内结束，连镜像拉取与容器启动都来不及完成，更像 runner 在分配或配置阶段就退出（set-image-config 正是写入镜像配置的入口任务），而不是测试脚本内部报错\n\n因此这条记录的真实原因无法从现有证据确认，只能给出层级与时间上的推断：失败集中在入口配置这一步，且异常发生在容器真正运行之前\n\n已排除的干扰项：cases 为 0、errorMessages 为 0，不存在被淹没的断言或精度失败；失败 job 列表为空，说明平台侧没把它算进 job 级失败，属流程级中断",
+    "advice": "先把日志留存补上，这是本条唯一能推进的事：向平台侧确认 set-image-config 与 check-all-jobs 这类短命任务为何 404_not_retained，要求至少保留入口任务的 stdout\n\n再按时间窗回查：用 17:45:35~17:45:38 这个窗口去查同一 runner 上当时的调度记录，3 秒内退出基本可以锁定在镜像配置或 runner 分配环节\n\n降低影响面：把 set-image-config 的失败改成显式「配置未生效」结论并中止后续 job，避免整条 nightly 只留下一个 3 秒的空失败\n\n验证方式：重跑该 nightly，要求 set-image-config 与 check-all-jobs 均有日志落盘且结论为 success，run 整体不出现 3 秒内中断的记录",
+    "cites": [
+      "records/run_2091.json"
+    ],
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

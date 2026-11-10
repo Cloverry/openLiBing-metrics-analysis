@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:07:00",
+    "generatedAt": "2026-11-10 14:57:29",
     "component": "SgLang",
     "pipeline": "nightly-test-npu.yml",
     "date": "2026-11-06",
@@ -57,7 +57,6 @@
         "L916: Traceback (most recent call last):",
         "L929: ##[error]Error: failed to run script step:",
         "L930: ✗ exit code: 1",
-        "L941: Traceback (most recent call last):",
         "L954: ##[error]Process completed with exit code 1.",
         "L955: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
       ],
@@ -89,7 +88,6 @@
         "L636: Traceback (most recent call last):",
         "L651: ##[error]Error: failed to run script step:",
         "L652: ✗ exit code: 1",
-        "L661: Traceback (most recent call last):",
         "L676: ##[error]Process completed with exit code 1.",
         "L677: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
       ],
@@ -121,7 +119,6 @@
         "L636: Traceback (most recent call last):",
         "L651: ##[error]Error: failed to run script step:",
         "L652: ✗ exit code: 1",
-        "L661: Traceback (most recent call last):",
         "L676: ##[error]Process completed with exit code 1.",
         "L677: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
       ],
@@ -165,13 +162,6 @@
     {
       "task": "nightly-1-npu-a3 / run (0)",
       "source": "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt",
-      "line": 941,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "nightly-1-npu-a3 / run (0)",
-      "source": "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt",
       "line": 954,
       "level": "LOG",
       "text": "##[error]Process completed with exit code 1."
@@ -207,13 +197,6 @@
     {
       "task": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
       "source": "github_logs/gh_42199356561/127830581265_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
-      "line": 661,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
-      "source": "github_logs/gh_42199356561/127830581265_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
       "line": 676,
       "level": "LOG",
       "text": "##[error]Process completed with exit code 1."
@@ -245,13 +228,6 @@
       "line": 652,
       "level": "LOG",
       "text": "✗ exit code: 1"
-    },
-    {
-      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
-      "source": "github_logs/gh_42199356561/127830581346_nightly-perf-16-npu-a3 _ nightly-perf~467fc30b.txt",
-      "line": 661,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
     },
     {
       "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
@@ -323,7 +299,7 @@
     "logTasks": 3,
     "buildTasks": 0,
     "cases": 0,
-    "errorMessages": 18,
+    "errorMessages": 15,
     "evidenceFiles": 3
   },
   "verdict": {
@@ -332,7 +308,7 @@
     "confidence": 0.7,
     "level": "中",
     "basis": [
-      "任务 nightly-1-npu-a3 / run (0) 日志命中 6 条错误行（非编译特征），见 github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt",
+      "任务 nightly-1-npu-a3 / run (0) 日志命中 5 条错误行（非编译特征），见 github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt",
       "基线 0.30",
       "证据文件落盘 3 份 +0.25",
       "任务日志命中错误行 +0.15"
@@ -341,14 +317,17 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "用例注册校验失败：ValueError: No CI registry found in .../kernels/ops/communication/test_mlu_communicator.py 与 .../kernels/ops/layernorm/test_layernorm_mlu.py，新增的 MLU 用例未在 CI registry 中登记，框架拒绝执行。",
-    "advice": "为上述 MLU 用例补充 CI registry 注册（注册装饰器或注册表条目），并在用例模板中默认带上注册，避免新增用例被判为未注册而整 job 失败。",
+    "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
+    "rootCause": "该 run 共 15 个 job、3 个失败，构建 #2093 从 18:00:53 跑到 18:38:37 记 FAILED；三个失败 job 是 nightly-1-npu-a3、nightly-acc-16-npu-a3、nightly-perf-16-npu-a3（records/run_2093.json）\n\n失败形态完全同构：15 条 errorMessages 正好是 3 个任务 × 5 行，每个任务都是 Traceback（L916）→ ##[error]Error: failed to run script step（L929）→ ✗ exit code: 1（L930）→ Process completed with exit code 1（L954）→ 容器实现执行失败（L955），没有任何一个任务留下异常类型或失败用例名（github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt:L916）\n\n这里能确定的只有两点：失败发生在任务脚本步骤这一层，且三个任务同时同形态，因此更像同一份脚本或同一入口在共同的前置步骤（环境准备、服务拉起）上出错，而不是三个任务各自的用例断言都失败\n\n与同日更早的 #2092 相比，那次留下了 ModuleNotFoundError、这次连异常正文都没有，说明脚本的失败路径上没有把 stderr 带出来，证据缺口比根因本身更值得先修\n\n已排除的干扰项：没有 pytest 汇总、没有 accuracy 断言、cases 为 0，用例根本没跑到判定阶段；日志里没有驱动、通信库或调度报错",
+    "advice": "先补可观测性：在 nightly 脚本入口加 set -x 与 trap，把失败时最后 50 行 stdout/stderr 打进日志，现在三个任务都只剩 exit code 1，下一次仍然无法定位\n\n再复现一次并盯入口：单独手动触发 nightly-1-npu-a3，看它在服务拉起前后哪一步退出；三个任务同形态失败，最可能出在它们共用的容器启动与环境准备段，优先查这一段\n\n修复后按任务分批重跑：先只跑 nightly-1-npu-a3 拿到真实异常，再放开 perf 与 acc 两个 16 卡任务，避免一次重跑三个大任务又都超时\n\n验证方式：重跑该 nightly，要求三个 a3 测试任务全部转通过、run 结论为 success，且日志中每个失败任务都能看到具体异常栈而不是只有 exit code 1",
     "cites": [
-      "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt:L927",
-      "github_logs/gh_42199356561/127830581265_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt:L647",
-      "github_logs/gh_42199356561/127830581346_nightly-perf-16-npu-a3 _ nightly-perf~467fc30b.txt:L647"
+      "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt:L916",
+      "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt:L955",
+      "records/run_2093.json"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

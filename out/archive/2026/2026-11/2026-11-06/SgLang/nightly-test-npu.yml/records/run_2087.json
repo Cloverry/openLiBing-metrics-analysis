@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:07:00",
+    "generatedAt": "2026-11-10 14:57:29",
     "component": "SgLang",
     "pipeline": "nightly-test-npu.yml",
     "date": "2026-11-06",
@@ -56,8 +56,6 @@
       "errorLines": [
         "L1988: [2026-11-06 01:45:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
         "L4629: Traceback (most recent call last):",
-        "L4662: Traceback (most recent call last):",
-        "L4673: Traceback (most recent call last):",
         "L4763: ##[error]Error: failed to run script step:",
         "L4764: ✗ exit code: 255",
         "L4788: ##[error]Process completed with exit code 1.",
@@ -90,20 +88,6 @@
       "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
       "source": "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt",
       "line": 4629,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
-      "source": "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt",
-      "line": 4662,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
-      "source": "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt",
-      "line": 4673,
       "level": "LOG",
       "text": "Traceback (most recent call last):"
     },
@@ -169,7 +153,7 @@
     "logTasks": 1,
     "buildTasks": 0,
     "cases": 0,
-    "errorMessages": 8,
+    "errorMessages": 6,
     "evidenceFiles": 1
   },
   "verdict": {
@@ -178,7 +162,7 @@
     "confidence": 0.7,
     "level": "中",
     "basis": [
-      "任务 nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3 日志命中 8 条错误行（非编译特征），见 github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt",
+      "任务 nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3 日志命中 6 条错误行（非编译特征），见 github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt",
       "基线 0.30",
       "证据文件落盘 1 份 +0.25",
       "任务日志命中错误行 +0.15"
@@ -187,14 +171,17 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "nightly-perf-16 的性能用例断言失败：实测 58.34 未小于等于阈值 51.0，性能不达标导致 job 失败；日志中另有 ImportError: cannot import name 'ResponseFunctionShellToolCall' 的依赖不匹配痕迹。",
-    "advice": "复核该模型本轮镜像/驱动下的实测指标与基线阈值来源，环境或配置变化时需刷新基线；同时固定 openai 依赖版本，避免导入错误掩盖真实性能结论。",
+    "keyError": "ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses'",
+    "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2087 从 09:35:37 跑到 10:10:44（约 35 分钟）记 FAILED；失败的是 nightly-perf-16-npu-a3，其余 14 个 job 通过（records/run_2087.json）\n\n第一类（明确报错点）：日志 L1988 直接写出 [2026-11-06 01:45:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))，说明镜像里的 openai 包版本比 sglang 代码要求的旧，服务侧 Responses 能力在初始化阶段就被禁用（github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt:L1988）\n\n第二类（退出链）：随后 L4629 Traceback → L4763 ##[error]Error: failed to run script step → L4764 ✗ exit code: 255 → L4788 Process completed with exit code 1 → L4789 容器实现执行失败，异常正文没进归档，但 255 这个退出码与依赖导入失败的表现一致\n\n同日 #2081、#2095、#2096、#2088、#2099 都带同一条 openai ImportError，说明这不是单条记录的偶发，而是当天 a3 镜像的统一版本问题，因此更像镜像依赖与 sglang 代码不匹配，而非这条性能用例本身逻辑错\n\n已排除的干扰项：cases 为 0、无 pytest 汇总与性能指标输出，用例没跑到测量阶段；另 14 个 job 同 run 通过，排除节点与 runner 整体故障",
+    "advice": "先修镜像依赖，这是当天六条记录的共同源头：把 openai 升到含 ResponseFunctionShellToolCall 的版本，或把 sglang 回退到与当前 openai 匹配的版本，并在 requirements 里写死下界，别让符号缺失每晚重演\n\n区分「能力被禁用」与「用例失败」：OpenAIServingResponses 初始化失败只会让 /v1/responses 走降级路径，若该用例依赖这条接口，就应在用例启动前显式断言接口可用并直接报清晰错误，而不是拖到 255 退出\n\n补异常留存：L4629 的 Traceback 正文要写进日志，现在只剩退出码，无法证伪「255 由依赖引起」这一推断\n\n验证方式：重跑该 nightly，要求日志中不再出现 ResponseFunctionShellToolCall 的 ImportError，且 nightly-perf-16-npu-a3 产出完整性能指标、run 结论为 success",
     "cites": [
-      "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt:L4654",
-      "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt:L4746",
-      "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt:L1988"
+      "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt:L1988",
+      "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt:L4764",
+      "records/run_2087.json"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

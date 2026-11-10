@@ -22,11 +22,23 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from lib.paths import ARCHIVE_ROOT, DATE_FIELD, iter_archive_days, rel  # noqa: E402
+from lib.paths import (ARCHIVE_ROOT, DATE_FIELD, iter_archive_days,  # noqa: E402
+                       iter_scoped_pipelines, rel, stale_pipeline_dirs)
 
 EVIDENCE_PREFIX = ("job_logs/", "case_logs/", "github_logs/")
 DATE_DIR_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 JSON_SUFFIX = ".json"
+# 引用里的行号定位后缀：:L138 / :138 / :L10-L20 / :10-L20
+CITE_LINE_RE = re.compile(r":L?\d+(?:-L?\d+)?$")
+
+
+def split_ref(s):
+    """把证据引用拆成 (文件相对路径, 行号定位)：'job_logs/x.log:L138' -> ('job_logs/x.log', 'L138')。"""
+    s = str(s or "")
+    m = CITE_LINE_RE.search(s)
+    if m:
+        return s[:m.start()], s[m.start() + 1:]
+    return s, ""
 
 
 def load_json(p):
@@ -108,7 +120,9 @@ def check_pipeline_dir(pdir):
         problems.append({"path": rel(pdir), "issue": "有记录文件但清单未登记: %s" % rid})
 
     # 证据层：所有 JSON 里引用的证据路径都要在本目录内存在
-    refs = set()
+    # 引用写法是「相对路径 + 行号定位」：job_logs/x.log:L138 / case_logs/y.html:L1662
+    # 行号只是定位指针，不是路径的一部分，校验前必须剥掉，否则会把全部引用误判为缺失。
+    refs = {}
     for jf in sorted(pdir.rglob("*" + JSON_SUFFIX)):
         if ".json" != jf.suffix:
             continue
@@ -118,12 +132,17 @@ def check_pipeline_dir(pdir):
             continue
         for s in iter_strings(payload):
             if s.startswith(EVIDENCE_PREFIX):
-                refs.add(s)
+                base, where = split_ref(s)
+                refs.setdefault(base, set()).add(where)
     stats["evidenceRefs"] = len(refs)
     for ref in sorted(refs):
         if not (pdir / ref).exists():
             stats["evidenceMissing"] += 1
-            problems.append({"path": rel(pdir), "issue": "证据文件缺失: %s" % ref})
+            where = sorted(x for x in refs[ref] if x)
+            problems.append({"path": rel(pdir),
+                             "issue": "证据文件缺失: %s（%d 处引用%s）"
+                                      % (ref, len(where) or 1,
+                                         "，如 " + where[0] if where else "")})
     return problems, stats
 
 
@@ -135,6 +154,7 @@ def main():
     args = ap.parse_args()
 
     problems = []
+    stale = []
     tot = {"days": 0, "pipelines": 0, "records": 0, "evidenceRefs": 0, "evidenceMissing": 0}
     for date, day_dir in iter_archive_days():
         if args.date and date != args.date:
@@ -148,23 +168,29 @@ def main():
                 load_json(dj)
             except Exception as exc:                           # noqa: BLE001
                 problems.append({"path": rel(dj), "issue": "日汇总不可解析: %s" % exc})
-        for comp in sorted(p for p in day_dir.iterdir() if p.is_dir()):
-            if args.component and comp.name != args.component:
+        if not DATE_DIR_RE.match(day_dir.name):
+            problems.append({"path": rel(day_dir), "issue": "日期目录命名不合规"})
+        for comp, pipe, pdir in stale_pipeline_dirs(day_dir):
+            if not args.component or comp == args.component:
+                stale.append(dict(path=rel(pdir), date=date, component=comp, pipeline=pipe))
+        for comp, pipe, pdir in iter_scoped_pipelines(day_dir):
+            if args.component and comp != args.component:
                 continue
-            for pdir in sorted(p for p in comp.iterdir() if p.is_dir()):
-                if not DATE_DIR_RE.match(day_dir.name):
-                    problems.append({"path": rel(day_dir), "issue": "日期目录命名不合规"})
-                tot["pipelines"] += 1
-                ps, stats = check_pipeline_dir(pdir)
-                problems += ps
-                for k in ("records", "evidenceRefs", "evidenceMissing"):
-                    tot[k] += stats[k]
+            tot["pipelines"] += 1
+            ps, stats = check_pipeline_dir(pdir)
+            problems += ps
+            for k in ("records", "evidenceRefs", "evidenceMissing"):
+                tot[k] += stats[k]
 
     ok = not problems
     print("== 归档自检 ==")
     print("日目录 %d | 流水线目录 %d | 执行记录 %d 条 | 证据引用 %d 个（缺失 %d）"
           % (tot["days"], tot["pipelines"], tot["records"],
              tot["evidenceRefs"], tot["evidenceMissing"]))
+    if stale:
+        print("注: %d 个目录不在当日 _day.json 口径内（旧版本/改名前残留），已跳过不计: %s"
+              % (len(stale), ", ".join(s["path"] for s in stale[:5])
+                 + ("…" if len(stale) > 5 else "")))
     print("结论: %s" % ("通过（结构与证据可逐条核对）" if ok else "发现 %d 个问题" % len(problems)))
     for p in problems[:30]:
         print("  !! %s -> %s" % (p["path"], p["issue"]))
@@ -176,7 +202,8 @@ def main():
         if not out.is_absolute():
             out = ROOT / args.json
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(json.dumps({"totals": tot, "ok": ok, "problems": problems},
+        out.write_text(json.dumps({"totals": tot, "ok": ok, "stale": stale,
+                                   "problems": problems},
                                   ensure_ascii=False, indent=1), encoding="utf-8")
         print("报告: %s" % out)
     return 0 if ok else 1

@@ -5,14 +5,14 @@
   "source": "openLiBing 流水线 N2 执行列表",
   "criteria": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）；仅保留工作日；VA 轨道=当日无 isVersionAvailable=true 的待查运行，BS 轨道=豁免日补圈的 Build* 失败运行",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-09 15:06:58",
+  "generatedAt": "2026-11-10 14:57:27",
   "component": "MindCluster",
   "pipeline": "MultimodalSDK",
   "date": "2026-11-06"
  },
  "dateRange": {
   "start": "2026-11-06",
-  "end": "2026-11-06"
+  "end": "2026-11-09"
  },
  "date": "2026-11-06",
  "dateBasis": {
@@ -35,6 +35,16 @@
    "endedDate": "2026-11-06",
    "included": true,
    "reason": "结束时间在归档日内，纳入当日归档记录（成功运行，只记录不取证）"
+  },
+  {
+   "rn": 79,
+   "pipelineRunId": "2b3270ba551645f6ba4265a854127cd8",
+   "start": "2026-11-08 23:30:44",
+   "end": "2026-11-09 00:33:52",
+   "status": "COMPLETED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
   }
  ],
  "runHistory": [
@@ -50,14 +60,28 @@
    "cpr": 100,
    "iva": true,
    "ftt": null
+  },
+  {
+   "rn": 79,
+   "start": "2026-11-08 23:30:44",
+   "end": "2026-11-09 00:33:52",
+   "status": "COMPLETED",
+   "rid": "2b3270ba551645f6ba4265a854127cd8",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=c39c0146a8b2492db59ec77bedb7170c&projectId=300038&pipelineRunId=2b3270ba551645f6ba4265a854127cd8",
+   "bc": 2,
+   "bpc": 2,
+   "cpr": 100,
+   "iva": true,
+   "ftt": null
   }
  ],
  "meta": {
   "workdays": [
-   "2026-11-06"
+   "2026-11-06",
+   "2026-11-09"
   ],
-  "workdayCount": 1,
-  "skippedNonWorkdayRuns": 0,
+  "workdayCount": 2,
+  "skippedNonWorkdayRuns": 123,
   "skippedRunningRuns": 0,
   "workdayNotes": [
    "法定工作日历: timor.tech API（1 年）"
@@ -68,6 +92,6 @@
  },
  "keptRuns": 1,
  "keptFailedRuns": 0,
- "excludedRuns": 0,
+ "excludedRuns": 1,
  "note": "当日全部 1 次运行均为成功，只归档记录、无需根因分析"
 }

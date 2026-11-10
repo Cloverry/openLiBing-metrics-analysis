@@ -5,7 +5,7 @@
   "source": "openLiBing 任务日志导出/分页接口",
   "criteria": "对每个失败任务导出整份日志落 job_logs/，并按关键字扫描错误行",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-09 15:06:59",
+  "generatedAt": "2026-11-10 14:57:28",
   "component": "HPCKit",
   "pipeline": "kupl",
   "date": "2026-11-06"
@@ -25,15 +25,18 @@
     "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
    ],
    "jobErrMsg": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
-   "logFile": "job_logs/09_kupl_297_Test_kupl.log",
-   "logBytes": 1385,
-   "logLines": 13,
-   "download": "paging",
-   "truncated": true,
+   "logFile": "job_logs/19_kupl_297_Test_kupl.log",
+   "logBytes": 16562,
+   "logLines": 144,
+   "download": "export",
+   "truncated": false,
    "excerpt": null,
    "errorLines": [
-    "L11: [2026/11/06 00:02:23.210 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : [frame] query step status with error.",
-    "L12: [2026/11/06 00:02:23.210 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : 错误信息: DEV-CODECI-35002, 构建任务执行失败!"
+    "L138: [2026/11/06 00:02:22.408 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+    "L139: [2026/11/06 00:02:22.408 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'",
+    "L140: [2026/11/06 00:02:22.408 GMT+08:00] [ERROR] git clone test_cases code fail",
+    "L142: [2026/11/06 00:02:22.581 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed",
+    "L144: [2026/11/06 00:02:28.047 GMT+08:00] Finished: FAILURE"
    ]
   },
   {
@@ -50,15 +53,18 @@
     "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
    ],
    "jobErrMsg": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
-   "logFile": "job_logs/08_kupl_298_Test_kupl.log",
-   "logBytes": 1385,
-   "logLines": 13,
-   "download": "paging",
-   "truncated": true,
+   "logFile": "job_logs/17_kupl_298_Test_kupl.log",
+   "logBytes": 16556,
+   "logLines": 144,
+   "download": "export",
+   "truncated": false,
    "excerpt": null,
    "errorLines": [
-    "L11: [2026/11/06 12:02:04.212 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : [frame] query step status with error.",
-    "L12: [2026/11/06 12:02:04.213 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : 错误信息: DEV-CODECI-35002, 构建任务执行失败!"
+    "L138: [2026/11/06 12:02:02.448 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+    "L139: [2026/11/06 12:02:02.448 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'",
+    "L140: [2026/11/06 12:02:02.448 GMT+08:00] [ERROR] git clone test_cases code fail",
+    "L142: [2026/11/06 12:02:02.625 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed",
+    "L144: [2026/11/06 12:02:05.000 GMT+08:00] Finished: FAILURE"
    ]
   },
   {
@@ -75,7 +81,7 @@
     "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
    ],
    "jobErrMsg": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
-   "logFile": "job_logs/04_kupl_299_Test_kupl.log",
+   "logFile": "job_logs/23_kupl_299_Test_kupl.log",
    "logBytes": 16559,
    "logLines": 144,
    "download": "export",
@@ -94,6 +100,6 @@
  "counts": {
   "tasks": 3,
   "logFiles": 3,
-  "errorLines": 9
+  "errorLines": 15
  }
 }

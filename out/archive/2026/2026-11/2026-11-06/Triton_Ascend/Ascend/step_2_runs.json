@@ -5,14 +5,14 @@
   "source": "openLiBing 流水线 N2 执行列表",
   "criteria": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）；仅保留工作日；VA 轨道=当日无 isVersionAvailable=true 的待查运行，BS 轨道=豁免日补圈的 Build* 失败运行",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-09 15:06:59",
+  "generatedAt": "2026-11-10 14:57:28",
   "component": "Triton_Ascend",
   "pipeline": "Ascend",
   "date": "2026-11-06"
  },
  "dateRange": {
   "start": "2026-11-06",
-  "end": "2026-11-06"
+  "end": "2026-11-09"
  },
  "date": "2026-11-06",
  "dateBasis": {
@@ -64,6 +64,46 @@
    "endedDate": "2026-11-06",
    "included": true,
    "reason": "结束时间在归档日内，纳入当日归档记录（成功运行，只记录不取证）"
+  },
+  {
+   "rn": 112,
+   "pipelineRunId": "96a087f10810405698c122a664133624",
+   "start": "2026-11-09 20:14:30",
+   "end": "2026-11-09 23:18:49",
+   "status": "COMPLETED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
+  },
+  {
+   "rn": 111,
+   "pipelineRunId": "62cc944395914c9abb782d42f0da826c",
+   "start": "2026-11-09 17:00:54",
+   "end": "2026-11-09 21:50:27",
+   "status": "COMPLETED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
+  },
+  {
+   "rn": 110,
+   "pipelineRunId": "24cb84933b7b4b82909be4c0a3db5f1e",
+   "start": "2026-11-09 11:26:58",
+   "end": "2026-11-09 12:50:39",
+   "status": "COMPLETED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
+  },
+  {
+   "rn": 109,
+   "pipelineRunId": "9648b52e519e48dfb11a9450b10a1667",
+   "start": "2026-11-09 08:00:05",
+   "end": "2026-11-09 09:11:40",
+   "status": "COMPLETED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
   }
  ],
  "runHistory": [
@@ -92,14 +132,67 @@
    "cpr": 99.81,
    "iva": false,
    "ftt": null
+  },
+  {
+   "rn": 112,
+   "start": "2026-11-09 20:14:30",
+   "end": "2026-11-09 23:18:49",
+   "status": "COMPLETED",
+   "rid": "96a087f10810405698c122a664133624",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=9a4886d40e544cecb7da63c9597490a6&projectId=300130&pipelineRunId=96a087f10810405698c122a664133624",
+   "bc": 12,
+   "bpc": 12,
+   "cpr": 100,
+   "iva": true,
+   "ftt": null
+  },
+  {
+   "rn": 111,
+   "start": "2026-11-09 17:00:54",
+   "end": "2026-11-09 21:50:27",
+   "status": "COMPLETED",
+   "rid": "62cc944395914c9abb782d42f0da826c",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=9a4886d40e544cecb7da63c9597490a6&projectId=300130&pipelineRunId=62cc944395914c9abb782d42f0da826c",
+   "bc": 12,
+   "bpc": 12,
+   "cpr": 99.91,
+   "iva": false,
+   "ftt": null
+  },
+  {
+   "rn": 110,
+   "start": "2026-11-09 11:26:58",
+   "end": "2026-11-09 12:50:39",
+   "status": "COMPLETED",
+   "rid": "24cb84933b7b4b82909be4c0a3db5f1e",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=9a4886d40e544cecb7da63c9597490a6&projectId=300130&pipelineRunId=24cb84933b7b4b82909be4c0a3db5f1e",
+   "bc": 12,
+   "bpc": 12,
+   "cpr": 100,
+   "iva": true,
+   "ftt": null
+  },
+  {
+   "rn": 109,
+   "start": "2026-11-09 08:00:05",
+   "end": "2026-11-09 09:11:40",
+   "status": "COMPLETED",
+   "rid": "9648b52e519e48dfb11a9450b10a1667",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=9a4886d40e544cecb7da63c9597490a6&projectId=300130&pipelineRunId=9648b52e519e48dfb11a9450b10a1667",
+   "bc": 12,
+   "bpc": 12,
+   "cpr": 98.62,
+   "iva": false,
+   "ftt": null
   }
  ],
  "meta": {
   "workdays": [
-   "2026-11-06"
+   "2026-11-06",
+   "2026-11-09"
   ],
-  "workdayCount": 1,
-  "skippedNonWorkdayRuns": 0,
+  "workdayCount": 2,
+  "skippedNonWorkdayRuns": 123,
   "skippedRunningRuns": 0,
   "workdayNotes": [
    "法定工作日历: timor.tech API（1 年）"
@@ -110,6 +203,6 @@
  },
  "keptRuns": 2,
  "keptFailedRuns": 1,
- "excludedRuns": 0,
+ "excludedRuns": 4,
  "note": null
 }

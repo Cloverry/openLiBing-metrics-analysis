@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:06:59",
+    "generatedAt": "2026-11-10 14:57:28",
     "component": "vllm-ascend",
     "pipeline": "a3.yaml",
     "date": "2026-11-06",
@@ -58,11 +58,7 @@
         "L1698: ✗ exit code: 1",
         "L1719: ##[error]Process completed with exit code 1.",
         "L1720: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
-        "L2176: ##[error]Upload failed. See log:",
-        "L2194: ##[error]Error: failed to run script step:",
-        "L2195: ✗ exit code: 1",
-        "L2212: ##[error]Process completed with exit code 1.",
-        "L2213: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+        "L2176: ##[error]Upload failed. See log:"
       ],
       "githubJob": {
         "id": 127658421341,
@@ -95,11 +91,7 @@
         "L1662: ✗ exit code: 1",
         "L1683: ##[error]Process completed with exit code 1.",
         "L1684: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
-        "L2137: ##[error]Upload failed. See log:",
-        "L2155: ##[error]Error: failed to run script step:",
-        "L2156: ✗ exit code: 1",
-        "L2173: ##[error]Process completed with exit code 1.",
-        "L2174: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+        "L2137: ##[error]Upload failed. See log:"
       ],
       "githubJob": {
         "id": 127658421368,
@@ -132,11 +124,7 @@
         "L1662: ✗ exit code: 1",
         "L1683: ##[error]Process completed with exit code 1.",
         "L1684: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
-        "L2135: ##[error]Upload failed. See log:",
-        "L2153: ##[error]Error: failed to run script step:",
-        "L2154: ✗ exit code: 1",
-        "L2171: ##[error]Process completed with exit code 1.",
-        "L2172: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+        "L2135: ##[error]Upload failed. See log:"
       ],
       "githubJob": {
         "id": 127658421393,
@@ -169,11 +157,7 @@
         "L1672: ✗ exit code: 1",
         "L1696: ##[error]Process completed with exit code 1.",
         "L1697: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
-        "L2156: ##[error]Upload failed. See log:",
-        "L2174: ##[error]Error: failed to run script step:",
-        "L2175: ✗ exit code: 1",
-        "L2192: ##[error]Process completed with exit code 1.",
-        "L2193: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+        "L2156: ##[error]Upload failed. See log:"
       ],
       "githubJob": {
         "id": 127666174989,
@@ -206,11 +190,7 @@
         "L1675: ✗ exit code: 1",
         "L1699: ##[error]Process completed with exit code 1.",
         "L1700: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
-        "L2157: ##[error]Upload failed. See log:",
-        "L2175: ##[error]Error: failed to run script step:",
-        "L2176: ✗ exit code: 1",
-        "L2193: ##[error]Process completed with exit code 1.",
-        "L2194: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+        "L2157: ##[error]Upload failed. See log:"
       ],
       "githubJob": {
         "id": 127666387038,
@@ -243,11 +223,7 @@
         "L1701: ✗ exit code: 1",
         "L1725: ##[error]Process completed with exit code 1.",
         "L1726: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
-        "L2193: ##[error]Upload failed. See log:",
-        "L2211: ##[error]Error: failed to run script step:",
-        "L2212: ✗ exit code: 1",
-        "L2229: ##[error]Process completed with exit code 1.",
-        "L2230: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
+        "L2193: ##[error]Upload failed. See log:"
       ],
       "githubJob": {
         "id": 127674400137,
@@ -303,34 +279,6 @@
       "text": "##[error]Upload failed. See log:"
     },
     {
-      "task": "double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C8-MTP-A3_198k_function, GLM-5.1-W8A8C8-A... / GLM-5.1-W8A8C8-A3_198k_function.yaml",
-      "source": "github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt",
-      "line": 2194,
-      "level": "LOG",
-      "text": "##[error]Error: failed to run script step:"
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C8-MTP-A3_198k_function, GLM-5.1-W8A8C8-A... / GLM-5.1-W8A8C8-A3_198k_function.yaml",
-      "source": "github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt",
-      "line": 2195,
-      "level": "LOG",
-      "text": "✗ exit code: 1"
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C8-MTP-A3_198k_function, GLM-5.1-W8A8C8-A... / GLM-5.1-W8A8C8-A3_198k_function.yaml",
-      "source": "github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt",
-      "line": 2212,
-      "level": "LOG",
-      "text": "##[error]Process completed with exit code 1."
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C8-MTP-A3_198k_function, GLM-5.1-W8A8C8-A... / GLM-5.1-W8A8C8-A3_198k_function.yaml",
-      "source": "github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt",
-      "line": 2213,
-      "level": "LOG",
-      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
-    },
-    {
       "task": "double-node (releases-v0.32.0rc, Kimi-K2.6-W4A8-64k-1k-TPOT50-PD, Kimi-K2.6-W4A8-64k-1k-TPOT50-PD... / Kimi-K2.6-W4A8-64k-1k-TPOT50-PD.yaml",
       "source": "github_logs/gh_42099201193/14_double-node (releases-v0.32.0rc, Kimi-K2.6-W4A8-64k-1k-TP~7cba63.txt",
       "line": 1661,
@@ -364,34 +312,6 @@
       "line": 2137,
       "level": "LOG",
       "text": "##[error]Upload failed. See log:"
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, Kimi-K2.6-W4A8-64k-1k-TPOT50-PD, Kimi-K2.6-W4A8-64k-1k-TPOT50-PD... / Kimi-K2.6-W4A8-64k-1k-TPOT50-PD.yaml",
-      "source": "github_logs/gh_42099201193/14_double-node (releases-v0.32.0rc, Kimi-K2.6-W4A8-64k-1k-TP~7cba63.txt",
-      "line": 2155,
-      "level": "LOG",
-      "text": "##[error]Error: failed to run script step:"
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, Kimi-K2.6-W4A8-64k-1k-TPOT50-PD, Kimi-K2.6-W4A8-64k-1k-TPOT50-PD... / Kimi-K2.6-W4A8-64k-1k-TPOT50-PD.yaml",
-      "source": "github_logs/gh_42099201193/14_double-node (releases-v0.32.0rc, Kimi-K2.6-W4A8-64k-1k-TP~7cba63.txt",
-      "line": 2156,
-      "level": "LOG",
-      "text": "✗ exit code: 1"
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, Kimi-K2.6-W4A8-64k-1k-TPOT50-PD, Kimi-K2.6-W4A8-64k-1k-TPOT50-PD... / Kimi-K2.6-W4A8-64k-1k-TPOT50-PD.yaml",
-      "source": "github_logs/gh_42099201193/14_double-node (releases-v0.32.0rc, Kimi-K2.6-W4A8-64k-1k-TP~7cba63.txt",
-      "line": 2173,
-      "level": "LOG",
-      "text": "##[error]Process completed with exit code 1."
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, Kimi-K2.6-W4A8-64k-1k-TPOT50-PD, Kimi-K2.6-W4A8-64k-1k-TPOT50-PD... / Kimi-K2.6-W4A8-64k-1k-TPOT50-PD.yaml",
-      "source": "github_logs/gh_42099201193/14_double-node (releases-v0.32.0rc, Kimi-K2.6-W4A8-64k-1k-TP~7cba63.txt",
-      "line": 2174,
-      "level": "LOG",
-      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
     },
     {
       "task": "double-node (releases-v0.32.0rc, GLM-5.3-Flash-W8A8-130k-PD, GLM-5.3-Flash-W8A8-130k-PD.yaml, tes... / GLM-5.3-Flash-W8A8-130k-PD.yaml",
@@ -429,34 +349,6 @@
       "text": "##[error]Upload failed. See log:"
     },
     {
-      "task": "double-node (releases-v0.32.0rc, GLM-5.3-Flash-W8A8-130k-PD, GLM-5.3-Flash-W8A8-130k-PD.yaml, tes... / GLM-5.3-Flash-W8A8-130k-PD.yaml",
-      "source": "github_logs/gh_42099201193/16_double-node (releases-v0.32.0rc, GLM-5.3-Flash-W8A8-130k-~ac985e.txt",
-      "line": 2153,
-      "level": "LOG",
-      "text": "##[error]Error: failed to run script step:"
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, GLM-5.3-Flash-W8A8-130k-PD, GLM-5.3-Flash-W8A8-130k-PD.yaml, tes... / GLM-5.3-Flash-W8A8-130k-PD.yaml",
-      "source": "github_logs/gh_42099201193/16_double-node (releases-v0.32.0rc, GLM-5.3-Flash-W8A8-130k-~ac985e.txt",
-      "line": 2154,
-      "level": "LOG",
-      "text": "✗ exit code: 1"
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, GLM-5.3-Flash-W8A8-130k-PD, GLM-5.3-Flash-W8A8-130k-PD.yaml, tes... / GLM-5.3-Flash-W8A8-130k-PD.yaml",
-      "source": "github_logs/gh_42099201193/16_double-node (releases-v0.32.0rc, GLM-5.3-Flash-W8A8-130k-~ac985e.txt",
-      "line": 2171,
-      "level": "LOG",
-      "text": "##[error]Process completed with exit code 1."
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, GLM-5.3-Flash-W8A8-130k-PD, GLM-5.3-Flash-W8A8-130k-PD.yaml, tes... / GLM-5.3-Flash-W8A8-130k-PD.yaml",
-      "source": "github_logs/gh_42099201193/16_double-node (releases-v0.32.0rc, GLM-5.3-Flash-W8A8-130k-~ac985e.txt",
-      "line": 2172,
-      "level": "LOG",
-      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
-    },
-    {
       "task": "double-node (releases-v0.32.0rc, Minimax_m2.7_in128k_1k_prefix90_tpot50, Minimax_m2.7_in128k_1k_p... / Minimax_m2.7_in128k_1k_prefix90_tpot50.yaml",
       "source": "github_logs/gh_42099201193/12_double-node (releases-v0.32.0rc, Minimax_m2.7_in128k_1k_p~d3bb9d.txt",
       "line": 1671,
@@ -490,34 +382,6 @@
       "line": 2156,
       "level": "LOG",
       "text": "##[error]Upload failed. See log:"
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, Minimax_m2.7_in128k_1k_prefix90_tpot50, Minimax_m2.7_in128k_1k_p... / Minimax_m2.7_in128k_1k_prefix90_tpot50.yaml",
-      "source": "github_logs/gh_42099201193/12_double-node (releases-v0.32.0rc, Minimax_m2.7_in128k_1k_p~d3bb9d.txt",
-      "line": 2174,
-      "level": "LOG",
-      "text": "##[error]Error: failed to run script step:"
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, Minimax_m2.7_in128k_1k_prefix90_tpot50, Minimax_m2.7_in128k_1k_p... / Minimax_m2.7_in128k_1k_prefix90_tpot50.yaml",
-      "source": "github_logs/gh_42099201193/12_double-node (releases-v0.32.0rc, Minimax_m2.7_in128k_1k_p~d3bb9d.txt",
-      "line": 2175,
-      "level": "LOG",
-      "text": "✗ exit code: 1"
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, Minimax_m2.7_in128k_1k_prefix90_tpot50, Minimax_m2.7_in128k_1k_p... / Minimax_m2.7_in128k_1k_prefix90_tpot50.yaml",
-      "source": "github_logs/gh_42099201193/12_double-node (releases-v0.32.0rc, Minimax_m2.7_in128k_1k_p~d3bb9d.txt",
-      "line": 2192,
-      "level": "LOG",
-      "text": "##[error]Process completed with exit code 1."
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, Minimax_m2.7_in128k_1k_prefix90_tpot50, Minimax_m2.7_in128k_1k_p... / Minimax_m2.7_in128k_1k_prefix90_tpot50.yaml",
-      "source": "github_logs/gh_42099201193/12_double-node (releases-v0.32.0rc, Minimax_m2.7_in128k_1k_p~d3bb9d.txt",
-      "line": 2193,
-      "level": "LOG",
-      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
     },
     {
       "task": "double-node (releases-v0.32.0rc, DeepSeek-V4.1-Flash-w8a8-PD-MRV2, DeepSeek-V4.1-Flash-w8a8-PD-MR... / DeepSeek-V4.1-Flash-w8a8-PD-MRV2.yaml",
@@ -555,34 +419,6 @@
       "text": "##[error]Upload failed. See log:"
     },
     {
-      "task": "double-node (releases-v0.32.0rc, DeepSeek-V4.1-Flash-w8a8-PD-MRV2, DeepSeek-V4.1-Flash-w8a8-PD-MR... / DeepSeek-V4.1-Flash-w8a8-PD-MRV2.yaml",
-      "source": "github_logs/gh_42099201193/10_double-node (releases-v0.32.0rc, DeepSeek-V4.1-Flash-w8a8~a26fdd.txt",
-      "line": 2175,
-      "level": "LOG",
-      "text": "##[error]Error: failed to run script step:"
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, DeepSeek-V4.1-Flash-w8a8-PD-MRV2, DeepSeek-V4.1-Flash-w8a8-PD-MR... / DeepSeek-V4.1-Flash-w8a8-PD-MRV2.yaml",
-      "source": "github_logs/gh_42099201193/10_double-node (releases-v0.32.0rc, DeepSeek-V4.1-Flash-w8a8~a26fdd.txt",
-      "line": 2176,
-      "level": "LOG",
-      "text": "✗ exit code: 1"
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, DeepSeek-V4.1-Flash-w8a8-PD-MRV2, DeepSeek-V4.1-Flash-w8a8-PD-MR... / DeepSeek-V4.1-Flash-w8a8-PD-MRV2.yaml",
-      "source": "github_logs/gh_42099201193/10_double-node (releases-v0.32.0rc, DeepSeek-V4.1-Flash-w8a8~a26fdd.txt",
-      "line": 2193,
-      "level": "LOG",
-      "text": "##[error]Process completed with exit code 1."
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, DeepSeek-V4.1-Flash-w8a8-PD-MRV2, DeepSeek-V4.1-Flash-w8a8-PD-MR... / DeepSeek-V4.1-Flash-w8a8-PD-MRV2.yaml",
-      "source": "github_logs/gh_42099201193/10_double-node (releases-v0.32.0rc, DeepSeek-V4.1-Flash-w8a8~a26fdd.txt",
-      "line": 2194,
-      "level": "LOG",
-      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
-    },
-    {
       "task": "double-node (releases-v0.32.0rc, DeepSeek-V4-flash-w8a8-PD-prefix-MRV2, DeepSeek-V4-flash-w8a8-PD... / DeepSeek-V4-flash-w8a8-PD-prefix-MRV2.yaml",
       "source": "github_logs/gh_42099201193/9_double-node (releases-v0.32.0rc, DeepSeek-V4-flash-w8a8-PD~166bcd.txt",
       "line": 1700,
@@ -616,34 +452,6 @@
       "line": 2193,
       "level": "LOG",
       "text": "##[error]Upload failed. See log:"
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, DeepSeek-V4-flash-w8a8-PD-prefix-MRV2, DeepSeek-V4-flash-w8a8-PD... / DeepSeek-V4-flash-w8a8-PD-prefix-MRV2.yaml",
-      "source": "github_logs/gh_42099201193/9_double-node (releases-v0.32.0rc, DeepSeek-V4-flash-w8a8-PD~166bcd.txt",
-      "line": 2211,
-      "level": "LOG",
-      "text": "##[error]Error: failed to run script step:"
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, DeepSeek-V4-flash-w8a8-PD-prefix-MRV2, DeepSeek-V4-flash-w8a8-PD... / DeepSeek-V4-flash-w8a8-PD-prefix-MRV2.yaml",
-      "source": "github_logs/gh_42099201193/9_double-node (releases-v0.32.0rc, DeepSeek-V4-flash-w8a8-PD~166bcd.txt",
-      "line": 2212,
-      "level": "LOG",
-      "text": "✗ exit code: 1"
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, DeepSeek-V4-flash-w8a8-PD-prefix-MRV2, DeepSeek-V4-flash-w8a8-PD... / DeepSeek-V4-flash-w8a8-PD-prefix-MRV2.yaml",
-      "source": "github_logs/gh_42099201193/9_double-node (releases-v0.32.0rc, DeepSeek-V4-flash-w8a8-PD~166bcd.txt",
-      "line": 2229,
-      "level": "LOG",
-      "text": "##[error]Process completed with exit code 1."
-    },
-    {
-      "task": "double-node (releases-v0.32.0rc, DeepSeek-V4-flash-w8a8-PD-prefix-MRV2, DeepSeek-V4-flash-w8a8-PD... / DeepSeek-V4-flash-w8a8-PD-prefix-MRV2.yaml",
-      "source": "github_logs/gh_42099201193/9_double-node (releases-v0.32.0rc, DeepSeek-V4-flash-w8a8-PD~166bcd.txt",
-      "line": 2230,
-      "level": "LOG",
-      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
     }
   ],
   "evidence": {
@@ -734,7 +542,7 @@
     "logTasks": 6,
     "buildTasks": 0,
     "cases": 0,
-    "errorMessages": 54,
+    "errorMessages": 30,
     "evidenceFiles": 6
   },
   "verdict": {
@@ -743,7 +551,7 @@
     "confidence": 0.7,
     "level": "中",
     "basis": [
-      "任务 double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C8-MTP-A3_198k_function, GLM-5.1-W8A8C8-A... / GLM-5.1-W8A8C8-A3_198k_function.yaml 日志命中 9 条错误行（非编译特征），见 github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt",
+      "任务 double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C8-MTP-A3_198k_function, GLM-5.1-W8A8C8-A... / GLM-5.1-W8A8C8-A3_198k_function.yaml 日志命中 5 条错误行（非编译特征），见 github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt",
       "基线 0.30",
       "证据文件落盘 6 份 +0.25",
       "任务日志命中错误行 +0.15"
@@ -752,14 +560,17 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "6 个测试 job 均在同一失败形态下结束：测试脚本步骤失败并返回 exit code: 1，随后 Process completed with exit code 1 与 Upload failed；日志中缺少脚本内部真实报错，无法确认是环境准备、模型拉起还是用例断言导致。",
-    "advice": "保留脚本步骤完整输出并加失败阶段标记（准备/拉起/用例/上传），同时对 6 个 case 分别单跑以区分共性问题（镜像或依赖）与个别模型问题。",
+    "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
+    "rootCause": "该 run 共 25 个 job、6 个失败，构建 #16451 从 07:38:30 跑到 11:24:05（约 3 小时 45 分钟）记 FAILED；6 个失败 job 全部是 double-node 形态，分别对应 GLM-5.1-W8A8C8-A3_198k_function、Kimi-K2.6-W4A8-64k-1k-TPOT50-PD、GLM-5.3-Flash-W8A8-130k-PD、Minimax_m2.7_in128k_1k_prefix90_tpot50、DeepSeek-V4.1-Flash-w8a8-PD-MRV2、DeepSeek-V4-flash-w8a8-PD-prefix-MRV2（records/run_16451.json）\n\n第一类（关键结构信息）：6 个失败 job 的失败步骤同样是 Wait for pods ready，Pod 未就绪导致超时，用例脚本没开始跑\n\n第二类（日志退出链）：以 GLM-5.1-W8A8C8-A3_198k_function 为例，L1697 ##[error]Error: failed to run script step → L1698 ✗ exit code: 1 → L1719 Process completed with exit code 1 → L1720 容器实现执行失败，L2176 另有 ##[error]Upload failed. See log:（github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt:L1697）\n\n本次失败全部集中在 double-node 形态、且分支是 releases-v0.32.0rc，与 #16450 的 multi-node/double-node 混合失败不同：更像该 release 分支的 double-node 部署模板（每模型 2 节点）在 Pod 编排上有共同问题，而不是单模型配置错\n\n已排除的干扰项：Upload failed 与容器实现执行失败都是退出后的连带；cases 为 0，无用例级断言；同 run 另有 19 个 job 通过，排除集群整体不可用",
+    "advice": "按形态归因而非按模型：6 个失败全是 double-node + releases-v0.32.0rc，优先核对这条分支的 double-node 部署模板（Pod 数量、资源申请、节点选择器），而不是逐个模型查配置\n\n与 #16450 对照：同一个 a3.yaml、同一天、失败步骤同为 Wait for pods ready，说明这不是偶发，建议把两类失败合并成一条「Pod 就绪超时」的专项跟踪\n\n补可观测性：Wait for pods ready 超时时要输出 Pod 的 Events 与 pending 原因，现在只剩 exit code 1\n\n验证方式：重跑该 nightly，要求 6 个 double-node job 的 Wait for pods ready 通过、用例实际执行并产出结果、run 结论为 success",
     "cites": [
       "github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt:L1697",
-      "github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt:L2176",
-      "github_logs/gh_42099201193/14_double-node (releases-v0.32.0rc, Kimi-K2.6-W4A8-64k-1k-TP~7cba63.txt:L1661"
+      "github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt:L1698",
+      "records/run_16451.json"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

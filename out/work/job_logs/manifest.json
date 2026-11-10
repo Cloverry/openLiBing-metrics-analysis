@@ -1,6 +1,6 @@
 {
  "9ae1e7dda41c4a78957a5ba09d2e5b3c|5b0ba7feedf147a0a53594304b3c15b2": {
-  "file": "01_Ascend_104_npu_ir流水线调用.log",
+  "file": "16_Ascend_104_npu_ir流水线调用.log",
   "bytes": 18857,
   "lines": 187,
   "download": "export",
@@ -10,7 +10,7 @@
   "jobName": "npu_ir流水线调用"
  },
  "b999f6d751f64801844e50b47bf9bd3b|ef833019ca2447c88170b4b84cecf5a6": {
-  "file": "02_kudnn_224_Test_kudnn.log",
+  "file": "18_kudnn_224_Test_kudnn.log",
   "bytes": 16567,
   "lines": 144,
   "download": "export",
@@ -20,7 +20,7 @@
   "jobName": "Test_kudnn"
  },
  "a36fec8406ed4de9ba4f868015c8f8e0|51106a4afa194c74bdb0e822b05d6863": {
-  "file": "03_kuqcd_198_Test_quqcd.log",
+  "file": "20_kuqcd_198_Test_quqcd.log",
   "bytes": 16559,
   "lines": 144,
   "download": "export",
@@ -30,7 +30,7 @@
   "jobName": "Test_quqcd"
  },
  "83e34fe2e1184610959638c360c41c45|bb4373a54d9a4cc2b52a53177f551672": {
-  "file": "04_kupl_299_Test_kupl.log",
+  "file": "23_kupl_299_Test_kupl.log",
   "bytes": 16559,
   "lines": 144,
   "download": "export",
@@ -40,7 +40,7 @@
   "jobName": "Test_kupl"
  },
  "08890715f1e8442288cc08c1b92cc7b0|1f0b204bb4994e47ae518ba383a72705": {
-  "file": "05_kpex_139_Test_kpex.log",
+  "file": "22_kpex_139_Test_kpex.log",
   "bytes": 16559,
   "lines": 144,
   "download": "export",
@@ -50,7 +50,7 @@
   "jobName": "Test_kpex"
  },
  "9ae1e7dda41c4a78957a5ba09d2e5b3c|2f8ebba6f3024d659e6f27bd51a95b98": {
-  "file": "06_Ascend_104_Test_Triton_Ascend.log",
+  "file": "24_Ascend_104_Test_Triton_Ascend.log",
   "bytes": 12641,
   "lines": 130,
   "download": "export",
@@ -60,7 +60,7 @@
   "jobName": "Test_Triton_Ascend"
  },
  "9c42f33ef29645839271036fce5cfe60|52332eeed4bb46beb6dafb03d2aa1730": {
-  "file": "07_hmpi_210_Test_hmpi.log",
+  "file": "21_hmpi_210_Test_hmpi.log",
   "bytes": 16562,
   "lines": 144,
   "download": "export",
@@ -70,23 +70,83 @@
   "jobName": "Test_hmpi"
  },
  "0323dea18d954ecea0b5cc44c1c34696|878efef62881418ab98220513a834dfc": {
-  "file": "08_kupl_298_Test_kupl.log",
-  "bytes": 1385,
-  "lines": 13,
-  "download": "paging",
-  "truncated": true,
+  "file": "17_kupl_298_Test_kupl.log",
+  "bytes": 16556,
+  "lines": 144,
+  "download": "export",
+  "truncated": false,
   "excerpt": null,
   "rn": 298,
   "jobName": "Test_kupl"
  },
  "d0720a2f2a054736a8966e49063b89dc|4045c06725184de7b48a42da6c8d440f": {
-  "file": "09_kupl_297_Test_kupl.log",
-  "bytes": 1385,
-  "lines": 13,
-  "download": "paging",
-  "truncated": true,
+  "file": "19_kupl_297_Test_kupl.log",
+  "bytes": 16562,
+  "lines": 144,
+  "download": "export",
+  "truncated": false,
   "excerpt": null,
   "rn": 297,
   "jobName": "Test_kupl"
+ },
+ "35c821a147eb4aee80d6703eb422ca12|56c06bf142de495ea9ff164606f43f5d": {
+  "file": "26_kudnn_227_Test_kudnn.log",
+  "bytes": 16565,
+  "lines": 144,
+  "download": "export",
+  "truncated": false,
+  "excerpt": null,
+  "rn": 227,
+  "jobName": "Test_kudnn"
+ },
+ "1d9de9577bf44a6bb63b1c43cbf44afb|578a07179f064a07bf84835cda0c28b0": {
+  "file": "25_shmem_141_Test_shmem.log",
+  "bytes": 389180,
+  "lines": 619,
+  "download": "export",
+  "truncated": false,
+  "excerpt": null,
+  "rn": 141,
+  "jobName": "Test_shmem"
+ },
+ "e710e7a44622472784b4187e1928c525|608acd7872ba4698984c8ec4d28bff44": {
+  "file": "27_kuqcd_201_Test_quqcd.log",
+  "bytes": 16555,
+  "lines": 144,
+  "download": "export",
+  "truncated": false,
+  "excerpt": null,
+  "rn": 201,
+  "jobName": "Test_quqcd"
+ },
+ "26bf4fe5f1344892abe80a21ff2ca906|d33d1d32a2044d2fbea4a0dbceba1979": {
+  "file": "30_kupl_306_Test_kupl.log",
+  "bytes": 16563,
+  "lines": 144,
+  "download": "export",
+  "truncated": false,
+  "excerpt": null,
+  "rn": 306,
+  "jobName": "Test_kupl"
+ },
+ "62a8b0fdea804558b0321f6b09c49dc2|cea87cd4b803423c9e531de8bff62ec4": {
+  "file": "29_kpex_142_Test_kpex.log",
+  "bytes": 16563,
+  "lines": 144,
+  "download": "export",
+  "truncated": false,
+  "excerpt": null,
+  "rn": 142,
+  "jobName": "Test_kpex"
+ },
+ "2f71f7f0cb6643dfa23b3d5f8ebb9755|980fd922fd814bd695cbb7cb0590b26a": {
+  "file": "28_hmpi_213_Test_hmpi.log",
+  "bytes": 16564,
+  "lines": 144,
+  "download": "export",
+  "truncated": false,
+  "excerpt": null,
+  "rn": 213,
+  "jobName": "Test_hmpi"
  }
 }

@@ -5,7 +5,7 @@
   "source": "第 2~5c 步归档产物",
   "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-09 15:06:59",
+  "generatedAt": "2026-11-10 14:57:27",
   "component": "boostkit",
   "pipeline": "avx2ki",
   "date": "2026-11-06",

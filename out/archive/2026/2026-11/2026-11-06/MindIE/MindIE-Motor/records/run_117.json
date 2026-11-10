@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:06:58",
+    "generatedAt": "2026-11-10 14:57:26",
     "component": "MindIE",
     "pipeline": "MindIE-Motor",
     "date": "2026-11-06",
@@ -29,8 +29,8 @@
     "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
   },
   "light": {
-    "vaRate": 0,
-    "bsRate": 1,
+    "vaRate": 0.5,
+    "bsRate": 0.75,
     "dims": [
       "va",
       "bs"
@@ -129,12 +129,16 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "用例 test_pymotor_ras_up_down_scale 在等待服务启动成功日志时超时失败，报 TimeoutError: 服务启动超时，未找到成功日志；该运行无 test 任务日志落盘，无法确认是服务进程崩溃还是就绪判定/等待时长不足。",
-    "advice": "保留服务端 stdout 与启动日志后重跑该用例，核对就绪判定关键字与实际启动路径是否匹配；同时评估 RAS 上下伸缩场景下启动等待阈值是否需要放宽。",
+    "keyError": "TimeoutError: 服务启动超时，未找到成功日志!",
+    "rootCause": "Test_Pytest_MindIE-Motor_smoke_test 4 条用例跑出 3 通过、1 失败，pytest 汇总判任务失败，构建 #117 记 FAILED；唯一失败的是 RAS 上下伸缩用例，从 15:29:53 一直等到 16:00:45、耗时约 31 分钟，正好耗满等待窗口，说明用例没有崩，而是把超时时间等尽了（records/run_117.json）\n\n第一层（等待对象）：用例等的是 vllm coordinator 的一个固定 Pod 名，扩缩期间 kubectl 轮询反复查不到该 Pod，名字对不上就永远不会被判为就绪（case_logs/case_0000.html）\n\n第二层（就绪判据）：即使 Pod 已经 Running，用例还要等到「服务启动成功日志」出现才算就绪，而 RAS 先缩后扩、扩出来的 Pod 要重新拉起服务再打这条日志，只要日志窗口没覆盖到，判据就取不到；两层叠加后才是 TimeoutError: 服务启动超时，未找到成功日志!\n\n同任务其余 3 条用例全通过、失败只落在需要重新拉起服务的这一条，因此更像伸缩后服务没能在窗口内就绪（调度排队、拉镜像慢或就绪探针未通过），而非断言写错或被测逻辑错误\n\n已排除的干扰项：本次没有任何 FAIL 断言文本、没有内核或驱动类报错，同批次 smoker 用例正常，不是代码回归；任务级 job 日志未落盘，证据只有 1 份用例日志，无法再区分是调度慢还是服务起不来",
+    "advice": "先确认扩出来的 Pod 卡在哪一步：在 pymotor-vllm 命名空间按 label 而不是固定 Pod 名去查，把 describe 与 events 一并抓下来，判断是 Pending（资源/调度）、ContainerCreating（拉镜像慢）还是 Running 但 readiness 不过\n\n若 Pod 已经是 Running，问题就在就绪判据：把用例改成轮询任意一个匹配 label 的 Pod 成功日志，而不是绑死一个 Pod 名，并把超时从硬编码改成可配置，避免一次调度抖动就吞掉半小时\n\n同时给这条用例补落盘：把每轮 kubectl 输出与 Pod events 写进用例日志，否则下次仍然只能看到 TimeoutError 这一句\n\n验证方式：重跑 Test_Pytest_MindIE-Motor_smoke_test 全量 4 条用例，要求 test_pymotor_ras_up_down_scale 在超时窗口内转通过、任务退出码为 0，且用例日志里能看到扩缩后 Pod 的 kubectl events",
     "cites": [
-      "records/run_117.json:L57"
+      "case_logs/case_0000.html",
+      "records/run_117.json"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

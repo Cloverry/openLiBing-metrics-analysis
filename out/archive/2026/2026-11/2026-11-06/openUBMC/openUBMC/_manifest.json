@@ -5,7 +5,7 @@
   "source": "第 1~6 步中间产物（out/work/）",
   "criteria": "本目录内每一步的来源/口径/文件/计数与证据文件，逐条可核对",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-09 15:06:58",
+  "generatedAt": "2026-11-10 14:57:26",
   "component": "openUBMC",
   "pipeline": "openUBMC",
   "date": "2026-11-06"
@@ -60,7 +60,7 @@
    "source": "openLiBing 流水线 N2 执行列表",
    "criteria": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）；仅保留工作日；VA 轨道=当日无 isVersionAvailable=true 的待查运行，BS 轨道=豁免日补圈的 Build* 失败运行",
    "dateField": "pipelineRunEndtime",
-   "bytes": 5856
+   "bytes": 8037
   },
   {
    "step": "step_3_tasks",
@@ -168,7 +168,7 @@
  },
  "source": {
   "workDir": "work",
-  "generatedAt": "2026-11-09 15:06:58",
+  "generatedAt": "2026-11-10 14:57:26",
   "note": "由 steps/step_7_archive.py 从第 1~6 步产物逐层归档"
  }
 }

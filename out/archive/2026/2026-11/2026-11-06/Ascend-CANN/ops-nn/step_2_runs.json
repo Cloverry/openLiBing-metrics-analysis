@@ -5,14 +5,14 @@
   "source": "openLiBing 流水线 N2 执行列表",
   "criteria": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）；仅保留工作日；VA 轨道=当日无 isVersionAvailable=true 的待查运行，BS 轨道=豁免日补圈的 Build* 失败运行",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-09 15:06:59",
+  "generatedAt": "2026-11-10 14:57:27",
   "component": "Ascend-CANN",
   "pipeline": "ops-nn",
   "date": "2026-11-06"
  },
  "dateRange": {
   "start": "2026-11-06",
-  "end": "2026-11-06"
+  "end": "2026-11-09"
  },
  "date": "2026-11-06",
  "dateBasis": {
@@ -35,6 +35,26 @@
    "endedDate": "2026-11-06",
    "included": true,
    "reason": "结束时间在归档日内，纳入当日归档记录（成功运行，只记录不取证）"
+  },
+  {
+   "rn": 169,
+   "pipelineRunId": "b3e7f0586b3a4520ba153704e0664367",
+   "start": "2026-11-09 12:00:04",
+   "end": "2026-11-09 18:29:51",
+   "status": "FAILED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
+  },
+  {
+   "rn": 168,
+   "pipelineRunId": "9e9d3670df3b4da5be52ac669bc6f7a5",
+   "start": "2026-11-09 02:02:30",
+   "end": "2026-11-09 22:06:32",
+   "status": "FAILED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
   }
  ],
  "runHistory": [
@@ -50,14 +70,41 @@
    "cpr": 100,
    "iva": true,
    "ftt": null
+  },
+  {
+   "rn": 169,
+   "start": "2026-11-09 12:00:04",
+   "end": "2026-11-09 18:29:51",
+   "status": "FAILED",
+   "rid": "b3e7f0586b3a4520ba153704e0664367",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=6d402b76f9b14451872ef07ac1f864ba&projectId=300057&pipelineRunId=b3e7f0586b3a4520ba153704e0664367",
+   "bc": 1,
+   "bpc": 1,
+   "cpr": 99.57,
+   "iva": false,
+   "ftt": "测试任务"
+  },
+  {
+   "rn": 168,
+   "start": "2026-11-09 02:02:30",
+   "end": "2026-11-09 22:06:32",
+   "status": "FAILED",
+   "rid": "9e9d3670df3b4da5be52ac669bc6f7a5",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=6d402b76f9b14451872ef07ac1f864ba&projectId=300057&pipelineRunId=9e9d3670df3b4da5be52ac669bc6f7a5",
+   "bc": 1,
+   "bpc": 1,
+   "cpr": 99.57,
+   "iva": false,
+   "ftt": "测试任务"
   }
  ],
  "meta": {
   "workdays": [
-   "2026-11-06"
+   "2026-11-06",
+   "2026-11-09"
   ],
-  "workdayCount": 1,
-  "skippedNonWorkdayRuns": 0,
+  "workdayCount": 2,
+  "skippedNonWorkdayRuns": 123,
   "skippedRunningRuns": 0,
   "workdayNotes": [
    "法定工作日历: timor.tech API（1 年）"
@@ -68,6 +115,6 @@
  },
  "keptRuns": 1,
  "keptFailedRuns": 0,
- "excludedRuns": 0,
+ "excludedRuns": 2,
  "note": "当日全部 1 次运行均为成功，只归档记录、无需根因分析"
 }

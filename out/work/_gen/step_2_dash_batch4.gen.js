@@ -1,5 +1,5 @@
 (async () => {
-const PARAMS = {"startDate": "2026-11-06", "endDate": "2026-11-06", "pageSize": 100, "delay": 250, "conc": 4, "pipelines": [{"key": "vllm-ascend|a2.yaml", "projectId": 300127, "pipelineId": "228664975"}, {"key": "vllm-ascend|a3.yaml", "projectId": 300127, "pipelineId": "228664976"}, {"key": "Triton_Ascend|Ascend", "projectId": 300130, "pipelineId": "9a4886d40e544cecb7da63c9597490a6"}, {"key": "SgLang|nightly-test-npu.yml", "projectId": 300134, "pipelineId": "209837578"}]};
+const PARAMS = {"startDate": "2026-11-06", "endDate": "2026-11-09", "pageSize": 100, "delay": 250, "conc": 4, "pipelines": [{"key": "vllm-ascend|a2.yaml", "projectId": 300127, "pipelineId": "228664975"}, {"key": "vllm-ascend|a3.yaml", "projectId": 300127, "pipelineId": "228664976"}, {"key": "Triton_Ascend|Ascend", "projectId": 300130, "pipelineId": "9a4886d40e544cecb7da63c9597490a6"}, {"key": "SgLang|nightly-test-npu.yml", "projectId": 300134, "pipelineId": "209837578"}]};
 return (async () => {
   // 【N2】POST /gateway/openlibing-ops/manage/common/detail  category=nightly-dashboard-detail
   // 返回每流水线逐运行看板明细（即执行记录来源）：pipelineRunNumber/Id/Status/起止时间 +

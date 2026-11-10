@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:06:59",
+    "generatedAt": "2026-11-10 14:57:28",
     "component": "HPCKit",
     "pipeline": "kupl",
     "date": "2026-11-06",
@@ -60,7 +60,7 @@
       "jobName": "Test_kupl",
       "type": "log",
       "fallback": true,
-      "logFile": "job_logs/04_kupl_299_Test_kupl.log",
+      "logFile": "job_logs/23_kupl_299_Test_kupl.log",
       "logBytes": 16559,
       "logLines": 144,
       "download": "export",
@@ -84,42 +84,42 @@
   "errorMessages": [
     {
       "task": "Test_kupl",
-      "source": "job_logs/04_kupl_299_Test_kupl.log",
+      "source": "job_logs/23_kupl_299_Test_kupl.log",
       "line": 138,
       "level": "LOG",
       "text": "[2026/11/06 13:32:03.681 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'"
     },
     {
       "task": "Test_kupl",
-      "source": "job_logs/04_kupl_299_Test_kupl.log",
+      "source": "job_logs/23_kupl_299_Test_kupl.log",
       "line": 139,
       "level": "LOG",
       "text": "[2026/11/06 13:32:03.681 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'"
     },
     {
       "task": "Test_kupl",
-      "source": "job_logs/04_kupl_299_Test_kupl.log",
+      "source": "job_logs/23_kupl_299_Test_kupl.log",
       "line": 140,
       "level": "LOG",
       "text": "[2026/11/06 13:32:03.681 GMT+08:00] [ERROR] git clone test_cases code fail"
     },
     {
       "task": "Test_kupl",
-      "source": "job_logs/04_kupl_299_Test_kupl.log",
+      "source": "job_logs/23_kupl_299_Test_kupl.log",
       "line": 142,
       "level": "LOG",
       "text": "[2026/11/06 13:32:03.846 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed"
     },
     {
       "task": "Test_kupl",
-      "source": "job_logs/04_kupl_299_Test_kupl.log",
+      "source": "job_logs/23_kupl_299_Test_kupl.log",
       "line": 144,
       "level": "LOG",
       "text": "[2026/11/06 13:32:06.815 GMT+08:00] Finished: FAILURE"
     },
     {
       "task": "Test_kupl",
-      "source": "job_logs/04_kupl_299_Test_kupl.log",
+      "source": "job_logs/23_kupl_299_Test_kupl.log",
       "line": null,
       "level": "JOB",
       "text": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
@@ -127,7 +127,7 @@
     },
     {
       "task": "Test_kupl",
-      "source": "job_logs/04_kupl_299_Test_kupl.log",
+      "source": "job_logs/23_kupl_299_Test_kupl.log",
       "line": null,
       "level": "STEP",
       "text": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
@@ -136,7 +136,7 @@
   ],
   "evidence": {
     "files": [
-      "job_logs/04_kupl_299_Test_kupl.log"
+      "job_logs/23_kupl_299_Test_kupl.log"
     ],
     "missing": [
       "Test_kupl"
@@ -168,12 +168,19 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "测试用例在拉取阶段失败：整 job 日志报 fatal: Authentication failed（用例仓库鉴权失败），用例未执行、测试任务用例结果为空，运行以脚本退出码 1 结束。",
-    "advice": "与同批次鉴权失败一并处理：修复凭据、验证 clone 后重跑；建议流水线开始处加一次仓库可达性预检。",
+    "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+    "rootCause": "Test_kupl 13:30:50 启动，13:32:03 用例仓 clone 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，随后脚本回显 [ERROR] git clone test_cases code fail，13:32:03 返回退出码 1，13:32:06 Finished: FAILURE（job_logs/23_kupl_299_Test_kupl.log:L138、L139、L140、L142、L144）\n\n用例统计 total=0、passed=0、failed=0：失败发生在用例执行之前，属凭据失效而非用例断言失败，也不是编译问题\n\n同流水线当日 #297（00:02）、#298（12:02）、#299（13:32）三次报同一个仓库、同一句 fatal，且每次都在 74 秒左右退出，属稳定复现；三条记录的报错位置都在同一行（L138），说明脚本每次都卡在同一处 clone，因此更像凭据被固定为一份失效值，而非随机性网络故障\n\n已排除的干扰项：平台侧只有 DEV-CODECI-35002「构建任务执行失败」这一封装码，不带任何鉴权细节；日志中没有重试行，排除「重试耗尽」这一解释",
+    "advice": "按稳定复现处理：先修 hpckit-autotest 的 clone 凭据（换 access token），修好之前不再安排该流水线重跑，避免产生更多同形态失败记录\n\n在流水线定义里把凭据收敛为一条公共凭据，kupl 与 hmpi、kpex、kudnn、kuqcd 共用，换一次即全部生效\n\n修复后以 #299 参数跑一次完整 kupl 流水线，核对用例统计不再为 0\n\n验证方式：重跑后要求 clone 成功、用例 total 与 passed 均大于 0、退出码为 0，日志中不再出现 Authentication failed；把该仓库 clone 鉴权失败做成组件级指标，按组件统计出现次数",
     "cites": [
-      "job_logs/04_kupl_299_Test_kupl.log:L138"
+      "job_logs/23_kupl_299_Test_kupl.log:L138",
+      "job_logs/23_kupl_299_Test_kupl.log:L139",
+      "job_logs/23_kupl_299_Test_kupl.log:L140",
+      "job_logs/23_kupl_299_Test_kupl.log:L142",
+      "job_logs/23_kupl_299_Test_kupl.log:L144"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

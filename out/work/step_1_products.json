@@ -1,7 +1,7 @@
 {
  "dateRange": {
   "start": "2026-11-06",
-  "end": "2026-11-06"
+  "end": "2026-11-09"
  },
  "products": [
   {
@@ -52,12 +52,12 @@
   {
    "product": "MindIE",
    "projectId": 300036,
-   "versionAvailabilityRate": 0.5,
-   "buildSuccessRate": 1.0,
+   "versionAvailabilityRate": 0.75,
+   "buildSuccessRate": 0.875,
    "pipelineCount": 2,
    "badPipelineCount": 1,
    "badPipelineCountVA": 1,
-   "badPipelineCountBS": 0,
+   "badPipelineCountBS": 1,
    "analyze": true,
    "collectedPipelineCount": 2,
    "rateRule": "runs",
@@ -67,7 +67,7 @@
   {
    "product": "MindStudio",
    "projectId": 300037,
-   "versionAvailabilityRate": 0.8333,
+   "versionAvailabilityRate": 0.9166,
    "buildSuccessRate": null,
    "pipelineCount": 6,
    "badPipelineCount": 1,
@@ -97,11 +97,11 @@
   {
    "product": "Ascend-CANN",
    "projectId": 300057,
-   "versionAvailabilityRate": 0.7777,
+   "versionAvailabilityRate": 0.7222,
    "buildSuccessRate": 1.0,
    "pipelineCount": 9,
-   "badPipelineCount": 2,
-   "badPipelineCountVA": 2,
+   "badPipelineCount": 4,
+   "badPipelineCountVA": 4,
    "badPipelineCountBS": 0,
    "analyze": true,
    "collectedPipelineCount": 9,
@@ -172,7 +172,7 @@
   {
    "product": "Triton_Ascend",
    "projectId": 300130,
-   "versionAvailabilityRate": 0.0,
+   "versionAvailabilityRate": 0.5,
    "buildSuccessRate": 1.0,
    "pipelineCount": 1,
    "badPipelineCount": 1,
@@ -211,6 +211,7 @@
   "产品 MindCluster 有 2 条流水线 buildSuccess 无数据，未纳入编译成功率统计（该流水线可能无 Build* 任务）",
   "产品 MindSpeed ops-overview 未返回 nightlyBuildSuccessRate，产品级编译成功率无数据",
   "产品 MindSpeed 有 5 条流水线 buildSuccess 无数据，未纳入编译成功率统计（该流水线可能无 Build* 任务）",
+  "产品 MindSpeed 有 5 条流水线末段同名（如 DrivingSDK_master），已改用去前缀全名作唯一短名，避免执行记录互相覆盖: Nightly-CI-Component-pipeline_DrivingSDK_master -> DrivingSDK_master；Nightly-CI-Component-pipeline_MindSpeed-A3_master -> MindSpeed-A3_master；Nightly-CI-Component-pipeline_MindSpeed-LLM_master -> MindSpeed-LLM_master；Nightly-CI-Component-pipeline_MindSpeed-MM_master -> MindSpeed-MM_master；Nightly-CI-Component-pipeline_MindSpeed_master -> MindSpeed_master",
   "产品 vllm-ascend ops-overview 未返回 nightlyBuildSuccessRate，产品级编译成功率无数据",
   "产品 vllm-ascend 有 2 条流水线 buildSuccess 无数据，未纳入编译成功率统计（该流水线可能无 Build* 任务）",
   "产品 vllm-ascend 只采集定时任务运行（displayTitle 含 (scheduled)），含 PR 的运行一律不采集、不归档、不做根因分析",

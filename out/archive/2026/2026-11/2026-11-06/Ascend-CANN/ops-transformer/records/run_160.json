@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:06:59",
+    "generatedAt": "2026-11-10 14:57:27",
     "component": "Ascend-CANN",
     "pipeline": "ops-transformer",
     "date": "2026-11-06",
@@ -977,14 +977,18 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "15 个通信融合算子精度用例全部失败，断言原文为 aclnnMatmulAllReduce / aclnnQuantMatmulAllReduceV3 / aclnnQuantMatmulAllToAll accuracy not passed，算子任务精度结果为 Failed；test 任务无日志落盘，缺少内核级报错与比对明细。",
-    "advice": "与同一批次的 aclnnQuantMatmulAllToAll 失败一并排查（多构建号重复出现同一批算子），优先核对算子库版本与精度基线；单算子复现时保留 atk 比对输出以便定位阈值差异。",
+    "keyError": "AssertionError: aclnnMatmulAllReduce功能精度测试(executor)失败: aclnnMatmulAllReduce accuracy not passed",
+    "rootCause": "Test_ops-transformer 98 条用例 83 通过、15 失败，任务判失败，构建 #160 记 FAILED；15 条失败全部由 executor 精度比对给出，用例本身已完整执行，失败点不在拉起或执行阶段（records/run_160.json）\n\n第一类（8 条，集合通信与 Matmul 融合）：aclnnMatmulReduceScatterV2、aclnnAlltoAllMatmul、aclnnMatmulAllReduce、aclnnAllGatherMatmul、aclnnMatmulReduceScatter、aclnnMatmulAllReduceV2；断言上下文统一为 AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None')（case_logs/case_0007.html:L9807）\n\n第二类（4 条，量化与权重量化）：aclnnQuantMatmulAllReduceV3、aclnnQuantMatmulAlltoAll、aclnnWeightQuantMatmulAllReduce 与 aclnnAlltoAllQuantMatmul 的 a16w4/a16w8 两档，典型原文为「AssertionError: aclnnMatmulAllReduce功能精度测试(executor)失败: aclnnMatmulAllReduce accuracy not passed」（case_logs/case_0016.html:L8979）\n\n第三类（3 条，MoE 分发合并）：aclnnMoeDistributeDispatch_CombineV2 两条及聚合用例，与集合通信族的数值链路不同却同期失败（case_logs/case_0019.html:L15528）\n\n与同日 #159、#161 的失败集合高度重合、且本构建换了一个时段仍然 15 条失败，说明它随算子库版本稳定复现而不是环境抖动，因此更像代码/黄金数据一侧的确定性偏差，而非节点或驱动偶发问题\n\n已排除的干扰项：test 任务 logFile=-、logLines=-，logTasks=0、buildTasks=0，任务级日志全部缺失，不能据此推断编译或调度故障；简报未提供误差数值、阈值配置与参考实现版本，结论止于「精度比对不通过」",
+    "advice": "与同日 #159、#161 合并成一条主线处理，不要逐构建单独排查：先确认这三轮是否使用同一镜像与同一黄金数据版本，是则把失败集合当作一个稳定缺陷来修\n\n首选按公共基线核对：从集合通信与量化两条路径各取一条用例（aclnnAllGatherMatmul、aclnnQuantMatmulAllReduceV3）导出 atk 比对明细，看误差是否同量级；同量级说明偏差来自黄金数据或统一阈值\n\n若两条路径误差量级不同，再按算子族分开：通信融合族查 AllReduce/AllGather 的 reduce 累加顺序与分核策略，量化族查 scale 反量化链路是否与基线一致\n\n验证方式：修复后重跑 Test_ops-transformer 全量 98 条用例，要求 #159、#160、#161 三轮共有的 15 条失败全部通过、退出码为 0；同时保存 atk 比对输出与阈值配置作为附件，避免下次仍只有断言没有数值",
     "cites": [
-      "records/run_160.json:L79",
-      "records/run_160.json:L101",
-      "records/run_160.json:L112"
+      "case_logs/case_0007.html:L9807",
+      "case_logs/case_0016.html:L8979",
+      "case_logs/case_0019.html:L15528",
+      "records/run_160.json"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

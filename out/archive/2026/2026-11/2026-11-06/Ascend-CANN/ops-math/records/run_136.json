@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:06:59",
+    "generatedAt": "2026-11-10 14:57:27",
     "component": "Ascend-CANN",
     "pipeline": "ops-math",
     "date": "2026-11-06",
@@ -29,7 +29,7 @@
     "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
   },
   "light": {
-    "vaRate": 0,
+    "vaRate": 0.5,
     "bsRate": 1,
     "dims": [
       "va",
@@ -1050,60 +1050,6 @@
       "level": "FAIL",
       "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_aclnninplacemul_pangu",
       "isSummary": true
-    },
-    {
-      "task": "Test_ops-math",
-      "case": "test_cann_accu_all_aclnnlescalar_rl",
-      "source": "case_logs/case_0083.html",
-      "line": 2091,
-      "level": "FAIL",
-      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_all_aclnnlescalar_rl",
-      "isSummary": true
-    },
-    {
-      "task": "Test_ops-math",
-      "case": "test_cann_accu_all_aclnnbitwiseortensor_rl",
-      "source": "case_logs/case_0084.html",
-      "line": 8571,
-      "level": "FAIL",
-      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part13.py::TestAclnnBitwiseOrTensor::test_cann_accu_all_aclnnbitwiseortensor_rl",
-      "isSummary": true
-    },
-    {
-      "task": "Test_ops-math",
-      "case": "test_cann_accu_smk_aclnntrace_atk",
-      "source": "case_logs/case_0085.html",
-      "line": 2393,
-      "level": "FAIL",
-      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part26.py::TestAclnnTrace::test_cann_accu_smk_aclnntrace_atk",
-      "isSummary": true
-    },
-    {
-      "task": "Test_ops-math",
-      "case": "test_cann_accu_smk_aclnninplaceuniform_atk",
-      "source": "case_logs/case_0086.html",
-      "line": 2062,
-      "level": "FAIL",
-      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part20.py::TestAclnnInplaceUniform::test_cann_accu_smk_aclnninplaceuniform_atk",
-      "isSummary": true
-    },
-    {
-      "task": "Test_ops-math",
-      "case": "test_cann_accu_all_aclnngtscalar_qwen3",
-      "source": "case_logs/case_0087.html",
-      "line": 1774,
-      "level": "FAIL",
-      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part3.py::TestCannOpsMathPart3::test_cann_accu_all_aclnngtscalar_qwen3",
-      "isSummary": true
-    },
-    {
-      "task": "Test_ops-math",
-      "case": "test_cann_accu_all_aclnnbitwiseandscalar_qwen3",
-      "source": "case_logs/case_0088.html",
-      "line": 2581,
-      "level": "FAIL",
-      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-math/test_ops_math_part13.py::TestAclnnBitwiseAndScalar::test_cann_accu_all_aclnnbitwiseandscalar_qwen3",
-      "isSummary": true
     }
   ],
   "evidence": {
@@ -1136,7 +1082,7 @@
     "logTasks": 0,
     "buildTasks": 0,
     "cases": 18,
-    "errorMessages": 36,
+    "errorMessages": 30,
     "evidenceFiles": 18
   },
   "verdict": {
@@ -1154,14 +1100,19 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "本次 18 个精度用例全部失败，断言原文为 aclnnBitwiseNot / aclnnLinspace accuracy not passed，算子任务返回 acc_pass_result='Failed'；该运行 test 任务无日志落盘，无法下钻到算子内核实现与比对阈值层面的具体偏差。",
-    "advice": "用同镜像单独复跑 aclnnBitwiseNot、aclnnLinspace 等高失败率算子，导出 atk 精度比对明细（误差分布与阈值设置）；若多算子同时批量失败，优先核对该轮算子库版本与精度基线是否匹配当前 910 环境，并补齐 test 任务日志落盘配置。",
+    "keyError": "AssertionError: aclnnBitwiseNot算子Accu_O1_related测试失败: aclnnBitwiseNot accuracy not passed",
+    "rootCause": "Test_ops-math 任务 330 条用例跑出 312 通过、18 失败，pytest 汇总判任务失败，构建 #136 记 FAILED；18 条失败全是 executor 精度比对判不通过，没有一条落在编译、环境申请或调度层，所以失败点在精度比对这一环，而不在构建链路上（records/run_136.json）\n\n第一类（8 条，TopK / InplaceMul / GtScalar 三个算子的多种数据形态）：断言原文形如「AssertionError: aclnnBitwiseNot算子Accu_O1_related测试失败: aclnnBitwiseNot accuracy not passed」，AtkTaskResult 一致为 success=False、acc_pass_result='Failed'、is_acc_dc_pass='None'；同一算子在 O1_related、qwen3、pangu 数据集与 Smoke_Generalization 上同时不通过，偏差不随数据集变化，因此更像算子实现相对黄金数据的数值偏差，而非某一组用例数据本身不合格（case_logs/case_0073.html:L1693、case_logs/case_0072.html:L1589、case_logs/case_0080.html:L1677）\n\n第二类（10 条，精度结论后紧跟框架异常）：aclnnTopK、aclnnInplaceMul、aclnnInplaceNormal、aclnnInplaceRandom、aclnnLeScalar、aclnnBitwiseOrTensor、aclnnTrace 的断言文本后面还带「AttributeError: 'MessageFactory' object has no attribute …」，简报对该句做了截断；同一个异常横跨互不相关的算子和数据类型，更像精度比对框架的消息构造环节出错、把框架异常一并记成了精度不通过，而非算子数值本身出错（case_logs/case_0074.html:L1836）\n\n已排除的干扰项：有 8 条只报 accuracy not passed、不带 MessageFactory 异常，说明框架异常不是精度不通过的必要条件，两条线要分开修；本任务 logFile 为空、logTasks=0，没有 job 日志落盘，看不到 kernel 级报错，不能据此推断成编译或驱动问题",
+    "advice": "先把框架异常这条支线单独排掉：单跑 aclnnTopK、aclnnInplaceMul、aclnnInplaceNormal、aclnnInplaceRandom、aclnnLeScalar、aclnnBitwiseOrTensor、aclnnTrace 共 10 条用例，抓完整 traceback 拿到被截断的属性名，判断是 atk 比对框架的消息构造 bug，还是用例侧调用方式不对；若单跑不再复现，说明它与用例并发执行有关，先在框架侧修掉再看精度结论\n\n若去掉框架异常后精度仍不通过，再按算子定位：从 TopK 3 条、InplaceMul 3 条、GtScalar 2 条里各取一条导出 atk 比对明细（误差分布、阈值配置、黄金数据版本），误差同量级就按公共基线核对，单算子量级偏差按算子实现回归处理\n\n同时补证据：把 Test_ops-math 的 job 日志纳入归档（当前 logFile 为空），否则精度失败永远只能停在用例 HTML 这一层\n\n验证方式：重跑 Test_ops-math 全量 330 条用例，要求 18 条失败用例全部转通过、任务退出码为 0，且用例日志中不再出现 AttributeError: 'MessageFactory' 与 accuracy not passed",
     "cites": [
-      "records/run_136.json:L79",
-      "records/run_136.json:L112",
-      "records/run_136.json:L57"
+      "case_logs/case_0073.html:L1693",
+      "case_logs/case_0076.html:L1813",
+      "case_logs/case_0072.html:L1589",
+      "case_logs/case_0080.html:L1677",
+      "case_logs/case_0074.html:L1836"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

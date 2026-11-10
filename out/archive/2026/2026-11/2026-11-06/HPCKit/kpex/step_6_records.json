@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "以「一次执行」为最小单位合并任务、用例、错误信息、证据与构建编号，形成可直接展示与逐条分析的记录",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:06:59",
+    "generatedAt": "2026-11-10 14:57:28",
     "component": "HPCKit",
     "pipeline": "kpex",
     "date": "2026-11-06",
@@ -65,7 +65,7 @@
           "jobName": "Test_kpex",
           "type": "log",
           "fallback": true,
-          "logFile": "job_logs/05_kpex_139_Test_kpex.log",
+          "logFile": "job_logs/22_kpex_139_Test_kpex.log",
           "logBytes": 16559,
           "logLines": 144,
           "download": "export",
@@ -89,42 +89,42 @@
       "errorMessages": [
         {
           "task": "Test_kpex",
-          "source": "job_logs/05_kpex_139_Test_kpex.log",
+          "source": "job_logs/22_kpex_139_Test_kpex.log",
           "line": 138,
           "level": "LOG",
           "text": "[2026/11/06 00:43:18.658 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'"
         },
         {
           "task": "Test_kpex",
-          "source": "job_logs/05_kpex_139_Test_kpex.log",
+          "source": "job_logs/22_kpex_139_Test_kpex.log",
           "line": 139,
           "level": "LOG",
           "text": "[2026/11/06 00:43:18.658 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'"
         },
         {
           "task": "Test_kpex",
-          "source": "job_logs/05_kpex_139_Test_kpex.log",
+          "source": "job_logs/22_kpex_139_Test_kpex.log",
           "line": 140,
           "level": "LOG",
           "text": "[2026/11/06 00:43:18.659 GMT+08:00] [ERROR] git clone test_cases code fail"
         },
         {
           "task": "Test_kpex",
-          "source": "job_logs/05_kpex_139_Test_kpex.log",
+          "source": "job_logs/22_kpex_139_Test_kpex.log",
           "line": 142,
           "level": "LOG",
           "text": "[2026/11/06 00:43:18.661 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed"
         },
         {
           "task": "Test_kpex",
-          "source": "job_logs/05_kpex_139_Test_kpex.log",
+          "source": "job_logs/22_kpex_139_Test_kpex.log",
           "line": 144,
           "level": "LOG",
           "text": "[2026/11/06 00:43:23.168 GMT+08:00] Finished: FAILURE"
         },
         {
           "task": "Test_kpex",
-          "source": "job_logs/05_kpex_139_Test_kpex.log",
+          "source": "job_logs/22_kpex_139_Test_kpex.log",
           "line": null,
           "level": "JOB",
           "text": "步骤Test_kpex执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
@@ -132,7 +132,7 @@
         },
         {
           "task": "Test_kpex",
-          "source": "job_logs/05_kpex_139_Test_kpex.log",
+          "source": "job_logs/22_kpex_139_Test_kpex.log",
           "line": null,
           "level": "STEP",
           "text": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
@@ -141,7 +141,7 @@
       ],
       "evidence": {
         "files": [
-          "job_logs/05_kpex_139_Test_kpex.log"
+          "job_logs/22_kpex_139_Test_kpex.log"
         ],
         "missing": [
           "Test_kpex"
@@ -173,12 +173,18 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "rootCause": "测试用例在拉取阶段失败：整 job 日志报 fatal: Authentication failed（用例仓库鉴权失败），用例未执行、测试任务用例结果为空，运行以脚本退出码 1 结束。",
-        "advice": "与同批次 hmpi、kudnn、kupl、kuqcd 的鉴权失败一并处理：修复运行节点访问用例仓库的凭据并验证 clone 可正常完成，随后重跑。",
+        "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+        "rootCause": "Test_kpex 在用例仓拉取阶段中断：00:43:18.658 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，同刻输出 [ERROR] git clone test_cases code fail，00:43:18.661 脚本返回退出码 1，00:43:23 Finished: FAILURE，整个 job 仅运行约 2 分钟（job_logs/22_kpex_139_Test_kpex.log:L138、L139、L140、L142）\n\n用例一条未执行：Test_kpex 标记 emptyTestResult，total=0、passed=0、failed=0，失败点在执行之前，属用例仓凭据问题而非用例断言失败（job_logs/22_kpex_139_Test_kpex.log:L144）\n\n同一批 hmpi、kudnn、kuqcd 在 2026-11-06 凌晨的前后一小时内报的是同一个仓库、同一句 Authentication failed，四个组件共用 hpckit-autotest 这一个用例仓，因此更像一份共用凭据失效，而非 kpex 单条流水线的配置错误\n\n已排除的干扰项：平台封装码 DEV-CODECI-35002「构建任务执行失败」只是步骤失败的统一封装；日志里没有 timeout 或 DNS 解析失败，排除网络不可达，指向凭据本身无效",
+        "advice": "按共用凭据处理：把 hpckit-autotest 的 clone 凭据治理成一条流水线级凭据（access token），kpex 与同批 hmpi、kudnn、kuqcd 统一引用，避免逐条排查\n\n凭据注入方式改为平台凭据变量，并在 clone 前打印凭据来源与有效期，凭据过期时能第一时间看出来\n\n把凭据检查前移到流水线准备阶段，不要等跑到测试步骤才因 clone 失败退出\n\n验证方式：用 #139 参数重跑 kpex 流水线，要求 clone 成功、用例统计 total 大于 0、退出码为 0，日志中不再出现 Authentication failed；同批四个组件各跑一次确认全部恢复",
         "cites": [
-          "job_logs/05_kpex_139_Test_kpex.log:L138"
+          "job_logs/22_kpex_139_Test_kpex.log:L138",
+          "job_logs/22_kpex_139_Test_kpex.log:L140",
+          "job_logs/22_kpex_139_Test_kpex.log:L142",
+          "job_logs/22_kpex_139_Test_kpex.log:L144"
         ],
-        "updatedAt": "2026-11-09 15:07:00",
+        "updatedAt": "2026-11-10 17:27:42",
+        "firstAnalyzedAt": "2026-11-10 15:21:02",
+        "revisions": 2,
         "source": "agent"
       }
     }

@@ -5,14 +5,14 @@
   "source": "openLiBing 流水线 N2 执行列表",
   "criteria": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）；仅保留工作日；VA 轨道=当日无 isVersionAvailable=true 的待查运行，BS 轨道=豁免日补圈的 Build* 失败运行",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-09 15:06:59",
+  "generatedAt": "2026-11-10 14:57:29",
   "component": "SgLang",
   "pipeline": "nightly-test-npu.yml",
   "date": "2026-11-06"
  },
  "dateRange": {
   "start": "2026-11-06",
-  "end": "2026-11-06"
+  "end": "2026-11-09"
  },
  "date": "2026-11-06",
  "dateBasis": {
@@ -569,6 +569,96 @@
    "endedDate": "2026-11-06",
    "included": true,
    "reason": "结束时间在归档日内，纳入当日待分析（失败/取消，取证）"
+  },
+  {
+   "rn": 2133,
+   "pipelineRunId": "42620485286",
+   "start": "2026-11-09 20:51:29",
+   "end": "2026-11-09 21:03:53",
+   "status": "FAILED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
+  },
+  {
+   "rn": 2132,
+   "pipelineRunId": "42620484793",
+   "start": "2026-11-09 20:51:29",
+   "end": "2026-11-09 20:51:31",
+   "status": "FAILED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
+  },
+  {
+   "rn": 2130,
+   "pipelineRunId": "42611183075",
+   "start": "2026-11-09 19:42:43",
+   "end": "2026-11-09 19:59:57",
+   "status": "FAILED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
+  },
+  {
+   "rn": 2129,
+   "pipelineRunId": "42608919924",
+   "start": "2026-11-09 19:25:23",
+   "end": "2026-11-09 20:19:14",
+   "status": "FAILED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
+  },
+  {
+   "rn": 2128,
+   "pipelineRunId": "42563835653",
+   "start": "2026-11-09 12:48:48",
+   "end": "2026-11-09 14:13:42",
+   "status": "FAILED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
+  },
+  {
+   "rn": 2127,
+   "pipelineRunId": "42509098847",
+   "start": "2026-11-09 02:15:42",
+   "end": "2026-11-09 03:03:23",
+   "status": "FAILED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
+  },
+  {
+   "rn": 2126,
+   "pipelineRunId": "42503749318",
+   "start": "2026-11-09 01:11:56",
+   "end": "2026-11-09 01:38:49",
+   "status": "FAILED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
+  },
+  {
+   "rn": 2125,
+   "pipelineRunId": "42502180491",
+   "start": "2026-11-09 00:53:36",
+   "end": "2026-11-09 01:12:02",
+   "status": "FAILED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
+  },
+  {
+   "rn": 2124,
+   "pipelineRunId": "42498125758",
+   "start": "2026-11-09 00:05:48",
+   "end": "2026-11-09 09:22:46",
+   "status": "FAILED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
   }
  ],
  "runHistory": [
@@ -792,14 +882,132 @@
    "cpr": null,
    "iva": false,
    "ftt": null
+  },
+  {
+   "rn": 2133,
+   "start": "2026-11-09 20:51:29",
+   "end": "2026-11-09 21:03:53",
+   "status": "FAILED",
+   "rid": "42620485286",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42620485286",
+   "bc": null,
+   "bpc": null,
+   "cpr": null,
+   "iva": false,
+   "ftt": null
+  },
+  {
+   "rn": 2132,
+   "start": "2026-11-09 20:51:29",
+   "end": "2026-11-09 20:51:31",
+   "status": "FAILED",
+   "rid": "42620484793",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42620484793",
+   "bc": null,
+   "bpc": null,
+   "cpr": null,
+   "iva": false,
+   "ftt": null
+  },
+  {
+   "rn": 2130,
+   "start": "2026-11-09 19:42:43",
+   "end": "2026-11-09 19:59:57",
+   "status": "FAILED",
+   "rid": "42611183075",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42611183075",
+   "bc": null,
+   "bpc": null,
+   "cpr": null,
+   "iva": false,
+   "ftt": null
+  },
+  {
+   "rn": 2129,
+   "start": "2026-11-09 19:25:23",
+   "end": "2026-11-09 20:19:14",
+   "status": "FAILED",
+   "rid": "42608919924",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42608919924",
+   "bc": null,
+   "bpc": null,
+   "cpr": null,
+   "iva": false,
+   "ftt": null
+  },
+  {
+   "rn": 2128,
+   "start": "2026-11-09 12:48:48",
+   "end": "2026-11-09 14:13:42",
+   "status": "FAILED",
+   "rid": "42563835653",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42563835653",
+   "bc": null,
+   "bpc": null,
+   "cpr": null,
+   "iva": false,
+   "ftt": null
+  },
+  {
+   "rn": 2127,
+   "start": "2026-11-09 02:15:42",
+   "end": "2026-11-09 03:03:23",
+   "status": "FAILED",
+   "rid": "42509098847",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42509098847",
+   "bc": null,
+   "bpc": null,
+   "cpr": null,
+   "iva": false,
+   "ftt": null
+  },
+  {
+   "rn": 2126,
+   "start": "2026-11-09 01:11:56",
+   "end": "2026-11-09 01:38:49",
+   "status": "FAILED",
+   "rid": "42503749318",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42503749318",
+   "bc": null,
+   "bpc": null,
+   "cpr": null,
+   "iva": false,
+   "ftt": null
+  },
+  {
+   "rn": 2125,
+   "start": "2026-11-09 00:53:36",
+   "end": "2026-11-09 01:12:02",
+   "status": "FAILED",
+   "rid": "42502180491",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42502180491",
+   "bc": null,
+   "bpc": null,
+   "cpr": null,
+   "iva": false,
+   "ftt": null
+  },
+  {
+   "rn": 2124,
+   "start": "2026-11-09 00:05:48",
+   "end": "2026-11-09 09:22:46",
+   "status": "FAILED",
+   "rid": "42498125758",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42498125758",
+   "bc": null,
+   "bpc": null,
+   "cpr": null,
+   "iva": false,
+   "ftt": null
   }
  ],
  "meta": {
   "workdays": [
-   "2026-11-06"
+   "2026-11-06",
+   "2026-11-09"
   ],
-  "workdayCount": 1,
-  "skippedNonWorkdayRuns": 0,
+  "workdayCount": 2,
+  "skippedNonWorkdayRuns": 123,
   "skippedRunningRuns": 0,
   "workdayNotes": [
    "法定工作日历: timor.tech API（1 年）"
@@ -810,6 +1018,6 @@
  },
  "keptRuns": 17,
  "keptFailedRuns": 17,
- "excludedRuns": 0,
+ "excludedRuns": 9,
  "note": null
 }

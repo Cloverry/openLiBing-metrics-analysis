@@ -5,7 +5,7 @@
   "source": "openLiBing 流水线运行详情（任务列表）",
   "criteria": "仅取状态为失败的任务；UNSELECTED/CANCELED/IGNORED/INIT 跳过；含测试结果的任务走测试取证（第 4 步），其余走日志取证（第 5 步），github 平台运行改走第 5c 步",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-09 15:06:58",
+  "generatedAt": "2026-11-10 14:57:26",
   "component": "MindStudio",
   "pipeline": "msot",
   "date": "2026-11-06"
@@ -39,7 +39,8 @@
    "jobLastDispatchId": "d4d00f1eea7e4d6c8498e5149f98003f",
    "route": "test",
    "isBuild": false,
-   "buildJobId": "379cda1005e5430abe840cf3cbed483e"
+   "buildJobId": "379cda1005e5430abe840cf3cbed483e",
+   "cached": true
   },
   {
    "key": "MindStudio|msot",
@@ -69,7 +70,8 @@
    "jobLastDispatchId": "6f4914dcdccb4b5cbe125a0fd9d4a0fa",
    "route": "test",
    "isBuild": false,
-   "buildJobId": "8cb875a4e0cb468f9f16d3e85ec79a17"
+   "buildJobId": "8cb875a4e0cb468f9f16d3e85ec79a17",
+   "cached": true
   },
   {
    "key": "MindStudio|msot",
@@ -99,7 +101,8 @@
    "jobLastDispatchId": "e1ba381938284433b3edda37c20ce692",
    "route": "test",
    "isBuild": false,
-   "buildJobId": "c55bdea4b34d4a1fbc8b8263bc2aed71"
+   "buildJobId": "c55bdea4b34d4a1fbc8b8263bc2aed71",
+   "cached": true
   },
   {
    "key": "MindStudio|msot",
@@ -129,7 +132,8 @@
    "jobLastDispatchId": "40fe1d05582245fc87865c5237cf23df",
    "route": "test",
    "isBuild": false,
-   "buildJobId": "379cda1005e5430abe840cf3cbed483e"
+   "buildJobId": "379cda1005e5430abe840cf3cbed483e",
+   "cached": true
   }
  ],
  "log": [],

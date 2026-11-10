@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:07:00",
+    "generatedAt": "2026-11-10 14:57:29",
     "component": "SgLang",
     "pipeline": "nightly-test-npu.yml",
     "date": "2026-11-06",
@@ -57,8 +57,6 @@
         "L1996: [2026-11-06 11:20:37] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
         "L4211: [2026-11-06 11:25:27] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
         "L5134: Traceback (most recent call last):",
-        "L5157: Traceback (most recent call last):",
-        "L5176: Traceback (most recent call last):",
         "L5268: ##[error]Error: failed to run script step:",
         "L5269: ✗ exit code: 255",
         "L5293: ##[error]Process completed with exit code 1.",
@@ -98,20 +96,6 @@
       "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
       "source": "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt",
       "line": 5134,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
-      "source": "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt",
-      "line": 5157,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
-      "source": "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt",
-      "line": 5176,
       "level": "LOG",
       "text": "Traceback (most recent call last):"
     },
@@ -177,7 +161,7 @@
     "logTasks": 1,
     "buildTasks": 0,
     "cases": 0,
-    "errorMessages": 9,
+    "errorMessages": 7,
     "evidenceFiles": 1
   },
   "verdict": {
@@ -186,7 +170,7 @@
     "confidence": 0.7,
     "level": "中",
     "basis": [
-      "任务 nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3 日志命中 9 条错误行（非编译特征），见 github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt",
+      "任务 nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3 日志命中 7 条错误行（非编译特征），见 github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt",
       "基线 0.30",
       "证据文件落盘 1 份 +0.25",
       "任务日志命中错误行 +0.15"
@@ -195,13 +179,17 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "用例代码类型错误：TypeError: can't multiply sequence by non-int of type 'float'，数值计算处把序列当数值参与乘法，测试直接抛异常并以 exit code 255 结束。",
-    "advice": "修正该处计算逻辑（先转 array 或改为逐元素运算），并补一条覆盖该分支的单测；修复后重跑 perf job 验证。",
+    "keyError": "##[error]Error: failed to run script step: ✗ exit code: 255",
+    "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2096 从 19:15:12 跑到 19:32:39（约 17 分钟）记 FAILED；失败的是 nightly-perf-16-npu-a3，与同日晚 18:38 的 #2095 是同一个 job（records/run_2096.json）\n\n第一类（背景噪声）：L1996 与 L4211 各有一条 openai ImportError（11:20:37、11:25:27），和当天其余 SgLang 记录同源\n\n第二类（退出链）：L5134 只有 Traceback 标题、正文缺失，然后 L5268 ##[error]Error: failed to run script step → L5269 ✗ exit code: 255 → L5293 Process completed with exit code 1 → L5294 容器实现执行失败（github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5268）\n\n这条与 #2095 相隔 37 分钟、同一 job、同样 255 退出，但 #2095 抓到了 FileNotFoundError；把两条放在一起看，更像该性能 job 在同一批产物目录上连续两次失败，#2096 只是没把异常正文留住的那一次\n\n因此单看本条只能确认失败在脚本步骤、且退出码 255 与 #2095 的 FileNotFoundError 路径一致；单独归因证据不足，应与 #2095 合并判断\n\n已排除的干扰项：cases 为 0，无性能与精度输出，用例没跑到测量阶段；另 14 个 job 同 run 通过",
+    "advice": "直接复用 #2095 的结论，不要单独排查这一条：先按 #2095 的办法确认 _fia_unset / _pass1_metrics 目录是否产出，两条记录大概率是同一个产物路径问题\n\n补异常留存：L5134 的 Traceback 正文必须落盘，否则每条记录都要靠相邻构建去猜，成本太高\n\n给 nightly-perf 加产物检查前置：跑之前先建好 output 目录并在结束时断言 metrics 存在，把「产物缺失」变成明确报错\n\n验证方式：重跑该 nightly，要求 nightly-perf-16-npu-a3 连续两次均通过并产出 metrics、run 结论为 success，日志中不再出现只有 Traceback 标题而无正文的情况",
     "cites": [
-      "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5149",
-      "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5269"
+      "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5134",
+      "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5269",
+      "records/run_2096.json"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

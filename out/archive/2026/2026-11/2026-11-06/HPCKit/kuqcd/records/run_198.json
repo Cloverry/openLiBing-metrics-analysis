@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:06:59",
+    "generatedAt": "2026-11-10 14:57:28",
     "component": "HPCKit",
     "pipeline": "kuqcd",
     "date": "2026-11-06",
@@ -60,7 +60,7 @@
       "jobName": "Test_quqcd",
       "type": "log",
       "fallback": true,
-      "logFile": "job_logs/03_kuqcd_198_Test_quqcd.log",
+      "logFile": "job_logs/20_kuqcd_198_Test_quqcd.log",
       "logBytes": 16559,
       "logLines": 144,
       "download": "export",
@@ -84,42 +84,42 @@
   "errorMessages": [
     {
       "task": "Test_quqcd",
-      "source": "job_logs/03_kuqcd_198_Test_quqcd.log",
+      "source": "job_logs/20_kuqcd_198_Test_quqcd.log",
       "line": 138,
       "level": "LOG",
       "text": "[2026/11/06 00:33:07.909 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'"
     },
     {
       "task": "Test_quqcd",
-      "source": "job_logs/03_kuqcd_198_Test_quqcd.log",
+      "source": "job_logs/20_kuqcd_198_Test_quqcd.log",
       "line": 139,
       "level": "LOG",
       "text": "[2026/11/06 00:33:07.909 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'"
     },
     {
       "task": "Test_quqcd",
-      "source": "job_logs/03_kuqcd_198_Test_quqcd.log",
+      "source": "job_logs/20_kuqcd_198_Test_quqcd.log",
       "line": 140,
       "level": "LOG",
       "text": "[2026/11/06 00:33:07.909 GMT+08:00] [ERROR] git clone test_cases code fail"
     },
     {
       "task": "Test_quqcd",
-      "source": "job_logs/03_kuqcd_198_Test_quqcd.log",
+      "source": "job_logs/20_kuqcd_198_Test_quqcd.log",
       "line": 142,
       "level": "LOG",
       "text": "[2026/11/06 00:33:08.080 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed"
     },
     {
       "task": "Test_quqcd",
-      "source": "job_logs/03_kuqcd_198_Test_quqcd.log",
+      "source": "job_logs/20_kuqcd_198_Test_quqcd.log",
       "line": 144,
       "level": "LOG",
       "text": "[2026/11/06 00:33:13.158 GMT+08:00] Finished: FAILURE"
     },
     {
       "task": "Test_quqcd",
-      "source": "job_logs/03_kuqcd_198_Test_quqcd.log",
+      "source": "job_logs/20_kuqcd_198_Test_quqcd.log",
       "line": null,
       "level": "JOB",
       "text": "步骤Test_quqcd执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
@@ -127,7 +127,7 @@
     },
     {
       "task": "Test_quqcd",
-      "source": "job_logs/03_kuqcd_198_Test_quqcd.log",
+      "source": "job_logs/20_kuqcd_198_Test_quqcd.log",
       "line": null,
       "level": "STEP",
       "text": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
@@ -136,7 +136,7 @@
   ],
   "evidence": {
     "files": [
-      "job_logs/03_kuqcd_198_Test_quqcd.log"
+      "job_logs/20_kuqcd_198_Test_quqcd.log"
     ],
     "missing": [
       "Test_quqcd"
@@ -168,12 +168,19 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "测试用例在拉取阶段失败：整 job 日志报 fatal: Authentication failed（用例仓库鉴权失败），用例未执行、测试任务用例结果为空，运行以脚本退出码 1 结束。",
-    "advice": "与同批次鉴权失败一并处理：修复凭据、验证 clone 后重跑；该组件当天多条流水线同时失败，优先确认是否为同一凭据失效。",
+    "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+    "rootCause": "Test_quqcd 00:31:53 启动，00:33:07 用例仓 clone 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，同秒出现 [ERROR] git clone test_cases code fail，00:33:08 脚本返回退出码 1，00:33:13 Finished: FAILURE（job_logs/20_kuqcd_198_Test_quqcd.log:L138、L139、L140、L142、L144）\n\n用例统计 total=0、passed=0、failed=0，测试任务结果为空：失败停在 clone，属环境/凭据未就绪\n\n本记录失败的仓库与同日 kudnn #224、kupl #297～#299 完全一致（都是 kunpengcompute/hpckit-autotest），四个组件在同一凌晨到午后反复撞同一句鉴权失败，更像多个流水线共用一份失效凭据，而非 kuqcd 单条流水线的配置错误\n\n已排除的干扰项：平台封装码 DEV-CODECI-35002「构建任务执行失败」是步骤失败后的统一封装，不带鉴权细节；日志中无超时行，排除网络不可达；简报未提供凭据配置细节，因此「共用同一凭据」按更可能而非定论表述",
+    "advice": "把 hpckit-autotest 的凭据治理成一份公共流水线凭据（access token），kuqcd 与 kudnn、kupl、hmpi、kpex 统一引用，改一次全生效\n\n修复后按组件逐个验证 clone 成功，再复跑 kuqcd 确认用例能正常拉起，不要只看 exit code\n\n在流水线开始处加仓库可达性预检，预检不通过直接失败并标注仓库地址与凭据别名，减少回退整 job 日志的人工成本\n\n验证方式：用 #198 参数重跑 kuqcd 流水线，要求 clone 成功、用例 total 大于 0、退出码为 0，日志中不再出现 Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
     "cites": [
-      "job_logs/03_kuqcd_198_Test_quqcd.log:L138"
+      "job_logs/20_kuqcd_198_Test_quqcd.log:L138",
+      "job_logs/20_kuqcd_198_Test_quqcd.log:L139",
+      "job_logs/20_kuqcd_198_Test_quqcd.log:L140",
+      "job_logs/20_kuqcd_198_Test_quqcd.log:L142",
+      "job_logs/20_kuqcd_198_Test_quqcd.log:L144"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

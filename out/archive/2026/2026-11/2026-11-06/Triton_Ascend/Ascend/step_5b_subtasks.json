@@ -5,7 +5,7 @@
   "source": "openLiBing buildflow 子任务页",
   "criteria": "对 buildflow 任务的失败子任务逐个取真实编译报错与子任务日志",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-09 15:06:59",
+  "generatedAt": "2026-11-10 14:57:28",
   "component": "Triton_Ascend",
   "pipeline": "Ascend",
   "date": "2026-11-06"

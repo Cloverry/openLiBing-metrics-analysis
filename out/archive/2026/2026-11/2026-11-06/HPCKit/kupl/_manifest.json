@@ -5,7 +5,7 @@
   "source": "第 1~6 步中间产物（out/work/）",
   "criteria": "本目录内每一步的来源/口径/文件/计数与证据文件，逐条可核对",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-09 15:06:59",
+  "generatedAt": "2026-11-10 14:57:28",
   "component": "HPCKit",
   "pipeline": "kupl",
   "date": "2026-11-06"
@@ -46,7 +46,7 @@
    "source": "openLiBing 夜间统计看板（产品维度指标）",
    "criteria": "默认取「前一个工作日」单日（跳过周末与法定节假日，config.date_range 留空时生效）：取 config.products 指定的开源组件在该日的版本可用度/编译成功率，比率按我们采集到的执行记录重算（归档只存数值，不存黄/绿/红）；本产品下任一指标未达 100%（或版本不可用）的流水线进入待分析集合",
    "dateField": "统计区间（start~end，含端点）",
-   "bytes": 2405
+   "bytes": 2408
   },
   {
    "step": "step_2_runs",
@@ -55,7 +55,7 @@
    "source": "openLiBing 流水线 N2 执行列表",
    "criteria": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）；仅保留工作日；VA 轨道=当日无 isVersionAvailable=true 的待查运行，BS 轨道=豁免日补圈的 Build* 失败运行",
    "dateField": "pipelineRunEndtime",
-   "bytes": 6507
+   "bytes": 9430
   },
   {
    "step": "step_3_tasks",
@@ -82,7 +82,7 @@
    "source": "openLiBing 任务日志导出/分页接口",
    "criteria": "对每个失败任务导出整份日志落 job_logs/，并按关键字扫描错误行",
    "dateField": "pipelineRunEndtime",
-   "bytes": 3820
+   "bytes": 4273
   },
   {
    "step": "step_5b_subtasks",
@@ -109,7 +109,7 @@
    "source": "第 2~5c 步归档产物",
    "criteria": "以「一次执行」为最小单位合并任务、用例、错误信息、证据与构建编号，形成可直接展示与逐条分析的记录",
    "dateField": "pipelineRunEndtime",
-   "bytes": 14608
+   "bytes": 16352
   }
  ],
  "records": [
@@ -143,7 +143,7 @@
   "records": 3,
   "tasks": 6,
   "cases": 0,
-  "errorMessages": 15
+  "errorMessages": 21
  },
  "evidence": {
   "files": 3,
@@ -155,7 +155,7 @@
  },
  "source": {
   "workDir": "work",
-  "generatedAt": "2026-11-09 15:06:58",
+  "generatedAt": "2026-11-10 14:57:26",
   "note": "由 steps/step_7_archive.py 从第 1~6 步产物逐层归档"
  }
 }

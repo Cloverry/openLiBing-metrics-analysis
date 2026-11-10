@@ -5,19 +5,19 @@
   "source": "openLiBing 夜间统计看板（产品维度指标）",
   "criteria": "默认取「前一个工作日」单日（跳过周末与法定节假日，config.date_range 留空时生效）：取 config.products 指定的开源组件在该日的版本可用度/编译成功率，比率按我们采集到的执行记录重算（归档只存数值，不存黄/绿/红）；本产品下任一指标未达 100%（或版本不可用）的流水线进入待分析集合",
   "dateField": "统计区间（start~end，含端点）",
-  "generatedAt": "2026-11-09 15:06:58",
+  "generatedAt": "2026-11-10 14:57:26",
   "component": "MindStudio",
   "pipeline": "msot",
   "date": "2026-11-06"
  },
  "dateRange": {
   "start": "2026-11-06",
-  "end": "2026-11-06"
+  "end": "2026-11-09"
  },
  "product": {
   "product": "MindStudio",
   "projectId": 300037,
-  "versionAvailabilityRate": 0.8333333333333334,
+  "versionAvailabilityRate": 0.9166666666666666,
   "buildSuccessRate": null,
   "pipelineCount": 6,
   "badPipelineCount": 1,
@@ -29,8 +29,8 @@
   "recompute": true,
   "scheduledOnly": false,
   "versionAvailabilityDetail": {
-   "availDays": 5,
-   "daysInPeriod": 6,
+   "availDays": 11,
+   "daysInPeriod": 12,
    "rule": "按采集到的全部运行重算：Σ可用日 / Σ有运行日（不看板 versionAvail；当日有 iva=true 的运行才算可用）"
   }
  },
@@ -42,7 +42,7 @@
   "pipelineShortName": "msot",
   "pipelineId": "b67d335347fa4646acd3b96d1c55573e",
   "platform": "codearts",
-  "versionAvailabilityRate": 0,
+  "versionAvailabilityRate": 0.5,
   "buildSuccessRate": null,
   "dims": [
    "va"
@@ -57,6 +57,6 @@
    "va"
   ],
   "rateRule": "runs",
-  "reason": "全量采集：该流水线区间内共 4 次运行（当日 4 次），其中 4 次失败/取消进入根因取证；版本可用度与编译成功率一律按全部运行逐日重算（不看板返回值）"
+  "reason": "全量采集：该流水线区间内共 5 次运行（当日 4 次），其中 4 次失败/取消进入根因取证；版本可用度与编译成功率一律按全部运行逐日重算（不看板返回值）"
  }
 }

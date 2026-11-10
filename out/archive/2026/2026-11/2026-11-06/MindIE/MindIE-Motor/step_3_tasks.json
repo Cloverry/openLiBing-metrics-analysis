@@ -5,7 +5,7 @@
   "source": "openLiBing 流水线运行详情（任务列表）",
   "criteria": "仅取状态为失败的任务；UNSELECTED/CANCELED/IGNORED/INIT 跳过；含测试结果的任务走测试取证（第 4 步），其余走日志取证（第 5 步），github 平台运行改走第 5c 步",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-09 15:06:58",
+  "generatedAt": "2026-11-10 14:57:26",
   "component": "MindIE",
   "pipeline": "MindIE-Motor",
   "date": "2026-11-06"
@@ -39,7 +39,8 @@
    "jobLastDispatchId": "f9ff44c2f63c4cc291581a8ca88c2c1e",
    "route": "test",
    "isBuild": false,
-   "buildJobId": "35af558b239a4803948c2651933bc2bd"
+   "buildJobId": "35af558b239a4803948c2651933bc2bd",
+   "cached": true
   }
  ],
  "log": [],

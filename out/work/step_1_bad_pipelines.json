@@ -61,8 +61,8 @@
    "pipelineShortName": "MindIE-Motor",
    "pipelineId": "d05b26dfc2e5450e8fff23ddf4cd0eb6",
    "platform": "codearts",
-   "versionAvailabilityRate": 0,
-   "buildSuccessRate": 1,
+   "versionAvailabilityRate": 0.5,
+   "buildSuccessRate": 0.75,
    "dims": [
     "va",
     "bs"
@@ -147,7 +147,7 @@
    "pipelineShortName": "msot",
    "pipelineId": "b67d335347fa4646acd3b96d1c55573e",
    "platform": "codearts",
-   "versionAvailabilityRate": 0,
+   "versionAvailabilityRate": 0.5,
    "buildSuccessRate": null,
    "dims": [
     "va"
@@ -377,7 +377,7 @@
    "pipelineShortName": "ops-nn",
    "pipelineId": "6d402b76f9b14451872ef07ac1f864ba",
    "platform": "codearts",
-   "versionAvailabilityRate": 1,
+   "versionAvailabilityRate": 0.5,
    "buildSuccessRate": 1,
    "dims": [
     "va",
@@ -413,7 +413,7 @@
    "pipelineShortName": "shmem",
    "pipelineId": "93831fdaa3234c8a9dd0b8a0c220f939",
    "platform": "codearts",
-   "versionAvailabilityRate": 1,
+   "versionAvailabilityRate": 0.5,
    "buildSuccessRate": 1,
    "dims": [
     "va",
@@ -431,7 +431,7 @@
    "pipelineShortName": "ops-math",
    "pipelineId": "aa3d520fe64f4071a09178d2d603278e",
    "platform": "codearts",
-   "versionAvailabilityRate": 0,
+   "versionAvailabilityRate": 0.5,
    "buildSuccessRate": 1,
    "dims": [
     "va",
@@ -712,11 +712,11 @@
    "scheduledOnly": false
   },
   {
-   "key": "MindSpeed|master",
+   "key": "MindSpeed|DrivingSDK_master",
    "product": "MindSpeed",
    "projectId": 300091,
    "pipelineName": "Nightly-CI-Component-pipeline_DrivingSDK_master",
-   "pipelineShortName": "master",
+   "pipelineShortName": "DrivingSDK_master",
    "pipelineId": "0260b812efd04b0ebf649f3a4c533996",
    "platform": "codearts",
    "versionAvailabilityRate": 1,
@@ -729,11 +729,11 @@
    "scheduledOnly": false
   },
   {
-   "key": "MindSpeed|master",
+   "key": "MindSpeed|MindSpeed-MM_master",
    "product": "MindSpeed",
    "projectId": 300091,
    "pipelineName": "Nightly-CI-Component-pipeline_MindSpeed-MM_master",
-   "pipelineShortName": "master",
+   "pipelineShortName": "MindSpeed-MM_master",
    "pipelineId": "094eb44f70df495783f375641b7143e6",
    "platform": "codearts",
    "versionAvailabilityRate": 1,
@@ -746,11 +746,11 @@
    "scheduledOnly": false
   },
   {
-   "key": "MindSpeed|master",
+   "key": "MindSpeed|MindSpeed-LLM_master",
    "product": "MindSpeed",
    "projectId": 300091,
    "pipelineName": "Nightly-CI-Component-pipeline_MindSpeed-LLM_master",
-   "pipelineShortName": "master",
+   "pipelineShortName": "MindSpeed-LLM_master",
    "pipelineId": "b30f40b85cce4153b175379589793abc",
    "platform": "codearts",
    "versionAvailabilityRate": 1,
@@ -763,11 +763,11 @@
    "scheduledOnly": false
   },
   {
-   "key": "MindSpeed|master",
+   "key": "MindSpeed|MindSpeed_master",
    "product": "MindSpeed",
    "projectId": 300091,
    "pipelineName": "Nightly-CI-Component-pipeline_MindSpeed_master",
-   "pipelineShortName": "master",
+   "pipelineShortName": "MindSpeed_master",
    "pipelineId": "e12bb930ffe84e3b9258f23c41644b58",
    "platform": "codearts",
    "versionAvailabilityRate": 1,
@@ -780,11 +780,11 @@
    "scheduledOnly": false
   },
   {
-   "key": "MindSpeed|master",
+   "key": "MindSpeed|MindSpeed-A3_master",
    "product": "MindSpeed",
    "projectId": 300091,
    "pipelineName": "Nightly-CI-Component-pipeline_MindSpeed-A3_master",
-   "pipelineShortName": "master",
+   "pipelineShortName": "MindSpeed-A3_master",
    "pipelineId": "e593e0b8911044b69ce9d1be3c19032a",
    "platform": "codearts",
    "versionAvailabilityRate": 1,
@@ -838,7 +838,7 @@
    "pipelineShortName": "Ascend",
    "pipelineId": "9a4886d40e544cecb7da63c9597490a6",
    "platform": "codearts",
-   "versionAvailabilityRate": 0,
+   "versionAvailabilityRate": 0.5,
    "buildSuccessRate": 1,
    "dims": [
     "va",
@@ -930,6 +930,7 @@
   "产品 MindCluster 有 2 条流水线 buildSuccess 无数据，未纳入编译成功率统计（该流水线可能无 Build* 任务）",
   "产品 MindSpeed ops-overview 未返回 nightlyBuildSuccessRate，产品级编译成功率无数据",
   "产品 MindSpeed 有 5 条流水线 buildSuccess 无数据，未纳入编译成功率统计（该流水线可能无 Build* 任务）",
+  "产品 MindSpeed 有 5 条流水线末段同名（如 DrivingSDK_master），已改用去前缀全名作唯一短名，避免执行记录互相覆盖: Nightly-CI-Component-pipeline_DrivingSDK_master -> DrivingSDK_master；Nightly-CI-Component-pipeline_MindSpeed-A3_master -> MindSpeed-A3_master；Nightly-CI-Component-pipeline_MindSpeed-LLM_master -> MindSpeed-LLM_master；Nightly-CI-Component-pipeline_MindSpeed-MM_master -> MindSpeed-MM_master；Nightly-CI-Component-pipeline_MindSpeed_master -> MindSpeed_master",
   "产品 vllm-ascend ops-overview 未返回 nightlyBuildSuccessRate，产品级编译成功率无数据",
   "产品 vllm-ascend 有 2 条流水线 buildSuccess 无数据，未纳入编译成功率统计（该流水线可能无 Build* 任务）",
   "产品 vllm-ascend 只采集定时任务运行（displayTitle 含 (scheduled)），含 PR 的运行一律不采集、不归档、不做根因分析",

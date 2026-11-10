@@ -73,6 +73,32 @@ CATEGORY_TEXT = {
     "unknown": "证据不足待人工确认",
 }
 
+# 证据精简（只留重要节点）：两日归档里 1123 条证据行有 63% 是同构重复，
+# 全量堆到页面上「很多都看不出来啥问题」，这里统一在记录层做去重 + 限条。
+EVIDENCE_MAX_LOG_PER_TASK = 8    # 单任务保留的行级错误行（首 4 + 尾 4，尾部通常是致命行）
+EVIDENCE_MAX_CASE_PER_CASE = 3   # 单用例保留的用例级消息（断言原文优先）
+EVIDENCE_MAX_TOTAL = 30          # 单条记录保留的证据行总上限
+
+
+def ftt_category(ftt):
+    """服务端 failedTaskType → 定性；取不到/「流水线未失败」返回 None。
+
+    运行平台给出的失败任务类型本身就是可核对的定性依据：只要服务端说了失败在
+    「测试任务 / 构建任务」，就不能因为接口没返回任务详情而判成「证据缺失」。
+    """
+    t = str(ftt or "").strip()
+    if not t or t == "流水线未失败":
+        return None
+    if "测试" in t:
+        return "test_failure"
+    if "构建" in t or "编译" in t:
+        return "compile_failure"
+    if "部署" in t or "环境" in t:
+        return "env_not_ready"
+    if "取消" in t:
+        return "cancelled"
+    return "job_failure"
+
 
 def load_opt(name):
     p = OUT_DIR / name
@@ -225,6 +251,72 @@ def _case_assertion(case, limit=600):
     return None, None
 
 
+def _line_sig(text):
+    """证据行指纹：只抹平空白，不做语义归一（避免把「case1 failed / case2 failed」误并成一条）。"""
+    return re.sub(r"\s+", " ", str(text or "")).strip()
+
+
+def _dedup_lines(lines):
+    """任务级错误行去重：同一行被重复刷屏（重试、多卡并行打印）只留首次，行号保真。"""
+    out, seen = [], set()
+    for e in lines or []:
+        t = e.get("text") if isinstance(e, dict) else re.sub(r"^L\d+:\s*", "", str(e))
+        sig = _line_sig(t)
+        if sig and sig in seen:
+            continue
+        seen.add(sig)
+        out.append(e)
+    return out
+
+
+def _slim_rows(local, max_log=EVIDENCE_MAX_LOG_PER_TASK,
+               max_case=EVIDENCE_MAX_CASE_PER_CASE):
+    """只留「重要节点」：同构行去重 + 按类别限条，避免把整份日志的错误行堆到页面上。
+
+    - 同任务内文本完全相同的行只留首次（重试/多卡并行会把同一行刷很多遍）；
+    - 行级 LOG 证据最多 max_log 条，取「首 half + 尾 rest」——尾部通常是致命行；
+    - 用例级证据每个用例最多 max_case 条，断言原文（assertion）因为先入队天然优先；
+    - 平台封装文案（STEP / JOB）各留 1 条，保证封装码仍可查，但不占版面。
+    """
+    wrappers, logs, cases = [], [], []
+    seen = set()
+    for r in local:
+        sig = _line_sig(r.get("text"))
+        key = (r.get("level"), r.get("task"), r.get("case"), sig)
+        if sig and key in seen:
+            continue
+        seen.add(key)
+        lvl = (r.get("level") or "").upper()
+        if r.get("isWrapper") or lvl in ("STEP", "JOB"):
+            wrappers.append(r)
+        elif lvl in ("ERROR", "FAIL", "CASE", "SUBTASK") or r.get("case"):
+            cases.append(r)
+        else:
+            logs.append(r)
+
+    if len(logs) > max_log:
+        half = max_log // 2
+        logs = logs[:half] + logs[-(max_log - half):]
+
+    picked, per_case = [], {}
+    for r in cases:
+        k = r.get("case") or r.get("subTask") or "-"
+        if per_case.get(k, 0) >= max_case:
+            continue
+        per_case[k] = per_case.get(k, 0) + 1
+        picked.append(r)
+
+    # 封装文案各留 1 条（第一条 STEP、第一条 JOB）
+    for lvl in ("STEP", "JOB"):
+        for r in wrappers:
+            if (r.get("level") or "").upper() == lvl:
+                picked.append(r)
+                break
+
+    picked.sort(key=lambda r: _err_rank(r.get("level"), r.get("isSummary")))
+    return picked if not logs else logs + picked
+
+
 def flatten_errors(tasks):
     """错误信息展平：每条带来源任务/文件/行号，保证任何一条都能回原文核对。
 
@@ -287,8 +379,10 @@ def flatten_errors(tasks):
                               "source": st.get("logFile"), "level": "SUBTASK",
                               "line": int(m.group(1)) if m else None,
                               "text": m.group(2) if m else str(e)})
-        local.sort(key=lambda r: _err_rank(r.get("level"), r.get("isSummary")))
-        rows.extend(local)
+        rows.extend(_slim_rows(local))
+    # 单条记录的总量上限：按优先级（LOG → ERROR/CASE → SUBTASK → 汇总行 → 封装文案）截断
+    if len(rows) > EVIDENCE_MAX_TOTAL:
+        rows = rows[:EVIDENCE_MAX_TOTAL]
     return rows
 
 
@@ -323,10 +417,28 @@ def evidence_files(tasks):
 
 
 def classify(run, tasks):
-    """定性（规则可复核）：返回 (category, basis[]) —— 每条依据都是可在证据里核对的陈述。"""
+    """定性（规则可复核）：返回 (category, basis[]) —— 每条依据都是可在证据里核对的陈述。
+
+    定性优先级：任务详情（日志/用例）> 服务端 failedTaskType > 运行状态。
+    tasks 为空只代表「接口没返回失败任务详情」，不代表失败类型未知。
+    """
     basis = []
+    ftt = str(run.get("ftt") or "").strip()
+    status = str(run.get("status") or "").strip().upper()
+    cat = ftt_category(ftt)
     if not tasks:
-        return "evidence_missing", ["该运行无 FAILED 任务证据（任务被取消或接口未返回失败任务）"]
+        # 服务端已给出失败任务类型：按类型定性，不再判「证据缺失」
+        if status == "CANCELED":
+            note = ["运行状态 CANCELED（运行被取消，平台侧未留存任务日志）"]
+            if cat:
+                note.append("运行平台标记失败任务类型为「%s」，取消发生在该任务执行期间" % ftt)
+            return "cancelled", note
+        if cat:
+            basis.append("运行平台标记失败任务类型为「%s」，据此定性为「%s」"
+                         % (ftt, CATEGORY_TEXT[cat]))
+            basis.append("接口未返回失败任务详情（无 job 日志 / 失败用例明细），证据止于任务类型这一层")
+            return cat, basis
+        return "evidence_missing", ["该运行无 FAILED 任务证据，且运行平台未给出失败任务类型"]
     has_file = any(t.get("logFile") for t in tasks)
     if not has_file:
         # 无 job 日志落盘时也要先看用例级证据：test 任务只要取到失败用例（哪怕用例日志
@@ -340,8 +452,17 @@ def classify(run, tasks):
                             ("、%d 条用例级 ERROR/FAIL 消息" % n_msg) if n_msg else ""))
             return "test_failure", basis
         note = [t.get("evidenceNote") for t in tasks if t.get("evidenceNote")]
-        if run.get("status") == "CANCELED":
-            return "cancelled", ["运行状态 CANCELED，运行平台侧未留存任务日志"] + note
+        if status == "CANCELED":
+            note = ["运行状态 CANCELED，运行平台侧未留存任务日志"] + note
+            if cat:
+                note.append("运行平台标记失败任务类型为「%s」" % ftt)
+            return "cancelled", note
+        # 任务详情里没有日志，但服务端给了失败任务类型：按类型定性（证据到任务类型这一层）
+        if cat:
+            basis.append("运行平台标记失败任务类型为「%s」，据此定性为「%s」"
+                         % (ftt, CATEGORY_TEXT[cat]))
+            basis.append("失败任务无日志落盘（%d 个任务），证据止于任务类型这一层" % len(tasks))
+            return cat, basis + note
         return "evidence_missing", ["全部失败任务均无日志落盘"] + note
 
     build_tasks = [t for t in tasks if (t.get("jobName") or "").lower().startswith("build")]
@@ -515,6 +636,15 @@ def main():
                         "evidenceNote": "运行平台侧日志未留存（404），证据不完整；"
                                         "定性依据 jobs 元数据（conclusion/时长/失败步骤）",
                     })
+
+            # 证据去重：同一行被重复刷屏很常见（日志重试、多卡并行打印同一行），
+            # 只留首次出现，不改行号、不删不同类型行，纯去噪
+            for t in tasks:
+                if t.get("errorLines"):
+                    t["errorLines"] = _dedup_lines(t["errorLines"])
+                for st in t.get("subTasks") or []:
+                    if st.get("errorLines"):
+                        st["errorLines"] = _dedup_lines(st["errorLines"])
 
             end_raw = run.get("end") or ""
             start_raw = run.get("start") or ""

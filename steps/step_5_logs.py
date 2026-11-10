@@ -26,7 +26,11 @@ from lib.cache import (entry_key, load_cache, next_job_log_index,
 
 LOG_DIR = OUT_DIR / "job_logs"
 SAN_RE = re.compile(r'[\\/:*?"<>|\s]+')
-ERR_LINE_RE = re.compile(r"\[ERROR\]|\[FAIL|ERROR|FAIL|失败|Traceback|AssertionError|Exception", re.I)
+# 错误行特征：必须是「词级」错误标记，避免裸 error / fail 在正常日志文本里到处命中
+# （旧版 `ERROR|FAIL|失败` 会把「0 errors」「no error found」这类行也算成证据行）
+ERR_LINE_RE = re.compile(
+    r"\[ERROR\]|\[FAIL|\bERROR\b|\bFAIL(?:ED|URE)?\b|\bFATAL\b|Traceback|"
+    r"\b[A-Za-z_][\w.]*(?:Error|Exception)\b|失败", re.I)
 
 
 def sanitize(s):

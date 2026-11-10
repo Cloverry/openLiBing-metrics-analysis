@@ -5,7 +5,7 @@
   "source": "第 2~5c 步归档产物",
   "criteria": "以「一次执行」为最小单位合并任务、用例、错误信息、证据与构建编号，形成可直接展示与逐条分析的记录",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-09 15:06:59",
+  "generatedAt": "2026-11-10 14:57:27",
   "component": "boostkit",
   "pipeline": "avx2ki",
   "date": "2026-11-06",

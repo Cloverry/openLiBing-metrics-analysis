@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:07:00",
+    "generatedAt": "2026-11-10 14:57:29",
     "component": "SgLang",
     "pipeline": "nightly-test-npu.yml",
     "date": "2026-11-06",
@@ -58,8 +58,6 @@
         "L913: ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
         "L915: ##[error]Error: failed to run script step:",
         "L916: ✗ exit code: 1",
-        "L933: Traceback (most recent call last):",
-        "L938: ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
         "L940: ##[error]Process completed with exit code 1.",
         "L941: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
       ],
@@ -92,8 +90,6 @@
         "L632: ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
         "L636: ##[error]Error: failed to run script step:",
         "L637: ✗ exit code: 1",
-        "L652: Traceback (most recent call last):",
-        "L657: ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
         "L661: ##[error]Process completed with exit code 1.",
         "L662: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
       ],
@@ -126,8 +122,6 @@
         "L632: ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
         "L636: ##[error]Error: failed to run script step:",
         "L637: ✗ exit code: 1",
-        "L652: Traceback (most recent call last):",
-        "L657: ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
         "L661: ##[error]Process completed with exit code 1.",
         "L662: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
       ],
@@ -178,20 +172,6 @@
     {
       "task": "nightly-1-npu-a3 / run (0)",
       "source": "github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt",
-      "line": 933,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "nightly-1-npu-a3 / run (0)",
-      "source": "github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt",
-      "line": 938,
-      "level": "LOG",
-      "text": "ModuleNotFoundError: No module named 'sglang.srt.utils.process'"
-    },
-    {
-      "task": "nightly-1-npu-a3 / run (0)",
-      "source": "github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt",
       "line": 940,
       "level": "LOG",
       "text": "##[error]Process completed with exit code 1."
@@ -234,20 +214,6 @@
     {
       "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
       "source": "github_logs/gh_42197450049/127824197865_nightly-perf-16-npu-a3 _ nightly-perf~e43578dd.txt",
-      "line": 652,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
-      "source": "github_logs/gh_42197450049/127824197865_nightly-perf-16-npu-a3 _ nightly-perf~e43578dd.txt",
-      "line": 657,
-      "level": "LOG",
-      "text": "ModuleNotFoundError: No module named 'sglang.srt.utils.process'"
-    },
-    {
-      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
-      "source": "github_logs/gh_42197450049/127824197865_nightly-perf-16-npu-a3 _ nightly-perf~e43578dd.txt",
       "line": 661,
       "level": "LOG",
       "text": "##[error]Process completed with exit code 1."
@@ -286,20 +252,6 @@
       "line": 637,
       "level": "LOG",
       "text": "✗ exit code: 1"
-    },
-    {
-      "task": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
-      "source": "github_logs/gh_42197450049/127824197899_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
-      "line": 652,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
-      "source": "github_logs/gh_42197450049/127824197899_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt",
-      "line": 657,
-      "level": "LOG",
-      "text": "ModuleNotFoundError: No module named 'sglang.srt.utils.process'"
     },
     {
       "task": "nightly-acc-16-npu-a3 / nightly-acc-16-npu-a3",
@@ -371,7 +323,7 @@
     "logTasks": 3,
     "buildTasks": 0,
     "cases": 0,
-    "errorMessages": 24,
+    "errorMessages": 18,
     "evidenceFiles": 3
   },
   "verdict": {
@@ -380,7 +332,7 @@
     "confidence": 0.7,
     "level": "中",
     "basis": [
-      "任务 nightly-1-npu-a3 / run (0) 日志命中 8 条错误行（非编译特征），见 github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt",
+      "任务 nightly-1-npu-a3 / run (0) 日志命中 6 条错误行（非编译特征），见 github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt",
       "基线 0.30",
       "证据文件落盘 3 份 +0.25",
       "任务日志命中错误行 +0.15"
@@ -389,14 +341,17 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "三个测试 job 均报 ModuleNotFoundError: No module named 'sglang.srt.utils.process'，用例仍引用已被移除或改名的模块（框架重构后用例未同步），测试在导入阶段即中断。",
-    "advice": "批量修正用例中对 sglang.srt.utils.process 的引用到新模块路径，并在 CI 加一条导入路径静态检查，避免框架重构后整批用例同时失效。",
+    "keyError": "ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
+    "rootCause": "该 run 共 15 个 job、3 个失败，构建 #2092 从 17:45:36 跑到 18:00:55 记 FAILED；三个失败 job 是 nightly-1-npu-a3、nightly-perf-16-npu-a3、nightly-acc-16-npu-a3（records/run_2092.json）\n\n失败链在三个任务里逐字相同：Traceback（L908）→ ModuleNotFoundError: No module named 'sglang.srt.utils.process'（L913）→ ##[error]Error: failed to run script step（L915）→ ✗ exit code: 1（L916）→ 容器实现执行失败（L941），18 条 errorMessages 正好是 3 个任务 × 6 行（github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt:L913）\n\n用例引用的是 sglang.srt.utils.process，而当前安装的 sglang 包里没有这个模块，三个任务在 import 阶段就中断，一条用例都没跑到执行，因此更像代码与镜像版本不匹配（用例已跟到含该模块的主干，镜像里装的还是旧包），而不是运行环境随机故障\n\n如果只是某个任务配置写错，不会三个规格完全不同的任务（单机 1 卡、16 卡性能、16 卡精度）在同一处 import 上一起失败，这一点反过来支持「公共依赖版本」这个归因\n\n已排除的干扰项：没有任何断言失败或精度结论，失败在用例加载阶段；日志里没有驱动、通信库或调度报错",
+    "advice": "先对齐版本：确认镜像里 sglang 的安装方式与 commit，核对 sglang/srt/utils/process.py 是否存在；若用例已合入主干而镜像未更新，重新构建镜像或改为安装主干 wheel，一次修掉三个任务\n\n再加前置校验：在 CI 入口 import 一遍用例会用到的新模块，缺模块就直接报「镜像版本落后」并终止，而不是让三个任务各跑十几分钟再同一处失败\n\n若确认是上游把该模块改名/移走，则在用例侧改成新路径，并在 PR 里注明兼容的最低 sglang 版本，避免下一次镜像升级又反向炸掉\n\n验证方式：重跑该 nightly，要求三个 a3 测试任务全部转通过、run 结论为 success，且日志中不再出现 No module named 'sglang.srt.utils.process'",
     "cites": [
       "github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt:L913",
-      "github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt:L938",
-      "github_logs/gh_42197450049/127824197899_nightly-acc-16-npu-a3 _ nightly-acc-16-npu-a3.txt:L632"
+      "github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt:L941",
+      "records/run_2092.json"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

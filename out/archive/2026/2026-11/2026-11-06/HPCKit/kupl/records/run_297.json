@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:06:59",
+    "generatedAt": "2026-11-10 14:57:28",
     "component": "HPCKit",
     "pipeline": "kupl",
     "date": "2026-11-06",
@@ -60,19 +60,22 @@
       "jobName": "Test_kupl",
       "type": "log",
       "fallback": true,
-      "logFile": "job_logs/09_kupl_297_Test_kupl.log",
-      "logBytes": 1385,
-      "logLines": 13,
-      "download": "paging",
-      "truncated": true,
+      "logFile": "job_logs/19_kupl_297_Test_kupl.log",
+      "logBytes": 16562,
+      "logLines": 144,
+      "download": "export",
+      "truncated": false,
       "excerpt": null,
       "stepErrMsgs": [
         "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
       ],
       "jobErrMsg": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
       "errorLines": [
-        "L11: [2026/11/06 00:02:23.210 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : [frame] query step status with error.",
-        "L12: [2026/11/06 00:02:23.210 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : 错误信息: DEV-CODECI-35002, 构建任务执行失败!"
+        "L138: [2026/11/06 00:02:22.408 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+        "L139: [2026/11/06 00:02:22.408 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'",
+        "L140: [2026/11/06 00:02:22.408 GMT+08:00] [ERROR] git clone test_cases code fail",
+        "L142: [2026/11/06 00:02:22.581 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed",
+        "L144: [2026/11/06 00:02:28.047 GMT+08:00] Finished: FAILURE"
       ],
       "subTasks": []
     }
@@ -81,21 +84,42 @@
   "errorMessages": [
     {
       "task": "Test_kupl",
-      "source": "job_logs/09_kupl_297_Test_kupl.log",
-      "line": 11,
+      "source": "job_logs/19_kupl_297_Test_kupl.log",
+      "line": 138,
       "level": "LOG",
-      "text": "[2026/11/06 00:02:23.210 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : [frame] query step status with error."
+      "text": "[2026/11/06 00:02:22.408 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'"
     },
     {
       "task": "Test_kupl",
-      "source": "job_logs/09_kupl_297_Test_kupl.log",
-      "line": 12,
+      "source": "job_logs/19_kupl_297_Test_kupl.log",
+      "line": 139,
       "level": "LOG",
-      "text": "[2026/11/06 00:02:23.210 GMT+08:00] [ERROR] [real_stage:official_devcloud_cloudBuild] : 错误信息: DEV-CODECI-35002, 构建任务执行失败!"
+      "text": "[2026/11/06 00:02:22.408 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'"
     },
     {
       "task": "Test_kupl",
-      "source": "job_logs/09_kupl_297_Test_kupl.log",
+      "source": "job_logs/19_kupl_297_Test_kupl.log",
+      "line": 140,
+      "level": "LOG",
+      "text": "[2026/11/06 00:02:22.408 GMT+08:00] [ERROR] git clone test_cases code fail"
+    },
+    {
+      "task": "Test_kupl",
+      "source": "job_logs/19_kupl_297_Test_kupl.log",
+      "line": 142,
+      "level": "LOG",
+      "text": "[2026/11/06 00:02:22.581 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed"
+    },
+    {
+      "task": "Test_kupl",
+      "source": "job_logs/19_kupl_297_Test_kupl.log",
+      "line": 144,
+      "level": "LOG",
+      "text": "[2026/11/06 00:02:28.047 GMT+08:00] Finished: FAILURE"
+    },
+    {
+      "task": "Test_kupl",
+      "source": "job_logs/19_kupl_297_Test_kupl.log",
       "line": null,
       "level": "JOB",
       "text": "步骤Test_kupl执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
@@ -103,7 +127,7 @@
     },
     {
       "task": "Test_kupl",
-      "source": "job_logs/09_kupl_297_Test_kupl.log",
+      "source": "job_logs/19_kupl_297_Test_kupl.log",
       "line": null,
       "level": "STEP",
       "text": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
@@ -112,7 +136,7 @@
   ],
   "evidence": {
     "files": [
-      "job_logs/09_kupl_297_Test_kupl.log"
+      "job_logs/19_kupl_297_Test_kupl.log"
     ],
     "missing": [
       "Test_kupl"
@@ -125,7 +149,7 @@
     "logTasks": 1,
     "buildTasks": 0,
     "cases": 0,
-    "errorMessages": 4,
+    "errorMessages": 7,
     "evidenceFiles": 1
   },
   "verdict": {
@@ -144,13 +168,19 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "整 job 日志仅 13 行且已截断，只有平台封装信息：[ERROR] [real_stage:official_devcloud_cloudBuild] query step status with error 与 DEV-CODECI-35002 构建任务执行失败，日志中不存在任务内部真实报错，只能定位到云构建调度层。",
-    "advice": "按平台侧构建失败处理：先重跑确认是否偶发；若稳定复现，申请该 job 的完整构建日志与子任务日志以定位真实报错，同时排查平台侧查询步骤状态的接口超时。",
+    "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+    "rootCause": "Test_kupl 在 00:01:10 启动，00:02:22 用例仓 clone 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，随后 echo 与 [ERROR] git clone test_cases code fail 依次出现，00:02:22 脚本返回退出码 1，00:02:28 Finished: FAILURE，job 仅约 74 秒（job_logs/19_kupl_297_Test_kupl.log:L138、L139、L140、L142、L144）\n\n用例统计 total=0、passed=0、failed=0，测试结果为空：失败发生在用例执行之前，是用例仓凭据问题而不是用例断言失败\n\n从进入 clone 到鉴权失败只用了不到两分钟、且无重试，更像是凭据本身失效；如果是仓库不可达，报错应该是 connection timed out 之类的网络错误，而不是 Authentication failed\n\n已排除的干扰项：平台侧步骤错误信息只有「构建任务执行失败」与 DEV-CODECI-35002 封装码，属统一封装而非原因；本记录整 job 日志 144 行、truncated=False，证据完整，结论以该日志为准",
+    "advice": "把 hpckit-autotest 的 clone 凭据换成有效 access token，并以凭据注入方式在流水线中引用，不走明文密码；修完在 runner 上单独验证 clone 可用\n\n在测试任务前置阶段加仓库可达性与鉴权探测，探测失败即中止并打印仓库地址与凭据别名，缩短定位路径\n\n与同批 hmpi、kpex、kudnn、kuqcd 合并成一次凭据整改，不要逐条流水线重复排查\n\n验证方式：用 #297 参数重跑 kupl 流水线，要求用例能进入执行阶段（total 大于 0）、退出码为 0，日志中不再出现 Authentication failed",
     "cites": [
-      "job_logs/09_kupl_297_Test_kupl.log:L11",
-      "job_logs/09_kupl_297_Test_kupl.log:L12"
+      "job_logs/19_kupl_297_Test_kupl.log:L138",
+      "job_logs/19_kupl_297_Test_kupl.log:L139",
+      "job_logs/19_kupl_297_Test_kupl.log:L140",
+      "job_logs/19_kupl_297_Test_kupl.log:L142",
+      "job_logs/19_kupl_297_Test_kupl.log:L144"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

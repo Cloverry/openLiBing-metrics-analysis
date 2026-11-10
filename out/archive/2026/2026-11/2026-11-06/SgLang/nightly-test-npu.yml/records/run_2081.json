@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:06:59",
+    "generatedAt": "2026-11-10 14:57:29",
     "component": "SgLang",
     "pipeline": "nightly-test-npu.yml",
     "date": "2026-11-06",
@@ -56,8 +56,6 @@
       "errorLines": [
         "L986: [2026-11-05 16:13:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
         "L3665: Traceback (most recent call last):",
-        "L3694: Traceback (most recent call last):",
-        "L3705: Traceback (most recent call last):",
         "L3786: ##[error]Error: failed to run script step:",
         "L3787: ✗ exit code: 255",
         "L3811: ##[error]Process completed with exit code 1.",
@@ -90,17 +88,8 @@
       "errorLines": [
         "L578: │ exit code: 1",
         "L939: Traceback (most recent call last):",
-        "L6789: Traceback (most recent call last):",
-        "L6973: Traceback (most recent call last):",
-        "L7064: Traceback (most recent call last):",
-        "L7097: Traceback (most recent call last):",
-        "L7125: Traceback (most recent call last):",
-        "L7137: Traceback (most recent call last):",
-        "L7148: Traceback (most recent call last):",
         "L7156: ##[error]Error: failed to run script step:",
         "L7157: ✗ exit code: 1",
-        "L7162: Traceback (most recent call last):",
-        "L7173: Traceback (most recent call last):",
         "L7181: ##[error]Process completed with exit code 1.",
         "L7182: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
       ],
@@ -132,24 +121,8 @@
       "jobErrMsg": null,
       "errorLines": [
         "L720: Traceback (most recent call last):",
-        "L878: Traceback (most recent call last):",
-        "L3099: Traceback (most recent call last):",
-        "L3127: Traceback (most recent call last):",
-        "L3152: Traceback (most recent call last):",
-        "L3258: Traceback (most recent call last):",
-        "L3286: Traceback (most recent call last):",
-        "L3311: Traceback (most recent call last):",
-        "L3392: Traceback (most recent call last):",
-        "L3420: Traceback (most recent call last):",
-        "L3431: Traceback (most recent call last):",
-        "L3442: Traceback (most recent call last):",
-        "L3469: Traceback (most recent call last):",
-        "L3481: Traceback (most recent call last):",
-        "L3492: Traceback (most recent call last):",
         "L3500: ##[error]Error: failed to run script step:",
         "L3501: ✗ exit code: 1",
-        "L3506: Traceback (most recent call last):",
-        "L3517: Traceback (most recent call last):",
         "L3525: ##[error]Process completed with exit code 1.",
         "L3526: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
       ],
@@ -181,19 +154,8 @@
       "jobErrMsg": null,
       "errorLines": [
         "L905: Traceback (most recent call last):",
-        "L2319: Traceback (most recent call last):",
-        "L2504: Traceback (most recent call last):",
-        "L2582: Traceback (most recent call last):",
-        "L2610: Traceback (most recent call last):",
-        "L2621: Traceback (most recent call last):",
-        "L2632: Traceback (most recent call last):",
-        "L2658: Traceback (most recent call last):",
-        "L2671: Traceback (most recent call last):",
-        "L2682: Traceback (most recent call last):",
         "L2690: ##[error]Error: failed to run script step:",
         "L2691: ✗ exit code: 1",
-        "L2696: Traceback (most recent call last):",
-        "L2707: Traceback (most recent call last):",
         "L2715: ##[error]Process completed with exit code 1.",
         "L2716: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
       ],
@@ -225,12 +187,8 @@
       "jobErrMsg": null,
       "errorLines": [
         "L1111: Traceback (most recent call last):",
-        "L1122: Traceback (most recent call last):",
-        "L1132: Traceback (most recent call last):",
         "L1140: ##[error]Error: failed to run script step:",
         "L1141: ✗ exit code: 1",
-        "L1147: Traceback (most recent call last):",
-        "L1157: Traceback (most recent call last):",
         "L1165: ##[error]Process completed with exit code 1.",
         "L1166: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
       ],
@@ -262,16 +220,8 @@
       "jobErrMsg": null,
       "errorLines": [
         "L857: Traceback (most recent call last):",
-        "L930: Traceback (most recent call last):",
-        "L1008: Traceback (most recent call last):",
-        "L1036: Traceback (most recent call last):",
-        "L1062: Traceback (most recent call last):",
-        "L1075: Traceback (most recent call last):",
-        "L1086: Traceback (most recent call last):",
         "L1094: ##[error]Error: failed to run script step:",
         "L1095: ✗ exit code: 1",
-        "L1100: Traceback (most recent call last):",
-        "L1111: Traceback (most recent call last):",
         "L1119: ##[error]Process completed with exit code 1.",
         "L1120: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
       ],
@@ -305,14 +255,8 @@
         "L16602: [2026-11-06 12:48:24] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
         "L17507: │ exit code: 1",
         "L18800: Traceback (most recent call last):",
-        "L18835: Traceback (most recent call last):",
-        "L18846: Traceback (most recent call last):",
-        "L18858: Traceback (most recent call last):",
-        "L18869: Traceback (most recent call last):",
         "L18877: ##[error]Error: failed to run script step:",
         "L18878: ✗ exit code: 1",
-        "L18883: Traceback (most recent call last):",
-        "L18894: Traceback (most recent call last):",
         "L18902: ##[error]Process completed with exit code 1.",
         "L18903: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
       ],
@@ -378,20 +322,6 @@
     {
       "task": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
       "source": "github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt",
-      "line": 3694,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
-      "source": "github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt",
-      "line": 3705,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3",
-      "source": "github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt",
       "line": 3786,
       "level": "LOG",
       "text": "##[error]Error: failed to run script step:"
@@ -434,55 +364,6 @@
     {
       "task": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms, 1, 1, 1, test/registe... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms",
       "source": "github_logs/gh_42061473997/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt",
-      "line": 6789,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms, 1, 1, 1, test/registe... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms",
-      "source": "github_logs/gh_42061473997/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt",
-      "line": 6973,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms, 1, 1, 1, test/registe... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms",
-      "source": "github_logs/gh_42061473997/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt",
-      "line": 7064,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms, 1, 1, 1, test/registe... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms",
-      "source": "github_logs/gh_42061473997/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt",
-      "line": 7097,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms, 1, 1, 1, test/registe... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms",
-      "source": "github_logs/gh_42061473997/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt",
-      "line": 7125,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms, 1, 1, 1, test/registe... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms",
-      "source": "github_logs/gh_42061473997/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt",
-      "line": 7137,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms, 1, 1, 1, test/registe... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms",
-      "source": "github_logs/gh_42061473997/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt",
-      "line": 7148,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms, 1, 1, 1, test/registe... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms",
-      "source": "github_logs/gh_42061473997/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt",
       "line": 7156,
       "level": "LOG",
       "text": "##[error]Error: failed to run script step:"
@@ -493,20 +374,6 @@
       "line": 7157,
       "level": "LOG",
       "text": "✗ exit code: 1"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms, 1, 1, 1, test/registe... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms",
-      "source": "github_logs/gh_42061473997/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt",
-      "line": 7162,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms, 1, 1, 1, test/registe... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms",
-      "source": "github_logs/gh_42061473997/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt",
-      "line": 7173,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
     },
     {
       "task": "multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms, 1, 1, 1, test/registe... / deepseek_v4_flash_w8a8_1p1d_16p_in128k_out1k_prefix90_20ms",
@@ -532,104 +399,6 @@
     {
       "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
       "source": "github_logs/gh_42061473997/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
-      "line": 878,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
-      "source": "github_logs/gh_42061473997/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
-      "line": 3099,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
-      "source": "github_logs/gh_42061473997/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
-      "line": 3127,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
-      "source": "github_logs/gh_42061473997/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
-      "line": 3152,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
-      "source": "github_logs/gh_42061473997/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
-      "line": 3258,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
-      "source": "github_logs/gh_42061473997/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
-      "line": 3286,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
-      "source": "github_logs/gh_42061473997/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
-      "line": 3311,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
-      "source": "github_logs/gh_42061473997/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
-      "line": 3392,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
-      "source": "github_logs/gh_42061473997/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
-      "line": 3420,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
-      "source": "github_logs/gh_42061473997/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
-      "line": 3431,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
-      "source": "github_logs/gh_42061473997/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
-      "line": 3442,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
-      "source": "github_logs/gh_42061473997/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
-      "line": 3469,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
-      "source": "github_logs/gh_42061473997/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
-      "line": 3481,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
-      "source": "github_logs/gh_42061473997/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
-      "line": 3492,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
-      "source": "github_logs/gh_42061473997/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
       "line": 3500,
       "level": "LOG",
       "text": "##[error]Error: failed to run script step:"
@@ -640,20 +409,6 @@
       "line": 3501,
       "level": "LOG",
       "text": "✗ exit code: 1"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
-      "source": "github_logs/gh_42061473997/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
-      "line": 3506,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
-      "source": "github_logs/gh_42061473997/8_multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_1~45495f.txt",
-      "line": 3517,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
     },
     {
       "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
@@ -679,69 +434,6 @@
     {
       "task": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
       "source": "github_logs/gh_42061473997/7_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p~327148.txt",
-      "line": 2319,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
-      "source": "github_logs/gh_42061473997/7_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p~327148.txt",
-      "line": 2504,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
-      "source": "github_logs/gh_42061473997/7_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p~327148.txt",
-      "line": 2582,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
-      "source": "github_logs/gh_42061473997/7_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p~327148.txt",
-      "line": 2610,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
-      "source": "github_logs/gh_42061473997/7_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p~327148.txt",
-      "line": 2621,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
-      "source": "github_logs/gh_42061473997/7_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p~327148.txt",
-      "line": 2632,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
-      "source": "github_logs/gh_42061473997/7_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p~327148.txt",
-      "line": 2658,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
-      "source": "github_logs/gh_42061473997/7_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p~327148.txt",
-      "line": 2671,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
-      "source": "github_logs/gh_42061473997/7_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p~327148.txt",
-      "line": 2682,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
-      "source": "github_logs/gh_42061473997/7_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p~327148.txt",
       "line": 2690,
       "level": "LOG",
       "text": "##[error]Error: failed to run script step:"
@@ -752,20 +444,6 @@
       "line": 2691,
       "level": "LOG",
       "text": "✗ exit code: 1"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
-      "source": "github_logs/gh_42061473997/7_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p~327148.txt",
-      "line": 2696,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
-      "source": "github_logs/gh_42061473997/7_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p~327148.txt",
-      "line": 2707,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
     },
     {
       "task": "multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa, 2, 2, 1, test/registered/npu/accuracy/de... / deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa",
@@ -791,20 +469,6 @@
     {
       "task": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_dcp_gpqa",
       "source": "github_logs/gh_42061473997/6_multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2,~83db7b.txt",
-      "line": 1122,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_dcp_gpqa",
-      "source": "github_logs/gh_42061473997/6_multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2,~83db7b.txt",
-      "line": 1132,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_dcp_gpqa",
-      "source": "github_logs/gh_42061473997/6_multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2,~83db7b.txt",
       "line": 1140,
       "level": "LOG",
       "text": "##[error]Error: failed to run script step:"
@@ -815,20 +479,6 @@
       "line": 1141,
       "level": "LOG",
       "text": "✗ exit code: 1"
-    },
-    {
-      "task": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_dcp_gpqa",
-      "source": "github_logs/gh_42061473997/6_multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2,~83db7b.txt",
-      "line": 1147,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_dcp_gpqa",
-      "source": "github_logs/gh_42061473997/6_multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2,~83db7b.txt",
-      "line": 1157,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
     },
     {
       "task": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_dcp_gpqa",
@@ -854,48 +504,6 @@
     {
       "task": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_pcp_gpqa",
       "source": "github_logs/gh_42061473997/5_multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2,~cc387a.txt",
-      "line": 930,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_pcp_gpqa",
-      "source": "github_logs/gh_42061473997/5_multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2,~cc387a.txt",
-      "line": 1008,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_pcp_gpqa",
-      "source": "github_logs/gh_42061473997/5_multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2,~cc387a.txt",
-      "line": 1036,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_pcp_gpqa",
-      "source": "github_logs/gh_42061473997/5_multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2,~cc387a.txt",
-      "line": 1062,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_pcp_gpqa",
-      "source": "github_logs/gh_42061473997/5_multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2,~cc387a.txt",
-      "line": 1075,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_pcp_gpqa",
-      "source": "github_logs/gh_42061473997/5_multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2,~cc387a.txt",
-      "line": 1086,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_pcp_gpqa",
-      "source": "github_logs/gh_42061473997/5_multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2,~cc387a.txt",
       "line": 1094,
       "level": "LOG",
       "text": "##[error]Error: failed to run script step:"
@@ -906,132 +514,6 @@
       "line": 1095,
       "level": "LOG",
       "text": "✗ exit code: 1"
-    },
-    {
-      "task": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_pcp_gpqa",
-      "source": "github_logs/gh_42061473997/5_multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2,~cc387a.txt",
-      "line": 1100,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_pcp_gpqa",
-      "source": "github_logs/gh_42061473997/5_multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2,~cc387a.txt",
-      "line": 1111,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_pcp_gpqa",
-      "source": "github_logs/gh_42061473997/5_multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2,~cc387a.txt",
-      "line": 1119,
-      "level": "LOG",
-      "text": "##[error]Process completed with exit code 1."
-    },
-    {
-      "task": "multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2, 2, 1, test/registered/npu/accuracy/glm5_2/test... / glm_5_2_w8a8_2p2d_32p_pcp_gpqa",
-      "source": "github_logs/gh_42061473997/5_multi-node-poc (glm_5_2_w8a8_2p2d_32p_pcp_gpqa, 2,~cc387a.txt",
-      "line": 1120,
-      "level": "LOG",
-      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
-    },
-    {
-      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
-      "source": "github_logs/gh_42061473997/1_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_ou~afd684.txt",
-      "line": 16602,
-      "level": "LOG",
-      "text": "[2026-11-06 12:48:24] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))"
-    },
-    {
-      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
-      "source": "github_logs/gh_42061473997/1_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_ou~afd684.txt",
-      "line": 17507,
-      "level": "LOG",
-      "text": "│ exit code: 1"
-    },
-    {
-      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
-      "source": "github_logs/gh_42061473997/1_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_ou~afd684.txt",
-      "line": 18800,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
-      "source": "github_logs/gh_42061473997/1_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_ou~afd684.txt",
-      "line": 18835,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
-      "source": "github_logs/gh_42061473997/1_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_ou~afd684.txt",
-      "line": 18846,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
-      "source": "github_logs/gh_42061473997/1_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_ou~afd684.txt",
-      "line": 18858,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
-      "source": "github_logs/gh_42061473997/1_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_ou~afd684.txt",
-      "line": 18869,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
-      "source": "github_logs/gh_42061473997/1_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_ou~afd684.txt",
-      "line": 18877,
-      "level": "LOG",
-      "text": "##[error]Error: failed to run script step:"
-    },
-    {
-      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
-      "source": "github_logs/gh_42061473997/1_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_ou~afd684.txt",
-      "line": 18878,
-      "level": "LOG",
-      "text": "✗ exit code: 1"
-    },
-    {
-      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
-      "source": "github_logs/gh_42061473997/1_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_ou~afd684.txt",
-      "line": 18883,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
-      "source": "github_logs/gh_42061473997/1_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_ou~afd684.txt",
-      "line": 18894,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
-      "source": "github_logs/gh_42061473997/1_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_ou~afd684.txt",
-      "line": 18902,
-      "level": "LOG",
-      "text": "##[error]Process completed with exit code 1."
-    },
-    {
-      "task": "multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix, 4, test/registered/npu/perfo... / kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix",
-      "source": "github_logs/gh_42061473997/1_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_ou~afd684.txt",
-      "line": 18903,
-      "level": "LOG",
-      "text": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
-    },
-    {
-      "task": "check-all-jobs",
-      "source": "github_logs/gh_42061473997/0_check-all-jobs.txt",
-      "line": 98,
-      "level": "LOG",
-      "text": "##[error]Process completed with exit code 1."
     }
   ],
   "evidence": {
@@ -1144,7 +626,7 @@
     "logTasks": 8,
     "buildTasks": 0,
     "cases": 0,
-    "errorMessages": 96,
+    "errorMessages": 30,
     "evidenceFiles": 8
   },
   "verdict": {
@@ -1153,7 +635,7 @@
     "confidence": 0.7,
     "level": "中",
     "basis": [
-      "任务 nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3 日志命中 8 条错误行（非编译特征），见 github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt",
+      "任务 nightly-acc-2-npu-a3 / nightly-acc-2-npu-a3 日志命中 6 条错误行（非编译特征），见 github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt",
       "基线 0.30",
       "证据文件落盘 8 份 +0.25",
       "任务日志命中错误行 +0.15"
@@ -1162,16 +644,18 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "多类问题并存：nightly-acc-2 的用例因 ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses'（依赖版本与用例代码不匹配）中断，并有精度断言 0.849 未达到 0.8527；多个 multi-node 用例在拉取阶段报 RPC failed; HTTP 500 与 fatal: error reading section header 'shallow-info'，Prometheus 指标端口报 Address already in use，压测侧出现 ConnectError 与 KVTransferError（prefill 实例疑似已死）。",
-    "advice": "固定 openai 依赖版本（requirements 锁定或在镜像预置匹配版本），并复核精度基线来源；multi-node 侧修复用例仓库拉取（改用完整克隆或加重试）与指标端口复用问题，压测开始前先做 prefill/decode 实例存活与端口占用检查。",
+    "keyError": "ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses'",
+    "rootCause": "该 run 共 26 个 job、8 个失败，构建 #2081 从 00:07:33 跑到 13:15:34（近 13 小时）记 FAILED；8 个失败 job 覆盖 a3 精度任务、五个 multi-node-poc 与一个 multi-node-mix-poc，外加汇总任务 check-all-jobs（records/run_2081.json）\n\n第一类（nightly-acc-2-npu-a3，依赖不匹配）：日志明确写出 [2026-11-05 16:13:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))，随后脚本步骤以 ✗ exit code: 255 退出（github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt:L986）\n\n第二类（multi-node-poc 与 mix-poc 六个任务）：只留下 │ exit code: 1 与 ✗ exit code: 1 两层，没有异常正文，无法判断具体失败点（同目录 9_multi-node-poc 系列日志 L578、L7157）\n\n第三类（check-all-jobs）：汇总任务在上游 7 个 job 失败后无法产出结果表，属连带失败\n\nopenai 包缺少 sglang 期望的符号，是典型的依赖版本不匹配：镜像里 openai 版本低于代码要求，服务初始化时 Responses API 被禁用、进程最终以 255 退出，因此第一类更像镜像依赖版本问题而非用例逻辑错\n\n已排除的干扰项：没有 pytest 汇总、没有 accuracy 断言与精度数值，说明这批失败都没跑到判定阶段；另外 18 个 job 通过，排除整体环境故障",
+    "advice": "先锁依赖：在镜像里把 openai 升到含 ResponseFunctionShellToolCall 的版本（或反向把 sglang 降到与当前 openai 匹配的版本），并在 requirements 里写死下界，避免这种符号缺失在夜间任务里反复出现\n\n第二类单独抓证据：六个 multi-node-poc/mix-poc 只留 exit code，建议在启动脚本里 set -x 并保留最后 50 行输出，否则这批任务永远只能停在「失败」两个字上\n\n汇总任务降噪：check-all-jobs 在上游失败时应输出「上游 N 个 job 失败」并置 skipped，不要自己再失败一次\n\n验证方式：重跑该 nightly，要求 8 个失败 job 全部转通过（或明确 skip）、check-all-jobs 正常产出结果表、run 结论为 success，且日志中不再出现 ResponseFunctionShellToolCall 的 ImportError",
     "cites": [
       "github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt:L986",
-      "github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt:L3687",
-      "github_logs/gh_42061473997/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt:L221",
-      "github_logs/gh_42061473997/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt:L950",
-      "github_logs/gh_42061473997/7_multi-node-poc (deepseek_v4_pro_0813_w4a8_1p1d_32p~327148.txt:L1098"
+      "github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt:L3787",
+      "github_logs/gh_42061473997/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt:L7157",
+      "records/run_2081.json"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

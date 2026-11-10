@@ -5,7 +5,7 @@
   "source": "openLiBing 流水线运行详情（任务列表）",
   "criteria": "仅取状态为失败的任务；UNSELECTED/CANCELED/IGNORED/INIT 跳过；含测试结果的任务走测试取证（第 4 步），其余走日志取证（第 5 步），github 平台运行改走第 5c 步",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-09 15:06:59",
+  "generatedAt": "2026-11-10 14:57:27",
   "component": "Ascend-CANN",
   "pipeline": "ops-transformer",
   "date": "2026-11-06"
@@ -39,7 +39,8 @@
    "jobLastDispatchId": "9c0d178d17794d6ab9c6c5c502891504",
    "route": "test",
    "isBuild": false,
-   "buildJobId": "37823397fab445fa9626582d68281207"
+   "buildJobId": "37823397fab445fa9626582d68281207",
+   "cached": true
   },
   {
    "key": "Ascend-CANN|ops-transformer",
@@ -69,7 +70,8 @@
    "jobLastDispatchId": "891c20cf1ceb45ac9e382f63dff3da38",
    "route": "test",
    "isBuild": false,
-   "buildJobId": "37823397fab445fa9626582d68281207"
+   "buildJobId": "37823397fab445fa9626582d68281207",
+   "cached": true
   },
   {
    "key": "Ascend-CANN|ops-transformer",
@@ -99,7 +101,8 @@
    "jobLastDispatchId": "2c078e2455da47ce9fe271affb37281d",
    "route": "test",
    "isBuild": false,
-   "buildJobId": "37823397fab445fa9626582d68281207"
+   "buildJobId": "37823397fab445fa9626582d68281207",
+   "cached": true
   },
   {
    "key": "Ascend-CANN|ops-transformer",
@@ -129,7 +132,8 @@
    "jobLastDispatchId": "2cfa5d75d1b74fc1b907fdb038fd8f3d",
    "route": "test",
    "isBuild": false,
-   "buildJobId": "37823397fab445fa9626582d68281207"
+   "buildJobId": "37823397fab445fa9626582d68281207",
+   "cached": true
   }
  ],
  "log": [],

@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "以「一次执行」为最小单位合并任务、用例、错误信息、证据与构建编号，形成可直接展示与逐条分析的记录",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:06:59",
+    "generatedAt": "2026-11-10 14:57:28",
     "component": "Triton_Ascend",
     "pipeline": "Ascend",
     "date": "2026-11-06",
@@ -34,7 +34,7 @@
         "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
       },
       "light": {
-        "vaRate": 0,
+        "vaRate": 0.5,
         "bsRate": 1,
         "dims": [
           "va",
@@ -102,7 +102,7 @@
         "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
       },
       "light": {
-        "vaRate": 0,
+        "vaRate": 0.5,
         "bsRate": 1,
         "dims": [
           "va",
@@ -133,7 +133,7 @@
           "jobName": "npu_ir流水线调用",
           "type": "log",
           "fallback": false,
-          "logFile": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
+          "logFile": "job_logs/16_Ascend_104_npu_ir流水线调用.log",
           "logBytes": 18857,
           "logLines": 187,
           "download": "export",
@@ -160,7 +160,6 @@
             "L181: [2026/11/06 17:26:21.511 GMT+08:00]   [阶段_1] Build_a3a5_arm: FAILED(失败)",
             "L182: [2026/11/06 17:26:21.511 GMT+08:00]       message: 步骤Build_a3a5_arm执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
             "L183: [2026/11/06 17:26:21.511 GMT+08:00]       step [Build_a3a5_arm]: FAILED(失败)",
-            "L184: [2026/11/06 17:26:21.511 GMT+08:00]           message: {\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
             "L185: [2026/11/06 17:26:21.529 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed",
             "L187: [2026/11/06 17:26:27.009 GMT+08:00] Finished: FAILURE"
           ],
@@ -170,7 +169,7 @@
           "jobName": "Test_Triton_Ascend",
           "type": "log",
           "fallback": true,
-          "logFile": "job_logs/06_Ascend_104_Test_Triton_Ascend.log",
+          "logFile": "job_logs/24_Ascend_104_Test_Triton_Ascend.log",
           "logBytes": 12641,
           "logLines": 130,
           "download": "export",
@@ -192,140 +191,63 @@
       "errorMessages": [
         {
           "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
+          "source": "job_logs/16_Ascend_104_npu_ir流水线调用.log",
           "line": 144,
           "level": "LOG",
           "text": "[2026/11/06 17:17:46.045 GMT+08:00]     任务 [Build_a3a5_arm]: RUNNING(运行中) -> FAILED(失败)"
         },
         {
           "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
+          "source": "job_logs/16_Ascend_104_npu_ir流水线调用.log",
           "line": 161,
           "level": "LOG",
           "text": "[2026/11/06 17:26:21.511 GMT+08:00] [17:26:18] run#516 | FAILED(失败) | 已等待 00:25:10"
         },
         {
           "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
+          "source": "job_logs/16_Ascend_104_npu_ir流水线调用.log",
           "line": 162,
           "level": "LOG",
           "text": "[2026/11/06 17:26:21.511 GMT+08:00]   · 阶段 [阶段_1]: RUNNING(运行中) -> FAILED(失败)"
         },
         {
           "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
+          "source": "job_logs/16_Ascend_104_npu_ir流水线调用.log",
           "line": 163,
           "level": "LOG",
           "text": "[2026/11/06 17:26:21.511 GMT+08:00]     任务 [Build_a3a5_x86]: RUNNING(运行中) -> FAILED(失败)"
         },
         {
           "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
-          "line": 168,
-          "level": "LOG",
-          "text": "[2026/11/06 17:26:21.511 GMT+08:00] 最终状态: FAILED(失败)"
-        },
-        {
-          "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
-          "line": 172,
-          "level": "LOG",
-          "text": "[2026/11/06 17:26:21.511 GMT+08:00]   [阶段] 阶段_1: FAILED(失败)"
-        },
-        {
-          "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
-          "line": 173,
-          "level": "LOG",
-          "text": "[2026/11/06 17:26:21.511 GMT+08:00]     [任务] Build_a3a5_x86: FAILED(失败) | 持续时间: 00:24:51 | message: 步骤Build_a3a5_x86执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
-        },
-        {
-          "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
-          "line": 174,
-          "level": "LOG",
-          "text": "[2026/11/06 17:26:21.511 GMT+08:00]     [任务] Build_a3a5_arm: FAILED(失败) | 持续时间: 00:16:31 | message: 步骤Build_a3a5_arm执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
-        },
-        {
-          "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
-          "line": 176,
-          "level": "LOG",
-          "text": "[2026/11/06 17:26:21.511 GMT+08:00] 失败/取消任务明细:"
-        },
-        {
-          "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
-          "line": 177,
-          "level": "LOG",
-          "text": "[2026/11/06 17:26:21.511 GMT+08:00]   [阶段_1] Build_a3a5_x86: FAILED(失败)"
-        },
-        {
-          "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
-          "line": 178,
-          "level": "LOG",
-          "text": "[2026/11/06 17:26:21.511 GMT+08:00]       message: 步骤Build_a3a5_x86执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
-        },
-        {
-          "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
-          "line": 179,
-          "level": "LOG",
-          "text": "[2026/11/06 17:26:21.511 GMT+08:00]       step [Build_a3a5_x86]: FAILED(失败)"
-        },
-        {
-          "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
-          "line": 180,
-          "level": "LOG",
-          "text": "[2026/11/06 17:26:21.511 GMT+08:00]           message: {\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
-        },
-        {
-          "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
-          "line": 181,
-          "level": "LOG",
-          "text": "[2026/11/06 17:26:21.511 GMT+08:00]   [阶段_1] Build_a3a5_arm: FAILED(失败)"
-        },
-        {
-          "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
+          "source": "job_logs/16_Ascend_104_npu_ir流水线调用.log",
           "line": 182,
           "level": "LOG",
           "text": "[2026/11/06 17:26:21.511 GMT+08:00]       message: 步骤Build_a3a5_arm执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
         },
         {
           "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
+          "source": "job_logs/16_Ascend_104_npu_ir流水线调用.log",
           "line": 183,
           "level": "LOG",
           "text": "[2026/11/06 17:26:21.511 GMT+08:00]       step [Build_a3a5_arm]: FAILED(失败)"
         },
         {
           "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
-          "line": 184,
-          "level": "LOG",
-          "text": "[2026/11/06 17:26:21.511 GMT+08:00]           message: {\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
-        },
-        {
-          "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
+          "source": "job_logs/16_Ascend_104_npu_ir流水线调用.log",
           "line": 185,
           "level": "LOG",
           "text": "[2026/11/06 17:26:21.529 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed"
         },
         {
           "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
+          "source": "job_logs/16_Ascend_104_npu_ir流水线调用.log",
           "line": 187,
           "level": "LOG",
           "text": "[2026/11/06 17:26:27.009 GMT+08:00] Finished: FAILURE"
         },
         {
           "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
+          "source": "job_logs/16_Ascend_104_npu_ir流水线调用.log",
           "line": null,
           "level": "JOB",
           "text": "步骤npu_ir流水线调用执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
@@ -333,7 +255,7 @@
         },
         {
           "task": "npu_ir流水线调用",
-          "source": "job_logs/01_Ascend_104_npu_ir流水线调用.log",
+          "source": "job_logs/16_Ascend_104_npu_ir流水线调用.log",
           "line": null,
           "level": "STEP",
           "text": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
@@ -341,28 +263,28 @@
         },
         {
           "task": "Test_Triton_Ascend",
-          "source": "job_logs/06_Ascend_104_Test_Triton_Ascend.log",
+          "source": "job_logs/24_Ascend_104_Test_Triton_Ascend.log",
           "line": 126,
           "level": "LOG",
           "text": "[2026/11/06 17:27:23.672 GMT+08:00] 2026-11-06 17:27:23 ERROR 404: Not Found."
         },
         {
           "task": "Test_Triton_Ascend",
-          "source": "job_logs/06_Ascend_104_Test_Triton_Ascend.log",
+          "source": "job_logs/24_Ascend_104_Test_Triton_Ascend.log",
           "line": 128,
           "level": "LOG",
           "text": "[2026/11/06 17:27:23.698 GMT+08:00] [ERROR]  : script returned exit code 8, exitMessage is: command run failed"
         },
         {
           "task": "Test_Triton_Ascend",
-          "source": "job_logs/06_Ascend_104_Test_Triton_Ascend.log",
+          "source": "job_logs/24_Ascend_104_Test_Triton_Ascend.log",
           "line": 130,
           "level": "LOG",
           "text": "[2026/11/06 17:27:28.925 GMT+08:00] Finished: FAILURE"
         },
         {
           "task": "Test_Triton_Ascend",
-          "source": "job_logs/06_Ascend_104_Test_Triton_Ascend.log",
+          "source": "job_logs/24_Ascend_104_Test_Triton_Ascend.log",
           "line": null,
           "level": "JOB",
           "text": "步骤Test_Triton_Ascend执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
@@ -370,7 +292,7 @@
         },
         {
           "task": "Test_Triton_Ascend",
-          "source": "job_logs/06_Ascend_104_Test_Triton_Ascend.log",
+          "source": "job_logs/24_Ascend_104_Test_Triton_Ascend.log",
           "line": null,
           "level": "STEP",
           "text": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
@@ -379,8 +301,8 @@
       ],
       "evidence": {
         "files": [
-          "job_logs/01_Ascend_104_npu_ir流水线调用.log",
-          "job_logs/06_Ascend_104_Test_Triton_Ascend.log"
+          "job_logs/16_Ascend_104_npu_ir流水线调用.log",
+          "job_logs/24_Ascend_104_Test_Triton_Ascend.log"
         ],
         "missing": [
           "Test_Triton_Ascend"
@@ -393,7 +315,7 @@
         "logTasks": 2,
         "buildTasks": 0,
         "cases": 0,
-        "errorMessages": 26,
+        "errorMessages": 15,
         "evidenceFiles": 2
       },
       "verdict": {
@@ -412,14 +334,18 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "rootCause": "镜像构建子任务 Build_a3a5_arm 与 Build_a3a5_x86 在 RUNNING 后转 FAILED（Run#516 等待约 25 分钟后失败），任务 message 只有云构建封装码 {errorCode: DEV-CODECI-35002, 构建任务执行失败!}，日志中无子任务内部编译报错；测试任务日志同时返回 404 未留存，用例未拉起。",
-        "advice": "先重跑构建任务确认是否环境侧偶发；稳定复现时申请构建子任务的详细日志定位真实编译错误；同时补齐测试任务日志留存，避免后续只能靠封装码定性。",
+        "keyError": "步骤Build_a3a5_arm执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+        "rootCause": "构建 #104 从 17:00:52 跑到 17:27:26（约 26 分钟）记 FAILED，失败任务类型为测试任务，证据只有 2 个 job 日志、另有 1 个缺失（records/run_104.json）\n\n第一类（上游构建子任务失败）：npu_ir流水线调用 日志显示任务 Build_a3a5_arm 由 RUNNING 转 FAILED（L144）、run#516 已等待 00:25:10（L161）、同阶段 Build_a3a5_x86 一并转 FAILED（L163），随后 L182 给出 message: 步骤Build_a3a5_arm执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}，L183 标记 step FAILED，L185 脚本以 exit code 1 退出（job_logs/16_Ascend_104_npu_ir流水线调用.log:L182）\n\n第二类（下游测试任务被连带）：Test_Triton_Ascend 日志里 L126 出现 ERROR 404: Not Found.、L128 以 exit code 8 退出，Test_Triton_Ascend 任务本身 total=0 pass=0 fail=0，说明用例一条都没拉起，属上游镜像没构建出来导致的连带失败（job_logs/24_Ascend_104_Test_Triton_Ascend.log:L126）\n\n因此真实失败点只有一个：云构建服务返回封装码 DEV-CODECI-35002 表示「构建任务执行失败」，具体编译错误被封装码吞掉，日志只到「等 25 分钟后超时失败」这一层\n\n已排除的干扰项：Test_Triton_Ascend 的 404 与 exit 8 是下游连带，不单独归因；用例外 0 条说明不是测试断言问题",
+        "advice": "把封装码还原成真实编译错误：拿 DEV-CODECI-35002 去云构建平台查该次 run#516 的详细构建日志，现在本地日志只留了「构建任务执行失败」这一句，26 分钟等待全白费\n\n区分 arm 与 x86 两条构建线：Build_a3a5_arm 与 Build_a3a5_x86 在同一阶段一起转 FAILED，更像共用基础镜像或共用依赖下载环节失败（网络、制品仓鉴权），先查这一层再查编译参数\n\n缩短空等：run 等待 25 分钟才判失败，建议加构建心跳与提前失败（如连续 N 分钟无输出即中止），避免 nightly 被一条构建拖住\n\n验证方式：重跑 Ascend 流水线，要求 npu_ir流水线调用的 Build_a3a5_arm / Build_a3a5_x86 步骤成功、Test_Triton_Ascend 能拉起用例并给出 total>0 的结果、run 结论为 success",
         "cites": [
-          "job_logs/01_Ascend_104_npu_ir流水线调用.log:L173",
-          "job_logs/01_Ascend_104_npu_ir流水线调用.log:L168",
-          "job_logs/06_Ascend_104_Test_Triton_Ascend.log:L126"
+          "job_logs/16_Ascend_104_npu_ir流水线调用.log:L182",
+          "job_logs/16_Ascend_104_npu_ir流水线调用.log:L161",
+          "job_logs/24_Ascend_104_Test_Triton_Ascend.log:L128",
+          "records/run_104.json"
         ],
-        "updatedAt": "2026-11-09 15:07:00",
+        "updatedAt": "2026-11-10 17:27:42",
+        "firstAnalyzedAt": "2026-11-10 15:21:02",
+        "revisions": 2,
         "source": "agent"
       }
     }

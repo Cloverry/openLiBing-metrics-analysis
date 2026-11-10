@@ -9,6 +9,8 @@
   analysis.status=pending → 需要 AI 分析（非 1 指标的失败/取消运行）；
   analysis.status=na      → 不做 AI 分析（成功运行 / 当日两指标都为 1 的达标日）。
   vllm-ascend 的指标在第 2 步已按 scheduled 运行重算，达标判定用的就是重算值。
+  遍历口径以当日 _day.json 的 pipelines 为准：磁盘上多出的旧目录（改名前/旧版本残留）
+  会跳过并提示，不参与 pending 统计，也不需要手工删目录。
 
 用法:
   python tools/list_pending.py                     # 最近一个归档日的待分析记录
@@ -17,6 +19,7 @@
   python tools/list_pending.py --status na         # 反向查看被排除的记录
   python tools/list_pending.py --show <recordId>   # 单条记录的分析输入摘要（不含日志正文）
   python tools/list_pending.py --json out/state/pending.json   # 另存机器可读清单
+  python tools/list_pending.py --strict            # 仍有待分析记录时退出码 2（校验 skill 是否真跑完）
 
 输出纪律：单次回显 ≤ 100 行（超出只提示总数，用 --date/--limit 收窄），避免触发输出过长中断。
 """
@@ -27,7 +30,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from lib.paths import ARCHIVE_ROOT, iter_archive_days, rel  # noqa: E402
+from lib.paths import (ARCHIVE_ROOT, day_pipeline_scope, iter_archive_days,  # noqa: E402
+                       rel, stale_pipeline_dirs)
 
 DEFAULT_LIMIT = 40
 SHOW_LIST_MAX = 12          # --show 时每类列表最多打印条数
@@ -38,14 +42,19 @@ def load_json(p):
     return json.loads(Path(p).read_text(encoding="utf-8"))
 
 
-def iter_records(day_dir):
-    """遍历某归档日的全部单条记录：(组件目录名, 流水线目录名, 记录, 文件)。"""
+def iter_records(day_dir, allowed=None):
+    """遍历某归档日的全部单条记录：(组件目录名, 流水线目录名, 记录, 文件)。
+
+    allowed 非空时只遍历集合内的 (组件, 流水线) 目录。
+    """
     for comp in sorted(day_dir.iterdir()):
         if not comp.is_dir() or comp.name.startswith("_"):
             continue
         for pipe in sorted(comp.iterdir()):
             rd = pipe / "records"
             if not pipe.is_dir() or not rd.is_dir():
+                continue
+            if allowed is not None and (comp.name, pipe.name) not in allowed:
                 continue
             for f in sorted(rd.glob("run_*.json")):
                 try:
@@ -56,14 +65,22 @@ def iter_records(day_dir):
                 yield comp.name, pipe.name, rec, f
 
 
-def collect(dates, status):
-    """按日期收集指定 analysis.status 的记录。"""
+def collect(dates, status, stale=None):
+    """按日期收集指定 analysis.status 的记录。
+
+    遍历口径以当日 _day.json 为准；磁盘上多出的历史残留目录不计入，
+    其路径追加到 stale（传空列表时）供调用方提示。
+    """
     got = []
     for d in dates:
         day_dir = ARCHIVE_ROOT / d[:4] / d[:7] / d
         if not day_dir.is_dir():
             continue
-        for comp, pipe, rec, f in iter_records(day_dir):
+        allowed = day_pipeline_scope(day_dir)
+        if stale is not None:
+            for comp, pipe, _ in stale_pipeline_dirs(day_dir):
+                stale.append("%s/%s/%s" % (d, comp, pipe))
+        for comp, pipe, rec, f in iter_records(day_dir, allowed):
             an = rec.get("analysis") or {}
             if not status or status == "all":
                 pass  # 不过滤
@@ -114,12 +131,16 @@ def cmd_list(args):
         print("!! 没有归档日目录（先跑 python run_pipeline.py）")
         return 1
 
-    rows = collect(days, args.status)
-    label = "待 AI 根因分析" if args.status == "pending" else ("不做 AI 分析" if args.status == "na"
-                                                              else args.status)
+    stale = []
+    rows = collect(days, args.status, stale=stale)
+    label = ("待 AI 根因分析" if args.status == "pending" else "不做 AI 分析" if args.status == "na"
+             else "全部记录" if not args.status else args.status)
     scope = "全部归档日" if (args.all or args.date) else "最近归档日"
     print("== %s：%d 条（%s %s；口径：只分析非 1 指标，vllm-ascend 用重算值）"
           % (label, len(rows), scope, (days[0] if len(days) == 1 else "%s~%s" % (days[0], days[-1]))))
+    if stale:
+        print("   注：%d 个目录不在当日 _day.json 口径内（旧版本/改名前残留），已跳过不计：%s"
+              % (len(stale), ", ".join(stale[:5]) + ("…" if len(stale) > 5 else "")))
     if not rows:
         print("   （无）")
         return 0
@@ -140,6 +161,12 @@ def cmd_list(args):
         print("… 共 %d 条，已显示前 %d 条（--limit 0 显示全部 / --date 收窄日期）"
               % (len(rows), len(shown)))
 
+    rc = 0
+    if args.strict:
+        # 严格模式：有 pending 就非 0 退出，供「完成判据」做机器校验（本 skill 三段里第 2 段没做完）
+        print("!! 流程未完成：还有 %d 条待 AI 根因分析，做完并 --only step9 收尾后才算跑完" % len(rows))
+        rc = 2
+
     if args.json:
         out = Path(args.json)
         if not out.is_absolute():
@@ -154,7 +181,7 @@ def cmd_list(args):
                                    "records": payload}, ensure_ascii=False, indent=2),
                        encoding="utf-8")
         print("== 清单已另存: %s" % rel(out))
-    return 0
+    return rc
 
 
 def norm_id(s):
@@ -232,6 +259,8 @@ def main():
                     help="最多显示条数（0=全部，默认 %d）" % DEFAULT_LIMIT)
     ap.add_argument("--show", help="打印单条记录的分析输入（recordId 或构建号）")
     ap.add_argument("--json", help="把清单另存为 JSON（相对技能根目录或绝对路径）")
+    ap.add_argument("--strict", action="store_true",
+                    help="严格模式：仍有待分析记录时以退出码 2 结束（用于校验流程是否真跑完）")
     args = ap.parse_args()
     if args.status in ("all", "*"):
         args.status = ""

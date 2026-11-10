@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "以「一次执行」为最小单位合并任务、用例、错误信息、证据与构建编号，形成可直接展示与逐条分析的记录",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:06:58",
+    "generatedAt": "2026-11-10 14:57:26",
     "component": "MindStudio",
     "pipeline": "msot",
     "date": "2026-11-06",
@@ -34,7 +34,7 @@
         "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
       },
       "light": {
-        "vaRate": 0,
+        "vaRate": 0.5,
         "bsRate": null,
         "dims": [
           "va"
@@ -189,13 +189,17 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "rootCause": "内存检测工具两个用例断言失败：工具在 shmem allgather 与 mc2 场景输出中包含 ERROR 越界标记，而用例期望无越界，报 AssertionError: 工具产生误报，不应该有内存越界；任务日志未落盘，无法判断是检测能力退化还是用例预期需要更新。",
-        "advice": "取出这两条用例的原始检测输出，逐项比对报出的内存访问是否落在合法地址区间；若确属误报，修正检测模块的地址/符号解析逻辑；若检测结论正确，则更新用例预期并定位真实越界点。",
+        "keyError": "AssertionError: 工具产生误报,不应该有内存越界",
+        "rootCause": "Test_msot_nightly_smoke_debug 与 Test_msot_nightly_smoke_A3_debug 各 29 条用例、各跑出 28 通过 1 失败，两个任务都判失败，构建 #261 记 FAILED；两次失败是 mssanitizer 的同一个判据被触发，而不是两处独立缺陷（records/run_261.json）\n\n第一类（shmem allgather）：test_mssanitizer_support_shmem_allgather 的断言原文为「工具产生误报,不应该有内存越界 assert 'ERROR' not in …」，用例把「工具输出里出现 ERROR」直接当成越界结论；旧分析记录里这一条命中的 ERROR 来自 example 依赖缺失（缺 ml_dtypes，example 根本没跑起来），本次摘录只能看到被 pytest 截断的断言体，无法逐字复核（case_logs/case_0001.html）\n\n第二类（mc2_0002）：同一条断言在 test_mssanitizer_mc2_0002 上再次触发，结束位置是 '... \\ntest pass'，即输出尾部已经是 test pass，ERROR 出现在中间段的提示信息里（case_logs/case_0002.html）\n\n两类都不是越界本身：一条的表象是依赖缺失，一条的表象是提示文本被当成错误，共同点是判据只有「输出里有没有 ERROR」这一个布尔量，因此更像用例的断言写得太粗、把非越界输出误判成越界，而非算子真的存在非法访存\n\n已排除的干扰项：两个任务里其余 28 条同族 mssanitizer 用例全部通过，说明工具链本身可用；日志里没有 illegal read / illegal write 这类真实越界报告，也没有编译或驱动报错",
+        "advice": "先把断言收紧：不要用「输出里出现 ERROR」当越界判据，改为匹配 sanitizer 的结构化结论（illegal read、illegal write、越界地址区间），并把「跳过检测」「依赖缺失」两类提示显式归为 skip 或 env 失败，而不是 FAIL\n\n再补环境：镜像里补齐 ml_dtypes 等 example 依赖，并在用例前置检查里 assert 依赖可 import，缺依赖就直接 skip，避免把环境问题记成被测对象的问题\n\n失败时保留原文：把工具输出的完整 ERROR 段落连同上下文写进用例日志，现在 pytest 只留了一行截断的 assert 文本，连 ERROR 来自哪都看不出来\n\n验证方式：重跑 Test_msot_nightly_smoke_debug 与 Test_msot_nightly_smoke_A3_debug 各 29 条用例，要求两条 mssanitizer 用例转为 pass 或按预期 skip、任务退出码为 0，且日志中不再出现「工具产生误报」",
         "cites": [
-          "records/run_261.json:L56",
-          "records/run_261.json:L81"
+          "case_logs/case_0001.html",
+          "case_logs/case_0002.html",
+          "records/run_261.json"
         ],
-        "updatedAt": "2026-11-09 15:07:00",
+        "updatedAt": "2026-11-10 17:27:42",
+        "firstAnalyzedAt": "2026-11-10 15:21:02",
+        "revisions": 2,
         "source": "agent"
       }
     },
@@ -218,7 +222,7 @@
         "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
       },
       "light": {
-        "vaRate": 0,
+        "vaRate": 0.5,
         "bsRate": null,
         "dims": [
           "va"
@@ -422,13 +426,17 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "rootCause": "两条用例断言失败：test_msopst_paramType_dynamic_011 报「多 dynamic 输入运行失败」，test_pytorch_to_toolkit_001 报「pytorch_to_toolkit 001 运行失败」；运行状态为 CANCELED，运行平台侧未留存任务日志，失败细节不可见。",
-        "advice": "单独复跑这两条用例并保留完整日志，定位 dynamic 输入场景的报错原文与 pytorch_to_toolkit 转换失败原因；同时确认本次取消是人工取消还是因前序失败联动取消。",
+        "keyError": "the path /mnt/share/autotest/mindstudio/autotestproperty/operator_project/lib/addn_case_20261106074025.json does not have permission to read. please check the path permission.",
+        "rootCause": "Test_msot_nightly_smoke 共 171 条用例跑出 169 通过、2 失败，任务判失败且运行状态为 CANCELED，构建 #262 记 CANCELED；两条失败都没跑到被测工具给出结论，而是卡在执行环境上（records/run_262.json）\n\n第一类（dynamic 用例，读权限）：test_msopst_paramType_dynamic_011 断言「输出里含 success」，而实际输出是「[error] the path /mnt/share/autotest/mindstudio/autotestproperty/operator_project/lib/addn_case_20261106074025.json does not have permission to read」，即共享目录里刚生成的用例文件读不了（case_logs/case_0054.html:L529）\n\n第二类（pytorch_to_toolkit 用例，路径不存在）：test_pytorch_to_toolkit_001 的输出是「-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory」紧跟「the path /home/runner/addn_case_20261106074104.json does not exist」，说明用例先在一个不存在的目录里 cd 失败，再到另一个前缀下找刚要生成的文件（case_logs/case_0055.html:L658）\n\n两条用例一条挂在 /mnt/share/autotest，一条挂在 /home/autotest 与 /home/runner，同一个「operator_project/lib」在三处前缀下出现，因此更像用例侧把工作路径写死、与实际挂载点不一致，而不是 msopst run 本身执行失败\n\n已排除的干扰项：171 条里 169 条同任务用例通过，未见工具崩溃、编译失败或算子报错；状态为 CANCELED 说明运行在中途被打断，后续补的证据不会再有，现有失败就是取消前已确定的 2 条",
+        "advice": "先把路径来源统一：用例里不要硬编码 /home/autotest、/mnt/share/autotest、/home/runner 三种前缀，改为从环境变量（挂载点）读，并在启动时校验目录存在，不存在就直接报环境错误而不是让 cd 失败\n\n再修权限：addn_case_*.json 是运行期生成的输入文件，把 operator_project/lib 的属主与权限改成 runner 用户可读，或在生成后显式 chmod 644\n\n顺带修断言：现在断言只判「输出里含 success」，路径类错误会被压成「多 dynamic 输入运行失败」，建议失败时把 stderr 原文与当前工作目录一并打印，便于下次一眼看出是路径还是工具问题\n\n验证方式：重跑 Test_msot_nightly_smoke 全量 171 条用例，要求 test_msopst_paramType_dynamic_011 与 test_pytorch_to_toolkit_001 转通过、任务退出码为 0，且用例日志中不再出现 does not have permission to read 与 no such file or directory",
         "cites": [
-          "records/run_262.json:L56",
-          "records/run_262.json:L67"
+          "case_logs/case_0054.html:L529",
+          "case_logs/case_0055.html:L658",
+          "records/run_262.json"
         ],
-        "updatedAt": "2026-11-09 15:07:00",
+        "updatedAt": "2026-11-10 17:27:42",
+        "firstAnalyzedAt": "2026-11-10 15:21:02",
+        "revisions": 2,
         "source": "agent"
       }
     },
@@ -451,7 +459,7 @@
         "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
       },
       "light": {
-        "vaRate": 0,
+        "vaRate": 0.5,
         "bsRate": null,
         "dims": [
           "va"
@@ -592,13 +600,17 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "rootCause": "两条内存检测用例断言失败：test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003 与 test_mssanitizer_mc2_0002 均报「工具发生误报，应该没有越界异常」；运行状态为 CANCELED，无任务日志，无法定位误报来源。",
-        "advice": "与 #261 的误报问题合并排查：抓取 ac lgraph 场景下的检测输出，核对检测模块对图模式内存复用的建模是否正确；修复后回归这两条用例。",
+        "keyError": "AssertionError: 工具发生误报，应该没有越界异常",
+        "rootCause": "Test_msot_nightly_smoke_debug 29 条用例跑出 27 通过、2 失败，任务判失败且状态为 CANCELED，构建 #263 记 CANCELED；两条失败都停在同一个断言上（records/run_263.json）\n\n第一类（aclgraph 用例）：test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003 断言 'ERROR' not in 工具输出，命中位置显示输出里确实存在 ERROR 段（case_logs/case_0003.html）\n\n第二类（mc2_0002）：test_mssanitizer_mc2_0002 用同一条断言再次失败，且断言体的尾部是 '... \\ntest pass'，即工具已经跑到 test pass 之后仍被判失败（case_logs/case_0004.html）\n\n两条共同的可确认事实是：命中的 ERROR 段落都被 pytest 的断言摘要截断（'...Full output truncated (7 lines hidden), use -vv to show'），看不到 ERROR 到底是真实的 illegal read/write 还是「跳过检测」「缺依赖」这类提示，因此现在只能判定失败发生在断言层，无法判定被断言对象到底存不存在越界——这本身就是要修的证据缺口\n\n更像用例判据与证据留存同时不足：判据侧只认「有没有 ERROR」一个布尔量，留存侧又不给完整输出，所以「工具误报」这个结论目前只是用例自述，未被证据支撑\n\n已排除的干扰项：同任务其余 27 条用例通过、无编译或驱动报错，工具链可用；状态 CANCELED 说明运行被打断，不会再补新证据",
+        "advice": "先按 -vv 重跑这两条用例，把被截断的 ERROR 段完整打出来，确认它是 real illegal read/write 还是跳过提示；这一步做完才知道该修用例还是修工具\n\n若确认是跳过检测或依赖缺失，按「非越界」处理：断言改为匹配结构化越界结论，并把跳过/缺依赖归为 skip 或 env 失败\n\n若确认是真的 illegal read/write，则带上完整地址、访存大小与核编号（GM/L1/UB）去对算子实现，而不是停在「误报」这个词上\n\n顺手补留存：在用例 teardown 里把 sanitizer 的原始输出落盘成附件，pytest 的断言摘要不适合承担证据职责\n\n验证方式：重跑 Test_msot_nightly_smoke_debug 全量 29 条用例，要求两条 mssanitizer 用例结论明确（pass 或 skip）、任务退出码为 0，且用例日志中能看到完整的 sanitizer 输出而不是 truncated",
         "cites": [
-          "records/run_263.json:L56",
-          "records/run_263.json:L67"
+          "case_logs/case_0003.html",
+          "case_logs/case_0004.html",
+          "records/run_263.json"
         ],
-        "updatedAt": "2026-11-09 15:07:00",
+        "updatedAt": "2026-11-10 17:27:42",
+        "firstAnalyzedAt": "2026-11-10 15:21:02",
+        "revisions": 2,
         "source": "agent"
       }
     },
@@ -621,7 +633,7 @@
         "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
       },
       "light": {
-        "vaRate": 0,
+        "vaRate": 0.5,
         "bsRate": null,
         "dims": [
           "va"
@@ -651,22 +663,28 @@
         "evidenceFiles": 0
       },
       "verdict": {
-        "category": "evidence_missing",
-        "text": "证据缺失",
+        "category": "cancelled",
+        "text": "运行被取消",
         "confidence": 0.3,
         "level": "低",
         "basis": [
-          "该运行无 FAILED 任务证据（任务被取消或接口未返回失败任务）",
+          "运行状态 CANCELED（运行被取消，平台侧未留存任务日志）",
+          "运行平台标记失败任务类型为「测试任务」，取消发生在该任务执行期间",
           "基线 0.30"
         ]
       },
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "rootCause": "该运行无 FAILED 任务落盘（任务列表与用例列表均为空），也没有运行平台侧任务日志，无法确定失败点；从接口形态看更接近任务被取消或失败任务未返回。",
-        "advice": "确认该构建是否被取消或提前终止；若属真实失败，需要在采集侧补齐失败任务回填并保留日志，之后再单独分析。本条证据不足，结论待验证。",
-        "cites": [],
-        "updatedAt": "2026-11-09 15:07:00",
+        "keyError": null,
+        "rootCause": "构建 #264 的运行在 19:09:16 开始、22:00:18 结束，状态为 CANCELED、failedTaskType 为「测试任务」，即取消发生在 Test 任务执行期间；tasks=0、cases=0、errorMessages=0、evidenceFiles=0，所有明细层证据都是空的（records/run_264.json）\n\n唯一能确定的是层级：失败停在测试任务这一层，没有下探到 job 或用例，因此既不能说明是用例失败、也不能说明是环境问题\n\n从时长看，运行持续了约 2 小时 51 分钟才被取消，排除了「启动即失败」这一类；结合同级 #262、#263 也都是 CANCELED，更像是同一批夜间任务被统一取消/抢占，而不是这一条自身出错\n\n已排除的干扰项：没有任何内核、编译或断言文本，所以不做实现层推断；平台侧未留存任务日志与用例明细，本记录的可信度只到任务类型这一层",
+        "advice": "先补齐证据再谈根因：在该流水线的归档流程里，对 CANCELED 状态也要抓取 job 日志与已执行用例的明细，现在这类记录完全空白，分析无从下手\n\n再确认取消来源：查运行平台在 21:00 到 22:00 之间是否有统一的取消、抢占或超时回收动作，并核对 #262、#263、#264 三条的时间线是否连续，若连续则按「批次被回收」处理，不计入代码质量\n\n若确认是人为取消，请在取消注记里写明原因与关联单号，让归档能区分「主动停止」与「异常中断」\n\n验证方式：重跑该流水线的 Test 任务，要求任务跑到结束并产出 tasks 与 cases 明细（不再是 tasks=0），且构建状态为 SUCCESS 或在有日志的前提下明确失败点",
+        "cites": [
+          "records/run_264.json"
+        ],
+        "updatedAt": "2026-11-10 17:27:42",
+        "firstAnalyzedAt": "2026-11-10 15:21:02",
+        "revisions": 2,
         "source": "agent"
       }
     }

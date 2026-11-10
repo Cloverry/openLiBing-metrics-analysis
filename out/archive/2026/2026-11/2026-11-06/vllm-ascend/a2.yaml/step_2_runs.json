@@ -5,14 +5,14 @@
   "source": "openLiBing 流水线 N2 执行列表",
   "criteria": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）；仅保留工作日；VA 轨道=当日无 isVersionAvailable=true 的待查运行，BS 轨道=豁免日补圈的 Build* 失败运行",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-09 15:06:59",
+  "generatedAt": "2026-11-10 14:57:28",
   "component": "vllm-ascend",
   "pipeline": "a2.yaml",
   "date": "2026-11-06"
  },
  "dateRange": {
   "start": "2026-11-06",
-  "end": "2026-11-06"
+  "end": "2026-11-09"
  },
  "date": "2026-11-06",
  "dateBasis": {
@@ -46,6 +46,36 @@
    "endedDate": "2026-11-06",
    "included": true,
    "reason": "结束时间在归档日内，纳入当日归档记录（成功运行，只记录不取证）"
+  },
+  {
+   "rn": 15528,
+   "pipelineRunId": "42635273015",
+   "start": "2026-11-09 22:30:02",
+   "end": "2026-11-09 22:36:42",
+   "status": "FAILED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
+  },
+  {
+   "rn": 15526,
+   "pipelineRunId": "42507721320",
+   "start": "2026-11-09 02:00:01",
+   "end": "2026-11-09 03:48:06",
+   "status": "FAILED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
+  },
+  {
+   "rn": 15525,
+   "pipelineRunId": "42490090896",
+   "start": "2026-11-09 08:47:40",
+   "end": "2026-11-09 09:23:08",
+   "status": "COMPLETED",
+   "endedDate": "2026-11-09",
+   "included": false,
+   "reason": "结束时间属 2026-11-09，已归档到该日期目录"
   }
  ],
  "runHistory": [
@@ -74,14 +104,54 @@
    "cpr": null,
    "iva": true,
    "ftt": null
+  },
+  {
+   "rn": 15528,
+   "start": "2026-11-09 22:30:02",
+   "end": "2026-11-09 22:36:42",
+   "status": "FAILED",
+   "rid": "42635273015",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=228664975&projectId=300127&pipelineRunId=42635273015",
+   "bc": null,
+   "bpc": null,
+   "cpr": null,
+   "iva": false,
+   "ftt": null
+  },
+  {
+   "rn": 15526,
+   "start": "2026-11-09 02:00:01",
+   "end": "2026-11-09 03:48:06",
+   "status": "FAILED",
+   "rid": "42507721320",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=228664975&projectId=300127&pipelineRunId=42507721320",
+   "bc": null,
+   "bpc": null,
+   "cpr": null,
+   "iva": false,
+   "ftt": null
+  },
+  {
+   "rn": 15525,
+   "start": "2026-11-09 08:47:40",
+   "end": "2026-11-09 09:23:08",
+   "status": "COMPLETED",
+   "rid": "42490090896",
+   "url": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=228664975&projectId=300127&pipelineRunId=42490090896",
+   "bc": null,
+   "bpc": null,
+   "cpr": null,
+   "iva": true,
+   "ftt": null
   }
  ],
  "meta": {
   "workdays": [
-   "2026-11-06"
+   "2026-11-06",
+   "2026-11-09"
   ],
-  "workdayCount": 1,
-  "skippedNonWorkdayRuns": 0,
+  "workdayCount": 2,
+  "skippedNonWorkdayRuns": 123,
   "skippedRunningRuns": 0,
   "workdayNotes": [
    "法定工作日历: timor.tech API（1 年）"
@@ -92,6 +162,6 @@
  },
  "keptRuns": 2,
  "keptFailedRuns": 0,
- "excludedRuns": 0,
+ "excludedRuns": 3,
  "note": "当日全部 2 次运行均为成功，只归档记录、无需根因分析"
 }

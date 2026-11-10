@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:06:59",
+    "generatedAt": "2026-11-10 14:57:27",
     "component": "Ascend-CANN",
     "pipeline": "ops-transformer",
     "date": "2026-11-06",
@@ -1090,78 +1090,6 @@
       "level": "FAIL",
       "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part6.py::TestCannOpsTransformerPart6::test_cann_accu_smk_aclnnmatmulallreducev2",
       "isSummary": true
-    },
-    {
-      "task": "Test_ops-transformer",
-      "case": "test_cann_accu_smk_aclnnmatmulalltoall",
-      "source": "case_logs/case_0046.html",
-      "line": 1884,
-      "level": "FAIL",
-      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnmatmulalltoall",
-      "isSummary": true
-    },
-    {
-      "task": "Test_ops-transformer",
-      "case": "test_cann_accu_smk_aclnnalltoallquantmatmul_a16w8",
-      "source": "case_logs/case_0047.html",
-      "line": 2218,
-      "level": "FAIL",
-      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnalltoallquantmatmul_a16w8",
-      "isSummary": true
-    },
-    {
-      "task": "Test_ops-transformer",
-      "case": "test_cann_accu_smk_aclnnalltoallquantmatmul_a16w4",
-      "source": "case_logs/case_0048.html",
-      "line": 8846,
-      "level": "FAIL",
-      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnalltoallquantmatmul_a16w4",
-      "isSummary": true
-    },
-    {
-      "task": "Test_ops-transformer",
-      "case": "test_cann_accu_smk_aclnnalltoallquantmatmul_a4w4",
-      "source": "case_logs/case_0049.html",
-      "line": 8965,
-      "level": "FAIL",
-      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part3.py::TestCannOpsTransformerPart3::test_cann_accu_smk_aclnnalltoallquantmatmul_a4w4",
-      "isSummary": true
-    },
-    {
-      "task": "Test_ops-transformer",
-      "case": "test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad",
-      "source": "case_logs/case_0050.html",
-      "line": 3305,
-      "level": "FAIL",
-      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad",
-      "isSummary": true
-    },
-    {
-      "task": "Test_ops-transformer",
-      "case": "test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad_probs_none",
-      "source": "case_logs/case_0051.html",
-      "line": 7924,
-      "level": "FAIL",
-      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad_probs_none",
-      "isSummary": true
-    },
-    {
-      "task": "Test_ops-transformer",
-      "case": "test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none",
-      "source": "case_logs/case_0052.html",
-      "line": 2154,
-      "level": "FAIL",
-      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none",
-      "isSummary": true
-    },
-    {
-      "task": "Test_ops-transformer",
-      "case": "test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_not_none",
-      "source": "case_logs/case_0053.html",
-      "line": 2215,
-      "level": "FAIL",
-      "text": "Test FAILED due to ERROR/FAIL logs: testcase/cann/ops-transformer/test_ops_transformer_part2.py::TestCannOpsTransformerPart2::test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_not_none",
-      "isSummary": true
     }
   ],
   "evidence": {
@@ -1195,7 +1123,7 @@
     "logTasks": 0,
     "buildTasks": 0,
     "cases": 19,
-    "errorMessages": 38,
+    "errorMessages": 30,
     "evidenceFiles": 19
   },
   "verdict": {
@@ -1213,14 +1141,18 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "19 个精度用例全部失败，覆盖 allgather、moe 分发/合并与 QuantMatmulAllToAll 系列，断言原文为 aclnnMatmulReduceScatterV2 等算子 accuracy not passed，算子任务精度结果为 Failed；test 任务无日志落盘，缺少内核侧证据。",
-    "advice": "该流水线连续多个构建号都出现同一批算子精度失败，建议按算子逐个复现并在稳定复现的算子上抓取 atk 比对明细，同步核对算子库与精度基线是否与当前环境版本匹配。",
+    "keyError": "aclnnMoeTokenUnpermuteWithEpGrad accuracy not passed",
+    "rootCause": "Test_ops-transformer 98 条用例 79 通过、19 失败，比同日 #159/#160/#161 多出 4 条失败，任务判失败，构建 #162 记 FAILED；新增的失败落在 MoeTokenUnpermuteWithEpGrad，且 perf 前缀用例也报了同一段精度断言（records/run_162.json）\n\n第一类（12 条，通信融合算子）：aclnnAllGatherMatmul、aclnnMoeDistributeDispatch_CombineV2、aclnnQuantMatmulAlltoAll、aclnnMatmulReduceScatter 及 V2、aclnnAlltoAllMatmul、aclnnQuantMatmulAllReduceV3、aclnnMatmulAllReduce 及 V2、aclnnWeightQuantMatmulAllReduce、aclnnMatmulAlltoAll 与 aclnnAlltoAllQuantMatmul 三档；这一族与同日 #159～#161 的失败集合一致，属同一批确定性偏差，因此更像算子库或公共基线的持续性问题，而非本轮新引入（case_logs/case_0035.html:L8886）\n\n第二类（4 条，MoeTokenUnpermuteWithEpGrad 的四个变体）：test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad、同前缀 _probs_none、test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none 与 _probs_not_none，perf 与 accu 两组共用同一段断言「aclnnMoeTokenUnpermuteWithEpGrad功能精度测试(executor)失败: aclnnMoeTokenUnpermuteWithEpGrad accuracy not passed」，说明 perf 用例根本没跑到性能指标就倒在精度比对，性能数据不可用（case_logs/case_0042.html:L2500）\n\n第二类里 probs_none 与 probs_not_none 两条分支同时失败，说明与该算子可选输入的 prob 分支无关，更像 ep_grad 输出的排布/累加本身有偏差；如果是 prob 相关逻辑错，应该只有带 prob 的变体失败（case_logs/case_0041.html:L34364）\n\n已排除的干扰项：证据 19 份全部是 case_logs，errorMessages 30 条也全是 CASE/FAIL 行，没有任何内核错误；test 任务 logFile 为空，因此无法用「没有 kernel 报错」推断实现没问题，只能说证据未到那一层",
+    "advice": "先把新增的一族单独复现：单跑 MoeTokenUnpermuteWithEpGrad 的四个变体（perf、perf_probs_none、accu_probs_none、accu_probs_not_none），确认 probs 两条分支是否共用同一段累加逻辑；若两种情况都失败，直接按 ep_grad 输出排布查\n\n再把通信融合这一族按老问题处理：与 #159～#161 合并，从 aclnnAllGatherMatmul 与 aclnnMatmulReduceScatterV2 各取一条导出 atk 比对明细，判断误差是否同量级\n\n断言也要拆开：perf 与 accu 用例必须使用不同的断言文本，否则性能用例失败会被误报成精度不通过，掩盖真实的性能回归\n\n验证方式：重跑 Test_ops-transformer 全量 98 条用例，要求 19 条失败全部通过、退出码为 0；perf 前缀用例应产出性能结论而不是精度断言，日志中不再出现 accuracy not passed",
     "cites": [
-      "records/run_162.json:L57",
-      "records/run_162.json:L134",
-      "records/run_162.json:L79"
+      "case_logs/case_0035.html:L8886",
+      "case_logs/case_0041.html:L34364",
+      "case_logs/case_0042.html:L2500",
+      "records/run_162.json"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

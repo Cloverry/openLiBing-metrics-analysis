@@ -27,6 +27,7 @@
 （openLiBing N2 字段 pipelineRunEndtime / GitHub Actions run.updated_at）。
 """
 import datetime
+import json
 import re
 from pathlib import Path
 
@@ -133,6 +134,44 @@ def iter_archive_pipelines(day_dir):
             if pipe.is_dir():
                 out.append((comp.name, pipe.name, pipe))
     return out
+
+
+def day_pipeline_scope(day_dir):
+    """当日 _day.json 里登记的流水线目录集合 {(组件, 流水线)}；读不到返回 None。
+
+    归档口径的唯一真相是 _day.json（第 7 步每次采集后整份重写）。
+    磁盘上多出来的目录属于旧版本/改名前残留（例如流水线短名撞车时留下的 master 目录），
+    不在当日口径内：统计、待分析清单、自检一律跳过，否则同一批执行会被重复计入，
+    按时间筛选时分子分母与记录条数都会失真。读不到 _day.json 时返回 None（退化为全量扫描）。
+    """
+    p = Path(day_dir) / "_day.json"
+    if not p.is_file():
+        return None
+    try:
+        doc = json.loads(p.read_text(encoding="utf-8"))
+    except (ValueError, OSError):
+        return None
+    pipes = doc.get("pipelines")
+    if not isinstance(pipes, list) or not pipes:
+        return None
+    got = {(it.get("component"), it.get("pipeline")) for it in pipes
+           if isinstance(it, dict) and it.get("component") and it.get("pipeline")}
+    return got or None
+
+
+def iter_scoped_pipelines(day_dir):
+    """遍历某归档日「口径内」的 (组件, 流水线, 目录)：跳过 _day.json 未登记的历史残留目录。"""
+    scope = day_pipeline_scope(day_dir)
+    return [(c, p, d) for c, p, d in iter_archive_pipelines(day_dir)
+            if scope is None or (c, p) in scope]
+
+
+def stale_pipeline_dirs(day_dir):
+    """某归档日磁盘上多出、且不在 _day.json 口径内的目录（只用于提示，不删除）。"""
+    scope = day_pipeline_scope(day_dir)
+    if scope is None:
+        return []
+    return [(c, p, d) for c, p, d in iter_archive_pipelines(day_dir) if (c, p) not in scope]
 
 
 # ---------------------------------------------------------------- 步骤文档信封

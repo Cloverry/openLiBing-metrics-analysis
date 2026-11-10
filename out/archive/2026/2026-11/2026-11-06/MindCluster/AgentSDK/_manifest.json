@@ -5,7 +5,7 @@
   "source": "第 1~6 步中间产物（out/work/）",
   "criteria": "本目录内每一步的来源/口径/文件/计数与证据文件，逐条可核对",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-09 15:06:58",
+  "generatedAt": "2026-11-10 14:57:26",
   "component": "MindCluster",
   "pipeline": "AgentSDK",
   "date": "2026-11-06"
@@ -36,7 +36,7 @@
    "source": "openLiBing 夜间统计看板（产品维度指标）",
    "criteria": "默认取「前一个工作日」单日（跳过周末与法定节假日，config.date_range 留空时生效）：取 config.products 指定的开源组件在该日的版本可用度/编译成功率，比率按我们采集到的执行记录重算（归档只存数值，不存黄/绿/红）；本产品下任一指标未达 100%（或版本不可用）的流水线进入待分析集合",
    "dateField": "统计区间（start~end，含端点）",
-   "bytes": 2443
+   "bytes": 2445
   },
   {
    "step": "step_2_runs",
@@ -45,7 +45,7 @@
    "source": "openLiBing 流水线 N2 执行列表",
    "criteria": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）；仅保留工作日；VA 轨道=当日无 isVersionAvailable=true 的待查运行，BS 轨道=豁免日补圈的 Build* 失败运行",
    "dateField": "pipelineRunEndtime",
-   "bytes": 3538
+   "bytes": 4278
   },
   {
    "step": "step_3_tasks",
@@ -129,7 +129,7 @@
  },
  "source": {
   "workDir": "work",
-  "generatedAt": "2026-11-09 15:06:58",
+  "generatedAt": "2026-11-10 14:57:26",
   "note": "由 steps/step_7_archive.py 从第 1~6 步产物逐层归档"
  }
 }

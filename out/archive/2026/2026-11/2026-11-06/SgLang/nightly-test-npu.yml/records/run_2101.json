@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:07:00",
+    "generatedAt": "2026-11-10 14:57:29",
     "component": "SgLang",
     "pipeline": "nightly-test-npu.yml",
     "date": "2026-11-06",
@@ -55,11 +55,8 @@
       "jobErrMsg": null,
       "errorLines": [
         "L977: Traceback (most recent call last):",
-        "L1296: Traceback (most recent call last):",
-        "L1372: Traceback (most recent call last):",
         "L1380: ##[error]Error: failed to run script step:",
         "L1381: ✗ exit code: 1",
-        "L1397: Traceback (most recent call last):",
         "L1405: ##[error]Process completed with exit code 1.",
         "L1406: ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator."
       ],
@@ -91,20 +88,6 @@
     {
       "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
       "source": "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
-      "line": 1296,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
-      "source": "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
-      "line": 1372,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
-      "source": "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
       "line": 1380,
       "level": "LOG",
       "text": "##[error]Error: failed to run script step:"
@@ -115,13 +98,6 @@
       "line": 1381,
       "level": "LOG",
       "text": "✗ exit code: 1"
-    },
-    {
-      "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
-      "source": "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
-      "line": 1397,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
     },
     {
       "task": "multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa",
@@ -171,7 +147,7 @@
     "logTasks": 1,
     "buildTasks": 0,
     "cases": 0,
-    "errorMessages": 8,
+    "errorMessages": 5,
     "evidenceFiles": 1
   },
   "verdict": {
@@ -180,7 +156,7 @@
     "confidence": 0.7,
     "level": "中",
     "basis": [
-      "任务 multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa 日志命中 8 条错误行（非编译特征），见 github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
+      "任务 multi-node-poc (deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa, 1, 1, 1, test/registered/npu/accuracy/... / deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa 日志命中 5 条错误行（非编译特征），见 github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt",
       "基线 0.30",
       "证据文件落盘 1 份 +0.25",
       "任务日志命中错误行 +0.15"
@@ -189,14 +165,17 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "用例清理阶段依赖 sudo：日志报 /bin/bash: line 1: sudo: command not found，Command 'sync && echo 1 | sudo tee /proc/sys/vm/drop_caches' returned non-zero exit status 127，清理步骤失败导致用例以 FAILED (errors=1) 结束。",
-    "advice": "容器内已是 root 时去掉 sudo 前缀（直接 tee /proc/sys/vm/drop_caches），或在镜像安装 sudo 并配置免密；同时把清理步骤改为非致命，避免影响测试结论。",
+    "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
+    "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2101 从 20:46:40 跑到 21:37:07（约 50 分钟）记 FAILED；失败的是 multi-node-poc 的 deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa，其余 14 个 job 通过（records/run_2101.json）\n\n失败链是标准五步：Traceback（L977）→ ##[error]Error: failed to run script step（L1380）→ ✗ exit code: 1（L1381）→ Process completed with exit code 1（L1405）→ 容器实现执行失败（L1406），日志共 1473 行以上，但 Traceback 的异常正文没有被保留（github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L977）\n\n这条与同日 #2084、#2085、#2086 是同一类任务同一个模型配置，那三条分别抓到了 libhcom.so 缺失、dram segment 不支持 sdma 与本条相同的只有 exit code；四次都是这一条 1p1d 16p 用例失败，已经是可复现的模式而不是偶发\n\n因此更像该用例在 1p1d 16p 这套机器上的启动路径存在固定障碍（通信库缺、sdma 能力不匹配或配置写死），而非精度不达标\n\n已排除的干扰项：cases 为 0，没有 pytest 汇总与 accuracy 断言；其余 14 个 job 同 run 通过，排除节点与 runner 整体故障",
+    "advice": "按「同一用例已连续四次失败」处理：不要再逐构建单独排查，直接把 #2084、#2085、#2086、#2101 合并成一条线，用 #2085 抓到的 InitDramSegment 与 libhcom.so 两条实锤去验证\n\n加能力探测与兜底：在用例启动前检查 sdma 与 libhcom.so，两者不满足就跳过该配置或用替代路径，避免这类用例长期占着失败位\n\n补异常留存：把 L977 之后的栈写进日志，现在四条记录里三条都只有 exit code，白白浪费了四轮夜间的定位机会\n\n验证方式：修完后连续两个 nightly 观察该用例，要求 multi-node-poc（deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa）连续通过或按预期 skip、run 结论为 success",
     "cites": [
-      "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1290",
-      "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1303",
-      "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1308"
+      "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L977",
+      "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1381",
+      "records/run_2101.json"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

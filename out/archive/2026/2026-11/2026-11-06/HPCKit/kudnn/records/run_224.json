@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:06:59",
+    "generatedAt": "2026-11-10 14:57:28",
     "component": "HPCKit",
     "pipeline": "kudnn",
     "date": "2026-11-06",
@@ -60,7 +60,7 @@
       "jobName": "Test_kudnn",
       "type": "log",
       "fallback": true,
-      "logFile": "job_logs/02_kudnn_224_Test_kudnn.log",
+      "logFile": "job_logs/18_kudnn_224_Test_kudnn.log",
       "logBytes": 16567,
       "logLines": 144,
       "download": "export",
@@ -84,42 +84,42 @@
   "errorMessages": [
     {
       "task": "Test_kudnn",
-      "source": "job_logs/02_kudnn_224_Test_kudnn.log",
+      "source": "job_logs/18_kudnn_224_Test_kudnn.log",
       "line": 138,
       "level": "LOG",
       "text": "[2026/11/06 03:34:00.703 GMT+08:00] fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'"
     },
     {
       "task": "Test_kudnn",
-      "source": "job_logs/02_kudnn_224_Test_kudnn.log",
+      "source": "job_logs/18_kudnn_224_Test_kudnn.log",
       "line": 139,
       "level": "LOG",
       "text": "[2026/11/06 03:34:00.703 GMT+08:00] + echo '[ERROR] git clone test_cases code fail'"
     },
     {
       "task": "Test_kudnn",
-      "source": "job_logs/02_kudnn_224_Test_kudnn.log",
+      "source": "job_logs/18_kudnn_224_Test_kudnn.log",
       "line": 140,
       "level": "LOG",
       "text": "[2026/11/06 03:34:00.703 GMT+08:00] [ERROR] git clone test_cases code fail"
     },
     {
       "task": "Test_kudnn",
-      "source": "job_logs/02_kudnn_224_Test_kudnn.log",
+      "source": "job_logs/18_kudnn_224_Test_kudnn.log",
       "line": 142,
       "level": "LOG",
       "text": "[2026/11/06 03:34:00.883 GMT+08:00] [ERROR]  : script returned exit code 1, exitMessage is: command run failed"
     },
     {
       "task": "Test_kudnn",
-      "source": "job_logs/02_kudnn_224_Test_kudnn.log",
+      "source": "job_logs/18_kudnn_224_Test_kudnn.log",
       "line": 144,
       "level": "LOG",
       "text": "[2026/11/06 03:34:03.671 GMT+08:00] Finished: FAILURE"
     },
     {
       "task": "Test_kudnn",
-      "source": "job_logs/02_kudnn_224_Test_kudnn.log",
+      "source": "job_logs/18_kudnn_224_Test_kudnn.log",
       "line": null,
       "level": "JOB",
       "text": "步骤Test_kudnn执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
@@ -127,7 +127,7 @@
     },
     {
       "task": "Test_kudnn",
-      "source": "job_logs/02_kudnn_224_Test_kudnn.log",
+      "source": "job_logs/18_kudnn_224_Test_kudnn.log",
       "line": null,
       "level": "STEP",
       "text": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
@@ -136,7 +136,7 @@
   ],
   "evidence": {
     "files": [
-      "job_logs/02_kudnn_224_Test_kudnn.log"
+      "job_logs/18_kudnn_224_Test_kudnn.log"
     ],
     "missing": [
       "Test_kudnn"
@@ -168,12 +168,18 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "测试用例在拉取阶段失败：整 job 日志报 fatal: Authentication failed（用例仓库鉴权失败），用例未执行、测试任务用例结果为空，运行以脚本退出码 1 结束。",
-    "advice": "与同批次鉴权失败一并处理：修复凭据并验证 clone，随后重跑；建议把凭据检查前移到流水线准备阶段，避免每次都跑到测试步骤才失败。",
+    "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+    "rootCause": "Test_kudnn 在 03:31:17 启动，03:34:00.703 做用例仓 clone 时报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，同刻输出 [ERROR] git clone test_cases code fail，03:34:00.883 脚本返回退出码 1，03:34:03 Finished: FAILURE，job 只活了约 3 分钟（job_logs/18_kudnn_224_Test_kudnn.log:L138、L139、L140、L142）\n\n用例未拉起：Test_kudnn 标记 emptyTestResult，total=0、passed=0、failed=0；失败位于用例执行之前，属环境/凭据层，不是编译失败也不是用例断言失败（job_logs/18_kudnn_224_Test_kudnn.log:L144）\n\n同一凌晨 hmpi #210（01:11）、kpex #139（00:43）、kuqcd #198（00:33）报的是同一个仓库同一句鉴权失败，kudnn 与它们共用 hpckit-autotest，更像一份公共凭据在当日失效，而非 kudnn 独有的配置问题\n\n已排除的干扰项：平台给出的 DEV-CODECI-35002「构建任务执行失败」是统一封装码，不构成根因；日志中没有超时或网络错误行，排除仓库不可达\n\n补充：本记录 evidence 里 missing=1，该测试任务自身日志未采集到，但整 job 日志完整未截断，结论以整 job 日志为准",
+    "advice": "先换凭据：为 hpckit-autotest 配置有效 access token 并以凭据变量注入，替换掉当前失效的账号/密码凭据，换完在 runner 上手工 clone 一次确认\n\n一次改完 HPCKit 全部流水线的用例仓认证方式（hmpi、kpex、kudnn、kupl、kuqcd），不要逐条修复\n\n在流水线准备阶段增加凭据有效性检查，把鉴权问题挡在测试任务之前，并在失败时直接打印「凭据失效」而不是封装码\n\n验证方式：用 #224 参数重跑 kudnn 流水线，要求 clone 成功、用例 total 大于 0、退出码为 0，日志中不再出现 Authentication failed 与 git clone test_cases code fail",
     "cites": [
-      "job_logs/02_kudnn_224_Test_kudnn.log:L138"
+      "job_logs/18_kudnn_224_Test_kudnn.log:L138",
+      "job_logs/18_kudnn_224_Test_kudnn.log:L140",
+      "job_logs/18_kudnn_224_Test_kudnn.log:L142",
+      "job_logs/18_kudnn_224_Test_kudnn.log:L144"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

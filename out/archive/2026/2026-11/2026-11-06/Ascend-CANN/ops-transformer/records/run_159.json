@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:06:59",
+    "generatedAt": "2026-11-10 14:57:27",
     "component": "Ascend-CANN",
     "pipeline": "ops-transformer",
     "date": "2026-11-06",
@@ -977,14 +977,18 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "15 个通信融合算子的功能精度用例全部失败，断言原文为 aclnnQuantMatmulAllToAll / aclnnWeightQuantMatmulAllReduce / aclnnAllGatherMatmul accuracy not passed（executor 路径），算子任务的精度结果为 Failed；test 任务无日志落盘，无法定位到算子内核与阈值细节。",
-    "advice": "先单独复现 aclnnQuantMatmulAllToAll 与 aclnnAllGatherMatmul，确认是否与 executor 路径的参数或 dtype 组合相关；同时核对本轮算子库与精度基线文件是否同步更新，批量同时失败多为基线或环境整体偏移。",
+    "keyError": "AssertionError: aclnnQuantMatmulAlltoAll功能精度测试(executor)失败: aclnnQuantMatmulAlltoAll accuracy not passed",
+    "rootCause": "Test_ops-transformer 的 98 条用例跑出 83 通过、15 失败，pytest 判任务失败，构建 #159 记 FAILED；15 条全部停在 executor 精度比对，没有任何内核报错或编译错误，失败点在精度判定环节（records/run_159.json）\n\n第一类（8 条，Matmul 与集合通信融合）：aclnnMatmulAllReduce 及 V2、aclnnAllGatherMatmul、aclnnMatmulReduceScatter 及 V2、aclnnMatmulAlltoAll、aclnnAlltoAllMatmul，断言原文形如「AssertionError: aclnnQuantMatmulAlltoAll功能精度测试(executor)失败: aclnnQuantMatmulAlltoAll accuracy not passed」，AtkTaskResult 一致为 acc_pass_result='Failed'（case_logs/case_0021.html:L8562）\n\n第二类（4 条，量化变体）：aclnnWeightQuantMatmulAllReduce、aclnnQuantMatmulAllReduceV3 与 aclnnAlltoAllQuantMatmul 的 a16w4、a16w8 两档；量化与浮点两条路径同时被判失败，说明偏差不在某一类数据类型上（case_logs/case_0020.html:L16476）\n\n第三类（3 条，MoE 分发合并）：aclnnMoeDistributeDispatch_CombineV2 的两条用例；这一类本身是聚合/分发算子，数值链路与 Matmul 完全不同，却也落在同一次运行里同时失败\n\n三类算子的实现路径互不相同、却在同一轮运行里一起不通过，因此更像公共黄金数据、精度阈值或量化 scale 处理整体偏移，而非某个算子的逻辑缺陷；如果是单个算子回归，应该只看到一条或一族失败，不会横跨三类（case_logs/case_0027.html:L2199）\n\n已排除的干扰项：test 任务 logFile=-、logLines=-，logTasks 与 buildTasks 均为 0，日志里本来就没有内核级报错，所以不能反过来推断成编译或驱动问题；证据只有 15 份 case_logs 与测试报告断言两层",
+    "advice": "先切一刀定范围：固定镜像与黄金数据版本、只切换算子仓 commit 做二分，找出引入精度偏差的那次提交；若换回上一个 commit 15 条全部通过，即可判定是算子仓变更导致\n\n若与 commit 无关，再按公共基线核对：取 aclnnQuantMatmulAlltoAll 与 aclnnAllGatherMatmul 各一条用例的 atk 比对输出，看 15 条误差是否同量级；同量级就按黄金数据/阈值整体校准一次性修，不同量级则回到算子侧逐族排查\n\n量化一类单独看：比对 a16w4 与 a16w8 两档的 scale 计算路径是否共用同一段代码，量化路径的公共处理错会造成两档一起失败\n\n验证方式：重跑 Test_ops-transformer 全量 98 条用例，要求 15 条失败用例全部通过、任务退出码为 0，并且日志中不再出现 accuracy not passed；同时把该任务的完整执行日志纳入归档，补齐当前缺失的内核级证据",
     "cites": [
-      "records/run_159.json:L68",
-      "records/run_159.json:L79",
-      "records/run_159.json:L101"
+      "case_logs/case_0021.html:L8562",
+      "case_logs/case_0020.html:L16476",
+      "case_logs/case_0027.html:L2199",
+      "records/run_159.json"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

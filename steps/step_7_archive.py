@@ -27,8 +27,10 @@
      证据文件按原相对路径（job_logs/…、case_logs/…、github_logs/gh_<rid>/…）复制进来。
   3) 日目录来源 = 第 2 步 runHistory（区间内**全部运行**，成功 + 失败），
      保证「每天的全部构建记录」都归档；只有失败/取消运行才走第 3~5c 步取证。
-  4) 版本可用度 / 编译成功率一律按 runHistory 重算（可用日/有运行日、Σbpc/Σbc），
-     覆盖看板返回值；区间内一次运行都没有的流水线退回看板值（rateRule=dashboard）。
+  4) 版本可用度 / 编译成功率一律按 runHistory 重算
+     （版本可用度 = 可用日 ÷ 区间法定工作日数，组件级 = 各流水线可用度之和 ÷ 条数；
+      编译成功率 = Σbpc/Σbc），覆盖看板返回值；区间内一次运行都没有的流水线退回看板值
+     （rateRule=dashboard），也不进组件级均值。
   5) 区间内被采集但一次运行都没有的流水线，也会在区间结束日留一份「无运行」说明，避免被质疑漏查。
 """
 import datetime
@@ -75,35 +77,53 @@ def load_opt(name):
 def recompute_rates(s2, meta_idx):
     """版本可用度一律按采集到的执行记录重算（不看板值）。
 
-    全量采集后每条流水线都有 runHistory（区间内全部运行，成功 + 失败）：
-      流水线级 = 可用日 / 有运行日（当日只要有 iva=true 的运行即算可用）；
-      产品级   = Σ可用日 / Σ有运行日（该产品全部流水线合计）。
-    区间内一次运行都没有的流水线不参与重算，退回看板返回值（rateRule=dashboard）。
-    返回 (pip_rate, prod_rate, prod_detail)。
+    口径（与用户确认一致）：
+      流水线级 分子 = 可用日：当日存在任一条 iva=true 的运行即算「当天有可用版本」；
+              分母 = **区间法定工作日数**（第 2 步 _meta.workdays，与采集同源的
+                     工作日日历：含节假日/调休补班），不是「有运行的天数」。
+                     例：5 个工作日里只有 2 天有可用版本 → 2/5 = 40%。
+      组件级   = 该组件各流水线版本可用度的**算术平均**（Σ流水线可用度 ÷ 流水线条数）。
+    区间内一次运行都没有的流水线不参与重算，退回看板返回值（rateRule=dashboard），
+    也不进组件级均值（否则等于把「没跑」当成「不可用」，会把组件分拉低）。
+    返回 (pip_rate, prod_rate, prod_detail, wd_count)。
     """
-    pip_rate, prod_acc = {}, {}
+    meta = s2.get("_meta") or {}
+    wds = [str(x) for x in (meta.get("workdays") or [])]
+    wd_n = len(wds)
+    if not wd_n:
+        try:
+            wd_n = int(meta.get("workdayCount") or 0)
+        except (TypeError, ValueError):
+            wd_n = 0
+
+    pip_rate, prod_pipes = {}, {}
     for key, b in meta_idx.items():
         info = s2.get(key) or {}
         a, n = info.get("availDays"), info.get("daysInPeriod")
         rate = None
-        if isinstance(a, int) and isinstance(n, int) and n > 0:
-            rate = a / float(n)
+        if isinstance(a, int) and wd_n > 0:
+            rate = min(1.0, a / float(wd_n))          # 可用日 / 区间工作日数
+        elif isinstance(a, int) and isinstance(n, int) and n > 0:
+            rate = a / float(n)                        # 老归档缺 _meta 时退回「可用日/有运行日」
         elif info.get("vaRateRecomputed") is not None:
             rate = info.get("vaRateRecomputed")
         if rate is None:
             continue                      # 无任何运行记录：不重算，退回看板值
         pip_rate[key] = rate
-        acc = prod_acc.setdefault(b.get("product"), [0, 0])
-        if isinstance(a, int) and isinstance(n, int):
-            acc[0] += a
-            acc[1] += n
+        prod_pipes.setdefault(b.get("product"), []).append(rate)
     prod_rate, prod_detail = {}, {}
-    for prod, (a, n) in prod_acc.items():
-        prod_rate[prod] = (a / float(n)) if n else None
-        prod_detail[prod] = {"availDays": a, "daysInPeriod": n,
-                             "rule": "按采集到的全部运行重算：Σ可用日 / Σ有运行日"
-                                     "（不看板 versionAvail；当日有 iva=true 的运行才算可用）"}
-    return pip_rate, prod_rate, prod_detail
+    for prod, rates in prod_pipes.items():
+        ssum = sum(rates)
+        avg = ssum / len(rates)
+        prod_rate[prod] = avg
+        prod_detail[prod] = {
+            "pipelineCount": len(rates), "sumRate": ssum, "avgRate": avg,
+            "workdayCount": wd_n,
+            "rule": "组件级 = 各流水线版本可用度之和 / 流水线条数"
+                    "（流水线级 = 可用日 / 区间工作日数；当日有 iva=true 的运行才算可用日；"
+                    "区间内无运行记录的流水线不参与均值）",
+        }
+    return pip_rate, prod_rate, prod_detail, wd_n
 
 
 def recompute_bs(s2, meta_idx):
@@ -472,9 +492,11 @@ def main():
     meta_idx = {b["key"]: b for b in s1b.get("pipelines") or []}
 
     # 比率一律按采集到的全部运行重算（版本可用度 / 编译成功率），覆盖看板返回值
-    # 同时把分子/分母（可用日/有运行日、编译通过/编译次数）一起写进归档：
-    # 首页统计区间一变，页面直接累加分子分母重算，不必回头重新采集
-    pip_rate, prod_rate, prod_detail = recompute_rates(s2, meta_idx)
+    # 版本可用度分母 = 区间法定工作日数（第 2 步 _meta.workdays，与采集同源）；
+    # 编译成功率分母 = Σ编译次数。分子分母一起写进归档：
+    # 首页统计区间一变，页面直接按新区间的工作日数与分子重算，不必回头重新采集
+    pip_rate, prod_rate, prod_detail, wd_n = recompute_rates(s2, meta_idx)
+    wd_days = [str(x) for x in ((s2.get("_meta") or {}).get("workdays") or [])]
     pip_bs, prod_bs, prod_detail_bs = recompute_bs(s2, meta_idx)
     if prod_rate or prod_bs:
         prod_idx = dict(prod_idx)
@@ -825,12 +847,15 @@ def main():
                 "dims": b.get("dims") or [],
                 # 流水线级比率（不是产品级）：二级页「组件级流水线清单」按维度只显示一个数字，
                 # 必须能就地取到，否则页面只能去猜或退回产品级比率（会误导）。
-                # 全量采集后一律按 runHistory 重算（可用日/有运行日、Σbpc/Σbc）；
+                # 全量采集后一律按 runHistory 重算（版本可用度 = 可用日 ÷ 区间法定工作日数，
+                # 组件级 = 各流水线可用度之和 ÷ 条数；编译成功率 = Σbpc/Σbc）；
                 # 区间内无运行时才退回看板值（rateRule=dashboard）
                 "vaRate": pip_rate[key] if key in pip_rate else b.get("versionAvailabilityRate"),
                 "bsRate": pip_bs[key] if key in pip_bs else b.get("buildSuccessRate"),
                 "rateRule": ("runs" if (key in pip_rate or key in pip_bs) else "dashboard"),
-                # 当日分子/分母（供页面按统计区间重算）：可用日/有运行日、编译通过/编译次数
+                # 当日分子/分母（供页面按统计区间重算）：
+                # 可用日按天累加，daysInPeriod 这里只标记「当天是否有运行」，分母由页面的
+                # 法定工作日历（WD_CAL → wdInRange）给出，所以区间一变分母就跟着变
                 "vaDetail": {"availDays": day_va, "daysInPeriod": 1 if runs_today else 0},
                 "bsDetail": {"buildPassCount": day_bpc, "buildCount": day_bc},
                 "runsInPeriod": len(info.get("runHistory") or []),
@@ -873,6 +898,10 @@ def main():
             # 不能按 analyze 过滤，否则当天无异常的产品会整行消失。analyze 字段保留以便区分。
             "products": all_products,
             "productsAnalyzed": [p.get("product") for p in all_products if p.get("analyze")],
+            # 版本可用度的分母口径：本次采集区间的法定工作日（与第 2 步采集同源，含调休补班）。
+            # 页面按用户所选子区间从这里数工作日，跨长假也不会与采集口径分叉。
+            "workdays": wd_days,
+            "workdayCount": wd_n,
             "pipelines": pipes,
             "counts": {
                 "components": len({p["component"] for p in pipes}),

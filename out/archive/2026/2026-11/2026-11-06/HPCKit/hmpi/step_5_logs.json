@@ -5,7 +5,7 @@
   "source": "openLiBing 任务日志导出/分页接口",
   "criteria": "对每个失败任务导出整份日志落 job_logs/，并按关键字扫描错误行",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-09 15:06:59",
+  "generatedAt": "2026-11-10 14:57:28",
   "component": "HPCKit",
   "pipeline": "hmpi",
   "date": "2026-11-06"
@@ -25,7 +25,7 @@
     "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}"
    ],
    "jobErrMsg": "步骤Test_hmpi执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
-   "logFile": "job_logs/07_hmpi_210_Test_hmpi.log",
+   "logFile": "job_logs/21_hmpi_210_Test_hmpi.log",
    "logBytes": 16562,
    "logLines": 144,
    "download": "export",

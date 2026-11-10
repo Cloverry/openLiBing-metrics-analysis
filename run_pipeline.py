@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
-"""openLiBing 夜间流水线根因分析：唯一入口 —— 一键串联第 1~7 步采集归档 + 第 9 步生成展示页。
+"""openLiBing 夜间流水线根因分析：唯一入口 —— 第 1 段（第 1~7 步采集归档）+ 第 3 段（第 9 步生成展示页）。
+
+本 skill 是「取数 → AI 根因 → 出页」的完整流程，共三段，不可中途汇报完成:
+  第 1 段 本脚本（默认参数）取数归档 + 出静态壳；退出码 0 表示采集完成，必须接着做第 2 段。
+  第 2 段 agent 执行（脚本不做）: tools/list_pending.py → 分析 → tools/write_analysis.py 原子写回。
+  第 3 段 本脚本 --only step9 重出页面。
+  完成判据: list_pending.py 待分析 0 条 + 已执行 --only step9 + 无报错。
+退出码 42 表示当天无任何待分析数据，是唯一允许提前结束的情况。
 
 用法:
   python run_pipeline.py                                    # 全流程：默认取「前一个工作日」单日、全部产品、全部流水线（含达标）
@@ -35,7 +42,8 @@
   仅补抓上次之后的新运行；复用校验优先命中归档目录，其次中间产物目录。
 数据保留: 不设滚动清理、不删任何采集数据与证据；out/archive/ 只增不删，
   每日归档长期保留供回看（第 0 步滚动清理已移除）。
-第 8 步（AI 根因分析）由执行本 skill 的 agent 按 agent/agent_task.md 逐条记录完成，不是脚本。
+第 8 步（第 2 段 AI 根因分析）由执行本 skill 的 agent 按 agent/agent_task.md 逐条记录完成，不是脚本；
+  它前面没有「可以停下」的分界，采集完成后必须立即执行，并以 --only step9 收尾。
 """
 import argparse
 import collections
@@ -281,19 +289,36 @@ def main():
             log_f.close()
             sys.exit(rc)
 
+    names = [n for n, _ in todo]
+    did_collect = "step_1_nightly" in names
+    did_pages = "step_9_pages" in names
+
     print("\n" + "=" * 60)
-    print("采集与归档完成，总耗时 %.1fs。" % (time.time() - t_all))
+    if did_collect:
+        print("第 1 段完成：取数与归档已就绪，总耗时 %.1fs。" % (time.time() - t_all))
+    elif did_pages:
+        print("第 3 段完成：展示页已重出，总耗时 %.1fs。" % (time.time() - t_all))
+    else:
+        print("所选步骤已完成（%s），总耗时 %.1fs。" % (", ".join(names), time.time() - t_all))
     print("  归档目录（逐层可查）: %s" % ARCHIVE_ROOT)
     print("  单条记录: <年>/<年-月>/<日>/<开源组件名>/<流水线名>/records/run_<构建号>.json")
     print("  展示页（静态壳，数据运行时读归档）: %s" % (HTML_DIR / "index.html"))
     print("  预览: python run_pipeline.py --serve  → http://%s:%d/html/index.html"
           % (SERVE_HOST, SERVE_PORT))
-    print("  下一步（唯一的 AI 环节，只写根因不碰页面）:")
-    print("    1) python tools/list_pending.py            # 脚本列出待分析记录与证据摘要")
-    print("    2) agent 按 agent/agent_task.md 逐条分析，产出结论 JSON")
-    print("    3) python tools/write_analysis.py --file <结论 JSON>   # 脚本原子写回")
-    print("    4) python run_pipeline.py --only step9     # 脚本重生成页面（无需重新采集）")
     print("  完整采集日志: %s" % log_path)
+    print("-" * 60)
+    if did_collect:
+        print("!! 流程还没跑完（第 1/3 段）。绝不能在这里汇报完成，必须接着做第 2、3 段：")
+        print("  第 2 段 AI 根因分析（agent 执行，脚本不做）:")
+        print("    1) python tools/list_pending.py            # 脚本列出待分析记录与证据摘要")
+        print("    2) 按 agent/agent_task.md 逐条分析，写出 out/state/analysis_result.json")
+        print("    3) python tools/write_analysis.py --file out/state/analysis_result.json --dry-run")
+        print("    4) python tools/write_analysis.py --file out/state/analysis_result.json")
+        print("  第 3 段 重出页面（脚本执行）:")
+        print("    5) python run_pipeline.py --only step9     # 无需重新采集")
+        print("  完成判据: list_pending.py --strict 退出码 0 + 已执行 --only step9 + 无报错。")
+    elif did_pages:
+        print("   收尾复核: python tools/list_pending.py --strict   # 退出码 0 才算跑完（非 0 = 还有待分析记录）")
     print("=" * 60)
     log_f.close()
 

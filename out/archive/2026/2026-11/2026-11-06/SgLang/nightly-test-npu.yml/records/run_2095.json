@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:07:00",
+    "generatedAt": "2026-11-10 14:57:29",
     "component": "SgLang",
     "pipeline": "nightly-test-npu.yml",
     "date": "2026-11-06",
@@ -58,9 +58,6 @@
         "L7692: [2026-11-06 10:58:15] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))",
         "L8615: Traceback (most recent call last):",
         "L8633: FileNotFoundError: [Errno 2] No such file or directory: '/root/.cache/tests/output/shun8686-overlapschedule-20261106-1838-42204167966-1/Nightly_Test_NPU--cann9.1.0-a3-B010/perf/nightly-perf-16-npu-a3/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_fia_unset/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_pass1_metrics",
-        "L8641: Traceback (most recent call last):",
-        "L8659: FileNotFoundError: [Errno 2] No such file or directory: '/root/.cache/tests/output/shun8686-overlapschedule-20261106-1838-42204167966-1/Nightly_Test_NPU--cann9.1.0-a3-B010/perf/nightly-perf-16-npu-a3/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_fia_unset/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_pass1_metrics",
-        "L8663: Traceback (most recent call last):",
         "L8755: ##[error]Error: failed to run script step:",
         "L8756: ✗ exit code: 255",
         "L8780: ##[error]Process completed with exit code 1.",
@@ -109,27 +106,6 @@
       "line": 8633,
       "level": "LOG",
       "text": "FileNotFoundError: [Errno 2] No such file or directory: '/root/.cache/tests/output/shun8686-overlapschedule-20261106-1838-42204167966-1/Nightly_Test_NPU--cann9.1.0-a3-B010/perf/nightly-perf-16-npu-a3/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_fia_unset/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_pass1_metrics"
-    },
-    {
-      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
-      "source": "github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt",
-      "line": 8641,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
-    },
-    {
-      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
-      "source": "github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt",
-      "line": 8659,
-      "level": "LOG",
-      "text": "FileNotFoundError: [Errno 2] No such file or directory: '/root/.cache/tests/output/shun8686-overlapschedule-20261106-1838-42204167966-1/Nightly_Test_NPU--cann9.1.0-a3-B010/perf/nightly-perf-16-npu-a3/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_fia_unset/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_pass1_metrics"
-    },
-    {
-      "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
-      "source": "github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt",
-      "line": 8663,
-      "level": "LOG",
-      "text": "Traceback (most recent call last):"
     },
     {
       "task": "nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3",
@@ -193,7 +169,7 @@
     "logTasks": 1,
     "buildTasks": 0,
     "cases": 0,
-    "errorMessages": 11,
+    "errorMessages": 8,
     "evidenceFiles": 1
   },
   "verdict": {
@@ -202,7 +178,7 @@
     "confidence": 0.7,
     "level": "中",
     "basis": [
-      "任务 nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3 日志命中 11 条错误行（非编译特征），见 github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt",
+      "任务 nightly-perf-16-npu-a3 / nightly-perf-16-npu-a3 日志命中 8 条错误行（非编译特征），见 github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt",
       "基线 0.30",
       "证据文件落盘 1 份 +0.25",
       "任务日志命中错误行 +0.15"
@@ -211,13 +187,17 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "用例读取测试产物失败：FileNotFoundError: No such file or directory: '/root/.cache/tests/output/.../Nightly_Test_NPU--cann9.1.0...'，上一阶段未产出该目录（产出步骤缺失或被清理），pytest 随即以 FAILED 结束。",
-    "advice": "在用例前置步骤显式校验产物目录存在并打印产出树；核对产出步骤使用的 CANN 版本目录名与本轮镜像是否一致，避免路径拼装失配。",
+    "keyError": "FileNotFoundError: [Errno 2] No such file or directory: '/root/.cache/tests/output/shun8686-overlapschedule-20261106-1838-42204167966-1/Nightly_Test_NPU--cann9.1.0-a3-B010/perf/nightly-perf-16-npu-a3/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_fia_unset/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_pass1_metrics'",
+    "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2095 从 18:38:06 跑到 19:15:43（约 37 分钟）记 FAILED；失败的是 nightly-perf-16-npu-a3，其余 14 个 job 通过（records/run_2095.json）\n\n第一类（背景噪声）：L5477 与 L7692 各有一条 openai ImportError（10:53:49、10:58:15），与当天其他 SgLang 记录同源，属镜像依赖问题但不是本条的退出点\n\n第二类（真实失败点）：L8615 Traceback → L8633 FileNotFoundError，用例去读 test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_pass1_metrics 这个产物文件时目录不存在，随后 L8755/8756 以 ✗ exit code: 255 退出，L8780/8781 收尾（github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt:L8633）\n\n值得注意路径里同时出现 _fia_unset 与 _pass1_metrics 两级目录：前者是被测配置的开关后缀，后者是性能采样的产物名，更像是压测根本没跑到写 metrics 这一步（或用例拼路径时把 fia 开关与 pass 序号拼错），而不是 metrics 文件被误删\n\n已排除的干扰项：openai ImportError 只影响 /v1/responses 降级；cases 为 0，没有精度断言；另 14 个 job 同 run 通过，排除节点故障",
+    "advice": "先确认产物是否真的没生成：在同一次运行的 /root/.cache/tests/output/... 下逐级 ls，确认是 _fia_unset 这级缺失还是 _pass1_metrics 缺失，这一步能直接区分「路径拼错」与「压测未产出」\n\n再核对路径拼装逻辑：把 fia 开关后缀与 pass 序号从配置里显式读出来打印，现在两级后缀都写死在路径里，配置一改就会失配\n\n加前置校验：读 metrics 前先断言目录存在并给出「第 N 次 pass 未产出」的明确信息，而不是抛裸 FileNotFoundError\n\n验证方式：重跑该 nightly，要求 multi-node-poc 下该 deepseek_v4_flash 8p 用例产出 _pass1_metrics 文件并通过、run 结论为 success",
     "cites": [
       "github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt:L8633",
-      "github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt:L8738"
+      "github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt:L8756",
+      "records/run_2095.json"
     ],
-    "updatedAt": "2026-11-09 15:07:00",
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }

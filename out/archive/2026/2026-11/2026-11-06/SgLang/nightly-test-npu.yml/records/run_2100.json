@@ -5,7 +5,7 @@
     "source": "第 2~5c 步归档产物",
     "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
     "dateField": "pipelineRunEndtime",
-    "generatedAt": "2026-11-09 15:07:00",
+    "generatedAt": "2026-11-10 14:57:29",
     "component": "SgLang",
     "pipeline": "nightly-test-npu.yml",
     "date": "2026-11-06",
@@ -123,10 +123,15 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "rootCause": "两个任务（set-image-config、check-all-jobs）的运行平台侧日志均未留存（接口返回 404），归档内无任务日志与用例明细，只能依据作业元数据判断为运行平台侧失败，具体原因无法确认。",
-    "advice": "补齐该流水线作业日志采集与留存，并在 404 时保存作业元数据快照；日志可用后再分析，本条证据不完整、置信度低。",
-    "cites": [],
-    "updatedAt": "2026-11-09 15:07:00",
+    "keyError": null,
+    "rootCause": "构建 #2100 只在 20:46:40 到 20:46:42 存活 2 秒就记 FAILED；失败的 set-image-config（id 127900239233）与 check-all-jobs（id 127900249627）同样全部 404_not_retained，归档内 files=0、errorMessages 为空，run 的 displayTitle 仅为「ci run」（records/run_2100.json）\n\n第一类（失败层级）：与 #2091 完全同构，证据止于 job 层，没有任何脚本输出\n\n第二类（时间与入口）：2 秒比 #2091 的 3 秒更短，且这两次失败都发生在入口配置任务 set-image-config 上，说明 nightly 在写镜像配置阶段就被打断，后续 15 个测试 job 一个都没起来\n\n因此更像 nightly 的入口配置步骤在同一天内两次失败（17:45 与 20:46），是同一处流程问题重复出现，而非两次独立的用例失败\n\n已排除的干扰项：无 job 级失败、无用例明细，不存在精度或性能判定；2 秒的时长排除测试脚本执行的可能",
+    "advice": "与 #2091 合并成一条线处理，不要当两个问题：同一天两次都在 set-image-config 处 2~3 秒退出，先去查该任务的实现（镜像 tag 解析、配置写入、权限）\n\n补日志：要求平台保留 404 之前的入口任务输出，否则这类记录永远只能定性为「证据缺失」\n\n考虑快速失败与告警：入口配置失败应立刻发通知并跳过整条 nightly，现在只是记一条空失败，白占一个构建号\n\n验证方式：重跑该 nightly，要求 set-image-config 正常完成、日志可读、run 结论为 success，且不再出现 2 秒内中断的记录",
+    "cites": [
+      "records/run_2100.json"
+    ],
+    "updatedAt": "2026-11-10 17:27:42",
+    "firstAnalyzedAt": "2026-11-10 15:21:02",
+    "revisions": 2,
     "source": "agent"
   }
 }
