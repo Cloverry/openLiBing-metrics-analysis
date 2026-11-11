@@ -1,0 +1,20 @@
+{
+ "_doc": {
+  "step": "step_5c_github",
+  "title": "第 5c 步 GitHub 平台运行取证",
+  "source": "GitHub Actions API（jobs / logs / 测试结果）",
+  "criteria": "对 github 平台运行按 job 分流取日志，测试 job 解析测试结果定位到用例",
+  "dateField": "run.updated_at（等价于执行结束时间）",
+  "generatedAt": "2026-11-11 09:21:55",
+  "component": "MindCluster",
+  "pipeline": "RecSDK",
+  "date": "2026-11-10"
+ },
+ "results": [],
+ "errors": [],
+ "counts": {
+  "runs": 0,
+  "jobs": 0,
+  "missing": 0
+ }
+}

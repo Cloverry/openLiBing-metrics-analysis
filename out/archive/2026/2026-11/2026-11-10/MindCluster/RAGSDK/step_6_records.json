@@ -1,0 +1,20 @@
+{
+ "_doc": {
+  "step": "step_6_records",
+  "title": "第 6 步 证据合并与执行记录",
+  "source": "第 2~5c 步归档产物",
+  "criteria": "以「一次执行」为最小单位合并任务、用例、错误信息、证据与构建编号，形成可直接展示与逐条分析的记录",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-11 09:21:55",
+  "component": "MindCluster",
+  "pipeline": "RAGSDK",
+  "date": "2026-11-10",
+  "recordCount": 0
+ },
+ "date": "2026-11-10",
+ "component": "MindCluster",
+ "pipeline": "RAGSDK",
+ "records": [],
+ "recordFiles": [],
+ "pathBase": "recordFiles 相对本目录（records/run_<构建号>.json）"
+}

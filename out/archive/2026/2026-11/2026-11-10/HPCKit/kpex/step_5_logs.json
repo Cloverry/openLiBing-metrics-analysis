@@ -1,0 +1,20 @@
+{
+ "_doc": {
+  "step": "step_5_logs",
+  "title": "第 5 步 任务日志取证（T5）",
+  "source": "openLiBing 任务日志导出/分页接口",
+  "criteria": "对每个失败任务导出整份日志落 job_logs/，并按关键字扫描错误行",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-11 09:21:55",
+  "component": "HPCKit",
+  "pipeline": "kpex",
+  "date": "2026-11-10"
+ },
+ "results": [],
+ "errors": [],
+ "counts": {
+  "tasks": 0,
+  "logFiles": 0,
+  "errorLines": 0
+ }
+}

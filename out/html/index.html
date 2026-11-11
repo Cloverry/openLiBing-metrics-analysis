@@ -234,7 +234,7 @@ footer#foot{flex:0 0 auto;font-size:11.5px;color:#9aa3af;line-height:1.7;margin-
   </div>
 </div>
 <script>
-const WD_CAL = ["2026-11-06", "2026-11-09", "2026-11-10"];
+const WD_CAL = ["2026-11-06", "2026-11-09", "2026-11-10", "2026-11-11"];
 
 /* ==== 公共日期筛选组件（唯一来源 lib/ui.py，口径 = 执行结束时间）==== */
 const RF_FIELD = "pipelineRunEndtime";
@@ -267,6 +267,16 @@ function wdInRange(f, t){
     return n;
   }
   return rfWorkdays(f, t);
+}
+/* 「这条流水线在这里到底跑没跑过」的唯一判据：runsInPeriod 是第 7 步按区间运行数写死的，
+   0 就是一次都没跑（RAGSDK / VisionSDK 这类只有看板配置、从没执行过的流水线）。
+   为什么必须判：归档对「区间内无运行」的流水线会退回看板值（历史上是 0.0），
+   那个 0 表示「压根没跑」而不是「跑了但不可用」；一旦被当成算出过的比率收进平均值，
+   「无执行记录」就会被统计成 0.00%（用户反馈过两次）。老归档缺该字段时放行。 */
+function ranInPeriod(pl){
+  const v = pl ? pl.runsInPeriod : null;
+  if (v === null || v === undefined || v === '') return true;
+  return Number(v) > 0;
 }
 function rfClamp(v){return (v && rfState.min && v<rfState.min) ? rfState.min : ((v && rfState.max && v>rfState.max) ? rfState.max : v);}
 
@@ -655,12 +665,12 @@ function render(docs, from, to){
       const vd = pl.vaDetail, bd = pl.bsDetail;
       if (vd && Number(vd.daysInPeriod) > 0){
         r.vaA += Number(vd.availDays) || 0; r.vaN += Number(vd.daysInPeriod) || 0;
-      } else if (pl.vaRate !== null && pl.vaRate !== undefined){
+      } else if (pl.vaRate !== null && pl.vaRate !== undefined && ranInPeriod(pl)){
         r.vaVals.push(Number(pl.vaRate));
       }
       if (bd && Number(bd.buildCount) > 0){
         r.bsP += Number(bd.buildPassCount) || 0; r.bsC += Number(bd.buildCount) || 0;
-      } else if (pl.bsRate !== null && pl.bsRate !== undefined){
+      } else if (pl.bsRate !== null && pl.bsRate !== undefined && ranInPeriod(pl)){
         r.bsVals.push(Number(pl.bsRate));
       }
       r.vaLightOld = worstLight(r.vaLightOld, pl.vaLight || null);
@@ -682,7 +692,9 @@ function render(docs, from, to){
        **区间内完全没有执行记录**的流水线（RAGSDK、VisionSDK 这类只有看板配置、一次都没跑过的）
        不参与任何计算：既不能算 0%（会被当成「全部不可用」并拉低组件均值），也不能算 100%，
        比率一律给 null → 页面显示 --，组件级平均与「流水线条数」都不含它。
-       判据只看分子分母有没有落过数（vaN>0 / vaA>0 / 比率数组非空），与归档同源。 */
+       判据只看分子分母有没有落过数（vaN>0 / vaA>0 / 比率数组非空），且比率数组只收
+       「区间内真的跑过」的流水线（ranInPeriod）：归档对零运行的流水线会退回看板值 0.0，
+       那个 0 不是「跑了但不可用」，收进来就会把「无执行记录」显示成 0.00%。 */
     const noVA = !(p.vaN > 0 || p.vaVals.length);
     const noBS = !(p.bsC > 0 || p.bsVals.length);
     p.noRun = noVA && noBS;                 /* 两个维度都没有任何运行 = 该流水线无执行记录 */

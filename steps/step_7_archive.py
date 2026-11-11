@@ -83,8 +83,9 @@ def recompute_rates(s2, meta_idx):
                      工作日日历：含节假日/调休补班），不是「有运行的天数」。
                      例：5 个工作日里只有 2 天有可用版本 → 2/5 = 40%。
       组件级   = 该组件各流水线版本可用度的**算术平均**（Σ流水线可用度 ÷ 流水线条数）。
-    区间内一次运行都没有的流水线不参与重算，退回看板返回值（rateRule=dashboard），
-    也不进组件级均值（否则等于把「没跑」当成「不可用」，会把组件分拉低）。
+    区间内一次运行都没有的流水线不参与重算，也不进组件级均值（否则等于把「没跑」当成
+    「不可用」，会把组件分拉低）；写归档时这类流水线的比率给 null（rateRule=none），
+    页面显示 --，而不是拿看板上的 0.0 顶替（那个 0 会被页面对照成「无执行记录 0%」）。
     返回 (pip_rate, prod_rate, prod_detail, wd_count)。
     """
     meta = s2.get("_meta") or {}
@@ -835,6 +836,7 @@ def main():
             bucket = day_buckets.setdefault(d, {"pipelines": []})
             # 当日分子/分母：统计区间一变，页面按「Σ分子/Σ分母」就地重算，
             # 不需要重新采集，也不是拿逐日比率做算术平均
+            n_runs_period = len(info.get("runHistory") or [])
             day_va = 1 if any(h.get("iva") is True for h in runs_today) else 0
             day_bc = sum((h.get("bc") or 0) for h in runs_today
                          if h.get("bc") is not None)
@@ -849,16 +851,23 @@ def main():
                 # 必须能就地取到，否则页面只能去猜或退回产品级比率（会误导）。
                 # 全量采集后一律按 runHistory 重算（版本可用度 = 可用日 ÷ 区间法定工作日数，
                 # 组件级 = 各流水线可用度之和 ÷ 条数；编译成功率 = Σbpc/Σbc）；
-                # 区间内无运行时才退回看板值（rateRule=dashboard）
-                "vaRate": pip_rate[key] if key in pip_rate else b.get("versionAvailabilityRate"),
-                "bsRate": pip_bs[key] if key in pip_bs else b.get("buildSuccessRate"),
-                "rateRule": ("runs" if (key in pip_rate or key in pip_bs) else "dashboard"),
+                # 区间内无运行时才退回看板值（rateRule=dashboard）；
+                # **区间内一次运行都没有**（runsInPeriod=0，如 RAGSDK / VisionSDK 只有看板配置）
+                # 时连看板值也不写：那种 0.0 表示「压根没跑」而不是「跑了但全不可用」，
+                # 页面收进平均会把「无执行记录」显示成 0.00%（用户反馈的问题），
+                # 所以这里写 null → 页面显示 --，且不参与组件级平均
+                "vaRate": (pip_rate[key] if key in pip_rate
+                           else (b.get("versionAvailabilityRate") if n_runs_period else None)),
+                "bsRate": (pip_bs[key] if key in pip_bs
+                           else (b.get("buildSuccessRate") if n_runs_period else None)),
+                "rateRule": ("runs" if (key in pip_rate or key in pip_bs)
+                             else ("dashboard" if n_runs_period else "none")),
                 # 当日分子/分母（供页面按统计区间重算）：
                 # 可用日按天累加，daysInPeriod 这里只标记「当天是否有运行」，分母由页面的
                 # 法定工作日历（WD_CAL → wdInRange）给出，所以区间一变分母就跟着变
                 "vaDetail": {"availDays": day_va, "daysInPeriod": 1 if runs_today else 0},
                 "bsDetail": {"buildPassCount": day_bpc, "buildCount": day_bc},
-                "runsInPeriod": len(info.get("runHistory") or []),
+                "runsInPeriod": n_runs_period,
                 "runsToday": len(all_rns),
                 "failedRunsToday": len(rns),
                 "path": rel(arch),

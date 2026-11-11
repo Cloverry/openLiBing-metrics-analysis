@@ -1,0 +1,56 @@
+[2026/11/10 10:46:58.362 GMT+08:00] [INFO]  : [JobStatusPlugin] onStarted: j_RVLrG3jY #1
+[2026/11/10 10:46:58.364 GMT+08:00] Resume disabled by user, switching to high-performance, low-durability mode.
+[2026/11/10 10:46:58.478 GMT+08:00] [INFO] [PRE_ENV:slave_create] : 该步骤开始执行
+[2026/11/10 10:46:58.481 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] resources pool message: default-x86-2u8g_suffix
+[2026/11/10 10:46:58.482 GMT+08:00] [WARNING] [PRE_ENV:slave_create] : [slave] find empty runtime, location: PRE_ENV.slave_create
+[2026/11/10 10:46:58.483 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] Fixed content: No
+[2026/11/10 10:46:59.487 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] Start to create an executor node...
+[2026/11/10 10:46:59.588 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] create execution node cce-codeci-4947b87f50 ok, waiting for connection...
+[2026/11/10 10:47:03.626 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] Find available executor node:cce-codeci-0ea0bc34b2
+[2026/11/10 10:47:03.682 GMT+08:00] [INFO] [PRE_ENV:slave_create] : 该步骤执行完成
+[2026/11/10 10:47:03.818 GMT+08:00] [INFO] [build_flow:build_flow] : 该步骤开始执行
+[2026/11/10 10:47:03.820 GMT+08:00] [INFO] [build_flow:build_flow] : plugin version is :1.0.19
+[2026/11/10 10:47:03.830 GMT+08:00] [INFO] [build_flow:build_flow] : Build flow strategy is: EAGER mode
+[2026/11/10 10:47:03.830 GMT+08:00] [INFO] [build_flow:build_flow] : Details of BuildFlow Configuration: {jobs_size=5, strategy='Eager', parallelism=100, fast_fail=false, mode=null, flow_metadata=package_upload}
+[2026/11/10 10:47:04.038 GMT+08:00] [INFO] [build_flow:build_flow] : Job OmniOperator_openEuler22.03_JDK8 has dispatched
+[2026/11/10 10:47:04.207 GMT+08:00] [INFO] [build_flow:build_flow] : Job OmniOperator_openEuler24.03_JDK17 has dispatched
+[2026/11/10 10:47:34.208 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:47:34.419 GMT+08:00] [INFO] [build_flow:build_flow] : Job Gluten_openEuler22.03_JDK8 has dispatched
+[2026/11/10 10:47:34.591 GMT+08:00] [INFO] [build_flow:build_flow] : Job Gluten_openEuler24.03_JDK17 has dispatched
+[2026/11/10 10:48:04.591 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:48:04.810 GMT+08:00] [INFO] [build_flow:build_flow] : Job package_upload has dispatched
+[2026/11/10 10:48:34.895 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:49:04.964 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:49:35.011 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:50:05.049 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:50:35.122 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:51:05.170 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:51:35.213 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:52:05.264 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:52:35.318 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:53:05.365 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:53:35.408 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:54:05.463 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:54:35.502 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:55:05.537 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:55:35.622 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:56:05.656 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:56:35.710 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:57:05.760 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:57:35.814 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:57:35.869 GMT+08:00] [ERROR] [build_flow:build_flow] : Job OmniOperator_openEuler22.03_JDK8 failed
+[2026/11/10 10:58:05.869 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:58:05.923 GMT+08:00] [ERROR] [build_flow:build_flow] : Job Gluten_openEuler22.03_JDK8 failed
+[2026/11/10 10:58:05.923 GMT+08:00] [ERROR] [build_flow:build_flow] : Job Gluten_openEuler24.03_JDK17 failed
+[2026/11/10 10:58:05.923 GMT+08:00] [ERROR] [build_flow:build_flow] : Job OmniOperator_openEuler24.03_JDK17 failed
+[2026/11/10 10:58:35.924 GMT+08:00] [INFO] [build_flow:build_flow] : begin sync record status
+[2026/11/10 10:58:35.957 GMT+08:00] [ERROR] [build_flow:build_flow] : Job package_upload failed
+[2026/11/10 10:58:35.957 GMT+08:00] [INFO] [build_flow:build_flow] : Dispatch finished! Waiting for all jobs finished
+[2026/11/10 10:58:35.957 GMT+08:00] [INFO] [build_flow:build_flow] : All dispatched jobs have finished!
+[2026/11/10 10:58:35.957 GMT+08:00] [INFO] [build_flow:build_flow] : Total jobs num: 5, dispatched jobs num: 5, succeed jobs num: 0, failed jobs num: 5
+[2026/11/10 10:58:35.957 GMT+08:00] [ERROR] [build_flow:build_flow] : Follow jobs are failed: [package_upload, Gluten_openEuler22.03_JDK8, Gluten_openEuler24.03_JDK17, OmniOperator_openEuler22.03_JDK8, OmniOperator_openEuler24.03_JDK17]
+[2026/11/10 10:58:35.958 GMT+08:00] [ERROR] [build_flow:build_flow] : 错误信息: 您所提交的构建任务脚本(buildflow)中子任务【[package_upload, Gluten_openEuler22.03_JDK8]】等构建失败
+[2026/11/10 10:58:36.033 GMT+08:00] [ERROR] [build_flow:build_flow] : 该步骤执行失败
+[2026/11/10 10:58:36.035 GMT+08:00] [ERROR]  : 该步骤执行失败,错误信息:您所提交的构建任务脚本(buildflow)中子任务【[package_upload, Gluten_openEuler22.03_JDK8]】等构建失败
+[2026/11/10 10:58:36.086 GMT+08:00] [INFO]  : [JobStatusPlugin] onCompleted: j_RVLrG3jY #1
+[2026/11/10 10:58:37.754 GMT+08:00] Finished: FAILURE

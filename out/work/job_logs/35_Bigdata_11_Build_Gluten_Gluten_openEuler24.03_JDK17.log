@@ -1,0 +1,133 @@
+[2026/11/10 10:47:35.765 GMT+08:00] [INFO]  : [JobStatusPlugin] onStarted: j_bNA8ND3P #1
+[2026/11/10 10:47:35.767 GMT+08:00] Resume disabled by user, switching to high-performance, low-durability mode.
+[2026/11/10 10:47:36.377 GMT+08:00] [INFO] [PRE_ENV:slave_create] : 该步骤开始执行
+[2026/11/10 10:47:36.380 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] resources pool message: a819085b455849d7b685a7e79084c535
+[2026/11/10 10:47:36.382 GMT+08:00] [WARNING] [PRE_ENV:slave_create] : [slave] find empty runtime, location: PRE_ENV.slave_create
+[2026/11/10 10:47:36.382 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] Fixed content: No
+[2026/11/10 10:47:36.488 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] Find available executor node:CI_version_03-bBj1xIOYO1
+[2026/11/10 10:47:36.536 GMT+08:00] [INFO] [PRE_ENV:slave_create] : 该步骤执行完成
+[2026/11/10 10:47:36.894 GMT+08:00] arm-shell4.2.46-git2.23-zip-1.1.0: Pulling from *****
+[2026/11/10 10:47:36.894 GMT+08:00] Digest: sha256:d0f5d8ada0e25daa60eabcc3eebe45eee5d7e532d07ff2367c487095356d0e0b
+[2026/11/10 10:47:36.894 GMT+08:00] Status: Image is up to date for************
+[2026/11/10 10:47:36.894 GMT+08:00]************
+[2026/11/10 10:47:37.573 GMT+08:00] [INFO] [checkout:checkout#preCheckout] : 该步骤开始执行
+[2026/11/10 10:47:37.574 GMT+08:00] [INFO] [checkout:checkout#preCheckout] : git plugin version: 1.12.5
+[2026/11/10 10:47:37.580 GMT+08:00] [INFO] [checkout:checkout#preCheckout] : 成功配置文件。
+[2026/11/10 10:47:37.991 GMT+08:00] [INFO] [checkout:checkout#preCheckout] : private key length: 2,455
+[2026/11/10 10:47:37.991 GMT+08:00] [INFO] [checkout:checkout#preCheckout] : get CodeArts Repo private key finished.
+[2026/11/10 10:47:37.991 GMT+08:00] [INFO] [checkout:checkout#preCheckout] : 成功创建CodeArts Repo的访问凭据。
+[2026/11/10 10:47:37.992 GMT+08:00] [INFO] [checkout:checkout#preCheckout] : 该步骤执行完成
+[2026/11/10 10:47:38.023 GMT+08:00] No credentials specified
+[2026/11/10 10:47:38.023 GMT+08:00] url:git@codehub.devcloud.cn-north-4.huaweicloud.com:Kunpeng_BoostKit00001/BoostKit_CI.git
+[2026/11/10 10:47:38.023 GMT+08:00] set customize ssh credentials
+[2026/11/10 10:47:38.026 GMT+08:00] git plugin version: 3.12.22-h1.cbu.codearts.build.r1
+[2026/11/10 10:47:38.030 GMT+08:00] Cloning the remote Git repository
+[2026/11/10 10:47:38.030 GMT+08:00] Using shallow clone
+[2026/11/10 10:47:38.030 GMT+08:00] Avoid fetching tags
+[2026/11/10 10:47:38.030 GMT+08:00] Honoring refspec on initial clone
+[2026/11/10 10:46:45.015 GMT+08:00] Cloning repository git@codehub.devcloud.cn-north-4.huaweicloud.com:Kunpeng_BoostKit00001/BoostKit_CI.git
+[2026/11/10 10:46:45.015 GMT+08:00]  > git init /opt/agent_CI_version_03/workspace/j_bNA8ND3P/BoostKit_CI # timeout=10
+[2026/11/10 10:46:45.022 GMT+08:00] Fetching upstream changes from git@codehub.devcloud.cn-north-4.huaweicloud.com:Kunpeng_BoostKit00001/BoostKit_CI.git
+[2026/11/10 10:46:45.022 GMT+08:00]  > git --version # timeout=10
+[2026/11/10 10:46:45.035 GMT+08:00]  > git --version # 'git version 2.33.0'
+[2026/11/10 10:46:45.036 GMT+08:00] [INFO] Currently running in a labeled security context
+[2026/11/10 10:46:45.036 GMT+08:00] [INFO] Currently SELinux is 'enforcing' on the host
+[2026/11/10 10:46:45.036 GMT+08:00]  > /usr/bin/chcon --type=ssh_home_t /opt/agent_CI_version_03/workspace/j_bNA8ND3P/BoostKit_CI@tmp/jenkins-gitclient-ssh16274534332888582696.key
+[2026/11/10 10:46:45.040 GMT+08:00]  > git fetch --no-tags --force --progress --depth=1 -- git@codehub.devcloud.cn-north-4.huaweicloud.com:Kunpeng_BoostKit00001/BoostKit_CI.git +refs/heads/master:refs/remotes/origin/master # timeout=120
+[2026/11/10 10:46:45.785 GMT+08:00]  > git config remote.origin.url git@codehub.devcloud.cn-north-4.huaweicloud.com:Kunpeng_BoostKit00001/BoostKit_CI.git # timeout=10
+[2026/11/10 10:46:45.789 GMT+08:00]  > git config --add remote.origin.fetch +refs/heads/master:refs/remotes/origin/master # timeout=10
+[2026/11/10 10:46:45.808 GMT+08:00]  > git config remote.origin.url git@codehub.devcloud.cn-north-4.huaweicloud.com:Kunpeng_BoostKit00001/BoostKit_CI.git # timeout=10
+[2026/11/10 10:46:45.818 GMT+08:00] Fetching upstream changes from git@codehub.devcloud.cn-north-4.huaweicloud.com:Kunpeng_BoostKit00001/BoostKit_CI.git
+[2026/11/10 10:46:45.819 GMT+08:00] [INFO] Currently running in a labeled security context
+[2026/11/10 10:46:45.819 GMT+08:00] [INFO] Currently SELinux is 'enforcing' on the host
+[2026/11/10 10:46:45.819 GMT+08:00]  > /usr/bin/chcon --type=ssh_home_t /opt/agent_CI_version_03/workspace/j_bNA8ND3P/BoostKit_CI@tmp/jenkins-gitclient-ssh17584668095261961899.key
+[2026/11/10 10:46:45.823 GMT+08:00]  > git fetch --no-tags --force --progress --depth=1 -- git@codehub.devcloud.cn-north-4.huaweicloud.com:Kunpeng_BoostKit00001/BoostKit_CI.git +refs/heads/master:refs/remotes/origin/master # timeout=120
+[2026/11/10 10:47:39.600 GMT+08:00] Checking out Revision 4c129ac33a788412823a3220c0b82a2d18d91e56 (origin/master)
+[2026/11/10 10:47:39.600 GMT+08:00] Disable Git LFS pull
+[2026/11/10 10:47:39.638 GMT+08:00] Commit message: "更新 upload_kbox_patches.yml"
+[2026/11/10 10:47:39.638 GMT+08:00] First time build. Skipping changelog.
+[2026/11/10 10:47:39.671 GMT+08:00] [INFO] [checkout:checkout#postCheckout] : 该步骤开始执行
+[2026/11/10 10:47:39.741 GMT+08:00] [INFO] [checkout:checkout#postCheckout] : 该步骤执行完成
+[2026/11/10 10:46:46.576 GMT+08:00]  > git rev-parse origin/master^{commit} # timeout=10
+[2026/11/10 10:46:46.584 GMT+08:00]  > git config core.sparsecheckout # timeout=10
+[2026/11/10 10:46:46.587 GMT+08:00]  > git checkout -f 4c129ac33a788412823a3220c0b82a2d18d91e56 # timeout=120
+[2026/11/10 10:46:46.600 GMT+08:00]  > git branch -a -v --no-abbrev # timeout=10
+[2026/11/10 10:46:46.605 GMT+08:00]  > git checkout -b master 4c129ac33a788412823a3220c0b82a2d18d91e56 # timeout=120
+[2026/11/10 10:47:41.362 GMT+08:00] arm-shell4.2.46-git2.23-zip-1.1.0: Pulling from *****
+[2026/11/10 10:47:41.362 GMT+08:00] Digest: sha256:d0f5d8ada0e25daa60eabcc3eebe45eee5d7e532d07ff2367c487095356d0e0b
+[2026/11/10 10:47:41.362 GMT+08:00] Status: Image is up to date for************
+[2026/11/10 10:47:41.362 GMT+08:00]************
+[2026/11/10 10:47:42.034 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : 该步骤开始执行
+[2026/11/10 10:47:42.036 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Current env is: devcloud:prod
+[2026/11/10 10:47:42.036 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : plugin version is :***.***.***.***
+[2026/11/10 10:47:42.083 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:47:42.142 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:47:42.142 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...1
+[2026/11/10 10:48:12.142 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:48:12.215 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:48:12.215 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...2
+[2026/11/10 10:48:42.215 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:48:42.289 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:48:42.289 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...3
+[2026/11/10 10:49:12.289 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:49:12.379 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:49:12.380 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...4
+[2026/11/10 10:49:42.380 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:49:42.458 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:49:42.458 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...5
+[2026/11/10 10:50:12.458 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:50:12.554 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:50:12.554 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...6
+[2026/11/10 10:50:42.554 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:50:42.639 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:50:42.639 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...7
+[2026/11/10 10:51:12.639 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:51:12.723 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:51:12.723 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...8
+[2026/11/10 10:51:42.723 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:51:42.863 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:51:42.863 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...9
+[2026/11/10 10:52:12.863 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:52:12.959 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:52:12.959 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...10
+[2026/11/10 10:52:42.959 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:52:43.041 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:52:43.041 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...11
+[2026/11/10 10:53:13.041 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:53:13.109 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:53:13.109 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...12
+[2026/11/10 10:53:43.109 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:53:43.193 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:53:43.193 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...13
+[2026/11/10 10:54:13.193 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:54:13.283 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:54:13.283 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...14
+[2026/11/10 10:54:43.283 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:54:43.362 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:54:43.362 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...15
+[2026/11/10 10:55:13.363 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:55:13.459 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:55:13.460 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...16
+[2026/11/10 10:55:43.460 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:55:43.528 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:55:43.528 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...17
+[2026/11/10 10:56:13.528 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:56:13.591 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:56:13.591 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...18
+[2026/11/10 10:56:43.591 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:56:43.705 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:56:43.706 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...19
+[2026/11/10 10:57:13.706 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:57:13.788 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: STARTED
+[2026/11/10 10:57:13.788 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Wait dependent jobs...20
+[2026/11/10 10:57:43.789 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Check dependent jobs build status
+[2026/11/10 10:57:43.890 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Job [UNKNOWN]<id:9e348b10-7adc-44ca-acad-c61e91476fb1> build status: FAILURE
+[2026/11/10 10:57:43.891 GMT+08:00] [ERROR] [wait_job_depends:wait_job_depends] : 错误信息: 依赖任务失败
+[2026/11/10 10:57:43.967 GMT+08:00] [ERROR] [wait_job_depends:wait_job_depends] : 该步骤执行失败
+[2026/11/10 10:57:43.970 GMT+08:00] [ERROR]  : 该步骤执行失败,错误信息:依赖任务失败
+[2026/11/10 10:57:45.560 GMT+08:00] arm_omni_26930_03: Pulling from cloud_boostkit/openeuler-24.03-lts-sp3
+[2026/11/10 10:57:45.560 GMT+08:00] Digest: sha256:b27b610857deb5227e57f009ac685cd5a9e08b258e0a8a05b979385df1ef7381
+[2026/11/10 10:57:45.560 GMT+08:00] Status: Image is up to date for swr.cn-north-4.myhuaweicloud.com/cloud_boostkit/openeuler-24.03-lts-sp3:arm_omni_26930_03
+[2026/11/10 10:57:45.560 GMT+08:00] swr.cn-north-4.myhuaweicloud.com/cloud_boostkit/openeuler-24.03-lts-sp3:arm_omni_26930_03
+[2026/11/10 10:57:48.082 GMT+08:00] [INFO]  : [JobStatusPlugin] onCompleted: j_bNA8ND3P #1
+[2026/11/10 10:57:53.926 GMT+08:00] Finished: FAILURE

@@ -1,0 +1,71 @@
+{
+ "_doc": {
+  "step": "step_1_lights",
+  "title": "第 1 步 夜间统计与待分析圈定",
+  "source": "openLiBing 夜间统计看板（产品维度指标）",
+  "criteria": "默认取「前一个工作日」单日（跳过周末与法定节假日，config.date_range 留空时生效）：取 config.products 指定的开源组件在该日的版本可用度/编译成功率，比率按我们采集到的执行记录重算（归档只存数值，不存黄/绿/红）；本产品下任一指标未达 100%（或版本不可用）的流水线进入待分析集合",
+  "dateField": "统计区间（start~end，含端点）",
+  "generatedAt": "2026-11-11 09:21:55",
+  "component": "boostkit",
+  "pipeline": "OmniStream",
+  "date": "2026-11-10"
+ },
+ "dateRange": {
+  "start": "2026-11-10",
+  "end": "2026-11-10"
+ },
+ "product": {
+  "product": "boostkit",
+  "projectId": 300059,
+  "versionAvailabilityRate": 1.0,
+  "buildSuccessRate": 0.9090909090909091,
+  "pipelineCount": 8,
+  "badPipelineCount": 1,
+  "badPipelineCountVA": 0,
+  "badPipelineCountBS": 1,
+  "analyze": true,
+  "collectedPipelineCount": 8,
+  "rateRule": "runs",
+  "recompute": true,
+  "scheduledOnly": false,
+  "versionAvailabilityDetail": {
+   "pipelineCount": 8,
+   "sumRate": 8.0,
+   "avgRate": 1.0,
+   "workdayCount": 1,
+   "rule": "组件级 = 各流水线版本可用度之和 / 流水线条数（流水线级 = 可用日 / 区间工作日数；当日有 iva=true 的运行才算可用日；区间内无运行记录的流水线不参与均值）"
+  },
+  "buildSuccessDetail": {
+   "buildPassCount": 10,
+   "buildCount": 11,
+   "rule": "按采集到的全部运行重算：Σ编译通过 / Σ编译次数（不看板 buildSuccess；github 平台无该口径不参与）"
+  }
+ },
+ "pipeline": {
+  "key": "boostkit|OmniStream",
+  "product": "boostkit",
+  "projectId": 300059,
+  "pipelineName": "Nightly-CI-Component-pipeline_OmniStream",
+  "pipelineShortName": "OmniStream",
+  "pipelineId": "636f9465b49d4a6591d5572ad6f9456f",
+  "platform": "codearts",
+  "versionAvailabilityRate": 1,
+  "buildSuccessRate": 1,
+  "dims": [
+   "va",
+   "bs"
+  ],
+  "rateRule": "runs",
+  "recompute": true,
+  "scheduledOnly": false
+ },
+ "selection": {
+  "inBadPipelines": true,
+  "dims": [
+   "va",
+   "bs"
+  ],
+  "rateRule": "runs",
+  "reason": "全量采集：该流水线区间内共 2 次运行（当日 2 次），其中 0 次失败/取消进入根因取证；版本可用度与编译成功率一律按全部运行逐日重算（不看板返回值）"
+ }
+}

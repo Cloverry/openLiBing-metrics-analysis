@@ -1,0 +1,53 @@
+{
+ "_doc": {
+  "step": "step_3_tasks",
+  "title": "第 3 步 失败任务分流（T4）",
+  "source": "openLiBing 流水线运行详情（任务列表）",
+  "criteria": "仅取状态为失败的任务；UNSELECTED/CANCELED/IGNORED/INIT 跳过；含测试结果的任务走测试取证（第 4 步），其余走日志取证（第 5 步），github 平台运行改走第 5c 步",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-11 09:21:55",
+  "component": "boostkit",
+  "pipeline": "Bigdata",
+  "date": "2026-11-10"
+ },
+ "test": [],
+ "log": [
+  {
+   "key": "boostkit|Bigdata",
+   "pipeline": "Bigdata",
+   "pipelineName": "Nightly-CI-Component-pipeline_Bigdata",
+   "projectId": 300059,
+   "pipelineId": "a74a64d931f34c98bc726e5ea599f8a3",
+   "rid": "36146a33b2ce44e08d0b6f12bc1c1e23",
+   "rn": 11,
+   "st": "10-08 10:04",
+   "jobId": "9dc4eb132ab440b8b52fcf8986df4971",
+   "jobName": "Build_Gluten",
+   "stepIds": [
+    "60a19cdf907041628764b53c47e5cf56"
+   ],
+   "steps": [
+    {
+     "id": "60a19cdf907041628764b53c47e5cf56",
+     "name": "Build_Gluten",
+     "status": "FAILED",
+     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+     "lastDispatchId": "849f259004dc4cbc93815e693568cc17",
+     "jobIdParam": "30880ad793e04de9bc793ecdb4fbbd7a"
+    }
+   ],
+   "jobErrMsg": "步骤Build_Gluten执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+   "jobLastDispatchId": "837017a606a3428dbcd243804f9d7338",
+   "route": "log",
+   "isBuild": true,
+   "buildJobId": "30880ad793e04de9bc793ecdb4fbbd7a"
+  }
+ ],
+ "skipped": [],
+ "errors": [],
+ "counts": {
+  "test": 0,
+  "log": 1,
+  "skipped": 0
+ }
+}

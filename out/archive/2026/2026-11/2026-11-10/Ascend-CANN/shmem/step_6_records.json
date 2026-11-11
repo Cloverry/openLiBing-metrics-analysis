@@ -1,0 +1,304 @@
+{
+ "_doc": {
+  "step": "step_6_records",
+  "title": "第 6 步 证据合并与执行记录",
+  "source": "第 2~5c 步归档产物",
+  "criteria": "以「一次执行」为最小单位合并任务、用例、错误信息、证据与构建编号，形成可直接展示与逐条分析的记录",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-11 09:21:55",
+  "component": "Ascend-CANN",
+  "pipeline": "shmem",
+  "date": "2026-11-10",
+  "recordCount": 4
+ },
+ "date": "2026-11-10",
+ "component": "Ascend-CANN",
+ "pipeline": "shmem",
+ "records": [
+  {
+   "recordId": "Ascend-CANN|shmem#143",
+   "date": "2026-11-10",
+   "component": "Ascend-CANN",
+   "pipeline": "shmem",
+   "pipelineName": "Nightly-CI-Component-pipeline_shmem",
+   "platform": "codearts",
+   "buildNumber": 143,
+   "pipelineRunId": "0ea45a231d7547cf87aa39e2d3571b41",
+   "status": "FAILED",
+   "failedTaskType": "测试任务",
+   "startedAt": "2026-11-10T03:00:54",
+   "endedAt": "2026-11-10T03:37:10",
+   "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-10T03:37:10",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+   },
+   "light": {
+    "vaRate": 1,
+    "bsRate": 1,
+    "dims": [
+     "va",
+     "bs"
+    ],
+    "track": "bs"
+   },
+   "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=93831fdaa3234c8a9dd0b8a0c220f939&projectId=300057&pipelineRunId=0ea45a231d7547cf87aa39e2d3571b41",
+    "detail": null,
+    "github": null
+   },
+   "tasks": [],
+   "cases": [],
+   "errorMessages": [],
+   "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+   },
+   "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+   },
+   "verdict": {
+    "category": "test_failure",
+    "text": "用例失败",
+    "confidence": 0.3,
+    "level": "低",
+    "basis": [
+     "运行平台标记失败任务类型为「测试任务」，据此定性为「用例失败」",
+     "接口未返回失败任务详情（无 job 日志 / 失败用例明细），证据止于任务类型这一层",
+     "基线 0.30"
+    ]
+   },
+   "suggestions": [],
+   "analysis": {
+    "status": "na",
+    "rootCause": null,
+    "advice": null,
+    "cites": [],
+    "updatedAt": null,
+    "source": null
+   }
+  },
+  {
+   "recordId": "Ascend-CANN|shmem#144",
+   "date": "2026-11-10",
+   "component": "Ascend-CANN",
+   "pipeline": "shmem",
+   "pipelineName": "Nightly-CI-Component-pipeline_shmem",
+   "platform": "codearts",
+   "buildNumber": 144,
+   "pipelineRunId": "ba1a1af3745e4d34880b78916b209766",
+   "status": "FAILED",
+   "failedTaskType": "测试任务",
+   "startedAt": "2026-11-10T09:51:45",
+   "endedAt": "2026-11-10T10:29:20",
+   "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-10T10:29:20",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+   },
+   "light": {
+    "vaRate": 1,
+    "bsRate": 1,
+    "dims": [
+     "va",
+     "bs"
+    ],
+    "track": "bs"
+   },
+   "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=93831fdaa3234c8a9dd0b8a0c220f939&projectId=300057&pipelineRunId=ba1a1af3745e4d34880b78916b209766",
+    "detail": null,
+    "github": null
+   },
+   "tasks": [],
+   "cases": [],
+   "errorMessages": [],
+   "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+   },
+   "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+   },
+   "verdict": {
+    "category": "test_failure",
+    "text": "用例失败",
+    "confidence": 0.3,
+    "level": "低",
+    "basis": [
+     "运行平台标记失败任务类型为「测试任务」，据此定性为「用例失败」",
+     "接口未返回失败任务详情（无 job 日志 / 失败用例明细），证据止于任务类型这一层",
+     "基线 0.30"
+    ]
+   },
+   "suggestions": [],
+   "analysis": {
+    "status": "na",
+    "rootCause": null,
+    "advice": null,
+    "cites": [],
+    "updatedAt": null,
+    "source": null
+   }
+  },
+  {
+   "recordId": "Ascend-CANN|shmem#145",
+   "date": "2026-11-10",
+   "component": "Ascend-CANN",
+   "pipeline": "shmem",
+   "pipelineName": "Nightly-CI-Component-pipeline_shmem",
+   "platform": "codearts",
+   "buildNumber": 145,
+   "pipelineRunId": "96a91e4f3750433c9c0c23a1b5877f54",
+   "status": "FAILED",
+   "failedTaskType": "测试任务",
+   "startedAt": "2026-11-10T17:00:09",
+   "endedAt": "2026-11-10T17:19:56",
+   "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-10T17:19:56",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+   },
+   "light": {
+    "vaRate": 1,
+    "bsRate": 1,
+    "dims": [
+     "va",
+     "bs"
+    ],
+    "track": "bs"
+   },
+   "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=93831fdaa3234c8a9dd0b8a0c220f939&projectId=300057&pipelineRunId=96a91e4f3750433c9c0c23a1b5877f54",
+    "detail": null,
+    "github": null
+   },
+   "tasks": [],
+   "cases": [],
+   "errorMessages": [],
+   "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+   },
+   "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+   },
+   "verdict": {
+    "category": "test_failure",
+    "text": "用例失败",
+    "confidence": 0.3,
+    "level": "低",
+    "basis": [
+     "运行平台标记失败任务类型为「测试任务」，据此定性为「用例失败」",
+     "接口未返回失败任务详情（无 job 日志 / 失败用例明细），证据止于任务类型这一层",
+     "基线 0.30"
+    ]
+   },
+   "suggestions": [],
+   "analysis": {
+    "status": "na",
+    "rootCause": null,
+    "advice": null,
+    "cites": [],
+    "updatedAt": null,
+    "source": null
+   }
+  },
+  {
+   "recordId": "Ascend-CANN|shmem#146",
+   "date": "2026-11-10",
+   "component": "Ascend-CANN",
+   "pipeline": "shmem",
+   "pipelineName": "Nightly-CI-Component-pipeline_shmem",
+   "platform": "codearts",
+   "buildNumber": 146,
+   "pipelineRunId": "8119983ccecb4e019750d510368b9986",
+   "status": "COMPLETED",
+   "failedTaskType": null,
+   "startedAt": "2026-11-10T18:17:59",
+   "endedAt": "2026-11-10T19:18:11",
+   "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-10T19:18:11",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+   },
+   "light": {
+    "vaRate": 1,
+    "bsRate": 1,
+    "dims": [
+     "va",
+     "bs"
+    ],
+    "track": "-"
+   },
+   "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=93831fdaa3234c8a9dd0b8a0c220f939&projectId=300057&pipelineRunId=8119983ccecb4e019750d510368b9986",
+    "detail": null,
+    "github": null
+   },
+   "tasks": [],
+   "cases": [],
+   "errorMessages": [],
+   "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+   },
+   "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+   },
+   "verdict": {
+    "category": "success",
+    "text": "执行成功",
+    "confidence": 1.0,
+    "level": "高",
+    "basis": [
+     "运行状态 COMPLETED，任务未失败，无需根因分析"
+    ]
+   },
+   "suggestions": [],
+   "analysis": {
+    "status": "na",
+    "rootCause": null,
+    "advice": null,
+    "cites": [],
+    "updatedAt": null,
+    "source": null
+   }
+  }
+ ],
+ "recordFiles": [
+  "records/run_143.json",
+  "records/run_144.json",
+  "records/run_145.json",
+  "records/run_146.json"
+ ],
+ "pathBase": "recordFiles 相对本目录（records/run_<构建号>.json）"
+}

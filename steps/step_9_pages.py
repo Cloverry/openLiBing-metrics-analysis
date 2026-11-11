@@ -397,12 +397,12 @@ function render(docs, from, to){
       const vd = pl.vaDetail, bd = pl.bsDetail;
       if (vd && Number(vd.daysInPeriod) > 0){
         r.vaA += Number(vd.availDays) || 0; r.vaN += Number(vd.daysInPeriod) || 0;
-      } else if (pl.vaRate !== null && pl.vaRate !== undefined){
+      } else if (pl.vaRate !== null && pl.vaRate !== undefined && ranInPeriod(pl)){
         r.vaVals.push(Number(pl.vaRate));
       }
       if (bd && Number(bd.buildCount) > 0){
         r.bsP += Number(bd.buildPassCount) || 0; r.bsC += Number(bd.buildCount) || 0;
-      } else if (pl.bsRate !== null && pl.bsRate !== undefined){
+      } else if (pl.bsRate !== null && pl.bsRate !== undefined && ranInPeriod(pl)){
         r.bsVals.push(Number(pl.bsRate));
       }
       r.vaLightOld = worstLight(r.vaLightOld, pl.vaLight || null);
@@ -424,7 +424,9 @@ function render(docs, from, to){
        **区间内完全没有执行记录**的流水线（RAGSDK、VisionSDK 这类只有看板配置、一次都没跑过的）
        不参与任何计算：既不能算 0%（会被当成「全部不可用」并拉低组件均值），也不能算 100%，
        比率一律给 null → 页面显示 --，组件级平均与「流水线条数」都不含它。
-       判据只看分子分母有没有落过数（vaN>0 / vaA>0 / 比率数组非空），与归档同源。 */
+       判据只看分子分母有没有落过数（vaN>0 / vaA>0 / 比率数组非空），且比率数组只收
+       「区间内真的跑过」的流水线（ranInPeriod）：归档对零运行的流水线会退回看板值 0.0，
+       那个 0 不是「跑了但不可用」，收进来就会把「无执行记录」显示成 0.00%。 */
     const noVA = !(p.vaN > 0 || p.vaVals.length);
     const noBS = !(p.bsC > 0 || p.bsVals.length);
     p.noRun = noVA && noBS;                 /* 两个维度都没有任何运行 = 该流水线无执行记录 */
@@ -726,6 +728,19 @@ table.ov td.c-rate .pct.lnk:hover{text-decoration:underline}
 .subview h3:first-of-type{margin-top:8px}
 .subview h3 .hist{font-size:12px;font-weight:400;margin-left:8px}
 .subview h3 .rate-line{margin-left:8px;font-weight:400;font-size:13px}
+
+/* ---------- 无失败记录时的醒目提醒（不是灰字空态） ----------
+   最常见的「有运行、但一条失败记录都没有」其实是「执行成功、测试用例通过率不是 100%」：
+   以前这里只写一句灰字「该区间内没有需要根因分析的失败执行记录」，用户必须点开构建记录
+   才知道可用度为什么是 0%。现在把结论直接摆在区块头下面，加底色 + 左侧色条。 */
+.nofail{margin:10px 0 4px;padding:11px 14px;border-radius:6px;font-size:13px;line-height:1.7;
+  background:#fff8e8;border:1px solid #f0ce8e;border-left:4px solid #d98b1f;color:#5c4310}
+.nofail .nf-hd{display:block;font-weight:600;font-size:13.5px;color:#9a5b00;margin-bottom:1px}
+.nofail b{color:#b8400e}
+.nofail .hist{font-size:12px;font-weight:400;margin-left:6px;white-space:nowrap}
+/* 没有任何运行 / 归档无运行历史：中性提示，不喊黄 */
+.nofail.mute{background:#f7f9fc;border:1px solid #e3e6ea;border-left:4px solid #c8d2e0;color:#5b6779}
+.nofail.mute .nf-hd{color:#3b4a60}
 
 /* ---------- 根因明细表（同旧报告 table.rca）：7 列固定列宽，行宽不随内容变化 ---------- */
 table.rca{table-layout:fixed;width:100%;border-collapse:collapse;font-size:13px;margin:8px 0 4px}
@@ -1087,6 +1102,10 @@ function dayLights(ctx){
   (ctx.dirs || []).forEach(function(d){
     const pl = d.pl || {};
     const ds = pl.dims || [];
+    /* 区间内一次都没跑过的流水线（runsInPeriod = 0）：归档里那个 0.0 是「压根没跑」，
+       不是「跑了但不可用」，拿它算灯会得到红灯 → 区块头显示 0.00%。
+       这里直接不给灯（等同于没有数据），比率就会落到 --。 */
+    if (!ranInPeriod(pl)){ out.push({date: d.date, light: null}); return; }
     const useBs = dim ? dim === 'bs' : (ds.indexOf('bs') >= 0 && ds.indexOf('va') < 0);
     const light = useBs
       ? (lightByRate(pl.bsRate, 'bs') || pl.bsLight)
@@ -1103,6 +1122,9 @@ function dayLights(ctx){
 function rangeStats(ctx, dim){
   ctx = ctx || {};
   const from = ctx.from || '', to = ctx.to || '';
+  /* 该流水线在区间内到底跑没跑过（runsInPeriod 逐日为准）：没跑过就一律 --、
+     不参与任何比率，避免把归档退回的看板 0.0 显示成「0.00%」 */
+  const ran = (ctx.dirs || []).some(function(d){ return ranInPeriod(d.pl); });
   const inRange = (ctx.runs || []).filter(function(r){
     return r.day && r.day >= from && r.day <= to;
   });
@@ -1135,8 +1157,8 @@ function rangeStats(ctx, dim){
        只有日历拿不到（wdInRange 返回 0）时才退回「有运行的天数」，保证不会出现 0/0 */
     const wdN = wdInRange(from, to);
     const total = (dim === 'bs') ? dayList.length : (wdN > 0 ? wdN : dayList.length);
-    return {source: 'runs', runs: inRange, byDay: byDay, dayRuns: dayRuns, dayList: dayList,
-            dayOk: dayOk, total: total, workdays: wdN, availDays: okDays,
+    return {source: 'runs', ran: ran, runs: inRange, byDay: byDay, dayRuns: dayRuns,
+            dayList: dayList, dayOk: dayOk, total: total, workdays: wdN, availDays: okDays,
             ranDays: dayList.length, bc: bc, bpc: bpc,
             rate: (dim === 'bs') ? (bc > 0 ? bpc / bc : null)
                                  : (total ? Math.min(1, okDays / total) : null)};
@@ -1148,7 +1170,7 @@ function rangeStats(ctx, dim){
   dls.forEach(function(d){ if (d.light === '黄' || d.light === '红') bad[d.date] = 1; });
   const total = dls.length;
   const okDays = Math.max(0, total - Object.keys(bad).length);
-  return {source: 'lights', runs: [], byDay: {}, dayRuns: {}, dayList: [], dayOk: {},
+  return {source: 'lights', ran: ran, runs: [], byDay: {}, dayRuns: {}, dayList: [], dayOk: {},
           total: total, availDays: okDays, bc: 0, bpc: 0,
           rate: total ? okDays / total : null};
 }
@@ -1382,14 +1404,17 @@ function loadComp(from, to){
           const vd = pl.vaDetail, bd = pl.bsDetail;
           if (vd && Number(vd.daysInPeriod) > 0){
             r.vaA += Number(vd.availDays) || 0; r.vaN += Number(vd.daysInPeriod) || 0;
-          } else if (pl.vaRate !== null && pl.vaRate !== undefined && !isNaN(pl.vaRate)){
-            /* 只收「真的算出过比率」的值：区间内一次都没跑过的流水线归档里 vaRate=null，
-               推 null 进来会让「有没有落过数」的判空失效，进而被当成 0% 拉低组件均值 */
+          } else if (pl.vaRate !== null && pl.vaRate !== undefined && !isNaN(pl.vaRate)
+                     && ranInPeriod(pl)){
+            /* 只收「真的算出过比率」的值：区间内一次都没跑过的流水线归档里 vaRate 可能是
+               null，也可能是退回看板值的 0.0 —— 后者不是「跑了但不可用」，收进来会让
+               「有没有落过数」的判空失效，进而被当成 0% 拉低组件均值 */
             r.vaVals.push(Number(pl.vaRate));
           }
           if (bd && Number(bd.buildCount) > 0){
             r.bsP += Number(bd.buildPassCount) || 0; r.bsC += Number(bd.buildCount) || 0;
-          } else if (pl.bsRate !== null && pl.bsRate !== undefined && !isNaN(pl.bsRate)){
+          } else if (pl.bsRate !== null && pl.bsRate !== undefined && !isNaN(pl.bsRate)
+                      && ranInPeriod(pl)){
             r.bsVals.push(Number(pl.bsRate));
           }
           /* 只记当日运行数：比率按统计区间重算，逐日再贴一遍同一个比率只会误导 */
@@ -1576,6 +1601,62 @@ let RECS = [];      /* 区间内该流水线的全部失败执行记录（平铺
 let RUNS = [];      /* 区间内该流水线的全部运行（每日 step_2_runs.json 的 runHistory，按构建号去重） */
 let CTX = null;     /* 当前统计区间上下文：dirs / days / from / to / runs */
 
+/* 区间内没有失败记录时的提示：不能再只写一句「没有需要根因分析的失败执行记录」——
+   最常见的原因是「运行全部执行成功，但测试用例通过率不是 100%」（iva=false），
+   用户不点开构建记录根本看不出可用度为什么是 0%。这里直接从区间运行历史里算出
+   「哪几次不是 100%、最低多少、是哪次构建」，用醒目底色摆在区块头下面。 */
+function noFailNotice(st){
+  const runs = (st && st.runs) || [];
+  const total = st ? (st.total || 0) : 0;
+  const ok = st ? (st.availDays || 0) : 0;
+  if (!runs.length){
+    /* 区间内一次都没跑过：这不叫「可用度 0%」，也不该让人点进去找失败记录 */
+    if (st && st.ran === false){
+      return '<div class="nofail mute"><span class="nf-hd">该流水线在区间内 0 次运行</span>'
+        + '既没有可用日，也没有可做根因分析的失败执行记录；'
+        + '比率显示 <b>--</b>，不纳入组件级统计。</div>';
+    }
+    const noHist = st && st.source !== 'runs';
+    return '<div class="nofail mute"><span class="nf-hd">区间内没有需要根因分析的失败执行记录</span>'
+      + (noHist
+          ? '该区间归档里没有这条流水线的运行历史（只有日级灯态），无法逐条对照执行结果。'
+          : '该流水线在这个区间内 0 次运行，既没有可用日，也没有可做根因分析的失败记录。')
+      + '</div>';
+  }
+  const cprOf = function(r){
+    const v = r.cpr;
+    if (v === null || v === undefined || v === '') return null;
+    const n = Number(v);
+    return isNaN(n) ? null : n;
+  };
+  /* 执行成功但用例没全通过：iva=false 的典型成因，也是「没有失败记录却不可用」的答案 */
+  const notFull = runs.filter(function(r){ const c = cprOf(r); return c !== null && c < 100; });
+  if (notFull.length){
+    notFull.sort(function(a, b){ return cprOf(a) - cprOf(b); });
+    const low = notFull[0];
+    const allOk = runs.every(function(r){
+      return /COMPLETED|SUCCESS|FINISH|PASS/i.test(String(r.status || ''));
+    });
+    const where = (low.rn === null || low.rn === undefined || low.rn === '')
+      ? (low.day || '') : ('构建 #' + low.rn + (low.day ? ' · ' + low.day : ''));
+    const head = allOk
+      ? '区间内 ' + runs.length + ' 次运行全部执行成功，但测试用例通过率不是 100%'
+      : '区间内 ' + runs.length + ' 次运行里有 ' + notFull.length + ' 次测试用例通过率不是 100%';
+    return '<div class="nofail"><span class="nf-hd">' + rfEsc(head) + '</span>'
+      + '最低 <b>' + cprOf(low).toFixed(2) + '%</b>'
+      + (where ? '（' + rfEsc(where) + '）' : '') + '。'
+      + '版本可用度的口径是「当天要有编译通过且用例 100% 通过的运行才算可用」，'
+      + '这类运行属于执行成功、用例没全过，所以当天不计为可用'
+      + (total ? '（本区间可用 ' + ok + '/' + total + ' 工作日）' : '')
+      + '，也不会产生失败执行记录，因此没有根因分析行。'
+      + '要逐次核对通过率：<span class="hist lnk" data-builds="1">查看具体执行记录</span></div>';
+  }
+  return '<div class="nofail mute"><span class="nf-hd">区间内没有需要根因分析的失败执行记录</span>'
+    + '共 ' + runs.length + ' 次运行，均未判为失败或取消'
+    + (total ? '；本区间' + DIMNAME[dimOf()] + '达标 ' + ok + '/' + total + ' 工作日' : '')
+    + '。<span class="hist lnk" data-builds="1">查看构建记录</span></div>';
+}
+
 /* ===== 流水线级：一条流水线一个区块（h3 浅蓝区块头）+ 一张 9 列固定列宽的根因明细表 ===== */
 function renderRecs(recs, ctx){
   const box = document.getElementById('recs');
@@ -1599,17 +1680,27 @@ function renderRecs(recs, ctx){
     : '分母 = 区间法定工作日数（不是有运行的天数）';
   const h3 = '<h3 title="' + DIMNAME[dim] + '：' + (st.source === 'runs'
       ? denomTip + '（逐日按执行结果重算，统计区间一变即重算；' + denomRule + '）'
-      : '区间内归档 ' + total + ' 天，其中 ' + okDays + ' 天该流水线在此维度上没有黄/红')
+      : (st.ran
+          ? '区间内归档 ' + total + ' 天，其中 ' + okDays + ' 天该流水线在此维度上没有黄/红'
+          : '该流水线在本区间内一次都没有运行过（runsInPeriod = 0），'
+            + '归档里没有可比对的执行结果，比率显示 --、不纳入统计'))
     + '">' + rfEsc(pl.pipelineName || pl.pipeline || KEY)
     + ' ｜ ' + DIMNAME[dim] + ' ' + (rate == null ? '--' : (rate * 100).toFixed(2) + '%')
-    + ' ｜ ' + okWord + ' ' + okDays + '/' + total + ' 工作日 '
+    /* 区间内没跑过（或整个区间没有归档日）：不给「可用 0/0 工作日」这种看着像 0 分的写法，
+       直接写明没有执行记录、不纳入统计，与组件级清单同一套话术 */
+    + (st.ran && total > 0
+        ? ' ｜ ' + okWord + ' ' + okDays + '/' + total + ' 工作日 '
+        : ' ｜ <span class="dim">'
+          + ((ctx && (ctx.dirs || []).length)
+              ? (st.ran ? '区间内无可比对的执行结果 · 不纳入统计' : '区间内无执行记录 · 不纳入统计')
+              : '区间内无归档日')
+          + '</span> ')
     + '<span class="hist lnk" data-builds="1">查看构建记录</span></h3>';
   if (!recs.length){
-    /* 区间内没有失败记录也要出区块头：比率/工作日是区间重算的结果，不是记录数的函数 */
-    box.innerHTML = '<div class="subview">' + h3
-      + '<div class="empty">该区间内没有需要根因分析的失败执行记录'
-      + (st.runs.length ? '（区间内共 ' + st.runs.length + ' 次运行，见「查看构建记录」）' : '')
-      + '</div></div>';
+    /* 区间内没有失败记录也要出区块头：比率/工作日是区间重算的结果，不是记录数的函数。
+       提示按「为什么没有失败记录」分情况给（用例没到 100% / 一次没跑 / 无运行历史），
+       见 noFailNotice；不再是「去点构建记录自己看」的一句灰字。 */
+    box.innerHTML = '<div class="subview">' + h3 + noFailNotice(st) + '</div>';
     return;
   }
   /* 9 列：构建编号 → 开始时间 → 结束时间 → 任务 → 用例 → 错误信息 → 定性 → 根因 → 建议

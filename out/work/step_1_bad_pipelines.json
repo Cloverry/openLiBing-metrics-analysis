@@ -61,8 +61,8 @@
    "pipelineShortName": "MindIE-Motor",
    "pipelineId": "d05b26dfc2e5450e8fff23ddf4cd0eb6",
    "platform": "codearts",
-   "versionAvailabilityRate": 0.5,
-   "buildSuccessRate": 0.75,
+   "versionAvailabilityRate": 1,
+   "buildSuccessRate": 1,
    "dims": [
     "va",
     "bs"
@@ -147,7 +147,7 @@
    "pipelineShortName": "msot",
    "pipelineId": "b67d335347fa4646acd3b96d1c55573e",
    "platform": "codearts",
-   "versionAvailabilityRate": 0.5,
+   "versionAvailabilityRate": 1,
    "buildSuccessRate": null,
    "dims": [
     "va"
@@ -341,7 +341,7 @@
    "pipelineShortName": "ops-transformer",
    "pipelineId": "309180d5c2904adf942f5678d9356d99",
    "platform": "codearts",
-   "versionAvailabilityRate": 0,
+   "versionAvailabilityRate": 1,
    "buildSuccessRate": 1,
    "dims": [
     "va",
@@ -377,7 +377,7 @@
    "pipelineShortName": "ops-nn",
    "pipelineId": "6d402b76f9b14451872ef07ac1f864ba",
    "platform": "codearts",
-   "versionAvailabilityRate": 0.5,
+   "versionAvailabilityRate": 1,
    "buildSuccessRate": 1,
    "dims": [
     "va",
@@ -413,7 +413,7 @@
    "pipelineShortName": "shmem",
    "pipelineId": "93831fdaa3234c8a9dd0b8a0c220f939",
    "platform": "codearts",
-   "versionAvailabilityRate": 0.5,
+   "versionAvailabilityRate": 1,
    "buildSuccessRate": 1,
    "dims": [
     "va",
@@ -431,7 +431,7 @@
    "pipelineShortName": "ops-math",
    "pipelineId": "aa3d520fe64f4071a09178d2d603278e",
    "platform": "codearts",
-   "versionAvailabilityRate": 0.5,
+   "versionAvailabilityRate": 1,
    "buildSuccessRate": 1,
    "dims": [
     "va",
@@ -558,7 +558,7 @@
    "pipelineId": "a74a64d931f34c98bc726e5ea599f8a3",
    "platform": "codearts",
    "versionAvailabilityRate": 1,
-   "buildSuccessRate": 1,
+   "buildSuccessRate": 0.5,
    "dims": [
     "va",
     "bs"
@@ -629,7 +629,7 @@
    "pipelineShortName": "kudnn",
    "pipelineId": "ca83efb8c37648db8084e31b1e88b62c",
    "platform": "codearts",
-   "versionAvailabilityRate": 0,
+   "versionAvailabilityRate": 1,
    "buildSuccessRate": 1,
    "dims": [
     "va",
@@ -665,7 +665,7 @@
    "pipelineShortName": "kuqcd",
    "pipelineId": "eeedf3e4794449969ad6d7f67691d0be",
    "platform": "codearts",
-   "versionAvailabilityRate": 0,
+   "versionAvailabilityRate": 1,
    "buildSuccessRate": 1,
    "dims": [
     "va",
@@ -683,7 +683,7 @@
    "pipelineShortName": "kpex",
    "pipelineId": "fec036d3c59f4d27bb506138f273f113",
    "platform": "codearts",
-   "versionAvailabilityRate": 0,
+   "versionAvailabilityRate": 1,
    "buildSuccessRate": 1,
    "dims": [
     "va",
@@ -701,7 +701,7 @@
    "pipelineShortName": "hmpi",
    "pipelineId": "ffe131425ad84d4b8b6c17c4c09476d9",
    "platform": "codearts",
-   "versionAvailabilityRate": 0,
+   "versionAvailabilityRate": 1,
    "buildSuccessRate": 1,
    "dims": [
     "va",
@@ -838,7 +838,7 @@
    "pipelineShortName": "Ascend",
    "pipelineId": "9a4886d40e544cecb7da63c9597490a6",
    "platform": "codearts",
-   "versionAvailabilityRate": 0.5,
+   "versionAvailabilityRate": 1,
    "buildSuccessRate": 1,
    "dims": [
     "va",
@@ -856,7 +856,7 @@
    "pipelineShortName": "nightly-test-npu.yml",
    "pipelineId": "209837578",
    "platform": "github",
-   "versionAvailabilityRate": 0,
+   "versionAvailabilityRate": 1,
    "buildSuccessRate": null,
    "dims": [
     "va"
@@ -909,7 +909,7 @@
    "pipelineShortName": "nightly-test-npu.yml",
    "pipelineId": "209837578",
    "platform": "github",
-   "versionAvailabilityRate": 0,
+   "versionAvailabilityRate": 1,
    "buildSuccessRate": null,
    "dims": [
     "va"

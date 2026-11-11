@@ -27,7 +27,7 @@
     "_comment": "浏览器自举（采集前的脚本化打开浏览器）。run_pipeline 先探测 debug_port，不通则自动拉起 chrome_path（留空=自动探测 Chrome/Edge）并使用 user_data_dir 这个 profile（留空=默认 Chrome 用户目录，复用日常登录态；若该 profile 已被未开调试端口的 Chrome 占用，需先完全退出 Chrome）。start_url=自动打开时导航到的看板页",
     "debug_port": 9222,
     "chrome_path": "",
-    "user_data_dir": "",
+    "user_data_dir": "C:\\Users\\Administrator\\AppData\\Local\\openlibing-rca-chrome",
     "start_url": "https://www.openlibing.com/apps/eCDashboard",
     "tab_url_substring": "openlibing",
     "request_timeout_ms": 300000,

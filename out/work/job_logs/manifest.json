@@ -148,5 +148,70 @@
   "excerpt": null,
   "rn": 213,
   "jobName": "Test_hmpi"
+ },
+ "36146a33b2ce44e08d0b6f12bc1c1e23|9dc4eb132ab440b8b52fcf8986df4971": {
+  "file": "31_Bigdata_11_Build_Gluten.log",
+  "bytes": 6160,
+  "lines": 56,
+  "download": "export",
+  "truncated": false,
+  "excerpt": null,
+  "rn": 11,
+  "jobName": "Build_Gluten"
+ },
+ "36146a33b2ce44e08d0b6f12bc1c1e23|9dc4eb132ab440b8b52fcf8986df4971|OmniOperator_openEuler22.03_JDK8": {
+  "file": "32_Bigdata_11_Build_Gluten_OmniOperator_openEuler22.03_JDK8.log",
+  "bytes": 12260007,
+  "lines": 30369,
+  "download": "export",
+  "truncated": false,
+  "excerpt": "32_Bigdata_11_Build_Gluten_OmniOperator_openEuler22.03_JDK8.excerpt.log",
+  "rn": 11,
+  "jobName": "Build_Gluten",
+  "subTask": "OmniOperator_openEuler22.03_JDK8"
+ },
+ "36146a33b2ce44e08d0b6f12bc1c1e23|9dc4eb132ab440b8b52fcf8986df4971|OmniOperator_openEuler24.03_JDK17": {
+  "file": "33_Bigdata_11_Build_Gluten_OmniOperator_openEuler24.03_JDK17.log",
+  "bytes": 20909506,
+  "lines": 80750,
+  "download": "export",
+  "truncated": false,
+  "excerpt": "33_Bigdata_11_Build_Gluten_OmniOperator_openEuler24.03_JDK17.excerpt.log",
+  "rn": 11,
+  "jobName": "Build_Gluten",
+  "subTask": "OmniOperator_openEuler24.03_JDK17"
+ },
+ "36146a33b2ce44e08d0b6f12bc1c1e23|9dc4eb132ab440b8b52fcf8986df4971|Gluten_openEuler22.03_JDK8": {
+  "file": "34_Bigdata_11_Build_Gluten_Gluten_openEuler22.03_JDK8.log",
+  "bytes": 15352,
+  "lines": 133,
+  "download": "export",
+  "truncated": false,
+  "excerpt": null,
+  "rn": 11,
+  "jobName": "Build_Gluten",
+  "subTask": "Gluten_openEuler22.03_JDK8"
+ },
+ "36146a33b2ce44e08d0b6f12bc1c1e23|9dc4eb132ab440b8b52fcf8986df4971|Gluten_openEuler24.03_JDK17": {
+  "file": "35_Bigdata_11_Build_Gluten_Gluten_openEuler24.03_JDK17.log",
+  "bytes": 15399,
+  "lines": 133,
+  "download": "export",
+  "truncated": false,
+  "excerpt": null,
+  "rn": 11,
+  "jobName": "Build_Gluten",
+  "subTask": "Gluten_openEuler24.03_JDK17"
+ },
+ "36146a33b2ce44e08d0b6f12bc1c1e23|9dc4eb132ab440b8b52fcf8986df4971|package_upload": {
+  "file": "36_Bigdata_11_Build_Gluten_package_upload.log",
+  "bytes": 18474,
+  "lines": 151,
+  "download": "export",
+  "truncated": false,
+  "excerpt": null,
+  "rn": 11,
+  "jobName": "Build_Gluten",
+  "subTask": "package_upload"
  }
 }

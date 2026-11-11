@@ -1,0 +1,906 @@
+{
+ "_doc": {
+  "step": "step_6_records",
+  "title": "第 6 步 证据合并与执行记录",
+  "source": "第 2~5c 步归档产物",
+  "criteria": "以「一次执行」为最小单位合并任务、用例、错误信息、证据与构建编号，形成可直接展示与逐条分析的记录",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-11 09:21:56",
+  "component": "SgLang",
+  "pipeline": "nightly-test-npu.yml",
+  "date": "2026-11-10",
+  "recordCount": 13
+ },
+ "date": "2026-11-10",
+ "component": "SgLang",
+ "pipeline": "nightly-test-npu.yml",
+ "records": [
+  {
+   "recordId": "SgLang|nightly-test-npu.yml#2131",
+   "date": "2026-11-10",
+   "component": "SgLang",
+   "pipeline": "nightly-test-npu.yml",
+   "pipelineName": "nightly-test-npu.yml",
+   "platform": "github",
+   "buildNumber": 2131,
+   "pipelineRunId": "42613338961",
+   "status": "FAILED",
+   "failedTaskType": null,
+   "startedAt": "2026-11-09T19:59:41",
+   "endedAt": "2026-11-10T02:47:07",
+   "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-10T02:47:07",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+   },
+   "light": {
+    "vaRate": 1,
+    "bsRate": null,
+    "dims": [
+     "va"
+    ],
+    "track": "-"
+   },
+   "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42613338961",
+    "detail": null,
+    "github": null
+   },
+   "tasks": [],
+   "cases": [],
+   "errorMessages": [],
+   "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+   },
+   "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+   },
+   "verdict": {
+    "category": "success",
+    "text": "执行成功",
+    "confidence": 1.0,
+    "level": "高",
+    "basis": [
+     "运行状态 FAILED，任务未失败，无需根因分析"
+    ]
+   },
+   "suggestions": [],
+   "analysis": {
+    "status": "na",
+    "rootCause": null,
+    "advice": null,
+    "cites": [],
+    "updatedAt": null,
+    "source": null
+   }
+  },
+  {
+   "recordId": "SgLang|nightly-test-npu.yml#2134",
+   "date": "2026-11-10",
+   "component": "SgLang",
+   "pipeline": "nightly-test-npu.yml",
+   "pipelineName": "nightly-test-npu.yml",
+   "platform": "github",
+   "buildNumber": 2134,
+   "pipelineRunId": "42622061400",
+   "status": "FAILED",
+   "failedTaskType": null,
+   "startedAt": "2026-11-09T21:03:03",
+   "endedAt": "2026-11-10T03:52:32",
+   "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-10T03:52:32",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+   },
+   "light": {
+    "vaRate": 1,
+    "bsRate": null,
+    "dims": [
+     "va"
+    ],
+    "track": "-"
+   },
+   "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42622061400",
+    "detail": null,
+    "github": null
+   },
+   "tasks": [],
+   "cases": [],
+   "errorMessages": [],
+   "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+   },
+   "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+   },
+   "verdict": {
+    "category": "success",
+    "text": "执行成功",
+    "confidence": 1.0,
+    "level": "高",
+    "basis": [
+     "运行状态 FAILED，任务未失败，无需根因分析"
+    ]
+   },
+   "suggestions": [],
+   "analysis": {
+    "status": "na",
+    "rootCause": null,
+    "advice": null,
+    "cites": [],
+    "updatedAt": null,
+    "source": null
+   }
+  },
+  {
+   "recordId": "SgLang|nightly-test-npu.yml#2135",
+   "date": "2026-11-10",
+   "component": "SgLang",
+   "pipeline": "nightly-test-npu.yml",
+   "pipelineName": "nightly-test-npu.yml",
+   "platform": "github",
+   "buildNumber": 2135,
+   "pipelineRunId": "42627895252",
+   "status": "FAILED",
+   "failedTaskType": null,
+   "startedAt": "2026-11-09T21:42:57",
+   "endedAt": "2026-11-10T01:16:06",
+   "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-10T01:16:06",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+   },
+   "light": {
+    "vaRate": 1,
+    "bsRate": null,
+    "dims": [
+     "va"
+    ],
+    "track": "-"
+   },
+   "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42627895252",
+    "detail": null,
+    "github": null
+   },
+   "tasks": [],
+   "cases": [],
+   "errorMessages": [],
+   "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+   },
+   "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+   },
+   "verdict": {
+    "category": "success",
+    "text": "执行成功",
+    "confidence": 1.0,
+    "level": "高",
+    "basis": [
+     "运行状态 FAILED，任务未失败，无需根因分析"
+    ]
+   },
+   "suggestions": [],
+   "analysis": {
+    "status": "na",
+    "rootCause": null,
+    "advice": null,
+    "cites": [],
+    "updatedAt": null,
+    "source": null
+   }
+  },
+  {
+   "recordId": "SgLang|nightly-test-npu.yml#2136",
+   "date": "2026-11-10",
+   "component": "SgLang",
+   "pipeline": "nightly-test-npu.yml",
+   "pipelineName": "nightly-test-npu.yml",
+   "platform": "github",
+   "buildNumber": 2136,
+   "pipelineRunId": "42638208821",
+   "status": "FAILED",
+   "failedTaskType": null,
+   "startedAt": "2026-11-09T22:47:59",
+   "endedAt": "2026-11-10T01:16:35",
+   "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-10T01:16:35",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+   },
+   "light": {
+    "vaRate": 1,
+    "bsRate": null,
+    "dims": [
+     "va"
+    ],
+    "track": "-"
+   },
+   "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42638208821",
+    "detail": null,
+    "github": null
+   },
+   "tasks": [],
+   "cases": [],
+   "errorMessages": [],
+   "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+   },
+   "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+   },
+   "verdict": {
+    "category": "success",
+    "text": "执行成功",
+    "confidence": 1.0,
+    "level": "高",
+    "basis": [
+     "运行状态 FAILED，任务未失败，无需根因分析"
+    ]
+   },
+   "suggestions": [],
+   "analysis": {
+    "status": "na",
+    "rootCause": null,
+    "advice": null,
+    "cites": [],
+    "updatedAt": null,
+    "source": null
+   }
+  },
+  {
+   "recordId": "SgLang|nightly-test-npu.yml#2137",
+   "date": "2026-11-10",
+   "component": "SgLang",
+   "pipeline": "nightly-test-npu.yml",
+   "pipelineName": "nightly-test-npu.yml",
+   "platform": "github",
+   "buildNumber": 2137,
+   "pipelineRunId": "42651508108",
+   "status": "FAILED",
+   "failedTaskType": null,
+   "startedAt": "2026-11-10T00:07:16",
+   "endedAt": "2026-11-10T09:40:04",
+   "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-10T09:40:04",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+   },
+   "light": {
+    "vaRate": 1,
+    "bsRate": null,
+    "dims": [
+     "va"
+    ],
+    "track": "-"
+   },
+   "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42651508108",
+    "detail": null,
+    "github": null
+   },
+   "tasks": [],
+   "cases": [],
+   "errorMessages": [],
+   "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+   },
+   "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+   },
+   "verdict": {
+    "category": "success",
+    "text": "执行成功",
+    "confidence": 1.0,
+    "level": "高",
+    "basis": [
+     "运行状态 FAILED，任务未失败，无需根因分析"
+    ]
+   },
+   "suggestions": [],
+   "analysis": {
+    "status": "na",
+    "rootCause": null,
+    "advice": null,
+    "cites": [],
+    "updatedAt": null,
+    "source": null
+   }
+  },
+  {
+   "recordId": "SgLang|nightly-test-npu.yml#2138",
+   "date": "2026-11-10",
+   "component": "SgLang",
+   "pipeline": "nightly-test-npu.yml",
+   "pipelineName": "nightly-test-npu.yml",
+   "platform": "github",
+   "buildNumber": 2138,
+   "pipelineRunId": "42662867404",
+   "status": "FAILED",
+   "failedTaskType": null,
+   "startedAt": "2026-11-10T01:15:38",
+   "endedAt": "2026-11-10T05:46:05",
+   "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-10T05:46:05",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+   },
+   "light": {
+    "vaRate": 1,
+    "bsRate": null,
+    "dims": [
+     "va"
+    ],
+    "track": "-"
+   },
+   "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42662867404",
+    "detail": null,
+    "github": null
+   },
+   "tasks": [],
+   "cases": [],
+   "errorMessages": [],
+   "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+   },
+   "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+   },
+   "verdict": {
+    "category": "success",
+    "text": "执行成功",
+    "confidence": 1.0,
+    "level": "高",
+    "basis": [
+     "运行状态 FAILED，任务未失败，无需根因分析"
+    ]
+   },
+   "suggestions": [],
+   "analysis": {
+    "status": "na",
+    "rootCause": null,
+    "advice": null,
+    "cites": [],
+    "updatedAt": null,
+    "source": null
+   }
+  },
+  {
+   "recordId": "SgLang|nightly-test-npu.yml#2139",
+   "date": "2026-11-10",
+   "component": "SgLang",
+   "pipeline": "nightly-test-npu.yml",
+   "pipelineName": "nightly-test-npu.yml",
+   "platform": "github",
+   "buildNumber": 2139,
+   "pipelineRunId": "42663008915",
+   "status": "COMPLETED",
+   "failedTaskType": null,
+   "startedAt": "2026-11-10T01:16:31",
+   "endedAt": "2026-11-10T02:52:43",
+   "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-10T02:52:43",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+   },
+   "light": {
+    "vaRate": 1,
+    "bsRate": null,
+    "dims": [
+     "va"
+    ],
+    "track": "-"
+   },
+   "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42663008915",
+    "detail": null,
+    "github": null
+   },
+   "tasks": [],
+   "cases": [],
+   "errorMessages": [],
+   "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+   },
+   "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+   },
+   "verdict": {
+    "category": "success",
+    "text": "执行成功",
+    "confidence": 1.0,
+    "level": "高",
+    "basis": [
+     "运行状态 COMPLETED，任务未失败，无需根因分析"
+    ]
+   },
+   "suggestions": [],
+   "analysis": {
+    "status": "na",
+    "rootCause": null,
+    "advice": null,
+    "cites": [],
+    "updatedAt": null,
+    "source": null
+   }
+  },
+  {
+   "recordId": "SgLang|nightly-test-npu.yml#2140",
+   "date": "2026-11-10",
+   "component": "SgLang",
+   "pipeline": "nightly-test-npu.yml",
+   "pipelineName": "nightly-test-npu.yml",
+   "platform": "github",
+   "buildNumber": 2140,
+   "pipelineRunId": "42808475905",
+   "status": "FAILED",
+   "failedTaskType": null,
+   "startedAt": "2026-11-10T19:33:44",
+   "endedAt": "2026-11-10T19:46:41",
+   "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-10T19:46:41",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+   },
+   "light": {
+    "vaRate": 1,
+    "bsRate": null,
+    "dims": [
+     "va"
+    ],
+    "track": "-"
+   },
+   "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42808475905",
+    "detail": null,
+    "github": null
+   },
+   "tasks": [],
+   "cases": [],
+   "errorMessages": [],
+   "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+   },
+   "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+   },
+   "verdict": {
+    "category": "success",
+    "text": "执行成功",
+    "confidence": 1.0,
+    "level": "高",
+    "basis": [
+     "运行状态 FAILED，任务未失败，无需根因分析"
+    ]
+   },
+   "suggestions": [],
+   "analysis": {
+    "status": "na",
+    "rootCause": null,
+    "advice": null,
+    "cites": [],
+    "updatedAt": null,
+    "source": null
+   }
+  },
+  {
+   "recordId": "SgLang|nightly-test-npu.yml#2141",
+   "date": "2026-11-10",
+   "component": "SgLang",
+   "pipeline": "nightly-test-npu.yml",
+   "pipelineName": "nightly-test-npu.yml",
+   "platform": "github",
+   "buildNumber": 2141,
+   "pipelineRunId": "42811314092",
+   "status": "FAILED",
+   "failedTaskType": null,
+   "startedAt": "2026-11-10T19:54:43",
+   "endedAt": "2026-11-10T20:13:26",
+   "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-10T20:13:26",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+   },
+   "light": {
+    "vaRate": 1,
+    "bsRate": null,
+    "dims": [
+     "va"
+    ],
+    "track": "-"
+   },
+   "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42811314092",
+    "detail": null,
+    "github": null
+   },
+   "tasks": [],
+   "cases": [],
+   "errorMessages": [],
+   "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+   },
+   "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+   },
+   "verdict": {
+    "category": "success",
+    "text": "执行成功",
+    "confidence": 1.0,
+    "level": "高",
+    "basis": [
+     "运行状态 FAILED，任务未失败，无需根因分析"
+    ]
+   },
+   "suggestions": [],
+   "analysis": {
+    "status": "na",
+    "rootCause": null,
+    "advice": null,
+    "cites": [],
+    "updatedAt": null,
+    "source": null
+   }
+  },
+  {
+   "recordId": "SgLang|nightly-test-npu.yml#2142",
+   "date": "2026-11-10",
+   "component": "SgLang",
+   "pipeline": "nightly-test-npu.yml",
+   "pipelineName": "nightly-test-npu.yml",
+   "platform": "github",
+   "buildNumber": 2142,
+   "pipelineRunId": "42815920097",
+   "status": "FAILED",
+   "failedTaskType": null,
+   "startedAt": "2026-11-10T20:27:35",
+   "endedAt": "2026-11-10T20:29:02",
+   "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-10T20:29:02",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+   },
+   "light": {
+    "vaRate": 1,
+    "bsRate": null,
+    "dims": [
+     "va"
+    ],
+    "track": "-"
+   },
+   "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42815920097",
+    "detail": null,
+    "github": null
+   },
+   "tasks": [],
+   "cases": [],
+   "errorMessages": [],
+   "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+   },
+   "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+   },
+   "verdict": {
+    "category": "success",
+    "text": "执行成功",
+    "confidence": 1.0,
+    "level": "高",
+    "basis": [
+     "运行状态 FAILED，任务未失败，无需根因分析"
+    ]
+   },
+   "suggestions": [],
+   "analysis": {
+    "status": "na",
+    "rootCause": null,
+    "advice": null,
+    "cites": [],
+    "updatedAt": null,
+    "source": null
+   }
+  },
+  {
+   "recordId": "SgLang|nightly-test-npu.yml#2143",
+   "date": "2026-11-10",
+   "component": "SgLang",
+   "pipeline": "nightly-test-npu.yml",
+   "pipelineName": "nightly-test-npu.yml",
+   "platform": "github",
+   "buildNumber": 2143,
+   "pipelineRunId": "42816107702",
+   "status": "FAILED",
+   "failedTaskType": null,
+   "startedAt": "2026-11-10T20:28:54",
+   "endedAt": "2026-11-10T20:50:26",
+   "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-10T20:50:26",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+   },
+   "light": {
+    "vaRate": 1,
+    "bsRate": null,
+    "dims": [
+     "va"
+    ],
+    "track": "-"
+   },
+   "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42816107702",
+    "detail": null,
+    "github": null
+   },
+   "tasks": [],
+   "cases": [],
+   "errorMessages": [],
+   "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+   },
+   "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+   },
+   "verdict": {
+    "category": "success",
+    "text": "执行成功",
+    "confidence": 1.0,
+    "level": "高",
+    "basis": [
+     "运行状态 FAILED，任务未失败，无需根因分析"
+    ]
+   },
+   "suggestions": [],
+   "analysis": {
+    "status": "na",
+    "rootCause": null,
+    "advice": null,
+    "cites": [],
+    "updatedAt": null,
+    "source": null
+   }
+  },
+  {
+   "recordId": "SgLang|nightly-test-npu.yml#2145",
+   "date": "2026-11-10",
+   "component": "SgLang",
+   "pipeline": "nightly-test-npu.yml",
+   "pipelineName": "nightly-test-npu.yml",
+   "platform": "github",
+   "buildNumber": 2145,
+   "pipelineRunId": "42817061689",
+   "status": "COMPLETED",
+   "failedTaskType": null,
+   "startedAt": "2026-11-10T20:35:30",
+   "endedAt": "2026-11-10T21:07:51",
+   "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-10T21:07:51",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+   },
+   "light": {
+    "vaRate": 1,
+    "bsRate": null,
+    "dims": [
+     "va"
+    ],
+    "track": "-"
+   },
+   "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42817061689",
+    "detail": null,
+    "github": null
+   },
+   "tasks": [],
+   "cases": [],
+   "errorMessages": [],
+   "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+   },
+   "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+   },
+   "verdict": {
+    "category": "success",
+    "text": "执行成功",
+    "confidence": 1.0,
+    "level": "高",
+    "basis": [
+     "运行状态 COMPLETED，任务未失败，无需根因分析"
+    ]
+   },
+   "suggestions": [],
+   "analysis": {
+    "status": "na",
+    "rootCause": null,
+    "advice": null,
+    "cites": [],
+    "updatedAt": null,
+    "source": null
+   }
+  },
+  {
+   "recordId": "SgLang|nightly-test-npu.yml#2146",
+   "date": "2026-11-10",
+   "component": "SgLang",
+   "pipeline": "nightly-test-npu.yml",
+   "pipelineName": "nightly-test-npu.yml",
+   "platform": "github",
+   "buildNumber": 2146,
+   "pipelineRunId": "42826682319",
+   "status": "FAILED",
+   "failedTaskType": null,
+   "startedAt": "2026-11-10T21:40:32",
+   "endedAt": "2026-11-10T21:41:56",
+   "dateBasis": {
+    "field": "pipelineRunEndtime",
+    "value": "2026-11-10T21:41:56",
+    "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+   },
+   "light": {
+    "vaRate": 1,
+    "bsRate": null,
+    "dims": [
+     "va"
+    ],
+    "track": "-"
+   },
+   "links": {
+    "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42826682319",
+    "detail": null,
+    "github": null
+   },
+   "tasks": [],
+   "cases": [],
+   "errorMessages": [],
+   "evidence": {
+    "files": [],
+    "missing": [],
+    "github": null
+   },
+   "counts": {
+    "tasks": 0,
+    "testTasks": 0,
+    "logTasks": 0,
+    "buildTasks": 0,
+    "cases": 0,
+    "errorMessages": 0,
+    "evidenceFiles": 0
+   },
+   "verdict": {
+    "category": "success",
+    "text": "执行成功",
+    "confidence": 1.0,
+    "level": "高",
+    "basis": [
+     "运行状态 FAILED，任务未失败，无需根因分析"
+    ]
+   },
+   "suggestions": [],
+   "analysis": {
+    "status": "na",
+    "rootCause": null,
+    "advice": null,
+    "cites": [],
+    "updatedAt": null,
+    "source": null
+   }
+  }
+ ],
+ "recordFiles": [
+  "records/run_2131.json",
+  "records/run_2134.json",
+  "records/run_2135.json",
+  "records/run_2136.json",
+  "records/run_2137.json",
+  "records/run_2138.json",
+  "records/run_2139.json",
+  "records/run_2140.json",
+  "records/run_2141.json",
+  "records/run_2142.json",
+  "records/run_2143.json",
+  "records/run_2145.json",
+  "records/run_2146.json"
+ ],
+ "pathBase": "recordFiles 相对本目录（records/run_<构建号>.json）"
+}

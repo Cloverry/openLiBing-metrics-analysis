@@ -1,0 +1,536 @@
+>>> 头部 80 行
+L1: [2026/11/10 10:47:05.533 GMT+08:00] [INFO]  : [JobStatusPlugin] onStarted: j_d6LAUkU8 #1
+L2: [2026/11/10 10:47:05.534 GMT+08:00] Resume disabled by user, switching to high-performance, low-durability mode.
+L3: [2026/11/10 10:47:05.657 GMT+08:00] [INFO] [PRE_ENV:slave_create] : 该步骤开始执行
+L4: [2026/11/10 10:47:05.658 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] resources pool message: a819085b455849d7b685a7e79084c535
+L5: [2026/11/10 10:47:05.660 GMT+08:00] [WARNING] [PRE_ENV:slave_create] : [slave] find empty runtime, location: PRE_ENV.slave_create
+L6: [2026/11/10 10:47:05.660 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] Fixed content: No
+L7: [2026/11/10 10:47:06.662 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] Start to create an executor node...
+L8: [2026/11/10 10:47:07.526 GMT+08:00] [INFO] [PRE_ENV:slave_create] : [slave] Find available executor node:CI_version_05-U7xQryamEh
+L9: [2026/11/10 10:47:07.576 GMT+08:00] [INFO] [PRE_ENV:slave_create] : 该步骤执行完成
+L10: [2026/11/10 10:47:08.499 GMT+08:00] arm-shell4.2.46-git2.23-zip-1.1.0: Pulling from *****
+L11: [2026/11/10 10:47:08.499 GMT+08:00] Digest: sha256:d0f5d8ada0e25daa60eabcc3eebe45eee5d7e532d07ff2367c487095356d0e0b
+L12: [2026/11/10 10:47:08.499 GMT+08:00] Status: Image is up to date for************
+L13: [2026/11/10 10:47:08.499 GMT+08:00]************
+L14: [2026/11/10 10:47:10.684 GMT+08:00] [INFO] [checkout:checkout#preCheckout] : 该步骤开始执行
+L15: [2026/11/10 10:47:10.685 GMT+08:00] [INFO] [checkout:checkout#preCheckout] : git plugin version: 1.12.5
+L16: [2026/11/10 10:47:10.846 GMT+08:00] [INFO] [checkout:checkout#preCheckout] : 成功配置文件。
+L17: [2026/11/10 10:47:11.870 GMT+08:00] [INFO] [checkout:checkout#preCheckout] : private key length: 2,455
+L18: [2026/11/10 10:47:11.870 GMT+08:00] [INFO] [checkout:checkout#preCheckout] : get CodeArts Repo private key finished.
+L19: [2026/11/10 10:47:11.870 GMT+08:00] [INFO] [checkout:checkout#preCheckout] : 成功创建CodeArts Repo的访问凭据。
+L20: [2026/11/10 10:47:11.870 GMT+08:00] [INFO] [checkout:checkout#preCheckout] : 该步骤执行完成
+L21: [2026/11/10 10:47:12.262 GMT+08:00] No credentials specified
+L22: [2026/11/10 10:47:12.262 GMT+08:00] url:git@codehub.devcloud.cn-north-4.huaweicloud.com:Kunpeng_BoostKit00001/BoostKit_CI.git
+L23: [2026/11/10 10:47:12.262 GMT+08:00] set customize ssh credentials
+L24: [2026/11/10 10:47:12.408 GMT+08:00] git plugin version: 3.12.22-h1.cbu.codearts.build.r1
+L25: [2026/11/10 10:47:12.412 GMT+08:00] Cloning the remote Git repository
+L26: [2026/11/10 10:47:12.412 GMT+08:00] Using shallow clone
+L27: [2026/11/10 10:47:12.412 GMT+08:00] Avoid fetching tags
+L28: [2026/11/10 10:47:12.412 GMT+08:00] Honoring refspec on initial clone
+L29: [2026/11/10 10:46:36.683 GMT+08:00] Cloning repository git@codehub.devcloud.cn-north-4.huaweicloud.com:Kunpeng_BoostKit00001/BoostKit_CI.git
+L30: [2026/11/10 10:46:36.720 GMT+08:00]  > git init /opt/CI_version_05/workspace/j_d6LAUkU8/BoostKit_CI # timeout=10
+L31: [2026/11/10 10:46:36.744 GMT+08:00] Fetching upstream changes from git@codehub.devcloud.cn-north-4.huaweicloud.com:Kunpeng_BoostKit00001/BoostKit_CI.git
+L32: [2026/11/10 10:46:36.744 GMT+08:00]  > git --version # timeout=10
+L33: [2026/11/10 10:46:36.752 GMT+08:00]  > git --version # 'git version 2.33.0'
+L34: [2026/11/10 10:46:36.777 GMT+08:00] [INFO] Currently running in a labeled security context
+L35: [2026/11/10 10:46:36.777 GMT+08:00] [INFO] Currently SELinux is 'enforcing' on the host
+L36: [2026/11/10 10:46:36.777 GMT+08:00]  > /usr/bin/chcon --type=ssh_home_t /opt/CI_version_05/workspace/j_d6LAUkU8/BoostKit_CI@tmp/jenkins-gitclient-ssh1000819650414056917.key
+L37: [2026/11/10 10:46:36.787 GMT+08:00]  > git fetch --no-tags --force --progress --depth=1 -- git@codehub.devcloud.cn-north-4.huaweicloud.com:Kunpeng_BoostKit00001/BoostKit_CI.git +refs/heads/master:refs/remotes/origin/master # timeout=120
+L38: [2026/11/10 10:46:37.620 GMT+08:00]  > git config remote.origin.url git@codehub.devcloud.cn-north-4.huaweicloud.com:Kunpeng_BoostKit00001/BoostKit_CI.git # timeout=10
+L39: [2026/11/10 10:46:37.626 GMT+08:00]  > git config --add remote.origin.fetch +refs/heads/master:refs/remotes/origin/master # timeout=10
+L40: [2026/11/10 10:46:37.645 GMT+08:00]  > git config remote.origin.url git@codehub.devcloud.cn-north-4.huaweicloud.com:Kunpeng_BoostKit00001/BoostKit_CI.git # timeout=10
+L41: [2026/11/10 10:46:37.658 GMT+08:00] Fetching upstream changes from git@codehub.devcloud.cn-north-4.huaweicloud.com:Kunpeng_BoostKit00001/BoostKit_CI.git
+L42: [2026/11/10 10:46:37.658 GMT+08:00] [INFO] Currently running in a labeled security context
+L43: [2026/11/10 10:46:37.658 GMT+08:00] [INFO] Currently SELinux is 'enforcing' on the host
+L44: [2026/11/10 10:46:37.658 GMT+08:00]  > /usr/bin/chcon --type=ssh_home_t /opt/CI_version_05/workspace/j_d6LAUkU8/BoostKit_CI@tmp/jenkins-gitclient-ssh8841384189010954127.key
+L45: [2026/11/10 10:46:37.667 GMT+08:00]  > git fetch --no-tags --force --progress --depth=1 -- git@codehub.devcloud.cn-north-4.huaweicloud.com:Kunpeng_BoostKit00001/BoostKit_CI.git +refs/heads/master:refs/remotes/origin/master # timeout=120
+L46: [2026/11/10 10:47:14.200 GMT+08:00] Checking out Revision 4c129ac33a788412823a3220c0b82a2d18d91e56 (origin/master)
+L47: [2026/11/10 10:47:14.200 GMT+08:00] Disable Git LFS pull
+L48: [2026/11/10 10:46:38.415 GMT+08:00]  > git rev-parse origin/master^{commit} # timeout=10
+L49: [2026/11/10 10:46:38.441 GMT+08:00]  > git config core.sparsecheckout # timeout=10
+L50: [2026/11/10 10:46:38.453 GMT+08:00]  > git checkout -f 4c129ac33a788412823a3220c0b82a2d18d91e56 # timeout=120
+L51: [2026/11/10 10:46:38.466 GMT+08:00]  > git branch -a -v --no-abbrev # timeout=10
+L52: [2026/11/10 10:46:38.474 GMT+08:00]  > git checkout -b master 4c129ac33a788412823a3220c0b82a2d18d91e56 # timeout=120
+L53: [2026/11/10 10:47:16.279 GMT+08:00] Commit message: "更新 upload_kbox_patches.yml"
+L54: [2026/11/10 10:47:16.279 GMT+08:00] First time build. Skipping changelog.
+L55: [2026/11/10 10:47:16.316 GMT+08:00] [INFO] [checkout:checkout#postCheckout] : 该步骤开始执行
+L56: [2026/11/10 10:47:16.407 GMT+08:00] [INFO] [checkout:checkout#postCheckout] : 该步骤执行完成
+L57: [2026/11/10 10:47:18.009 GMT+08:00] arm-shell4.2.46-git2.23-zip-1.1.0: Pulling from *****
+L58: [2026/11/10 10:47:18.009 GMT+08:00] Digest: sha256:d0f5d8ada0e25daa60eabcc3eebe45eee5d7e532d07ff2367c487095356d0e0b
+L59: [2026/11/10 10:47:18.009 GMT+08:00] Status: Image is up to date for************
+L60: [2026/11/10 10:47:18.009 GMT+08:00]************
+L61: [2026/11/10 10:47:18.680 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : 该步骤开始执行
+L62: [2026/11/10 10:47:18.681 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : Current env is: devcloud:prod
+L63: [2026/11/10 10:47:18.682 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : plugin version is :***.***.***.***
+L64: [2026/11/10 10:47:18.721 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : No dependent build jobs!
+L65: [2026/11/10 10:47:18.721 GMT+08:00] [INFO] [wait_job_depends:wait_job_depends] : 该步骤执行完成
+L66: [2026/11/10 10:47:20.297 GMT+08:00] arm_omni_26930_03: Pulling from cloud_boostkit/openeuler-24.03-lts-sp3
+L67: [2026/11/10 10:47:20.297 GMT+08:00] Digest: sha256:b27b610857deb5227e57f009ac685cd5a9e08b258e0a8a05b979385df1ef7381
+L68: [2026/11/10 10:47:20.297 GMT+08:00] Status: Image is up to date for swr.cn-north-4.myhuaweicloud.com/cloud_boostkit/openeuler-24.03-lts-sp3:arm_omni_26930_03
+L69: [2026/11/10 10:47:20.297 GMT+08:00] swr.cn-north-4.myhuaweicloud.com/cloud_boostkit/openeuler-24.03-lts-sp3:arm_omni_26930_03
+L70: [2026/11/10 10:47:21.818 GMT+08:00] sh: warning: setlocale: LC_ALL: cannot change locale (en_US.utf8): No such file or directory
+L71: [2026/11/10 10:47:21.818 GMT+08:00] + git clone -b 2026_930_poc https://gitcode.com/openeuler/OmniOperator.git OmniOperatorJIT
+L72: [2026/11/10 10:47:21.818 GMT+08:00] Cloning into 'OmniOperatorJIT'...
+L73: [2026/11/10 10:47:21.827 GMT+08:00] starting check in ***/@tmp/durable-365866de
+L74: [2026/11/10 10:47:26.079 GMT+08:00] + git clone https://gitcode.com/openeuler/libboundscheck.git
+L75: [2026/11/10 10:47:26.079 GMT+08:00] Cloning into 'libboundscheck'...
+L76: [2026/11/10 10:47:26.079 GMT+08:00] + pushd libboundscheck
+L77: [2026/11/10 10:47:26.079 GMT+08:00] ***//libboundscheck ***/
+L78: [2026/11/10 10:47:26.079 GMT+08:00] + git checkout tags/v1.1.16
+L79: [2026/11/10 10:47:26.079 GMT+08:00] Note: switching to 'tags/v1.1.16'.
+L80: [2026/11/10 10:47:26.079 GMT+08:00] 
+>>> 错误命中行（≤400，行号不连续，引用前回全量日志 grep -n 核对）
+L1012: [2026/11/10 10:48:12.680 GMT+08:00] [9/435] Building CXX object core/src/type/CMakeFiles/type.dir/tzdb/chrono_exception.cpp.o
+L1015: [2026/11/10 10:48:12.680 GMT+08:00]                  from ***//OmniOperatorJIT/core/src/type/tzdb/chrono_exception.cpp:9:
+L1017: [2026/11/10 10:48:12.680 GMT+08:00] ***//OmniOperatorJIT/core/src/type/tzdb/date.h:1069:37: warning: 'bool std::uncaught_exception()' is deprecated: use 'std::uncaught_exceptions()' instead [-Wdeprecated-declarations]
+L1018: [2026/11/10 10:48:12.680 GMT+08:00]  1069 |             !std::uncaught_exception() &&
+L1025: [2026/11/10 10:48:12.680 GMT+08:00]   124 |   bool uncaught_exception() _GLIBCXX_USE_NOEXCEPT __attribute__ ((__pure__));
+L1074: [2026/11/10 10:48:13.231 GMT+08:00] ***//OmniOperatorJIT/core/src/type/tzdb/date.h:1069:37: warning: 'bool std::uncaught_exception()' is deprecated: use 'std::uncaught_exceptions()' instead [-Wdeprecated-declarations]
+L1075: [2026/11/10 10:48:13.231 GMT+08:00]  1069 |             !std::uncaught_exception() &&
+L1083: [2026/11/10 10:48:13.231 GMT+08:00]   124 |   bool uncaught_exception() _GLIBCXX_USE_NOEXCEPT __attribute__ ((__pure__));
+L1089: [2026/11/10 10:48:13.231 GMT+08:00] ***//OmniOperatorJIT/core/src/type/tzdb/date.h:1069:37: warning: 'bool std::uncaught_exception()' is deprecated: use 'std::uncaught_exceptions()' instead [-Wdeprecated-declarations]
+L1090: [2026/11/10 10:48:13.231 GMT+08:00]  1069 |             !std::uncaught_exception() &&
+L1093: [2026/11/10 10:48:13.231 GMT+08:00]   124 |   bool uncaught_exception() _GLIBCXX_USE_NOEXCEPT __attribute__ ((__pure__));
+L1095: [2026/11/10 10:48:13.231 GMT+08:00] ***//OmniOperatorJIT/core/src/type/tzdb/date.h:1069:37: warning: 'bool std::uncaught_exception()' is deprecated: use 'std::uncaught_exceptions()' instead [-Wdeprecated-declarations]
+L1096: [2026/11/10 10:48:13.231 GMT+08:00]  1069 |             !std::uncaught_exception() &&
+L1099: [2026/11/10 10:48:13.232 GMT+08:00]   124 |   bool uncaught_exception() _GLIBCXX_USE_NOEXCEPT __attribute__ ((__pure__));
+L1101: [2026/11/10 10:48:13.232 GMT+08:00] ***//OmniOperatorJIT/core/src/type/tzdb/date.h:1069:37: warning: 'bool std::uncaught_exception()' is deprecated: use 'std::uncaught_exceptions()' instead [-Wdeprecated-declarations]
+L1102: [2026/11/10 10:48:13.232 GMT+08:00]  1069 |             !std::uncaught_exception() &&
+L1105: [2026/11/10 10:48:13.232 GMT+08:00]   124 |   bool uncaught_exception() _GLIBCXX_USE_NOEXCEPT __attribute__ ((__pure__));
+L1302: [2026/11/10 10:48:16.962 GMT+08:00] ***//OmniOperatorJIT/core/src/type/tzdb/date.h:1069:37: warning: 'bool std::uncaught_exception()' is deprecated: use 'std::uncaught_exceptions()' instead [-Wdeprecated-declarations]
+L1303: [2026/11/10 10:48:16.962 GMT+08:00]  1069 |             !std::uncaught_exception() &&
+L1311: [2026/11/10 10:48:16.962 GMT+08:00]   124 |   bool uncaught_exception() _GLIBCXX_USE_NOEXCEPT __attribute__ ((__pure__));
+L1317: [2026/11/10 10:48:16.962 GMT+08:00] ***//OmniOperatorJIT/core/src/type/tzdb/date.h:1069:37: warning: 'bool std::uncaught_exception()' is deprecated: use 'std::uncaught_exceptions()' instead [-Wdeprecated-declarations]
+L1318: [2026/11/10 10:48:16.962 GMT+08:00]  1069 |             !std::uncaught_exception() &&
+L1321: [2026/11/10 10:48:16.962 GMT+08:00]   124 |   bool uncaught_exception() _GLIBCXX_USE_NOEXCEPT __attribute__ ((__pure__));
+L1323: [2026/11/10 10:48:16.962 GMT+08:00] ***//OmniOperatorJIT/core/src/type/tzdb/date.h:1069:37: warning: 'bool std::uncaught_exception()' is deprecated: use 'std::uncaught_exceptions()' instead [-Wdeprecated-declarations]
+L1324: [2026/11/10 10:48:16.962 GMT+08:00]  1069 |             !std::uncaught_exception() &&
+L1327: [2026/11/10 10:48:16.962 GMT+08:00]   124 |   bool uncaught_exception() _GLIBCXX_USE_NOEXCEPT __attribute__ ((__pure__));
+L1329: [2026/11/10 10:48:16.962 GMT+08:00] ***//OmniOperatorJIT/core/src/type/tzdb/date.h:1069:37: warning: 'bool std::uncaught_exception()' is deprecated: use 'std::uncaught_exceptions()' instead [-Wdeprecated-declarations]
+L1330: [2026/11/10 10:48:16.962 GMT+08:00]  1069 |             !std::uncaught_exception() &&
+L1333: [2026/11/10 10:48:16.963 GMT+08:00]   124 |   bool uncaught_exception() _GLIBCXX_USE_NOEXCEPT __attribute__ ((__pure__));
+L1353: [2026/11/10 10:48:18.677 GMT+08:00] ***//OmniOperatorJIT/core/src/type/tzdb/date.h:1069:37: warning: 'bool std::uncaught_exception()' is deprecated: use 'std::uncaught_exceptions()' instead [-Wdeprecated-declarations]
+L1354: [2026/11/10 10:48:18.677 GMT+08:00]  1069 |             !std::uncaught_exception() &&
+L1357: [2026/11/10 10:48:18.677 GMT+08:00]                  from /usr/include/c++/12/system_error:41,
+L1365: [2026/11/10 10:48:18.677 GMT+08:00]   124 |   bool uncaught_exception() _GLIBCXX_USE_NOEXCEPT __attribute__ ((__pure__));
+L1371: [2026/11/10 10:48:18.677 GMT+08:00] ***//OmniOperatorJIT/core/src/type/tzdb/date.h:1069:37: warning: 'bool std::uncaught_exception()' is deprecated: use 'std::uncaught_exceptions()' instead [-Wdeprecated-declarations]
+L1372: [2026/11/10 10:48:18.677 GMT+08:00]  1069 |             !std::uncaught_exception() &&
+L1375: [2026/11/10 10:48:18.677 GMT+08:00]   124 |   bool uncaught_exception() _GLIBCXX_USE_NOEXCEPT __attribute__ ((__pure__));
+L1377: [2026/11/10 10:48:18.677 GMT+08:00] ***//OmniOperatorJIT/core/src/type/tzdb/date.h:1069:37: warning: 'bool std::uncaught_exception()' is deprecated: use 'std::uncaught_exceptions()' instead [-Wdeprecated-declarations]
+L1378: [2026/11/10 10:48:18.677 GMT+08:00]  1069 |             !std::uncaught_exception() &&
+L1381: [2026/11/10 10:48:18.677 GMT+08:00]   124 |   bool uncaught_exception() _GLIBCXX_USE_NOEXCEPT __attribute__ ((__pure__));
+L1383: [2026/11/10 10:48:18.677 GMT+08:00] ***//OmniOperatorJIT/core/src/type/tzdb/date.h:1069:37: warning: 'bool std::uncaught_exception()' is deprecated: use 'std::uncaught_exceptions()' instead [-Wdeprecated-declarations]
+L1384: [2026/11/10 10:48:18.677 GMT+08:00]  1069 |             !std::uncaught_exception() &&
+L1387: [2026/11/10 10:48:18.677 GMT+08:00]   124 |   bool uncaught_exception() _GLIBCXX_USE_NOEXCEPT __attribute__ ((__pure__));
+L52398: [2026/11/10 10:52:52.175 GMT+08:00] [375/435] Building CXX object core/src/reader/CMakeFiles/boostkit-omniop-reader-2.2.0-aarch64.dir/filesystem/io_exception.cpp.o
+L72138: [2026/11/10 10:57:00.728 GMT+08:00] -- Installing: ***//lib/include/util/omni_exception.h
+L75362: [2026/11/10 10:57:08.841 GMT+08:00] Downloading from huaweicloud-maven: https://mirrors.huaweicloud.com/repository/maven/org/apache/maven/maven-error-diagnostics/2.2.1/maven-error-diagnostics-2.2.1.pom
+L75364: Downloaded from huaweicloud-maven: https://mirrors.huaweicloud.com/repository/maven/org/apache/maven/maven-error-diagnostics/2.2.1/maven-error-diagnostics-2.2.1.pom (1.7 kB at 107 kB/s)
+L80418: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/omni_exception.h
+L80744: [2026/11/10 10:57:37.715 GMT+08:00] [ERROR] [上传文件到OBS:上传文件到OBS] : DEV.CB.02202002,上传文件失败:请检查当前用户或其他用户的读/写权限(桶:boostkit-bigdata-public)
+L80745: [2026/11/10 10:57:37.716 GMT+08:00] [ERROR] [上传文件到OBS:上传文件到OBS] : 错误信息: failed to upload
+L80746: [2026/11/10 10:57:37.786 GMT+08:00] [ERROR] [上传文件到OBS:上传文件到OBS] : 该步骤执行失败
+L80747: [2026/11/10 10:57:37.789 GMT+08:00] [ERROR]  : 该步骤执行失败,错误信息:failed to upload
+L80748: [2026/11/10 10:57:01.937 GMT+08:00] [ERROR] [上传文件到OBS:上传文件到OBS] : Error message:Request Error.OBS service Error Message.
+L80750: [2026/11/10 10:57:46.683 GMT+08:00] Finished: FAILURE
+>>> 尾部 400 行
+L67077: [2026/11/10 10:57:24.015 GMT+08:00] [WARNING] ***//OmniOperatorJIT/core/src/udf/java/src/test/java/omniruntime/udf/AddShortUDF.java:[16,34] org.apache.hadoop.hive.ql.exec.UDF in org.apache.hadoop.hive.ql.exec has been deprecated
+L67078: [2026/11/10 10:57:24.015 GMT+08:00] [WARNING] ***//OmniOperatorJIT/core/src/udf/java/src/test/java/omniruntime/udf/AddIntUDF.java:[16,32] org.apache.hadoop.hive.ql.exec.UDF in org.apache.hadoop.hive.ql.exec has been deprecated
+L67079: [2026/11/10 10:57:24.015 GMT+08:00] [INFO] 
+L67080: [2026/11/10 10:57:24.015 GMT+08:00] [INFO] --- surefire:3.0.0-M6:test (default-test) @ boostkit-omniop-udf ---
+L67081: [2026/11/10 10:57:24.015 GMT+08:00] [INFO] Tests are skipped.
+L67082: [2026/11/10 10:57:24.015 GMT+08:00] [INFO] 
+L67083: [2026/11/10 10:57:24.015 GMT+08:00] [INFO] --- jar:3.1.2:jar (default-jar) @ boostkit-omniop-udf ---
+L67084: [2026/11/10 10:57:24.015 GMT+08:00] [INFO] Building jar: ***//OmniOperatorJIT/core/src/udf/java/target/boostkit-omniop-udf-2.2.0.jar
+L67085: [2026/11/10 10:57:24.015 GMT+08:00] [INFO] 
+L67086: [2026/11/10 10:57:24.015 GMT+08:00] [INFO] --- jar:3.1.2:jar (jar-aarch64) @ boostkit-omniop-udf ---
+L67087: [2026/11/10 10:57:24.015 GMT+08:00] [INFO] Building jar: ***//OmniOperatorJIT/core/src/udf/java/target/boostkit-omniop-udf-2.2.0-aarch64.jar
+L67088: [2026/11/10 10:57:24.015 GMT+08:00] [INFO] 
+L67089: [2026/11/10 10:57:24.015 GMT+08:00] [INFO] --- install:3.1.2:install (default-install) @ boostkit-omniop-udf ---
+L67090: [2026/11/10 10:57:24.016 GMT+08:00] [INFO] Installing ***//OmniOperatorJIT/core/src/udf/java/pom.xml to /home/jenkins/agent/build_cache/.maven_cache/com/huawei/boostkit/boostkit-omniop-udf/2.2.0/boostkit-omniop-udf-2.2.0.pom
+L67091: [2026/11/10 10:57:24.016 GMT+08:00] [INFO] Installing ***//OmniOperatorJIT/core/src/udf/java/target/boostkit-omniop-udf-2.2.0.jar to /home/jenkins/agent/build_cache/.maven_cache/com/huawei/boostkit/boostkit-omniop-udf/2.2.0/boostkit-omniop-udf-2.2.0.jar
+L67092: [2026/11/10 10:57:24.016 GMT+08:00] [INFO] Installing ***//OmniOperatorJIT/core/src/udf/java/target/boostkit-omniop-udf-2.2.0-aarch64.jar to /home/jenkins/agent/build_cache/.maven_cache/com/huawei/boostkit/boostkit-omniop-udf/2.2.0/boostkit-omniop-udf-2.2.0-aarch64.jar
+L67093: [2026/11/10 10:57:24.016 GMT+08:00] [INFO] ------------------------------------------------------------------------
+L67094: [2026/11/10 10:57:24.016 GMT+08:00] [INFO] BUILD SUCCESS
+L67095: [2026/11/10 10:57:24.016 GMT+08:00] [INFO] ------------------------------------------------------------------------
+L67096: [2026/11/10 10:57:24.016 GMT+08:00] [INFO] Total time:  7.434 s
+L67097: [2026/11/10 10:57:24.016 GMT+08:00] [INFO] Finished at: 2026-11-10T10:56:48+08:00
+L67098: [2026/11/10 10:57:24.016 GMT+08:00] [INFO] ------------------------------------------------------------------------
+L67099: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/
+L67100: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/omni-build-info.properties
+L67101: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/
+L67102: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/config.h
+L67103: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/plannode/
+L67104: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/plannode/planFragment.h
+L67105: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/plannode/RowVectorStream.h
+L67106: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/plannode/planNode.h
+L67107: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/
+L67108: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/filter/
+L67109: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/filter/filter_and_project.h
+L67110: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/execution_context.h
+L67111: [2026/11/10 10:57:24.286 GMT+08:00] /bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.utf8): No such file or directory
+L67112: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/omni_id_type_vector_traits.h
+L67113: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/memory_builder.h
+L67114: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/util/
+L67115: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/util/function_type.h
+L67116: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/util/operator_util.h
+L67117: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/operator_factory.h
+L67118: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/projection/
+L67119: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/projection/projection.h
+L67120: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/operator.h
+L67121: [2026/11/10 10:57:24.286 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/hash_util.h
+L67122: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/status.h
+L67123: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/window/
+L67124: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/window/window_function_options.h
+L67125: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/window/window_frame.h
+L67126: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/config/
+L67127: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/config/operator_config.h
+L67128: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/aggregation/
+L67129: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/operator/aggregation/container_vector.h
+L67130: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/securec.h
+L67131: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/securectype.h
+L67132: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/memory/
+L67133: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/memory/memory_manager_allocator.h
+L67134: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/memory/memory_manager.h
+L67135: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/memory/chunk.h
+L67136: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/memory/thread_memory_manager.h
+L67137: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/memory/thread_memory_trace.h
+L67138: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/memory/simple_arena_allocator.h
+L67139: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/memory/allocator.h
+L67140: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/memory/memory_trace.h
+L67141: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/memory/aligned_buffer.h
+L67142: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/memory/memory_pool.h
+L67143: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/
+L67144: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/omni_exception.h
+L67145: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/bits_selectivity_vector.h
+L67146: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/null_bits.h
+L67147: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/config_util.h
+L67148: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/type_util.h
+L67149: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/bit_util.h
+L67150: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/compiler_util.h
+L67151: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/property.h
+L67152: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/bit_map.h
+L67153: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/perf_util.h
+L67154: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/global_log.h
+L67155: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/native_log.h
+L67156: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/bit_array.h
+L67157: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/format.h
+L67158: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/data_type_util.h
+L67159: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/TimeUtils.h
+L67160: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/debug.h
+L67161: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/error_code.h
+L67162: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/policy.h
+L67163: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/config/
+L67164: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/config/QueryConfig.h
+L67165: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/config/Config.h
+L67166: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/config/ConfigBase.h
+L67167: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/cache_map.h
+L67168: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/trace_util.h
+L67169: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/util/utf8_util.h
+L67170: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/compute/
+L67171: [2026/11/10 10:57:24.287 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/compute/reason.h
+L67172: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/compute/task_stats.h
+L67173: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/compute/operator_stats.h
+L67174: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/compute/process_base.h
+L67175: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/compute/plannode_stats.h
+L67176: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/compute/pipeline_stats.h
+L67177: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/compute/local_planner.h
+L67178: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/compute/ResultIterator.h
+L67179: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/compute/task.h
+L67180: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/compute/cpuWall_timer.h
+L67181: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/compute/ColumnarBatchIterator.h
+L67182: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/compute/driver.h
+L67183: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/connectors/
+L67184: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/connectors/Connector.h
+L67185: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/connectors/hive/
+L67186: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/connectors/hive/HiveConnector.h
+L67187: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/connectors/hive/HiveConnectorUtil.h
+L67188: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/connectors/hive/HiveConfig.h
+L67189: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/connectors/hive/TableHandle.h
+L67190: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/connectors/hive/HivePartitionFunction.h
+L67191: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/connectors/hive/HiveDataSource.h
+L67192: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/connectors/hive/FileProperties.h
+L67193: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/connectors/hive/SplitReader.h
+L67194: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/connectors/hive/HiveConnectorSplit.h
+L67195: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/connectors/Split.h
+L67196: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/
+L67197: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/unsafe_dictionary_container.h
+L67198: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/vector_common.h
+L67199: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/vector_batch.h
+L67200: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/selectivity_vector.h
+L67201: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/decoded_vector.h
+L67202: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/mixed_vector.h
+L67203: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/omni_row_value.h
+L67204: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/row_segment.h
+L67205: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/map_vector.h
+L67206: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/vector.h
+L67207: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/unsafe_vector.h
+L67208: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/large_string_container.h
+L67209: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/nulls_buffer.h
+L67210: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/array_vector.h
+L67211: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/vector_helper.h
+L67212: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/type_utils.h
+L67213: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/omni_row.h
+L67214: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/row_vector.h
+L67215: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/dictionary_container.h
+L67216: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/string_utils.h
+L67217: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vector/unsafe_string_container.h
+L67218: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vectorization/
+L67219: [2026/11/10 10:57:24.288 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vectorization/SimpleFunctionMetadata.h
+L67220: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vectorization/SelectivityVector.h
+L67221: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vectorization/SimpleFunctionRegistry.h
+L67222: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vectorization/SimpleFunction.h
+L67223: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vectorization/VectorReaders.h
+L67224: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vectorization/SimpleFunctionApi.h
+L67225: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vectorization/UdfTypeResolver.h
+L67226: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vectorization/VectorFunction.h
+L67227: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vectorization/Status.h
+L67228: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vectorization/ComplexViewTypes.h
+L67229: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vectorization/ExprEval.h
+L67230: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vectorization/registration/
+L67231: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vectorization/registration/SimpleFunctionRegistry.h
+L67232: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vectorization/registration/Register.h
+L67233: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/vectorization/registration/RegistrationHelpers.h
+L67234: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/metrics/
+L67235: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/metrics/metrics_memory_info.h
+L67236: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/metrics/metrics_row_counter.h
+L67237: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/metrics/omni_metrics.h
+L67238: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/metrics/metrics_config.h
+L67239: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/metrics/metrics_spill_info.h
+L67240: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/metrics/metrics.h
+L67241: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/
+L67242: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/integer256.h
+L67243: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/decimal128.h
+L67244: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/data_type.h
+L67245: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/data_utils.h
+L67246: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/big_integer.h
+L67247: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/date32.h
+L67248: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/string_ref.h
+L67249: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/Conversions.h
+L67250: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/date_time_utils.h
+L67251: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/width_integer.h
+L67252: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/decimal_operations.h
+L67253: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/double_utils.h
+L67254: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/decimal_base.h
+L67255: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/data_type_serializer.h
+L67256: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/date_base.h
+L67257: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/tz/
+L67258: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/tz/TimeZoneMap.h
+L67259: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/tz/tz.h
+L67260: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/Timestamp.h
+L67261: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/decimal128_utils.h
+L67262: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/string_Impl.h
+L67263: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/FastDate.h
+L67264: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/tzdb/
+L67265: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/tzdb/tzdb_list.h
+L67266: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/tzdb/local_info.h
+L67267: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/tzdb/zoned_time.h
+L67268: [2026/11/10 10:57:24.289 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/tzdb/tzdb.h
+L67269: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/tzdb/exception.h
+L67270: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/tzdb/tzdb_private.h
+L67271: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/tzdb/types_private.h
+L67272: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/tzdb/leap_second.h
+L67273: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/tzdb/sys_info.h
+L67274: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/tzdb/date.h
+L67275: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/tzdb/time_zone_private.h
+L67276: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/tzdb/tzdb_list_private.h
+L67277: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/tzdb/time_zone.h
+L67278: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/tzdb/time_zone_link.h
+L67279: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/TimestampConversion.h
+L67280: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/data_operations.h
+L67281: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/data_types.h
+L67282: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/base_operations.h
+L67283: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/type/Subfield.h
+L67284: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/
+L67285: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/func_registry_json.h
+L67286: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/codegen_base.h
+L67287: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/ScanSpec.h
+L67288: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/func_registry_varchar_vector.h
+L67289: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/functions/
+L67290: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/functions/udffunctions.h
+L67291: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/functions/mathfunctions.h
+L67292: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/functions/stringfunctions.h
+L67293: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/functions/decimal_arithmetic_functions.h
+L67294: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/functions/murmur3_hash.h
+L67295: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/functions/datetime_functions.h
+L67296: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/functions/decimal_cast_functions.h
+L67297: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/functions/xxhash64_hash.h
+L67298: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/functions/dictionaryfunctions.h
+L67299: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/functions/varcharVectorfunctions.h
+L67300: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/functions/json_functions.h
+L67301: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/functions/dtoa.h
+L67302: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/functions/md5.h
+L67303: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/functions/mightcontain.h
+L67304: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/context_helper.h
+L67305: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/expr_function.h
+L67306: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/batch_func_registry_string.h
+L67307: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/func_registry_base.h
+L67308: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/bias_correction.h
+L67309: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/batch_func_registry_datetime.h
+L67310: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/codegen_value.h
+L67311: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/batch_func_registry_hash.h
+L67312: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/projection_codegen.h
+L67313: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/json_util.h
+L67314: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/batch_func_registry_decimal.h
+L67315: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/func_registry.h
+L67316: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/llvm_types.h
+L67317: [2026/11/10 10:57:24.290 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/func_registry_dictionary.h
+L67318: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/batch_func_registry_util.h
+L67319: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/batch_filter_codegen.h
+L67320: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/function.h
+L67321: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/Options.h
+L67322: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/KllSketch.h
+L67323: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/func_registry_context.h
+L67324: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/string_util.h
+L67325: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/func_registry_might_contain.h
+L67326: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/func_signature.h
+L67327: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/batch_func_registry_dictionary.h
+L67328: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/func_registry_datetime.h
+L67329: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/bloom_filter.h
+L67330: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/simple_filter_codegen.h
+L67331: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/batch_projection_codegen.h
+L67332: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/func_registry_decimal.h
+L67333: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/batch_codegen_context.h
+L67334: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/func_registry_hash.h
+L67335: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/batch_func_registry_varchar_vector.h
+L67336: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/codegen_context.h
+L67337: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/time_util.h
+L67338: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/func_registry_string.h
+L67339: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/llvm_engine.h
+L67340: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/hyperloglog.h
+L67341: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/KllSketch-inl.h
+L67342: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/expr_info_extractor.h
+L67343: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/expression_codegen.h
+L67344: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/expr_evaluator.h
+L67345: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/batch_expression_codegen.h
+L67346: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/common_util.h
+L67347: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/batch_func_registry_math.h
+L67348: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/func_registry_hive_udf.h
+L67349: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/filter_codegen.h
+L67350: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/codegen/func_registry_math.h
+L67351: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/expression/
+L67352: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/expression/parser/
+L67353: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/expression/parser/parser.h
+L67354: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/expression/HiveTypeParser.h
+L67355: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/expression/expr_visitor.h
+L67356: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/expression/parserhelper.h
+L67357: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/expression/expr_printer.h
+L67358: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/expression/arithmetic_spec.h
+L67359: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/expression/expressions.h
+L67360: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/expression/expr_verifier.h
+L67361: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/
+L67362: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/Reader.h
+L67363: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/ReaderOptions.h
+L67364: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/orc/
+L67365: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/orc/OmniRLE.hh
+L67366: [2026/11/10 10:57:24.291 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/orc/OmniColumnWriter.hh
+L67367: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/orc/OrcReader.h
+L67368: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/orc/OmniByteRLE.hh
+L67369: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/orc/RegionCoalescer.h
+L67370: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/orc/ColumnWriter.hh
+L67371: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/orc/BloomFilter.hh
+L67372: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/orc/OrcDecodeUtils.hh
+L67373: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/orc/OmniRLEv2.hh
+L67374: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/orc/OrcFileOverride.hh
+L67375: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/orc/OrcReaderFactory.h
+L67376: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/orc/OmniRowReaderImpl.hh
+L67377: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/orc/OmniWriter.hh
+L67378: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/orc/Statistics.hh
+L67379: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/orc/OmniColReader.hh
+L67380: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/common/
+L67381: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/common/ReadMode.h
+L67382: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/common/UriInfo.h
+L67383: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/common/PredicateOperatorType.h
+L67384: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/common/Directories.h
+L67385: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/common/JulianGregorianRebase.h
+L67386: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/common/TimeRebaseInfo.h
+L67387: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/common/PredicateUtil.h
+L67388: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/common/debug.h
+L67389: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/common/RebaseDate.h
+L67390: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/common/PredicateCondition.h
+L67391: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/parquet/
+L67392: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/parquet/ParquetReaderFactory.h
+L67393: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/parquet/ParquetTypedRecordReader.h
+L67394: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/parquet/ParquetColumnReader.h
+L67395: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/parquet/ParquetWriter.h
+L67396: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/parquet/ParquetDecoder.h
+L67397: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/parquet/ParquetReader.h
+L67398: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/parquet/ParquetExpression.h
+L67399: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/BufferInput.h
+L67400: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/include/reader/ReaderFactory.h
+L67401: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/boostkit-omniop-udf-2.2.0-aarch64.jar
+L67402: [2026/11/10 10:57:24.292 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/libboostkit-omniop-codegen-2.2.0-aarch64.so
+L67403: [2026/11/10 10:57:25.702 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/libboostkit-omniop-vector-2.2.0-aarch64.so
+L67404: [2026/11/10 10:57:25.702 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/libboostkit-omniop-reader-2.2.0-aarch64.so
+L67405: [2026/11/10 10:57:25.702 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/boostkit-omniop-bindings-2.2.0-aarch64.jar
+L67406: [2026/11/10 10:57:25.969 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/libboostkit-omniop-operator-2.2.0-aarch64.so
+L67407: [2026/11/10 10:57:27.915 GMT+08:00] boostkit-omniop-operator-2.2.0-aarch64/libboundscheck.so
+L67408: [2026/11/10 10:57:28.876 GMT+08:00]   adding: boostkit-omniop-operator-2.2.0-aarch64.tar.gz (deflated 1%)
+L67409: [2026/11/10 10:57:28.876 GMT+08:00] + build_OmniOperatorJIT_package
+L67410: [2026/11/10 10:57:28.876 GMT+08:00] + echo 'start zip software/boostkit-OmniOperatorJIT-2.2.0-aarch64.zip'
+L67411: [2026/11/10 10:57:28.876 GMT+08:00] start zip software/boostkit-OmniOperatorJIT-2.2.0-aarch64.zip
+L67412: [2026/11/10 10:57:28.876 GMT+08:00] + BoostKit_OmniOperatorJIT_Version_info
+L67413: [2026/11/10 10:57:28.876 GMT+08:00] + touch version.txt
+L67414: [2026/11/10 10:57:28.876 GMT+08:00] + echo 'Product Name: Kunpeng BoostKit'
+L67415: [2026/11/10 10:57:28.876 GMT+08:00] + echo 'Product Version: 26.1.RC1'
+L67416: [2026/11/10 10:57:28.876 GMT+08:00] + echo 'Component Name: BoostKit-omniop'
+L67417: [2026/11/10 10:57:28.876 GMT+08:00] + echo 'Component Version: 2.2.0'
+L67418: [2026/11/10 10:57:28.876 GMT+08:00] + cp version.txt ***//toCMC/software
+L67419: [2026/11/10 10:57:28.876 GMT+08:00] + mkdir -p ***//toCMC/software/openEuler24.03_JDK17/
+L67420: [2026/11/10 10:57:28.876 GMT+08:00] + cp -rf boostkit-omniop-operator-2.2.0-aarch64.tar.gz ***//toCMC/software/openEuler24.03_JDK17/boostkit-omniop-operator-2.2.0-aarch64-openEuler24.03.tar.gz
+L67421: [2026/11/10 10:57:28.876 GMT+08:00] + pushd ***//toCMC/software/
+L67422: [2026/11/10 10:57:28.876 GMT+08:00] ***//toCMC/software ***//OmniOperatorJIT ***/
+L67423: [2026/11/10 10:57:28.876 GMT+08:00] + zip -r BoostKit-omniruntime-omnioperator-2.2.0.zip ./openEuler24.03_JDK17 ./version.txt
+L67424: [2026/11/10 10:57:28.876 GMT+08:00]   adding: openEuler24.03_JDK17/ (stored 0%)
+L67425: [2026/11/10 10:57:29.837 GMT+08:00]   adding: openEuler24.03_JDK17/boostkit-omniop-operator-2.2.0-aarch64-openEuler24.03.tar.gz (deflated 1%)
+L67426: [2026/11/10 10:57:29.837 GMT+08:00]   adding: version.txt (deflated 28%)
+L67427: [2026/11/10 10:57:29.837 GMT+08:00] + python3 ***//BoostKit_CI/SpecifiedFunction/collect_software_info.py ***//BoostKit_CI/sourcecode/bigdata/code.xml ***/ BoostKit-omniruntime-omnioperator-2.2.0.zip
+L67428: [2026/11/10 10:57:30.104 GMT+08:00] /bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.utf8): No such file or directory
+L67429: [2026/11/10 10:57:30.104 GMT+08:00] /bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.utf8): No such file or directory
+L67430: [2026/11/10 10:57:30.104 GMT+08:00] /bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.utf8): No such file or directory
+L67431: [2026/11/10 10:57:30.104 GMT+08:00] /bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.utf8): No such file or directory
+L67432: [2026/11/10 10:57:30.104 GMT+08:00] /bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.utf8): No such file or directory
+L67433: [2026/11/10 10:57:30.104 GMT+08:00] 成功生成JSON文件：BoostKit-omniruntime-omnioperator-2.2.0.zip.json
+L67434: [2026/11/10 10:57:30.104 GMT+08:00] + rm -rf '*.tar.gz' version.txt
+L67435: [2026/11/10 10:57:30.104 GMT+08:00] + popd
+L67436: [2026/11/10 10:57:30.104 GMT+08:00] ***//OmniOperatorJIT ***/
+L67437: [2026/11/10 10:57:30.104 GMT+08:00] + pushd ***//toCMC/
+L67438: [2026/11/10 10:57:30.104 GMT+08:00] ***//toCMC ***//OmniOperatorJIT ***/
+L67439: [2026/11/10 10:57:30.104 GMT+08:00] + zip -r OmniOperatorJIT.zip software
+L67440: [2026/11/10 10:57:30.104 GMT+08:00]   adding: software/ (stored 0%)
+L67441: [2026/11/10 10:57:30.105 GMT+08:00]   adding: software/BoostKit-omniruntime-omnioperator-2.2.0.zip (stored 0%)
+L67442: [2026/11/10 10:57:30.105 GMT+08:00]   adding: software/BoostKit-omniruntime-omnioperator-2.2.0.zip.json (deflated 34%)
+L67443: [2026/11/10 10:57:30.105 GMT+08:00]   adding: software/openEuler24.03_JDK17/ (stored 0%)
+L67444: [2026/11/10 10:57:31.066 GMT+08:00]   adding: software/openEuler24.03_JDK17/boostkit-omniop-operator-2.2.0-aarch64-openEuler24.03.tar.gz (deflated 1%)
+L67445: [2026/11/10 10:57:31.066 GMT+08:00] + popd
+L67446: [2026/11/10 10:57:31.066 GMT+08:00] ***//OmniOperatorJIT ***/
+L67447: [2026/11/10 10:57:31.066 GMT+08:00] + ccache -s
+L67448: [2026/11/10 10:57:31.066 GMT+08:00] Cacheable calls:   272 /  467 (58.24%)
+L67449: [2026/11/10 10:57:31.066 GMT+08:00]   Hits:              0 /  272 ( 0.00%)
+L67450: [2026/11/10 10:57:31.066 GMT+08:00]     Direct:          0
+L67451: [2026/11/10 10:57:31.066 GMT+08:00]     Preprocessed:    0
+L67452: [2026/11/10 10:57:31.066 GMT+08:00]   Misses:          272 /  272 (100.0%)
+L67453: [2026/11/10 10:57:31.066 GMT+08:00] Uncacheable calls: 195 /  467 (41.76%)
+L67454: [2026/11/10 10:57:31.066 GMT+08:00] Local storage:
+L67455: [2026/11/10 10:57:31.066 GMT+08:00]   Cache size (GB): 0.0 / 50.0 ( 0.08%)
+L67456: [2026/11/10 10:57:31.066 GMT+08:00]   Hits:              0 /  272 ( 0.00%)
+L67457: [2026/11/10 10:57:31.066 GMT+08:00]   Misses:          272 /  272 (100.0%)
+L67458: [2026/11/10 10:57:34.100 GMT+08:00] arm-shell4.2.46-git2.23-zip-1.1.0: Pulling from *****
+L67459: [2026/11/10 10:57:34.100 GMT+08:00] Digest: sha256:d0f5d8ada0e25daa60eabcc3eebe45eee5d7e532d07ff2367c487095356d0e0b
+L67460: [2026/11/10 10:57:34.100 GMT+08:00] Status: Image is up to date for************
+L67461: [2026/11/10 10:57:34.100 GMT+08:00]************
+L67462: [2026/11/10 10:57:34.762 GMT+08:00] [INFO] [上传文件到OBS:上传文件到OBS] : 该步骤开始执行
+L67463: [2026/11/10 10:57:34.764 GMT+08:00] [INFO] [上传文件到OBS:上传文件到OBS] : 获取上传OBS所需临时凭证。
+L67464: [2026/11/10 10:56:59.139 GMT+08:00] [INFO] [上传文件到OBS:上传文件到OBS] : 解析构建产物路径：toCMC/software/*zip*
+L67465: [2026/11/10 10:56:59.139 GMT+08:00] [INFO] [上传文件到OBS:上传文件到OBS] : 待上传的文件列表：
+L67466: [2026/11/10 10:56:59.274 GMT+08:00] [INFO] [上传文件到OBS:上传文件到OBS] :     本地文件： /opt/CI_version_05/workspace/j_d6LAUkU8/toCMC/software/BoostKit-omniruntime-omnioperator-2.2.0.zip.json， OBS存储路径： buildcache/OmniOperator/2026_930_poc/Daily.26.0.0.B001/openEuler24.03_JDK17/BoostKit-omniruntime-omnioperator-2.2.0.zip.json
+L67467: [2026/11/10 10:56:59.318 GMT+08:00] [INFO] [上传文件到OBS:上传文件到OBS] :     本地文件： /opt/CI_version_05/workspace/j_d6LAUkU8/toCMC/software/BoostKit-omniruntime-omnioperator-2.2.0.zip， OBS存储路径： buildcache/OmniOperator/2026_930_poc/Daily.26.0.0.B001/openEuler24.03_JDK17/BoostKit-omniruntime-omnioperator-2.2.0.zip
+L67468: [2026/11/10 10:56:59.323 GMT+08:00] [INFO] [上传文件到OBS:上传文件到OBS] : 初始化OBS客户端
+L67469: [2026/11/10 10:57:01.155 GMT+08:00] [INFO] [上传文件到OBS:上传文件到OBS] : 上传文件到OBS....
+L67470: [2026/11/10 10:57:37.715 GMT+08:00] [ERROR] [上传文件到OBS:上传文件到OBS] : DEV.CB.02202002,上传文件失败:请检查当前用户或其他用户的读/写权限(桶:boostkit-bigdata-public)
+L67471: [2026/11/10 10:57:37.716 GMT+08:00] [ERROR] [上传文件到OBS:上传文件到OBS] : 错误信息: failed to upload
+L67472: [2026/11/10 10:57:37.786 GMT+08:00] [ERROR] [上传文件到OBS:上传文件到OBS] : 该步骤执行失败
+L67473: [2026/11/10 10:57:37.789 GMT+08:00] [ERROR]  : 该步骤执行失败,错误信息:failed to upload
+L67474: [2026/11/10 10:57:01.937 GMT+08:00] [ERROR] [上传文件到OBS:上传文件到OBS] : Error message:Request Error.OBS service Error Message.
+L67475: [2026/11/10 10:57:39.171 GMT+08:00] [INFO]  : [JobStatusPlugin] onCompleted: j_d6LAUkU8 #1
+L67476: [2026/11/10 10:57:46.683 GMT+08:00] Finished: FAILURE

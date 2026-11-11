@@ -5,17 +5,17 @@
   "source": "out/archive/（_index.json / _day.json / _manifest.json / records/run_*.json）",
   "criteria": "只产出静态壳（样式 + 公共日期筛选组件 + 取数脚本）到 out/html/，HTML 内不内嵌任何业务数据；页面运行时按【执行结束时间】区间读取归档 JSON，首页与二级页共用 lib/ui.py 的同一份筛选组件，口径不会分叉",
   "dateField": "pipelineRunEndtime",
-  "generatedAt": "2026-11-10 19:29:47",
+  "generatedAt": "2026-11-11 10:11:14",
   "files": [
    "index.html",
    "detail.html"
   ],
-  "dayCount": 2
+  "dayCount": 3
  },
- "generatedAt": "2026-11-10 19:29:47",
- "dayCount": 2,
+ "generatedAt": "2026-11-11 10:11:14",
+ "dayCount": 3,
  "firstDay": "2026-11-06",
- "lastDay": "2026-11-09",
+ "lastDay": "2026-11-10",
  "shell": {
   "title": "openLiBing指标分析",
   "subtitle": "夜间流水线工程指标 · 口径：执行结束时间 · 数据源 out/archive/",
@@ -92,11 +92,11 @@
  "filesWritten": [
   {
    "file": "index.html",
-   "bytes": 54513
+   "bytes": 55550
   },
   {
    "file": "detail.html",
-   "bytes": 93048
+   "bytes": 100164
   }
  ]
 }

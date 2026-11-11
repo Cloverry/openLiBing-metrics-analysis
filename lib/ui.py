@@ -235,6 +235,16 @@ function wdInRange(f, t){
   }
   return rfWorkdays(f, t);
 }
+/* 「这条流水线在这里到底跑没跑过」的唯一判据：runsInPeriod 是第 7 步按区间运行数写死的，
+   0 就是一次都没跑（RAGSDK / VisionSDK 这类只有看板配置、从没执行过的流水线）。
+   为什么必须判：归档对「区间内无运行」的流水线会退回看板值（历史上是 0.0），
+   那个 0 表示「压根没跑」而不是「跑了但不可用」；一旦被当成算出过的比率收进平均值，
+   「无执行记录」就会被统计成 0.00%（用户反馈过两次）。老归档缺该字段时放行。 */
+function ranInPeriod(pl){
+  const v = pl ? pl.runsInPeriod : null;
+  if (v === null || v === undefined || v === '') return true;
+  return Number(v) > 0;
+}
 function rfClamp(v){return (v && rfState.min && v<rfState.min) ? rfState.min : ((v && rfState.max && v>rfState.max) ? rfState.max : v);}
 
 /* 快捷段 → 实际区间：7/30/90 以归档最大日为右端，左端不早于归档最小日（数据不足时自动收缩）；

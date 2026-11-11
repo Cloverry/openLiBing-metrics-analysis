@@ -1,13 +1,13 @@
-run_pipeline 启动 2026-11-10 19:29:47  参数: start=(config) end=(config) products=(config) fresh=False retries=1
-目标区间: 2026-11-09 ~ 2026-11-09（默认：前一个工作日（跳过周末与法定节假日））
+run_pipeline 启动 2026-11-11 10:11:14  参数: start=(config) end=(config) products=(config) fresh=False retries=1
+目标区间: 2026-11-10 ~ 2026-11-10（默认：前一个工作日（跳过周末与法定节假日））
 
 ============================================================
-[19:29:47] 第 9 步 生成展示页（静态壳 → out/html/，数据运行时读归档）
+[10:11:14] 第 9 步 生成展示页（静态壳 → out/html/，数据运行时读归档）
 ============================================================
-== 工作日日历 2026-11-06 ~ 2026-11-10：3 个工作日（法定工作日历: timor.tech API（1 年））
+== 工作日日历 2026-11-06 ~ 2026-11-11：4 个工作日（法定工作日历: timor.tech API（1 年））
 == 第 9 步 展示页已生成（只含静态壳，业务数据运行时读 out/archive/）
-== 首页   html/index.html  53.2 KB
-== 二级页 html/detail.html  90.9 KB
-== 数据源 out/archive/：2 个归档日（2026-11-06 ~ 2026-11-09）
+== 首页   html/index.html  54.2 KB
+== 二级页 html/detail.html  97.8 KB
+== 数据源 out/archive/：3 个归档日（2026-11-06 ~ 2026-11-10）
 == 说明   _pages.json：记录生成方式/数据源/口径
 !! 直接双击 file:// 打开会被浏览器拦截 fetch，请用 python run_pipeline.py --serve 起本地服务访问
