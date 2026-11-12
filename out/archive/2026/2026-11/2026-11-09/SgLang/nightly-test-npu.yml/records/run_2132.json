@@ -124,14 +124,18 @@
   "analysis": {
     "status": "done",
     "keyError": null,
-    "rootCause": "这是启动即失败的运行：20:51:29 开始、20:51:31 结束，只有 2 秒就判 FAILED，两个任务 set-image-config（入口镜像配置）与 check-all-jobs 在平台侧日志均为 404_not_retained，归档侧 0 份证据文件、0 条 errorMessages、cases=0（records/run_2132.json）。\n\n推断更像工作流入口步骤 set-image-config 在镜像或参数配置阶段就失败、并导致后续 job 没有日志，而不是用例执行失败：2 秒的时间窗口连服务都拉不起来，失败发生在容器之前——本记录里也确实没有出现 #2133 那句容器实现失败，说明它停得更早。\n\n已排除的干扰项：同一秒（20:51:29）该工作流还触发了另一条运行 #2133（runId 42620485286），那条表现为容器层失败，两条更像是同一时间点的重复触发与入口配置冲突，而不是两次独立的技术故障。",
-    "advice": "优先给入口步骤 set-image-config 打开日志留存，这一步失败会连带后续 job 全部无日志，现象正是「2 秒失败 + 全部 404」，不修留存则每晚都会重复出现这类无法归因的记录\n\n在该工作流入口增加镜像配置与夜间范围参数的合法性校验，配置错误在上游就拦下来并保存失败时的 job 元数据快照\n\n同时排查 20:51:29 的重复触发：核对触发源（定时、push、手动）与并发策略，避免同一工作流在同一秒起跑两条运行\n\n验证方式：修好后重跑，要求 set-image-config 有可下载日志、运行不再 2 秒即失败，该工作流单次触发只产生一条运行",
+    "rootCause": "启动即失败：20:51:29 开始、20:51:31 结束，2 秒就判 FAILED；入口步骤 set-image-config 与 check-all-jobs 的日志平台侧全是 404，15 个 job 也没有一个记到失败，说明运行在容器起来之前就结束了，属入口配置或触发阶段的问题。同一秒还起了另一条运行 #2133，更像同一工作流被重复触发。",
+    "advice": "先给入口步骤 set-image-config 打开日志留存，再核对 20:51:29 那次的触发源与并发策略，避免同一工作流同一秒起两条运行。\n\n验证方式：修好后单次触发只产生一条运行，且 set-image-config 有可下载的日志。",
     "cites": [
-      "records/run_2132.json"
+      "records/run_2132.json:L49-L55",
+      "records/run_2132.json:L63-L67",
+      "records/run_2132.json:L85-L96"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "无 keyError",
+    "updatedAt": "2026-11-11 17:53:58",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 3,
     "source": "agent"
   }
 }

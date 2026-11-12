@@ -181,17 +181,19 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
-    "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2088 从 12:01:04 跑到 14:00:54（约 2 小时）记 FAILED；失败的是 multi-node-mix-poc 的 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix，其余 14 个 job 通过（records/run_2088.json）\n\n第一类（先出现的非零退出）：L15680 已经出现 │ exit code: 1，位置在该任务 13:32:41 的 openai ImportError（L13563）之后约 2000 行，说明服务拉起或前置子步骤先失败了一次（github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15680）\n\n第二类（主脚本收敛）：接着 L17468 Traceback → L17545 ##[error]Error: failed to run script step → L17546 ✗ exit code: 1 → L17570 Process completed with exit code 1 → L17571 容器实现执行失败，异常正文未留存\n\n这条 run 的标题是「kimi_k3: run the decode perf case via the aisbench prefix mode」，是一条刚改用 aisbench prefix 模式的用例；两次非零退出叠在一起，更像新的 prefix 启动路径没跑通（服务没起来、aisbench 连不上），而不是 decode 性能本身劣化——日志里没有任何 tpot/吞吐输出\n\n已排除的干扰项：L13563 的 openai ImportError 属当天镜像的普遍问题，但只影响 /v1/responses 降级，不是本条的直接退出点；cases 为 0，无精度与性能断言",
-    "advice": "先定位第一次非零退出：把 L15680 上下 100 行拉出来，确认是拉起服务、加载权重还是启动 aisbench 这一步先失败，这比 L17468 的 Traceback 更接近真实起点\n\n针对新的 prefix 模式做一次单独验证：手动跑 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix，把 prefix 相关参数（repeat_rate、prefix 长度）打到日志头部，确认新路径的启动顺序与旧用例一致\n\n补异常留存：multi-node-mix-poc 这类任务现在只留 exit code 一行，建议在脚本外层统一包装，把最后 50 行 stdout/stderr 打进日志\n\n验证方式：重跑该 nightly，要求 multi-node-mix-poc（kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix）转通过并产出 decode 性能指标、run 结论为 success",
+    "keyError": "AssertionError: 41.6 not less than or equal to 31.0",
+    "rootCause": "kimi_k3 w4a8 32p mix（in128k/out1k，decode prefix）的 TPOT 实测 41.6ms，阈值 31.0ms，超了约 34%，是这条 mix 场景本身性能不达标。同 job 其余用例正常，服务起得来、benchmark 跑完，只是每 token 解码耗时偏高。mix 场景带 prefix 命中，decode 调度与前缀缓存效率是主要嫌疑，也可能是 31.0ms 阈值沿用了非 prefix 场景的旧基线。",
+    "advice": "先确认 31.0ms 阈值是否按当前 32p mix 配置校准，再用同一用例对比 prefix 缓存命中率与 decode batch 大小，判断是缓存未命中还是调度抖动。\n\n验证方式：复跑该用例，mean_tpot 不高于 31.0ms。",
     "cites": [
+      "github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L17496",
       "github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15680",
-      "github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L17546",
       "records/run_2088.json"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L17496",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 5,
     "source": "agent"
   }
 }

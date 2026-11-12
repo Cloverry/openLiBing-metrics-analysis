@@ -234,16 +234,18 @@
   "analysis": {
     "status": "done",
     "keyError": "the path /mnt/share/autotest/mindstudio/autotestproperty/operator_project/lib/addn_case_20261106074025.json does not have permission to read. please check the path permission.",
-    "rootCause": "Test_msot_nightly_smoke 共 171 条用例跑出 169 通过、2 失败，任务判失败且运行状态为 CANCELED，构建 #262 记 CANCELED；两条失败都没跑到被测工具给出结论，而是卡在执行环境上（records/run_262.json）\n\n第一类（dynamic 用例，读权限）：test_msopst_paramType_dynamic_011 断言「输出里含 success」，而实际输出是「[error] the path /mnt/share/autotest/mindstudio/autotestproperty/operator_project/lib/addn_case_20261106074025.json does not have permission to read」，即共享目录里刚生成的用例文件读不了（case_logs/case_0054.html:L529）\n\n第二类（pytorch_to_toolkit 用例，路径不存在）：test_pytorch_to_toolkit_001 的输出是「-bash: cd: /home/autotest/autotestproperty/operator_project/lib: no such file or directory」紧跟「the path /home/runner/addn_case_20261106074104.json does not exist」，说明用例先在一个不存在的目录里 cd 失败，再到另一个前缀下找刚要生成的文件（case_logs/case_0055.html:L658）\n\n两条用例一条挂在 /mnt/share/autotest，一条挂在 /home/autotest 与 /home/runner，同一个「operator_project/lib」在三处前缀下出现，因此更像用例侧把工作路径写死、与实际挂载点不一致，而不是 msopst run 本身执行失败\n\n已排除的干扰项：171 条里 169 条同任务用例通过，未见工具崩溃、编译失败或算子报错；状态为 CANCELED 说明运行在中途被打断，后续补的证据不会再有，现有失败就是取消前已确定的 2 条",
-    "advice": "先把路径来源统一：用例里不要硬编码 /home/autotest、/mnt/share/autotest、/home/runner 三种前缀，改为从环境变量（挂载点）读，并在启动时校验目录存在，不存在就直接报环境错误而不是让 cd 失败\n\n再修权限：addn_case_*.json 是运行期生成的输入文件，把 operator_project/lib 的属主与权限改成 runner 用户可读，或在生成后显式 chmod 644\n\n顺带修断言：现在断言只判「输出里含 success」，路径类错误会被压成「多 dynamic 输入运行失败」，建议失败时把 stderr 原文与当前工作目录一并打印，便于下次一眼看出是路径还是工具问题\n\n验证方式：重跑 Test_msot_nightly_smoke 全量 171 条用例，要求 test_msopst_paramType_dynamic_011 与 test_pytorch_to_toolkit_001 转通过、任务退出码为 0，且用例日志中不再出现 does not have permission to read 与 no such file or directory",
+    "rootCause": "171 条用例跑了 169 通过、挂 2 条，两条都没跑到被测工具给结论，而是卡在执行环境的路径上：test_msopst_paramType_dynamic_011 读不了共享目录里刚生成的 addn_case_*.json（无读权限），test_pytorch_to_toolkit_001 先在一个不存在的 /home/autotest/.../lib 里 cd 失败、再到 /home/runner 下找刚要生成的文件。同一个 operator_project/lib 在 /mnt/share/autotest、/home/autotest、/home/runner 三处前缀下出现，说明用例把工作路径写死、与实际挂载点不一致，不是 msopst run 执行失败。",
+    "advice": "用例里的工作路径改成从环境变量读实际挂载点，启动时校验目录存在，缺失就报环境错误；再给 operator_project/lib 授 runner 读权限或生成后 chmod 644。\n\n验证方式：重跑 smoke 全量 171 条，两条失败用例转通过、退出码为 0。",
     "cites": [
-      "case_logs/case_0054.html:L529",
+      "case_logs/case_0054.html:L516",
       "case_logs/case_0055.html:L658",
       "records/run_262.json"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 case_logs/case_0054.html:L516",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 4,
     "source": "agent"
   }
 }

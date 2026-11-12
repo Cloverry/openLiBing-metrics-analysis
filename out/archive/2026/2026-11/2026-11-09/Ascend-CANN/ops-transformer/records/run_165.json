@@ -1142,17 +1142,18 @@
   "analysis": {
     "status": "done",
     "keyError": "AssertionError: aclnnMoeTokenUnpermuteWithEpGrad功能精度测试(executor)失败: aclnnMoeTokenUnpermuteWithEpGrad accuracy not passed",
-    "rootCause": "Test_ops-transformer 任务 98 条用例跑出 79 通过、19 失败（通过率 80.61%），构建 #165 从 02:05:47 跑到 04:42:33 记 FAILED；19 条失败全部是 acc_pass_result='Failed'（case_logs/case_0110.html:L3158、case_logs/case_0116.html:L2249）\n\n第一类（通信融合算子，占多数）：aclnnAlltoAllQuantMatmul 的 a16w8、a16w4、a4w4 三档量化，加 aclnnMatmulAlltoAll、aclnnMatmulAllReduce 及其 V2、aclnnMatmulReduceScatter 及其 V2、aclnnAlltoAllMatmul、aclnnQuantMatmulAlltoAll、aclnnQuantMatmulAllReduceV3、aclnnAllGatherMatmul、aclnnWeightQuantMatmulAllReduce、aclnnMoeDistributeDispatch_CombineV2，全部以「功能精度测试(executor)失败」收口（records/run_165.json）\n\n第二类（MoeTokenUnpermuteWithEpGrad 四个变体）：perf 与 accu 两条主线加 probs_none、probs_not_none 两个分支，其中 perf 用例也是被精度断言判死而非性能不达标——断言原文直接写 accuracy not passed，说明性能根本没进入判定\n\n19 条失败横跨通信融合与 MoE 两条完全不同的算子线，却都停在同一个 atk 精度比对上，这更像本轮黄金数据或比对基线整体偏移（一个共同的输入/阈值来源），而不是十几个算子同时实现回退\n\n已排除的干扰项：没有任何内核崩溃、编译错误或设备异常；test 任务 logFile 与 logLines 均为空、证据只有 19 份 case_logs，说明失败点确实在用例判定层",
-    "advice": "先验证是否基线偏移，这是投入产出最高的一步：固定镜像与算子仓 commit，只把黄金数据切回上一可用版本重跑这 19 条，若全转通过就是基线问题而非实现问题\n\n若确认是实现问题，再按算子线分组二分：先取 aclnnAlltoAllQuantMatmul a16w8 与 aclnnMatmulAlltoAll 各一条拿误差明细，再单独复跑 MoeTokenUnpermuteWithEpGrad 的 probs 与无 probs 两个分支，判断是否同一处累加逻辑\n\n补执行日志：Test_ops-transformer 目前只留 19 份用例 HTML，测试任务的 stdout 完全没落盘，任何一次排查都要重跑\n\n验证方式：重跑 Test_ops-transformer，要求这 19 条用例的 acc_pass_result 全部变为 Passed、通过率回到 100%",
+    "rootCause": "98 条用例跑了 79 条通过，19 条失败分两组，没有一条是真的算错数值。\n\n第一组 4 条全是 MoeTokenUnpermuteWithEpGrad（1 条性能、3 条精度子集），算子一个 kernel 都没跑就死在tiling 校验：一次是用例给的 topkNum 与 probs 的维度对不上（19 对 21），一次是反向输入形状不满足算子要求的 16384×7680。也就是用例构造的入参与算子当前版本的形状约束不一致。\n\n第二组 15 条是 MC2 通信融合算子（AlltoAll、AllReduce、ReduceScatter、AllGather、MoeDistribute 各系列），单机双卡起通信域时等不到 root 节点，超过建链超时后通信域整个没建起来，用例连结果都没产出。",
+    "advice": "两组分开修：通信那 15 条先核单机双卡互通、网卡名与建链超时，用一个 AllReduce 小用例跑通再批量复跑；另一组 4 条核对 topkNum、probs 与反向输入形状是否符合算子约束，让用例改入参。\n\n验证方式：重跑全量 98 条，这 19 条转通过。",
     "cites": [
-      "case_logs/case_0110.html:L3158",
-      "case_logs/case_0116.html:L2249",
-      "case_logs/case_0113.html:L8553",
-      "records/run_165.json"
+      "records/run_165.json:L59",
+      "case_logs/case_0116.html:L1527",
+      "case_logs/case_0113.html:L7921"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 records/run_165.json:L59",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 5,
     "source": "agent"
   }
 }

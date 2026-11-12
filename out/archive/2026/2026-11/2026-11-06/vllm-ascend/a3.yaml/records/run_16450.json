@@ -482,16 +482,19 @@
   "analysis": {
     "status": "done",
     "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
-    "rootCause": "该 run 共 17 个 job、5 个失败，构建 #16450 从 09:01:11 跑到 10:53:49（约 1 小时 52 分钟）记 FAILED；5 个失败 job 是 Kimi-K3-MRV2-A3、MiniMax-M3-w8a8-PP-prefix-PD、Kimi-K2.6-W4A8-64k-1k-TPOT50-PD、GLM-5.1-W8A8C8-A3_198k_function、DeepSeek-V4.1-Flash-w8a8-PD-MRV2，其余 12 个 job 通过（records/run_16450.json）\n\n第一类（关键结构信息）：5 个失败 job 的失败步骤全部是 Wait for pods ready，也就是 Pod 一直没起来、等待超时，用例脚本根本没开始执行——这是本条最有价值的信号，说明问题在集群侧而不是模型用例侧\n\n第二类（日志能看到的退出链）：以 Kimi-K3-MRV2-A3 为例，L2143 ##[error]Error: failed to run script step → L2144 ✗ exit code: 1 → L2168 Process completed with exit code 1 → L2169 容器实现执行失败，另有 L2649 ##[error]Upload failed. See log:，上传失败是脚本退出后的连带动作（github_logs/gh_42063861754/127640780266_multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2~0bc925.txt:L2143）\n\n5 个 job 覆盖不同模型与不同节点形态（multi-node 与 double-node 各占一部分），失败点却是同一个 Wait for pods ready，因此更像集群资源不足或调度/镜像拉取受阻，而非某一个模型的配置问题\n\n已排除的干扰项：Upload failed 是退出后的连带、不单独归因；cases 为 0，没有任何精度或性能断言；另 12 个 job 能起来并通过，说明不是全集群不可用而是部分节点/队列受限",
-    "advice": "先查集群侧，不要查模型：用这 5 个 job 的时间窗去核对 Pod 事件（调度失败、ImagePullBackOff、资源配额不足、节点 taint），Wait for pods ready 超时的根因几乎都在这里\n\n把等待改成有信息量的失败：现在超时后只报 exit code 1，建议在轮询里定期 dump kubectl describe pod 的 Events，让下一次超时能直接看到原因\n\n分批重跑而不是全量：修好后先只跑这 5 个超时 job，确认 Pod 能起来再加跑全量，避免又跑满两小时\n\n验证方式：重跑该 nightly，要求这 5 个 job 的 Wait for pods ready 步骤成功、用例实际执行并产出结果、run 结论为 success",
+    "rootCause": "5 个失败 job 都卡在「等所有 Pod 变成 Running and Ready」这一步，等满 1200 秒超时，用例根本没开始跑。Pod 事件写明集群没有可用资源：15~20 个节点全部缺 ascend-1980 卡、11 个缺临时存储，另有节点带 cpu-elastic 污点没被容忍，同一个 LWS 里 leader 和第一个 worker 已经 Running，其余 Pod 一直 Pending。要集群资源侧补卡、清理节点临时存储，并给这些部署加上污点容忍。",
+    "advice": "让集群侧按该时间窗补齐 ascend-1980 卡与节点临时存储（先清镜像与缓存占盘），cpu-elastic 污点容忍写进部署模板；资源到位前先降并发或摘出 nightly。\n\n验证方式：重跑后 5 个 job 的 Pod 都能在 1200 秒内就绪。",
     "cites": [
-      "github_logs/gh_42063861754/127640780266_multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2~0bc925.txt:L2143",
-      "github_logs/gh_42063861754/127640780266_multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2~0bc925.txt:L2144",
+      "github_logs/gh_42063861754/127640780266_multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2~0bc925.txt:L2143-L2144",
+      "github_logs/gh_42063861754/127640780266_multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2~0bc925.txt:L1983",
+      "github_logs/gh_42063861754/127640784310_multi-node (main, MiniMax-M3-w8a8-PP-prefix-PD,~ace01f.txt:L1677",
       "records/run_16450.json"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 github_logs/gh_42063861754/127640780266_multi-node (main, Kimi-K3-MRV2-A3, Kimi-K3-MRV2~0bc925.txt:L2143-L2144",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 4,
     "source": "agent"
   }
 }

@@ -174,8 +174,8 @@
       "analysis": {
         "status": "done",
         "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
-        "rootCause": "Test_quqcd 00:31:53 启动，00:33:07 用例仓 clone 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，同秒出现 [ERROR] git clone test_cases code fail，00:33:08 脚本返回退出码 1，00:33:13 Finished: FAILURE（job_logs/20_kuqcd_198_Test_quqcd.log:L138、L139、L140、L142、L144）\n\n用例统计 total=0、passed=0、failed=0，测试任务结果为空：失败停在 clone，属环境/凭据未就绪\n\n本记录失败的仓库与同日 kudnn #224、kupl #297～#299 完全一致（都是 kunpengcompute/hpckit-autotest），四个组件在同一凌晨到午后反复撞同一句鉴权失败，更像多个流水线共用一份失效凭据，而非 kuqcd 单条流水线的配置错误\n\n已排除的干扰项：平台封装码 DEV-CODECI-35002「构建任务执行失败」是步骤失败后的统一封装，不带鉴权细节；日志中无超时行，排除网络不可达；简报未提供凭据配置细节，因此「共用同一凭据」按更可能而非定论表述",
-        "advice": "把 hpckit-autotest 的凭据治理成一份公共流水线凭据（access token），kuqcd 与 kudnn、kupl、hmpi、kpex 统一引用，改一次全生效\n\n修复后按组件逐个验证 clone 成功，再复跑 kuqcd 确认用例能正常拉起，不要只看 exit code\n\n在流水线开始处加仓库可达性预检，预检不通过直接失败并标注仓库地址与凭据别名，减少回退整 job 日志的人工成本\n\n验证方式：用 #198 参数重跑 kuqcd 流水线，要求 clone 成功、用例 total 大于 0、退出码为 0，日志中不再出现 Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
+        "rootCause": "失败在用例代码拉取这一步：Test_quqcd 00:31:53 启动，00:33:07 clone 用例库 hpckit-autotest 被判鉴权失败，脚本退出码 1，用例统计全为 0。根因是执行机上的 gitcode 凭据失效——同一凌晨 kudnn #224、kupl #297 撞的是同一个仓库、同一句 fatal，说明这些流水线共用的一份凭据已经不可用，不是 kuqcd 自己的配置错误。",
+        "advice": "换掉执行机上的 gitcode 凭据，HPCKit 五个组件统一引用这一份，改一次全部生效；修完先在节点上手工 clone 确认。\n\n验证方式：用 #198 参数重跑，clone 成功、total 大于 0、退出码为 0。",
         "cites": [
           "job_logs/20_kuqcd_198_Test_quqcd.log:L138",
           "job_logs/20_kuqcd_198_Test_quqcd.log:L139",
@@ -183,9 +183,11 @@
           "job_logs/20_kuqcd_198_Test_quqcd.log:L142",
           "job_logs/20_kuqcd_198_Test_quqcd.log:L144"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 job_logs/20_kuqcd_198_Test_quqcd.log:L138",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 4,
         "source": "agent"
       }
     }

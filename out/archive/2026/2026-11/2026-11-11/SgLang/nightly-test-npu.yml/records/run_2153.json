@@ -1,0 +1,79 @@
+{
+ "_doc": {
+  "step": "step_6_records",
+  "title": "第 6 步 证据合并与执行记录",
+  "source": "第 2~5c 步归档产物",
+  "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-12 09:12:15",
+  "component": "SgLang",
+  "pipeline": "nightly-test-npu.yml",
+  "date": "2026-11-11",
+  "recordId": "SgLang|nightly-test-npu.yml#2153"
+ },
+ "recordId": "SgLang|nightly-test-npu.yml#2153",
+ "date": "2026-11-11",
+ "component": "SgLang",
+ "pipeline": "nightly-test-npu.yml",
+ "pipelineName": "nightly-test-npu.yml",
+ "platform": "github",
+ "buildNumber": 2153,
+ "pipelineRunId": "42886597422",
+ "status": "FAILED",
+ "failedTaskType": null,
+ "startedAt": "2026-11-11T03:34:17",
+ "endedAt": "2026-11-11T03:44:00",
+ "dateBasis": {
+  "field": "pipelineRunEndtime",
+  "value": "2026-11-11T03:44:00",
+  "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+ },
+ "light": {
+  "vaRate": 1,
+  "bsRate": null,
+  "dims": [
+   "va"
+  ],
+  "track": "-"
+ },
+ "links": {
+  "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=209837578&projectId=300134&pipelineRunId=42886597422",
+  "detail": null,
+  "github": null
+ },
+ "tasks": [],
+ "cases": [],
+ "errorMessages": [],
+ "evidence": {
+  "files": [],
+  "missing": [],
+  "github": null
+ },
+ "counts": {
+  "tasks": 0,
+  "testTasks": 0,
+  "logTasks": 0,
+  "buildTasks": 0,
+  "cases": 0,
+  "errorMessages": 0,
+  "evidenceFiles": 0
+ },
+ "verdict": {
+  "category": "success",
+  "text": "执行成功",
+  "confidence": 1.0,
+  "level": "高",
+  "basis": [
+   "运行状态 FAILED，任务未失败，无需根因分析"
+  ]
+ },
+ "suggestions": [],
+ "analysis": {
+  "status": "na",
+  "rootCause": null,
+  "advice": null,
+  "cites": [],
+  "updatedAt": null,
+  "source": null
+ }
+}

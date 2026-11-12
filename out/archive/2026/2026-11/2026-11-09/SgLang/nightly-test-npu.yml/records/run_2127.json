@@ -165,18 +165,18 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
-    "rootCause": "本次只有 1 个 job（multi-node-poc 的 deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa）参与日志留存，16 个 job 里也只它失败：日志尾部是「Traceback (most recent call last):」（github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L505）→「##[error]Error: failed to run script step:」→「✗ exit code: 1」（同文件 L523、L524）→「Process completed with exit code 1.」→「Executing the custom container implementation failed.」（同文件 L548、L549）。\n\n失败链与 #2126 完全一致：同一 deepseek_v4_pro_0813 用例、同一组五行、同样在用例执行前就非零退出，因此更像这两个 multi-node-poc 用例共用的启动脚本在拉起阶段就中断，而不是用例内部的精度或性能问题——本记录 cases=0、total/pass/fail 全为 None，没有一条用例结果。\n\n已排除的干扰项：与 #2126 相隔约 1 小时（02:15 起跑）仍以同一形态失败，可排除偶发资源竞争；Traceback 头行下没有正文，也不能归因到某个具体代码异常。",
-    "advice": "把它和 #2126 当成同一条主线处理，不要分两次排查：先确认这两个用例是否共用同一份 multi-node-poc 启动脚本与镜像 tag，共用则只需修一处\n\n然后单跑 deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa，把启动脚本的异常正文打出来；若日志仍只有 Traceback 头行，说明异常在子进程里被吞掉，需要在启动脚本里改为捕获并打印完整栈\n\n若确认是启动脚本的依赖或环境差异，优先与能够通过的 multi-node-poc 用例逐项比对启动参数\n\n验证方式：重跑后要求该用例进入执行阶段、日志里有完整异常正文与用例结果，不再出现 exit 1 与容器实现执行失败",
+    "keyError": "##[error]Error: failed to run script step:",
+    "rootCause": "多机 pod 没全部就绪：prefill 4 个节点已就绪，剩下一个 decode pod 以 Succeeded 状态退出，脚本一直在等最后一个节点，等不到就超时判失败。与 #2126 是同一现象，属容器侧提前退出，不是用例代码问题。",
+    "advice": "同 #2126 的处理：查那个提前退出的 decode pod 的 k8s 事件与容器日志，按退出原因调大资源上限或修启动脚本，然后重跑。\n\n验证方式：重跑后 8 个节点全部就绪并进入推理阶段，日志不再出现在等节点后超时收尾，即算通过。",
     "cites": [
-      "github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L505",
-      "github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L523",
-      "github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L524",
-      "github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L549"
+      "github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L502",
+      "github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L523-L524"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L523-L524",
+    "updatedAt": "2026-11-11 17:48:32",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 3,
     "source": "agent"
   }
 }

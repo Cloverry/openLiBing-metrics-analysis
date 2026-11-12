@@ -835,21 +835,21 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "keyError": "[2026-11-08 16:13:50] Scheduler hit an exception: Traceback (most recent call last):",
-        "rootCause": "26 个 job、12 个失败、跨度近 9 小时（11-09 00:05:48 至 09:22:46），失败从服务进程层一路传导到 job 收尾层：nightly-1-npu-a3 在日志时间 16:13:50（日志为 UTC）先报「Scheduler hit an exception: Traceback (most recent call last):」（github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1286），同文件 L1256 另有一条 Traceback，nightly-8-npu-a3 在 TP0 EP0 与 TP7 EP7 两个 rank 上各报一次同类调度器异常（github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt:L3085、L3128），随后 job 尾部以「##[error]Error: failed to run script step:」「✗ exit code: 255」（github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L18171、L18172）→「Process completed with exit code 1.」→「Executing the custom container implementation failed.」（同文件 L18197）收尾，nightly-perf 与 multi-node-poc 的 deepseek_v4_flash_w8a8_1p1d_16p 也是同一组五行。\n\n按成因可归两类：第一类是服务侧调度器崩栈，同一 job 内多个 TP/EP rank 同时抛 Scheduler 异常、时间紧接 255 退出，失败是一个服务实例在多卡进程上一起崩；第二类是 runner 容器层收尾失败（L18197），它出现在 255 之后，属于外层连带。因此更像镜像内服务进程启动即崩导致整批 nightly 用例无结果，而非某个用例精度或性能不达标——12 个失败 job 的 total/pass/fail 全部为 None、cases=0，一条用例断言都没落下来。\n\n另有一条全批次重复的干扰项：「OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses'」（github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1108、L1437；github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt:L1380），它只把 /v1/responses 接口关掉，日志里没有它直接中断任务的证据，因此不作为本次失败主因，但它是镜像内 openai 版本与代码不匹配的确定问题，需单独修。",
-        "advice": "先收口范围：只复跑 nightly-1-npu-a3 与 nightly-8-npu-a3 这两个含 Scheduler 异常的任务，确认 exit 255 是否为调度器崩栈的连带结果；若这两个任务单跑仍崩，则其余 10 个 job 的失败可直接按同因合并处理，不必逐个排查\n\n同时把镜像内 openai 依赖固定到包含 ResponseFunctionShellToolCall 的版本，消除全批次重复的 OpenAIServingResponses ImportError，避免 /v1/responses 长期处于 disabled 状态掩盖问题\n\n若单跑不崩，再把 12 个失败 job 按节点分组对比 runner 与镜像 digest，重点查 255 退出前该节点上是否发生过容器重启或资源回收\n\n给 nightly 入口加容器拉起前置自检（镜像可拉取、脚本首行依赖可导入），容器失败时把 runner 侧的容器事件写进 job 输出，替代现在只有一句「Executing the custom container implementation failed」\n\n验证方式：重跑该 workflow，要求 nightly-1、nightly-8 两个 job 正常结束、日志中不再出现 Scheduler hit an exception，其余 job 的用例结果（total/pass/fail）能正常落盘，/v1/responses 不再报 ImportError",
+        "keyError": "RuntimeError: Malloc pin memory failed, host out of memory",
+        "rootCause": "26 个 job 里 12 个失败。其中 3 个精度 job 无失败日志（仅存一份 1/1 通过），定不了因；一条汇总 job 是结果表生成连带失败；剩下 8 个归三类，都在环境或性能侧，不是用例代码缺陷。\n\n第 1 类（3 个 job，共性：宿主 pinned 内存被占满）：任务申请 pinned 内存即失败，一个要近 10 GB 大块，另一个只要几十字节也报不足，随后调度进程集体退出，perf 那条被强杀。属宿主 pinned 内存被其他进程占住未回收的资源隔离问题。\n\n第 2 类（4 个 job，共性：pod 提前退出）：四个多机用例里总有一个 prefill/decode pod 在其它节点就绪后以 Succeeded 结束，脚本等不到启动特征、超时判失败。pod 被正常终止，更像启动脚本或资源配额提前收掉。\n\n第 3 类（1 个 job，共性：性能阈值不达标）：kimi_k3 那条 32 卡 decode 用例实测 40.1，超 31.0 上限，重试仍失败，属性能回归。",
+        "advice": "pinned 内存那类先与本机其它推理任务错开、清掉残留内存，KV cache 块按卡数下调；pod 提前退出那类按 events 调资源上限或修启动脚本；kimi_k3 那条对比上一版镜像 mean_tpot，退化即回滚。\n\n验证方式：重跑后 8 个失败 job 全部转通过。",
         "cites": [
-          "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1286",
-          "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L18171",
-          "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L18172",
-          "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L18197",
-          "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt:L3085",
-          "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt:L3128",
-          "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1108"
+          "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1285",
+          "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt:L3124",
+          "github_logs/gh_42498125758/17_nightly-perf-2-npu-a3 _ nightly-perf-2-npu-a3.txt:L10195",
+          "github_logs/gh_42498125758/6_multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2,~83db7b.txt:L489",
+          "github_logs/gh_42498125758/1_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_ou~afd684.txt:L17101"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1285",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 4,
         "source": "agent"
       }
     },
@@ -971,17 +971,17 @@
       "analysis": {
         "status": "done",
         "keyError": "Found exist sglang job, sleeping for 30 seconds...",
-        "rootCause": "这个 job 根本没跑到用例：00:53:36 启动、01:12:02 结束（19 分钟），日志 1033 行主体是等待循环——先把「No sglang job exist, start test case...」打出来（github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L295），随后连续 5 次打印「Found exist sglang job, sleeping for 30 seconds...」（同文件 L993、L1003、L1032），再次打印「No sglang job exist」之后立刻进入「Post job cleanup.」与「Cleaning up orphan processes」，job 就这样收尾了；本记录 tasks=2、cases=0、errorMessages=0，一条用例结果都没有。\n\n推断更像同一 sglang 服务实例被同批次其它 job 占着、本 job 在等待期被清理结束，而非用例执行失败——如果真的跑过用例，cases 里应有用例名与阈值判定结果，实际是 0；日志里也没有任何断言或 Traceback，说明失败发生在执行之前。\n\n已排除的干扰项：另一个任务 check-all-jobs 在平台侧日志 404，因此「谁占用了服务、占用了多久」无法从本次证据确认，本条只定性为执行前的服务等待与调度问题。",
-        "advice": "先把无界等待改成有界等待：每次 sleeping 时打印占用者 job 名、已等待时长与剩余超时，超时直接失败并输出占用关系，用这些字段替代现在只有一句 sleeping for 30 seconds 的日志\n\n然后查夜间并发：同一时间段有多个 multi-node-poc 争抢同一个 sglang 服务实例，按用例分组串行或按服务实例分池，避免 job 在等待期被清理\n\n再补证据：为 check-all-jobs 打开日志留存（当前 404），否则这类「未执行即结束」的记录永远只能定性为 unknown\n\n验证方式：重跑同一批夜间用例，要求每个 job 日志里能看到占用者与被占用时长、没有任何 job 因等待被清理结束，且用例结果能正常落盘",
+        "rootCause": "用例没真正跑起来，整条流水线是被取消收尾的：启动前要先排到集群资源，脚本连着五轮都在等集群上别人占着的 sglang job 释放，刚确认可以开跑就被清理结束，任务随即以取消状态退出。更像是等待期间被上游中止或等待超时回收，不是用例失败。",
+        "advice": "先确认这次取消是人工中止还是等待超时；重跑时避开集群上其它 sglang 多机 job 的占用时段，并把资源等待时间调大，避免刚拿到资源就被清理。\n\n验证方式：重跑后日志能走到用例执行阶段并产出结果、不再出现等锁后被清理，即算恢复。",
         "cites": [
-          "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L295",
           "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L993",
-          "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1003",
-          "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1032"
+          "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1003-L1004"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L993",
+        "updatedAt": "2026-11-11 17:48:32",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 3,
         "source": "agent"
       }
     },
@@ -1219,19 +1219,18 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
-        "rootCause": "16 个 job 里 2 个 multi-node-poc 失败，两个不同模型的用例是同一形态：deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa 的日志尾部依次是「Traceback (most recent call last):」（github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L503）→「##[error]Error: failed to run script step:」→「✗ exit code: 1」（同文件 L521、L522）→「##[error]Process completed with exit code 1.」→「Executing the custom container implementation failed.」（同文件 L546、L547），deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa 的日志出现同一组五行（github_logs/gh_42503749318/128805033836_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L505、L549）。\n\n推断更像用例启动阶段的脚本层失败、用例未真正进入精度或性能判定，而不是断言不通过：两个任务的 total/pass/fail 全为 None、cases=0，说明一条用例结果都没产出；如果真是精度不达标，至少会落一条 failed 用例和断言原文。\n\n已排除的干扰项：Traceback 只有头行、没有异常正文，不能据此判定为代码 bug；末尾的容器实现执行失败出现在 exit 1 之后，是 runner 外层收尾的连带结果，不是独立故障。同一用例 pro_0813 在约一小时后（#2127）以完全相同形态再次失败，说明这不是单次抖动。",
-        "advice": "先定位脚本层停在哪一行：用同一 commit 单跑 deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa 这一个用例，并把启动脚本的 set -x 或每一步的时间戳打开，让 Traceback 后面的异常正文落到日志里——现在缺的正是这一段\n\n拿到正文后按两类分开处理：若是拉起服务时的依赖/配置异常（端口、ranktable、镜像内库版本），改启动脚本并与其他能跑通的 multi-node-poc 用例比对差异；若是用例代码异常，直接修用例\n\n同时把 deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa 一起核对，它在本轮与 #2127 都失败，优先确认这两个用例是否共用同一份启动模板\n\n验证方式：重跑该 workflow，要求两个 multi-node-poc 用例至少进入用例执行并落出 total/pass/fail，日志中不再出现只有头行的 Traceback 与 exit 1",
+        "keyError": "##[error]Error: failed to run script step:",
+        "rootCause": "两个 job 都卡在多机 pod 全部就绪这一步：prefill 或 decode 里总有一个 pod 还没起来就以 Succeeded 状态结束了，脚本等不到预期的启动特征，监控超时后判失败，失败时另一侧节点其实已经就绪。pod 是正常退出的，更像是容器启动脚本或资源配额把它提前收掉，与用例代码无关。",
+        "advice": "先看那两个提前退出的 pod 的 k8s 事件和它自己的容器日志，区分是被 OOM/配额限制还是启动脚本自行退出；对应调大该 pod 的内存或资源上限后重跑。\n\n验证方式：重跑这两个多机用例，prefill、decode 全部节点就绪并进入实际推理阶段，即算通过。",
         "cites": [
-          "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L503",
-          "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L521",
-          "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L522",
-          "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L547",
-          "github_logs/gh_42503749318/128805033836_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L505"
+          "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L500",
+          "github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L521-L522"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42503749318/128801862265_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L521-L522",
+        "updatedAt": "2026-11-11 17:48:32",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 3,
         "source": "agent"
       }
     },
@@ -1390,18 +1389,18 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
-        "rootCause": "本次只有 1 个 job（multi-node-poc 的 deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa）参与日志留存，16 个 job 里也只它失败：日志尾部是「Traceback (most recent call last):」（github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L505）→「##[error]Error: failed to run script step:」→「✗ exit code: 1」（同文件 L523、L524）→「Process completed with exit code 1.」→「Executing the custom container implementation failed.」（同文件 L548、L549）。\n\n失败链与 #2126 完全一致：同一 deepseek_v4_pro_0813 用例、同一组五行、同样在用例执行前就非零退出，因此更像这两个 multi-node-poc 用例共用的启动脚本在拉起阶段就中断，而不是用例内部的精度或性能问题——本记录 cases=0、total/pass/fail 全为 None，没有一条用例结果。\n\n已排除的干扰项：与 #2126 相隔约 1 小时（02:15 起跑）仍以同一形态失败，可排除偶发资源竞争；Traceback 头行下没有正文，也不能归因到某个具体代码异常。",
-        "advice": "把它和 #2126 当成同一条主线处理，不要分两次排查：先确认这两个用例是否共用同一份 multi-node-poc 启动脚本与镜像 tag，共用则只需修一处\n\n然后单跑 deepseek_v4_pro_0813_w4a8_1p1d_32p_gpqa，把启动脚本的异常正文打出来；若日志仍只有 Traceback 头行，说明异常在子进程里被吞掉，需要在启动脚本里改为捕获并打印完整栈\n\n若确认是启动脚本的依赖或环境差异，优先与能够通过的 multi-node-poc 用例逐项比对启动参数\n\n验证方式：重跑后要求该用例进入执行阶段、日志里有完整异常正文与用例结果，不再出现 exit 1 与容器实现执行失败",
+        "keyError": "##[error]Error: failed to run script step:",
+        "rootCause": "多机 pod 没全部就绪：prefill 4 个节点已就绪，剩下一个 decode pod 以 Succeeded 状态退出，脚本一直在等最后一个节点，等不到就超时判失败。与 #2126 是同一现象，属容器侧提前退出，不是用例代码问题。",
+        "advice": "同 #2126 的处理：查那个提前退出的 decode pod 的 k8s 事件与容器日志，按退出原因调大资源上限或修启动脚本，然后重跑。\n\n验证方式：重跑后 8 个节点全部就绪并进入推理阶段，日志不再出现在等节点后超时收尾，即算通过。",
         "cites": [
-          "github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L505",
-          "github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L523",
-          "github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L524",
-          "github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L549"
+          "github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L502",
+          "github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L523-L524"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42509098847/128826435180_multi-node-poc (deepseek_v4_pro_0813_w4~e37fe4.txt:L523-L524",
+        "updatedAt": "2026-11-11 17:48:32",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 3,
         "source": "agent"
       }
     },
@@ -1519,14 +1518,18 @@
       "analysis": {
         "status": "done",
         "keyError": null,
-        "rootCause": "运行了 1 小时 25 分钟（12:48:48 至 14:13:42）后 FAILED，但两个失败任务的全部证据都取不到：multi-node-mix-poc 的 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix 与 check-all-jobs 在平台侧均为 404_not_retained，归档侧 0 份证据文件、0 条 errorMessages、cases=0，任务字段的 logFile 与 logLines 都是「-」（records/run_2128.json）。\n\n能确认的只有失败位置在用例执行期间而不是入口：tasks=2、testTasks=0，运行持续了一个多小时才结束，说明 job 是真正跑起来后失败的；但失败步骤、报错原文、失败用例全部不在证据范围内，因此更像日志保留期或读取权限导致证据缺失，而不是可以归因的组件缺陷。\n\n已排除的干扰项：同一天 19:25 的 #2129 用同一 displayTitle（kimi_k3 的 128k decode prefix 用例）复跑仍然失败并留下了日志，说明该用例当天确实存在稳定问题，但本条自身证据不足以指认具体原因，只能与 #2129 合并判断。",
-        "advice": "先补证据链：把该仓库 job 日志的保留期延长到覆盖完整夜间周期，并确保 check-all-jobs 这类汇总任务一定留存日志，消除「失败但全 404」的记录\n\n在与 #2129 相同的 commit 下复跑 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix 并落盘用例级日志，再判定失败属于性能阈值、精度还是环境\n\n在采集侧把「FAILED 且 missing>0」的记录单独标记为证据缺失，避免它被当成用例失败计入可用度统计\n\n验证方式：复跑后要求该 job 的日志能正常下载（不再 404）、errorMessages 非空，并能给出用例级结论",
+        "rootCause": "跑了 1 小时 25 分钟才失败，但两个任务（kimi_k3 32 卡 128k decode 用例、check-all-jobs 汇总）的日志在平台侧都取不到，返回 404，归档里 0 份证据、0 条错误信息，所以定不了具体失败环节；从时长看 job 是真跑起来之后才失败的，不是入口就挂。同一天晚上 19:25 的 #2129 用同一个用例复跑留下了日志，结论是性能阈值不达标，本条可参照那条一起看。",
+        "advice": "先把这条 job 的日志留存补上：延长该仓库 job 日志的保留期，并确认采集侧账号有下载日志的权限，避免再出现「失败但日志全 404」的记录。\n\n验证方式：重跑后该 job 的日志能正常下载、错误信息不为空。",
         "cites": [
-          "records/run_2128.json"
+          "records/run_2128.json:L24-L25",
+          "records/run_2128.json:L49-L55",
+          "records/run_2128.json:L61-L67"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "无 keyError",
+        "updatedAt": "2026-11-11 17:53:58",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 3,
         "source": "agent"
       }
     },
@@ -1701,18 +1704,19 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
-        "rootCause": "15 个 job 里只有 1 个失败，就是 multi-node-mix-poc 的 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix，失败链从用例执行中期就开始了：日志中段 L15452 先出现一条「│ exit code: 1」，说明 job 内已经有子步骤以 1 退出（github_logs/gh_42608919924/129131958688_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15452），到尾部才依次出现「Traceback (most recent call last):」（L17136）→「##[error]Error: failed to run script step:」→「✗ exit code: 1」（L17213、L17214）→「Process completed with exit code 1.」与「Executing the custom container implementation failed.」（L17238、L17239）。\n\n推断更像用例脚本内部某个子步骤先失败、再由外层脚本收尾放大成 job 失败，而不是单次性能抖动：同一天 12:48 的 #2128 用同一 displayTitle 的 kimi_k3 用例运行 85 分钟后失败（证据 404），19:25 本条又失败，两个小时内两次落在同一用例上；但本轮证据里没有任何 tpot 或阈值断言行，如果真是性能回退，应能看到形如「36.1 not less than or equal to 31.0」的断言原文，实际没有，因此不能直接按性能劣化定性。\n\n已排除的干扰项：L15335 的「OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses'」（github_logs/gh_42608919924/129131958688_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15335）只关闭 /v1/responses 接口，同批次其它跑完的 job 里也大量出现，与本次退出无直接关系。",
-        "advice": "先补判定依据：把 retry 次数、实测 tpot 与 tpot 基线打进 job 输出，并在性能断言失败时打印「实测值 vs 阈值」的原文，先分清是阈值不达标还是脚本异常退出\n\n同时查 L15452 那条子步骤退出：它是本 job 最早的非零退出点，向上找它所属的子命令（服务启动校验、吞吐采样或统计汇总），把该子命令的 stderr 单独落盘——现在 Traceback 只有头行，异常正文被吞掉了\n\n若确认为稳定劣化，再按 decode 阶段拆解单卡耗时（overlap schedule、EPLB、prefix cache 命中率、w4a8 量化档），区分功能代价与性能回退，并把性能用例改为多次取样取中位数判定，减少单次抖动\n\n验证方式：重跑该 job，要求日志中同时出现实测 tpot、阈值与断言结果，kimi_k3 用例能给出通过/不通过的明确结论，不再出现只有头行的 Traceback",
+        "keyError": "AssertionError: 36.1 not less than or equal to 31.0",
+        "rootCause": "15 个 job 里只失败了一个：kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix 这个 128k 纯 decode 低时延用例，实测 TPOT 36.1 超过 31.0 的上限，重试到上限（整条用例跑了 2629 秒）仍不达标，最终判「测试结果 FAILED」。是性能不达标，不是脚本报错或环境异常，同批 #2124 的同类用例也是同一个阈值不达标。",
+        "advice": "按性能回归查：相同 commit 与 w4a8 量化档复跑该用例，逐项对比 decode 阶段 TPOT 与基线，重点看 overlap 调度、EPLB 与 prefix cache 命中率。\n\n验证方式：重跑后 TPOT 不高于 31.0ms，或定位到劣化项给出回退点。",
         "cites": [
-          "github_logs/gh_42608919924/129131958688_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15452",
-          "github_logs/gh_42608919924/129131958688_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L17136",
-          "github_logs/gh_42608919924/129131958688_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L17213",
-          "github_logs/gh_42608919924/129131958688_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15335"
+          "github_logs/gh_42608919924/129131958688_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L17164",
+          "github_logs/gh_42608919924/129131958688_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L17186-L17193",
+          "github_logs/gh_42608919924/129131958688_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L17213-L17214"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42608919924/129131958688_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L17164",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 4,
         "source": "agent"
       }
     },
@@ -1878,16 +1882,17 @@
       "analysis": {
         "status": "done",
         "keyError": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
-        "rootCause": "失败停在容器拉起这一层，用例代码根本没进去：整个 job 日志只有 335 行，第一条错误行就是「##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.」（github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L272），之后才是「##[error]Error: failed to run script step:」与「✗ exit code: 1」（同文件 L301、L302）、「##[error]Process completed with exit code 1.」（L304）。\n\n推断更像 self-hosted runner 侧容器运行时或镜像拉起失败，而不是 glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms 这个用例本身有问题：容器失败行出现在脚本报错之前，是上游动作先失败；日志里没有用例名、没有 Python Traceback、也没有 pod 事件，说明容器内的进程从未启动。\n\n已排除的干扰项：另一个任务 check-all-jobs 在平台侧 404 未留存，只能依据 jobs 元数据（conclusion、时长、失败步骤）定性，本条置信度因此只有中；同一批次 #2133 也出现同一句容器实现失败，指向 runner 层共性问题而非单个用例。",
-        "advice": "先按 runner 容器层排查，不要先动用例：核对该 self-hosted runner 的容器运行时与镜像能否正常拉起，并与同批次能跑通的节点横向比对运行时版本、磁盘与镜像拉取结果\n\n把 runner 侧的容器事件写进 job 输出：镜像拉取结果、容器启动失败原因、运行时退出码，用这些替代现在唯一的一句容器实现失败\n\n若确认是镜像拉取慢或超时，给镜像预拉取与本地缓存加策略；若是运行时异常，先恢复该节点再重跑，并把节点从夜间调度池摘除\n\n验证方式：重跑该 job，要求日志出现容器启动成功的记录、glm_5_3 用例能进入执行并落出用例结果，不再出现容器实现执行失败",
+        "rootCause": "失败停在拉起用例容器这一步：k8s 启动脚本 11:44:06 起来后整整 15 分半没有任何输出（只有 3 行 deprecation 告警，连一条 pod 状态行都没有），11:59:42 直接判「容器实现执行失败」，随后清理脚本、脚本步骤 exit 1，glm_5_3 这个用例一次都没进入执行。同批 #2133 是同一句错误、且能看到 decode-0 一直 Pending 8 分半后被收掉，两条指向同一类问题：用例的 pod 起不来，容器步骤被超时收掉。",
+        "advice": "先查 runner 侧容器运行时状态与镜像拉取是否正常；并让 k8s 启动脚本在长时间无输出时打印 pod 状态与 events，替代现在静默 15 分半。\n\n验证方式：重跑后日志里能看到 pod 状态行，用例进入执行阶段。",
         "cites": [
-          "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L272",
-          "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L301",
-          "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L304"
+          "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L265-L272",
+          "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L301-L302"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L265-L272",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 4,
         "source": "agent"
       }
     },
@@ -2005,14 +2010,18 @@
       "analysis": {
         "status": "done",
         "keyError": null,
-        "rootCause": "这是启动即失败的运行：20:51:29 开始、20:51:31 结束，只有 2 秒就判 FAILED，两个任务 set-image-config（入口镜像配置）与 check-all-jobs 在平台侧日志均为 404_not_retained，归档侧 0 份证据文件、0 条 errorMessages、cases=0（records/run_2132.json）。\n\n推断更像工作流入口步骤 set-image-config 在镜像或参数配置阶段就失败、并导致后续 job 没有日志，而不是用例执行失败：2 秒的时间窗口连服务都拉不起来，失败发生在容器之前——本记录里也确实没有出现 #2133 那句容器实现失败，说明它停得更早。\n\n已排除的干扰项：同一秒（20:51:29）该工作流还触发了另一条运行 #2133（runId 42620485286），那条表现为容器层失败，两条更像是同一时间点的重复触发与入口配置冲突，而不是两次独立的技术故障。",
-        "advice": "优先给入口步骤 set-image-config 打开日志留存，这一步失败会连带后续 job 全部无日志，现象正是「2 秒失败 + 全部 404」，不修留存则每晚都会重复出现这类无法归因的记录\n\n在该工作流入口增加镜像配置与夜间范围参数的合法性校验，配置错误在上游就拦下来并保存失败时的 job 元数据快照\n\n同时排查 20:51:29 的重复触发：核对触发源（定时、push、手动）与并发策略，避免同一工作流在同一秒起跑两条运行\n\n验证方式：修好后重跑，要求 set-image-config 有可下载日志、运行不再 2 秒即失败，该工作流单次触发只产生一条运行",
+        "rootCause": "启动即失败：20:51:29 开始、20:51:31 结束，2 秒就判 FAILED；入口步骤 set-image-config 与 check-all-jobs 的日志平台侧全是 404，15 个 job 也没有一个记到失败，说明运行在容器起来之前就结束了，属入口配置或触发阶段的问题。同一秒还起了另一条运行 #2133，更像同一工作流被重复触发。",
+        "advice": "先给入口步骤 set-image-config 打开日志留存，再核对 20:51:29 那次的触发源与并发策略，避免同一工作流同一秒起两条运行。\n\n验证方式：修好后单次触发只产生一条运行，且 set-image-config 有可下载的日志。",
         "cites": [
-          "records/run_2132.json"
+          "records/run_2132.json:L49-L55",
+          "records/run_2132.json:L63-L67",
+          "records/run_2132.json:L85-L96"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "无 keyError",
+        "updatedAt": "2026-11-11 17:53:58",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 3,
         "source": "agent"
       }
     },
@@ -2150,14 +2159,17 @@
       "analysis": {
         "status": "done",
         "keyError": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
-        "rootCause": "整份日志 588 行，唯一的错误行是「##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.」（github_logs/gh_42620485286/129171078482_multi-node-poc (deepseek_v4_flash_0731_~ff27a8.txt:L523），既没有脚本步骤失败行，也没有 Traceback 或用例名，说明失败在容器拉起阶段就被截断，deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap_fia_unset 这个用例一次都没跑起来（本记录 tasks=2、cases=0）。\n\n推断更像 runner 容器层问题而不是 overlap-schedule 配置问题：本次证据里没有任何与 overlap、fia_unset 相关的参数校验输出或部署报错，失败点纯粹在容器拉起；同一工作流在 20:51:29 同一秒还触发了另一条运行 #2132（runId 42620484793），那条 2 秒即失败且两个任务全部 404，两条记录叠加起来更像该时间点整条工作流的调度与容器环境一起异常。\n\n已排除的干扰项：check-all-jobs 平台侧 404，只能依据 jobs 元数据定性；上一轮关于 decode pod 长时间 Pending 的说法在本轮证据行里没有对应内容，不能沿用。",
-        "advice": "先要 pod 侧证据：取该 job 对应 decode pod 的 describe 与 events，确认是资源不足、亲和性不满足还是镜像拉取超时，把结论回写进任务日志\n\n再把 pod 等待改成带明确超时的监控，超时时打印 pod events 与最近一次调度失败原因，替代现在只有一句容器实现失败\n\n同时核对 20:51:29 这个时间点的触发关系：#2132 与 #2133 同一秒起跑，先确认是否工作流被重复触发、入口配置是否冲突，再看容器层问题\n\n验证方式：重跑后要求该用例进入执行阶段、日志中出现容器启动与 pod 调度记录，且同一工作流不再出现同一秒的重复触发",
+        "rootCause": "用例的 decode-0 这个 pod 从 12:54:25 建起来到 13:03:00 一直是 Pending（日志里 103 条 status: Pending，每 5 秒一条），始终没调度起来，13:03:04 容器步骤被判失败并清理，deepseek_v4_flash 的 overlap 用例一次都没跑起来。一直 Pending 说明 pod 没能被调度成功（资源不够或镜像拉取未完成），日志里没有 events，无法再细分，但不是用例代码的问题。",
+        "advice": "取该 decode pod 的 describe 与 events，确认是 NPU 资源不足、亲和性不满足还是镜像拉取超时；并给 pod 等待加超时，超时就打印 events。\n\n验证方式：重跑后 decode-0 能在几分钟内进入 Running。",
         "cites": [
-          "github_logs/gh_42620485286/129171078482_multi-node-poc (deepseek_v4_flash_0731_~ff27a8.txt:L523"
+          "github_logs/gh_42620485286/129171078482_multi-node-poc (deepseek_v4_flash_0731_~ff27a8.txt:L420-L422",
+          "github_logs/gh_42620485286/129171078482_multi-node-poc (deepseek_v4_flash_0731_~ff27a8.txt:L518-L523"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42620485286/129171078482_multi-node-poc (deepseek_v4_flash_0731_~ff27a8.txt:L518-L523",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 4,
         "source": "agent"
       }
     }

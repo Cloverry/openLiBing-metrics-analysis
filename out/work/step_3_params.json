@@ -1,103 +1,33 @@
 {
  "test": [],
- "log": [
-  {
-   "key": "boostkit|Bigdata",
-   "pipeline": "Bigdata",
-   "pipelineName": "Nightly-CI-Component-pipeline_Bigdata",
-   "projectId": 300059,
-   "pipelineId": "a74a64d931f34c98bc726e5ea599f8a3",
-   "rid": "36146a33b2ce44e08d0b6f12bc1c1e23",
-   "rn": 11,
-   "st": "10-08 10:04",
-   "jobId": "9dc4eb132ab440b8b52fcf8986df4971",
-   "jobName": "Build_Gluten",
-   "stepIds": [
-    "60a19cdf907041628764b53c47e5cf56"
-   ],
-   "steps": [
-    {
-     "id": "60a19cdf907041628764b53c47e5cf56",
-     "name": "Build_Gluten",
-     "status": "FAILED",
-     "errMsg": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
-     "lastDispatchId": "849f259004dc4cbc93815e693568cc17",
-     "jobIdParam": "30880ad793e04de9bc793ecdb4fbbd7a"
-    }
-   ],
-   "jobErrMsg": "步骤Build_Gluten执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
-   "jobLastDispatchId": "837017a606a3428dbcd243804f9d7338",
-   "route": "log",
-   "isBuild": true,
-   "buildJobId": "30880ad793e04de9bc793ecdb4fbbd7a"
-  }
- ],
+ "log": [],
  "skipped": [
   [
-   "Ascend-CANN|shmem",
-   144,
-   "Test_shmem",
+   "Ascend-CANN|ops-cv",
+   173,
+   "Test_ops-cv",
    "BS_TRACK_NON_BUILD"
   ],
   [
-   "Ascend-CANN|shmem",
-   143,
-   "Test_shmem",
-   "BS_TRACK_NON_BUILD"
-  ],
-  [
-   "Ascend-CANN|ops-transformer",
-   167,
-   "Test_ops-transformer",
-   "BS_TRACK_NON_BUILD"
-  ],
-  [
-   "Ascend-CANN|shmem",
-   145,
-   "Test_shmem",
-   "BS_TRACK_NON_BUILD"
-  ],
-  [
-   "HPCKit|kuqcd",
-   202,
-   "Test_quqcd",
-   "BS_TRACK_NON_BUILD"
+   "openUBMC|openUBMC",
+   2449,
+   "prepare",
+   "RUNNING"
   ]
  ],
  "bsCleanRuns": [
   {
-   "key": "Ascend-CANN|shmem",
-   "rn": 144,
-   "rid": "ba1a1af3745e4d34880b78916b209766",
-   "st": "11-10 09:51",
+   "key": "Ascend-CANN|ops-cv",
+   "rn": 173,
+   "rid": "933d961d2a7144d98c124ce939d99002",
+   "st": "11-11 01:05",
    "status": null
   },
   {
-   "key": "Ascend-CANN|shmem",
-   "rn": 143,
-   "rid": "0ea45a231d7547cf87aa39e2d3571b41",
-   "st": "11-10 03:00",
-   "status": null
-  },
-  {
-   "key": "Ascend-CANN|ops-transformer",
-   "rn": 167,
-   "rid": "1cf0a09871cf488abd9c7aaaf7a4319a",
-   "st": "11-09 20:49",
-   "status": null
-  },
-  {
-   "key": "Ascend-CANN|shmem",
-   "rn": 145,
-   "rid": "96a91e4f3750433c9c0c23a1b5877f54",
-   "st": "11-10 17:00",
-   "status": null
-  },
-  {
-   "key": "HPCKit|kuqcd",
-   "rn": 202,
-   "rid": "3b55561e204d4486adc37b9f84403946",
-   "st": "11-10 00:31",
+   "key": "openUBMC|openUBMC",
+   "rn": 2449,
+   "rid": "e5f814f030eb4e5691d2f39289555c49",
+   "st": "11-11 22:51",
    "status": null
   }
  ],

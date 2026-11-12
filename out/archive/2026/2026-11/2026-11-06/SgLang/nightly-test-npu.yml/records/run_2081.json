@@ -645,17 +645,19 @@
   "analysis": {
     "status": "done",
     "keyError": "ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses'",
-    "rootCause": "该 run 共 26 个 job、8 个失败，构建 #2081 从 00:07:33 跑到 13:15:34（近 13 小时）记 FAILED；8 个失败 job 覆盖 a3 精度任务、五个 multi-node-poc 与一个 multi-node-mix-poc，外加汇总任务 check-all-jobs（records/run_2081.json）\n\n第一类（nightly-acc-2-npu-a3，依赖不匹配）：日志明确写出 [2026-11-05 16:13:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))，随后脚本步骤以 ✗ exit code: 255 退出（github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt:L986）\n\n第二类（multi-node-poc 与 mix-poc 六个任务）：只留下 │ exit code: 1 与 ✗ exit code: 1 两层，没有异常正文，无法判断具体失败点（同目录 9_multi-node-poc 系列日志 L578、L7157）\n\n第三类（check-all-jobs）：汇总任务在上游 7 个 job 失败后无法产出结果表，属连带失败\n\nopenai 包缺少 sglang 期望的符号，是典型的依赖版本不匹配：镜像里 openai 版本低于代码要求，服务初始化时 Responses API 被禁用、进程最终以 255 退出，因此第一类更像镜像依赖版本问题而非用例逻辑错\n\n已排除的干扰项：没有 pytest 汇总、没有 accuracy 断言与精度数值，说明这批失败都没跑到判定阶段；另外 18 个 job 通过，排除整体环境故障",
-    "advice": "先锁依赖：在镜像里把 openai 升到含 ResponseFunctionShellToolCall 的版本（或反向把 sglang 降到与当前 openai 匹配的版本），并在 requirements 里写死下界，避免这种符号缺失在夜间任务里反复出现\n\n第二类单独抓证据：六个 multi-node-poc/mix-poc 只留 exit code，建议在启动脚本里 set -x 并保留最后 50 行输出，否则这批任务永远只能停在「失败」两个字上\n\n汇总任务降噪：check-all-jobs 在上游失败时应输出「上游 N 个 job 失败」并置 skipped，不要自己再失败一次\n\n验证方式：重跑该 nightly，要求 8 个失败 job 全部转通过（或明确 skip）、check-all-jobs 正常产出结果表、run 结论为 success，且日志中不再出现 ResponseFunctionShellToolCall 的 ImportError",
+    "rootCause": "26 个 job 里 8 个失败，其中 nightly-acc-2-npu-a3 有明确报错：服务初始化时 import ResponseFunctionShellToolCall 失败，OpenAI Responses API 被禁用，脚本随后以 255 退出——镜像里的 openai 版本低于 sglang 代码要求。另外六个 multi-node-poc / mix-poc 只留了 exit code 1、没有异常正文，check-all-jobs 是它们的连带失败；18 个 job 通过，排除整体环境故障。",
+    "advice": "openai 升到含新 API 的版本、与 sglang 对齐并在 requirements 写下界；multi-node-poc 启动脚本加 set -x 留末 50 行输出。\n\n验证方式：重跑后 8 个 job 转通过或 skip，check-all-jobs 正常出表。",
     "cites": [
       "github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt:L986",
       "github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt:L3787",
       "github_logs/gh_42061473997/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt:L7157",
       "records/run_2081.json"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt:L986",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 5,
     "source": "agent"
   }
 }

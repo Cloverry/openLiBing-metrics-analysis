@@ -232,17 +232,19 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "keyError": "WARN [HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory",
-    "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2086 从 02:50:51 跑到 03:18:46 记 FAILED，失败任务仍是 multi-node-poc 的 deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa（records/run_2086.json）\n\n第一类（多 rank 同秒报同一句）：03:14:36.540596、540726、541321 三条 WARN 分别来自 [881-881]、[888-888]、[884-884] 三个 rank，内容完全一致，都是 libhcom.so 与 libhcom.so.0 打不开（github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L2625）\n\n第二类（脚本步骤退出）：日志随后收敛到 ✗ exit code: 1 与容器实现执行失败，中间没有 ERROR 级别的通信或段初始化报错（同文件 L6226、L6252）\n\n三个 rank 同时、同秒、同文本地缺同一个库，说明不是某个节点上的偶发挂载问题，而是这批机器的镜像里本来就没有 libhcom.so，或它所在目录不在 LD_LIBRARY_PATH 中，HYBM 建通信域失败后由脚本判退出，因此更像镜像/环境配置缺失，而非用例逻辑或精度问题\n\n与同日 #2085 对比：两次是同一个 job、同一台族机器，#2085 还叠加了 InitDramSegment 的 sdma 报错，本条只有 libhcom.so 一条线索，因此两条要分开归因，不能合并成一个结论\n\n已排除的干扰项：没有 pytest 汇总、没有 accuracy 断言、没有用例级失败记录，失败点在服务拉起阶段；另 14 个 job 通过，排除节点整体不可用",
-    "advice": "先补库：确认镜像构建脚本里是否应装 HCOM 通信库，缺则装上；若库已存在但不在默认搜索路径，把其目录写进 LD_LIBRARY_PATH 并在容器入口处 export，避免只在交互式 shell 里生效、到 CI 里就失效\n\n加载失败要给明确结论：HYBM 现在只打 WARN 就继续跑，最终以 exit code 1 收场，建议在 LoadLibrary 失败且该库为必需时直接给 ERROR 并带上是哪个库、期望路径、实际搜索路径，便于一次定位\n\n与 #2085 一起验证：同一天这台机器上两次失败都指向通信库与段初始化，修完镜像后两条一起重跑，避免只修一半\n\n验证方式：重跑该 nightly，要求 multi-node-poc（deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa）转通过、run 结论为 success，且日志中不再出现 Unable to open library [libhcom.so]",
+    "keyError": "RuntimeError: memcache_hybrid.DistributedObjectStore.init failed",
+    "rootCause": "失败的只有 multi-node-poc 的 deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa 一条用例。几个 rank 在同一秒都报 Unable to open library [libhcom.so]，随后构建 hybrid cache 存储后端时抛 memcache_hybrid.DistributedObjectStore.init failed，Scheduler 直接退出，用例没跑起来。根因是镜像里没有 HCOM 通信库，HYBM 分布式内存池建不起来；与同日 #2085 是同一个缺失，只是那条先卡在 DRAM 段 sdma 探测、这条先卡在对象存储初始化。",
+    "advice": "把 HCOM 通信库装进镜像，或把其目录写进 LD_LIBRARY_PATH；装完仍报对象存储初始化失败，再查 memcache_hybrid 的存储后端配置。\n\n验证方式：该 gpqa 用例进入压测并产出精度结果，日志不再报 libhcom 缺失。",
     "cites": [
       "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L2625",
-      "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L6226",
+      "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L5797",
       "records/run_2086.json"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L5797",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 5,
     "source": "agent"
   }
 }

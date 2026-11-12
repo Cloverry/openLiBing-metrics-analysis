@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>openLiBing指标分析</title>
+<title>流水线失败原因智能定位定界</title>
 <style>
 :root{
   --bg:#f6f7f9; --panel:#ffffff; --line:#e4e7ec; --line2:#eef0f3;
@@ -179,18 +179,26 @@ html,body{height:100%;overflow:hidden}
    数据变多时只在表格区内部滚动，滚动条留在表格里，不会跑到页面上。 */
 .wrap{height:calc(100vh - 24px)}
 .tbl-wrap{min-height:0}
-/* 表下口径说明 + 页脚（对齐旧报告版式）：不参与收缩，高度不够时优先压表格区而不是裁文字 */
-p.tnote{flex:0 0 auto;font-size:11.5px;color:#7c8698;line-height:1.75;margin:9px 0 0}
+/* 表下统计口径 + 页脚（对齐旧报告版式）：不参与收缩，高度不够时优先压表格区而不是裁文字；
+   口径是一条一个 li 的列表（见 CALIBER_JS），容器用 div 而不是 p */
+.tnote{flex:0 0 auto;font-size:11.5px;color:#7c8698;line-height:1.65;margin:9px 0 0}
 footer#foot{flex:0 0 auto;font-size:11.5px;color:#9aa3af;line-height:1.7;margin-top:7px;padding-top:8px;
   border-top:1px solid var(--line2)}
+/* 统计口径按条展示（一条一个 li）：首页是一屏定高的看板，所以两列铺开省高度，
+   不再像以前那样把几百字拼成一整条压在表格下面 */
+.tnote .tn-hd{font-size:11.5px;font-weight:600;color:#4a5668;margin:0 0 2px}
+.tnote ul.tn-list{list-style:none;margin:0;padding:0;columns:2;column-gap:26px}
+.tnote ul.tn-list li{margin:0 0 2px;padding-left:10px;text-indent:-10px;
+  break-inside:avoid;page-break-inside:avoid}
+.tnote ul.tn-list li b{color:#3b4a60;font-weight:600}
 </style>
 </head>
 <body>
 <div class="wrap">
   <span id="rule" hidden>按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）</span>
   <div class="hd">
-  <h1>openLiBing指标分析</h1>
-  <p class="meta" id="hsub">夜间流水线工程指标 · 口径：执行结束时间 · 数据源 out/archive/</p>
+  <h1>流水线失败原因智能定位定界</h1>
+  <p class="meta" id="hsub">夜间流水线失败根因 · 口径：执行结束时间 · 数据源 out/archive/</p>
 </div>
   <div class="toolbar" id="rf">
   <span class="lb">统计区间</span>
@@ -224,7 +232,7 @@ footer#foot{flex:0 0 auto;font-size:11.5px;color:#9aa3af;line-height:1.7;margin-
       <tbody id="tb"><tr><td colspan="6" class="loading">正在读取归档…</td></tr></tbody>
     </table>
   </div>
-  <p class="tnote" id="tnote"></p>
+  <div class="tnote" id="tnote"></div>
   <footer id="foot"></footer>
 </div>
 <div class="modal" id="mrec">
@@ -234,7 +242,7 @@ footer#foot{flex:0 0 auto;font-size:11.5px;color:#9aa3af;line-height:1.7;margin-
   </div>
 </div>
 <script>
-const WD_CAL = ["2026-11-06", "2026-11-09", "2026-11-10", "2026-11-11"];
+const WD_CAL = ["2026-11-06", "2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12"];
 
 /* ==== 公共日期筛选组件（唯一来源 lib/ui.py，口径 = 执行结束时间）==== */
 const RF_FIELD = "pipelineRunEndtime";
@@ -398,6 +406,50 @@ function rfIn(ymd){ const f=document.getElementById('rf-from').value, t=document
   return !!ymd && ymd >= f && ymd <= t; }
 function rfEsc(s){ return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
+
+/* ================= 统计口径（只在首页，按条展示） =================
+   纯口径、与取数无关，所以脚本一执行就填好，不用等归档数据回来。
+   每条 = <li><b>小标题</b>：说明</li>；唯一来源是本文件的 CALIBER_JS，二级页不再挂一份。 */
+function caliberItems(){
+  return [
+    ['统计区间',
+     '按流水线<b>执行结束时间</b>归属日期（GitHub 平台取 <span class="mono">run.updated_at</span>），'
+     + '结束时间落在所选区间内才计入；换区间即按新区间整体重算。'],
+    ['版本可用度（流水线）',
+     '<b>可用日 ÷ 区间法定工作日数</b>。可用日 = 当天有<b>执行成功</b>的运行，'
+     + '<b>并且该运行的测试用例通过率 100%</b>。'],
+    ['版本可用度（组件）',
+     '该组件各流水线版本可用度之和 ÷ 流水线条数（算术平均），'
+     + '不是 Σ可用日 ÷ Σ有运行日。'],
+    ['特例',
+     '（GitHub 平台流水线不看用例 100%；'
+     + 'vllm-ascend 的流水线只采集定时任务（schedule）触发的运行。）'],
+    ['区间内无执行记录',
+     '只有看板配置、一次都没跑过的流水线显示 <span class="mono">--</span>，'
+     + '不参与平均、不计入流水线条数、也不算「待分析流水线数」。'],
+    ['编译成功率',
+     'Σ编译通过 ÷ Σ编译次数；GitHub 平台不采集编译次数，显示 <span class="mono">--</span>。'],
+    ['区间重算与灯色',
+     '区间一变就按分子/分母重算（不是逐日比率取平均）；灯色不落库，'
+     + '按重算后的比率就地判档：版本可用度 &ge;90% 绿 / &ge;80% 黄 / 否则红，'
+     + '编译成功率 100% 绿 / &ge;95% 黄 / 否则红，区间内只出这一档。'],
+    ['待分析流水线数',
+     '该组件在区间内进入待分析集合、且对应维度重算后未达标的流水线条数，'
+     + '与看板「待分析」判定一致，不是失败次数。'],
+  ];
+}
+function caliberHTML(){
+  const items = caliberItems();
+  return '<div class="tn-hd">统计口径（' + items.length + ' 条）</div>'
+    + '<ul class="tn-list">'
+    + items.map(function(kv){ return '<li><b>' + kv[0] + '</b>：' + kv[1] + '</li>'; }).join('')
+    + '</ul>';
+}
+/* 页面脚本都在 body 末尾执行，容器已在 DOM 里 → 直接填一次（首页才有这份口径） */
+(function(){
+  const el = document.getElementById('tnote');
+  if (el) el.innerHTML = caliberHTML();
+})();
 
 /* ================= 首页：读归档 JSON，按执行结束时间区间聚合 ================= */
 /* 数据根：一律相对「当前文档」算，全程不出现域名也不写死站点根。
@@ -829,7 +881,8 @@ function prodRow(r, i, from, to){
     + '</tr>';
 }
 
-/* 表下口径说明 + 页脚：说明写清楚，避免「结果被挑战」，也给二级页同一份口径 */
+/* 表下统计口径 + 页脚：口径本体在 CALIBER_JS（按条展示，只在首页出现），
+   这里只负责「确认它已在位」+ 画页脚，避免两处文案各写一遍后走岔 */
 function paintNotes(docs, rows, from, to){
   let badVA = 0, badBS = 0, pipes = 0, comps = 0, red = 0;
   rows.forEach(function(r){
@@ -838,20 +891,7 @@ function paintNotes(docs, rows, from, to){
     if (r.vaLight === '红' || r.bsLight === '红') red += 1;
   });
   const note = document.getElementById('tnote');
-  const rule = document.getElementById('rule');
-  if (note) note.innerHTML =
-    '口径：<b>' + (rule ? rule.textContent : '') + '</b>，即流水线执行结束时间（GitHub <span class="mono">run.updated_at</span>）'
-    + '落在统计区间内才计入；<b>版本可用度（流水线）= 可用日 ÷ 区间法定工作日数</b>'
-    + '（当日存在任一条成功运行即算当天有可用版本；5 个工作日里只有 2 天可用 = 40%），'
-    + '<b>版本可用度（组件）= 各流水线版本可用度之和 ÷ 流水线条数</b>；'
-    + '<b>区间内没有任何执行记录的流水线（只有看板配置、一次都没跑过）显示 <span class="mono">--</span>，'
-    + '不参与上面的平均、也不计入「待分析流水线数」</b>；'
-    + '编译成功率 = Σ编译通过 / Σ编译次数；'
-    + '<b>统计区间一变即按新区间重算</b>（不是逐日比率取平均），'
-    + '灯色不落库、按重算后的比率就地判档（可用度 &ge;90% 绿 / &ge;80% 黄 / 否则红；'
-    + '编译成功率 100% 绿 / &ge;95% 黄 / 否则红），区间内只出这一档。'
-    + '「待分析流水线数」= 该组件在区间内进入待分析集合、且对应维度重算后未达标的流水线条数，'
-    + '与看板「待分析」判定一致，不是失败次数。';
+  if (note && !note.innerHTML) note.innerHTML = caliberHTML();
   const foot = document.getElementById('foot');
   if (foot) foot.innerHTML =
     '生成时间 <span class="mono">' + rfEsc(nz(IDX && IDX.generatedAt)) + '</span> ｜ '

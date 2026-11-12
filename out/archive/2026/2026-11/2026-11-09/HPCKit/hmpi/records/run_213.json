@@ -169,16 +169,18 @@
   "analysis": {
     "status": "done",
     "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
-    "rootCause": "构建 #213 从 01:01:55 跑到 01:11:50（约 10 分钟）记 FAILED，失败任务类型为测试任务；Test_hmpi 的 total=0、pass=0、fail=0，用例一条都没执行（records/run_213.json）\n\n第一类（用例仓拉取鉴权失败）：01:11:48.112 日志报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，紧接着脚本自己打印 [ERROR] git clone test_cases code fail，01:11:48.273 以 script returned exit code 1 退出，01:11:52 Finished: FAILURE（job_logs/28_hmpi_213_Test_hmpi.log:L138、L139、L140、L142）\n\n第二类（封装码不具备诊断价值）：job 与 step 层都只留了 步骤Test_hmpi执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}，真实原因完全在 clone 这一步\n\n因此失败在用例代码拉取环节：clone hpckit-autotest 时凭据无效或已过期，导致测试代码没下来、pytest 无法启动；这类问题是环境/凭据问题，不是被测组件 hmpi 的缺陷\n\n已排除的干扰项：total=0 与 10 分钟的短时长说明根本没进入用例执行；日志里没有任何编译错误或设备异常",
-    "advice": "先换有效凭据并复测：核对执行机上的 gitcode 凭证（token 是否过期、是否有该私有仓的读权限），这是本条唯一根因，修好后 clone 与用例执行应该立即恢复\n\n把凭据检查前置：在 clone 之前先做一次轻量鉴权探测（如 git ls-remote），失败时直接给「凭据无效」结论，而不是等 clone 报错再靠封装码收口\n\n同类批量排查：同批 kpex#142、kudnn#227、kupl#306、kuqcd#201 都是同一个仓库的同一句鉴权失败，建议一次改配置覆盖这五条流水线\n\n验证方式：重跑 hmpi 流水线，要求 git clone 成功、Test_hmpi 拉起用例并给出 total>0 的结果、任务通过率 100%",
+    "rootCause": "失败在用例代码拉取这一步：跑测试前要先 clone 用例库 hpckit-autotest，这一步就被 gitcode 拒了（鉴权失败），克隆脚本随即自己报错退出，用例代码没下来、pytest 根本没启动，所以 total/pass/fail 全是 0。执行机上的 gitcode 凭据失效——token 过期，或这个账号没有该私有仓的读权限——就是本条的唯一原因，不是被测组件 hmpi 的缺陷。",
+    "advice": "换掉执行机上的 gitcode 凭据（未过期、有 hpckit-autotest 读权限的 token）；同批 kpex#142、kudnn#227、kuqcd#201 一并覆盖。\n\n验证方式：重跑 hmpi，clone 成功、total 大于 0。",
     "cites": [
       "job_logs/28_hmpi_213_Test_hmpi.log:L138",
       "job_logs/28_hmpi_213_Test_hmpi.log:L140",
       "records/run_213.json"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 job_logs/28_hmpi_213_Test_hmpi.log:L138",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 4,
     "source": "agent"
   }
 }

@@ -144,14 +144,17 @@
   "analysis": {
     "status": "done",
     "keyError": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
-    "rootCause": "整份日志 588 行，唯一的错误行是「##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.」（github_logs/gh_42620485286/129171078482_multi-node-poc (deepseek_v4_flash_0731_~ff27a8.txt:L523），既没有脚本步骤失败行，也没有 Traceback 或用例名，说明失败在容器拉起阶段就被截断，deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa_overlap_fia_unset 这个用例一次都没跑起来（本记录 tasks=2、cases=0）。\n\n推断更像 runner 容器层问题而不是 overlap-schedule 配置问题：本次证据里没有任何与 overlap、fia_unset 相关的参数校验输出或部署报错，失败点纯粹在容器拉起；同一工作流在 20:51:29 同一秒还触发了另一条运行 #2132（runId 42620484793），那条 2 秒即失败且两个任务全部 404，两条记录叠加起来更像该时间点整条工作流的调度与容器环境一起异常。\n\n已排除的干扰项：check-all-jobs 平台侧 404，只能依据 jobs 元数据定性；上一轮关于 decode pod 长时间 Pending 的说法在本轮证据行里没有对应内容，不能沿用。",
-    "advice": "先要 pod 侧证据：取该 job 对应 decode pod 的 describe 与 events，确认是资源不足、亲和性不满足还是镜像拉取超时，把结论回写进任务日志\n\n再把 pod 等待改成带明确超时的监控，超时时打印 pod events 与最近一次调度失败原因，替代现在只有一句容器实现失败\n\n同时核对 20:51:29 这个时间点的触发关系：#2132 与 #2133 同一秒起跑，先确认是否工作流被重复触发、入口配置是否冲突，再看容器层问题\n\n验证方式：重跑后要求该用例进入执行阶段、日志中出现容器启动与 pod 调度记录，且同一工作流不再出现同一秒的重复触发",
+    "rootCause": "用例的 decode-0 这个 pod 从 12:54:25 建起来到 13:03:00 一直是 Pending（日志里 103 条 status: Pending，每 5 秒一条），始终没调度起来，13:03:04 容器步骤被判失败并清理，deepseek_v4_flash 的 overlap 用例一次都没跑起来。一直 Pending 说明 pod 没能被调度成功（资源不够或镜像拉取未完成），日志里没有 events，无法再细分，但不是用例代码的问题。",
+    "advice": "取该 decode pod 的 describe 与 events，确认是 NPU 资源不足、亲和性不满足还是镜像拉取超时；并给 pod 等待加超时，超时就打印 events。\n\n验证方式：重跑后 decode-0 能在几分钟内进入 Running。",
     "cites": [
-      "github_logs/gh_42620485286/129171078482_multi-node-poc (deepseek_v4_flash_0731_~ff27a8.txt:L523"
+      "github_logs/gh_42620485286/129171078482_multi-node-poc (deepseek_v4_flash_0731_~ff27a8.txt:L420-L422",
+      "github_logs/gh_42620485286/129171078482_multi-node-poc (deepseek_v4_flash_0731_~ff27a8.txt:L518-L523"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 github_logs/gh_42620485286/129171078482_multi-node-poc (deepseek_v4_flash_0731_~ff27a8.txt:L518-L523",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 4,
     "source": "agent"
   }
 }

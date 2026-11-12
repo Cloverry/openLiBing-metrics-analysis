@@ -185,16 +185,18 @@
   "analysis": {
     "status": "done",
     "keyError": "AssertionError: 工具产生误报,不应该有内存越界",
-    "rootCause": "Test_msot_nightly_smoke_debug 与 Test_msot_nightly_smoke_A3_debug 各 29 条用例、各跑出 28 通过 1 失败，两个任务都判失败，构建 #261 记 FAILED；两次失败是 mssanitizer 的同一个判据被触发，而不是两处独立缺陷（records/run_261.json）\n\n第一类（shmem allgather）：test_mssanitizer_support_shmem_allgather 的断言原文为「工具产生误报,不应该有内存越界 assert 'ERROR' not in …」，用例把「工具输出里出现 ERROR」直接当成越界结论；旧分析记录里这一条命中的 ERROR 来自 example 依赖缺失（缺 ml_dtypes，example 根本没跑起来），本次摘录只能看到被 pytest 截断的断言体，无法逐字复核（case_logs/case_0001.html）\n\n第二类（mc2_0002）：同一条断言在 test_mssanitizer_mc2_0002 上再次触发，结束位置是 '... \\ntest pass'，即输出尾部已经是 test pass，ERROR 出现在中间段的提示信息里（case_logs/case_0002.html）\n\n两类都不是越界本身：一条的表象是依赖缺失，一条的表象是提示文本被当成错误，共同点是判据只有「输出里有没有 ERROR」这一个布尔量，因此更像用例的断言写得太粗、把非越界输出误判成越界，而非算子真的存在非法访存\n\n已排除的干扰项：两个任务里其余 28 条同族 mssanitizer 用例全部通过，说明工具链本身可用；日志里没有 illegal read / illegal write 这类真实越界报告，也没有编译或驱动报错",
-    "advice": "先把断言收紧：不要用「输出里出现 ERROR」当越界判据，改为匹配 sanitizer 的结构化结论（illegal read、illegal write、越界地址区间），并把「跳过检测」「依赖缺失」两类提示显式归为 skip 或 env 失败，而不是 FAIL\n\n再补环境：镜像里补齐 ml_dtypes 等 example 依赖，并在用例前置检查里 assert 依赖可 import，缺依赖就直接 skip，避免把环境问题记成被测对象的问题\n\n失败时保留原文：把工具输出的完整 ERROR 段落连同上下文写进用例日志，现在 pytest 只留了一行截断的 assert 文本，连 ERROR 来自哪都看不出来\n\n验证方式：重跑 Test_msot_nightly_smoke_debug 与 Test_msot_nightly_smoke_A3_debug 各 29 条用例，要求两条 mssanitizer 用例转为 pass 或按预期 skip、任务退出码为 0，且日志中不再出现「工具产生误报」",
+    "rootCause": "两个 smoke 任务各 29 条用例、各挂 1 条 mssanitizer 用例，挂的原因是同一个判据太粗：用例把「工具输出里出现 ERROR」直接当成内存越界。test_mssanitizer_support_shmem_allgather 那条的 ERROR 来自 example 依赖缺失（缺 ml_dtypes，example 根本没跑起来），test_mssanitizer_mc2_0002 那条的 ERROR 在输出中间段，输出尾部其实是 test pass，两处都没有真实越界。同任务其余 28 条同族 mssanitizer 用例全通过，工具链本身可用，需要改的是用例的断言与依赖。",
+    "advice": "断言改成只匹配 sanitizer 的越界结论，缺依赖与跳过归为 skip；镜像补上 ml_dtypes，用例前置检查断言依赖可 import。\n\n验证方式：重跑两个 smoke 各 29 条，两条 mssanitizer 用例转 pass 或 skip。",
     "cites": [
       "case_logs/case_0001.html",
       "case_logs/case_0002.html",
       "records/run_261.json"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "cites 均不可核验（3 条，日志可能已清理）",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 4,
     "source": "agent"
   }
 }

@@ -210,17 +210,19 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
-    "rootCause": "该 run 共 15 个 job、2 个失败，构建 #2094 从 18:22:37 跑到 19:05:15 记 FAILED；两个失败 job 是 multi-node-poc 的 glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa 与汇总任务 check-all-jobs（records/run_2094.json）\n\n第一类（主任务）：glm_5_3 多机精度任务按 Traceback（L825）→ ##[error]Error: failed to run script step（L843）→ ✗ exit code: 1（L844）→ Process completed with exit code 1（L868）→ 容器实现执行失败（L869）这条链退出，异常正文没有进归档（github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt:L825）\n\n第二类（汇总任务）：check-all-jobs 的失败步骤是 Generate results table，它的职责是汇总各 job 结果，上游主任务失败后它无从汇总，属于连带失败而不是独立缺陷\n\n因此这条记录的真实失败点只有一处：glm_5_3 的 2p2d 32p pcp_eplb 精度任务在脚本步骤退出，更像该用例自身启动/配置问题（新增的 pcp_eplb 组合），而非精度不达标——日志里没有任何打分或阈值输出\n\n已排除的干扰项：check-all-jobs 失败不单独归因；cases 为 0，没有 pytest 汇总与 accuracy 断言；另 13 个 job 同 run 通过，排除 runner 与环境全局故障",
-    "advice": "只查主任务，不要被 check-all-jobs 带偏：单独手动跑 glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa，把 L825 之后的异常栈完整打出来；这条用例是新合入的 2P2D 32P PCP+EPLB 组合，优先核对它与已有 2p2d 32p 配置的差异（EPLB 开关、PCP 切分、节点数）\n\n让汇总任务不再误伤：check-all-jobs 在检测到上游失败时直接标 skipped 或给出「上游 N 个 job 失败」的结论，而不是自己再失败一次，否则每次都会多出一条无意义的失败记录\n\n补日志留存：multi-node-poc 这类任务现在只留 exit code 一行，建议在脚本外层统一包装异常输出\n\n验证方式：重跑该 nightly，要求 multi-node-poc（glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa）转通过、check-all-jobs 正常产出结果表、run 结论为 success",
+    "keyError": "Exception: Monitoring ended but target pattern was not detected",
+    "rootCause": "GLM-5.3 w8a8 2p2d 32p pcp+eplb 的精度用例在拉起 PD 服务后失败：decode-1 这个 pod 启动后主进程直接以 0 退出，K8s 记为 Succeeded，router 等不到第二个 decode 实例，监控一直到超时也没匹配到预期日志，用例一个请求都没发出。问题在 decode-1 上 sglang 服务的启动环节（参数或端口之类让它起完就退），不是精度也不是性能问题。",
+    "advice": "捞 decode-1 容器的 sglang 启动日志，确认为何主进程 0 退出并修好启动参数；把「pod 未 Running 就失败并附该 pod 日志」写进监控。\n\n验证方式：复跑该 gpqa 用例，两个 decode pod 均 Running 并产出精度结果。",
     "cites": [
-      "github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt:L825",
-      "github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt:L844",
+      "github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt:L830",
+      "github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt:L822",
       "records/run_2094.json"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt:L830",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 5,
     "source": "agent"
   }
 }

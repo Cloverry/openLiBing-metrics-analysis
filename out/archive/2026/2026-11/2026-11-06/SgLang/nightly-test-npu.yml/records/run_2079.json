@@ -600,17 +600,19 @@
   "analysis": {
     "status": "done",
     "keyError": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
-    "rootCause": "该 run 共 20 个 job、7 个失败，构建 #2079 从 2026-11-05 22:43:46 跑到 2026-11-06 09:38:47，记 FAILED；7 个失败 job 分别是 a3 的三个测试任务（nightly-1-npu-a3、nightly-perf-16-npu-a3、nightly-acc-16-npu-a3）与四个 multi-node-poc（deepseek_v4_flash 两档、deepseek_v4_pro_0813、glm_5_2）（records/run_2079.json）\n\n第一类（a3 三个测试任务）：失败链完全同构——先 Traceback，再 ##[error]Error: failed to run script step，再 ✗ exit code: 1，最后 Process completed with exit code 1 与「Executing the custom container implementation failed」（github_logs/gh_42047810705/10_nightly-1-npu-a3 _ run (0).txt:L918）\n\n第二类（四个 multi-node-poc）：日志里只看到 │ exit code: 1 这一层，没有 Traceback 正文，但收尾同样是容器实现执行失败（github_logs/gh_42047810705/7_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~db0591.txt:L604）\n\n单机 a3 与多机 POC 两类任务的镜像、资源规格、用例完全不同，却在同一个 run 里一起倒在「custom container implementation failed」这一句上，因此更像自托管 runner 的容器运行环境（自定义容器启动/挂载）在当前 run 内整体异常，而非某一族用例的断言失败\n\n已排除的干扰项：casess 为 0，日志中没有 pytest 汇总、没有 accuracy 断言、没有精度结果，说明用例根本没跑到判定阶段；另 13 个 job 通过，说明异常不是全平台性的，只落在需要自定义容器的这批 job 上",
-    "advice": "先查 runner 侧：按 runId 42047810705 找到这 7 个 job 的 runner 分配记录，看它们是否落在同一批机器上，并检查该时段自定义容器（docker/podman 拉镜像、挂载 NPU 设备）的启动日志，确认是镜像拉取失败、设备挂载失败还是容器运行时不可用\n\n若确认是容器环境问题，把这一批 job 单独重跑并换一组 runner 验证，与用例代码解耦，避免把环境故障记成 sglang 回归\n\n同时补日志：multi-node-poc 类任务现在只留 exit code 一行，脚本正文（Traceback 下文）没有进 evidence，后续无论谁分析都只能看到表层的 exit 1\n\n验证方式：重跑该 nightly 的全部 job，要求 7 个失败 job 全部转通过、run 结论为 success，且日志中不再出现 Executing the custom container implementation failed",
+    "rootCause": "20 个 job 里 7 个失败：a3 的三个测试任务与四个 multi-node-poc。两类任务的镜像、资源规格、用例都不同，却一起倒在「Executing the custom container implementation failed」这一句上，cases 为 0、一条用例都没跑到判定阶段。根因是自托管 runner 的自定义容器运行时在这批 job 上异常（容器启动或设备挂载失败），不是 sglang 用例回归；另外 13 个 job 通过，说明异常只落在需要自定义容器的这批机器上。",
+    "advice": "按 run 42047810705 查这 7 个 job 落在哪些 runner，抓该时段容器拉镜像与 NPU 设备挂载日志；修好后把这一批换一组 runner 重跑。\n\n验证方式：7 个失败 job 全部转通过，日志不再出现容器实现执行失败。",
     "cites": [
       "github_logs/gh_42047810705/10_nightly-1-npu-a3 _ run (0).txt:L918",
       "github_logs/gh_42047810705/10_nightly-1-npu-a3 _ run (0).txt:L955",
       "github_logs/gh_42047810705/7_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~db0591.txt:L604",
       "records/run_2079.json"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 github_logs/gh_42047810705/10_nightly-1-npu-a3 _ run (0).txt:L955",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 5,
     "source": "agent"
   }
 }

@@ -20,8 +20,8 @@ from lib.paths import DATE_FIELD, DATE_RULE
 DATE_BADGE = "口径：执行结束时间"
 
 # 系统级品牌行（首页/二级页同一份，放在公共日期筛选条上方）
-BRAND_TITLE = "openLiBing指标分析"
-BRAND_SUB = "夜间流水线工程指标 · 口径：执行结束时间 · 数据源 out/archive/"
+BRAND_TITLE = "流水线失败原因智能定位定界"
+BRAND_SUB = "夜间流水线失败根因 · 口径：执行结束时间 · 数据源 out/archive/"
 
 CSS = """
 :root{

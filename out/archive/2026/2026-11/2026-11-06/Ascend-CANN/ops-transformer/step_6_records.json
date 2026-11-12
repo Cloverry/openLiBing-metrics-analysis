@@ -982,18 +982,20 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "keyError": "AssertionError: aclnnQuantMatmulAlltoAll功能精度测试(executor)失败: aclnnQuantMatmulAlltoAll accuracy not passed",
-        "rootCause": "Test_ops-transformer 的 98 条用例跑出 83 通过、15 失败，pytest 判任务失败，构建 #159 记 FAILED；15 条全部停在 executor 精度比对，没有任何内核报错或编译错误，失败点在精度判定环节（records/run_159.json）\n\n第一类（8 条，Matmul 与集合通信融合）：aclnnMatmulAllReduce 及 V2、aclnnAllGatherMatmul、aclnnMatmulReduceScatter 及 V2、aclnnMatmulAlltoAll、aclnnAlltoAllMatmul，断言原文形如「AssertionError: aclnnQuantMatmulAlltoAll功能精度测试(executor)失败: aclnnQuantMatmulAlltoAll accuracy not passed」，AtkTaskResult 一致为 acc_pass_result='Failed'（case_logs/case_0021.html:L8562）\n\n第二类（4 条，量化变体）：aclnnWeightQuantMatmulAllReduce、aclnnQuantMatmulAllReduceV3 与 aclnnAlltoAllQuantMatmul 的 a16w4、a16w8 两档；量化与浮点两条路径同时被判失败，说明偏差不在某一类数据类型上（case_logs/case_0020.html:L16476）\n\n第三类（3 条，MoE 分发合并）：aclnnMoeDistributeDispatch_CombineV2 的两条用例；这一类本身是聚合/分发算子，数值链路与 Matmul 完全不同，却也落在同一次运行里同时失败\n\n三类算子的实现路径互不相同、却在同一轮运行里一起不通过，因此更像公共黄金数据、精度阈值或量化 scale 处理整体偏移，而非某个算子的逻辑缺陷；如果是单个算子回归，应该只看到一条或一族失败，不会横跨三类（case_logs/case_0027.html:L2199）\n\n已排除的干扰项：test 任务 logFile=-、logLines=-，logTasks 与 buildTasks 均为 0，日志里本来就没有内核级报错，所以不能反过来推断成编译或驱动问题；证据只有 15 份 case_logs 与测试报告断言两层",
-        "advice": "先切一刀定范围：固定镜像与黄金数据版本、只切换算子仓 commit 做二分，找出引入精度偏差的那次提交；若换回上一个 commit 15 条全部通过，即可判定是算子仓变更导致\n\n若与 commit 无关，再按公共基线核对：取 aclnnQuantMatmulAlltoAll 与 aclnnAllGatherMatmul 各一条用例的 atk 比对输出，看 15 条误差是否同量级；同量级就按黄金数据/阈值整体校准一次性修，不同量级则回到算子侧逐族排查\n\n量化一类单独看：比对 a16w4 与 a16w8 两档的 scale 计算路径是否共用同一段代码，量化路径的公共处理错会造成两档一起失败\n\n验证方式：重跑 Test_ops-transformer 全量 98 条用例，要求 15 条失败用例全部通过、任务退出码为 0，并且日志中不再出现 accuracy not passed；同时把该任务的完整执行日志纳入归档，补齐当前缺失的内核级证据",
+        "keyError": "测试失败: aclnnQuantMatmulAlltoAll功能精度测试(executor)失败: aclnnQuantMatmulAlltoAll accuracy not passed",
+        "rootCause": "Test_ops-transformer 98 条用例 83 通过、15 失败，15 条全停在 executor 精度比对，没有任何内核报错或编译错误，构建记 FAILED。三类算子实现路径互不相同，却在同一轮一起不通过：\n\n第一类（8 个用例，Matmul 与集合通信融合）：MatmulAllReduce、AllGatherMatmul、MatmulReduceScatter、MatmulAlltoAll 等。\n\n第二类（4 个用例，量化变体）：权重量化与 a16w4、a16w8 两档都失败，偏差不在某一档数据类型上。\n\n第三类（3 个用例，MoE 分发合并）：分发聚合算子的数值链路与 Matmul 完全不同，也同期失败。\n\n横跨三类更像是公共黄金数据、精度阈值或量化 scale 整体偏移，而不是某个算子的逻辑缺陷——单算子回归只会看到一族失败，不会三类一起倒。",
+        "advice": "固定镜像与黄金数据、只切算子仓 commit 做二分，找回引入偏差的那次提交；若与 commit 无关，取 AllGatherMatmul 与一条量化用例的比对明细，误差同量级就统一校准阈值或黄金数据。\n\n验证方式：重跑全量 98 条，15 条全部通过。",
         "cites": [
-          "case_logs/case_0021.html:L8562",
-          "case_logs/case_0020.html:L16476",
-          "case_logs/case_0027.html:L2199",
-          "records/run_159.json"
+          "case_logs/case_0010.html:L1948",
+          "case_logs/case_0021.html:L8551",
+          "case_logs/case_0037.html:L8785",
+          "case_logs/case_0069.html:L2066"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 case_logs/case_0010.html:L1948",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 4,
         "source": "agent"
       }
     },
@@ -1964,18 +1966,20 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "keyError": "AssertionError: aclnnMatmulAllReduce功能精度测试(executor)失败: aclnnMatmulAllReduce accuracy not passed",
-        "rootCause": "Test_ops-transformer 98 条用例 83 通过、15 失败，任务判失败，构建 #160 记 FAILED；15 条失败全部由 executor 精度比对给出，用例本身已完整执行，失败点不在拉起或执行阶段（records/run_160.json）\n\n第一类（8 条，集合通信与 Matmul 融合）：aclnnMatmulReduceScatterV2、aclnnAlltoAllMatmul、aclnnMatmulAllReduce、aclnnAllGatherMatmul、aclnnMatmulReduceScatter、aclnnMatmulAllReduceV2；断言上下文统一为 AtkTaskResult(success=False, acc_pass_result='Failed', is_acc_dc_pass='None')（case_logs/case_0007.html:L9807）\n\n第二类（4 条，量化与权重量化）：aclnnQuantMatmulAllReduceV3、aclnnQuantMatmulAlltoAll、aclnnWeightQuantMatmulAllReduce 与 aclnnAlltoAllQuantMatmul 的 a16w4/a16w8 两档，典型原文为「AssertionError: aclnnMatmulAllReduce功能精度测试(executor)失败: aclnnMatmulAllReduce accuracy not passed」（case_logs/case_0016.html:L8979）\n\n第三类（3 条，MoE 分发合并）：aclnnMoeDistributeDispatch_CombineV2 两条及聚合用例，与集合通信族的数值链路不同却同期失败（case_logs/case_0019.html:L15528）\n\n与同日 #159、#161 的失败集合高度重合、且本构建换了一个时段仍然 15 条失败，说明它随算子库版本稳定复现而不是环境抖动，因此更像代码/黄金数据一侧的确定性偏差，而非节点或驱动偶发问题\n\n已排除的干扰项：test 任务 logFile=-、logLines=-，logTasks=0、buildTasks=0，任务级日志全部缺失，不能据此推断编译或调度故障；简报未提供误差数值、阈值配置与参考实现版本，结论止于「精度比对不通过」",
-        "advice": "与同日 #159、#161 合并成一条主线处理，不要逐构建单独排查：先确认这三轮是否使用同一镜像与同一黄金数据版本，是则把失败集合当作一个稳定缺陷来修\n\n首选按公共基线核对：从集合通信与量化两条路径各取一条用例（aclnnAllGatherMatmul、aclnnQuantMatmulAllReduceV3）导出 atk 比对明细，看误差是否同量级；同量级说明偏差来自黄金数据或统一阈值\n\n若两条路径误差量级不同，再按算子族分开：通信融合族查 AllReduce/AllGather 的 reduce 累加顺序与分核策略，量化族查 scale 反量化链路是否与基线一致\n\n验证方式：修复后重跑 Test_ops-transformer 全量 98 条用例，要求 #159、#160、#161 三轮共有的 15 条失败全部通过、退出码为 0；同时保存 atk 比对输出与阈值配置作为附件，避免下次仍只有断言没有数值",
+        "keyError": "测试失败: aclnnMatmulAllReduce功能精度测试(executor)失败: aclnnMatmulAllReduce accuracy not passed",
+        "rootCause": "Test_ops-transformer 98 条用例 83 通过、15 失败，全部停在 executor 精度比对，用例本身已完整执行，构建记 FAILED。失败集合与同日 #159、#161 完全重合，换个时段重跑仍是这 15 条，说明是随算子库版本稳定复现的确定性偏差，不是节点或驱动抖动。三类算子（8 个集合通信与 Matmul 融合、4 个量化与权重量化、3 个 MoE 分发合并）实现路径互不相同却一起不通过，更像公共黄金数据或统一阈值整体偏移，而不是单个算子回归。",
+        "advice": "与同日 #159、#161 合成一条主线：先确认三轮用的是同一镜像与同一黄金数据版本，是就把这 15 条当一个稳定缺陷修；从集合通信与量化各取一条比对明细，误差同量级就统一校准。\n\n验证方式：重跑全量 98 条，15 条全部通过。",
         "cites": [
-          "case_logs/case_0007.html:L9807",
-          "case_logs/case_0016.html:L8979",
-          "case_logs/case_0019.html:L15528",
-          "records/run_160.json"
+          "case_logs/case_0007.html:L9796",
+          "case_logs/case_0020.html:L16465",
+          "case_logs/case_0043.html:L23193",
+          "case_logs/case_0060.html:L3060"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 case_logs/case_0007.html:L9796",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 4,
         "source": "agent"
       }
     },
@@ -2946,19 +2950,20 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "keyError": "AssertionError: aclnnAlltoAllQuantMatmul功能精度测试(executor)失败: aclnnAlltoAllQuantMatmul accuracy not passed",
-        "rootCause": "Test_ops-transformer 98 条用例 83 通过、15 失败，任务判失败，构建 #161 记 FAILED；失败全部由 executor 精度比对给出，用例已跑到比对阶段（records/run_161.json）\n\n第一类（5 条，三档量化 Matmul）：aclnnAlltoAllQuantMatmul 的 a16w4、a16w8、a4w4 三档加 aclnnWeightQuantMatmulAllReduce、aclnnQuantMatmulAllReduceV3，断言原文形如「AssertionError: aclnnAlltoAllQuantMatmul功能精度测试(executor)失败: aclnnAlltoAllQuantMatmul accuracy not passed」；同一算子的三档量化权重位宽一起失败，更像量化 scale 的公共处理或反量化链路偏移，而不是某一档参数配错（case_logs/case_0056.html:L2151、case_logs/case_0068.html:L8863）\n\n第二类（7 条，集合通信融合）：aclnnMatmulReduceScatterV2、aclnnMatmulAllReduce 及 V2、aclnnMatmulReduceScatter、aclnnMatmulAlltoAll、aclnnAlltoAllMatmul、aclnnAllGatherMatmul（case_logs/case_0059.html:L2490）\n\n第三类（3 条，MoE 分发合并）：断言文本写的是「aclnnMoeDistributeDispatch功能精度测试(executor)失败: aclnnMoeDistributeDispatch_CombineV2 accuracy not passed」，而用例名指向 test_cann_accu_smk_aclnnmoedistributedispatchv2_2p，算子名与用例名对不上，说明断言消息由公共模板拼出来、并不携带这条用例的真实算子名，读日志时不能按断言里的算子名反查用例（case_logs/case_0089.html:L15734）\n\n已排除的干扰项：本记录没有任何内核报错、内存越界或超时行，失败纯粹来自数值比对；test 任务 logFile 为空，无法确认偏差是来自 kernel 还是阈值，结论止于用例层",
-        "advice": "先验量化这一支：单跑 aclnnAlltoAllQuantMatmul 的 a16w4、a16w8、a4w4 三档并导出 atk 比对明细，确认三档误差是否同量级；同量级就按量化 scale 的公共处理统一修，差异大则分档核对 scale 计算方式\n\n若量化侧修完仍失败，再按通信融合族处理：从 aclnnMatmulAllReduce 与 aclnnAllGatherMatmul 各取一条，比对 sum/累加顺序与基线是否一致\n\n顺手修掉断言模板：让 MoE 类用例打印真实算子名与用例名，避免 dispatch 与 combine 两类失败在统计上互相混淆，否则下次仍然要人工反查用例\n\n验证方式：重跑 Test_ops-transformer 全量 98 条用例，要求 15 条失败用例全部通过、退出码为 0，且用例日志中不再出现 accuracy not passed；同时为 Test_ops-transformer 的 test 任务补日志落盘，使精度失败可下钻到 kernel 与阈值层",
+        "keyError": "测试失败: aclnnAlltoAllQuantMatmul功能精度测试(executor)失败: aclnnAlltoAllQuantMatmul accuracy not passed",
+        "rootCause": "Test_ops-transformer 98 条用例 83 通过、15 失败，全部停在 executor 精度比对，构建记 FAILED。三类失败（5 个三档量化 Matmul、7 个集合通信融合、3 个 MoE 分发合并）里，同一算子的 a16w4、a16w8、a4w4 三档权重位宽一起不通过，更像量化 scale 的公共处理或反量化链路偏移，而不是某一档参数配错。另外 MoE 类用例的断言文本用的是公共模板拼出来的算子名，和真实用例名对不上，读日志时不能按断言里的算子名反查用例。",
+        "advice": "先单跑三档量化那 5 条并导出比对明细：误差同量级按量化 scale 的公共处理统一修，差异大再分档核对；集合通信那 7 条比对 reduce 累加顺序与基线。\n\n验证方式：重跑全量 98 条，15 条全部通过、退出码为 0。",
         "cites": [
-          "case_logs/case_0056.html:L2151",
-          "case_logs/case_0059.html:L2490",
-          "case_logs/case_0068.html:L8863",
-          "case_logs/case_0089.html:L15734",
-          "records/run_161.json"
+          "case_logs/case_0016.html:L8968",
+          "case_logs/case_0018.html:L2205",
+          "case_logs/case_0019.html:L15517",
+          "case_logs/case_0027.html:L2188"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 case_logs/case_0016.html:L8968",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 4,
         "source": "agent"
       }
     },
@@ -4094,17 +4099,19 @@
       "analysis": {
         "status": "done",
         "keyError": "aclnnMoeTokenUnpermuteWithEpGrad accuracy not passed",
-        "rootCause": "Test_ops-transformer 98 条用例 79 通过、19 失败，比同日 #159/#160/#161 多出 4 条失败，任务判失败，构建 #162 记 FAILED；新增的失败落在 MoeTokenUnpermuteWithEpGrad，且 perf 前缀用例也报了同一段精度断言（records/run_162.json）\n\n第一类（12 条，通信融合算子）：aclnnAllGatherMatmul、aclnnMoeDistributeDispatch_CombineV2、aclnnQuantMatmulAlltoAll、aclnnMatmulReduceScatter 及 V2、aclnnAlltoAllMatmul、aclnnQuantMatmulAllReduceV3、aclnnMatmulAllReduce 及 V2、aclnnWeightQuantMatmulAllReduce、aclnnMatmulAlltoAll 与 aclnnAlltoAllQuantMatmul 三档；这一族与同日 #159～#161 的失败集合一致，属同一批确定性偏差，因此更像算子库或公共基线的持续性问题，而非本轮新引入（case_logs/case_0035.html:L8886）\n\n第二类（4 条，MoeTokenUnpermuteWithEpGrad 的四个变体）：test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad、同前缀 _probs_none、test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none 与 _probs_not_none，perf 与 accu 两组共用同一段断言「aclnnMoeTokenUnpermuteWithEpGrad功能精度测试(executor)失败: aclnnMoeTokenUnpermuteWithEpGrad accuracy not passed」，说明 perf 用例根本没跑到性能指标就倒在精度比对，性能数据不可用（case_logs/case_0042.html:L2500）\n\n第二类里 probs_none 与 probs_not_none 两条分支同时失败，说明与该算子可选输入的 prob 分支无关，更像 ep_grad 输出的排布/累加本身有偏差；如果是 prob 相关逻辑错，应该只有带 prob 的变体失败（case_logs/case_0041.html:L34364）\n\n已排除的干扰项：证据 19 份全部是 case_logs，errorMessages 30 条也全是 CASE/FAIL 行，没有任何内核错误；test 任务 logFile 为空，因此无法用「没有 kernel 报错」推断实现没问题，只能说证据未到那一层",
-        "advice": "先把新增的一族单独复现：单跑 MoeTokenUnpermuteWithEpGrad 的四个变体（perf、perf_probs_none、accu_probs_none、accu_probs_not_none），确认 probs 两条分支是否共用同一段累加逻辑；若两种情况都失败，直接按 ep_grad 输出排布查\n\n再把通信融合这一族按老问题处理：与 #159～#161 合并，从 aclnnAllGatherMatmul 与 aclnnMatmulReduceScatterV2 各取一条导出 atk 比对明细，判断误差是否同量级\n\n断言也要拆开：perf 与 accu 用例必须使用不同的断言文本，否则性能用例失败会被误报成精度不通过，掩盖真实的性能回归\n\n验证方式：重跑 Test_ops-transformer 全量 98 条用例，要求 19 条失败全部通过、退出码为 0；perf 前缀用例应产出性能结论而不是精度断言，日志中不再出现 accuracy not passed",
+        "rootCause": "Test_ops-transformer 98 条用例 79 通过、19 失败，比同日 #159~#161 多出 4 条，构建记 FAILED。19 条失败集中在两族：\n\n第一类（12 个用例，通信融合算子）：AllGatherMatmul、MatmulReduceScatter、MatmulAllReduce、量化 Matmul 等，与同日 #159~#161 的失败集合一致，属同一批确定性偏差，不是本轮新引入。\n\n第二类（4 个用例，MoeTokenUnpermuteWithEpGrad 的四个变体）：perf 与 accu 两组共用同一段精度断言，说明 perf 用例没跑到性能指标就倒在精度比对，性能数据不可用；带 prob 与不带 prob 两条分支同时失败，更像 ep_grad 输出本身的排布或累加有偏差，而不是可选输入 prob 的处理错。",
+        "advice": "先单跑 MoeTokenUnpermute 四个变体，两种 prob 都挂就查 ep_grad 的排布与累加；通信融合 12 条与 #159~#161 合并处理；perf 与 accu 断言拆开写。\n\n验证方式：重跑全量 98 条，19 条全部通过，perf 用例能出性能结论。",
         "cites": [
-          "case_logs/case_0035.html:L8886",
-          "case_logs/case_0041.html:L34364",
-          "case_logs/case_0042.html:L2500",
-          "records/run_162.json"
+          "case_logs/case_0050.html:L3095",
+          "case_logs/case_0051.html:L7714",
+          "case_logs/case_0052.html:L1972",
+          "case_logs/case_0053.html:L2033"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 case_logs/case_0050.html:L3095",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 4,
         "source": "agent"
       }
     }

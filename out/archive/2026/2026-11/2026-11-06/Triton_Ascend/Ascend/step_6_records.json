@@ -335,17 +335,18 @@
       "analysis": {
         "status": "done",
         "keyError": "步骤Build_a3a5_arm执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
-        "rootCause": "构建 #104 从 17:00:52 跑到 17:27:26（约 26 分钟）记 FAILED，失败任务类型为测试任务，证据只有 2 个 job 日志、另有 1 个缺失（records/run_104.json）\n\n第一类（上游构建子任务失败）：npu_ir流水线调用 日志显示任务 Build_a3a5_arm 由 RUNNING 转 FAILED（L144）、run#516 已等待 00:25:10（L161）、同阶段 Build_a3a5_x86 一并转 FAILED（L163），随后 L182 给出 message: 步骤Build_a3a5_arm执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}，L183 标记 step FAILED，L185 脚本以 exit code 1 退出（job_logs/16_Ascend_104_npu_ir流水线调用.log:L182）\n\n第二类（下游测试任务被连带）：Test_Triton_Ascend 日志里 L126 出现 ERROR 404: Not Found.、L128 以 exit code 8 退出，Test_Triton_Ascend 任务本身 total=0 pass=0 fail=0，说明用例一条都没拉起，属上游镜像没构建出来导致的连带失败（job_logs/24_Ascend_104_Test_Triton_Ascend.log:L126）\n\n因此真实失败点只有一个：云构建服务返回封装码 DEV-CODECI-35002 表示「构建任务执行失败」，具体编译错误被封装码吞掉，日志只到「等 25 分钟后超时失败」这一层\n\n已排除的干扰项：Test_Triton_Ascend 的 404 与 exit 8 是下游连带，不单独归因；用例外 0 条说明不是测试断言问题",
-        "advice": "把封装码还原成真实编译错误：拿 DEV-CODECI-35002 去云构建平台查该次 run#516 的详细构建日志，现在本地日志只留了「构建任务执行失败」这一句，26 分钟等待全白费\n\n区分 arm 与 x86 两条构建线：Build_a3a5_arm 与 Build_a3a5_x86 在同一阶段一起转 FAILED，更像共用基础镜像或共用依赖下载环节失败（网络、制品仓鉴权），先查这一层再查编译参数\n\n缩短空等：run 等待 25 分钟才判失败，建议加构建心跳与提前失败（如连续 N 分钟无输出即中止），避免 nightly 被一条构建拖住\n\n验证方式：重跑 Ascend 流水线，要求 npu_ir流水线调用的 Build_a3a5_arm / Build_a3a5_x86 步骤成功、Test_Triton_Ascend 能拉起用例并给出 total>0 的结果、run 结论为 success",
+        "rootCause": "失败点在上游构建：云构建平台上 arm 与 x86 两个构建子任务（Build_a3a5_arm、Build_a3a5_x86）在同一阶段先后转失败，等了约 25 分钟后平台只回了「构建任务执行失败」，具体编译错误没有带回来。下游 Test_Triton_Ascend 因此拿不到镜像、接口返回 404，用例一条都没拉起，属连带失败。要云构建平台侧提供这两个子任务的详细构建日志才能定界到编译哪一步。",
+        "advice": "到云构建平台调出该次 Build_a3a5_arm / Build_a3a5_x86 的详细日志，定位真实编译错误；两条同阶段一起失败，优先查共用基础镜像与依赖下载。\n\n验证方式：重跑后两个构建子任务成功，Test_Triton_Ascend 拉起用例且 total 大于 0。",
         "cites": [
           "job_logs/16_Ascend_104_npu_ir流水线调用.log:L182",
-          "job_logs/16_Ascend_104_npu_ir流水线调用.log:L161",
-          "job_logs/24_Ascend_104_Test_Triton_Ascend.log:L128",
+          "job_logs/24_Ascend_104_Test_Triton_Ascend.log:L125",
           "records/run_104.json"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 job_logs/16_Ascend_104_npu_ir流水线调用.log:L182",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 4,
         "source": "agent"
       }
     }

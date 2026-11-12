@@ -182,16 +182,18 @@
   "analysis": {
     "status": "done",
     "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
-    "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2099 从 19:42:57 跑到 23:35:37（约 3 小时 53 分钟）记 FAILED；失败的是 multi-node-mix-poc 的 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix，与 #2088 是同一用例（records/run_2099.json）\n\n第一类（先出现的非零退出）：L13774 已出现 │ exit code: 1，位置在 L13659 的 openai ImportError（23:06:44）之后一千多行，说明服务拉起或前置子步骤先失败了一次（github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L13774）\n\n第二类（主脚本收敛）：L15551 Traceback → L15628 ##[error]Error: failed to run script step → L15629 ✗ exit code: 1 → L15653 Process completed with exit code 1 → L15654 容器实现执行失败，异常正文未留存\n\n这条的标题是「kimi_k3: tune the 128k decode prefix case to repeat_rate=0.99 / request_rate=0」，是同一天对该用例的第二次参数调整；#2088 与 #2099 都是两次非零退出、都没有性能指标输出，说明调整参数并没有解决启动路径的问题\n\n因此更像 kimi_k3 的 32p mix 128k decode prefix 用例在多机拉起环节存在固定障碍（节点数 4、prefix 模式），而非 repeat_rate 参数不当\n\n已排除的干扰项：openai ImportError 属当天镜像的普遍问题、不是本条退出点；cases 为 0，无 tpot/吞吐输出，用例未进入测量",
-    "advice": "停止继续调参，先修启动：同一天两次调 repeat_rate/request_rate 都没换来一次成功，说明瓶颈不在参数而在用例拉起，先把 L13774 的第一次非零退出上下文拉出来\n\n与 #2088 合并成一条线：两次失败形态、退出位置、缺失信息完全一致，按同一个缺陷跟踪，避免在两条记录上重复投入\n\n核对 4 节点 multi-node-mix-poc 的环境前提：通信库与 sdma 能力要事先探测（参考 #2085 抓到的 libhcom.so 缺失与 InitDramSegment 失败），不满足就明确 skip\n\n验证方式：重跑该 nightly，要求 multi-node-mix-poc（kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix）转通过并产出 decode 性能指标、run 结论为 success",
+    "rootCause": "kimi_k3 w4a8 32p mix（in128k/out1k，decode prefix）这条性能用例的 TPOT 实测 39.9ms，基线 30.0ms，超了约三成，两次 attempt 都没过。两次都完整跑完 12 个请求、无失败请求，服务与用例本身正常，是 decode 阶段每 token 耗时确实偏高。同一天同一用例在另一构建上已被 TPOT 41.6ms 判失败，这次换了参数仍然超限，说明是真实性能退化而不是偶发，需要 sglang 性能基线维护方确认这版镜像的 decode 优化与 30.0ms 基线是否都还成立。",
+    "advice": "拿上一版镜像同用例的 mean_tpot 对比，确认 39.9ms 是新退化还是 30.0ms 基线过期；退化再 profile decode 阶段，看 prefix 缓存命中率与 npu graph 命中率。\n\n验证方式：同镜像复跑，mean_tpot 不高于 30.0ms。",
     "cites": [
-      "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L13774",
-      "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15629",
+      "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15628-L15629",
+      "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15547",
       "records/run_2099.json"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15628-L15629",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 4,
     "source": "agent"
   }
 }

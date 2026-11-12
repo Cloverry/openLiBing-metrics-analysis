@@ -179,17 +179,19 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "keyError": "##[error]Error: failed to run script step: ✗ exit code: 255",
-    "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2096 从 19:15:12 跑到 19:32:39（约 17 分钟）记 FAILED；失败的是 nightly-perf-16-npu-a3，与同日晚 18:38 的 #2095 是同一个 job（records/run_2096.json）\n\n第一类（背景噪声）：L1996 与 L4211 各有一条 openai ImportError（11:20:37、11:25:27），和当天其余 SgLang 记录同源\n\n第二类（退出链）：L5134 只有 Traceback 标题、正文缺失，然后 L5268 ##[error]Error: failed to run script step → L5269 ✗ exit code: 255 → L5293 Process completed with exit code 1 → L5294 容器实现执行失败（github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5268）\n\n这条与 #2095 相隔 37 分钟、同一 job、同样 255 退出，但 #2095 抓到了 FileNotFoundError；把两条放在一起看，更像该性能 job 在同一批产物目录上连续两次失败，#2096 只是没把异常正文留住的那一次\n\n因此单看本条只能确认失败在脚本步骤、且退出码 255 与 #2095 的 FileNotFoundError 路径一致；单独归因证据不足，应与 #2095 合并判断\n\n已排除的干扰项：cases 为 0，无性能与精度输出，用例没跑到测量阶段；另 14 个 job 同 run 通过",
-    "advice": "直接复用 #2095 的结论，不要单独排查这一条：先按 #2095 的办法确认 _fia_unset / _pass1_metrics 目录是否产出，两条记录大概率是同一个产物路径问题\n\n补异常留存：L5134 的 Traceback 正文必须落盘，否则每条记录都要靠相邻构建去猜，成本太高\n\n给 nightly-perf 加产物检查前置：跑之前先建好 output 目录并在结束时断言 metrics 存在，把「产物缺失」变成明确报错\n\n验证方式：重跑该 nightly，要求 nightly-perf-16-npu-a3 连续两次均通过并产出 metrics、run 结论为 success，日志中不再出现只有 Traceback 标题而无正文的情况",
+    "keyError": "TypeError: can't multiply sequence by non-int of type 'float'",
+    "rootCause": "还是这个 deepseek_v4_flash 8p 用例的 pass2 回归校验：这次 pass1 指标读到了，但里面的 mean_tpot 是数组而不是单个数值，乘容差系数时抛类型错误，重试两次仍失败，对比结论没出来。同样属双 pass 脚本对指标结构处理不当，不是模型问题；但 pass2 实测 mean_tpot 58.31ms 已高于 51.0ms 基线，脚本修好后大概率会撞上真实的性能退化。",
+    "advice": "在 assert_no_regression 里把 mean_tpot 取成标量（是列表就按长度加权求均值），并在比较前校验字段类型，避免异常被重试吞掉。\n\n验证方式：复跑该用例，pass2 能算出 limit 并给出明确结论；若结论落在 TPOT 超限，转性能不达标处理。",
     "cites": [
+      "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5149",
       "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5134",
-      "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5269",
       "records/run_2096.json"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5149",
+    "updatedAt": "2026-11-11 17:04:39",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 4,
     "source": "agent"
   }
 }

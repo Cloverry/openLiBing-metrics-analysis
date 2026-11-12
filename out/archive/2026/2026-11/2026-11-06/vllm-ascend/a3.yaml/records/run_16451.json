@@ -561,16 +561,19 @@
   "analysis": {
     "status": "done",
     "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
-    "rootCause": "该 run 共 25 个 job、6 个失败，构建 #16451 从 07:38:30 跑到 11:24:05（约 3 小时 45 分钟）记 FAILED；6 个失败 job 全部是 double-node 形态，分别对应 GLM-5.1-W8A8C8-A3_198k_function、Kimi-K2.6-W4A8-64k-1k-TPOT50-PD、GLM-5.3-Flash-W8A8-130k-PD、Minimax_m2.7_in128k_1k_prefix90_tpot50、DeepSeek-V4.1-Flash-w8a8-PD-MRV2、DeepSeek-V4-flash-w8a8-PD-prefix-MRV2（records/run_16451.json）\n\n第一类（关键结构信息）：6 个失败 job 的失败步骤同样是 Wait for pods ready，Pod 未就绪导致超时，用例脚本没开始跑\n\n第二类（日志退出链）：以 GLM-5.1-W8A8C8-A3_198k_function 为例，L1697 ##[error]Error: failed to run script step → L1698 ✗ exit code: 1 → L1719 Process completed with exit code 1 → L1720 容器实现执行失败，L2176 另有 ##[error]Upload failed. See log:（github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt:L1697）\n\n本次失败全部集中在 double-node 形态、且分支是 releases-v0.32.0rc，与 #16450 的 multi-node/double-node 混合失败不同：更像该 release 分支的 double-node 部署模板（每模型 2 节点）在 Pod 编排上有共同问题，而不是单模型配置错\n\n已排除的干扰项：Upload failed 与容器实现执行失败都是退出后的连带；cases 为 0，无用例级断言；同 run 另有 19 个 job 通过，排除集群整体不可用",
-    "advice": "按形态归因而非按模型：6 个失败全是 double-node + releases-v0.32.0rc，优先核对这条分支的 double-node 部署模板（Pod 数量、资源申请、节点选择器），而不是逐个模型查配置\n\n与 #16450 对照：同一个 a3.yaml、同一天、失败步骤同为 Wait for pods ready，说明这不是偶发，建议把两类失败合并成一条「Pod 就绪超时」的专项跟踪\n\n补可观测性：Wait for pods ready 超时时要输出 Pod 的 Events 与 pending 原因，现在只剩 exit code 1\n\n验证方式：重跑该 nightly，要求 6 个 double-node job 的 Wait for pods ready 通过、用例实际执行并产出结果、run 结论为 success",
+    "rootCause": "6 个失败 job 全是 double-node 形态，都卡在「等所有 Pod 变成 Running and Ready」、等满 1200 秒超时，用例没开始跑。Pod 事件与同一天 multi-node 那批完全一致：20 个节点全部缺 ascend-1980 卡、11 个缺临时存储，另有节点带 cpu-elastic 污点没被容忍，Pod 长时间 Pending。是集群资源不足，不是这条 release 分支的用例或模板写错了。",
+    "advice": "与 #16450 同源，一起处理：先补 ascend-1980 卡与节点临时存储、补 cpu-elastic 污点容忍，再按这 6 个 double-node job 小批量重跑。\n\n验证方式：6 个 job 的 Pod 都能在 1200 秒内就绪。",
     "cites": [
-      "github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt:L1697",
-      "github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt:L1698",
+      "github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt:L1697-L1698",
+      "github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt:L1543",
+      "github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt:L1686",
       "records/run_16451.json"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 github_logs/gh_42099201193/15_double-node (releases-v0.32.0rc, multi-node-GLM-5.1-W8A8C~850b25.txt:L1697-L1698",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 4,
     "source": "agent"
   }
 }

@@ -1,11 +1,11 @@
 {
  "details": [
   {
-   "key": "Ascend-CANN|shmem",
-   "rn": 144,
-   "st": "11-10 09:51",
+   "key": "Ascend-CANN|ops-cv",
+   "rn": 173,
+   "st": "11-11 01:05",
    "rstatus": "FAILED",
-   "rid": "ba1a1af3745e4d34880b78916b209766",
+   "rid": "933d961d2a7144d98c124ce939d99002",
    "track": "bs",
    "dims": [
     "bs"
@@ -16,1289 +16,31 @@
      {
       "name": "sess_run.tar.gz",
       "packageType": "gz",
-      "version": "20261110.10"
+      "version": "20261111.3"
      },
      {
       "name": "ATK_CIDA.tar.gz",
       "packageType": "gz",
-      "version": "20261110.10"
+      "version": "20261111.3"
      }
     ],
     "component_id": "",
-    "current_system_time": 1794360091941,
+    "current_system_time": 1794445931474,
     "description": "",
     "domain_id": "9315d40a767a4b9799c11edc078d7035",
-    "end_time": 1794277760000,
-    "executor_id": "b355250863b148448cf6e67c4a5139a8",
-    "executor_name": "cann_developer",
-    "id": "ba1a1af3745e4d34880b78916b209766",
-    "is_publish": false,
-    "language": "zh-cn",
-    "manifest_version": "3.0",
-    "name": "Nightly-CI-Component-pipeline_shmem",
-    "pause_time": 0,
-    "pipeline_id": "93831fdaa3234c8a9dd0b8a0c220f939",
-    "project_id": "1e20b309fcb34b00a0043a87e461c95a",
-    "region": "cn-north-4",
-    "run_number": 144,
-    "sources": [
-     {
-      "params": {
-       "alias": "",
-       "build_params": {
-        "build_type": "branch",
-        "codehub_id": "2638244",
-        "commit_id": "7a3561025b138897585637934a6b16130b0a4f0d",
-        "event_type": "Manual",
-        "message": "修复smoke_baseline旧版本包残留：上传前按组件清理旧版本命名的包",
-        "target_branch": "master"
-       },
-       "codehub_id": "2638244",
-       "default_branch": "master",
-       "endpoint_id": "aa5e7e12ffdd43789ba7f2c1eb58b592",
-       "git_type": "codehub",
-       "git_url": "https://codehub.devcloud.cn-north-4.huaweicloud.com/1e20b309fcb34b00a0043a87e461c95a/ci.git",
-       "repo_name": "ci",
-       "ssh_git_url": "git@codehub.devcloud.cn-north-4.huaweicloud.com:1e20b309fcb34b00a0043a87e461c95a/ci.git",
-       "web_url": ""
-      },
-      "type": "code"
-     },
-     {
-      "params": {
-       "alias": "",
-       "build_params": {
-        "build_type": "branch",
-        "codehub_id": "8240624",
-        "commit_id": "",
-        "event_type": "Manual",
-        "message": "",
-        "target_branch": "master"
-       },
-       "codehub_id": "8240624",
-       "default_branch": "master",
-       "endpoint_id": "645673bb445f43e48038629104ed47f8",
-       "git_type": "gitcode",
-       "git_url": "https://gitcode.com/cann-dev/CANN-CI.git",
-       "repo_name": "CANN-CI",
-       "ssh_git_url": "git@gitcode.com:cann-dev/CANN-CI.git",
-       "web_url": ""
-      },
-      "type": "code"
-     }
-    ],
-    "stages": [
-     {
-      "category": "",
-      "depends_on": [],
-      "end_time": 1794275637000,
-      "id": "bb828a1197614f0d83ecea5e3d7228ad",
-      "identifier": "177087832212602c37419-311e-430c-8d7f-5299889cb78d",
-      "is_select": true,
-      "jobs": [
-       {
-        "condition": "${{ default() }}",
-        "depends_on": [],
-        "end_time": 1794275637000,
-        "exec_id": "j_XNvwakAX",
-        "id": "b219a77eba7048b2b94e0774c1169b99",
-        "identifier": "JOB_SDaxS",
-        "is_select": true,
-        "last_dispatch_id": "b4e20cb86eda4d3bbf8175540d41faa6",
-        "name": "Build_shmem",
-        "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
-        "sequence": 0,
-        "start_time": 1794275506000,
-        "status": "COMPLETED",
-        "steps": [
-         {
-          "business_type": "Build",
-          "end_time": 1794275637000,
-          "endpoint_ids": [],
-          "id": "0fa8d3faa4584607a37f104008e08edd",
-          "inputs": [
-           {
-            "key": "CB_BUILD_YAML_PATH",
-            "value": "${CB_BUILD_YAML_PATH}"
-           },
-           {
-            "key": "account",
-            "value": "${account}"
-           },
-           {
-            "key": "repo_module",
-            "value": "${repo_module}"
-           },
-           {
-            "key": "codeBranch",
-            "value": "master-cann-gitcode"
-           },
-           {
-            "key": "combo_artifact_directory",
-            "value": "${combo_artifact_directory}"
-           },
-           {
-            "key": "pipeline_run_timestamp",
-            "value": "${TIMESTAMP}"
-           },
-           {
-            "key": "__sameProject__",
-            "value": "true"
-           },
-           {
-            "key": "__projectId__",
-            "value": ""
-           },
-           {
-            "key": "jobId",
-            "value": "a8b84e6db72e4c33a94b70818d2e2795"
-           },
-           {
-            "key": "__repository__",
-            "value": "ci"
-           },
-           {
-            "key": "artifactIdentifier",
-            "value": ""
-           }
-          ],
-          "last_dispatch_id": "ce9693f2d5664665b8a1a6ec59b14129",
-          "multi_step_editable": 0,
-          "name": "Build_shmem",
-          "sequence": 0,
-          "start_time": 1794275506000,
-          "status": "COMPLETED",
-          "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 3000
-         }
-        ],
-        "timeout": "",
-        "job_queue_time": 3000
-       },
-       {
-        "condition": "${{ default() }}",
-        "depends_on": [],
-        "end_time": 1794275547000,
-        "exec_id": "j_JoGoJlaz",
-        "id": "d99590d4e4cd48ae972d48e4c4cafa87",
-        "identifier": "JOB_bTFih",
-        "is_select": true,
-        "last_dispatch_id": "860efb3505544835b2c0bc093a994908",
-        "name": "Clone_ATK_CIDA",
-        "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
-        "sequence": 1,
-        "start_time": 1794275506000,
-        "status": "COMPLETED",
-        "steps": [
-         {
-          "business_type": "Build",
-          "end_time": 1794275547000,
-          "endpoint_ids": [],
-          "id": "8710c00cf8bb43c2990ff25b2ba354ea",
-          "inputs": [
-           {
-            "key": "ci_account",
-            "value": "AtlasAccount"
-           },
-           {
-            "key": "repo_url",
-            "value": "gitcode.com/cann_autotest/ATK_CIDA.git"
-           },
-           {
-            "key": "repo_name",
-            "value": "ATK_CIDA"
-           },
-           {
-            "key": "branch",
-            "value": "${atk_cida_branch}"
-           },
-           {
-            "key": "__sameProject__",
-            "value": "true"
-           },
-           {
-            "key": "__projectId__",
-            "value": ""
-           },
-           {
-            "key": "jobId",
-            "value": "b12394378f12452b827dc85031f85a2f"
-           },
-           {
-            "key": "__repository__",
-            "value": "CANN-CI"
-           },
-           {
-            "key": "artifactIdentifier",
-            "value": ""
-           }
-          ],
-          "last_dispatch_id": "093d65bb75a7422dbef9596c19add79b",
-          "multi_step_editable": 0,
-          "name": "Clone_ATK_CIDA",
-          "sequence": 0,
-          "start_time": 1794275506000,
-          "status": "COMPLETED",
-          "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 2000
-         }
-        ],
-        "timeout": "",
-        "job_queue_time": 2000
-       },
-       {
-        "condition": "${{ default() }}",
-        "depends_on": [],
-        "end_time": 1794275537000,
-        "exec_id": "j_fnit2zjn",
-        "id": "5044f0f99ff5495a95826aac61aa21e0",
-        "identifier": "JOB_fEswb",
-        "is_select": true,
-        "last_dispatch_id": "41dc12a4e6604a4a825a7b7545a6b1cc",
-        "name": "Clone_sess_run",
-        "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
-        "sequence": 2,
-        "start_time": 1794275506000,
-        "status": "COMPLETED",
-        "steps": [
-         {
-          "business_type": "Build",
-          "end_time": 1794275537000,
-          "endpoint_ids": [],
-          "id": "ac4256e1687c4904922f94df41c20e67",
-          "inputs": [
-           {
-            "key": "ci_account",
-            "value": "AtlasAccount"
-           },
-           {
-            "key": "branch",
-            "value": "main"
-           },
-           {
-            "key": "__sameProject__",
-            "value": "true"
-           },
-           {
-            "key": "__projectId__",
-            "value": ""
-           },
-           {
-            "key": "jobId",
-            "value": "4031ad34a2234da98460578f7b63c64e"
-           },
-           {
-            "key": "__repository__",
-            "value": "CANN-CI"
-           },
-           {
-            "key": "artifactIdentifier",
-            "value": ""
-           }
-          ],
-          "last_dispatch_id": "464debb8c6f24475920f8144796d223e",
-          "multi_step_editable": 0,
-          "name": "Clone_sess_run",
-          "sequence": 0,
-          "start_time": 1794275506000,
-          "status": "COMPLETED",
-          "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 2000
-         }
-        ],
-        "timeout": "",
-        "job_queue_time": 2000
-       }
-      ],
-      "name": "构建",
-      "pause_time": 0,
-      "post": [],
-      "pre": [
-       {
-        "end_time": 1794275506000,
-        "id": "f7cbf7fab88b463383500910c6ceb5a8",
-        "last_dispatch_id": "ec450c1418634b25972f28a14358e25b",
-        "multi_step_editable": 0,
-        "sequence": 0,
-        "start_time": 1794275506000,
-        "status": "COMPLETED",
-        "task": "official_devcloud_autoTrigger"
-       }
-      ],
-      "run_always": false,
-      "sequence": 0,
-      "start_time": 1794275506000,
-      "status": "COMPLETED"
-     },
-     {
-      "category": "",
-      "depends_on": [
-       "177087832212602c37419-311e-430c-8d7f-5299889cb78d"
-      ],
-      "end_time": 1794276429000,
-      "id": "03d5bbffa71245fd863019fb725ac178",
-      "identifier": "1787246102861b00142f5-ecc3-4911-b907-93be06090c92",
-      "is_select": true,
-      "jobs": [
-       {
-        "condition": "${{ default() }}",
-        "depends_on": [],
-        "end_time": 1794276429000,
-        "exec_id": "j_gLBD8ZPC",
-        "id": "32d4db3c679442bd98385c9a0b296c2a",
-        "identifier": "JOB_mHEBH",
-        "is_select": true,
-        "last_dispatch_id": "17f1c356def14190b8a1cd8675d6292b",
-        "name": "Build_image",
-        "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
-        "sequence": 0,
-        "start_time": 1794275638000,
-        "status": "COMPLETED",
-        "steps": [
-         {
-          "business_type": "Build",
-          "end_time": 1794276429000,
-          "endpoint_ids": [],
-          "id": "aa63cf514ca14c8381fcee03fa5a2b22",
-          "inputs": [
-           {
-            "key": "dockerfile_path",
-            "value": "${dockerfile_path}"
-           },
-           {
-            "key": "CHIP_SERIES",
-            "value": "${CHIP_SERIES}"
-           },
-           {
-            "key": "atk_cida_branch",
-            "value": "${atk_cida_branch}"
-           },
-           {
-            "key": "sess_branch",
-            "value": "${sess_branch}"
-           },
-           {
-            "key": "component_path",
-            "value": "${component_path}"
-           },
-           {
-            "key": "image_name",
-            "value": "${image_name}"
-           },
-           {
-            "key": "image_tag",
-            "value": "${image_tag}"
-           },
-           {
-            "key": "timestamp",
-            "value": "${TIMESTAMP}"
-           },
-           {
-            "key": "__sameProject__",
-            "value": "true"
-           },
-           {
-            "key": "__projectId__",
-            "value": ""
-           },
-           {
-            "key": "jobId",
-            "value": "12f446c7ae364335941b2bcf9c707107"
-           },
-           {
-            "key": "__repository__",
-            "value": "CANN-CI"
-           },
-           {
-            "key": "artifactIdentifier",
-            "value": ""
-           }
-          ],
-          "last_dispatch_id": "564fbd7c4e284012bf87c5772ca372e2",
-          "multi_step_editable": 0,
-          "name": "Build_image",
-          "sequence": 0,
-          "start_time": 1794275638000,
-          "status": "COMPLETED",
-          "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 1000
-         }
-        ],
-        "timeout": "",
-        "job_queue_time": 1000
-       }
-      ],
-      "name": "Build_image",
-      "pause_time": 0,
-      "post": [],
-      "pre": [
-       {
-        "end_time": 1794275637000,
-        "id": "de4d890f1e304ac287520bcc382629b0",
-        "last_dispatch_id": "5ca160b45d0f48c1a5ddbf29db6a7736",
-        "multi_step_editable": 0,
-        "sequence": 0,
-        "start_time": 1794275637000,
-        "status": "COMPLETED",
-        "task": "official_devcloud_autoTrigger"
-       }
-      ],
-      "run_always": false,
-      "sequence": 1,
-      "start_time": 1794275637000,
-      "status": "COMPLETED"
-     },
-     {
-      "category": "",
-      "depends_on": [
-       "1787246102861b00142f5-ecc3-4911-b907-93be06090c92"
-      ],
-      "end_time": 1794277760000,
-      "id": "19cd95360cf74a7fa6ed79aa83287c7d",
-      "identifier": "1772177509106612820db-f21b-429b-906b-3c1dd1eb6839",
-      "is_select": true,
-      "jobs": [
-       {
-        "condition": "${{ default() }}",
-        "depends_on": [],
-        "end_time": 1794277760000,
-        "exec_id": "j_oleKpLiS",
-        "id": "22da8923f4f34bb8878b34afd34b8306",
-        "identifier": "JOB_mXHcQ",
-        "is_select": true,
-        "last_dispatch_id": "cd9390a8a8444423b9424f24660fe274",
-        "message": "步骤Test_shmem执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
-        "name": "Test_shmem",
-        "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
-        "sequence": 0,
-        "start_time": 1794276429000,
-        "status": "FAILED",
-        "steps": [
-         {
-          "business_type": "Build",
-          "end_time": 1794277760000,
-          "endpoint_ids": [],
-          "id": "aa1562ce46e846efbc9f365f857349e9",
-          "inputs": [
-           {
-            "key": "ci_repo",
-            "value": "gitcode.com/cann-dev/CANN-CI.git"
-           },
-           {
-            "key": "ci_branch",
-            "value": "master"
-           },
-           {
-            "key": "cann_path",
-            "value": "obs://ascend-cann-private/version_combo_snapshot/latest"
-           },
-           {
-            "key": "testcase_config_file",
-            "value": "resources/pytest_cann_shmem.ini"
-           },
-           {
-            "key": "pipeline_id",
-            "value": "${PIPELINE_ID}"
-           },
-           {
-            "key": "pipeline_run_id",
-            "value": "${PIPELINE_RUN_ID}"
-           },
-           {
-            "key": "cann_version",
-            "value": "cann-9.1.0"
-           },
-           {
-            "key": "__sameProject__",
-            "value": "true"
-           },
-           {
-            "key": "__projectId__",
-            "value": ""
-           },
-           {
-            "key": "jobId",
-            "value": "5980e84e76f64a07b30c063bbe5a3d8e"
-           },
-           {
-            "key": "__repository__",
-            "value": "CANN-CI"
-           },
-           {
-            "key": "artifactIdentifier",
-            "value": ""
-           }
-          ],
-          "last_dispatch_id": "36715beb5e8a45cebb99475c7ef3e8bf",
-          "message": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
-          "multi_step_editable": 0,
-          "name": "Test_shmem",
-          "sequence": 0,
-          "start_time": 1794276429000,
-          "status": "FAILED",
-          "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 1000
-         }
-        ],
-        "timeout": "",
-        "job_queue_time": 1000
-       }
-      ],
-      "name": "冒烟",
-      "pause_time": 0,
-      "post": [],
-      "pre": [
-       {
-        "end_time": 1794276429000,
-        "id": "586cc58872fd42f49a7f8cb8550969ad",
-        "last_dispatch_id": "d8b6fc78b75e4331908e408ba4d1a011",
-        "multi_step_editable": 0,
-        "sequence": 0,
-        "start_time": 1794276429000,
-        "status": "COMPLETED",
-        "task": "official_devcloud_autoTrigger"
-       }
-      ],
-      "run_always": false,
-      "sequence": 2,
-      "start_time": 1794276429000,
-      "status": "FAILED"
-     },
-     {
-      "category": "",
-      "depends_on": [
-       "1772177509106612820db-f21b-429b-906b-3c1dd1eb6839"
-      ],
-      "id": "e56562e1478b44428b1148a332b6f6ee",
-      "identifier": "17766778678697e1ae103-e97e-482b-a88d-55f9d6cbb4a8",
-      "is_select": true,
-      "jobs": [
-       {
-        "condition": "${{ default() }}",
-        "depends_on": [],
-        "id": "d0a7f34fdf00427b8556a2b4b5c9d38e",
-        "identifier": "JOB_mGMFX",
-        "is_select": true,
-        "name": "notify_openlibing_smoke_info",
-        "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
-        "sequence": 0,
-        "status": "INIT",
-        "steps": [
-         {
-          "business_type": "Normal",
-          "endpoint_ids": [],
-          "id": "ba887da3eecd40b2812dc656f6e27e59",
-          "inputs": [
-           {
-            "key": "OFFICIAL_SHELL_SCRIPT_INPUT",
-            "value": "set -exu\n\nREQUEST_BODY='{\n  \"projectId\": \"300057\",\n  \"pipelineId\": \"'\"${PIPELINE_ID}\"'\",\n  \"pipelineRunId\": \"'\"${PIPELINE_RUN_ID}\"'\"\n}'\n\n# 使用 curl 发送请求，-s 表示静默，-f 表示失败返回非零，-w 输出状态码\nRESPONSE=$(curl -s -f -w \"\\n%{http_code}\" \\\n  -X POST 'https://apig.openlibing.com:443/openlibing-cicd/project/pipeline/external/record' \\\n  -H \"X-Apig-AppCode: $APP_CODE\" \\\n  -H 'Content-Type: application/json' \\\n  -d \"$REQUEST_BODY\")\n\n# 获取 HTTP 状态码（最后两行是状态码）\nHTTP_STATUS=$(echo \"$RESPONSE\" | tail -n1)\nRESPONSE_BODY=$(echo \"$RESPONSE\" | head -n -1)\n\n# 打印返回结果（含状态码和响应体）\necho \"✅ HTTP 状态码: $HTTP_STATUS\"\necho \"💬 响应内容：\"\necho \"$RESPONSE_BODY\""
-           }
-          ],
-          "multi_step_editable": 0,
-          "name": "notify_openlibing_smoke_info",
-          "sequence": 0,
-          "status": "INIT",
-          "task": "official_shell_plugin",
-          "job_queue_time": null
-         }
-        ],
-        "timeout": "",
-        "job_queue_time": null
-       }
-      ],
-      "name": "Notify",
-      "pause_time": 0,
-      "post": [],
-      "pre": [
-       {
-        "id": "80e8962d4b4d4beaa2da4853423f2b4b",
-        "multi_step_editable": 0,
-        "sequence": 0,
-        "status": "INIT",
-        "task": "official_devcloud_autoTrigger"
-       }
-      ],
-      "run_always": false,
-      "sequence": 3,
-      "status": "INIT"
-     }
-    ],
-    "start_time": 1794275505000,
-    "status": "FAILED",
-    "subject_id": "ba1a1af3745e4d34880b78916b209766",
-    "trigger_type": "Manual"
-   }
-  },
-  {
-   "key": "Ascend-CANN|shmem",
-   "rn": 143,
-   "st": "11-10 03:00",
-   "rstatus": "FAILED",
-   "rid": "0ea45a231d7547cf87aa39e2d3571b41",
-   "track": "bs",
-   "dims": [
-    "bs"
-   ],
-   "code": 200,
-   "data": {
-    "artifacts": [
-     {
-      "name": "sess_run.tar.gz",
-      "packageType": "gz",
-      "version": "20261110.9"
-     },
-     {
-      "name": "ATK_CIDA.tar.gz",
-      "packageType": "gz",
-      "version": "20261110.9"
-     }
-    ],
-    "component_id": "",
-    "current_system_time": 1794360091949,
-    "description": "",
-    "domain_id": "9315d40a767a4b9799c11edc078d7035",
-    "end_time": 1794253030000,
+    "end_time": 1794333871000,
     "executor_id": "5042b4b9449b420dbb8836498a906012",
     "executor_name": "Ascend-CANN/pipeline_admin_trust",
-    "id": "0ea45a231d7547cf87aa39e2d3571b41",
+    "id": "933d961d2a7144d98c124ce939d99002",
     "is_publish": false,
     "language": "zh-cn",
     "manifest_version": "3.0",
-    "name": "Nightly-CI-Component-pipeline_shmem",
+    "name": "Nightly-CI-Component-pipeline_ops-cv",
     "pause_time": 0,
-    "pipeline_id": "93831fdaa3234c8a9dd0b8a0c220f939",
+    "pipeline_id": "66b8958d6e0349ddb01143765c64afa5",
     "project_id": "1e20b309fcb34b00a0043a87e461c95a",
     "region": "cn-north-4",
-    "run_number": 143,
-    "sources": [
-     {
-      "params": {
-       "alias": "",
-       "build_params": {
-        "build_type": "branch",
-        "codehub_id": "2638244",
-        "commit_id": "7a3561025b138897585637934a6b16130b0a4f0d",
-        "event_type": "Manual",
-        "message": "修复smoke_baseline旧版本包残留：上传前按组件清理旧版本命名的包",
-        "target_branch": "master"
-       },
-       "codehub_id": "2638244",
-       "default_branch": "master",
-       "endpoint_id": "aa5e7e12ffdd43789ba7f2c1eb58b592",
-       "git_type": "codehub",
-       "git_url": "https://codehub.devcloud.cn-north-4.huaweicloud.com/1e20b309fcb34b00a0043a87e461c95a/ci.git",
-       "repo_name": "ci",
-       "ssh_git_url": "git@codehub.devcloud.cn-north-4.huaweicloud.com:1e20b309fcb34b00a0043a87e461c95a/ci.git",
-       "web_url": ""
-      },
-      "type": "code"
-     },
-     {
-      "params": {
-       "alias": "",
-       "build_params": {
-        "build_type": "branch",
-        "codehub_id": "8240624",
-        "commit_id": "",
-        "event_type": "Manual",
-        "message": "",
-        "target_branch": "master"
-       },
-       "codehub_id": "8240624",
-       "default_branch": "master",
-       "endpoint_id": "645673bb445f43e48038629104ed47f8",
-       "git_type": "gitcode",
-       "git_url": "https://gitcode.com/cann-dev/CANN-CI.git",
-       "repo_name": "CANN-CI",
-       "ssh_git_url": "git@gitcode.com:cann-dev/CANN-CI.git",
-       "web_url": ""
-      },
-      "type": "code"
-     }
-    ],
-    "stages": [
-     {
-      "category": "",
-      "depends_on": [],
-      "end_time": 1794250987000,
-      "id": "803bc474ba9a49a0940a5de13b44e95f",
-      "identifier": "177087832212602c37419-311e-430c-8d7f-5299889cb78d",
-      "is_select": true,
-      "jobs": [
-       {
-        "condition": "${{ default() }}",
-        "depends_on": [],
-        "end_time": 1794250987000,
-        "exec_id": "j_PooCpB0t",
-        "id": "e82c46784dc3427784590a2b44cd9e3d",
-        "identifier": "JOB_SDaxS",
-        "is_select": true,
-        "last_dispatch_id": "7e60217c580341488d3080653e899f54",
-        "name": "Build_shmem",
-        "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
-        "sequence": 0,
-        "start_time": 1794250855000,
-        "status": "COMPLETED",
-        "steps": [
-         {
-          "business_type": "Build",
-          "end_time": 1794250987000,
-          "endpoint_ids": [],
-          "id": "4a11882f855e4cfe8cec36ece387f37d",
-          "inputs": [
-           {
-            "key": "CB_BUILD_YAML_PATH",
-            "value": "${CB_BUILD_YAML_PATH}"
-           },
-           {
-            "key": "account",
-            "value": "${account}"
-           },
-           {
-            "key": "repo_module",
-            "value": "${repo_module}"
-           },
-           {
-            "key": "codeBranch",
-            "value": "master-cann-gitcode"
-           },
-           {
-            "key": "combo_artifact_directory",
-            "value": "${combo_artifact_directory}"
-           },
-           {
-            "key": "pipeline_run_timestamp",
-            "value": "${TIMESTAMP}"
-           },
-           {
-            "key": "__sameProject__",
-            "value": "true"
-           },
-           {
-            "key": "__projectId__",
-            "value": ""
-           },
-           {
-            "key": "jobId",
-            "value": "a8b84e6db72e4c33a94b70818d2e2795"
-           },
-           {
-            "key": "__repository__",
-            "value": "ci"
-           },
-           {
-            "key": "artifactIdentifier",
-            "value": ""
-           }
-          ],
-          "last_dispatch_id": "99a0741a11594dee9b3cfb7b3ae2179c",
-          "multi_step_editable": 0,
-          "name": "Build_shmem",
-          "sequence": 0,
-          "start_time": 1794250855000,
-          "status": "COMPLETED",
-          "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 3000
-         }
-        ],
-        "timeout": "",
-        "job_queue_time": 3000
-       },
-       {
-        "condition": "${{ default() }}",
-        "depends_on": [],
-        "end_time": 1794250896000,
-        "exec_id": "j_KFGN2Prp",
-        "id": "c22f8d11e7bf4cbf87abf4ceb97579d5",
-        "identifier": "JOB_bTFih",
-        "is_select": true,
-        "last_dispatch_id": "af288161aa8046b4ba23e2e6759f1ff3",
-        "name": "Clone_ATK_CIDA",
-        "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
-        "sequence": 1,
-        "start_time": 1794250855000,
-        "status": "COMPLETED",
-        "steps": [
-         {
-          "business_type": "Build",
-          "end_time": 1794250896000,
-          "endpoint_ids": [],
-          "id": "f50386387bdf40c0ace82057a426ec5a",
-          "inputs": [
-           {
-            "key": "ci_account",
-            "value": "AtlasAccount"
-           },
-           {
-            "key": "repo_url",
-            "value": "gitcode.com/cann_autotest/ATK_CIDA.git"
-           },
-           {
-            "key": "repo_name",
-            "value": "ATK_CIDA"
-           },
-           {
-            "key": "branch",
-            "value": "${atk_cida_branch}"
-           },
-           {
-            "key": "__sameProject__",
-            "value": "true"
-           },
-           {
-            "key": "__projectId__",
-            "value": ""
-           },
-           {
-            "key": "jobId",
-            "value": "b12394378f12452b827dc85031f85a2f"
-           },
-           {
-            "key": "__repository__",
-            "value": "CANN-CI"
-           },
-           {
-            "key": "artifactIdentifier",
-            "value": ""
-           }
-          ],
-          "last_dispatch_id": "c53b3ed8cee74f8f9f534f5dc5f0d0a3",
-          "multi_step_editable": 0,
-          "name": "Clone_ATK_CIDA",
-          "sequence": 0,
-          "start_time": 1794250855000,
-          "status": "COMPLETED",
-          "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 1000
-         }
-        ],
-        "timeout": "",
-        "job_queue_time": 1000
-       },
-       {
-        "condition": "${{ default() }}",
-        "depends_on": [],
-        "end_time": 1794250876000,
-        "exec_id": "j_Du7hwo47",
-        "id": "35ef41aaf4cb49b18a07ef2e7e646104",
-        "identifier": "JOB_fEswb",
-        "is_select": true,
-        "last_dispatch_id": "6773fb97d65f4574b640806ff630c7b4",
-        "name": "Clone_sess_run",
-        "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
-        "sequence": 2,
-        "start_time": 1794250855000,
-        "status": "COMPLETED",
-        "steps": [
-         {
-          "business_type": "Build",
-          "end_time": 1794250876000,
-          "endpoint_ids": [],
-          "id": "2d126306c2c84917a4b1d2466d93c311",
-          "inputs": [
-           {
-            "key": "ci_account",
-            "value": "AtlasAccount"
-           },
-           {
-            "key": "branch",
-            "value": "main"
-           },
-           {
-            "key": "__sameProject__",
-            "value": "true"
-           },
-           {
-            "key": "__projectId__",
-            "value": ""
-           },
-           {
-            "key": "jobId",
-            "value": "4031ad34a2234da98460578f7b63c64e"
-           },
-           {
-            "key": "__repository__",
-            "value": "CANN-CI"
-           },
-           {
-            "key": "artifactIdentifier",
-            "value": ""
-           }
-          ],
-          "last_dispatch_id": "050d8f61e8ce4ab78ec3117bf2e09578",
-          "multi_step_editable": 0,
-          "name": "Clone_sess_run",
-          "sequence": 0,
-          "start_time": 1794250855000,
-          "status": "COMPLETED",
-          "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 1000
-         }
-        ],
-        "timeout": "",
-        "job_queue_time": 1000
-       }
-      ],
-      "name": "构建",
-      "pause_time": 0,
-      "post": [],
-      "pre": [
-       {
-        "end_time": 1794250855000,
-        "id": "604f0f88f5944056a1bb8bf5cd4db288",
-        "last_dispatch_id": "ed93276953fb4ecfa3f91f8a90539edc",
-        "multi_step_editable": 0,
-        "sequence": 0,
-        "start_time": 1794250855000,
-        "status": "COMPLETED",
-        "task": "official_devcloud_autoTrigger"
-       }
-      ],
-      "run_always": false,
-      "sequence": 0,
-      "start_time": 1794250855000,
-      "status": "COMPLETED"
-     },
-     {
-      "category": "",
-      "depends_on": [
-       "177087832212602c37419-311e-430c-8d7f-5299889cb78d"
-      ],
-      "end_time": 1794251778000,
-      "id": "d2ad6a517a7d47f3b54e97f609220841",
-      "identifier": "1787246102861b00142f5-ecc3-4911-b907-93be06090c92",
-      "is_select": true,
-      "jobs": [
-       {
-        "condition": "${{ default() }}",
-        "depends_on": [],
-        "end_time": 1794251778000,
-        "exec_id": "j_40Gw5gFk",
-        "id": "d59f998838354188b87560d160b72dba",
-        "identifier": "JOB_mHEBH",
-        "is_select": true,
-        "last_dispatch_id": "649225fae1114f0badd380b9f4c92946",
-        "name": "Build_image",
-        "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
-        "sequence": 0,
-        "start_time": 1794250987000,
-        "status": "COMPLETED",
-        "steps": [
-         {
-          "business_type": "Build",
-          "end_time": 1794251778000,
-          "endpoint_ids": [],
-          "id": "e73179d37d3c4019adf935b7c22dc43f",
-          "inputs": [
-           {
-            "key": "dockerfile_path",
-            "value": "${dockerfile_path}"
-           },
-           {
-            "key": "CHIP_SERIES",
-            "value": "${CHIP_SERIES}"
-           },
-           {
-            "key": "atk_cida_branch",
-            "value": "${atk_cida_branch}"
-           },
-           {
-            "key": "sess_branch",
-            "value": "${sess_branch}"
-           },
-           {
-            "key": "component_path",
-            "value": "${component_path}"
-           },
-           {
-            "key": "image_name",
-            "value": "${image_name}"
-           },
-           {
-            "key": "image_tag",
-            "value": "${image_tag}"
-           },
-           {
-            "key": "timestamp",
-            "value": "${TIMESTAMP}"
-           },
-           {
-            "key": "__sameProject__",
-            "value": "true"
-           },
-           {
-            "key": "__projectId__",
-            "value": ""
-           },
-           {
-            "key": "jobId",
-            "value": "12f446c7ae364335941b2bcf9c707107"
-           },
-           {
-            "key": "__repository__",
-            "value": "CANN-CI"
-           },
-           {
-            "key": "artifactIdentifier",
-            "value": ""
-           }
-          ],
-          "last_dispatch_id": "7f5b6e20750e4744b0402490ffa6f515",
-          "multi_step_editable": 0,
-          "name": "Build_image",
-          "sequence": 0,
-          "start_time": 1794250987000,
-          "status": "COMPLETED",
-          "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 1000
-         }
-        ],
-        "timeout": "",
-        "job_queue_time": 1000
-       }
-      ],
-      "name": "Build_image",
-      "pause_time": 0,
-      "post": [],
-      "pre": [
-       {
-        "end_time": 1794250987000,
-        "id": "4371c9bd70a8468ba4f97d2801403af6",
-        "last_dispatch_id": "2b95e5e5091a4f058f498d87f82d0f05",
-        "multi_step_editable": 0,
-        "sequence": 0,
-        "start_time": 1794250987000,
-        "status": "COMPLETED",
-        "task": "official_devcloud_autoTrigger"
-       }
-      ],
-      "run_always": false,
-      "sequence": 1,
-      "start_time": 1794250987000,
-      "status": "COMPLETED"
-     },
-     {
-      "category": "",
-      "depends_on": [
-       "1787246102861b00142f5-ecc3-4911-b907-93be06090c92"
-      ],
-      "end_time": 1794253030000,
-      "id": "1c3b07c8e7b444e0a9889f0b843f357b",
-      "identifier": "1772177509106612820db-f21b-429b-906b-3c1dd1eb6839",
-      "is_select": true,
-      "jobs": [
-       {
-        "condition": "${{ default() }}",
-        "depends_on": [],
-        "end_time": 1794253030000,
-        "exec_id": "j_viujOBPB",
-        "id": "5c206919350e4793913fd4e0513578cf",
-        "identifier": "JOB_mXHcQ",
-        "is_select": true,
-        "last_dispatch_id": "f0349261654c485fa19c8427e4423eb9",
-        "message": "步骤Test_shmem执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
-        "name": "Test_shmem",
-        "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
-        "sequence": 0,
-        "start_time": 1794251779000,
-        "status": "FAILED",
-        "steps": [
-         {
-          "business_type": "Build",
-          "end_time": 1794253030000,
-          "endpoint_ids": [],
-          "id": "17e7bf8974fd4bed90e6a2de19132e3c",
-          "inputs": [
-           {
-            "key": "ci_repo",
-            "value": "gitcode.com/cann-dev/CANN-CI.git"
-           },
-           {
-            "key": "ci_branch",
-            "value": "master"
-           },
-           {
-            "key": "cann_path",
-            "value": "obs://ascend-cann-private/version_combo_snapshot/latest"
-           },
-           {
-            "key": "testcase_config_file",
-            "value": "resources/pytest_cann_shmem.ini"
-           },
-           {
-            "key": "pipeline_id",
-            "value": "${PIPELINE_ID}"
-           },
-           {
-            "key": "pipeline_run_id",
-            "value": "${PIPELINE_RUN_ID}"
-           },
-           {
-            "key": "cann_version",
-            "value": "cann-9.1.0"
-           },
-           {
-            "key": "__sameProject__",
-            "value": "true"
-           },
-           {
-            "key": "__projectId__",
-            "value": ""
-           },
-           {
-            "key": "jobId",
-            "value": "5980e84e76f64a07b30c063bbe5a3d8e"
-           },
-           {
-            "key": "__repository__",
-            "value": "CANN-CI"
-           },
-           {
-            "key": "artifactIdentifier",
-            "value": ""
-           }
-          ],
-          "last_dispatch_id": "caf2fb7db03f46acbba93968c8d98878",
-          "message": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
-          "multi_step_editable": 0,
-          "name": "Test_shmem",
-          "sequence": 0,
-          "start_time": 1794251779000,
-          "status": "FAILED",
-          "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 2000
-         }
-        ],
-        "timeout": "",
-        "job_queue_time": 2000
-       }
-      ],
-      "name": "冒烟",
-      "pause_time": 0,
-      "post": [],
-      "pre": [
-       {
-        "end_time": 1794251779000,
-        "id": "4e891a90e5974ba38f7a8ade49e64a41",
-        "last_dispatch_id": "6899a4664ef0488aafbfd294e39e8e5a",
-        "multi_step_editable": 0,
-        "sequence": 0,
-        "start_time": 1794251779000,
-        "status": "COMPLETED",
-        "task": "official_devcloud_autoTrigger"
-       }
-      ],
-      "run_always": false,
-      "sequence": 2,
-      "start_time": 1794251779000,
-      "status": "FAILED"
-     },
-     {
-      "category": "",
-      "depends_on": [
-       "1772177509106612820db-f21b-429b-906b-3c1dd1eb6839"
-      ],
-      "id": "ec87a79827f649f2a313411c55954a19",
-      "identifier": "17766778678697e1ae103-e97e-482b-a88d-55f9d6cbb4a8",
-      "is_select": true,
-      "jobs": [
-       {
-        "condition": "${{ default() }}",
-        "depends_on": [],
-        "id": "2146472885054a69aaf5e8b77923f0fc",
-        "identifier": "JOB_mGMFX",
-        "is_select": true,
-        "name": "notify_openlibing_smoke_info",
-        "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
-        "sequence": 0,
-        "status": "INIT",
-        "steps": [
-         {
-          "business_type": "Normal",
-          "endpoint_ids": [],
-          "id": "1d84e155b9e94dd581fe0535979ac863",
-          "inputs": [
-           {
-            "key": "OFFICIAL_SHELL_SCRIPT_INPUT",
-            "value": "set -exu\n\nREQUEST_BODY='{\n  \"projectId\": \"300057\",\n  \"pipelineId\": \"'\"${PIPELINE_ID}\"'\",\n  \"pipelineRunId\": \"'\"${PIPELINE_RUN_ID}\"'\"\n}'\n\n# 使用 curl 发送请求，-s 表示静默，-f 表示失败返回非零，-w 输出状态码\nRESPONSE=$(curl -s -f -w \"\\n%{http_code}\" \\\n  -X POST 'https://apig.openlibing.com:443/openlibing-cicd/project/pipeline/external/record' \\\n  -H \"X-Apig-AppCode: $APP_CODE\" \\\n  -H 'Content-Type: application/json' \\\n  -d \"$REQUEST_BODY\")\n\n# 获取 HTTP 状态码（最后两行是状态码）\nHTTP_STATUS=$(echo \"$RESPONSE\" | tail -n1)\nRESPONSE_BODY=$(echo \"$RESPONSE\" | head -n -1)\n\n# 打印返回结果（含状态码和响应体）\necho \"✅ HTTP 状态码: $HTTP_STATUS\"\necho \"💬 响应内容：\"\necho \"$RESPONSE_BODY\""
-           }
-          ],
-          "multi_step_editable": 0,
-          "name": "notify_openlibing_smoke_info",
-          "sequence": 0,
-          "status": "INIT",
-          "task": "official_shell_plugin",
-          "job_queue_time": null
-         }
-        ],
-        "timeout": "",
-        "job_queue_time": null
-       }
-      ],
-      "name": "Notify",
-      "pause_time": 0,
-      "post": [],
-      "pre": [
-       {
-        "id": "7716573d32e4446baeb43c465caff455",
-        "multi_step_editable": 0,
-        "sequence": 0,
-        "status": "INIT",
-        "task": "official_devcloud_autoTrigger"
-       }
-      ],
-      "run_always": false,
-      "sequence": 3,
-      "status": "INIT"
-     }
-    ],
-    "start_time": 1794250854000,
-    "status": "FAILED",
-    "subject_id": "0ea45a231d7547cf87aa39e2d3571b41",
-    "trigger_type": "Scheduler"
-   }
-  },
-  {
-   "key": "Ascend-CANN|ops-transformer",
-   "rn": 167,
-   "st": "11-09 20:49",
-   "rstatus": "FAILED",
-   "rid": "1cf0a09871cf488abd9c7aaaf7a4319a",
-   "track": "bs",
-   "dims": [
-    "bs"
-   ],
-   "code": 200,
-   "data": {
-    "artifacts": [
-     {
-      "name": "ATK_CIDA.tar.gz",
-      "packageType": "gz",
-      "version": "20261109.20"
-     },
-     {
-      "name": "sess_run.tar.gz",
-      "packageType": "gz",
-      "version": "20261109.20"
-     }
-    ],
-    "component_id": "",
-    "current_system_time": 1794360091987,
-    "description": "",
-    "domain_id": "9315d40a767a4b9799c11edc078d7035",
-    "end_time": 1794240247000,
-    "executor_id": "b355250863b148448cf6e67c4a5139a8",
-    "executor_name": "cann_developer",
-    "id": "1cf0a09871cf488abd9c7aaaf7a4319a",
-    "is_publish": false,
-    "language": "zh-cn",
-    "manifest_version": "3.0",
-    "name": "Nightly-CI-Component-pipeline_ops-transformer",
-    "pause_time": 0,
-    "pipeline_id": "309180d5c2904adf942f5678d9356d99",
-    "project_id": "1e20b309fcb34b00a0043a87e461c95a",
-    "region": "cn-north-4",
-    "run_number": 167,
+    "run_number": 173,
     "sources": [
      {
       "params": {
@@ -1349,31 +91,31 @@
      {
       "category": "",
       "depends_on": [],
-      "end_time": 1794232942000,
-      "id": "e94ace4671ad426e885d106f47dac187",
+      "end_time": 1794330577000,
+      "id": "d476348f4fb44e9c93138a73ed5547da",
       "identifier": "1767163283665f6df3cec-6084-47c9-977c-5bc1e08e4f1c",
       "is_select": true,
       "jobs": [
        {
         "condition": "${{ default() }}",
         "depends_on": [],
-        "end_time": 1794232942000,
-        "exec_id": "j_gNNA3MJq",
-        "id": "4f446ebbdc394dbba2796163e01bd4ca",
+        "end_time": 1794330577000,
+        "exec_id": "j_T8zPJ4SD",
+        "id": "190e45a223d946dd8f1d2964926413ca",
         "identifier": "JOB_zhcZx",
         "is_select": true,
-        "last_dispatch_id": "3d3792d1b48548d2aed93e8c4fa2e5a9",
-        "name": "Build_ops-transformer",
+        "last_dispatch_id": "86fbe2587454440ca4d544f163988dcc",
+        "name": "Build_ops-cv",
         "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
         "sequence": 0,
-        "start_time": 1794228550000,
+        "start_time": 1794330306000,
         "status": "COMPLETED",
         "steps": [
          {
           "business_type": "Build",
-          "end_time": 1794232942000,
+          "end_time": 1794330577000,
           "endpoint_ids": [],
-          "id": "557b935a627a41fca088ab44333183c7",
+          "id": "81079e6d4521496399439e7f5db80b49",
           "inputs": [
            {
             "key": "account",
@@ -1397,11 +139,15 @@
            },
            {
             "key": "repo_module",
-            "value": "ops"
+            "value": "${repo_module}"
            },
            {
             "key": "pipeline_run_timestamp",
             "value": "${TIMESTAMP}"
+           },
+           {
+            "key": "soc_verion",
+            "value": "ascend910b"
            },
            {
             "key": "__sameProject__",
@@ -1424,39 +170,39 @@
             "value": ""
            }
           ],
-          "last_dispatch_id": "0fc41ab43b8945c3abf3032f62d5a480",
+          "last_dispatch_id": "f53dad2c05c2436eb117fed0b8e73a28",
           "multi_step_editable": 0,
-          "name": "Build_ops-transformer",
+          "name": "Build_ops-cv",
           "sequence": 0,
-          "start_time": 1794228550000,
+          "start_time": 1794330306000,
           "status": "COMPLETED",
           "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 4000
+          "job_queue_time": 1000
          }
         ],
         "timeout": "",
-        "job_queue_time": 4000
+        "job_queue_time": 1000
        },
        {
         "condition": "${{ default() }}",
         "depends_on": [],
-        "end_time": 1794228622000,
-        "exec_id": "j_ksKxsDBm",
-        "id": "5f29c5b7025e4fb6bd653c0d919dea15",
-        "identifier": "JOB_xpZth",
+        "end_time": 1794330357000,
+        "exec_id": "j_KPwxP5f2",
+        "id": "296dbf66ec0149f9b9b06231537af38c",
+        "identifier": "JOB_sRYBb",
         "is_select": true,
-        "last_dispatch_id": "221cb24bc1774b7babf30012c30145e2",
+        "last_dispatch_id": "75b9c91640984db8861cde6fec1ca3da",
         "name": "Clone_ATK_CIDA",
         "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
         "sequence": 1,
-        "start_time": 1794228551000,
+        "start_time": 1794330306000,
         "status": "COMPLETED",
         "steps": [
          {
           "business_type": "Build",
-          "end_time": 1794228622000,
+          "end_time": 1794330357000,
           "endpoint_ids": [],
-          "id": "f21aa665f1fe4a658024dc35d77014de",
+          "id": "8c0b2a9d595e4405aa4db4ac95dbd637",
           "inputs": [
            {
             "key": "ci_account",
@@ -1495,39 +241,39 @@
             "value": ""
            }
           ],
-          "last_dispatch_id": "08fe24086baf4f0d9d67bb53112cb42f",
+          "last_dispatch_id": "da701f4a159b4671a72a4aac37dc94d2",
           "multi_step_editable": 0,
           "name": "Clone_ATK_CIDA",
           "sequence": 0,
-          "start_time": 1794228551000,
+          "start_time": 1794330306000,
           "status": "COMPLETED",
           "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 1000
+          "job_queue_time": 2000
          }
         ],
         "timeout": "",
-        "job_queue_time": 1000
+        "job_queue_time": 2000
        },
        {
         "condition": "${{ default() }}",
         "depends_on": [],
-        "end_time": 1794228702000,
-        "exec_id": "j_CF95vPTE",
-        "id": "e8397c2baa6b4bef9d933003341506b0",
-        "identifier": "JOB_xmabZ",
+        "end_time": 1794330337000,
+        "exec_id": "j_Ga1HWAUV",
+        "id": "7e8367ec2b8044c68a0869c66f05cc5e",
+        "identifier": "JOB_stcnw",
         "is_select": true,
-        "last_dispatch_id": "5e7409c666b94708988e09ca4df27c1b",
+        "last_dispatch_id": "aeb8815dbf304d7a97f681f0bd8c0d61",
         "name": "Clone_sess_run",
         "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
         "sequence": 2,
-        "start_time": 1794228550000,
+        "start_time": 1794330306000,
         "status": "COMPLETED",
         "steps": [
          {
           "business_type": "Build",
-          "end_time": 1794228702000,
+          "end_time": 1794330337000,
           "endpoint_ids": [],
-          "id": "5214d9426bec42daa4dd62f2c694bd68",
+          "id": "fee10785ff0049b0b46a8f82e9813202",
           "inputs": [
            {
             "key": "ci_account",
@@ -1558,18 +304,18 @@
             "value": ""
            }
           ],
-          "last_dispatch_id": "a1bb9860c1004e8ab2431b48792c6ec7",
+          "last_dispatch_id": "6bf52b0bf67c46d6aacbef52f44cdec0",
           "multi_step_editable": 0,
           "name": "Clone_sess_run",
           "sequence": 0,
-          "start_time": 1794228550000,
+          "start_time": 1794330306000,
           "status": "COMPLETED",
           "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 1000
+          "job_queue_time": 2000
          }
         ],
         "timeout": "",
-        "job_queue_time": 1000
+        "job_queue_time": 2000
        }
       ],
       "name": "构建",
@@ -1577,19 +323,19 @@
       "post": [],
       "pre": [
        {
-        "end_time": 1794228550000,
-        "id": "17828d00feec4d77bb425c1729dfcf4d",
-        "last_dispatch_id": "7c95ff69078049a9b2183ec07376bf94",
+        "end_time": 1794330306000,
+        "id": "d658bc33c98b4c9b80103701627e4a87",
+        "last_dispatch_id": "6d7098ec8fc9413c823c750a2f9f7e4a",
         "multi_step_editable": 0,
         "sequence": 0,
-        "start_time": 1794228550000,
+        "start_time": 1794330306000,
         "status": "COMPLETED",
         "task": "official_devcloud_autoTrigger"
        }
       ],
       "run_always": false,
       "sequence": 0,
-      "start_time": 1794228550000,
+      "start_time": 1794330306000,
       "status": "COMPLETED"
      },
      {
@@ -1597,31 +343,31 @@
       "depends_on": [
        "1767163283665f6df3cec-6084-47c9-977c-5bc1e08e4f1c"
       ],
-      "end_time": 1794234705000,
-      "id": "87e8401bae6f4f84817c915789369fd8",
-      "identifier": "17872091265406e0fda96-4f03-4f61-ad58-7a7148837902",
+      "end_time": 1794331399000,
+      "id": "4c79928297094739b63fbc8ac6308824",
+      "identifier": "1787035497126cca90b9d-6152-4290-9ca5-a39e9fbbd9b6",
       "is_select": true,
       "jobs": [
        {
         "condition": "${{ default() }}",
         "depends_on": [],
-        "end_time": 1794234705000,
-        "exec_id": "j_8ENbBpIN",
-        "id": "96cdf1b73fe5496da9d8c14139eeb7e8",
-        "identifier": "JOB_bXdDG",
+        "end_time": 1794331399000,
+        "exec_id": "j_bQ4by0ew",
+        "id": "6e432edc457744d08a7ed38f2594221d",
+        "identifier": "JOB_dBnQd",
         "is_select": true,
-        "last_dispatch_id": "a67dd18d0fb84a89bfdd6800fd62c92a",
-        "name": "Build_image",
+        "last_dispatch_id": "f91d46cb58994943ae6bb3d681d277e1",
+        "name": "Build_image_ops-cv",
         "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
         "sequence": 0,
-        "start_time": 1794232942000,
+        "start_time": 1794330578000,
         "status": "COMPLETED",
         "steps": [
          {
           "business_type": "Build",
-          "end_time": 1794234705000,
+          "end_time": 1794331399000,
           "endpoint_ids": [],
-          "id": "9963ef93e5534acaa04cfaf7069d21a5",
+          "id": "a1bcd44e9ad8463b924e7686c6db4766",
           "inputs": [
            {
             "key": "dockerfile_path",
@@ -1676,11 +422,11 @@
             "value": ""
            }
           ],
-          "last_dispatch_id": "6903267a77244916b86ec2b74f16eeb3",
+          "last_dispatch_id": "f9c432ad63fa4893888d4ad40e3b9e5e",
           "multi_step_editable": 0,
-          "name": "Build_image",
+          "name": "Build_image_ops-cv",
           "sequence": 0,
-          "start_time": 1794232942000,
+          "start_time": 1794330578000,
           "status": "COMPLETED",
           "task": "official_devcloud_cloudBuild",
           "job_queue_time": 2000
@@ -1690,57 +436,57 @@
         "job_queue_time": 2000
        }
       ],
-      "name": "build_image",
+      "name": "Build_image",
       "pause_time": 0,
       "post": [],
       "pre": [
        {
-        "end_time": 1794232942000,
-        "id": "11373cf419484b2aa9a484fedbb3ce71",
-        "last_dispatch_id": "9bfc83448ef54068a6251c863b3554fb",
+        "end_time": 1794330578000,
+        "id": "280b077369104a5992118cd1aef8dd23",
+        "last_dispatch_id": "784466a4a5a74e6aa53744ec0343e4e0",
         "multi_step_editable": 0,
         "sequence": 0,
-        "start_time": 1794232942000,
+        "start_time": 1794330578000,
         "status": "COMPLETED",
         "task": "official_devcloud_autoTrigger"
        }
       ],
       "run_always": false,
       "sequence": 1,
-      "start_time": 1794232942000,
+      "start_time": 1794330578000,
       "status": "COMPLETED"
      },
      {
       "category": "",
       "depends_on": [
-       "17872091265406e0fda96-4f03-4f61-ad58-7a7148837902"
+       "1787035497126cca90b9d-6152-4290-9ca5-a39e9fbbd9b6"
       ],
-      "end_time": 1794240247000,
-      "id": "063edd29033c45618b5b49bdecc5e490",
-      "identifier": "1772161156568765eee06-dc50-4e39-bdf7-b41898dc31d2",
+      "end_time": 1794333871000,
+      "id": "d93e6febc83141afbc4852671736bab9",
+      "identifier": "177208936730790ef83c2-fac4-4032-9c85-63327bd3f0e6",
       "is_select": true,
       "jobs": [
        {
         "condition": "${{ default() }}",
         "depends_on": [],
-        "end_time": 1794240247000,
-        "exec_id": "j_1kl63yzF",
-        "id": "69c0d95b0ec94a45b2641245e268a30d",
-        "identifier": "JOB_yrXQY",
+        "end_time": 1794333871000,
+        "exec_id": "j_HCpUMykX",
+        "id": "97a88b2ee9184d4088153228013619ff",
+        "identifier": "JOB_cKSRE",
         "is_select": true,
-        "last_dispatch_id": "49396c288c6a43f6a4e3bc1f29f2d98c",
-        "message": "步骤Test_ops-transformer执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
-        "name": "Test_ops-transformer",
+        "last_dispatch_id": "0f0410f1441e4c6fbed22d6783eb6013",
+        "message": "步骤Test_ops-cv执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
+        "name": "Test_ops-cv",
         "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
         "sequence": 0,
-        "start_time": 1794234706000,
+        "start_time": 1794331400000,
         "status": "FAILED",
         "steps": [
          {
           "business_type": "Build",
-          "end_time": 1794240247000,
+          "end_time": 1794333871000,
           "endpoint_ids": [],
-          "id": "ec42bc42fbac48828c3069c9ae479e04",
+          "id": "669fde56b9864c61a689446e9ccc09d0",
           "inputs": [
            {
             "key": "ci_repo",
@@ -1755,8 +501,8 @@
             "value": "obs://ascend-cann-private/version_combo_snapshot/latest"
            },
            {
-            "key": "testcase_config_file",
-            "value": "resources/pytest_cann_ops-transformer.ini"
+            "key": "testcase_file_name",
+            "value": "pro_smoke_testcase.json"
            },
            {
             "key": "pipeline_id",
@@ -1780,7 +526,7 @@
            },
            {
             "key": "jobId",
-            "value": "37823397fab445fa9626582d68281207"
+            "value": "39044619d0f744d28744a84cabade6b6"
            },
            {
             "key": "__repository__",
@@ -1791,19 +537,19 @@
             "value": ""
            }
           ],
-          "last_dispatch_id": "346f5f97a57c4e03b133dd741cec7a92",
+          "last_dispatch_id": "afb8cb7a084f4f698b722c05f9564aba",
           "message": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
           "multi_step_editable": 0,
-          "name": "Test_ops-transformer",
+          "name": "Test_ops-cv",
           "sequence": 0,
-          "start_time": 1794234706000,
+          "start_time": 1794331400000,
           "status": "FAILED",
           "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 1000
+          "job_queue_time": 2000
          }
         ],
         "timeout": "",
-        "job_queue_time": 1000
+        "job_queue_time": 2000
        }
       ],
       "name": "冒烟",
@@ -1811,35 +557,35 @@
       "post": [],
       "pre": [
        {
-        "end_time": 1794234706000,
-        "id": "0814cd7717de4f9eb974de3777211f8c",
-        "last_dispatch_id": "aba291363ef04be5adb178efcd15d7ec",
+        "end_time": 1794331400000,
+        "id": "5dea889e7dab4eea8c08e29bf7202038",
+        "last_dispatch_id": "aa9c67e56f894b9dad3b178b2265f30f",
         "multi_step_editable": 0,
         "sequence": 0,
-        "start_time": 1794234706000,
+        "start_time": 1794331400000,
         "status": "COMPLETED",
         "task": "official_devcloud_autoTrigger"
        }
       ],
       "run_always": false,
       "sequence": 2,
-      "start_time": 1794234706000,
+      "start_time": 1794331400000,
       "status": "FAILED"
      },
      {
       "category": "",
       "depends_on": [
-       "1772161156568765eee06-dc50-4e39-bdf7-b41898dc31d2"
+       "177208936730790ef83c2-fac4-4032-9c85-63327bd3f0e6"
       ],
-      "id": "3d60252af44b4f1994402a3d35247203",
-      "identifier": "1773133993013a79e8a05-e9b6-44cc-bcf8-96c138b832a9",
+      "id": "ba9cb4828ad34f20af59942cdc15be34",
+      "identifier": "1773388787413254f61aa-f97a-4850-8b2d-b9be2a1342c5",
       "is_select": true,
       "jobs": [
        {
         "condition": "${{ default() }}",
         "depends_on": [],
-        "id": "497dbe97d10f46838659f2ba8759f210",
-        "identifier": "JOB_bSicH",
+        "id": "4d8e6dcef8804235a7ca3ba83ec4a4a8",
+        "identifier": "JOB_pXbKp",
         "is_select": true,
         "name": "update_smoke_baseline",
         "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
@@ -1849,7 +595,7 @@
          {
           "business_type": "Build",
           "endpoint_ids": [],
-          "id": "adc9c746b799405f87388255e5c1100e",
+          "id": "08b0ebe2a39740bb85a311d93b288493",
           "inputs": [
            {
             "key": "enable_buildcheck",
@@ -1934,8 +680,8 @@
        {
         "condition": "${{ default() }}",
         "depends_on": [],
-        "id": "5b27999594484acca2d32777affc7142",
-        "identifier": "JOB_FaADA",
+        "id": "9f5cc5a1d204431a91d69e0206100083",
+        "identifier": "JOB_myHyc",
         "is_select": true,
         "name": "notify_openlibing_smoke_info",
         "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
@@ -1945,7 +691,7 @@
          {
           "business_type": "Normal",
           "endpoint_ids": [],
-          "id": "5fe4541f31fe44c6a84f6de8e0449e56",
+          "id": "fd0fce55b050458b94c5ae0bd90d5662",
           "inputs": [
            {
             "key": "OFFICIAL_SHELL_SCRIPT_INPUT",
@@ -1969,7 +715,7 @@
       "post": [],
       "pre": [
        {
-        "id": "1fc7d6be073540b180d9c4e17309fa4b",
+        "id": "fbfc711e43774b7cac8498b63f715014",
         "multi_step_editable": 0,
         "sequence": 0,
         "status": "INIT",
@@ -1981,94 +727,61 @@
       "status": "INIT"
      }
     ],
-    "start_time": 1794228549000,
+    "start_time": 1794330305000,
     "status": "FAILED",
-    "subject_id": "1cf0a09871cf488abd9c7aaaf7a4319a",
-    "trigger_type": "Manual"
+    "subject_id": "933d961d2a7144d98c124ce939d99002",
+    "trigger_type": "Scheduler"
    }
   },
   {
-   "key": "Ascend-CANN|shmem",
-   "rn": 145,
-   "st": "11-10 17:00",
+   "key": "openUBMC|openUBMC",
+   "rn": 2449,
+   "st": "11-11 22:51",
    "rstatus": "FAILED",
-   "rid": "96a91e4f3750433c9c0c23a1b5877f54",
+   "rid": "e5f814f030eb4e5691d2f39289555c49",
    "track": "bs",
    "dims": [
     "bs"
    ],
    "code": 200,
    "data": {
-    "artifacts": [
-     {
-      "name": "sess_run.tar.gz",
-      "packageType": "gz",
-      "version": "20261110.19"
-     },
-     {
-      "name": "ATK_CIDA.tar.gz",
-      "packageType": "gz",
-      "version": "20261110.19"
-     }
-    ],
     "component_id": "",
-    "current_system_time": 1794360091991,
+    "current_system_time": 1794445931964,
     "description": "",
-    "domain_id": "9315d40a767a4b9799c11edc078d7035",
-    "end_time": 1794302396000,
-    "executor_id": "5042b4b9449b420dbb8836498a906012",
-    "executor_name": "Ascend-CANN/pipeline_admin_trust",
-    "id": "96a91e4f3750433c9c0c23a1b5877f54",
+    "domain_id": "ad268a13b93c480087c8a1e4b0fe8b15",
+    "executor_id": "b3f31315801749d4bc271ced39539372",
+    "executor_name": "liruichen",
+    "group_id": "b88f022932074023a329677a37bf01f2",
+    "group_name": "每日构建",
+    "id": "e5f814f030eb4e5691d2f39289555c49",
     "is_publish": false,
     "language": "zh-cn",
     "manifest_version": "3.0",
-    "name": "Nightly-CI-Component-pipeline_shmem",
-    "pause_time": 79550,
-    "pipeline_id": "93831fdaa3234c8a9dd0b8a0c220f939",
-    "project_id": "1e20b309fcb34b00a0043a87e461c95a",
+    "name": "Nightly-CI-Version-pipeline_openUBMC",
+    "pause_time": 36847734,
+    "pipeline_id": "440c21006cf141e9806d6029c5185b53",
+    "project_id": "e5de1c327b5247e2a1102dfdc20ad4c2",
     "region": "cn-north-4",
-    "run_number": 145,
+    "run_number": 2449,
     "sources": [
      {
       "params": {
        "alias": "",
        "build_params": {
         "build_type": "branch",
-        "codehub_id": "2638244",
-        "commit_id": "7a3561025b138897585637934a6b16130b0a4f0d",
-        "event_type": "Manual",
-        "message": "修复smoke_baseline旧版本包残留：上传前按组件清理旧版本命名的包",
-        "target_branch": "master"
-       },
-       "codehub_id": "2638244",
-       "default_branch": "master",
-       "endpoint_id": "aa5e7e12ffdd43789ba7f2c1eb58b592",
-       "git_type": "codehub",
-       "git_url": "https://codehub.devcloud.cn-north-4.huaweicloud.com/1e20b309fcb34b00a0043a87e461c95a/ci.git",
-       "repo_name": "ci",
-       "ssh_git_url": "git@codehub.devcloud.cn-north-4.huaweicloud.com:1e20b309fcb34b00a0043a87e461c95a/ci.git",
-       "web_url": ""
-      },
-      "type": "code"
-     },
-     {
-      "params": {
-       "alias": "",
-       "build_params": {
-        "build_type": "branch",
-        "codehub_id": "8240624",
+        "codehub_id": "5016191",
         "commit_id": "",
         "event_type": "Manual",
         "message": "",
-        "target_branch": "master"
+        "target_branch": "main"
        },
-       "codehub_id": "8240624",
-       "default_branch": "master",
-       "endpoint_id": "645673bb445f43e48038629104ed47f8",
+       "codehub_id": "5016191",
+       "default_branch": "main",
+       "endpoint_id": "72e849c0190946e483eb7c79d44de11e",
        "git_type": "gitcode",
-       "git_url": "https://gitcode.com/cann-dev/CANN-CI.git",
-       "repo_name": "CANN-CI",
-       "ssh_git_url": "git@gitcode.com:cann-dev/CANN-CI.git",
+       "git_url": "https://gitcode.com/openUBMC/infrastructure.git",
+       "repo_name": "infrastructure",
+       "ssh_git_url": "git@gitcode.com:openUBMC/infrastructure.git",
        "web_url": ""
       },
       "type": "code"
@@ -2078,55 +791,32 @@
      {
       "category": "",
       "depends_on": [],
-      "end_time": 1794301371000,
-      "id": "0fe3d4cdaa724de1992a05a9a6599b3b",
-      "identifier": "177087832212602c37419-311e-430c-8d7f-5299889cb78d",
+      "id": "a63d46f8f7094c5ca829af188eb6cd6a",
+      "identifier": "178410133381114d0d735-28ef-40f5-9811-e8dddbea7b9c",
       "is_select": true,
       "jobs": [
        {
         "condition": "${{ default() }}",
         "depends_on": [],
-        "end_time": 1794301371000,
-        "exec_id": "j_rLqAIVRh",
-        "id": "f21e27f6653449b0810e6d33bb20a976",
-        "identifier": "JOB_SDaxS",
+        "exec_id": "j_NJALNJiH",
+        "id": "cf1f9641a35e4e63b56ff9b72424dd0e",
+        "identifier": "JOB_JDHwd",
         "is_select": true,
-        "last_dispatch_id": "93ca1db17e6d4ed7b37c5713e9b7993f",
-        "name": "Build_shmem",
+        "last_dispatch_id": "565b41aba80045babfc532289fb14bd6",
+        "name": "prepare",
         "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
         "sequence": 0,
-        "start_time": 1794301210000,
-        "status": "COMPLETED",
+        "start_time": 1794445568000,
+        "status": "RUNNING",
         "steps": [
          {
           "business_type": "Build",
-          "end_time": 1794301371000,
           "endpoint_ids": [],
-          "id": "1df0fbf1e4604502a436320a828cfe7c",
+          "id": "3479540ae9a64b6993434ee262237def",
           "inputs": [
            {
-            "key": "CB_BUILD_YAML_PATH",
-            "value": "${CB_BUILD_YAML_PATH}"
-           },
-           {
-            "key": "account",
-            "value": "${account}"
-           },
-           {
-            "key": "repo_module",
-            "value": "${repo_module}"
-           },
-           {
-            "key": "codeBranch",
-            "value": "master-cann-gitcode"
-           },
-           {
-            "key": "combo_artifact_directory",
-            "value": "${combo_artifact_directory}"
-           },
-           {
-            "key": "pipeline_run_timestamp",
-            "value": "${TIMESTAMP}"
+            "key": "image_version",
+            "value": "${image_version}"
            },
            {
             "key": "__sameProject__",
@@ -2138,247 +828,91 @@
            },
            {
             "key": "jobId",
-            "value": "a8b84e6db72e4c33a94b70818d2e2795"
+            "value": "d17191b08e5b4f8ab6daeee69ac5123c"
            },
            {
             "key": "__repository__",
-            "value": "ci"
+            "value": "infrastructure"
            },
            {
             "key": "artifactIdentifier",
             "value": ""
            }
           ],
-          "last_dispatch_id": "96a37ba3e6844c9091e560d94a1becc4",
+          "last_dispatch_id": "3e7271e4160f4e2abc8261a7ad2eafdb",
           "multi_step_editable": 0,
-          "name": "Build_shmem",
+          "name": "prepare",
           "sequence": 0,
-          "start_time": 1794301210000,
-          "status": "COMPLETED",
+          "start_time": 1794445568000,
+          "status": "RUNNING",
           "task": "official_devcloud_cloudBuild",
           "job_queue_time": 1000
          }
         ],
         "timeout": "",
         "job_queue_time": 1000
-       },
-       {
-        "condition": "${{ default() }}",
-        "depends_on": [],
-        "end_time": 1794301251000,
-        "exec_id": "j_D5qiIzB9",
-        "id": "1ab4985eebb44541ba0f729f5fc54dc3",
-        "identifier": "JOB_bTFih",
-        "is_select": true,
-        "last_dispatch_id": "212ace8c4e1a4e978370bcf3d0c71332",
-        "name": "Clone_ATK_CIDA",
-        "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
-        "sequence": 1,
-        "start_time": 1794301210000,
-        "status": "COMPLETED",
-        "steps": [
-         {
-          "business_type": "Build",
-          "end_time": 1794301251000,
-          "endpoint_ids": [],
-          "id": "736200132d194602a093de6dc609a3a1",
-          "inputs": [
-           {
-            "key": "ci_account",
-            "value": "AtlasAccount"
-           },
-           {
-            "key": "repo_url",
-            "value": "gitcode.com/cann_autotest/ATK_CIDA.git"
-           },
-           {
-            "key": "repo_name",
-            "value": "ATK_CIDA"
-           },
-           {
-            "key": "branch",
-            "value": "${atk_cida_branch}"
-           },
-           {
-            "key": "__sameProject__",
-            "value": "true"
-           },
-           {
-            "key": "__projectId__",
-            "value": ""
-           },
-           {
-            "key": "jobId",
-            "value": "b12394378f12452b827dc85031f85a2f"
-           },
-           {
-            "key": "__repository__",
-            "value": "CANN-CI"
-           },
-           {
-            "key": "artifactIdentifier",
-            "value": ""
-           }
-          ],
-          "last_dispatch_id": "11f94450061d43d6a93b695c5ddc40f3",
-          "multi_step_editable": 0,
-          "name": "Clone_ATK_CIDA",
-          "sequence": 0,
-          "start_time": 1794301210000,
-          "status": "COMPLETED",
-          "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 2000
-         }
-        ],
-        "timeout": "",
-        "job_queue_time": 2000
-       },
-       {
-        "condition": "${{ default() }}",
-        "depends_on": [],
-        "end_time": 1794301241000,
-        "exec_id": "j_ZD5AYKGP",
-        "id": "553c544029404610817274746b87f68d",
-        "identifier": "JOB_fEswb",
-        "is_select": true,
-        "last_dispatch_id": "0376db19b3f74dacb07647df2b805474",
-        "name": "Clone_sess_run",
-        "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
-        "sequence": 2,
-        "start_time": 1794301210000,
-        "status": "COMPLETED",
-        "steps": [
-         {
-          "business_type": "Build",
-          "end_time": 1794301241000,
-          "endpoint_ids": [],
-          "id": "8a98288c3766416d8d9ca660760e17b9",
-          "inputs": [
-           {
-            "key": "ci_account",
-            "value": "AtlasAccount"
-           },
-           {
-            "key": "branch",
-            "value": "main"
-           },
-           {
-            "key": "__sameProject__",
-            "value": "true"
-           },
-           {
-            "key": "__projectId__",
-            "value": ""
-           },
-           {
-            "key": "jobId",
-            "value": "4031ad34a2234da98460578f7b63c64e"
-           },
-           {
-            "key": "__repository__",
-            "value": "CANN-CI"
-           },
-           {
-            "key": "artifactIdentifier",
-            "value": ""
-           }
-          ],
-          "last_dispatch_id": "331681d602944dffb6b66db430c4a6ce",
-          "multi_step_editable": 0,
-          "name": "Clone_sess_run",
-          "sequence": 0,
-          "start_time": 1794301210000,
-          "status": "COMPLETED",
-          "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 2000
-         }
-        ],
-        "timeout": "",
-        "job_queue_time": 2000
        }
       ],
-      "name": "构建",
-      "pause_time": 0,
+      "name": "阶段_2",
+      "pause_time": 36847720,
       "post": [],
       "pre": [
        {
-        "end_time": 1794301210000,
-        "id": "2d05abdb42a64c39ac9d2cd6b0c4d03e",
-        "last_dispatch_id": "c9fa1514b9994524906fa0d672871619",
+        "end_time": 1794408708000,
+        "id": "4eb83f631112489a800464e9389ad22f",
+        "last_dispatch_id": "75221e8b47df441d9504ab94a0a17bb3",
         "multi_step_editable": 0,
         "sequence": 0,
-        "start_time": 1794301210000,
+        "start_time": 1794408708000,
         "status": "COMPLETED",
         "task": "official_devcloud_autoTrigger"
        }
       ],
       "run_always": false,
       "sequence": 0,
-      "start_time": 1794301210000,
-      "status": "COMPLETED"
+      "start_time": 1794408708000,
+      "status": "RUNNING"
      },
      {
       "category": "",
       "depends_on": [
-       "177087832212602c37419-311e-430c-8d7f-5299889cb78d"
+       "178410133381114d0d735-28ef-40f5-9811-e8dddbea7b9c"
       ],
-      "end_time": 1794302153000,
-      "id": "49aa3f7d3d274a3e8368f8fe363b9cce",
-      "identifier": "1787246102861b00142f5-ecc3-4911-b907-93be06090c92",
-      "is_select": true,
+      "id": "73f7a579fd3744b493e40cb5aca3c2e0",
+      "identifier": "17303586463438f43bb94-075c-4b74-974c-a314a118470f",
+      "is_select": false,
       "jobs": [
        {
         "condition": "${{ default() }}",
         "depends_on": [],
-        "end_time": 1794302153000,
-        "exec_id": "j_VScjmH4S",
-        "id": "69f9dba9ff6d49f6bbf7771565107387",
-        "identifier": "JOB_mHEBH",
-        "is_select": true,
-        "last_dispatch_id": "db3a4e8435a74002b262afd96548a219",
-        "name": "Build_image",
+        "id": "bf0d929fb7bf44acbf95fcae4c65325d",
+        "identifier": "JOB_ZNGfS",
+        "is_select": false,
+        "name": "Build_daily",
         "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
         "sequence": 0,
-        "start_time": 1794301372000,
-        "status": "COMPLETED",
+        "status": "UNSELECTED",
         "steps": [
          {
           "business_type": "Build",
-          "end_time": 1794302153000,
           "endpoint_ids": [],
-          "id": "ea45f85a741a4b028bf357dab47b2b2a",
+          "id": "953c2413e39843c59e5cc09288e39780",
           "inputs": [
            {
-            "key": "dockerfile_path",
-            "value": "${dockerfile_path}"
+            "key": "image_version",
+            "value": "${image_version}"
            },
            {
-            "key": "CHIP_SERIES",
-            "value": "${CHIP_SERIES}"
+            "key": "jobId",
+            "value": "d17191b08e5b4f8ab6daeee69ac5123c"
            },
            {
-            "key": "atk_cida_branch",
-            "value": "${atk_cida_branch}"
+            "key": "__repository__",
+            "value": "infrastructure"
            },
            {
-            "key": "sess_branch",
-            "value": "${sess_branch}"
-           },
-           {
-            "key": "component_path",
-            "value": "${component_path}"
-           },
-           {
-            "key": "image_name",
-            "value": "${image_name}"
-           },
-           {
-            "key": "image_tag",
-            "value": "${image_tag}"
-           },
-           {
-            "key": "timestamp",
-            "value": "${TIMESTAMP}"
+            "key": "artifactIdentifier",
+            "value": ""
            },
            {
             "key": "__sameProject__",
@@ -2387,204 +921,71 @@
            {
             "key": "__projectId__",
             "value": ""
-           },
-           {
-            "key": "jobId",
-            "value": "12f446c7ae364335941b2bcf9c707107"
-           },
-           {
-            "key": "__repository__",
-            "value": "CANN-CI"
-           },
-           {
-            "key": "artifactIdentifier",
-            "value": ""
            }
           ],
-          "last_dispatch_id": "83359a2786b44ee386dd823189bc335e",
           "multi_step_editable": 0,
-          "name": "Build_image",
+          "name": "Build_daily",
           "sequence": 0,
-          "start_time": 1794301372000,
-          "status": "COMPLETED",
+          "status": "UNSELECTED",
           "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 2000
+          "job_queue_time": null
          }
         ],
         "timeout": "",
-        "job_queue_time": 2000
-       }
-      ],
-      "name": "Build_image",
-      "pause_time": 0,
-      "post": [],
-      "pre": [
+        "job_queue_time": null
+       },
        {
-        "end_time": 1794301372000,
-        "id": "b096ff73ad8040df8f7656739e21b2d9",
-        "last_dispatch_id": "2faf0060a1d64a1bad8a8e74ec815432",
-        "multi_step_editable": 0,
-        "sequence": 0,
-        "start_time": 1794301372000,
-        "status": "COMPLETED",
-        "task": "official_devcloud_autoTrigger"
-       }
-      ],
-      "run_always": false,
-      "sequence": 1,
-      "start_time": 1794301372000,
-      "status": "COMPLETED"
-     },
-     {
-      "category": "",
-      "depends_on": [
-       "1787246102861b00142f5-ecc3-4911-b907-93be06090c92"
-      ],
-      "end_time": 1794302396000,
-      "id": "2f64d729360c4b758d07fa4edd9526bf",
-      "identifier": "1772177509106612820db-f21b-429b-906b-3c1dd1eb6839",
-      "is_select": true,
-      "jobs": [
-       {
-        "condition": "${{ default() }}",
-        "depends_on": [],
-        "end_time": 1794302396000,
-        "exec_id": "j_Z6SJm9Rk",
-        "id": "5b96e0da93464c0ea7066a3d1b0ca534",
-        "identifier": "JOB_mXHcQ",
-        "is_select": true,
-        "last_dispatch_id": "0f10f291dd664edf8681e4b9880ae7ee",
-        "message": "步骤Test_shmem执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
-        "name": "Test_shmem",
-        "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
-        "sequence": 0,
-        "start_time": 1794302315000,
-        "status": "FAILED",
-        "steps": [
-         {
-          "business_type": "Build",
-          "end_time": 1794302396000,
-          "endpoint_ids": [],
-          "id": "376d40f905744f708a33749a317c9c47",
-          "inputs": [
-           {
-            "key": "ci_repo",
-            "value": "gitcode.com/cann-dev/CANN-CI.git"
-           },
-           {
-            "key": "ci_branch",
-            "value": "master"
-           },
-           {
-            "key": "cann_path",
-            "value": "obs://ascend-cann-private/version_combo_snapshot/latest"
-           },
-           {
-            "key": "testcase_config_file",
-            "value": "resources/pytest_cann_shmem.ini"
-           },
-           {
-            "key": "pipeline_id",
-            "value": "${PIPELINE_ID}"
-           },
-           {
-            "key": "pipeline_run_id",
-            "value": "${PIPELINE_RUN_ID}"
-           },
-           {
-            "key": "cann_version",
-            "value": "cann-9.1.0"
-           },
-           {
-            "key": "__sameProject__",
-            "value": "true"
-           },
-           {
-            "key": "__projectId__",
-            "value": ""
-           },
-           {
-            "key": "jobId",
-            "value": "5980e84e76f64a07b30c063bbe5a3d8e"
-           },
-           {
-            "key": "__repository__",
-            "value": "CANN-CI"
-           },
-           {
-            "key": "artifactIdentifier",
-            "value": ""
-           }
-          ],
-          "last_dispatch_id": "030bb3c534e247f78bba62ba3aa0d6d4",
-          "message": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
-          "multi_step_editable": 0,
-          "name": "Test_shmem",
-          "sequence": 0,
-          "start_time": 1794302315000,
-          "status": "FAILED",
-          "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 0
-         }
+        "condition": "${{ failed() }}",
+        "depends_on": [
+         "JOB_ZNGfS"
         ],
-        "timeout": "",
-        "job_queue_time": 0
-       }
-      ],
-      "name": "冒烟",
-      "pause_time": 79529,
-      "post": [],
-      "pre": [
-       {
-        "end_time": 1794302153000,
-        "id": "6e7d56a0eed84eb88dce77d4595153e7",
-        "last_dispatch_id": "1d0d0d9d817c4cc29ccb43fe628f70d8",
-        "multi_step_editable": 0,
-        "sequence": 0,
-        "start_time": 1794302153000,
-        "status": "COMPLETED",
-        "task": "official_devcloud_autoTrigger"
-       }
-      ],
-      "run_always": false,
-      "sequence": 2,
-      "start_time": 1794302153000,
-      "status": "FAILED"
-     },
-     {
-      "category": "",
-      "depends_on": [
-       "1772177509106612820db-f21b-429b-906b-3c1dd1eb6839"
-      ],
-      "id": "754b66e066444edebba6f710b945c5b8",
-      "identifier": "17766778678697e1ae103-e97e-482b-a88d-55f9d6cbb4a8",
-      "is_select": true,
-      "jobs": [
-       {
-        "condition": "${{ default() }}",
-        "depends_on": [],
-        "id": "19f94fdebf3d4a5891174fd3d68e51c3",
-        "identifier": "JOB_mGMFX",
-        "is_select": true,
-        "name": "notify_openlibing_smoke_info",
+        "id": "4844317a3e58467993e0667b21ccabe9",
+        "identifier": "JOB_tCDCK",
+        "is_select": false,
+        "name": "发送失败提示",
         "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
         "sequence": 0,
-        "status": "INIT",
+        "status": "UNSELECTED",
         "steps": [
          {
           "business_type": "Normal",
           "endpoint_ids": [],
-          "id": "0a6e91920f8840ab8e5eab18635be112",
+          "id": "2ff41a5271e74733bfd48a85e681d350",
           "inputs": [
            {
-            "key": "OFFICIAL_SHELL_SCRIPT_INPUT",
-            "value": "set -exu\n\nREQUEST_BODY='{\n  \"projectId\": \"300057\",\n  \"pipelineId\": \"'\"${PIPELINE_ID}\"'\",\n  \"pipelineRunId\": \"'\"${PIPELINE_RUN_ID}\"'\"\n}'\n\n# 使用 curl 发送请求，-s 表示静默，-f 表示失败返回非零，-w 输出状态码\nRESPONSE=$(curl -s -f -w \"\\n%{http_code}\" \\\n  -X POST 'https://apig.openlibing.com:443/openlibing-cicd/project/pipeline/external/record' \\\n  -H \"X-Apig-AppCode: $APP_CODE\" \\\n  -H 'Content-Type: application/json' \\\n  -d \"$REQUEST_BODY\")\n\n# 获取 HTTP 状态码（最后两行是状态码）\nHTTP_STATUS=$(echo \"$RESPONSE\" | tail -n1)\nRESPONSE_BODY=$(echo \"$RESPONSE\" | head -n -1)\n\n# 打印返回结果（含状态码和响应体）\necho \"✅ HTTP 状态码: $HTTP_STATUS\"\necho \"💬 响应内容：\"\necho \"$RESPONSE_BODY\""
+            "key": "SYSTEM_CLONE_DEPTH",
+            "value": 5
+           },
+           {
+            "key": "SYSTEM_CLONE_SINGLE_BRANCH",
+            "value": false
+           },
+           {
+            "key": "SYSTEM_CLONE_SUBMODULE_DEPTH",
+            "value": 0
            }
           ],
           "multi_step_editable": 0,
-          "name": "notify_openlibing_smoke_info",
+          "name": "下载仓库",
           "sequence": 0,
-          "status": "INIT",
+          "status": "UNSELECTED",
+          "task": "official_git_clone",
+          "job_queue_time": null
+         },
+         {
+          "business_type": "Normal",
+          "endpoint_ids": [],
+          "id": "0fe3ce4bde274163a2876ea43d327fa3",
+          "inputs": [
+           {
+            "key": "OFFICIAL_SHELL_SCRIPT_INPUT",
+            "value": "pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple\npip3 install -r scripts/publish_pipeline/dailybuild/requirements.txt\nchmod +x scripts/publish_pipeline/dailybuild/build-hpm-notify.py\nscripts/publish_pipeline/dailybuild/build-hpm-notify.py --ak=${ak} --sk=${sk} --project_id=${PROJECT_ID} --pipeline_id=${PIPELINE_ID} --pipeline_run_id=${PIPELINE_RUN_ID} --host=${host} --port=${port} --user=${user} --pwd=${pwd} --email_from=${email_from} --receivers=${receivers}"
+           }
+          ],
+          "multi_step_editable": 0,
+          "name": "执行shell",
+          "sequence": 1,
+          "status": "UNSELECTED",
           "task": "official_shell_plugin",
           "job_queue_time": null
          }
@@ -2593,432 +994,50 @@
         "job_queue_time": null
        }
       ],
-      "name": "Notify",
+      "name": "构建发布",
       "pause_time": 0,
       "post": [],
       "pre": [
        {
-        "id": "b25c30c591604caf85486c8329ee400d",
+        "id": "c4259b2424af47d6aa66dd8b3f6cdc41",
         "multi_step_editable": 0,
         "sequence": 0,
-        "status": "INIT",
-        "task": "official_devcloud_autoTrigger"
-       }
-      ],
-      "run_always": false,
-      "sequence": 3,
-      "status": "INIT"
-     }
-    ],
-    "start_time": 1794301209000,
-    "status": "FAILED",
-    "subject_id": "96a91e4f3750433c9c0c23a1b5877f54",
-    "trigger_type": "Scheduler"
-   }
-  },
-  {
-   "key": "HPCKit|kuqcd",
-   "rn": 202,
-   "st": "11-10 00:31",
-   "rstatus": "FAILED",
-   "rid": "3b55561e204d4486adc37b9f84403946",
-   "track": "bs",
-   "dims": [
-    "bs"
-   ],
-   "code": 200,
-   "data": {
-    "artifacts": [
-     {
-      "name": "KuQCD_26.2.0_Bisheng.tar.gz",
-      "packageType": "gz",
-      "version": "20261110.1"
-     }
-    ],
-    "component_id": "",
-    "current_system_time": 1794360093017,
-    "domain_id": "1b1039a8d6dc4a44a30572606952721d",
-    "end_time": 1794241978000,
-    "executor_id": "d30ff29db75a4f498094218740929b78",
-    "executor_name": "HPCkit_2024/pipeline_admin_trust",
-    "group_id": "93542660677c44e39d1e0f02e8de4886",
-    "group_name": "Nightly",
-    "id": "3b55561e204d4486adc37b9f84403946",
-    "is_publish": false,
-    "language": "zh-cn",
-    "manifest_version": "3.0",
-    "name": "Nightly-CI-Component-pipeline_kuqcd",
-    "pause_time": 0,
-    "pipeline_id": "eeedf3e4794449969ad6d7f67691d0be",
-    "project_id": "b4ccaec8a6d24940a9857b941e3de748",
-    "region": "cn-north-4",
-    "run_number": 202,
-    "sources": [
-     {
-      "params": {
-       "alias": "",
-       "build_params": {
-        "build_type": "branch",
-        "codehub_id": "2942916",
-        "commit_id": "47057feafd56498a6da719279b3c6185c450ca43",
-        "event_type": "Manual",
-        "message": "更新 build.sh",
-        "target_branch": "master"
-       },
-       "codehub_id": "2942916",
-       "default_branch": "master",
-       "endpoint_id": "",
-       "git_type": "codehub",
-       "git_url": "https://codehub.devcloud.cn-north-4.huaweicloud.com/b4ccaec8a6d24940a9857b941e3de748/HPCKit_JenkinsBuild.git",
-       "repo_name": "HPCKit_JenkinsBuild",
-       "ssh_git_url": "git@codehub.devcloud.cn-north-4.huaweicloud.com:b4ccaec8a6d24940a9857b941e3de748/HPCKit_JenkinsBuild.git",
-       "web_url": ""
-      },
-      "type": "code"
-     }
-    ],
-    "stages": [
-     {
-      "category": "",
-      "depends_on": [],
-      "end_time": 1794241966000,
-      "id": "a6a9998d0ea74596aab6019030cc59f0",
-      "identifier": "17788082081690ce2b08f-65c5-49c1-8684-d0615729c000",
-      "is_select": true,
-      "jobs": [
-       {
-        "condition": "${{ default() }}",
-        "depends_on": [],
-        "end_time": 1794241966000,
-        "exec_id": "j_ieUyvpkt",
-        "id": "6bfd7b9812ba415894f025fe1fad95e0",
-        "identifier": "JOB_YKkXj",
-        "is_select": true,
-        "last_dispatch_id": "3542af2bc6ef474b95735ed1389a9bb5",
-        "name": "Build_kuqcd",
-        "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
-        "sequence": 0,
-        "start_time": 1794241915000,
-        "status": "COMPLETED",
-        "steps": [
-         {
-          "business_type": "Build",
-          "end_time": 1794241966000,
-          "endpoint_ids": [],
-          "id": "e86d82e460204737b82314ebcee8575e",
-          "inputs": [
-           {
-            "key": "codeBranch",
-            "value": "master"
-           },
-           {
-            "key": "version_num",
-            "value": "${version_num}"
-           },
-           {
-            "key": "package_version",
-            "value": "${package_version}"
-           },
-           {
-            "key": "kuqcd_branch",
-            "value": "${kuqcd_branch}"
-           },
-           {
-            "key": "componentVersion",
-            "value": "${componentVersion}"
-           },
-           {
-            "key": "__sameProject__",
-            "value": "true"
-           },
-           {
-            "key": "__projectId__",
-            "value": ""
-           },
-           {
-            "key": "jobId",
-            "value": "e7e99962dfbc4b33b814822a5d7aaf42"
-           },
-           {
-            "key": "__repository__",
-            "value": "HPCKit_JenkinsBuild"
-           },
-           {
-            "key": "artifactIdentifier",
-            "value": ""
-           }
-          ],
-          "last_dispatch_id": "235eecd9428246c496f35dbb806578ba",
-          "multi_step_editable": 0,
-          "name": "Build_kuqcd",
-          "sequence": 0,
-          "start_time": 1794241915000,
-          "status": "COMPLETED",
-          "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 1000
-         }
-        ],
-        "timeout": "",
-        "job_queue_time": 1000
-       }
-      ],
-      "name": "Build",
-      "pause_time": 0,
-      "post": [],
-      "pre": [
-       {
-        "end_time": 1794241914000,
-        "id": "80af45bb66354380aa41853f4412b495",
-        "last_dispatch_id": "777f1edef86842cfa8d8de61b25f7e19",
-        "multi_step_editable": 0,
-        "sequence": 0,
-        "start_time": 1794241914000,
-        "status": "COMPLETED",
-        "task": "official_devcloud_autoTrigger"
-       }
-      ],
-      "run_always": false,
-      "sequence": 0,
-      "start_time": 1794241914000,
-      "status": "COMPLETED"
-     },
-     {
-      "category": "",
-      "depends_on": [
-       "17788082081690ce2b08f-65c5-49c1-8684-d0615729c000"
-      ],
-      "end_time": 1794241978000,
-      "id": "ee34364fabbc4551b6471cad8e9c2435",
-      "identifier": "17848561656543b49988d-da06-4b65-8319-070edbcfc13a",
-      "is_select": true,
-      "jobs": [
-       {
-        "condition": "${{ default() }}",
-        "depends_on": [],
-        "end_time": 1794241978000,
-        "exec_id": "j_y0kC5HYU",
-        "id": "e0312ef55fac4804bcb7d2f92dc5fa29",
-        "identifier": "JOB_SGEiB",
-        "is_select": true,
-        "last_dispatch_id": "7bcdd74fac584434a4ed2c036d90a5a1",
-        "message": "步骤Test_quqcd执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
-        "name": "Test_quqcd",
-        "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
-        "sequence": 0,
-        "start_time": 1794241966000,
-        "status": "FAILED",
-        "steps": [
-         {
-          "business_type": "Build",
-          "end_time": 1794241978000,
-          "endpoint_ids": [],
-          "id": "d9f809aab3e94e62bbf1a4ae411c3018",
-          "inputs": [
-           {
-            "key": "codeBranch",
-            "value": "master"
-           },
-           {
-            "key": "version_num",
-            "value": "${version_num}"
-           },
-           {
-            "key": "package_version",
-            "value": "${package_version}"
-           },
-           {
-            "key": "componentName",
-            "value": "${componentName}"
-           },
-           {
-            "key": "componentVersion",
-            "value": "${componentVersion}"
-           },
-           {
-            "key": "Object_PATH",
-            "value": "${Object_PATH}"
-           },
-           {
-            "key": "pipeline_id",
-            "value": "${PIPELINE_ID}"
-           },
-           {
-            "key": "pipeline_run_id",
-            "value": "${PIPELINE_RUN_ID}"
-           },
-           {
-            "key": "__sameProject__",
-            "value": "true"
-           },
-           {
-            "key": "__projectId__",
-            "value": ""
-           },
-           {
-            "key": "jobId",
-            "value": "f61ea200f37e43228c6f7e7905bfd873"
-           },
-           {
-            "key": "__repository__",
-            "value": "HPCKit_JenkinsBuild"
-           },
-           {
-            "key": "artifactIdentifier",
-            "value": ""
-           }
-          ],
-          "last_dispatch_id": "9705a72b07fe4f19a4583ec28a56439f",
-          "message": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
-          "multi_step_editable": 0,
-          "name": "Test_quqcd",
-          "sequence": 0,
-          "start_time": 1794241966000,
-          "status": "FAILED",
-          "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 0
-         }
-        ],
-        "timeout": "",
-        "job_queue_time": 0
-       }
-      ],
-      "name": "Smoke",
-      "pause_time": 0,
-      "post": [],
-      "pre": [
-       {
-        "end_time": 1794241966000,
-        "id": "08e1ee11eef448278f1ea062fe5192a6",
-        "last_dispatch_id": "c09fa679287041e389a3e2331ec84e68",
-        "multi_step_editable": 0,
-        "sequence": 0,
-        "start_time": 1794241966000,
-        "status": "COMPLETED",
+        "status": "UNSELECTED",
         "task": "official_devcloud_autoTrigger"
        }
       ],
       "run_always": false,
       "sequence": 1,
-      "start_time": 1794241966000,
-      "status": "FAILED"
-     }
-    ],
-    "start_time": 1794241913000,
-    "status": "FAILED",
-    "subject_id": "3b55561e204d4486adc37b9f84403946",
-    "trigger_type": "Scheduler"
-   }
-  },
-  {
-   "key": "boostkit|Bigdata",
-   "rn": 11,
-   "st": "10-08 10:04",
-   "rstatus": "FAILED",
-   "rid": "36146a33b2ce44e08d0b6f12bc1c1e23",
-   "track": "bs",
-   "dims": [
-    "bs"
-   ],
-   "code": 200,
-   "data": {
-    "component_id": "",
-    "current_system_time": 1794360093245,
-    "domain_id": "ac0cbc538fb4420586273f8cd64df3e0",
-    "end_time": 1794279517000,
-    "executor_id": "019fc7c43ba273759e92a8233f0db607",
-    "executor_name": "api_user_openlibing",
-    "id": "36146a33b2ce44e08d0b6f12bc1c1e23",
-    "is_publish": false,
-    "language": "zh-cn",
-    "manifest_version": "3.0",
-    "name": "Nightly-CI-Component-pipeline_Bigdata",
-    "pause_time": 2850030553,
-    "pipeline_id": "a74a64d931f34c98bc726e5ea599f8a3",
-    "project_id": "b40eab964ee243e1a43336403eba828f",
-    "region": "cn-north-4",
-    "run_number": 11,
-    "sources": [
-     {
-      "params": {
-       "alias": "",
-       "build_params": {
-        "build_type": "branch",
-        "codehub_id": "2341585",
-        "commit_id": "0409aa83ece1b6091e8e8b0ef2f865a46c64f4e2",
-        "event_type": "Manual",
-        "message": "更新 code.xml",
-        "target_branch": "master"
-       },
-       "codehub_id": "2341585",
-       "default_branch": "master",
-       "endpoint_id": "",
-       "git_type": "codehub",
-       "git_url": "https://codehub.devcloud.cn-north-4.huaweicloud.com/Kunpeng_BoostKit00001/BoostKit_CI.git",
-       "repo_name": "BoostKit_CI",
-       "ssh_git_url": "git@codehub.devcloud.cn-north-4.huaweicloud.com:Kunpeng_BoostKit00001/BoostKit_CI.git",
-       "web_url": ""
-      },
-      "type": "code"
-     }
-    ],
-    "stages": [
+      "status": "UNSELECTED"
+     },
      {
       "category": "",
-      "depends_on": [],
-      "end_time": 1794279517000,
-      "id": "2661ce7cf9314e429baf450619917781",
-      "identifier": "1781228041425cb519631-4eaf-4dc6-94e8-87260baf1fa3",
-      "is_select": true,
+      "depends_on": [
+       "17303586463438f43bb94-075c-4b74-974c-a314a118470f"
+      ],
+      "id": "a3bffcfdd5984d2780a74a5eb1a72763",
+      "identifier": "1773912613151bba86299-6239-4e7a-abaf-d9843f6c5e84",
+      "is_select": false,
       "jobs": [
        {
         "condition": "${{ default() }}",
         "depends_on": [],
-        "end_time": 1794279517000,
-        "exec_id": "j_IAvmSW0F",
-        "id": "9dc4eb132ab440b8b52fcf8986df4971",
-        "identifier": "JOB_bpaXp",
-        "is_select": true,
-        "last_dispatch_id": "837017a606a3428dbcd243804f9d7338",
-        "message": "步骤Build_Gluten执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
-        "name": "Build_Gluten",
+        "id": "fa9c04995cbe4bfea2a8c76dcc2cbaef",
+        "identifier": "JOB_MBSKy",
+        "is_select": false,
+        "name": "sbom生成",
         "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
         "sequence": 0,
-        "start_time": 1794278816000,
-        "status": "FAILED",
+        "status": "UNSELECTED",
         "steps": [
          {
           "business_type": "Build",
-          "end_time": 1794279517000,
           "endpoint_ids": [],
-          "id": "60a19cdf907041628764b53c47e5cf56",
+          "id": "e7bc514c7b4a4cff9123242ee79d49a1",
           "inputs": [
            {
-            "key": "codeBranch",
-            "value": "master"
-           },
-           {
-            "key": "gluten_branch",
-            "value": "${gluten_branch}"
-           },
-           {
-            "key": "gluten_url",
-            "value": "${gluten_url}"
-           },
-           {
-            "key": "componentVersion",
-            "value": "${componentVersion}"
-           },
-           {
-            "key": "Product_Version",
-            "value": "${Product_Version}"
-           },
-           {
-            "key": "OmniOperatorJIT_branch",
-            "value": "${OmniOperatorJIT_branch}"
-           },
-           {
-            "key": "OmniOperatorJIT_url",
-            "value": "${OmniOperatorJIT_url}"
+            "key": "image_version",
+            "value": "${image_version}"
            },
            {
             "key": "__sameProject__",
@@ -3030,86 +1049,57 @@
            },
            {
             "key": "jobId",
-            "value": "30880ad793e04de9bc793ecdb4fbbd7a"
+            "value": "532fd25a9bf04e5797e868ba793c2d2a"
            },
            {
             "key": "__repository__",
-            "value": "BoostKit_CI"
+            "value": "infrastructure"
            },
            {
             "key": "artifactIdentifier",
             "value": ""
            }
           ],
-          "last_dispatch_id": "849f259004dc4cbc93815e693568cc17",
-          "message": "{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}",
           "multi_step_editable": 0,
-          "name": "Build_Gluten",
+          "name": "sbom生成",
           "sequence": 0,
-          "start_time": 1794278816000,
-          "status": "FAILED",
+          "status": "UNSELECTED",
           "task": "official_devcloud_cloudBuild",
-          "job_queue_time": 2000
+          "job_queue_time": null
          }
         ],
         "timeout": "",
-        "job_queue_time": 2000
-       }
-      ],
-      "name": "Build",
-      "pause_time": 2850030486,
-      "post": [],
-      "pre": [
-       {
-        "end_time": 1791425059000,
-        "id": "84b0df9650244cbf8937a115866d3ba5",
-        "last_dispatch_id": "72e70180993f4c11af1cbc45a5dea85d",
-        "multi_step_editable": 0,
-        "sequence": 0,
-        "start_time": 1791425059000,
-        "status": "COMPLETED",
-        "task": "official_devcloud_autoTrigger"
-       }
-      ],
-      "run_always": false,
-      "sequence": 0,
-      "start_time": 1791425059000,
-      "status": "FAILED"
-     },
-     {
-      "category": "",
-      "depends_on": [
-       "1781228041425cb519631-4eaf-4dc6-94e8-87260baf1fa3"
-      ],
-      "id": "be58e57da5644a63a216016cf302c138",
-      "identifier": "1788945124602cad70296-5a87-4882-a3b8-1963740a6b09",
-      "is_select": true,
-      "jobs": [
+        "job_queue_time": null
+       },
        {
         "condition": "${{ default() }}",
         "depends_on": [],
-        "id": "8631b415874b41f2a7f4969534dcde18",
-        "identifier": "JOB_TGQix",
-        "is_select": true,
-        "name": "test",
+        "id": "aae393587bf74bbd986723893c9f65c0",
+        "identifier": "JOB_BZBms",
+        "is_select": false,
+        "name": "Test_openubmc",
         "resource": "{\"type\":\"system\",\"arch\":\"x86\"}",
-        "sequence": 0,
-        "status": "INIT",
+        "sequence": 1,
+        "status": "UNSELECTED",
         "steps": [
          {
           "business_type": "Build",
           "endpoint_ids": [],
-          "id": "0897c4c8ee2d40e18fc2e494f94545d4",
+          "id": "cddf93d0678b48b0bf2b7e447e77d69b",
           "inputs": [
            {
-            "key": "pipeline_run_id",
-            "value": "${pipeline_run_id}"
+            "key": "image_version",
+            "value": "24.04.2_26.06"
            },
            {
             "key": "pipeline_id",
             "value": "${pipeline_id}"
            },
            {
+            "key": "pipeline_run_id",
+            "value": "${pipeline_run_id}"
+           },
+           {
             "key": "__sameProject__",
             "value": "true"
            },
@@ -3119,11 +1109,11 @@
            },
            {
             "key": "jobId",
-            "value": "ae11d98dce9144c797825fcc56610fda"
+            "value": "8ea1b45c4aa04f38931e94f3cf15a2e7"
            },
            {
             "key": "__repository__",
-            "value": "BoostKit_CI"
+            "value": "infrastructure"
            },
            {
             "key": "artifactIdentifier",
@@ -3131,9 +1121,9 @@
            }
           ],
           "multi_step_editable": 0,
-          "name": "test",
+          "name": "Test_openubmc",
           "sequence": 0,
-          "status": "INIT",
+          "status": "UNSELECTED",
           "task": "official_devcloud_cloudBuild",
           "job_queue_time": null
          }
@@ -3142,26 +1132,26 @@
         "job_queue_time": null
        }
       ],
-      "name": "Test",
+      "name": "阶段_1",
       "pause_time": 0,
       "post": [],
       "pre": [
        {
-        "id": "614f3e24f08344948763102f36bd64c4",
+        "id": "39d819e8e3a440c695ba1ef1f286d3d0",
         "multi_step_editable": 0,
         "sequence": 0,
-        "status": "INIT",
+        "status": "UNSELECTED",
         "task": "official_devcloud_autoTrigger"
        }
       ],
       "run_always": false,
-      "sequence": 1,
-      "status": "INIT"
+      "sequence": 2,
+      "status": "UNSELECTED"
      }
     ],
-    "start_time": 1791425058000,
-    "status": "FAILED",
-    "subject_id": "36146a33b2ce44e08d0b6f12bc1c1e23",
+    "start_time": 1794408707000,
+    "status": "RUNNING",
+    "subject_id": "e5f814f030eb4e5691d2f39289555c49",
     "trigger_type": "Manual"
    }
   }

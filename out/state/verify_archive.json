@@ -1,13 +1,25 @@
 {
  "totals": {
-  "days": 2,
-  "pipelines": 98,
-  "records": 167,
-  "evidenceRefs": 289,
+  "days": 3,
+  "pipelines": 145,
+  "records": 248,
+  "evidenceRefs": 286,
   "evidenceMissing": 0
  },
  "ok": true,
  "stale": [
+  {
+   "path": "archive/2026/2026-11/2026-11-06/MindCluster/RAGSDK",
+   "date": "2026-11-06",
+   "component": "MindCluster",
+   "pipeline": "RAGSDK"
+  },
+  {
+   "path": "archive/2026/2026-11/2026-11-06/MindCluster/VisionSDK",
+   "date": "2026-11-06",
+   "component": "MindCluster",
+   "pipeline": "VisionSDK"
+  },
   {
    "path": "archive/2026/2026-11/2026-11-06/MindSpeed/master",
    "date": "2026-11-06",

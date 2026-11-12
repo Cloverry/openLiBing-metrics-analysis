@@ -1,7 +1,7 @@
 {
  "dateRange": {
-  "start": "2026-11-10",
-  "end": "2026-11-10"
+  "start": "2026-11-11",
+  "end": "2026-11-11"
  },
  "products": [
   {
@@ -113,11 +113,11 @@
    "product": "boostkit",
    "projectId": 300059,
    "versionAvailabilityRate": 1.0,
-   "buildSuccessRate": 0.9375,
+   "buildSuccessRate": 1.0,
    "pipelineCount": 8,
-   "badPipelineCount": 1,
+   "badPipelineCount": 0,
    "badPipelineCountVA": 0,
-   "badPipelineCountBS": 1,
+   "badPipelineCountBS": 0,
    "analyze": true,
    "collectedPipelineCount": 8,
    "rateRule": "runs",

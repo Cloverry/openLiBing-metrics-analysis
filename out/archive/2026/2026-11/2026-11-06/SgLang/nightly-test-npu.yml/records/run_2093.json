@@ -317,17 +317,19 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
-    "rootCause": "该 run 共 15 个 job、3 个失败，构建 #2093 从 18:00:53 跑到 18:38:37 记 FAILED；三个失败 job 是 nightly-1-npu-a3、nightly-acc-16-npu-a3、nightly-perf-16-npu-a3（records/run_2093.json）\n\n失败形态完全同构：15 条 errorMessages 正好是 3 个任务 × 5 行，每个任务都是 Traceback（L916）→ ##[error]Error: failed to run script step（L929）→ ✗ exit code: 1（L930）→ Process completed with exit code 1（L954）→ 容器实现执行失败（L955），没有任何一个任务留下异常类型或失败用例名（github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt:L916）\n\n这里能确定的只有两点：失败发生在任务脚本步骤这一层，且三个任务同时同形态，因此更像同一份脚本或同一入口在共同的前置步骤（环境准备、服务拉起）上出错，而不是三个任务各自的用例断言都失败\n\n与同日更早的 #2092 相比，那次留下了 ModuleNotFoundError、这次连异常正文都没有，说明脚本的失败路径上没有把 stderr 带出来，证据缺口比根因本身更值得先修\n\n已排除的干扰项：没有 pytest 汇总、没有 accuracy 断言、cases 为 0，用例根本没跑到判定阶段；日志里没有驱动、通信库或调度报错",
-    "advice": "先补可观测性：在 nightly 脚本入口加 set -x 与 trap，把失败时最后 50 行 stdout/stderr 打进日志，现在三个任务都只剩 exit code 1，下一次仍然无法定位\n\n再复现一次并盯入口：单独手动触发 nightly-1-npu-a3，看它在服务拉起前后哪一步退出；三个任务同形态失败，最可能出在它们共用的容器启动与环境准备段，优先查这一段\n\n修复后按任务分批重跑：先只跑 nightly-1-npu-a3 拿到真实异常，再放开 perf 与 acc 两个 16 卡任务，避免一次重跑三个大任务又都超时\n\n验证方式：重跑该 nightly，要求三个 a3 测试任务全部转通过、run 结论为 success，且日志中每个失败任务都能看到具体异常栈而不是只有 exit code 1",
+    "keyError": "ValueError: No CI registry found in /__w/sglang/sglang/test/registered/kernels/ops/communication/test_mlu_communicator.py",
+    "rootCause": "失败发生在用例收集阶段：run_suite 扫描 registered 目录时要读取每个文件的 CI 注册信息，test_mlu_communicator.py 里没有注册信息，collect_tests 直接报错退出，pytest 还没开始跑任何用例。是新增或改造的用例文件漏了 CI 注册，不是用例逻辑失败。",
+    "advice": "给 test_mlu_communicator.py 补上与其他 registered 用例一致的 CI 注册信息；并在 collect 阶段加校验，未注册文件直接报文件名，避免整批收集中断。\n\n验证方式：复跑该 job，collect 能输出完整用例列表。",
     "cites": [
+      "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt:L927",
       "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt:L916",
-      "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt:L955",
       "records/run_2093.json"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt:L927",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 5,
     "source": "agent"
   }
 }

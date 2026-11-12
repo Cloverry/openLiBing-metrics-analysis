@@ -124,14 +124,16 @@
   "analysis": {
     "status": "done",
     "keyError": null,
-    "rootCause": "该 run 共 15 个 job、0 个失败 job，但构建 #2091 只在 17:45:35 到 17:45:38 存活了 3 秒就记 FAILED；失败的两个任务 set-image-config（id 127824131767）与 check-all-jobs（id 127824144289）在运行平台侧都已 404_not_retained，归档内 files=0、errorMessages 为空（records/run_2091.json）\n\n第一类（失败层级）：证据只到 job 层，两个任务都停在 404_not_retained，既没有步骤级日志也没有用例明细，失败点本身在归档里不存在\n\n第二类（时间特征）：3 秒内结束，连镜像拉取与容器启动都来不及完成，更像 runner 在分配或配置阶段就退出（set-image-config 正是写入镜像配置的入口任务），而不是测试脚本内部报错\n\n因此这条记录的真实原因无法从现有证据确认，只能给出层级与时间上的推断：失败集中在入口配置这一步，且异常发生在容器真正运行之前\n\n已排除的干扰项：cases 为 0、errorMessages 为 0，不存在被淹没的断言或精度失败；失败 job 列表为空，说明平台侧没把它算进 job 级失败，属流程级中断",
-    "advice": "先把日志留存补上，这是本条唯一能推进的事：向平台侧确认 set-image-config 与 check-all-jobs 这类短命任务为何 404_not_retained，要求至少保留入口任务的 stdout\n\n再按时间窗回查：用 17:45:35~17:45:38 这个窗口去查同一 runner 上当时的调度记录，3 秒内退出基本可以锁定在镜像配置或 runner 分配环节\n\n降低影响面：把 set-image-config 的失败改成显式「配置未生效」结论并中止后续 job，避免整条 nightly 只留下一个 3 秒的空失败\n\n验证方式：重跑该 nightly，要求 set-image-config 与 check-all-jobs 均有日志落盘且结论为 success，run 整体不出现 3 秒内中断的记录",
+    "rootCause": "这次运行只活了 3 秒（17:45:35 到 17:45:38），15 个 job 没有一个被判失败，入口任务 set-image-config 与 check-all-jobs 的日志在平台侧都已 404 未留存，归档里没有任何用例和报错。本质是这次触发在写入镜像配置、检查 job 之前就被中断（多为并发组取消或 runner 分配失败），测试并没有真的跑起来，因此无法再往下定界。",
+    "advice": "到该 run 的 Actions 页面确认是否被 concurrency 取消或 setup 阶段失败，3 秒结束基本锁定这一步；并要求平台为两个入口 job 保留 stdout。\n\n验证方式：重跑后 run 存活时间正常、入口 job 有日志且结论为 success。",
     "cites": [
       "records/run_2091.json"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "无 keyError",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 5,
     "source": "agent"
   }
 }

@@ -830,21 +830,21 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "keyError": "[2026-11-08 16:13:50] Scheduler hit an exception: Traceback (most recent call last):",
-    "rootCause": "26 个 job、12 个失败、跨度近 9 小时（11-09 00:05:48 至 09:22:46），失败从服务进程层一路传导到 job 收尾层：nightly-1-npu-a3 在日志时间 16:13:50（日志为 UTC）先报「Scheduler hit an exception: Traceback (most recent call last):」（github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1286），同文件 L1256 另有一条 Traceback，nightly-8-npu-a3 在 TP0 EP0 与 TP7 EP7 两个 rank 上各报一次同类调度器异常（github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt:L3085、L3128），随后 job 尾部以「##[error]Error: failed to run script step:」「✗ exit code: 255」（github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L18171、L18172）→「Process completed with exit code 1.」→「Executing the custom container implementation failed.」（同文件 L18197）收尾，nightly-perf 与 multi-node-poc 的 deepseek_v4_flash_w8a8_1p1d_16p 也是同一组五行。\n\n按成因可归两类：第一类是服务侧调度器崩栈，同一 job 内多个 TP/EP rank 同时抛 Scheduler 异常、时间紧接 255 退出，失败是一个服务实例在多卡进程上一起崩；第二类是 runner 容器层收尾失败（L18197），它出现在 255 之后，属于外层连带。因此更像镜像内服务进程启动即崩导致整批 nightly 用例无结果，而非某个用例精度或性能不达标——12 个失败 job 的 total/pass/fail 全部为 None、cases=0，一条用例断言都没落下来。\n\n另有一条全批次重复的干扰项：「OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses'」（github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1108、L1437；github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt:L1380），它只把 /v1/responses 接口关掉，日志里没有它直接中断任务的证据，因此不作为本次失败主因，但它是镜像内 openai 版本与代码不匹配的确定问题，需单独修。",
-    "advice": "先收口范围：只复跑 nightly-1-npu-a3 与 nightly-8-npu-a3 这两个含 Scheduler 异常的任务，确认 exit 255 是否为调度器崩栈的连带结果；若这两个任务单跑仍崩，则其余 10 个 job 的失败可直接按同因合并处理，不必逐个排查\n\n同时把镜像内 openai 依赖固定到包含 ResponseFunctionShellToolCall 的版本，消除全批次重复的 OpenAIServingResponses ImportError，避免 /v1/responses 长期处于 disabled 状态掩盖问题\n\n若单跑不崩，再把 12 个失败 job 按节点分组对比 runner 与镜像 digest，重点查 255 退出前该节点上是否发生过容器重启或资源回收\n\n给 nightly 入口加容器拉起前置自检（镜像可拉取、脚本首行依赖可导入），容器失败时把 runner 侧的容器事件写进 job 输出，替代现在只有一句「Executing the custom container implementation failed」\n\n验证方式：重跑该 workflow，要求 nightly-1、nightly-8 两个 job 正常结束、日志中不再出现 Scheduler hit an exception，其余 job 的用例结果（total/pass/fail）能正常落盘，/v1/responses 不再报 ImportError",
+    "keyError": "RuntimeError: Malloc pin memory failed, host out of memory",
+    "rootCause": "26 个 job 里 12 个失败。其中 3 个精度 job 无失败日志（仅存一份 1/1 通过），定不了因；一条汇总 job 是结果表生成连带失败；剩下 8 个归三类，都在环境或性能侧，不是用例代码缺陷。\n\n第 1 类（3 个 job，共性：宿主 pinned 内存被占满）：任务申请 pinned 内存即失败，一个要近 10 GB 大块，另一个只要几十字节也报不足，随后调度进程集体退出，perf 那条被强杀。属宿主 pinned 内存被其他进程占住未回收的资源隔离问题。\n\n第 2 类（4 个 job，共性：pod 提前退出）：四个多机用例里总有一个 prefill/decode pod 在其它节点就绪后以 Succeeded 结束，脚本等不到启动特征、超时判失败。pod 被正常终止，更像启动脚本或资源配额提前收掉。\n\n第 3 类（1 个 job，共性：性能阈值不达标）：kimi_k3 那条 32 卡 decode 用例实测 40.1，超 31.0 上限，重试仍失败，属性能回归。",
+    "advice": "pinned 内存那类先与本机其它推理任务错开、清掉残留内存，KV cache 块按卡数下调；pod 提前退出那类按 events 调资源上限或修启动脚本；kimi_k3 那条对比上一版镜像 mean_tpot，退化即回滚。\n\n验证方式：重跑后 8 个失败 job 全部转通过。",
     "cites": [
-      "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1286",
-      "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L18171",
-      "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L18172",
-      "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L18197",
-      "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt:L3085",
-      "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt:L3128",
-      "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1108"
+      "github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1285",
+      "github_logs/gh_42498125758/24_nightly-8-npu-a3 _ run (0).txt:L3124",
+      "github_logs/gh_42498125758/17_nightly-perf-2-npu-a3 _ nightly-perf-2-npu-a3.txt:L10195",
+      "github_logs/gh_42498125758/6_multi-node-poc (glm_5_2_w8a8_2p2d_32p_dcp_gpqa, 2,~83db7b.txt:L489",
+      "github_logs/gh_42498125758/1_multi-node-mix-poc (kimi_k3_w4a8_32p_mix_in128k_ou~afd684.txt:L17101"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 github_logs/gh_42498125758/21_nightly-1-npu-a3 _ run (0).txt:L1285",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 4,
     "source": "agent"
   }
 }

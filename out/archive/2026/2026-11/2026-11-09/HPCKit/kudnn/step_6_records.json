@@ -174,16 +174,18 @@
       "analysis": {
         "status": "done",
         "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
-        "rootCause": "构建 #227 从 03:31:17 跑到 03:34:03（约 3 分钟）记 FAILED，失败任务类型为测试任务；Test_kudnn 的 total=0、pass=0、fail=0，用例一条未跑（records/run_227.json）\n\n第一类（用例仓拉取鉴权失败）：03:34:01.663 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，脚本显式打印 [ERROR] git clone test_cases code fail，03:34:01.827 以 script returned exit code 1 退出，03:34:08 Finished: FAILURE（job_logs/26_kudnn_227_Test_kudnn.log:L138、L140、L142）\n\n第二类（封装码无诊断价值）：job 与 step 层仍只留 步骤Test_kudnn执行失败 与 DEV-CODECI-35002\n\n因此这是同一凭据问题的又一次复现：clone hpckit-autotest 鉴权失败导致用例未拉起，属环境/依赖未就绪，不是 kudnn 算子实现的问题\n\n已排除的干扰项：total=0 与 3 分钟时长说明未进入用例执行；无编译错误、无设备异常",
-        "advice": "并入同日 HPCKit 凭据问题一并处理：hmpi#213、kpex#142、kudnn#227、kupl#306、kuqcd#201 五条同因，一次修配置即可全部恢复\n\n在流水线里加明确失败原因：clone 失败时把「用例仓鉴权失败」作为结论输出，而不是让上层只看到构建任务执行失败\n\n加到期监控：凭证类问题通常成批爆发，建议对执行机 token 有效期做巡检告警\n\n验证方式：重跑 kudnn 流水线，要求 git clone 成功、Test_kudnn 拉起用例并给出 total>0 的结果、任务通过率 100%",
+        "rootCause": "与同批的 kpex、kupl 同一个原因：拉 hpckit-autotest 时 GitCode 拒绝了鉴权，已不支持账号密码、要求换成个人访问令牌，克隆失败后脚本退出，一条用例都没跑。",
+        "advice": "和 kpex、kupl 一起改：克隆凭据换成 GitCode 个人访问令牌（放凭据变量、只给该仓库读权限），别写进脚本。\n\n验证方式：重跑 Test_kudnn，克隆成功、用例收集并执行出结果。",
         "cites": [
           "job_logs/26_kudnn_227_Test_kudnn.log:L138",
-          "job_logs/26_kudnn_227_Test_kudnn.log:L142",
-          "records/run_227.json"
+          "job_logs/26_kudnn_227_Test_kudnn.log:L137",
+          "job_logs/26_kudnn_227_Test_kudnn.log:L141"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 job_logs/26_kudnn_227_Test_kudnn.log:L138",
+        "updatedAt": "2026-11-11 17:27:08",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 4,
         "source": "agent"
       }
     }

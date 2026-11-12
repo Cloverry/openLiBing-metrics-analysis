@@ -211,16 +211,18 @@
   "analysis": {
     "status": "done",
     "keyError": "AssertionError: aclnnFakeQuantPerChannelAffineCachemask功能精度测试(executor)失败: aclnnFakeQuantPerChannelAffineCachemask accuracy not passed",
-    "rootCause": "Test_ops-nn 任务 202 条用例跑出 200 通过、2 失败（通过率 99.01%），构建 #169 记 FAILED；失败集合与同日 #168 完全一致，仍是 test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk 与 test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk，本次执行时间为 17:14:34~17:15:06 与 17:16:32~17:17:11（case_logs/case_0131.html:L1899、case_logs/case_0132.html:L2124）\n\n第一类（失败集合不变）：两条用例的断言原文与 AtkTaskResult(success=False, acc_pass_result='Failed') 上下文与 #168 逐字一致，两次运行相隔约 15 小时、跑在同一镜像上，结果不变\n\n第二类（可复现性）：同一天两个不同构建跑出同一批 2 条失败、其余 200 条全通过，这是确定性偏差的典型特征，不是环境抖动或资源竞争\n\n因此这不是新的失败，而是 #168 同一问题的第二次复现：更像 FakeQuant 算子的量化/掩码实现在当前版本上稳定偏离黄金数据，而非偶发\n\n已排除的干扰项：日志无编译错误、无镜像或设备异常；用例都在 30~40 秒内结束，无超时迹象",
-    "advice": "与 #168 合并成一条主线，不要再分两单：两次运行失败集合完全一致，正好可以用「固定镜像与黄金数据、只切算子仓 commit」的方式做二分，快速定位引入偏差的提交\n\n用第一次运行做对照：把 #168 与 #169 的误差数值并排比一下，若数值完全相同说明是纯实现偏差，若略有差异则更可能是随机种子或输入数据范围问题\n\n补落盘：Test_ops-nn 现在只留用例断言，建议把 atk 比对明细一起归档，后续同类问题不用再靠断言文本猜\n\n验证方式：重跑 Test_ops-nn，要求这两个 FakeQuant 用例连续两次运行均 Passed、通过率 100%",
+    "rootCause": "同一天第二个 ops-nn 构建，仍是这 202 条用例、200 条通过，失败集合与 #168 完全一致：aclnnFakeQuant 的 per-channel 与 per-tensor 都停在 atk 精度比对不通过。两次独立执行相隔约 4 小时跑出同一批失败，是确定性偏差而不是环境抖动，指向算子实现相对黄金数据稳定偏离，不是新增问题。",
+    "advice": "与 #168 合并成一条线，不要分两单：先并排比对同一用例两次的 atk 误差数值，完全一致即为纯实现偏差；再固定镜像与黄金数据、只切算子仓 commit 做二分。\n\n验证方式：重跑 Test_ops-nn，这两个 FakeQuant 用例连续两次运行均 Passed。",
     "cites": [
-      "case_logs/case_0131.html:L1899",
-      "case_logs/case_0132.html:L2124",
-      "records/run_169.json"
+      "case_logs/case_0131.html:L1888",
+      "case_logs/case_0132.html:L2113",
+      "records/run_169.json:L59"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 records/run_169.json:L59",
+    "updatedAt": "2026-11-11 17:13:59",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 3,
     "source": "agent"
   }
 }

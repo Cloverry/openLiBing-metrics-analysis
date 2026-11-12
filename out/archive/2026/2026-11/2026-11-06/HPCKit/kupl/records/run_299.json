@@ -169,8 +169,8 @@
   "analysis": {
     "status": "done",
     "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
-    "rootCause": "Test_kupl 13:30:50 启动，13:32:03 用例仓 clone 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，随后脚本回显 [ERROR] git clone test_cases code fail，13:32:03 返回退出码 1，13:32:06 Finished: FAILURE（job_logs/23_kupl_299_Test_kupl.log:L138、L139、L140、L142、L144）\n\n用例统计 total=0、passed=0、failed=0：失败发生在用例执行之前，属凭据失效而非用例断言失败，也不是编译问题\n\n同流水线当日 #297（00:02）、#298（12:02）、#299（13:32）三次报同一个仓库、同一句 fatal，且每次都在 74 秒左右退出，属稳定复现；三条记录的报错位置都在同一行（L138），说明脚本每次都卡在同一处 clone，因此更像凭据被固定为一份失效值，而非随机性网络故障\n\n已排除的干扰项：平台侧只有 DEV-CODECI-35002「构建任务执行失败」这一封装码，不带任何鉴权细节；日志中没有重试行，排除「重试耗尽」这一解释",
-    "advice": "按稳定复现处理：先修 hpckit-autotest 的 clone 凭据（换 access token），修好之前不再安排该流水线重跑，避免产生更多同形态失败记录\n\n在流水线定义里把凭据收敛为一条公共凭据，kupl 与 hmpi、kpex、kudnn、kuqcd 共用，换一次即全部生效\n\n修复后以 #299 参数跑一次完整 kupl 流水线，核对用例统计不再为 0\n\n验证方式：重跑后要求 clone 成功、用例 total 与 passed 均大于 0、退出码为 0，日志中不再出现 Authentication failed；把该仓库 clone 鉴权失败做成组件级指标，按组件统计出现次数",
+    "rootCause": "失败在用例代码拉取这一步：Test_kupl 13:30:50 启动，13:32:03 clone 用例库 hpckit-autotest 被判鉴权失败，脚本随后退出码 1，用例统计全为 0。根因是执行机上的 gitcode 凭据失效：同一天 #297、#298、#299 三次都卡在同一处 clone、同一句 fatal、都在 74 秒左右退出，是稳定复现而不是随机网络故障。",
+    "advice": "换掉执行机上的 gitcode 凭据（有效 token 或部署公钥），修好之前不要再安排 kupl 重跑，免得继续堆积同形态失败记录。\n\n验证方式：用 #299 参数重跑 kupl 流水线，要求 clone 成功、total 与 passed 均大于 0、退出码为 0。",
     "cites": [
       "job_logs/23_kupl_299_Test_kupl.log:L138",
       "job_logs/23_kupl_299_Test_kupl.log:L139",
@@ -178,9 +178,11 @@
       "job_logs/23_kupl_299_Test_kupl.log:L142",
       "job_logs/23_kupl_299_Test_kupl.log:L144"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 job_logs/23_kupl_299_Test_kupl.log:L138",
+    "updatedAt": "2026-11-11 16:49:59",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 3,
     "source": "agent"
   }
 }

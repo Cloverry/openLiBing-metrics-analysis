@@ -146,8 +146,9 @@ def cmd_list(args):
         return 0
 
     shown = rows if args.limit <= 0 else rows[:args.limit]
+    # 「归档分类 / 规则置信度」只给排查用：页面定性列已改为按 AI 根因正文推可能性，不再展示这两个值
     print("%-4s %-18s %-26s %-7s %-19s %-17s %-6s %s"
-          % ("#", "组件", "流水线", "构建号", "结束时间", "定性", "置信度", "记录文件"))
+          % ("#", "组件", "流水线", "构建号", "结束时间", "归档分类", "规则置信度", "记录文件"))
     for i, x in enumerate(shown, 1):
         rec = x["record"]
         v = rec.get("verdict") or {}
@@ -218,7 +219,8 @@ def show_one(args):
     print("  起止时间    : %s → %s（归属日期 %s，按执行结束时间）"
           % (rec.get("startedAt") or "--", rec.get("endedAt") or "--", rec.get("date")))
     print("  指标        : %s（track=%s）" % (lights_text(rec), (rec.get("light") or {}).get("track")))
-    print("  定性/置信度 : %s / %s" % (v.get("category"), v.get("confidence")))
+    print("  归档分类    : %s（规则置信度 %s，页面不展示；定性列按 AI 根因正文推可能性）"
+          % (v.get("category"), v.get("confidence")))
     for b in (v.get("basis") or [])[:SHOW_LIST_MAX]:
         print("    · %s" % cut(b, SHOW_TEXT_MAX))
     print("  AI 状态     : %s（pending=待分析 / na=不做分析）" % an.get("status"))

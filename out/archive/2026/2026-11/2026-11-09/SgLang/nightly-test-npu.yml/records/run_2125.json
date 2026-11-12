@@ -128,17 +128,17 @@
   "analysis": {
     "status": "done",
     "keyError": "Found exist sglang job, sleeping for 30 seconds...",
-    "rootCause": "这个 job 根本没跑到用例：00:53:36 启动、01:12:02 结束（19 分钟），日志 1033 行主体是等待循环——先把「No sglang job exist, start test case...」打出来（github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L295），随后连续 5 次打印「Found exist sglang job, sleeping for 30 seconds...」（同文件 L993、L1003、L1032），再次打印「No sglang job exist」之后立刻进入「Post job cleanup.」与「Cleaning up orphan processes」，job 就这样收尾了；本记录 tasks=2、cases=0、errorMessages=0，一条用例结果都没有。\n\n推断更像同一 sglang 服务实例被同批次其它 job 占着、本 job 在等待期被清理结束，而非用例执行失败——如果真的跑过用例，cases 里应有用例名与阈值判定结果，实际是 0；日志里也没有任何断言或 Traceback，说明失败发生在执行之前。\n\n已排除的干扰项：另一个任务 check-all-jobs 在平台侧日志 404，因此「谁占用了服务、占用了多久」无法从本次证据确认，本条只定性为执行前的服务等待与调度问题。",
-    "advice": "先把无界等待改成有界等待：每次 sleeping 时打印占用者 job 名、已等待时长与剩余超时，超时直接失败并输出占用关系，用这些字段替代现在只有一句 sleeping for 30 seconds 的日志\n\n然后查夜间并发：同一时间段有多个 multi-node-poc 争抢同一个 sglang 服务实例，按用例分组串行或按服务实例分池，避免 job 在等待期被清理\n\n再补证据：为 check-all-jobs 打开日志留存（当前 404），否则这类「未执行即结束」的记录永远只能定性为 unknown\n\n验证方式：重跑同一批夜间用例，要求每个 job 日志里能看到占用者与被占用时长、没有任何 job 因等待被清理结束，且用例结果能正常落盘",
+    "rootCause": "用例没真正跑起来，整条流水线是被取消收尾的：启动前要先排到集群资源，脚本连着五轮都在等集群上别人占着的 sglang job 释放，刚确认可以开跑就被清理结束，任务随即以取消状态退出。更像是等待期间被上游中止或等待超时回收，不是用例失败。",
+    "advice": "先确认这次取消是人工中止还是等待超时；重跑时避开集群上其它 sglang 多机 job 的占用时段，并把资源等待时间调大，避免刚拿到资源就被清理。\n\n验证方式：重跑后日志能走到用例执行阶段并产出结果、不再出现等锁后被清理，即算恢复。",
     "cites": [
-      "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L295",
       "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L993",
-      "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1003",
-      "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1032"
+      "github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1003-L1004"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 github_logs/gh_42502180491/128797142436_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L993",
+    "updatedAt": "2026-11-11 17:48:32",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 3,
     "source": "agent"
   }
 }

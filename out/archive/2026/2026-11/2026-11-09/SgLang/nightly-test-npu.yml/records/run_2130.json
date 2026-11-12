@@ -172,16 +172,17 @@
   "analysis": {
     "status": "done",
     "keyError": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
-    "rootCause": "失败停在容器拉起这一层，用例代码根本没进去：整个 job 日志只有 335 行，第一条错误行就是「##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.」（github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L272），之后才是「##[error]Error: failed to run script step:」与「✗ exit code: 1」（同文件 L301、L302）、「##[error]Process completed with exit code 1.」（L304）。\n\n推断更像 self-hosted runner 侧容器运行时或镜像拉起失败，而不是 glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms 这个用例本身有问题：容器失败行出现在脚本报错之前，是上游动作先失败；日志里没有用例名、没有 Python Traceback、也没有 pod 事件，说明容器内的进程从未启动。\n\n已排除的干扰项：另一个任务 check-all-jobs 在平台侧 404 未留存，只能依据 jobs 元数据（conclusion、时长、失败步骤）定性，本条置信度因此只有中；同一批次 #2133 也出现同一句容器实现失败，指向 runner 层共性问题而非单个用例。",
-    "advice": "先按 runner 容器层排查，不要先动用例：核对该 self-hosted runner 的容器运行时与镜像能否正常拉起，并与同批次能跑通的节点横向比对运行时版本、磁盘与镜像拉取结果\n\n把 runner 侧的容器事件写进 job 输出：镜像拉取结果、容器启动失败原因、运行时退出码，用这些替代现在唯一的一句容器实现失败\n\n若确认是镜像拉取慢或超时，给镜像预拉取与本地缓存加策略；若是运行时异常，先恢复该节点再重跑，并把节点从夜间调度池摘除\n\n验证方式：重跑该 job，要求日志出现容器启动成功的记录、glm_5_3 用例能进入执行并落出用例结果，不再出现容器实现执行失败",
+    "rootCause": "失败停在拉起用例容器这一步：k8s 启动脚本 11:44:06 起来后整整 15 分半没有任何输出（只有 3 行 deprecation 告警，连一条 pod 状态行都没有），11:59:42 直接判「容器实现执行失败」，随后清理脚本、脚本步骤 exit 1，glm_5_3 这个用例一次都没进入执行。同批 #2133 是同一句错误、且能看到 decode-0 一直 Pending 8 分半后被收掉，两条指向同一类问题：用例的 pod 起不来，容器步骤被超时收掉。",
+    "advice": "先查 runner 侧容器运行时状态与镜像拉取是否正常；并让 k8s 启动脚本在长时间无输出时打印 pod 状态与 events，替代现在静默 15 分半。\n\n验证方式：重跑后日志里能看到 pod 状态行，用例进入执行阶段。",
     "cites": [
-      "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L272",
-      "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L301",
-      "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L304"
+      "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L265-L272",
+      "github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L301-L302"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 github_logs/gh_42611183075/129139754348_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L265-L272",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 4,
     "source": "agent"
   }
 }

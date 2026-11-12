@@ -487,20 +487,20 @@
       "analysis": {
         "status": "done",
         "keyError": "DEV.CB.02202002,上传文件失败:请检查当前用户或其他用户的读/写权限(桶:boostkit-bigdata-public)",
-        "rootCause": "Build_Gluten 是 buildflow 任务，5 个子任务全部被判 FAILURE：OmniOperator 的两个环境在编译与打包都做完之后卡在最后的「上传文件到OBS」步骤（job_logs/31_Bigdata_11_Build_Gluten.log:L41、L45），build_flow 汇总为 Follow jobs are failed、5 个作业 0 成功（job_logs/31_Bigdata_11_Build_Gluten.log:L51），整 job 于 10:58:37 以 FAILURE 结束（job_logs/31_Bigdata_11_Build_Gluten.log:L56），这次运行的构建因此记为失败，编译成功率掉到 50%。\n\n第一类（2 个 OmniOperator 子任务，openEuler22.03_JDK8 与 openEuler24.03_JDK17）：两个子任务的 C++ 编译、安装与 zip/tar.gz 打包都已正常完成（openEuler24.03 日志里能看到 tar.gz 打包、collect_software_info.py 输出「成功生成JSON文件」，job_logs/33_Bigdata_11_Build_Gluten_OmniOperator_openEuler24.03_JDK17.log:L80707、L80718），失败点只在上传一步：10:57:15（22.03）与 10:57:37（24.03）分别报 DEV.CB.02202002,上传文件失败:请检查当前用户或其他用户的读/写权限(桶:boostkit-bigdata-public)（job_logs/32_Bigdata_11_Build_Gluten_OmniOperator_openEuler22.03_JDK8.log:L30357、job_logs/33_Bigdata_11_Build_Gluten_OmniOperator_openEuler24.03_JDK17.log:L80744），紧接着 failed to upload（同两份日志 L30358、L80745）；22.03 那份在 11:02:14 又走了一次上传并输出待上传文件清单与「初始化OBS客户端」，仍以 Error message:Request Error.OBS service Error Message 收场（job_logs/32_Bigdata_11_Build_Gluten_OmniOperator_openEuler22.03_JDK8.log:L30361、L30367）。报错语义直指桶写权限或临时凭证，而同一流水线 11-06、11-09 以及当天 00:51 结束的 #45 都是 COMPLETED，说明该桶平时可写，因此更像这次运行时段 OBS 临时凭证失效或桶权限被临时收紧，而非代码编不过。\n\n第二类（3 个子任务，Gluten_openEuler22.03_JDK8、Gluten_openEuler24.03_JDK17、package_upload）：三份日志里只有 wait_job_depends 的轮询记录，一直等到依赖作业返回 FAILURE 才报「依赖任务失败」（job_logs/34_Bigdata_11_Build_Gluten_Gluten_openEuler22.03_JDK8.log:L124、L125；job_logs/36_Bigdata_11_Build_Gluten_package_upload.log:L143、L144），本地没有任何编译输出，属于上游上传失败的连带结果，不是独立故障。\n\n已排除的干扰项：ccache 统计里的 preprocessor error 1 与 can't use precompiled header 153 只是编译缓存计数（job_logs/32_Bigdata_11_Build_Gluten_OmniOperator_openEuler22.03_JDK8.log:L30345），date.h 的 -Wdeprecated-declarations 告警与 setlocale: LC_ALL 告警在编译阶段大量出现但产物照样打包成功，都不决定本次失败。",
-        "advice": "先按最可能的凭证/权限方向核对：查这次运行 10:50~11:05 期间「上传文件到OBS」步骤取得的 OBS 临时凭证对桶 boostkit-bigdata-public 是否具备写对象权限，并确认该桶的桶策略与委托账号在当天上午有无变更；判定标准是同一份产物换到正常时段重跑能上传成功（如当天 00:51 结束的 #45），即说明问题在凭证/权限的临时失效，而不在编译产物。\n\n若重跑仍在 upload 步骤报 DEV.CB.02202002，再查运行侧：核对构建节点系统时间与临时凭证有效期的偏差（临时凭证十几分钟即过期，节点时间漂移会直接让签名失效），并从失败节点上手工向该桶 put 一个小文件、同时探测 OBS 端点连通性，排除 Request Error.OBS service Error Message 背后是网络或 DNS 的成因。\n\n定点修复落在上传步骤与编排上：上传文件到OBS 步骤在拿到 DEV.CB.02202002 时重新获取一次临时凭证再重试一次上传，重试前先用一次小文件探测确认桶可写（产物路径为 buildcache/OmniOperator/2026_930_poc/Daily.26.0.0.B001/openEuler22.03_JDK8 与 openEuler24.03_JDK17 两支）；同时把 build_flow 中 Gluten 两个子任务与 package_upload 的依赖判定改成上游 OmniOperator 上传失败即短路跳过，避免它们各自空等到 10:57:43 与 10:58:14 再报依赖失败。\n\n验证方式：重跑 Nightly-CI-Component-pipeline_Bigdata #11，要求 Build_Gluten 下 5 个子任务全部 SUCCESS、Build 阶段退出码为 0、日志中不再出现 DEV.CB.02202002 与 failed to upload，且当天归档里出现 isVersionAvailable 为 true 的运行、编译成功率回到 100%。",
+        "rootCause": "5 个子任务全部失败，但编译本身是成功的：两个 OmniOperator 任务的编译、打包都正常做完了，卡在最后的「上传文件到OBS」步骤，报桶 boostkit-bigdata-public 没有读写权限；22.03 那份 11:02 又传了一次，仍是 OBS 服务端 Request Error。另外 3 个（两个 Gluten 编译、package_upload）只是等依赖，10:57:43 与 10:58:14 报「依赖任务失败」，是上游失败的连带结果。",
+        "advice": "给构建账号在桶 boostkit-bigdata-public 的写对象权限，或修好上传步骤取临时凭证的逻辑；并让「上传文件到OBS」在报权限错误时重取一次凭证再重试。\n\n验证方式：重跑 Build_Gluten，上传步骤成功、5 个子任务全部 SUCCESS。",
         "cites": [
-          "job_logs/31_Bigdata_11_Build_Gluten.log:L51",
-          "job_logs/32_Bigdata_11_Build_Gluten_OmniOperator_openEuler22.03_JDK8.log:L30357",
-          "job_logs/32_Bigdata_11_Build_Gluten_OmniOperator_openEuler22.03_JDK8.log:L30367",
-          "job_logs/33_Bigdata_11_Build_Gluten_OmniOperator_openEuler24.03_JDK17.log:L80718",
-          "job_logs/33_Bigdata_11_Build_Gluten_OmniOperator_openEuler24.03_JDK17.log:L80744",
-          "job_logs/34_Bigdata_11_Build_Gluten_Gluten_openEuler22.03_JDK8.log:L124",
-          "job_logs/36_Bigdata_11_Build_Gluten_package_upload.log:L144"
+          "job_logs/32_Bigdata_11_Build_Gluten_OmniOperator_openEuler22.03_JDK8.log:L30357-L30360",
+          "job_logs/33_Bigdata_11_Build_Gluten_OmniOperator_openEuler24.03_JDK17.log:L80744-L80745",
+          "job_logs/31_Bigdata_11_Build_Gluten.log:L50-L51",
+          "job_logs/34_Bigdata_11_Build_Gluten_Gluten_openEuler22.03_JDK8.log:L125-L127",
+          "job_logs/36_Bigdata_11_Build_Gluten_package_upload.log:L144-L146"
         ],
-        "updatedAt": "2026-11-11 09:25:01",
+        "possibilities": [],
+        "keyErrorCheck": "命中 job_logs/32_Bigdata_11_Build_Gluten_OmniOperator_openEuler22.03_JDK8.log:L30357-L30360",
+        "updatedAt": "2026-11-11 17:53:58",
         "firstAnalyzedAt": "2026-11-11 09:25:01",
-        "revisions": 1,
+        "revisions": 2,
         "source": "agent"
       }
     },

@@ -169,16 +169,18 @@
   "analysis": {
     "status": "done",
     "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
-    "rootCause": "构建 #142 从 00:41:16 跑到 00:43:21（约 2 分钟）记 FAILED，失败任务类型为测试任务；Test_kpex 的 total=0、pass=0、fail=0，用例未执行（records/run_142.json）\n\n第一类（用例仓拉取鉴权失败）：00:43:18.191 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，脚本随即打印 [ERROR] git clone test_cases code fail，00:43:18.354 以 script returned exit code 1 退出，00:43:22 Finished: FAILURE（job_logs/29_kpex_142_Test_kpex.log:L138、L140、L142）\n\n第二类（封装码无诊断价值）：job 与 step 层只留 步骤Test_kpex执行失败，错误信息：{\"errorMessage\":\" 构建任务执行失败!\",\"errorCode\":\"DEV-CODECI-35002\"}\n\n因此失败点与同批 HPCKit 记录完全一致：clone hpckit-autotest 时凭据无效或无权访问，测试代码没拉下来，pytest 起不来；属凭据/环境问题，不是 kpex 组件缺陷\n\n已排除的干扰项：total=0、2 分钟内结束，说明没进入任何用例；无编译错误与设备异常",
-    "advice": "与 hmpi#213 一起修凭据：同一天五条 HPCKit 流水线（hmpi#213、kpex#142、kudnn#227、kupl#306、kuqcd#201）都卡在同一个仓库的同一句鉴权失败，改一次执行机凭证就能一起解决\n\n把鉴权探测前置：在 clone 前用 git ls-remote 做一次轻量检查，失败直接给「凭据无效」结论并中止，避免每次都只留封装码\n\n考虑凭证托管而非写死：把 gitcode 读权限收到流水线密钥里并设置到期提醒，防止再次集体失效\n\n验证方式：重跑 kpex 流水线，要求 git clone 成功、Test_kpex 拉起用例并给出 total>0 的结果、任务通过率 100%",
+    "rootCause": "用例仓库拉不下来：拉 hpckit-autotest 时 GitCode 拒绝了鉴权，明确提示已不支持账号密码，必须换成个人访问令牌。克隆失败后脚本直接退出，一条用例都没执行。",
+    "advice": "把拉 hpckit-autotest 的凭据从账号密码换成 GitCode 个人访问令牌，令牌放凭据变量、只给该仓库读权限；其它 HPCKit 组件的克隆脚本一起改。\n\n验证方式：重跑 Test_kpex，克隆成功、用例能收集并执行出结果。",
     "cites": [
       "job_logs/29_kpex_142_Test_kpex.log:L138",
-      "job_logs/29_kpex_142_Test_kpex.log:L142",
-      "records/run_142.json"
+      "job_logs/29_kpex_142_Test_kpex.log:L137",
+      "job_logs/29_kpex_142_Test_kpex.log:L140"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 job_logs/29_kpex_142_Test_kpex.log:L138",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 5,
     "source": "agent"
   }
 }

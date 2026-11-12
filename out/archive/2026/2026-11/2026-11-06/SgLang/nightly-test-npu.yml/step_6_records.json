@@ -605,17 +605,19 @@
       "analysis": {
         "status": "done",
         "keyError": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
-        "rootCause": "该 run 共 20 个 job、7 个失败，构建 #2079 从 2026-11-05 22:43:46 跑到 2026-11-06 09:38:47，记 FAILED；7 个失败 job 分别是 a3 的三个测试任务（nightly-1-npu-a3、nightly-perf-16-npu-a3、nightly-acc-16-npu-a3）与四个 multi-node-poc（deepseek_v4_flash 两档、deepseek_v4_pro_0813、glm_5_2）（records/run_2079.json）\n\n第一类（a3 三个测试任务）：失败链完全同构——先 Traceback，再 ##[error]Error: failed to run script step，再 ✗ exit code: 1，最后 Process completed with exit code 1 与「Executing the custom container implementation failed」（github_logs/gh_42047810705/10_nightly-1-npu-a3 _ run (0).txt:L918）\n\n第二类（四个 multi-node-poc）：日志里只看到 │ exit code: 1 这一层，没有 Traceback 正文，但收尾同样是容器实现执行失败（github_logs/gh_42047810705/7_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~db0591.txt:L604）\n\n单机 a3 与多机 POC 两类任务的镜像、资源规格、用例完全不同，却在同一个 run 里一起倒在「custom container implementation failed」这一句上，因此更像自托管 runner 的容器运行环境（自定义容器启动/挂载）在当前 run 内整体异常，而非某一族用例的断言失败\n\n已排除的干扰项：casess 为 0，日志中没有 pytest 汇总、没有 accuracy 断言、没有精度结果，说明用例根本没跑到判定阶段；另 13 个 job 通过，说明异常不是全平台性的，只落在需要自定义容器的这批 job 上",
-        "advice": "先查 runner 侧：按 runId 42047810705 找到这 7 个 job 的 runner 分配记录，看它们是否落在同一批机器上，并检查该时段自定义容器（docker/podman 拉镜像、挂载 NPU 设备）的启动日志，确认是镜像拉取失败、设备挂载失败还是容器运行时不可用\n\n若确认是容器环境问题，把这一批 job 单独重跑并换一组 runner 验证，与用例代码解耦，避免把环境故障记成 sglang 回归\n\n同时补日志：multi-node-poc 类任务现在只留 exit code 一行，脚本正文（Traceback 下文）没有进 evidence，后续无论谁分析都只能看到表层的 exit 1\n\n验证方式：重跑该 nightly 的全部 job，要求 7 个失败 job 全部转通过、run 结论为 success，且日志中不再出现 Executing the custom container implementation failed",
+        "rootCause": "20 个 job 里 7 个失败：a3 的三个测试任务与四个 multi-node-poc。两类任务的镜像、资源规格、用例都不同，却一起倒在「Executing the custom container implementation failed」这一句上，cases 为 0、一条用例都没跑到判定阶段。根因是自托管 runner 的自定义容器运行时在这批 job 上异常（容器启动或设备挂载失败），不是 sglang 用例回归；另外 13 个 job 通过，说明异常只落在需要自定义容器的这批机器上。",
+        "advice": "按 run 42047810705 查这 7 个 job 落在哪些 runner，抓该时段容器拉镜像与 NPU 设备挂载日志；修好后把这一批换一组 runner 重跑。\n\n验证方式：7 个失败 job 全部转通过，日志不再出现容器实现执行失败。",
         "cites": [
           "github_logs/gh_42047810705/10_nightly-1-npu-a3 _ run (0).txt:L918",
           "github_logs/gh_42047810705/10_nightly-1-npu-a3 _ run (0).txt:L955",
           "github_logs/gh_42047810705/7_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~db0591.txt:L604",
           "records/run_2079.json"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42047810705/10_nightly-1-npu-a3 _ run (0).txt:L955",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 5,
         "source": "agent"
       }
     },
@@ -1254,17 +1256,19 @@
       "analysis": {
         "status": "done",
         "keyError": "ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses'",
-        "rootCause": "该 run 共 26 个 job、8 个失败，构建 #2081 从 00:07:33 跑到 13:15:34（近 13 小时）记 FAILED；8 个失败 job 覆盖 a3 精度任务、五个 multi-node-poc 与一个 multi-node-mix-poc，外加汇总任务 check-all-jobs（records/run_2081.json）\n\n第一类（nightly-acc-2-npu-a3，依赖不匹配）：日志明确写出 [2026-11-05 16:13:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))，随后脚本步骤以 ✗ exit code: 255 退出（github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt:L986）\n\n第二类（multi-node-poc 与 mix-poc 六个任务）：只留下 │ exit code: 1 与 ✗ exit code: 1 两层，没有异常正文，无法判断具体失败点（同目录 9_multi-node-poc 系列日志 L578、L7157）\n\n第三类（check-all-jobs）：汇总任务在上游 7 个 job 失败后无法产出结果表，属连带失败\n\nopenai 包缺少 sglang 期望的符号，是典型的依赖版本不匹配：镜像里 openai 版本低于代码要求，服务初始化时 Responses API 被禁用、进程最终以 255 退出，因此第一类更像镜像依赖版本问题而非用例逻辑错\n\n已排除的干扰项：没有 pytest 汇总、没有 accuracy 断言与精度数值，说明这批失败都没跑到判定阶段；另外 18 个 job 通过，排除整体环境故障",
-        "advice": "先锁依赖：在镜像里把 openai 升到含 ResponseFunctionShellToolCall 的版本（或反向把 sglang 降到与当前 openai 匹配的版本），并在 requirements 里写死下界，避免这种符号缺失在夜间任务里反复出现\n\n第二类单独抓证据：六个 multi-node-poc/mix-poc 只留 exit code，建议在启动脚本里 set -x 并保留最后 50 行输出，否则这批任务永远只能停在「失败」两个字上\n\n汇总任务降噪：check-all-jobs 在上游失败时应输出「上游 N 个 job 失败」并置 skipped，不要自己再失败一次\n\n验证方式：重跑该 nightly，要求 8 个失败 job 全部转通过（或明确 skip）、check-all-jobs 正常产出结果表、run 结论为 success，且日志中不再出现 ResponseFunctionShellToolCall 的 ImportError",
+        "rootCause": "26 个 job 里 8 个失败，其中 nightly-acc-2-npu-a3 有明确报错：服务初始化时 import ResponseFunctionShellToolCall 失败，OpenAI Responses API 被禁用，脚本随后以 255 退出——镜像里的 openai 版本低于 sglang 代码要求。另外六个 multi-node-poc / mix-poc 只留了 exit code 1、没有异常正文，check-all-jobs 是它们的连带失败；18 个 job 通过，排除整体环境故障。",
+        "advice": "openai 升到含新 API 的版本、与 sglang 对齐并在 requirements 写下界；multi-node-poc 启动脚本加 set -x 留末 50 行输出。\n\n验证方式：重跑后 8 个 job 转通过或 skip，check-all-jobs 正常出表。",
         "cites": [
           "github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt:L986",
           "github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt:L3787",
           "github_logs/gh_42061473997/9_multi-node-poc (deepseek_v4_flash_w8a8_1p1d_16p_in~5c11ad.txt:L7157",
           "records/run_2081.json"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42061473997/24_nightly-acc-2-npu-a3 _ nightly-acc-2-npu-a3.txt:L986",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 5,
         "source": "agent"
       }
     },
@@ -1476,17 +1480,19 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
-        "rootCause": "该 run 共 16 个 job、2 个失败，构建 #2083 从 00:48:54 跑到 03:12:32（约 2 小时 24 分钟）记 FAILED；两个失败 job 是 multi-node-poc 的 glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms 与汇总任务 check-all-jobs（records/run_2083.json）\n\n第一类（主任务）：日志按 出现 exit code: 1（L608）→ Traceback（L1652）→ ##[error]Error: failed to run script step（L1889）→ ✗ exit code: 1（L1890）→ Process completed with exit code 1（L1914）→ 容器实现执行失败（L1915）的顺序收敛，异常正文未留存（github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L1652）\n\n第二类（汇总任务）：check-all-jobs 的 Generate results table 步骤失败，是上游主任务失败的连带结果，不是独立缺陷\n\n值得一提的是 L608 已经出现一次 exit code: 1，随后日志才跑到 L1652 的 Traceback：说明任务在前面已经有一次非零退出（大概率是某个子步骤或模型拉起），主脚本继续执行后才在真正的位置抛错，因此更像这条 2p2d 32p 性能用例的前置准备（服务拉起、权重加载）先失败，被测性能并未真正开始\n\n已排除的干扰项：没有任何性能指标或 accuracy 断言输出，说明用例没跑到测量阶段；另 14 个 job 通过，排除环境全局故障",
-        "advice": "先看第一次非零退出：把 L608 附近的上下文抓出来，确认是哪一步先失败（起服务、加载权重还是建通信域），这一步比 L1652 的 Traceback 更接近真实起点\n\n再区分性能与功能问题：如果用例根本没跑到压测阶段，就不该按性能回归处理，建议在脚本里加「未进入测量阶段」的显式标记，避免这类记录被当成性能劣化\n\n汇总任务降噪：check-all-jobs 上游失败时置 skipped\n\n验证方式：重跑该 nightly，要求 multi-node-poc（glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms）转通过并产出性能指标、run 结论为 success，且日志中能看到第一次非零退出的具体步骤名",
+        "keyError": "ValueError: Tokenizer class TokenizersBackend does not exist or is not currently imported.",
+        "rootCause": "失败的是 multi-node-poc 的 glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms，另一个失败的 check-all-jobs 只是它的汇总连带失败。用例在准备数据时用它拉起 tokenizer 加载 GLM-5.3-w8a8 权重，直接抛 Tokenizer class TokenizersBackend 不存在，重试 2 次都停在同一处，服务没起来、也没有任何性能指标。原因是镜像里的 transformers 版本与这个权重自带的 tokenizer 配置不匹配，与集群和性能无关。",
+        "advice": "把镜像里的 transformers 升到支持该权重 tokenizer 的版本（或换成匹配的 tokenizer 配置），改完手动加载一次 AutoTokenizer 确认能过。\n\n验证方式：该 2p2d 用例进入压测并产出性能指标，check-all-jobs 正常出表。",
         "cites": [
-          "github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L608",
-          "github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L1652",
+          "github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L1667",
+          "github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L1889-L1890",
           "records/run_2083.json"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L1667",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 4,
         "source": "agent"
       }
     },
@@ -1646,16 +1652,18 @@
       "analysis": {
         "status": "done",
         "keyError": "##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.",
-        "rootCause": "该 run 共 15 个 job、只有 1 个失败，构建 #2084 从 00:51:59 跑到 01:04:09（约 12 分钟）记 FAILED；失败的是 multi-node-poc 的 deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa 任务，其余 14 个 job 全部通过（records/run_2084.json）\n\n失败链是完整的五步：Traceback（L514）→ ##[error]Error: failed to run script step（L532）→ ✗ exit code: 1（L533）→ ##[error]Process completed with exit code 1（L557）→ ##[error]Executing the custom container implementation failed（L558），日志只留了这五行位置，Traceback 的异常正文没有进归档（github_logs/gh_42068844392/127390755997_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L514）\n\n同一 run 内另外 14 个 job 通过，因此可以排除 runner 与镜像的全局故障，失败范围收敛到这一个多机 POC 任务，更像该 gpqa 用例的启动脚本在准备阶段自己退出非零（容器随之被判失败），而非图像、驱动或调度层面的共性问题\n\n已排除的干扰项：cases 为 0，没有 pytest 汇总、没有精度断言、没有精度数值，说明用例根本没跑起来；失败只出现一次、且与 #2085/#2086 是不同 runId，不能直接套用「libhcom.so 缺失」那条结论",
-        "advice": "把这一条与 #2085、#2086 放在一起看：三次是同一类 job、同一个模型配置，其中 #2085 已经抓到 libhcom.so 与 dram segment 不支持的实锤，本条很可能只是同一环境问题在日志里没留正文，先按那条结论验证一次\n\n要区分开就抓 Traceback 正文：在 multi-node-poc 的启动脚本外层加 try/except 或 set -x，把 L514 之后的异常栈写进 stdout，现在只有行号没有内容，任何分析都只能猜\n\n若重跑后 14 个 job 仍通过、只有本条失败，则按该 gpqa 用例的启动配置单独排查（模型权重路径、节点数与 PD 比例、gpqa 数据集挂载）\n\n验证方式：重跑该 nightly，要求 multi-node-poc（deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa）转通过、run 结论为 success，且日志中能看到完整的异常栈而不是只有 Traceback 标题行",
+        "rootCause": "15 个 job 里只有 1 个失败：multi-node-poc 的 deepseek_v4_flash_0731 w8a8 1p1d 16p gpqa 用例，跑了约 12 分钟后抛异常、以退出码 1 结束，容器随之被判失败，异常正文没进归档、用例也没跑起来。同 run 另外 14 个 job 全部通过，排除 runner 与镜像的全局故障，失败收敛到这条 gpqa 用例的启动阶段（服务拉起或权重、数据集准备），不是精度不达标。同日同配置的 #2085、#2086 已确认是镜像缺 HCOM 通信库，本条很可能是同一环境问题，只是日志没留正文。",
+        "advice": "给 multi-node-poc 启动脚本加 set -x 或 try/except，把异常栈写进 stdout 后重跑一次拿到正文；仍只有这条失败，再单查该 gpqa 用例的权重路径、节点数与数据集挂载。\n\n验证方式：重跑后该用例转通过，日志里有完整异常栈。",
         "cites": [
           "github_logs/gh_42068844392/127390755997_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L514",
           "github_logs/gh_42068844392/127390755997_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L558",
           "records/run_2084.json"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42068844392/127390755997_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L558",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 5,
         "source": "agent"
       }
     },
@@ -1876,17 +1884,19 @@
       "analysis": {
         "status": "done",
         "keyError": "ERROR [1185-1185][HYBM hybm_entity_default.cpp:1324 InitDramSegment] dram segment does not support sdma in current environment, rankId: 0",
-        "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2085 从 01:16:55 跑到 01:28:24 记 FAILED；失败的仍是 multi-node-poc 的 deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa（records/run_2085.json）\n\n第一层（通信库）：01:24:33.556644 先出现 WARN [HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so]，libhcom.so 与 libhcom.so.0 都打不开，级别是 WARN（github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3378）\n\n第二层（段初始化）：同一秒稍后 01:24:33.558446 报 ERROR [HYBM hybm_entity_default.cpp:1324 InitDramSegment] dram segment does not support sdma in current environment, rankId: 0，紧接 558460 报 InitDramSegment() failed: -1，随后脚本步骤失败退出（同文件 L3389、L3390）\n\n真正把进程打死的是第二层：libhcom.so 只报 WARN、HYBM 继续往下执行，而 InitDramSegment 返回 -1 之后用例直接退出，因此更像当前机器/容器环境的 DRAM 段不具备 sdma 能力、与用例要求的通信路径不匹配，而非 gpqa 精度不达标或代码逻辑错\n\n已排除的干扰项：日志里没有 accuracy 断言、没有 pytest 汇总、没有任何用例级失败记录，失败发生在服务拉起阶段；另外 14 个 job 同 run 通过，说明不是节点整体不可用，而是这条 1p1d 16p 用例与当前机器的 sdma 能力冲突",
-        "advice": "先做能力探测再决定跑不跑：在任务启动脚本里读取设备是否支持 sdma，不支持时把这条 deepseek_v4_flash_0731 用例显式 skip 或改走非 sdma 的 DRAM 段初始化路径，避免每次夜间都在这一个点上失败 12 分钟\n\n若该用例必须走 sdma，则按机器型号挑节点：把 1p1d 16p 的 sdma 要求写进调度约束，交给能支持 sdma 的机器跑，而不是让它在任意 a3 机器上撞运气\n\n顺手补齐 libhcom.so：镜像里补上该库或把它所在路径加进 LD_LIBRARY_PATH，虽然本次只是 WARN，但通信库缺失会让 HYBM 退到更低效的路径，可能影响性能结论\n\n验证方式：重跑该 nightly，要求 multi-node-poc（deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa）或按能力探测跳过（记 skip 而非 fail）、run 结论为 success，且日志中不再出现 InitDramSegment() failed: -1",
+        "rootCause": "失败的只有 multi-node-poc 的 deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa 一条用例。服务拉起时 16 个 rank 都先报 Unable to open library [libhcom.so]，紧接着 HYBM 初始化 DRAM 段报当前环境不支持 sdma 并失败，进程退出，用例没进到精度判定。根因是镜像里缺 HCOM 通信库，sdma 能力探测拿不到，DRAM 段初始化必然失败，与模型精度无关。",
+        "advice": "把 libhcom.so 与 libhcom.so.0 装进镜像（或加进 LD_LIBRARY_PATH 并在容器入口 export），用 ldconfig -p 确认能搜到。\n\n验证方式：该用例进入压测并产出精度结果，日志不再报 libhcom 或 DRAM 段错。",
         "cites": [
           "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3378",
           "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3389",
           "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3390",
           "records/run_2085.json"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3389",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 5,
         "source": "agent"
       }
     },
@@ -2112,17 +2122,19 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "keyError": "WARN [HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so], libhcom.so: cannot open shared object file: No such file or directory",
-        "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2086 从 02:50:51 跑到 03:18:46 记 FAILED，失败任务仍是 multi-node-poc 的 deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa（records/run_2086.json）\n\n第一类（多 rank 同秒报同一句）：03:14:36.540596、540726、541321 三条 WARN 分别来自 [881-881]、[888-888]、[884-884] 三个 rank，内容完全一致，都是 libhcom.so 与 libhcom.so.0 打不开（github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L2625）\n\n第二类（脚本步骤退出）：日志随后收敛到 ✗ exit code: 1 与容器实现执行失败，中间没有 ERROR 级别的通信或段初始化报错（同文件 L6226、L6252）\n\n三个 rank 同时、同秒、同文本地缺同一个库，说明不是某个节点上的偶发挂载问题，而是这批机器的镜像里本来就没有 libhcom.so，或它所在目录不在 LD_LIBRARY_PATH 中，HYBM 建通信域失败后由脚本判退出，因此更像镜像/环境配置缺失，而非用例逻辑或精度问题\n\n与同日 #2085 对比：两次是同一个 job、同一台族机器，#2085 还叠加了 InitDramSegment 的 sdma 报错，本条只有 libhcom.so 一条线索，因此两条要分开归因，不能合并成一个结论\n\n已排除的干扰项：没有 pytest 汇总、没有 accuracy 断言、没有用例级失败记录，失败点在服务拉起阶段；另 14 个 job 通过，排除节点整体不可用",
-        "advice": "先补库：确认镜像构建脚本里是否应装 HCOM 通信库，缺则装上；若库已存在但不在默认搜索路径，把其目录写进 LD_LIBRARY_PATH 并在容器入口处 export，避免只在交互式 shell 里生效、到 CI 里就失效\n\n加载失败要给明确结论：HYBM 现在只打 WARN 就继续跑，最终以 exit code 1 收场，建议在 LoadLibrary 失败且该库为必需时直接给 ERROR 并带上是哪个库、期望路径、实际搜索路径，便于一次定位\n\n与 #2085 一起验证：同一天这台机器上两次失败都指向通信库与段初始化，修完镜像后两条一起重跑，避免只修一半\n\n验证方式：重跑该 nightly，要求 multi-node-poc（deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa）转通过、run 结论为 success，且日志中不再出现 Unable to open library [libhcom.so]",
+        "keyError": "RuntimeError: memcache_hybrid.DistributedObjectStore.init failed",
+        "rootCause": "失败的只有 multi-node-poc 的 deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa 一条用例。几个 rank 在同一秒都报 Unable to open library [libhcom.so]，随后构建 hybrid cache 存储后端时抛 memcache_hybrid.DistributedObjectStore.init failed，Scheduler 直接退出，用例没跑起来。根因是镜像里没有 HCOM 通信库，HYBM 分布式内存池建不起来；与同日 #2085 是同一个缺失，只是那条先卡在 DRAM 段 sdma 探测、这条先卡在对象存储初始化。",
+        "advice": "把 HCOM 通信库装进镜像，或把其目录写进 LD_LIBRARY_PATH；装完仍报对象存储初始化失败，再查 memcache_hybrid 的存储后端配置。\n\n验证方式：该 gpqa 用例进入压测并产出精度结果，日志不再报 libhcom 缺失。",
         "cites": [
           "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L2625",
-          "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L6226",
+          "github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L5797",
           "records/run_2086.json"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42088175169/127458874017_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L5797",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 5,
         "source": "agent"
       }
     },
@@ -2287,17 +2299,19 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "keyError": "ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses'",
-        "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2087 从 09:35:37 跑到 10:10:44（约 35 分钟）记 FAILED；失败的是 nightly-perf-16-npu-a3，其余 14 个 job 通过（records/run_2087.json）\n\n第一类（明确报错点）：日志 L1988 直接写出 [2026-11-06 01:45:51] OpenAI Responses API (/v1/responses) disabled: OpenAIServingResponses init failed (ImportError: cannot import name 'ResponseFunctionShellToolCall' from 'openai.types.responses' (/usr/local/python3.12.13/lib/python3.12/site-packages/openai/types/responses/__init__.py))，说明镜像里的 openai 包版本比 sglang 代码要求的旧，服务侧 Responses 能力在初始化阶段就被禁用（github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt:L1988）\n\n第二类（退出链）：随后 L4629 Traceback → L4763 ##[error]Error: failed to run script step → L4764 ✗ exit code: 255 → L4788 Process completed with exit code 1 → L4789 容器实现执行失败，异常正文没进归档，但 255 这个退出码与依赖导入失败的表现一致\n\n同日 #2081、#2095、#2096、#2088、#2099 都带同一条 openai ImportError，说明这不是单条记录的偶发，而是当天 a3 镜像的统一版本问题，因此更像镜像依赖与 sglang 代码不匹配，而非这条性能用例本身逻辑错\n\n已排除的干扰项：cases 为 0、无 pytest 汇总与性能指标输出，用例没跑到测量阶段；另 14 个 job 同 run 通过，排除节点与 runner 整体故障",
-        "advice": "先修镜像依赖，这是当天六条记录的共同源头：把 openai 升到含 ResponseFunctionShellToolCall 的版本，或把 sglang 回退到与当前 openai 匹配的版本，并在 requirements 里写死下界，别让符号缺失每晚重演\n\n区分「能力被禁用」与「用例失败」：OpenAIServingResponses 初始化失败只会让 /v1/responses 走降级路径，若该用例依赖这条接口，就应在用例启动前显式断言接口可用并直接报清晰错误，而不是拖到 255 退出\n\n补异常留存：L4629 的 Traceback 正文要写进日志，现在只剩退出码，无法证伪「255 由依赖引起」这一推断\n\n验证方式：重跑该 nightly，要求日志中不再出现 ResponseFunctionShellToolCall 的 ImportError，且 nightly-perf-16-npu-a3 产出完整性能指标、run 结论为 success",
+        "keyError": "AssertionError: 58.34 not less than or equal to 51.0",
+        "rootCause": "deepseek_v4_flash w8a8 8p（in8k/out1k，无投机）这条性能用例卡在 TPOT 断言：实测 58.34ms，基线要求不超过 51.0ms，超了约 14%，重试到第 3 次仍不过。同一次运行里服务启动、prefill 与 decode 都正常、benchmark 完整跑完，是解码阶段每 token 耗时真的偏高，不是环境或配置问题。需要 sglang/vllm-ascend 侧确认 cann9.1.0-a3 这版镜像上 deepseek_v4_flash 的 decode 优化是否退化，以及 51.0ms 基线是否还适用于当前配置。",
+        "advice": "先拿上一版镜像同用例的 mean_tpot 对比，判断是新镜像退化还是 51.0ms 基线过期；确认退化再 profile decode 阶段，看 npu graph 命中率与 attention 后端。\n\n验证方式：同镜像复跑该用例，mean_tpot 不高于 51.0ms。",
         "cites": [
-          "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt:L1988",
-          "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt:L4764",
+          "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt:L4654",
+          "github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt:L4746",
           "records/run_2087.json"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42144867602/127654937116_nightly-perf-16-npu-a3 _ nightly-perf~7cc28546.txt:L4654",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 5,
         "source": "agent"
       }
     },
@@ -2472,17 +2486,19 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
-        "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2088 从 12:01:04 跑到 14:00:54（约 2 小时）记 FAILED；失败的是 multi-node-mix-poc 的 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix，其余 14 个 job 通过（records/run_2088.json）\n\n第一类（先出现的非零退出）：L15680 已经出现 │ exit code: 1，位置在该任务 13:32:41 的 openai ImportError（L13563）之后约 2000 行，说明服务拉起或前置子步骤先失败了一次（github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15680）\n\n第二类（主脚本收敛）：接着 L17468 Traceback → L17545 ##[error]Error: failed to run script step → L17546 ✗ exit code: 1 → L17570 Process completed with exit code 1 → L17571 容器实现执行失败，异常正文未留存\n\n这条 run 的标题是「kimi_k3: run the decode perf case via the aisbench prefix mode」，是一条刚改用 aisbench prefix 模式的用例；两次非零退出叠在一起，更像新的 prefix 启动路径没跑通（服务没起来、aisbench 连不上），而不是 decode 性能本身劣化——日志里没有任何 tpot/吞吐输出\n\n已排除的干扰项：L13563 的 openai ImportError 属当天镜像的普遍问题，但只影响 /v1/responses 降级，不是本条的直接退出点；cases 为 0，无精度与性能断言",
-        "advice": "先定位第一次非零退出：把 L15680 上下 100 行拉出来，确认是拉起服务、加载权重还是启动 aisbench 这一步先失败，这比 L17468 的 Traceback 更接近真实起点\n\n针对新的 prefix 模式做一次单独验证：手动跑 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix，把 prefix 相关参数（repeat_rate、prefix 长度）打到日志头部，确认新路径的启动顺序与旧用例一致\n\n补异常留存：multi-node-mix-poc 这类任务现在只留 exit code 一行，建议在脚本外层统一包装，把最后 50 行 stdout/stderr 打进日志\n\n验证方式：重跑该 nightly，要求 multi-node-mix-poc（kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix）转通过并产出 decode 性能指标、run 结论为 success",
+        "keyError": "AssertionError: 41.6 not less than or equal to 31.0",
+        "rootCause": "kimi_k3 w4a8 32p mix（in128k/out1k，decode prefix）的 TPOT 实测 41.6ms，阈值 31.0ms，超了约 34%，是这条 mix 场景本身性能不达标。同 job 其余用例正常，服务起得来、benchmark 跑完，只是每 token 解码耗时偏高。mix 场景带 prefix 命中，decode 调度与前缀缓存效率是主要嫌疑，也可能是 31.0ms 阈值沿用了非 prefix 场景的旧基线。",
+        "advice": "先确认 31.0ms 阈值是否按当前 32p mix 配置校准，再用同一用例对比 prefix 缓存命中率与 decode batch 大小，判断是缓存未命中还是调度抖动。\n\n验证方式：复跑该用例，mean_tpot 不高于 31.0ms。",
         "cites": [
+          "github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L17496",
           "github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15680",
-          "github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L17546",
           "records/run_2088.json"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42159951566/127703027006_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L17496",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 5,
         "source": "agent"
       }
     },
@@ -2600,14 +2616,16 @@
       "analysis": {
         "status": "done",
         "keyError": null,
-        "rootCause": "该 run 共 15 个 job、0 个失败 job，但构建 #2091 只在 17:45:35 到 17:45:38 存活了 3 秒就记 FAILED；失败的两个任务 set-image-config（id 127824131767）与 check-all-jobs（id 127824144289）在运行平台侧都已 404_not_retained，归档内 files=0、errorMessages 为空（records/run_2091.json）\n\n第一类（失败层级）：证据只到 job 层，两个任务都停在 404_not_retained，既没有步骤级日志也没有用例明细，失败点本身在归档里不存在\n\n第二类（时间特征）：3 秒内结束，连镜像拉取与容器启动都来不及完成，更像 runner 在分配或配置阶段就退出（set-image-config 正是写入镜像配置的入口任务），而不是测试脚本内部报错\n\n因此这条记录的真实原因无法从现有证据确认，只能给出层级与时间上的推断：失败集中在入口配置这一步，且异常发生在容器真正运行之前\n\n已排除的干扰项：cases 为 0、errorMessages 为 0，不存在被淹没的断言或精度失败；失败 job 列表为空，说明平台侧没把它算进 job 级失败，属流程级中断",
-        "advice": "先把日志留存补上，这是本条唯一能推进的事：向平台侧确认 set-image-config 与 check-all-jobs 这类短命任务为何 404_not_retained，要求至少保留入口任务的 stdout\n\n再按时间窗回查：用 17:45:35~17:45:38 这个窗口去查同一 runner 上当时的调度记录，3 秒内退出基本可以锁定在镜像配置或 runner 分配环节\n\n降低影响面：把 set-image-config 的失败改成显式「配置未生效」结论并中止后续 job，避免整条 nightly 只留下一个 3 秒的空失败\n\n验证方式：重跑该 nightly，要求 set-image-config 与 check-all-jobs 均有日志落盘且结论为 success，run 整体不出现 3 秒内中断的记录",
+        "rootCause": "这次运行只活了 3 秒（17:45:35 到 17:45:38），15 个 job 没有一个被判失败，入口任务 set-image-config 与 check-all-jobs 的日志在平台侧都已 404 未留存，归档里没有任何用例和报错。本质是这次触发在写入镜像配置、检查 job 之前就被中断（多为并发组取消或 runner 分配失败），测试并没有真的跑起来，因此无法再往下定界。",
+        "advice": "到该 run 的 Actions 页面确认是否被 concurrency 取消或 setup 阶段失败，3 秒结束基本锁定这一步；并要求平台为两个入口 job 保留 stdout。\n\n验证方式：重跑后 run 存活时间正常、入口 job 有日志且结论为 success。",
         "cites": [
           "records/run_2091.json"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "无 keyError",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 5,
         "source": "agent"
       }
     },
@@ -2943,16 +2961,18 @@
       "analysis": {
         "status": "done",
         "keyError": "ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
-        "rootCause": "该 run 共 15 个 job、3 个失败，构建 #2092 从 17:45:36 跑到 18:00:55 记 FAILED；三个失败 job 是 nightly-1-npu-a3、nightly-perf-16-npu-a3、nightly-acc-16-npu-a3（records/run_2092.json）\n\n失败链在三个任务里逐字相同：Traceback（L908）→ ModuleNotFoundError: No module named 'sglang.srt.utils.process'（L913）→ ##[error]Error: failed to run script step（L915）→ ✗ exit code: 1（L916）→ 容器实现执行失败（L941），18 条 errorMessages 正好是 3 个任务 × 6 行（github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt:L913）\n\n用例引用的是 sglang.srt.utils.process，而当前安装的 sglang 包里没有这个模块，三个任务在 import 阶段就中断，一条用例都没跑到执行，因此更像代码与镜像版本不匹配（用例已跟到含该模块的主干，镜像里装的还是旧包），而不是运行环境随机故障\n\n如果只是某个任务配置写错，不会三个规格完全不同的任务（单机 1 卡、16 卡性能、16 卡精度）在同一处 import 上一起失败，这一点反过来支持「公共依赖版本」这个归因\n\n已排除的干扰项：没有任何断言失败或精度结论，失败在用例加载阶段；日志里没有驱动、通信库或调度报错",
-        "advice": "先对齐版本：确认镜像里 sglang 的安装方式与 commit，核对 sglang/srt/utils/process.py 是否存在；若用例已合入主干而镜像未更新，重新构建镜像或改为安装主干 wheel，一次修掉三个任务\n\n再加前置校验：在 CI 入口 import 一遍用例会用到的新模块，缺模块就直接报「镜像版本落后」并终止，而不是让三个任务各跑十几分钟再同一处失败\n\n若确认是上游把该模块改名/移走，则在用例侧改成新路径，并在 PR 里注明兼容的最低 sglang 版本，避免下一次镜像升级又反向炸掉\n\n验证方式：重跑该 nightly，要求三个 a3 测试任务全部转通过、run 结论为 success，且日志中不再出现 No module named 'sglang.srt.utils.process'",
+        "rootCause": "镜像里安装的 sglang 包比用例仓代码旧：run_suite 导入 ci_utils 时要用 sglang.srt.utils.process，而镜像里这个模块还不存在，于是所有用例在 collect 之前整批退出，一个都没跑。三个 a3 任务同一现象，属镜像与用例仓版本不同步，不是用例本身的问题。",
+        "advice": "把镜像里的 sglang 换成与用例仓当前 commit 匹配的版本（构建镜像时从用例仓重新安装），或把 ci_utils 的导入路径改回镜像里已有的模块。\n\n验证方式：重跑 nightly-1-npu-a3，run_suite 能正常收集出用例列表，不再报模块不存在。",
         "cites": [
           "github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt:L913",
           "github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt:L941",
           "records/run_2092.json"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt:L913",
+        "updatedAt": "2026-11-11 17:04:39",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 4,
         "source": "agent"
       }
     },
@@ -3263,17 +3283,19 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
-        "rootCause": "该 run 共 15 个 job、3 个失败，构建 #2093 从 18:00:53 跑到 18:38:37 记 FAILED；三个失败 job 是 nightly-1-npu-a3、nightly-acc-16-npu-a3、nightly-perf-16-npu-a3（records/run_2093.json）\n\n失败形态完全同构：15 条 errorMessages 正好是 3 个任务 × 5 行，每个任务都是 Traceback（L916）→ ##[error]Error: failed to run script step（L929）→ ✗ exit code: 1（L930）→ Process completed with exit code 1（L954）→ 容器实现执行失败（L955），没有任何一个任务留下异常类型或失败用例名（github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt:L916）\n\n这里能确定的只有两点：失败发生在任务脚本步骤这一层，且三个任务同时同形态，因此更像同一份脚本或同一入口在共同的前置步骤（环境准备、服务拉起）上出错，而不是三个任务各自的用例断言都失败\n\n与同日更早的 #2092 相比，那次留下了 ModuleNotFoundError、这次连异常正文都没有，说明脚本的失败路径上没有把 stderr 带出来，证据缺口比根因本身更值得先修\n\n已排除的干扰项：没有 pytest 汇总、没有 accuracy 断言、cases 为 0，用例根本没跑到判定阶段；日志里没有驱动、通信库或调度报错",
-        "advice": "先补可观测性：在 nightly 脚本入口加 set -x 与 trap，把失败时最后 50 行 stdout/stderr 打进日志，现在三个任务都只剩 exit code 1，下一次仍然无法定位\n\n再复现一次并盯入口：单独手动触发 nightly-1-npu-a3，看它在服务拉起前后哪一步退出；三个任务同形态失败，最可能出在它们共用的容器启动与环境准备段，优先查这一段\n\n修复后按任务分批重跑：先只跑 nightly-1-npu-a3 拿到真实异常，再放开 perf 与 acc 两个 16 卡任务，避免一次重跑三个大任务又都超时\n\n验证方式：重跑该 nightly，要求三个 a3 测试任务全部转通过、run 结论为 success，且日志中每个失败任务都能看到具体异常栈而不是只有 exit code 1",
+        "keyError": "ValueError: No CI registry found in /__w/sglang/sglang/test/registered/kernels/ops/communication/test_mlu_communicator.py",
+        "rootCause": "失败发生在用例收集阶段：run_suite 扫描 registered 目录时要读取每个文件的 CI 注册信息，test_mlu_communicator.py 里没有注册信息，collect_tests 直接报错退出，pytest 还没开始跑任何用例。是新增或改造的用例文件漏了 CI 注册，不是用例逻辑失败。",
+        "advice": "给 test_mlu_communicator.py 补上与其他 registered 用例一致的 CI 注册信息；并在 collect 阶段加校验，未注册文件直接报文件名，避免整批收集中断。\n\n验证方式：复跑该 job，collect 能输出完整用例列表。",
         "cites": [
+          "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt:L927",
           "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt:L916",
-          "github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt:L955",
           "records/run_2093.json"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42199356561/127830580941_nightly-1-npu-a3 _ run (0).txt:L927",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 5,
         "source": "agent"
       }
     },
@@ -3477,17 +3499,19 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
-        "rootCause": "该 run 共 15 个 job、2 个失败，构建 #2094 从 18:22:37 跑到 19:05:15 记 FAILED；两个失败 job 是 multi-node-poc 的 glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa 与汇总任务 check-all-jobs（records/run_2094.json）\n\n第一类（主任务）：glm_5_3 多机精度任务按 Traceback（L825）→ ##[error]Error: failed to run script step（L843）→ ✗ exit code: 1（L844）→ Process completed with exit code 1（L868）→ 容器实现执行失败（L869）这条链退出，异常正文没有进归档（github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt:L825）\n\n第二类（汇总任务）：check-all-jobs 的失败步骤是 Generate results table，它的职责是汇总各 job 结果，上游主任务失败后它无从汇总，属于连带失败而不是独立缺陷\n\n因此这条记录的真实失败点只有一处：glm_5_3 的 2p2d 32p pcp_eplb 精度任务在脚本步骤退出，更像该用例自身启动/配置问题（新增的 pcp_eplb 组合），而非精度不达标——日志里没有任何打分或阈值输出\n\n已排除的干扰项：check-all-jobs 失败不单独归因；cases 为 0，没有 pytest 汇总与 accuracy 断言；另 13 个 job 同 run 通过，排除 runner 与环境全局故障",
-        "advice": "只查主任务，不要被 check-all-jobs 带偏：单独手动跑 glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa，把 L825 之后的异常栈完整打出来；这条用例是新合入的 2P2D 32P PCP+EPLB 组合，优先核对它与已有 2p2d 32p 配置的差异（EPLB 开关、PCP 切分、节点数）\n\n让汇总任务不再误伤：check-all-jobs 在检测到上游失败时直接标 skipped 或给出「上游 N 个 job 失败」的结论，而不是自己再失败一次，否则每次都会多出一条无意义的失败记录\n\n补日志留存：multi-node-poc 这类任务现在只留 exit code 一行，建议在脚本外层统一包装异常输出\n\n验证方式：重跑该 nightly，要求 multi-node-poc（glm_5_3_w8a8_2p2d_32p_pcp_eplb_gpqa）转通过、check-all-jobs 正常产出结果表、run 结论为 success",
+        "keyError": "Exception: Monitoring ended but target pattern was not detected",
+        "rootCause": "GLM-5.3 w8a8 2p2d 32p pcp+eplb 的精度用例在拉起 PD 服务后失败：decode-1 这个 pod 启动后主进程直接以 0 退出，K8s 记为 Succeeded，router 等不到第二个 decode 实例，监控一直到超时也没匹配到预期日志，用例一个请求都没发出。问题在 decode-1 上 sglang 服务的启动环节（参数或端口之类让它起完就退），不是精度也不是性能问题。",
+        "advice": "捞 decode-1 容器的 sglang 启动日志，确认为何主进程 0 退出并修好启动参数；把「pod 未 Running 就失败并附该 pod 日志」写进监控。\n\n验证方式：复跑该 gpqa 用例，两个 decode pod 均 Running 并产出精度结果。",
         "cites": [
-          "github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt:L825",
-          "github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt:L844",
+          "github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt:L830",
+          "github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt:L822",
           "records/run_2094.json"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42202191521/127839975906_multi-node-poc (glm_5_3_w8a8_2p2d_32p_p~0c5b3a.txt:L830",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 5,
         "source": "agent"
       }
     },
@@ -3668,17 +3692,19 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "keyError": "FileNotFoundError: [Errno 2] No such file or directory: '/root/.cache/tests/output/shun8686-overlapschedule-20261106-1838-42204167966-1/Nightly_Test_NPU--cann9.1.0-a3-B010/perf/nightly-perf-16-npu-a3/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_fia_unset/test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_pass1_metrics'",
-        "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2095 从 18:38:06 跑到 19:15:43（约 37 分钟）记 FAILED；失败的是 nightly-perf-16-npu-a3，其余 14 个 job 通过（records/run_2095.json）\n\n第一类（背景噪声）：L5477 与 L7692 各有一条 openai ImportError（10:53:49、10:58:15），与当天其他 SgLang 记录同源，属镜像依赖问题但不是本条的退出点\n\n第二类（真实失败点）：L8615 Traceback → L8633 FileNotFoundError，用例去读 test_npu_deepseek_v4_flash_w8a8_8p_in8k_out1k_50ms_overlap_pass1_metrics 这个产物文件时目录不存在，随后 L8755/8756 以 ✗ exit code: 255 退出，L8780/8781 收尾（github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt:L8633）\n\n值得注意路径里同时出现 _fia_unset 与 _pass1_metrics 两级目录：前者是被测配置的开关后缀，后者是性能采样的产物名，更像是压测根本没跑到写 metrics 这一步（或用例拼路径时把 fia 开关与 pass 序号拼错），而不是 metrics 文件被误删\n\n已排除的干扰项：openai ImportError 只影响 /v1/responses 降级；cases 为 0，没有精度断言；另 14 个 job 同 run 通过，排除节点故障",
-        "advice": "先确认产物是否真的没生成：在同一次运行的 /root/.cache/tests/output/... 下逐级 ls，确认是 _fia_unset 这级缺失还是 _pass1_metrics 缺失，这一步能直接区分「路径拼错」与「压测未产出」\n\n再核对路径拼装逻辑：把 fia 开关后缀与 pass 序号从配置里显式读出来打印，现在两级后缀都写死在路径里，配置一改就会失配\n\n加前置校验：读 metrics 前先断言目录存在并给出「第 N 次 pass 未产出」的明确信息，而不是抛裸 FileNotFoundError\n\n验证方式：重跑该 nightly，要求 multi-node-poc 下该 deepseek_v4_flash 8p 用例产出 _pass1_metrics 文件并通过、run 结论为 success",
+        "keyError": "FileNotFoundError: [Errno 2] No such file or directory",
+        "rootCause": "同一个 deepseek_v4_flash 8p 用例的第二 pass 要做 pass2 对 pass1 的回归校验，但 pass1 的指标文件根本没落盘，读取时直接报文件不存在，pass2 一步没跑就结束。第一 pass 自己写了 metrics，说明双 pass 脚本里指标写入路径与读取路径不一致，属用例框架缺陷，不是性能不达标。",
+        "advice": "把 pass1 指标写入路径与读取路径统一到同一个常量（按 case_id 生成），并在 pass1 结束处校验文件已存在再进 pass2。\n\n验证方式：复跑该用例，pass1 指标文件生成、pass2 回归校验正常执行并给出结论。",
         "cites": [
           "github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt:L8633",
           "github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt:L8756",
           "records/run_2095.json"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42204167966/127846761875_nightly-perf-16-npu-a3 _ nightly-perf~03b502b1.txt:L8633",
+        "updatedAt": "2026-11-11 17:04:39",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 4,
         "source": "agent"
       }
     },
@@ -3851,17 +3877,19 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "keyError": "##[error]Error: failed to run script step: ✗ exit code: 255",
-        "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2096 从 19:15:12 跑到 19:32:39（约 17 分钟）记 FAILED；失败的是 nightly-perf-16-npu-a3，与同日晚 18:38 的 #2095 是同一个 job（records/run_2096.json）\n\n第一类（背景噪声）：L1996 与 L4211 各有一条 openai ImportError（11:20:37、11:25:27），和当天其余 SgLang 记录同源\n\n第二类（退出链）：L5134 只有 Traceback 标题、正文缺失，然后 L5268 ##[error]Error: failed to run script step → L5269 ✗ exit code: 255 → L5293 Process completed with exit code 1 → L5294 容器实现执行失败（github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5268）\n\n这条与 #2095 相隔 37 分钟、同一 job、同样 255 退出，但 #2095 抓到了 FileNotFoundError；把两条放在一起看，更像该性能 job 在同一批产物目录上连续两次失败，#2096 只是没把异常正文留住的那一次\n\n因此单看本条只能确认失败在脚本步骤、且退出码 255 与 #2095 的 FileNotFoundError 路径一致；单独归因证据不足，应与 #2095 合并判断\n\n已排除的干扰项：cases 为 0，无性能与精度输出，用例没跑到测量阶段；另 14 个 job 同 run 通过",
-        "advice": "直接复用 #2095 的结论，不要单独排查这一条：先按 #2095 的办法确认 _fia_unset / _pass1_metrics 目录是否产出，两条记录大概率是同一个产物路径问题\n\n补异常留存：L5134 的 Traceback 正文必须落盘，否则每条记录都要靠相邻构建去猜，成本太高\n\n给 nightly-perf 加产物检查前置：跑之前先建好 output 目录并在结束时断言 metrics 存在，把「产物缺失」变成明确报错\n\n验证方式：重跑该 nightly，要求 nightly-perf-16-npu-a3 连续两次均通过并产出 metrics、run 结论为 success，日志中不再出现只有 Traceback 标题而无正文的情况",
+        "keyError": "TypeError: can't multiply sequence by non-int of type 'float'",
+        "rootCause": "还是这个 deepseek_v4_flash 8p 用例的 pass2 回归校验：这次 pass1 指标读到了，但里面的 mean_tpot 是数组而不是单个数值，乘容差系数时抛类型错误，重试两次仍失败，对比结论没出来。同样属双 pass 脚本对指标结构处理不当，不是模型问题；但 pass2 实测 mean_tpot 58.31ms 已高于 51.0ms 基线，脚本修好后大概率会撞上真实的性能退化。",
+        "advice": "在 assert_no_regression 里把 mean_tpot 取成标量（是列表就按长度加权求均值），并在比较前校验字段类型，避免异常被重试吞掉。\n\n验证方式：复跑该用例，pass2 能算出 limit 并给出明确结论；若结论落在 TPOT 超限，转性能不达标处理。",
         "cites": [
+          "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5149",
           "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5134",
-          "github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5269",
           "records/run_2096.json"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42208857568/127862479647_nightly-perf-16-npu-a3 _ nightly-perf~ca848dec.txt:L5149",
+        "updatedAt": "2026-11-11 17:04:39",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 4,
         "source": "agent"
       }
     },
@@ -4037,16 +4065,18 @@
       "analysis": {
         "status": "done",
         "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
-        "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2099 从 19:42:57 跑到 23:35:37（约 3 小时 53 分钟）记 FAILED；失败的是 multi-node-mix-poc 的 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix，与 #2088 是同一用例（records/run_2099.json）\n\n第一类（先出现的非零退出）：L13774 已出现 │ exit code: 1，位置在 L13659 的 openai ImportError（23:06:44）之后一千多行，说明服务拉起或前置子步骤先失败了一次（github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L13774）\n\n第二类（主脚本收敛）：L15551 Traceback → L15628 ##[error]Error: failed to run script step → L15629 ✗ exit code: 1 → L15653 Process completed with exit code 1 → L15654 容器实现执行失败，异常正文未留存\n\n这条的标题是「kimi_k3: tune the 128k decode prefix case to repeat_rate=0.99 / request_rate=0」，是同一天对该用例的第二次参数调整；#2088 与 #2099 都是两次非零退出、都没有性能指标输出，说明调整参数并没有解决启动路径的问题\n\n因此更像 kimi_k3 的 32p mix 128k decode prefix 用例在多机拉起环节存在固定障碍（节点数 4、prefix 模式），而非 repeat_rate 参数不当\n\n已排除的干扰项：openai ImportError 属当天镜像的普遍问题、不是本条退出点；cases 为 0，无 tpot/吞吐输出，用例未进入测量",
-        "advice": "停止继续调参，先修启动：同一天两次调 repeat_rate/request_rate 都没换来一次成功，说明瓶颈不在参数而在用例拉起，先把 L13774 的第一次非零退出上下文拉出来\n\n与 #2088 合并成一条线：两次失败形态、退出位置、缺失信息完全一致，按同一个缺陷跟踪，避免在两条记录上重复投入\n\n核对 4 节点 multi-node-mix-poc 的环境前提：通信库与 sdma 能力要事先探测（参考 #2085 抓到的 libhcom.so 缺失与 InitDramSegment 失败），不满足就明确 skip\n\n验证方式：重跑该 nightly，要求 multi-node-mix-poc（kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix）转通过并产出 decode 性能指标、run 结论为 success",
+        "rootCause": "kimi_k3 w4a8 32p mix（in128k/out1k，decode prefix）这条性能用例的 TPOT 实测 39.9ms，基线 30.0ms，超了约三成，两次 attempt 都没过。两次都完整跑完 12 个请求、无失败请求，服务与用例本身正常，是 decode 阶段每 token 耗时确实偏高。同一天同一用例在另一构建上已被 TPOT 41.6ms 判失败，这次换了参数仍然超限，说明是真实性能退化而不是偶发，需要 sglang 性能基线维护方确认这版镜像的 decode 优化与 30.0ms 基线是否都还成立。",
+        "advice": "拿上一版镜像同用例的 mean_tpot 对比，确认 39.9ms 是新退化还是 30.0ms 基线过期；退化再 profile decode 阶段，看 prefix 缓存命中率与 npu graph 命中率。\n\n验证方式：同镜像复跑，mean_tpot 不高于 30.0ms。",
         "cites": [
-          "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L13774",
-          "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15629",
+          "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15628-L15629",
+          "github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15547",
           "records/run_2099.json"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42212286289/127873650850_multi-node-mix-poc (kimi_k3_w4a8_32p_mi~77367e.txt:L15628-L15629",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 4,
         "source": "agent"
       }
     },
@@ -4164,14 +4194,16 @@
       "analysis": {
         "status": "done",
         "keyError": null,
-        "rootCause": "构建 #2100 只在 20:46:40 到 20:46:42 存活 2 秒就记 FAILED；失败的 set-image-config（id 127900239233）与 check-all-jobs（id 127900249627）同样全部 404_not_retained，归档内 files=0、errorMessages 为空，run 的 displayTitle 仅为「ci run」（records/run_2100.json）\n\n第一类（失败层级）：与 #2091 完全同构，证据止于 job 层，没有任何脚本输出\n\n第二类（时间与入口）：2 秒比 #2091 的 3 秒更短，且这两次失败都发生在入口配置任务 set-image-config 上，说明 nightly 在写镜像配置阶段就被打断，后续 15 个测试 job 一个都没起来\n\n因此更像 nightly 的入口配置步骤在同一天内两次失败（17:45 与 20:46），是同一处流程问题重复出现，而非两次独立的用例失败\n\n已排除的干扰项：无 job 级失败、无用例明细，不存在精度或性能判定；2 秒的时长排除测试脚本执行的可能",
-        "advice": "与 #2091 合并成一条线处理，不要当两个问题：同一天两次都在 set-image-config 处 2~3 秒退出，先去查该任务的实现（镜像 tag 解析、配置写入、权限）\n\n补日志：要求平台保留 404 之前的入口任务输出，否则这类记录永远只能定性为「证据缺失」\n\n考虑快速失败与告警：入口配置失败应立刻发通知并跳过整条 nightly，现在只是记一条空失败，白占一个构建号\n\n验证方式：重跑该 nightly，要求 set-image-config 正常完成、日志可读、run 结论为 success，且不再出现 2 秒内中断的记录",
+        "rootCause": "这次运行只活了 2 秒（20:46:40 到 20:46:42），15 个 job 一个都没被判失败，入口任务 set-image-config 与 check-all-jobs 的日志在平台侧都已 404 未留存，归档里没有用例也没有报错。和同一天 17:45 那次（3 秒）一样，是在写镜像配置、检查 job 之前就被中断，测试没有真的跑起来，因此无法再往下定界。",
+        "advice": "到该 run 的 Actions 页面确认是否被 concurrency 取消或 setup 阶段失败，2 秒结束基本锁定这一步；同时要求平台为两个入口 job 保留 stdout。\n\n验证方式：重跑后 run 存活时间正常、入口 job 有日志且结论为 success。",
         "cites": [
           "records/run_2100.json"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "无 keyError",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 4,
         "source": "agent"
       }
     },
@@ -4331,16 +4363,19 @@
       "analysis": {
         "status": "done",
         "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
-        "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2101 从 20:46:40 跑到 21:37:07（约 50 分钟）记 FAILED；失败的是 multi-node-poc 的 deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa，其余 14 个 job 通过（records/run_2101.json）\n\n失败链是标准五步：Traceback（L977）→ ##[error]Error: failed to run script step（L1380）→ ✗ exit code: 1（L1381）→ Process completed with exit code 1（L1405）→ 容器实现执行失败（L1406），日志共 1473 行以上，但 Traceback 的异常正文没有被保留（github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L977）\n\n这条与同日 #2084、#2085、#2086 是同一类任务同一个模型配置，那三条分别抓到了 libhcom.so 缺失、dram segment 不支持 sdma 与本条相同的只有 exit code；四次都是这一条 1p1d 16p 用例失败，已经是可复现的模式而不是偶发\n\n因此更像该用例在 1p1d 16p 这套机器上的启动路径存在固定障碍（通信库缺、sdma 能力不匹配或配置写死），而非精度不达标\n\n已排除的干扰项：cases 为 0，没有 pytest 汇总与 accuracy 断言；其余 14 个 job 同 run 通过，排除节点与 runner 整体故障",
-        "advice": "按「同一用例已连续四次失败」处理：不要再逐构建单独排查，直接把 #2084、#2085、#2086、#2101 合并成一条线，用 #2085 抓到的 InitDramSegment 与 libhcom.so 两条实锤去验证\n\n加能力探测与兜底：在用例启动前检查 sdma 与 libhcom.so，两者不满足就跳过该配置或用替代路径，避免这类用例长期占着失败位\n\n补异常留存：把 L977 之后的栈写进日志，现在四条记录里三条都只有 exit code，白白浪费了四轮夜间的定位机会\n\n验证方式：修完后连续两个 nightly 观察该用例，要求 multi-node-poc（deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa）连续通过或按预期 skip、run 结论为 success",
+        "rootCause": "deepseek_v4_flash_0731 w8a8 1p1d 16p 的 GPQA 精度用例一条都没执行：prefill pod 起来后主进程直接以 0 退出，K8s 记为 Succeeded。原因是用例 setUpClass 里要用 sudo 清 page cache，而镜像里没有 sudo，这条命令报 command not found，setUpClass 直接失败，用例整体跳过；外层监控等不到预期的就绪特征，就把 job 判失败。要镜像或用例维护方处理：镜像补 sudo，或用例改成无 sudo 也能清缓存/失败可跳过。",
+        "advice": "二选一：镜像内装 sudo 并给运行用户免密，或把清缓存改成失败可继续（非 root 就跳过）；同时让 setUpClass 的失败信息输出到 job 日志开头。\n\n验证方式：复跑该 gpqa 用例，prefill/decode pod 均 Running 并给出精度结果。",
         "cites": [
-          "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L977",
-          "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1381",
+          "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1380-L1381",
+          "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1290",
+          "github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1303",
           "records/run_2101.json"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 github_logs/gh_42220261231/127900291162_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L1380-L1381",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 4,
         "source": "agent"
       }
     }

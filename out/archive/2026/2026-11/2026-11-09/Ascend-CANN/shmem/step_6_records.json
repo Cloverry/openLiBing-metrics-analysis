@@ -134,16 +134,19 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "keyError": "AssertionError: SHMEM example [allgather] 存在失败组合 assert False",
-        "rootCause": "Test_shmem 任务 13 条用例跑出 12 通过、1 失败（通过率 92.31%），构建 #140 从 03:00:13 跑到 03:40:09 记 FAILED；唯一失败项是 test_example_allgather，执行时间 03:30:26~03:35:58，用例以汇总断言 assert False 收口（case_logs/case_0090.html）\n\n第一类（失败覆盖全部组合）：用例日志按 allgather_pes2_int32_t、allgather_pes2_float16_t、allgather_pes2_bfloat16_t 一直到 allgather_pes8_bfloat16_t 依次记录 9 条「SHMEM [allgather_pesN_type] 测试失败」，覆盖 2、4、8 三档 PE 与 int32、float16、bfloat16 三种数据类型\n\n第二类（失败与规模无关）：9 个组合全军覆没、没有一个小规模组合能跑通，失败与 PE 数、数据类型都没有对应关系，说明不是某一档卡数边界或某一种 dtype 的精度问题\n\n因此更像被测的 allgather example 二进制/shared memory 初始化在本次环境里整体跑不起来，而不是组合级缺陷；9 条全挂也解释了为什么用例最终只能用一个 assert False 汇总收口\n\n已排除的干扰项：同任务另外 12 条 shmem 用例全部通过，排除环境完全不可用；没有编译错误或超时记录",
-        "advice": "先手工跑一次最小组合：单独执行 allgather_pes2_int32_t，把 stdout/stderr 完整打出来——9 个组合全失败却只留一句汇总断言，说明 example 的报错没有被用例捕获，这一步能直接拿到真实错误\n\n再查 shared memory 与驱动前提：shmem example 依赖共享内存与设备访问，优先核对容器内 /dev/shm 大小、memlock 限制与驱动版本，这类前提不满足时所有卡数都会失败\n\n修用例的收口方式：把 9 个组合的失败原因分别记录并按组合汇总，而不是最后 assert False，否则每次只能看到「有失败组合」四个字\n\n验证方式：重跑 Test_shmem 全量 13 条用例，要求 allgather example 的 9 个组合全部通过、任务通过率 100%",
+        "keyError": "AssertionError: SHMEM example [allgather] 存在失败组合",
+        "rootCause": "13 条用例 12 条通过，唯一失败的 allgather 里 9 个组合（pe2、pe4、pe8 各配 int32、float16、bfloat16）计算结果全部正确，每个组合都打出了结果正确、demo 跑通。\n\n失败发生在跑完之后的性能数据后处理：msprof 解析采集目录时拿不到计算任务信息，数据导出直接失败，用例把这个导出失败也算成该组合失败，最后汇总断言判「存在失败组合」。allgather 功能本身没问题，卡在 profiling 采集数据的导出链路。",
+        "advice": "先关掉 profiling 跑一个组合，全绿即锁定在 msprof 导出；再查采集目录是否只有部分卡的数据、有无跨设备或权限告警，据此改配置或升 CANN；用例侧把导出失败降级为告警。\n\n验证方式：重跑 test_example_allgather，9 个组合全对且汇总断言通过。",
         "cites": [
-          "case_logs/case_0090.html",
-          "records/run_140.json"
+          "records/run_140.json:L59",
+          "case_logs/case_0090.html:L1302",
+          "case_logs/case_0090.html:L1290"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 records/run_140.json:L59",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 4,
         "source": "agent"
       }
     },
@@ -382,17 +385,18 @@
       "analysis": {
         "status": "done",
         "keyError": "[ERROR]execute openlibing-pytest-executor. main.py fail, log file is ***//openlibing-pytest-executor-workspace/executor-log/scheduler_framework.log",
-        "rootCause": "构建 #141 从 17:00:38 跑到 18:18:35（约 1 小时 18 分钟）记 FAILED，失败任务类型为测试任务；Test_shmem 的 total=0、pass=0、fail=0，一条用例都没拉起（records/run_141.json）\n\n第一类（环境申请停在排队）：17:17:57 首次拿到 apply_env_res，内容为 env_id=lease-env-4691731745e8e12a13198efb904244c2、groups.nodes_1 为空数组、status=provisioning；随后 17:18:21、17:18:52、17:19:27 三次轮询 status 一直是 queued，节点列表始终为空，直到 18:18 都没有变成 ready（job_logs/25_shmem_141_Test_shmem.log:L241、L244、L247、L250）\n\n第二类（执行器最终放弃）：环境等了约一小时仍未就绪，18:18:25 输出 [ERROR]execute openlibing-pytest-executor. main.py fail，log file is ***//openlibing-pytest-executor-workspace/executor-log/scheduler_framework.log，18:18:25 脚本 exit code 1，18:18:28 Finished: FAILURE；job 与 step 层再包一层 DEV-CODECI-35002（job_logs/25_shmem_141_Test_shmem.log:L614、L617）\n\n因此失败点在「环境申请」这一步而不是用例：租不到节点导致执行器无法启动 pytest，包工码 DEV-CODECI-35002 只是对脚本退出的封装，真实信息在 scheduler_framework.log 里\n\n已排除的干扰项：total=0 说明没有任何用例执行，不存在精度或断言问题；同日的 #140、#142 在别的时段能拿到环境并跑到用例层，说明不是 shmem 用例本身坏掉",
-        "advice": "先看 scheduler_framework.log：这是本条唯一指向根因的文件，日志里只给了路径没给内容，优先把该文件捞出来确认是配额不足、节点被占还是租约创建失败\n\n排查节点池与租约：env 从 17:17 创建到 18:18 一直 queued、nodes_1 始终为空，典型的「无可用空闲节点」，建议核对当时段的节点池容量与是否有长任务占位\n\n缩短无效等待：现在环境排队一小时才放弃，建议在轮询里加超时上限（如 20 分钟）与明确失败原因，别让 nightly 被一个租约卡住 78 分钟\n\n验证方式：重跑 test 流水线，要求 Test_shmem 能拿到 ready 环境、拉起 13 条用例并给出结果，任务通过率 100%",
+        "rootCause": "这条构建一个用例都没跑起来。执行器先申请 A3 单机 16 卡（910C、共享内存 720G、内存 1T）的测试环境，环境一直排在队列里，每 30 秒查一次、查了 119 次约一小时仍没分到机器，申请被判失败，执行器拿不到任何用例结果就以失败退出。\n\n卡点在资源排队：不是用例失败，也不是流水线配置写错。",
+        "advice": "确认该时段 A3 16 卡机型是否被别的任务占满；排不上就换小规格先跑通主流程，或与其它大任务错峰。执行器排队超阈值要提前告警并给出「环境未分配」。\n\n验证方式：重跑 Test_shmem，环境在合理时间内分配成功并产出结果。",
         "cites": [
-          "job_logs/25_shmem_141_Test_shmem.log:L241",
-          "job_logs/25_shmem_141_Test_shmem.log:L250",
-          "job_logs/25_shmem_141_Test_shmem.log:L614",
-          "records/run_141.json"
+          "job_logs/25_shmem_141_Test_shmem.log:L615",
+          "job_logs/25_shmem_141_Test_shmem.log:L602",
+          "job_logs/25_shmem_141_Test_shmem.log:L612"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 job_logs/25_shmem_141_Test_shmem.log:L615",
+        "updatedAt": "2026-11-11 18:02:16",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 5,
         "source": "agent"
       }
     },
@@ -515,16 +519,19 @@
       "suggestions": [],
       "analysis": {
         "status": "done",
-        "keyError": "AssertionError: SHMEM example [allgather] 存在失败组合 assert False",
-        "rootCause": "Test_shmem 任务 13 条用例跑出 12 通过、1 失败（通过率 92.31%），构建 #142 从 21:06:00 跑到 22:14:36 记 FAILED；失败项与 #140 完全相同，仍是 test_example_allgather，本次执行时间 22:04:25~22:10:31（case_logs/case_0133.html）\n\n第一类（同一批组合失败）：本用例日志同样从 allgather_pes2_int32_t 到 allgather_pes8_bfloat16_t 记录 9 个组合「测试失败」，组合集合与 #140 完全一致\n\n第二类（时段不同、结果相同）：#140 跑在 03:00~03:40，#142 跑在 21:06~22:14，两次相隔约 18 小时、跑在不同时段与不同机器实例上，失败组合却一个不差，属确定性复现而非环境抖动\n\n因此这条不是新问题，而是 #140 的第二次复现：更像 allgather example 在当前版本上稳定跑不通（共享内存初始化或 example 二进制问题），而非资源竞争\n\n已排除的干扰项：同任务 12 条其他用例两次都通过；无编译失败、无超时、无设备占用记录",
-        "advice": "与 #140 合并成一条线：两次时段不同、失败集合一致，直接按「稳定复现的缺陷」处理，不要再等第三次夜间跑\n\n用最小组合取证：手工单跑 allgather_pes2_int32_t 并把完整输出留下来，这是目前唯一缺的一环——9 条组合失败却只有一句汇总断言\n\n核对环境前提：检查 /dev/shm 容量、memlock 限制与共享内存驱动版本，三者任一不满足都会让所有组合同时失败\n\n验证方式：重跑 Test_shmem，要求 allgather example 的 9 个组合连续两次全部通过、任务通过率 100%",
+        "keyError": "AssertionError: SHMEM example [allgather] 存在失败组合",
+        "rootCause": "同一天第二个 shmem 构建，还是 13 条里失败 allgather 这一条，9 个组合都算对了，卡在同一个位置：msprof 解析采集数据时拿不到计算任务信息，导出失败被判成组合失败，汇总断言报「存在失败组合」。\n\n与上一个构建完全同构，是 profiling 导出链路的稳定问题，不是用例功能回归。",
+        "advice": "与上一个 shmem 构建合并处理：先关掉 profiling 跑通这 9 个组合，再单独排查 msprof 导出；用例侧把导出失败与功能断言解耦，导出失败只告警。\n\n验证方式：重跑 test_example_allgather，9 个组合全部结果正确、汇总断言通过。",
         "cites": [
-          "case_logs/case_0133.html",
-          "records/run_142.json"
+          "records/run_142.json:L59",
+          "case_logs/case_0133.html:L1304",
+          "case_logs/case_0133.html:L4456"
         ],
-        "updatedAt": "2026-11-10 17:27:42",
+        "possibilities": [],
+        "keyErrorCheck": "命中 records/run_142.json:L59",
+        "updatedAt": "2026-11-11 17:27:08",
         "firstAnalyzedAt": "2026-11-10 15:21:02",
-        "revisions": 2,
+        "revisions": 3,
         "source": "agent"
       }
     }

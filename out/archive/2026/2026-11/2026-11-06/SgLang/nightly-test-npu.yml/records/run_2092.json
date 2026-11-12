@@ -342,16 +342,18 @@
   "analysis": {
     "status": "done",
     "keyError": "ModuleNotFoundError: No module named 'sglang.srt.utils.process'",
-    "rootCause": "该 run 共 15 个 job、3 个失败，构建 #2092 从 17:45:36 跑到 18:00:55 记 FAILED；三个失败 job 是 nightly-1-npu-a3、nightly-perf-16-npu-a3、nightly-acc-16-npu-a3（records/run_2092.json）\n\n失败链在三个任务里逐字相同：Traceback（L908）→ ModuleNotFoundError: No module named 'sglang.srt.utils.process'（L913）→ ##[error]Error: failed to run script step（L915）→ ✗ exit code: 1（L916）→ 容器实现执行失败（L941），18 条 errorMessages 正好是 3 个任务 × 6 行（github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt:L913）\n\n用例引用的是 sglang.srt.utils.process，而当前安装的 sglang 包里没有这个模块，三个任务在 import 阶段就中断，一条用例都没跑到执行，因此更像代码与镜像版本不匹配（用例已跟到含该模块的主干，镜像里装的还是旧包），而不是运行环境随机故障\n\n如果只是某个任务配置写错，不会三个规格完全不同的任务（单机 1 卡、16 卡性能、16 卡精度）在同一处 import 上一起失败，这一点反过来支持「公共依赖版本」这个归因\n\n已排除的干扰项：没有任何断言失败或精度结论，失败在用例加载阶段；日志里没有驱动、通信库或调度报错",
-    "advice": "先对齐版本：确认镜像里 sglang 的安装方式与 commit，核对 sglang/srt/utils/process.py 是否存在；若用例已合入主干而镜像未更新，重新构建镜像或改为安装主干 wheel，一次修掉三个任务\n\n再加前置校验：在 CI 入口 import 一遍用例会用到的新模块，缺模块就直接报「镜像版本落后」并终止，而不是让三个任务各跑十几分钟再同一处失败\n\n若确认是上游把该模块改名/移走，则在用例侧改成新路径，并在 PR 里注明兼容的最低 sglang 版本，避免下一次镜像升级又反向炸掉\n\n验证方式：重跑该 nightly，要求三个 a3 测试任务全部转通过、run 结论为 success，且日志中不再出现 No module named 'sglang.srt.utils.process'",
+    "rootCause": "镜像里安装的 sglang 包比用例仓代码旧：run_suite 导入 ci_utils 时要用 sglang.srt.utils.process，而镜像里这个模块还不存在，于是所有用例在 collect 之前整批退出，一个都没跑。三个 a3 任务同一现象，属镜像与用例仓版本不同步，不是用例本身的问题。",
+    "advice": "把镜像里的 sglang 换成与用例仓当前 commit 匹配的版本（构建镜像时从用例仓重新安装），或把 ci_utils 的导入路径改回镜像里已有的模块。\n\n验证方式：重跑 nightly-1-npu-a3，run_suite 能正常收集出用例列表，不再报模块不存在。",
     "cites": [
       "github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt:L913",
       "github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt:L941",
       "records/run_2092.json"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 github_logs/gh_42197450049/127824197172_nightly-1-npu-a3 _ run (0).txt:L913",
+    "updatedAt": "2026-11-11 17:04:39",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 4,
     "source": "agent"
   }
 }

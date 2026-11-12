@@ -1142,17 +1142,19 @@
   "analysis": {
     "status": "done",
     "keyError": "aclnnMoeTokenUnpermuteWithEpGrad accuracy not passed",
-    "rootCause": "Test_ops-transformer 98 条用例 79 通过、19 失败，比同日 #159/#160/#161 多出 4 条失败，任务判失败，构建 #162 记 FAILED；新增的失败落在 MoeTokenUnpermuteWithEpGrad，且 perf 前缀用例也报了同一段精度断言（records/run_162.json）\n\n第一类（12 条，通信融合算子）：aclnnAllGatherMatmul、aclnnMoeDistributeDispatch_CombineV2、aclnnQuantMatmulAlltoAll、aclnnMatmulReduceScatter 及 V2、aclnnAlltoAllMatmul、aclnnQuantMatmulAllReduceV3、aclnnMatmulAllReduce 及 V2、aclnnWeightQuantMatmulAllReduce、aclnnMatmulAlltoAll 与 aclnnAlltoAllQuantMatmul 三档；这一族与同日 #159～#161 的失败集合一致，属同一批确定性偏差，因此更像算子库或公共基线的持续性问题，而非本轮新引入（case_logs/case_0035.html:L8886）\n\n第二类（4 条，MoeTokenUnpermuteWithEpGrad 的四个变体）：test_cann_perf_smk_aclnnmoetokenunpermutewithepgrad、同前缀 _probs_none、test_cann_accu_smk_aclnnmoetokenunpermutewithepgrad_probs_none 与 _probs_not_none，perf 与 accu 两组共用同一段断言「aclnnMoeTokenUnpermuteWithEpGrad功能精度测试(executor)失败: aclnnMoeTokenUnpermuteWithEpGrad accuracy not passed」，说明 perf 用例根本没跑到性能指标就倒在精度比对，性能数据不可用（case_logs/case_0042.html:L2500）\n\n第二类里 probs_none 与 probs_not_none 两条分支同时失败，说明与该算子可选输入的 prob 分支无关，更像 ep_grad 输出的排布/累加本身有偏差；如果是 prob 相关逻辑错，应该只有带 prob 的变体失败（case_logs/case_0041.html:L34364）\n\n已排除的干扰项：证据 19 份全部是 case_logs，errorMessages 30 条也全是 CASE/FAIL 行，没有任何内核错误；test 任务 logFile 为空，因此无法用「没有 kernel 报错」推断实现没问题，只能说证据未到那一层",
-    "advice": "先把新增的一族单独复现：单跑 MoeTokenUnpermuteWithEpGrad 的四个变体（perf、perf_probs_none、accu_probs_none、accu_probs_not_none），确认 probs 两条分支是否共用同一段累加逻辑；若两种情况都失败，直接按 ep_grad 输出排布查\n\n再把通信融合这一族按老问题处理：与 #159～#161 合并，从 aclnnAllGatherMatmul 与 aclnnMatmulReduceScatterV2 各取一条导出 atk 比对明细，判断误差是否同量级\n\n断言也要拆开：perf 与 accu 用例必须使用不同的断言文本，否则性能用例失败会被误报成精度不通过，掩盖真实的性能回归\n\n验证方式：重跑 Test_ops-transformer 全量 98 条用例，要求 19 条失败全部通过、退出码为 0；perf 前缀用例应产出性能结论而不是精度断言，日志中不再出现 accuracy not passed",
+    "rootCause": "Test_ops-transformer 98 条用例 79 通过、19 失败，比同日 #159~#161 多出 4 条，构建记 FAILED。19 条失败集中在两族：\n\n第一类（12 个用例，通信融合算子）：AllGatherMatmul、MatmulReduceScatter、MatmulAllReduce、量化 Matmul 等，与同日 #159~#161 的失败集合一致，属同一批确定性偏差，不是本轮新引入。\n\n第二类（4 个用例，MoeTokenUnpermuteWithEpGrad 的四个变体）：perf 与 accu 两组共用同一段精度断言，说明 perf 用例没跑到性能指标就倒在精度比对，性能数据不可用；带 prob 与不带 prob 两条分支同时失败，更像 ep_grad 输出本身的排布或累加有偏差，而不是可选输入 prob 的处理错。",
+    "advice": "先单跑 MoeTokenUnpermute 四个变体，两种 prob 都挂就查 ep_grad 的排布与累加；通信融合 12 条与 #159~#161 合并处理；perf 与 accu 断言拆开写。\n\n验证方式：重跑全量 98 条，19 条全部通过，perf 用例能出性能结论。",
     "cites": [
-      "case_logs/case_0035.html:L8886",
-      "case_logs/case_0041.html:L34364",
-      "case_logs/case_0042.html:L2500",
-      "records/run_162.json"
+      "case_logs/case_0050.html:L3095",
+      "case_logs/case_0051.html:L7714",
+      "case_logs/case_0052.html:L1972",
+      "case_logs/case_0053.html:L2033"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 case_logs/case_0050.html:L3095",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 4,
     "source": "agent"
   }
 }

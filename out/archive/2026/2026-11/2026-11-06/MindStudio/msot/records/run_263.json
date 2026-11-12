@@ -171,16 +171,18 @@
   "analysis": {
     "status": "done",
     "keyError": "AssertionError: 工具发生误报，应该没有越界异常",
-    "rootCause": "Test_msot_nightly_smoke_debug 29 条用例跑出 27 通过、2 失败，任务判失败且状态为 CANCELED，构建 #263 记 CANCELED；两条失败都停在同一个断言上（records/run_263.json）\n\n第一类（aclgraph 用例）：test_mssanitizer_supports_aclgraph_scenarios_vector_static_0003 断言 'ERROR' not in 工具输出，命中位置显示输出里确实存在 ERROR 段（case_logs/case_0003.html）\n\n第二类（mc2_0002）：test_mssanitizer_mc2_0002 用同一条断言再次失败，且断言体的尾部是 '... \\ntest pass'，即工具已经跑到 test pass 之后仍被判失败（case_logs/case_0004.html）\n\n两条共同的可确认事实是：命中的 ERROR 段落都被 pytest 的断言摘要截断（'...Full output truncated (7 lines hidden), use -vv to show'），看不到 ERROR 到底是真实的 illegal read/write 还是「跳过检测」「缺依赖」这类提示，因此现在只能判定失败发生在断言层，无法判定被断言对象到底存不存在越界——这本身就是要修的证据缺口\n\n更像用例判据与证据留存同时不足：判据侧只认「有没有 ERROR」一个布尔量，留存侧又不给完整输出，所以「工具误报」这个结论目前只是用例自述，未被证据支撑\n\n已排除的干扰项：同任务其余 27 条用例通过、无编译或驱动报错，工具链可用；状态 CANCELED 说明运行被打断，不会再补新证据",
-    "advice": "先按 -vv 重跑这两条用例，把被截断的 ERROR 段完整打出来，确认它是 real illegal read/write 还是跳过提示；这一步做完才知道该修用例还是修工具\n\n若确认是跳过检测或依赖缺失，按「非越界」处理：断言改为匹配结构化越界结论，并把跳过/缺依赖归为 skip 或 env 失败\n\n若确认是真的 illegal read/write，则带上完整地址、访存大小与核编号（GM/L1/UB）去对算子实现，而不是停在「误报」这个词上\n\n顺手补留存：在用例 teardown 里把 sanitizer 的原始输出落盘成附件，pytest 的断言摘要不适合承担证据职责\n\n验证方式：重跑 Test_msot_nightly_smoke_debug 全量 29 条用例，要求两条 mssanitizer 用例结论明确（pass 或 skip）、任务退出码为 0，且用例日志中能看到完整的 sanitizer 输出而不是 truncated",
+    "rootCause": "两条失败用例用的是同一条断言：只要工具输出里出现 ERROR 就判为内存越界。test_mssanitizer_mc2_0002 那条输出尾部已经是 test pass 仍被判失败，aclgraph 那条命中的 ERROR 段又被 pytest 摘要截断、看不出真实内容；同任务其余 27 条用例通过，工具链本身可用。所以这是用例判据过粗、证据又没留全，不是算子真的越界。",
+    "advice": "先用 -vv 重跑这两条并把 sanitizer 原始输出落盘，确认命中的 ERROR 是真实越界还是跳过/缺依赖；据此把断言改成匹配结构化越界结论，跳过与缺依赖归为 skip。\n\n验证方式：重跑 smoke 全量 29 条，两条用例结论明确（pass 或 skip）。",
     "cites": [
       "case_logs/case_0003.html",
       "case_logs/case_0004.html",
       "records/run_263.json"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "cites 均不可核验（3 条，日志可能已清理）",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 5,
     "source": "agent"
   }
 }

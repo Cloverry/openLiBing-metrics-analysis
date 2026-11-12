@@ -211,16 +211,18 @@
   "analysis": {
     "status": "done",
     "keyError": "AssertionError: aclnnFakeQuantPerChannelAffineCachemask功能精度测试(executor)失败: aclnnFakeQuantPerChannelAffineCachemask accuracy not passed",
-    "rootCause": "Test_ops-nn 任务 202 条用例跑出 200 通过、2 失败（通过率 99.01%），构建 #168 记 FAILED；失败的两条是 test_cann_accu_smk_aclnnfakequantperchannelaffinecachemask_atk 与 test_cann_accu_smk_aclnnfakequantpertensoraffinecachemask_atk，分别在 20:55:58~20:56:28 与 20:58:24~20:59:04 执行（case_logs/case_0129.html:L1844、case_logs/case_0130.html:L2195）\n\n第一类（per-channel 变体）：断言原文为 aclnnFakeQuantPerChannelAffineCachemask功能精度测试(executor)失败: aclnnFakeQuantPerChannelAffineCachemask accuracy not passed，上下文 AtkTaskResult(success=False, acc_pass_result='Failed')，说明用例已执行到 atk 精度比对并被判不通过\n\n第二类（per-tensor 变体）：同一算子的另一个量化粒度，断言形态与上下文完全一致，同样停在 acc_pass_result='Failed'\n\n两条失败集中在同一个 FakeQuant 算子的两个量化粒度上，其余 200 条用例全通过，因此更像该算子的量化/掩码实现相对黄金数据存在确定性数值偏差（两个粒度可能共用同一段 cachemask 生成逻辑），而非某组用例数据本身不合格\n\n已排除的干扰项：日志没有编译错误、镜像拉取失败或设备占用；失败用例都在 30 秒量级内结束，没有被环境拖住的迹象；构建从 02:02:30 跑到 22:06:32 属排队导致的长时长，与失败无关",
-    "advice": "先导出比对明细看误差量级：对 aclnnFakeQuantPerChannelAffineCachemask 与 PerTensor 各跑一次 atk，把误差分布与阈值一起打出来，确认是超阈值一点点还是量级错位，这一点决定了是数值细节还是实现错误\n\n再查两个粒度是否共用逻辑：两个变体同时失败，优先核对 cachemask 掩码生成与 scale/zero_point 反量化这条路径是否被同一处改动影响\n\n核 baseline：确认本轮黄金数据版本与算子仓 commit 是否同时变更，避免把基线漂移当成实现回退\n\n验证方式：重跑 Test_ops-nn 全量 202 条用例，要求这两个 FakeQuant 用例的 acc_pass_result 变为 Passed、通过率回到 100%",
+    "rootCause": "Test_ops-nn 跑 202 条用例，200 条通过，失败的只有 aclnnFakeQuant 的 per-channel 与 per-tensor 两个量化粒度，都停在 atk 精度比对不通过，不是编译或环境问题。两个粒度共用同一段 cachemask 生成与 scale/zero_point 反量化逻辑，更像该算子的量化掩码实现在当前版本上相对黄金数据有确定性偏差，要算子仓侧核这段实现。",
+    "advice": "先导出这两条的 atk 误差明细，看是刚超阈值还是量级错位；再固定镜像与黄金数据、只切算子仓 commit 二分，重点查 cachemask 生成与反量化路径。\n\n验证方式：重跑全量 202 条，两个 FakeQuant 用例 acc_pass_result 变 Passed。",
     "cites": [
-      "case_logs/case_0129.html:L1844",
-      "case_logs/case_0130.html:L2195",
-      "records/run_168.json"
+      "case_logs/case_0129.html:L1833",
+      "case_logs/case_0130.html:L2184",
+      "records/run_168.json:L59"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 records/run_168.json:L59",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 4,
     "source": "agent"
   }
 }

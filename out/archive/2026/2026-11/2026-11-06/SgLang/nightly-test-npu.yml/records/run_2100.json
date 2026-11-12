@@ -124,14 +124,16 @@
   "analysis": {
     "status": "done",
     "keyError": null,
-    "rootCause": "构建 #2100 只在 20:46:40 到 20:46:42 存活 2 秒就记 FAILED；失败的 set-image-config（id 127900239233）与 check-all-jobs（id 127900249627）同样全部 404_not_retained，归档内 files=0、errorMessages 为空，run 的 displayTitle 仅为「ci run」（records/run_2100.json）\n\n第一类（失败层级）：与 #2091 完全同构，证据止于 job 层，没有任何脚本输出\n\n第二类（时间与入口）：2 秒比 #2091 的 3 秒更短，且这两次失败都发生在入口配置任务 set-image-config 上，说明 nightly 在写镜像配置阶段就被打断，后续 15 个测试 job 一个都没起来\n\n因此更像 nightly 的入口配置步骤在同一天内两次失败（17:45 与 20:46），是同一处流程问题重复出现，而非两次独立的用例失败\n\n已排除的干扰项：无 job 级失败、无用例明细，不存在精度或性能判定；2 秒的时长排除测试脚本执行的可能",
-    "advice": "与 #2091 合并成一条线处理，不要当两个问题：同一天两次都在 set-image-config 处 2~3 秒退出，先去查该任务的实现（镜像 tag 解析、配置写入、权限）\n\n补日志：要求平台保留 404 之前的入口任务输出，否则这类记录永远只能定性为「证据缺失」\n\n考虑快速失败与告警：入口配置失败应立刻发通知并跳过整条 nightly，现在只是记一条空失败，白占一个构建号\n\n验证方式：重跑该 nightly，要求 set-image-config 正常完成、日志可读、run 结论为 success，且不再出现 2 秒内中断的记录",
+    "rootCause": "这次运行只活了 2 秒（20:46:40 到 20:46:42），15 个 job 一个都没被判失败，入口任务 set-image-config 与 check-all-jobs 的日志在平台侧都已 404 未留存，归档里没有用例也没有报错。和同一天 17:45 那次（3 秒）一样，是在写镜像配置、检查 job 之前就被中断，测试没有真的跑起来，因此无法再往下定界。",
+    "advice": "到该 run 的 Actions 页面确认是否被 concurrency 取消或 setup 阶段失败，2 秒结束基本锁定这一步；同时要求平台为两个入口 job 保留 stdout。\n\n验证方式：重跑后 run 存活时间正常、入口 job 有日志且结论为 success。",
     "cites": [
       "records/run_2100.json"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "无 keyError",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 4,
     "source": "agent"
   }
 }

@@ -169,17 +169,19 @@
   "analysis": {
     "status": "done",
     "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
-    "rootCause": "Test_kpex 在用例仓拉取阶段中断：00:43:18.658 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，同刻输出 [ERROR] git clone test_cases code fail，00:43:18.661 脚本返回退出码 1，00:43:23 Finished: FAILURE，整个 job 仅运行约 2 分钟（job_logs/22_kpex_139_Test_kpex.log:L138、L139、L140、L142）\n\n用例一条未执行：Test_kpex 标记 emptyTestResult，total=0、passed=0、failed=0，失败点在执行之前，属用例仓凭据问题而非用例断言失败（job_logs/22_kpex_139_Test_kpex.log:L144）\n\n同一批 hmpi、kudnn、kuqcd 在 2026-11-06 凌晨的前后一小时内报的是同一个仓库、同一句 Authentication failed，四个组件共用 hpckit-autotest 这一个用例仓，因此更像一份共用凭据失效，而非 kpex 单条流水线的配置错误\n\n已排除的干扰项：平台封装码 DEV-CODECI-35002「构建任务执行失败」只是步骤失败的统一封装；日志里没有 timeout 或 DNS 解析失败，排除网络不可达，指向凭据本身无效",
-    "advice": "按共用凭据处理：把 hpckit-autotest 的 clone 凭据治理成一条流水线级凭据（access token），kpex 与同批 hmpi、kudnn、kuqcd 统一引用，避免逐条排查\n\n凭据注入方式改为平台凭据变量，并在 clone 前打印凭据来源与有效期，凭据过期时能第一时间看出来\n\n把凭据检查前移到流水线准备阶段，不要等跑到测试步骤才因 clone 失败退出\n\n验证方式：用 #139 参数重跑 kpex 流水线，要求 clone 成功、用例统计 total 大于 0、退出码为 0，日志中不再出现 Authentication failed；同批四个组件各跑一次确认全部恢复",
+    "rootCause": "失败在用例代码拉取这一步：Test_kpex 启动后 clone 用例库 hpckit-autotest 时被 gitcode 判鉴权失败，脚本随即退出，用例一条未执行（total、pass、fail 全是 0），job 只跑了约 2 分钟。执行机上的 gitcode 凭据失效是唯一原因——同一天凌晨 hmpi、kudnn、kuqcd 报的是同一个仓库的同一处鉴权失败，四个组件共用这一份凭据，不是 kpex 单条流水线的配置问题。",
+    "advice": "把 hpckit-autotest 的 clone 凭据收敛成流水线级 token，HPCKit 五个组件统一引用，再在同一 runner clone 确认。\n\n验证方式：用 #139 参数重跑 kpex，clone 成功、total 大于 0；同批组件各跑一次。",
     "cites": [
       "job_logs/22_kpex_139_Test_kpex.log:L138",
       "job_logs/22_kpex_139_Test_kpex.log:L140",
       "job_logs/22_kpex_139_Test_kpex.log:L142",
       "job_logs/22_kpex_139_Test_kpex.log:L144"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 job_logs/22_kpex_139_Test_kpex.log:L138",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 5,
     "source": "agent"
   }
 }

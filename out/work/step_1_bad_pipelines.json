@@ -558,7 +558,7 @@
    "pipelineId": "a74a64d931f34c98bc726e5ea599f8a3",
    "platform": "codearts",
    "versionAvailabilityRate": 1,
-   "buildSuccessRate": 0.5,
+   "buildSuccessRate": 1,
    "dims": [
     "va",
     "bs"

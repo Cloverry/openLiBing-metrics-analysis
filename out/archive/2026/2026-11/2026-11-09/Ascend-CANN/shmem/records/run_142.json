@@ -129,16 +129,19 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "keyError": "AssertionError: SHMEM example [allgather] 存在失败组合 assert False",
-    "rootCause": "Test_shmem 任务 13 条用例跑出 12 通过、1 失败（通过率 92.31%），构建 #142 从 21:06:00 跑到 22:14:36 记 FAILED；失败项与 #140 完全相同，仍是 test_example_allgather，本次执行时间 22:04:25~22:10:31（case_logs/case_0133.html）\n\n第一类（同一批组合失败）：本用例日志同样从 allgather_pes2_int32_t 到 allgather_pes8_bfloat16_t 记录 9 个组合「测试失败」，组合集合与 #140 完全一致\n\n第二类（时段不同、结果相同）：#140 跑在 03:00~03:40，#142 跑在 21:06~22:14，两次相隔约 18 小时、跑在不同时段与不同机器实例上，失败组合却一个不差，属确定性复现而非环境抖动\n\n因此这条不是新问题，而是 #140 的第二次复现：更像 allgather example 在当前版本上稳定跑不通（共享内存初始化或 example 二进制问题），而非资源竞争\n\n已排除的干扰项：同任务 12 条其他用例两次都通过；无编译失败、无超时、无设备占用记录",
-    "advice": "与 #140 合并成一条线：两次时段不同、失败集合一致，直接按「稳定复现的缺陷」处理，不要再等第三次夜间跑\n\n用最小组合取证：手工单跑 allgather_pes2_int32_t 并把完整输出留下来，这是目前唯一缺的一环——9 条组合失败却只有一句汇总断言\n\n核对环境前提：检查 /dev/shm 容量、memlock 限制与共享内存驱动版本，三者任一不满足都会让所有组合同时失败\n\n验证方式：重跑 Test_shmem，要求 allgather example 的 9 个组合连续两次全部通过、任务通过率 100%",
+    "keyError": "AssertionError: SHMEM example [allgather] 存在失败组合",
+    "rootCause": "同一天第二个 shmem 构建，还是 13 条里失败 allgather 这一条，9 个组合都算对了，卡在同一个位置：msprof 解析采集数据时拿不到计算任务信息，导出失败被判成组合失败，汇总断言报「存在失败组合」。\n\n与上一个构建完全同构，是 profiling 导出链路的稳定问题，不是用例功能回归。",
+    "advice": "与上一个 shmem 构建合并处理：先关掉 profiling 跑通这 9 个组合，再单独排查 msprof 导出；用例侧把导出失败与功能断言解耦，导出失败只告警。\n\n验证方式：重跑 test_example_allgather，9 个组合全部结果正确、汇总断言通过。",
     "cites": [
-      "case_logs/case_0133.html",
-      "records/run_142.json"
+      "records/run_142.json:L59",
+      "case_logs/case_0133.html:L1304",
+      "case_logs/case_0133.html:L4456"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 records/run_142.json:L59",
+    "updatedAt": "2026-11-11 17:27:08",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 3,
     "source": "agent"
   }
 }

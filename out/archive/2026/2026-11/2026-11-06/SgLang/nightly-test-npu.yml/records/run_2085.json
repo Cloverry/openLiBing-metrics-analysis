@@ -227,17 +227,19 @@
   "analysis": {
     "status": "done",
     "keyError": "ERROR [1185-1185][HYBM hybm_entity_default.cpp:1324 InitDramSegment] dram segment does not support sdma in current environment, rankId: 0",
-    "rootCause": "该 run 共 15 个 job、1 个失败，构建 #2085 从 01:16:55 跑到 01:28:24 记 FAILED；失败的仍是 multi-node-poc 的 deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa（records/run_2085.json）\n\n第一层（通信库）：01:24:33.556644 先出现 WARN [HYBM dl_hcom_api.cpp:113 LoadLibrary] Unable to open library [libhcom.so]，libhcom.so 与 libhcom.so.0 都打不开，级别是 WARN（github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3378）\n\n第二层（段初始化）：同一秒稍后 01:24:33.558446 报 ERROR [HYBM hybm_entity_default.cpp:1324 InitDramSegment] dram segment does not support sdma in current environment, rankId: 0，紧接 558460 报 InitDramSegment() failed: -1，随后脚本步骤失败退出（同文件 L3389、L3390）\n\n真正把进程打死的是第二层：libhcom.so 只报 WARN、HYBM 继续往下执行，而 InitDramSegment 返回 -1 之后用例直接退出，因此更像当前机器/容器环境的 DRAM 段不具备 sdma 能力、与用例要求的通信路径不匹配，而非 gpqa 精度不达标或代码逻辑错\n\n已排除的干扰项：日志里没有 accuracy 断言、没有 pytest 汇总、没有任何用例级失败记录，失败发生在服务拉起阶段；另外 14 个 job 同 run 通过，说明不是节点整体不可用，而是这条 1p1d 16p 用例与当前机器的 sdma 能力冲突",
-    "advice": "先做能力探测再决定跑不跑：在任务启动脚本里读取设备是否支持 sdma，不支持时把这条 deepseek_v4_flash_0731 用例显式 skip 或改走非 sdma 的 DRAM 段初始化路径，避免每次夜间都在这一个点上失败 12 分钟\n\n若该用例必须走 sdma，则按机器型号挑节点：把 1p1d 16p 的 sdma 要求写进调度约束，交给能支持 sdma 的机器跑，而不是让它在任意 a3 机器上撞运气\n\n顺手补齐 libhcom.so：镜像里补上该库或把它所在路径加进 LD_LIBRARY_PATH，虽然本次只是 WARN，但通信库缺失会让 HYBM 退到更低效的路径，可能影响性能结论\n\n验证方式：重跑该 nightly，要求 multi-node-poc（deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa）或按能力探测跳过（记 skip 而非 fail）、run 结论为 success，且日志中不再出现 InitDramSegment() failed: -1",
+    "rootCause": "失败的只有 multi-node-poc 的 deepseek_v4_flash_0731_w8a8_1p1d_16p_gpqa 一条用例。服务拉起时 16 个 rank 都先报 Unable to open library [libhcom.so]，紧接着 HYBM 初始化 DRAM 段报当前环境不支持 sdma 并失败，进程退出，用例没进到精度判定。根因是镜像里缺 HCOM 通信库，sdma 能力探测拿不到，DRAM 段初始化必然失败，与模型精度无关。",
+    "advice": "把 libhcom.so 与 libhcom.so.0 装进镜像（或加进 LD_LIBRARY_PATH 并在容器入口 export），用 ldconfig -p 确认能搜到。\n\n验证方式：该用例进入压测并产出精度结果，日志不再报 libhcom 或 DRAM 段错。",
     "cites": [
       "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3378",
       "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3389",
       "github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3390",
       "records/run_2085.json"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 github_logs/gh_42073069875/127405967141_multi-node-poc (deepseek_v4_flash_0731_~6b37f9.txt:L3389",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 5,
     "source": "agent"
   }
 }

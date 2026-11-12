@@ -1,5 +1,5 @@
 (async () => {
-const PARAMS = {"startDate": "2026-11-10", "endDate": "2026-11-10", "t1PageSize": 100, "detailPageSize": 10, "onlyProducts": [], "delay": 250, "maxTry": 3, "retryBackoffMs": [1000, 2000]};
+const PARAMS = {"startDate": "2026-11-11", "endDate": "2026-11-11", "t1PageSize": 100, "detailPageSize": 10, "onlyProducts": [], "delay": 250, "maxTry": 3, "retryBackoffMs": [1000, 2000]};
 return (async () => {
   const csrf = (document.cookie.split('; ').find(c => c.startsWith('csrf-token-open-li-bing=')) || '').split('=').slice(1).join('=');
   if (!csrf) return JSON.stringify({ ok: false, error: 'NOT_LOGGED_IN：请先在调试 Chrome 中登录 openLiBing' });

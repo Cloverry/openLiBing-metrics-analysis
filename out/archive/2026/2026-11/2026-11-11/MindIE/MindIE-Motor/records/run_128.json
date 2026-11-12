@@ -1,0 +1,80 @@
+{
+ "_doc": {
+  "step": "step_6_records",
+  "title": "第 6 步 证据合并与执行记录",
+  "source": "第 2~5c 步归档产物",
+  "criteria": "单条执行记录：任务/用例/错误信息/证据/定性/置信度/构建编号",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-12 09:12:14",
+  "component": "MindIE",
+  "pipeline": "MindIE-Motor",
+  "date": "2026-11-11",
+  "recordId": "MindIE|MindIE-Motor#128"
+ },
+ "recordId": "MindIE|MindIE-Motor#128",
+ "date": "2026-11-11",
+ "component": "MindIE",
+ "pipeline": "MindIE-Motor",
+ "pipelineName": "Nightly-CI-Component-pipeline_MindIE-Motor",
+ "platform": "codearts",
+ "buildNumber": 128,
+ "pipelineRunId": "5bcc6a6753894284a64aa22e5840d745",
+ "status": "COMPLETED",
+ "failedTaskType": null,
+ "startedAt": "2026-11-11T16:05:01",
+ "endedAt": "2026-11-11T17:59:45",
+ "dateBasis": {
+  "field": "pipelineRunEndtime",
+  "value": "2026-11-11T17:59:45",
+  "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）"
+ },
+ "light": {
+  "vaRate": 1,
+  "bsRate": 1,
+  "dims": [
+   "va",
+   "bs"
+  ],
+  "track": "-"
+ },
+ "links": {
+  "openlibing": "https://www.openlibing.com/apps/pipelineDetail?pipelineId=d05b26dfc2e5450e8fff23ddf4cd0eb6&projectId=300036&pipelineRunId=5bcc6a6753894284a64aa22e5840d745",
+  "detail": null,
+  "github": null
+ },
+ "tasks": [],
+ "cases": [],
+ "errorMessages": [],
+ "evidence": {
+  "files": [],
+  "missing": [],
+  "github": null
+ },
+ "counts": {
+  "tasks": 0,
+  "testTasks": 0,
+  "logTasks": 0,
+  "buildTasks": 0,
+  "cases": 0,
+  "errorMessages": 0,
+  "evidenceFiles": 0
+ },
+ "verdict": {
+  "category": "success",
+  "text": "执行成功",
+  "confidence": 1.0,
+  "level": "高",
+  "basis": [
+   "运行状态 COMPLETED，任务未失败，无需根因分析"
+  ]
+ },
+ "suggestions": [],
+ "analysis": {
+  "status": "na",
+  "rootCause": null,
+  "advice": null,
+  "cites": [],
+  "updatedAt": null,
+  "source": null
+ }
+}

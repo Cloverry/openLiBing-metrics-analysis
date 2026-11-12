@@ -169,16 +169,17 @@
   "analysis": {
     "status": "done",
     "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
-    "rootCause": "构建 #201 从 00:31:53 跑到 20:59:29（约 20 小时 28 分钟）记 FAILED，失败任务类型为测试任务；Test_quqcd 的 total=0、pass=0、fail=0，用例一条未跑（records/run_201.json）\n\n第一类（长时间排队后才拿到执行机会）：真正开始执行的时间是 20:59:19，距构建启动 00:31:53 已过去 20 小时以上，说明这条构建绝大部分时间在等资源而不是在跑测试\n\n第二类（拿到机器后 3 秒内因鉴权失败退出）：20:59:19.175 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，脚本打印 [ERROR] git clone test_cases code fail，20:59:19.348 以 script returned exit code 1 退出，20:59:22.630 Finished: FAILURE（job_logs/27_kuqcd_201_Test_quqcd.log:L138、L140、L142）\n\n因此这条记录有两层问题：表层是与其他 HPCKit 记录同源的 clone 鉴权失败（3 秒即失败、用例未执行），底层是长达 20 小时的资源等待——两者叠加让这条记录完全失去测试价值\n\n已排除的干扰项：total=0，无用例执行；日志里没有任何编译错误或设备异常；鉴权失败与长时间排队无因果关系",
-    "advice": "先修凭据（与 hmpi#213、kpex#142、kudnn#227、kupl#306 同一根因），这一步能让本条立刻回到可测状态\n\n单独查 20 小时排队：00:31:53 提交、20:59:19 才开始执行，说明该流水线的队列或节点池长期被占，建议核对 kuqcd 对应节点池的容量与资源配额，这类长等待会让夜间结果失去时效性\n\n加超时策略：为「拿到执行机后立刻失败」的场景设置更短的排队上限与快速失败标记，避免一条构建占位一整天\n\n验证方式：重跑 kuqcd 流水线，要求从启动到开始执行在合理时长内（小时级以内）、git clone 成功、Test_quqcd 拉起用例并给出 total>0 的结果、任务通过率 100%",
+    "rootCause": "失败停在拉取用例仓库这一步：clone 走的是 https 加密码认证，GitCode 已经停用密码登录，请求被直接拒绝，用例一条都没跑起来。用例总数为 0 是拿不到用例代码的结果，不是用例本身的问题，要改的是流水线的仓库凭据配置。",
+    "advice": "把流水线里 GitCode 的认证从账号密码换成个人访问令牌，权限给到 kunpengcompute 组相关仓库的读取；kpex、kudnn、kupl 的同类记录同因，改公共模板一处即可。\n\n验证方式：重跑 Test_quqcd，clone 成功且用例统计不再是 0。",
     "cites": [
-      "job_logs/27_kuqcd_201_Test_quqcd.log:L138",
-      "job_logs/27_kuqcd_201_Test_quqcd.log:L142",
-      "records/run_201.json"
+      "job_logs/27_kuqcd_201_Test_quqcd.log:L136-L138",
+      "job_logs/27_kuqcd_201_Test_quqcd.log:L139-L141"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 job_logs/27_kuqcd_201_Test_quqcd.log:L136-L138",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 4,
     "source": "agent"
   }
 }

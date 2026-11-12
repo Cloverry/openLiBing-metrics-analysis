@@ -245,17 +245,18 @@
   "analysis": {
     "status": "done",
     "keyError": "[ERROR]execute openlibing-pytest-executor. main.py fail, log file is ***//openlibing-pytest-executor-workspace/executor-log/scheduler_framework.log",
-    "rootCause": "构建 #141 从 17:00:38 跑到 18:18:35（约 1 小时 18 分钟）记 FAILED，失败任务类型为测试任务；Test_shmem 的 total=0、pass=0、fail=0，一条用例都没拉起（records/run_141.json）\n\n第一类（环境申请停在排队）：17:17:57 首次拿到 apply_env_res，内容为 env_id=lease-env-4691731745e8e12a13198efb904244c2、groups.nodes_1 为空数组、status=provisioning；随后 17:18:21、17:18:52、17:19:27 三次轮询 status 一直是 queued，节点列表始终为空，直到 18:18 都没有变成 ready（job_logs/25_shmem_141_Test_shmem.log:L241、L244、L247、L250）\n\n第二类（执行器最终放弃）：环境等了约一小时仍未就绪，18:18:25 输出 [ERROR]execute openlibing-pytest-executor. main.py fail，log file is ***//openlibing-pytest-executor-workspace/executor-log/scheduler_framework.log，18:18:25 脚本 exit code 1，18:18:28 Finished: FAILURE；job 与 step 层再包一层 DEV-CODECI-35002（job_logs/25_shmem_141_Test_shmem.log:L614、L617）\n\n因此失败点在「环境申请」这一步而不是用例：租不到节点导致执行器无法启动 pytest，包工码 DEV-CODECI-35002 只是对脚本退出的封装，真实信息在 scheduler_framework.log 里\n\n已排除的干扰项：total=0 说明没有任何用例执行，不存在精度或断言问题；同日的 #140、#142 在别的时段能拿到环境并跑到用例层，说明不是 shmem 用例本身坏掉",
-    "advice": "先看 scheduler_framework.log：这是本条唯一指向根因的文件，日志里只给了路径没给内容，优先把该文件捞出来确认是配额不足、节点被占还是租约创建失败\n\n排查节点池与租约：env 从 17:17 创建到 18:18 一直 queued、nodes_1 始终为空，典型的「无可用空闲节点」，建议核对当时段的节点池容量与是否有长任务占位\n\n缩短无效等待：现在环境排队一小时才放弃，建议在轮询里加超时上限（如 20 分钟）与明确失败原因，别让 nightly 被一个租约卡住 78 分钟\n\n验证方式：重跑 test 流水线，要求 Test_shmem 能拿到 ready 环境、拉起 13 条用例并给出结果，任务通过率 100%",
+    "rootCause": "这条构建一个用例都没跑起来。执行器先申请 A3 单机 16 卡（910C、共享内存 720G、内存 1T）的测试环境，环境一直排在队列里，每 30 秒查一次、查了 119 次约一小时仍没分到机器，申请被判失败，执行器拿不到任何用例结果就以失败退出。\n\n卡点在资源排队：不是用例失败，也不是流水线配置写错。",
+    "advice": "确认该时段 A3 16 卡机型是否被别的任务占满；排不上就换小规格先跑通主流程，或与其它大任务错峰。执行器排队超阈值要提前告警并给出「环境未分配」。\n\n验证方式：重跑 Test_shmem，环境在合理时间内分配成功并产出结果。",
     "cites": [
-      "job_logs/25_shmem_141_Test_shmem.log:L241",
-      "job_logs/25_shmem_141_Test_shmem.log:L250",
-      "job_logs/25_shmem_141_Test_shmem.log:L614",
-      "records/run_141.json"
+      "job_logs/25_shmem_141_Test_shmem.log:L615",
+      "job_logs/25_shmem_141_Test_shmem.log:L602",
+      "job_logs/25_shmem_141_Test_shmem.log:L612"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 job_logs/25_shmem_141_Test_shmem.log:L615",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 5,
     "source": "agent"
   }
 }

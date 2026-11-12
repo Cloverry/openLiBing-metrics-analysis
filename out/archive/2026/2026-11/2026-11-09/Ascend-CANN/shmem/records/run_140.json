@@ -129,16 +129,19 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "keyError": "AssertionError: SHMEM example [allgather] 存在失败组合 assert False",
-    "rootCause": "Test_shmem 任务 13 条用例跑出 12 通过、1 失败（通过率 92.31%），构建 #140 从 03:00:13 跑到 03:40:09 记 FAILED；唯一失败项是 test_example_allgather，执行时间 03:30:26~03:35:58，用例以汇总断言 assert False 收口（case_logs/case_0090.html）\n\n第一类（失败覆盖全部组合）：用例日志按 allgather_pes2_int32_t、allgather_pes2_float16_t、allgather_pes2_bfloat16_t 一直到 allgather_pes8_bfloat16_t 依次记录 9 条「SHMEM [allgather_pesN_type] 测试失败」，覆盖 2、4、8 三档 PE 与 int32、float16、bfloat16 三种数据类型\n\n第二类（失败与规模无关）：9 个组合全军覆没、没有一个小规模组合能跑通，失败与 PE 数、数据类型都没有对应关系，说明不是某一档卡数边界或某一种 dtype 的精度问题\n\n因此更像被测的 allgather example 二进制/shared memory 初始化在本次环境里整体跑不起来，而不是组合级缺陷；9 条全挂也解释了为什么用例最终只能用一个 assert False 汇总收口\n\n已排除的干扰项：同任务另外 12 条 shmem 用例全部通过，排除环境完全不可用；没有编译错误或超时记录",
-    "advice": "先手工跑一次最小组合：单独执行 allgather_pes2_int32_t，把 stdout/stderr 完整打出来——9 个组合全失败却只留一句汇总断言，说明 example 的报错没有被用例捕获，这一步能直接拿到真实错误\n\n再查 shared memory 与驱动前提：shmem example 依赖共享内存与设备访问，优先核对容器内 /dev/shm 大小、memlock 限制与驱动版本，这类前提不满足时所有卡数都会失败\n\n修用例的收口方式：把 9 个组合的失败原因分别记录并按组合汇总，而不是最后 assert False，否则每次只能看到「有失败组合」四个字\n\n验证方式：重跑 Test_shmem 全量 13 条用例，要求 allgather example 的 9 个组合全部通过、任务通过率 100%",
+    "keyError": "AssertionError: SHMEM example [allgather] 存在失败组合",
+    "rootCause": "13 条用例 12 条通过，唯一失败的 allgather 里 9 个组合（pe2、pe4、pe8 各配 int32、float16、bfloat16）计算结果全部正确，每个组合都打出了结果正确、demo 跑通。\n\n失败发生在跑完之后的性能数据后处理：msprof 解析采集目录时拿不到计算任务信息，数据导出直接失败，用例把这个导出失败也算成该组合失败，最后汇总断言判「存在失败组合」。allgather 功能本身没问题，卡在 profiling 采集数据的导出链路。",
+    "advice": "先关掉 profiling 跑一个组合，全绿即锁定在 msprof 导出；再查采集目录是否只有部分卡的数据、有无跨设备或权限告警，据此改配置或升 CANN；用例侧把导出失败降级为告警。\n\n验证方式：重跑 test_example_allgather，9 个组合全对且汇总断言通过。",
     "cites": [
-      "case_logs/case_0090.html",
-      "records/run_140.json"
+      "records/run_140.json:L59",
+      "case_logs/case_0090.html:L1302",
+      "case_logs/case_0090.html:L1290"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 records/run_140.json:L59",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 4,
     "source": "agent"
   }
 }

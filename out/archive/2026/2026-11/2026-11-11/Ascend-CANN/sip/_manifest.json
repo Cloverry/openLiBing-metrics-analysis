@@ -1,0 +1,135 @@
+{
+ "_doc": {
+  "step": "step_7_archive",
+  "title": "归档目录清单",
+  "source": "第 1~6 步中间产物（out/work/）",
+  "criteria": "本目录内每一步的来源/口径/文件/计数与证据文件，逐条可核对",
+  "dateField": "pipelineRunEndtime",
+  "generatedAt": "2026-11-12 09:12:14",
+  "component": "Ascend-CANN",
+  "pipeline": "sip",
+  "date": "2026-11-11"
+ },
+ "date": "2026-11-11",
+ "component": "Ascend-CANN",
+ "pipeline": "sip",
+ "pipelineName": "Nightly-CI-Component-pipeline_sip",
+ "platform": "codearts",
+ "key": "Ascend-CANN|sip",
+ "dateBasis": {
+  "field": "pipelineRunEndtime",
+  "rule": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）",
+  "value": "2026-11-11",
+  "runs": [
+   {
+    "rn": 131,
+    "status": "COMPLETED",
+    "endedAt": "2026-11-11 00:44:59"
+   }
+  ]
+ },
+ "steps": [
+  {
+   "step": "step_1_lights",
+   "file": "step_1_lights.json",
+   "title": "第 1 步 夜间统计与待分析圈定",
+   "source": "openLiBing 夜间统计看板（产品维度指标）",
+   "criteria": "默认取「前一个工作日」单日（跳过周末与法定节假日，config.date_range 留空时生效）：取 config.products 指定的开源组件在该日的版本可用度/编译成功率，比率按我们采集到的执行记录重算（归档只存数值，不存黄/绿/红）；本产品下任一指标未达 100%（或版本不可用）的流水线进入待分析集合",
+   "dateField": "统计区间（start~end，含端点）",
+   "bytes": 2546
+  },
+  {
+   "step": "step_2_runs",
+   "file": "step_2_runs.json",
+   "title": "第 2 步 执行记录圈定（N2）",
+   "source": "openLiBing 流水线 N2 执行列表",
+   "criteria": "按执行结束时间归属日期（结束时间在 [start 00:00:00, end 23:59:59] 内的执行计入该日期）；仅保留工作日；VA 轨道=当日无 isVersionAvailable=true 的待查运行，BS 轨道=豁免日补圈的 Build* 失败运行",
+   "dateField": "pipelineRunEndtime",
+   "bytes": 3535
+  },
+  {
+   "step": "step_3_tasks",
+   "file": "step_3_tasks.json",
+   "title": "第 3 步 失败任务分流（T4）",
+   "source": "openLiBing 流水线运行详情（任务列表）",
+   "criteria": "仅取状态为失败的任务；UNSELECTED/CANCELED/IGNORED/INIT 跳过；含测试结果的任务走测试取证（第 4 步），其余走日志取证（第 5 步），github 平台运行改走第 5c 步",
+   "dateField": "pipelineRunEndtime",
+   "bytes": 669
+  },
+  {
+   "step": "step_4_cases",
+   "file": "step_4_cases.json",
+   "title": "第 4 步 测试用例取证（T6）",
+   "source": "openLiBing 测试报告页 + 用例日志下载",
+   "criteria": "取失败任务的失败用例、错误信息、深度学习命中行，并下载用例日志到 case_logs/",
+   "dateField": "pipelineRunEndtime",
+   "bytes": 590
+  },
+  {
+   "step": "step_5_logs",
+   "file": "step_5_logs.json",
+   "title": "第 5 步 任务日志取证（T5）",
+   "source": "openLiBing 任务日志导出/分页接口",
+   "criteria": "对每个失败任务导出整份日志落 job_logs/，并按关键字扫描错误行",
+   "dateField": "pipelineRunEndtime",
+   "bytes": 521
+  },
+  {
+   "step": "step_5b_subtasks",
+   "file": "step_5b_subtasks.json",
+   "title": "第 5b 步 buildflow 子任务下钻（T7）",
+   "source": "openLiBing buildflow 子任务页",
+   "criteria": "对 buildflow 任务的失败子任务逐个取真实编译报错与子任务日志",
+   "dateField": "pipelineRunEndtime",
+   "bytes": 515
+  },
+  {
+   "step": "step_5c_github",
+   "file": "step_5c_github.json",
+   "title": "第 5c 步 GitHub 平台运行取证",
+   "source": "GitHub Actions API（jobs / logs / 测试结果）",
+   "criteria": "对 github 平台运行按 job 分流取日志，测试 job 解析测试结果定位到用例",
+   "dateField": "run.updated_at（等价于执行结束时间）",
+   "bytes": 561
+  },
+  {
+   "step": "step_6_records",
+   "file": "step_6_records.json",
+   "title": "第 6 步 证据合并与执行记录",
+   "source": "第 2~5c 步归档产物",
+   "criteria": "以「一次执行」为最小单位合并任务、用例、错误信息、证据与构建编号，形成可直接展示与逐条分析的记录",
+   "dateField": "pipelineRunEndtime",
+   "bytes": 2431
+  }
+ ],
+ "records": [
+  {
+   "recordId": "Ascend-CANN|sip#131",
+   "buildNumber": 131,
+   "endedAt": "2026-11-11T00:44:59",
+   "category": "success",
+   "confidence": 1.0,
+   "file": "records/run_131.json"
+  }
+ ],
+ "pathBase": "steps[].file / records[].file / 证据 file 均相对本目录；本目录路径见 _day.json 与 _index.json",
+ "counts": {
+  "records": 1,
+  "tasks": 0,
+  "cases": 0,
+  "errorMessages": 0
+ },
+ "evidence": {
+  "files": 0,
+  "bytes": 0,
+  "missing": [],
+  "renamed": [],
+  "renamedRule": "归档路径超过 235 字符时，文件名收缩为 '可读前缀~<源路径 sha1 前 8 位><扩展名>'；同一源文件重跑得到同一名字（幂等），本目录 JSON 内引用已同步改写",
+  "pathBase": "相对本目录（job_logs/ case_logs/ github_logs/），目录内不存在未被 JSON 引用的孤儿证据"
+ },
+ "source": {
+  "workDir": "work",
+  "generatedAt": "2026-11-12 09:12:14",
+  "note": "由 steps/step_7_archive.py 从第 1~6 步产物逐层归档"
+ }
+}

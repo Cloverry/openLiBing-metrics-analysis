@@ -124,14 +124,18 @@
   "analysis": {
     "status": "done",
     "keyError": null,
-    "rootCause": "运行了 1 小时 25 分钟（12:48:48 至 14:13:42）后 FAILED，但两个失败任务的全部证据都取不到：multi-node-mix-poc 的 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix 与 check-all-jobs 在平台侧均为 404_not_retained，归档侧 0 份证据文件、0 条 errorMessages、cases=0，任务字段的 logFile 与 logLines 都是「-」（records/run_2128.json）。\n\n能确认的只有失败位置在用例执行期间而不是入口：tasks=2、testTasks=0，运行持续了一个多小时才结束，说明 job 是真正跑起来后失败的；但失败步骤、报错原文、失败用例全部不在证据范围内，因此更像日志保留期或读取权限导致证据缺失，而不是可以归因的组件缺陷。\n\n已排除的干扰项：同一天 19:25 的 #2129 用同一 displayTitle（kimi_k3 的 128k decode prefix 用例）复跑仍然失败并留下了日志，说明该用例当天确实存在稳定问题，但本条自身证据不足以指认具体原因，只能与 #2129 合并判断。",
-    "advice": "先补证据链：把该仓库 job 日志的保留期延长到覆盖完整夜间周期，并确保 check-all-jobs 这类汇总任务一定留存日志，消除「失败但全 404」的记录\n\n在与 #2129 相同的 commit 下复跑 kimi_k3_w4a8_32p_mix_in128k_out1k_decode_prefix 并落盘用例级日志，再判定失败属于性能阈值、精度还是环境\n\n在采集侧把「FAILED 且 missing>0」的记录单独标记为证据缺失，避免它被当成用例失败计入可用度统计\n\n验证方式：复跑后要求该 job 的日志能正常下载（不再 404）、errorMessages 非空，并能给出用例级结论",
+    "rootCause": "跑了 1 小时 25 分钟才失败，但两个任务（kimi_k3 32 卡 128k decode 用例、check-all-jobs 汇总）的日志在平台侧都取不到，返回 404，归档里 0 份证据、0 条错误信息，所以定不了具体失败环节；从时长看 job 是真跑起来之后才失败的，不是入口就挂。同一天晚上 19:25 的 #2129 用同一个用例复跑留下了日志，结论是性能阈值不达标，本条可参照那条一起看。",
+    "advice": "先把这条 job 的日志留存补上：延长该仓库 job 日志的保留期，并确认采集侧账号有下载日志的权限，避免再出现「失败但日志全 404」的记录。\n\n验证方式：重跑后该 job 的日志能正常下载、错误信息不为空。",
     "cites": [
-      "records/run_2128.json"
+      "records/run_2128.json:L24-L25",
+      "records/run_2128.json:L49-L55",
+      "records/run_2128.json:L61-L67"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "无 keyError",
+    "updatedAt": "2026-11-11 17:53:58",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 3,
     "source": "agent"
   }
 }

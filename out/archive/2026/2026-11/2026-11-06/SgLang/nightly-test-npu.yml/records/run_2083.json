@@ -218,17 +218,19 @@
   "suggestions": [],
   "analysis": {
     "status": "done",
-    "keyError": "##[error]Error: failed to run script step: ✗ exit code: 1",
-    "rootCause": "该 run 共 16 个 job、2 个失败，构建 #2083 从 00:48:54 跑到 03:12:32（约 2 小时 24 分钟）记 FAILED；两个失败 job 是 multi-node-poc 的 glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms 与汇总任务 check-all-jobs（records/run_2083.json）\n\n第一类（主任务）：日志按 出现 exit code: 1（L608）→ Traceback（L1652）→ ##[error]Error: failed to run script step（L1889）→ ✗ exit code: 1（L1890）→ Process completed with exit code 1（L1914）→ 容器实现执行失败（L1915）的顺序收敛，异常正文未留存（github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L1652）\n\n第二类（汇总任务）：check-all-jobs 的 Generate results table 步骤失败，是上游主任务失败的连带结果，不是独立缺陷\n\n值得一提的是 L608 已经出现一次 exit code: 1，随后日志才跑到 L1652 的 Traceback：说明任务在前面已经有一次非零退出（大概率是某个子步骤或模型拉起），主脚本继续执行后才在真正的位置抛错，因此更像这条 2p2d 32p 性能用例的前置准备（服务拉起、权重加载）先失败，被测性能并未真正开始\n\n已排除的干扰项：没有任何性能指标或 accuracy 断言输出，说明用例没跑到测量阶段；另 14 个 job 通过，排除环境全局故障",
-    "advice": "先看第一次非零退出：把 L608 附近的上下文抓出来，确认是哪一步先失败（起服务、加载权重还是建通信域），这一步比 L1652 的 Traceback 更接近真实起点\n\n再区分性能与功能问题：如果用例根本没跑到压测阶段，就不该按性能回归处理，建议在脚本里加「未进入测量阶段」的显式标记，避免这类记录被当成性能劣化\n\n汇总任务降噪：check-all-jobs 上游失败时置 skipped\n\n验证方式：重跑该 nightly，要求 multi-node-poc（glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms）转通过并产出性能指标、run 结论为 success，且日志中能看到第一次非零退出的具体步骤名",
+    "keyError": "ValueError: Tokenizer class TokenizersBackend does not exist or is not currently imported.",
+    "rootCause": "失败的是 multi-node-poc 的 glm_5_3_w8a8_2p2d_32p_in128k_out1k_prefix90_20ms，另一个失败的 check-all-jobs 只是它的汇总连带失败。用例在准备数据时用它拉起 tokenizer 加载 GLM-5.3-w8a8 权重，直接抛 Tokenizer class TokenizersBackend 不存在，重试 2 次都停在同一处，服务没起来、也没有任何性能指标。原因是镜像里的 transformers 版本与这个权重自带的 tokenizer 配置不匹配，与集群和性能无关。",
+    "advice": "把镜像里的 transformers 升到支持该权重 tokenizer 的版本（或换成匹配的 tokenizer 配置），改完手动加载一次 AutoTokenizer 确认能过。\n\n验证方式：该 2p2d 用例进入压测并产出性能指标，check-all-jobs 正常出表。",
     "cites": [
-      "github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L608",
-      "github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L1652",
+      "github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L1667",
+      "github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L1889-L1890",
       "records/run_2083.json"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 github_logs/gh_42068311537/127453581942_multi-node-poc (glm_5_3_w8a8_2p2d_32p_i~e59536.txt:L1667",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 4,
     "source": "agent"
   }
 }

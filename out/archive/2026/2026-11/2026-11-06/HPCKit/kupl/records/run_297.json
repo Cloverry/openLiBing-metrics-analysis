@@ -169,8 +169,8 @@
   "analysis": {
     "status": "done",
     "keyError": "fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'",
-    "rootCause": "Test_kupl 在 00:01:10 启动，00:02:22 用例仓 clone 报 fatal: Authentication failed for 'https://gitcode.com/kunpengcompute/hpckit-autotest.git/'，随后 echo 与 [ERROR] git clone test_cases code fail 依次出现，00:02:22 脚本返回退出码 1，00:02:28 Finished: FAILURE，job 仅约 74 秒（job_logs/19_kupl_297_Test_kupl.log:L138、L139、L140、L142、L144）\n\n用例统计 total=0、passed=0、failed=0，测试结果为空：失败发生在用例执行之前，是用例仓凭据问题而不是用例断言失败\n\n从进入 clone 到鉴权失败只用了不到两分钟、且无重试，更像是凭据本身失效；如果是仓库不可达，报错应该是 connection timed out 之类的网络错误，而不是 Authentication failed\n\n已排除的干扰项：平台侧步骤错误信息只有「构建任务执行失败」与 DEV-CODECI-35002 封装码，属统一封装而非原因；本记录整 job 日志 144 行、truncated=False，证据完整，结论以该日志为准",
-    "advice": "把 hpckit-autotest 的 clone 凭据换成有效 access token，并以凭据注入方式在流水线中引用，不走明文密码；修完在 runner 上单独验证 clone 可用\n\n在测试任务前置阶段加仓库可达性与鉴权探测，探测失败即中止并打印仓库地址与凭据别名，缩短定位路径\n\n与同批 hmpi、kpex、kudnn、kuqcd 合并成一次凭据整改，不要逐条流水线重复排查\n\n验证方式：用 #297 参数重跑 kupl 流水线，要求用例能进入执行阶段（total 大于 0）、退出码为 0，日志中不再出现 Authentication failed",
+    "rootCause": "失败在用例代码拉取这一步：Test_kupl 启动 74 秒后 clone 用例库 hpckit-autotest，gitcode 判鉴权失败，脚本报错退出，用例统计全为 0。执行机上的 gitcode 凭据失效——token 过期或没有该私有仓的读权限——就是本条的唯一原因；报错是 Authentication failed 而不是连接超时，可以排除仓库不可达，且同批 hmpi、kpex、kudnn、kuqcd 都是同一句，不是 kupl 独有的配置问题。",
+    "advice": "换掉执行机上的 gitcode 凭据：用未过期、有 hpckit-autotest 读权限的 token 注入流水线，并在同一节点手工 clone 验证；HPCKit 五个组件共用这一份。\n\n验证方式：用 #297 参数重跑，clone 成功、total 大于 0、退出码为 0。",
     "cites": [
       "job_logs/19_kupl_297_Test_kupl.log:L138",
       "job_logs/19_kupl_297_Test_kupl.log:L139",
@@ -178,9 +178,11 @@
       "job_logs/19_kupl_297_Test_kupl.log:L142",
       "job_logs/19_kupl_297_Test_kupl.log:L144"
     ],
-    "updatedAt": "2026-11-10 17:27:42",
+    "possibilities": [],
+    "keyErrorCheck": "命中 job_logs/19_kupl_297_Test_kupl.log:L138",
+    "updatedAt": "2026-11-11 18:02:16",
     "firstAnalyzedAt": "2026-11-10 15:21:02",
-    "revisions": 2,
+    "revisions": 4,
     "source": "agent"
   }
 }
